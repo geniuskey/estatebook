@@ -1,0 +1,906 @@
+<!doctype html>
+<!-- Copyright (c) 2026 geniuskey and EstateBook contributors.
+     Executable code: MIT (see ../LICENSE-MIT).
+     Text, illustrations, questions and explanations: CC-BY-4.0 (see ../LICENSE.md). -->
+<html lang="ko">
+<head>
+<!--head:start {"desc": "가계약금에서 계약금·중도금·잔금과 소유권이전등기까지, 집을 사는 절차와 영수증을 시뮬레이터로 따라간다. 계약 해제의 원리, 거래 신고와 자금조달계획서, 중개보수 요율표, 취득세 6~9억 구간 공식과 생애최초 감면, 법무비·국민주택채권, 매도인의 시각까지."}-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>매매의 절차와 거래 비용 · EstateBook</title>
+<meta name="description" content="가계약금에서 계약금·중도금·잔금과 소유권이전등기까지, 집을 사는 절차와 영수증을 시뮬레이터로 따라간다. 계약 해제의 원리, 거래 신고와 자금조달계획서, 중개보수 요율표, 취득세 6~9억 구간 공식과 생애최초 감면, 법무비·국민주택채권, 매도인의 시각까지.">
+<link rel="canonical" href="https://estatebook.euiyun.com/chapters/buy.html">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<meta name="theme-color" content="#0f766e">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EstateBook">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="매매의 절차와 거래 비용 · EstateBook">
+<meta property="og:description" content="가계약금에서 계약금·중도금·잔금과 소유권이전등기까지, 집을 사는 절차와 영수증을 시뮬레이터로 따라간다. 계약 해제의 원리, 거래 신고와 자금조달계획서, 중개보수 요율표, 취득세 6~9억 구간 공식과 생애최초 감면, 법무비·국민주택채권, 매도인의 시각까지.">
+<meta property="og:url" content="https://estatebook.euiyun.com/chapters/buy.html">
+<meta property="og:image" content="https://estatebook.euiyun.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Chapter","LearningResource"],"@id":"https://estatebook.euiyun.com/chapters/buy.html#chapter","name":"매매의 절차와 거래 비용","headline":"매매의 절차와 거래 비용 · EstateBook","description":"가계약금에서 계약금·중도금·잔금과 소유권이전등기까지, 집을 사는 절차와 영수증을 시뮬레이터로 따라간다. 계약 해제의 원리, 거래 신고와 자금조달계획서, 중개보수 요율표, 취득세 6~9억 구간 공식과 생애최초 감면, 법무비·국민주택채권, 매도인의 시각까지.","url":"https://estatebook.euiyun.com/chapters/buy.html","position":8,"inLanguage":"ko","isAccessibleForFree":true,"learningResourceType":"인터랙티브 교재","educationalLevel":"일반 성인","image":"https://estatebook.euiyun.com/og.png","dateModified":"2026-10-08","isPartOf":{"@type":"Book","@id":"https://estatebook.euiyun.com/#book","name":"EstateBook · 집값과 전세를 숫자로 푸는 부동산 교과서","url":"https://estatebook.euiyun.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"EstateBook","item":"https://estatebook.euiyun.com/"},{"@type":"ListItem","position":2,"name":"8. 매매의 절차와 거래 비용","item":"https://estatebook.euiyun.com/chapters/buy.html"}]}]}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../css/style.css">
+<script src="../js/common.js"></script>
+<script src="../js/estate.js"></script>
+<!--head:end-->
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3d6151a0abc94ede89285d462527fa80"}'></script>
+<!-- End Cloudflare Web Analytics -->
+</head>
+<body data-chapter="buy">
+<main class="chapter">
+  <header class="chapter-hero">
+    <div class="eyebrow">Chapter 08</div>
+    <h1>매매의 절차와 거래 비용</h1>
+    <p class="lead">"6억 2,000만원짜리 집을 사면 6억 2,000만원만 있으면 되나요?" 민태호가 상담에서 가장 자주 듣는 질문이다. 답은 '아니다'이고, 모자라는 돈은 생각보다 크다. 취득세, 중개보수, 등기 비용, 국민주택채권, 이사와 수리를 합치면 집값의 2~4%가 더 든다. 돈만이 아니다. 집을 사는 일은 하루에 끝나지 않는다. 가계약금을 보내고, 계약서를 쓰고, 중도금과 잔금을 치르고, 30일 안에 거래를 신고하고, 60일 안에 취득세를 내고 등기를 한다. 그 사이 몇 달 동안 계약을 깰 수 있는 조건과 대가가 날짜에 따라 바뀐다. 이 장은 하늘네가 B시 C아파트와 같은 84㎡를 6억 2,000만원에 산다고 가정하고, 그 절차와 영수증을 날짜와 숫자로 하나씩 따라간다.</p>
+    <ul class="objectives">
+      <li>가계약금 → 계약금 → 중도금 → 잔금·소유권이전등기의 순서와 각 단계의 법적 의미를 설명하고, 잔금일을 전세 만기와 맞추는 일정표를 짠다.</li>
+      <li>계약금을 포기하거나 배액을 돌려주고 계약을 해제할 수 있는 조건(이행 착수 전)과, 시세가 움직일 때 해제 유인이 어떻게 생기는지 계산한다.</li>
+      <li>부동산 거래 신고(계약일부터 30일 이내)와 자금조달계획서 제출 요건을 구분한다.</li>
+      <li>중개보수 상한 요율표의 계단과 취득세 6~9억 구간 공식을 그래프로 읽고, 생애최초 감면과 다주택 중과의 크기를 비교한다.</li>
+      <li>법무비, 국민주택채권 할인 비용, 이사·수리비까지 넣은 매수 영수증을 만들고, 매도인의 계산도 함께 본다.</li>
+    </ul>
+  </header>
+
+  <section id="question">
+    <h2>집값 말고 드는 돈, 날짜 말고 정할 것</h2>
+    <p>하늘네가 처음 떠올린 계산은 단순했다. 집값 6억 2,000만원에서 전세 보증금 중 자기 돈 2억원과 예금을 빼고 나머지를 대출로 채운다. 태호는 그 계산에 두 줄을 더 적었다. 하나는 '집값 외에 드는 돈', 다른 하나는 '날짜'다. 앞의 줄은 <a href="overview.html">1장</a>에서 본 거래 비용이다. 집은 사고팔 때마다 비용이 붙는 자산이고, 그 비용의 대부분은 사는 쪽이 낸다. 뒤의 줄은 이 장에서 처음 나온다. 하늘네의 보증금 4억원은 2027년 4월 전세 만기에야 돌아온다. 그런데 집을 사는 데 필요한 돈은 계약일, 중도금일, 잔금일에 나뉘어 나간다. 돈이 들어오는 날과 나가는 날이 어긋나면, 충분한 돈이 있어도 거래가 막힌다.</p>
+    <p>매매는 크게 다섯 단계로 이루어진다. 아래 그림은 각 단계에서 무엇이 오가고, 법이 정한 기한이 언제부터 세어지는지를 한 줄에 놓은 것이다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 460 360" role="img" aria-label="매매 절차 흐름도: 가계약금, 계약금, 중도금, 잔금과 소유권이전등기, 그리고 거래 신고 30일, 취득세 60일 기한">
+        <defs><marker id="by-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="context-stroke"/></marker></defs>
+        <line x1="30" y1="96" x2="440" y2="96" class="s-axis"/>
+        <circle cx="46" cy="96" r="7" class="f-warn"/>
+        <circle cx="128" cy="96" r="7" class="f-acc"/>
+        <circle cx="236" cy="96" r="7" class="f-acc"/>
+        <circle cx="352" cy="96" r="7" class="f-acc"/>
+        <rect x="8" y="16" width="78" height="56" rx="7" class="f-warn-soft"/>
+        <text x="47" y="36" text-anchor="middle" class="lbl-b">가계약금</text>
+        <text x="47" y="53" text-anchor="middle" class="lbl-dim">수백만원</text>
+        <text x="47" y="66" text-anchor="middle" class="lbl-dim">문자·계좌</text>
+        <rect x="90" y="16" width="78" height="56" rx="7" class="f-acc-soft"/>
+        <text x="129" y="36" text-anchor="middle" class="lbl-acc">계약</text>
+        <text x="129" y="53" text-anchor="middle" class="lbl-dim">계약금</text>
+        <text x="129" y="66" text-anchor="middle" class="lbl-dim">관행 10%</text>
+        <rect x="190" y="16" width="92" height="56" rx="7" class="f-acc-soft"/>
+        <text x="236" y="36" text-anchor="middle" class="lbl-acc">중도금</text>
+        <text x="236" y="53" text-anchor="middle" class="lbl-dim">생략하기도</text>
+        <text x="236" y="66" text-anchor="middle" class="lbl-dim">이행의 착수</text>
+        <rect x="298" y="16" width="148" height="56" rx="7" class="f-ok-soft"/>
+        <text x="372" y="36" text-anchor="middle" class="lbl-b">잔금 · 이전등기</text>
+        <text x="372" y="53" text-anchor="middle" class="lbl-dim">열쇠와 등기 서류</text>
+        <text x="372" y="66" text-anchor="middle" class="lbl-dim">같은 날 대출 실행</text>
+        <path d="M128 112 L128 150 L228 150" class="s-acc" marker-end="url(#by-ar)"/>
+        <text x="132" y="140" class="lbl-dim">계약일부터</text>
+        <rect x="232" y="134" width="120" height="32" rx="6" class="f-surface"/>
+        <text x="292" y="155" text-anchor="middle" class="lbl-b">거래 신고 30일</text>
+        <path d="M352 112 L352 196 L232 196" class="s-acc2" marker-end="url(#by-ar)"/>
+        <text x="356" y="186" class="lbl-dim">잔금일부터</text>
+        <rect x="70" y="180" width="160" height="32" rx="6" class="f-surface"/>
+        <text x="150" y="201" text-anchor="middle" class="lbl-b">취득세 신고·납부 60일</text>
+        <path d="M352 112 L352 242 L232 242" class="s-acc2" marker-end="url(#by-ar)"/>
+        <rect x="70" y="226" width="160" height="32" rx="6" class="f-surface"/>
+        <text x="150" y="247" text-anchor="middle" class="lbl-b">소유권이전등기 60일</text>
+        <rect x="8" y="282" width="444" height="66" rx="8" class="f-bad-soft"/>
+        <text x="230" y="304" text-anchor="middle" class="lbl-bad">계약을 깰 수 있는 조건이 날짜에 따라 바뀐다</text>
+        <text x="230" y="323" text-anchor="middle" class="lbl">중도금 전: 계약금 포기(매수인) · 배액 상환(매도인)</text>
+        <text x="230" y="340" text-anchor="middle" class="lbl-dim">중도금 후: 일방 해제 불가, 어기면 손해배상 문제</text>
+      </svg>
+      <figcaption><b>그림 1. 매매 절차와 법정 기한.</b> 가계약금은 관행이고, 법이 정한 단계는 아니다. 계약금은 매매대금의 일부이면서 계약을 깰 때의 값(해약금)이 된다. 중도금이 들어가면 '계약 이행에 착수'한 것으로 보아 계약금만으로 계약을 깰 수 없게 된다. 거래 신고는 계약일부터 30일, 취득세 신고·납부와 소유권이전등기 신청은 잔금일(취득일)부터 60일 안에 한다. 기한은 2026년 기준이며 실무에서는 대개 잔금일에 법무사가 등기를 함께 접수한다.</figcaption>
+    </figure>
+  </section>
+
+  <section id="timeline">
+    <h2>계약금·중도금·잔금: 돈이 나가는 날짜</h2>
+    <p>계약을 맺기 전에 매수인이 매도인 계좌로 몇백만원을 먼저 보내는 일이 흔하다. <span class="term">가계약금</span><span class="en">(Provisional deposit)</span>은 "이 집은 내가 사기로 했으니 다른 사람에게 보여 주지 말라"는 표시로 보내는 돈이다. 법률 용어가 아니라 시장의 관행이다. 가계약 단계에서 무엇이 정해졌는지(가격, 잔금일, 중도금 여부 같은 중요한 조건)에 따라 그 돈을 돌려받을 수 있는지가 달라지고, 이 문제로 다투는 유형의 분쟁이 적지 않다. 그래서 가계약금을 보낼 때는 "본 계약 불발 시 반환" 같은 조건을 문자로 남겨 두는 것이 관행이 되었다.</p>
+    <p>본 계약서를 쓰는 날 매수인은 <span class="term">계약금</span><span class="en">(Down payment)</span>을 낸다. 법이 정한 비율은 없지만 매매대금의 10%가 오래된 관행이다. 6억 2,000만원 집이라면 6,200만원이고, 미리 보낸 가계약금은 여기에 포함된다. 그다음 <span class="term">중도금</span><span class="en">(Interim payment)</span>은 계약과 잔금 사이에 대금의 일부를 미리 치르는 돈이다. 매매대금의 10~40%를 한두 번에 나눠 내기도 하고, 아예 없이 계약금과 잔금만으로 거래하기도 한다. 마지막 <span class="term">잔금</span><span class="en">(Balance payment)</span>을 치르는 날 매도인은 집 열쇠와 소유권이전등기에 필요한 서류를 넘기고, 매수인의 은행은 같은 시각에 주택담보대출을 매도인 계좌로 보낸다. 법적으로 집의 주인이 바뀌는 것은 등기가 끝났을 때다.</p>
+    <p>세입자인 하늘네에게 이 일정이 까다로운 이유는 보증금이다. 4억원은 2027년 4월 만기에 집주인이 돌려줘야 쓸 수 있는 돈이다. 그 전에 나가는 계약금과 중도금은 예금 8,000만원에 매달 모으는 250만원으로 감당해야 한다. 아래 시뮬레이터의 손잡이 두 개(계약일과 잔금일)를 끌어 일정표를 짜 본다.</p>
+
+    <div class="sim" id="sim-tl">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>잔금일을 전세 만기에 맞추기</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="tl-cv"></canvas><span class="hint">계약일·잔금일 손잡이를 끈다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>계약금 비율 <output id="tl-d-out"></output></span><input type="range" id="tl-d" min="5" max="20" step="1" value="10"></label>
+          <label class="ctrl"><span>중도금 비율 <output id="tl-m-out"></output></span><input type="range" id="tl-m" min="0" max="40" step="5" value="0"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">거래 신고 기한</span><span class="v" id="tl-o-r">—</span></div>
+        <div class="stat"><span class="k">취득세·등기 기한</span><span class="v" id="tl-o-t">—</span></div>
+        <div class="stat"><span class="k">잔금과 만기의 차이</span><span class="v" id="tl-o-g">—</span></div>
+        <div class="stat"><span class="k">어긋남의 비용</span><span class="v" id="tl-o-c">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 기본값(계약금 10%, 중도금 없음)에서 잔금일 손잡이를 만기(2027년 4월 30일로 가정) 위에 놓는다. 보증금을 돌려받는 날 그 돈으로 잔금을 치르니 어긋남의 비용이 0이다. ② 잔금일을 2월로 당긴다. 보증금 중 하늘네 몫 2억원이 아직 묶여 있어, 그만큼을 단기로 빌려야 한다(브리지 대출). ③ 중도금을 20%로 올린다. 계약금 6,200만원과 중도금 1억 2,400만원을 예금으로 낼 수 없어 막대가 빨갛게 된다. 이것이 세입자가 매수할 때 중도금을 줄이거나 없애려는 이유다. (오늘은 2026년 10월 8일, 예금 8,000만원에 매달 250만원을 더한다. 브리지 대출 금리 연 6%, 만기 뒤 공백은 하루 7만원의 임시 거처·보관비와 이사 한 번 추가 200만원으로 잡은 교육용 가정이다.)</div>
+    </div>
+
+    <p>잔금일이 만기보다 이르면 아직 돌려받지 못한 보증금만큼 돈이 비고, 늦으면 살 곳이 빈다. 세입자의 매수는 결국 세 사람의 일정을 맞추는 일이다. 매수인(하늘네), 하늘네의 집주인(남궁현), 그리고 하늘네가 살 집의 매도인이다. 만기 날짜에 잔금을 맞추면 하늘네는 오전에 보증금을 돌려받아 전세대출을 갚고, 오후에 그 돈과 주택담보대출로 잔금을 치르는 하루를 보낸다. 같은 날 두 번 이사하는 일정이라 실무에서는 오전 보증금 반환이 늦어질 경우를 대비해 집주인과 반환 시각을 미리 정해 둔다.</p>
+
+    <div class="callout pro">
+      <strong>잔금일은 세 사람의 날짜를 겹친다</strong>
+      태호는 세입자 손님이 집을 사겠다고 하면 매물보다 먼저 "지금 집 만기가 언제인지, 집주인이 그날 보증금을 돌려줄 수 있는지"를 묻는다. 집주인이 다음 세입자의 보증금으로 돌려주는 구조라면, 다음 세입자가 구해지지 않을 때 반환이 늦어진다(<a href="jeonse.html">5장</a>). 그래서 매수 계약서의 잔금일은 만기보다 1~2주 여유를 두거나 "임대인의 보증금 반환일에 맞춰 조정할 수 있다"는 특약을 넣자고 매도인과 협의한다. 반대로 매도인도 이사 갈 곳의 일정이 있으니 날짜 협상에서는 양쪽 모두 사정을 먼저 털어놓는 편이 빠르다. 중개사는 이 날짜를 맞춰야 보수를 받는다. 그래서 무리한 날짜에 "일단 계약부터 하자"는 말이 나오기 쉽다. 그 말이 나오면 일정표부터 다시 그려 보라고 태호는 권한다.
+    </div>
+  </section>
+
+  <section id="cancel">
+    <h2>계약을 깰 수 있는 값: 계약금 포기와 배액 상환</h2>
+    <p>계약서에 서명했다고 계약이 절대 깨지지 않는 것은 아니다. 민법은 매매에서 계약금을 주고받았다면 당사자 중 누구든 상대가 <span class="term">이행에 착수</span><span class="en">(Commencement of performance)</span>하기 전까지는 대가를 치르고 계약을 해제할 수 있게 한다(민법 제565조). 매수인은 낸 계약금을 포기하면 되고, 매도인은 받은 계약금의 두 배를 돌려주면 된다(<span class="term">배액 상환</span>). 매도인이 돌려주는 두 배 가운데 절반은 원래 매수인의 돈이니, 실제로 매도인이 잃는 돈도 계약금 한 번만큼이다. 양쪽이 같은 값을 걸고 있는 셈이다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 460 280" role="img" aria-label="해약금 해제의 원리: 이행 착수 전에는 매수인은 계약금 포기, 매도인은 배액 상환으로 해제 가능, 이행 착수 후에는 일방 해제 불가">
+        <rect x="8" y="8" width="214" height="200" rx="8" class="f-acc-soft"/>
+        <text x="115" y="32" text-anchor="middle" class="lbl-acc">이행 착수 전</text>
+        <text x="115" y="50" text-anchor="middle" class="lbl-dim">(계약금만 오간 상태)</text>
+        <text x="24" y="82" class="lbl-b">매수인이 깨면</text>
+        <text x="24" y="101" class="lbl">낸 계약금 C를 포기</text>
+        <text x="24" y="136" class="lbl-b">매도인이 깨면</text>
+        <text x="24" y="155" class="lbl">받은 계약금의 2배(2C) 반환</text>
+        <text x="24" y="174" class="lbl-dim">순손실은 C (절반은 원래 남의 돈)</text>
+        <text x="115" y="200" text-anchor="middle" class="lbl-acc">양쪽 다 'C'를 걸었다</text>
+        <rect x="238" y="8" width="214" height="200" rx="8" class="f-bad-soft"/>
+        <text x="345" y="32" text-anchor="middle" class="lbl-bad">이행 착수 후</text>
+        <text x="345" y="50" text-anchor="middle" class="lbl-dim">(중도금 지급 등)</text>
+        <text x="254" y="82" class="lbl-b">계약금만으로는</text>
+        <text x="254" y="101" class="lbl">한쪽이 깰 수 없다</text>
+        <text x="254" y="136" class="lbl-b">그래도 이행하지 않으면</text>
+        <text x="254" y="155" class="lbl">채무불이행: 해제·손해배상</text>
+        <text x="254" y="174" class="lbl-dim">위약금 특약이 있으면 그 금액</text>
+        <text x="345" y="200" text-anchor="middle" class="lbl-bad">깨는 값이 '정해지지 않는다'</text>
+        <text x="230" y="236" text-anchor="middle" class="lbl">시세가 C보다 크게 움직이면 깨고 싶은 쪽이 생긴다</text>
+        <text x="230" y="258" text-anchor="middle" class="lbl-dim">오르면 매도인, 내리면 매수인 → 그래서 이행 착수를 서두른다</text>
+      </svg>
+      <figcaption><b>그림 2. 해약금의 원리.</b> 계약금은 대금의 일부이면서, 이행 착수 전에는 계약을 깨는 값이 된다(민법 제565조). 중도금 지급 같은 이행의 착수가 있으면 이 방식의 해제는 막힌다. 실제 사건에서는 무엇을 '이행의 착수'로 볼지, 가계약금만 오간 상태가 계약인지, 계약금 일부만 낸 경우 기준을 낸 돈으로 볼지 약정한 돈으로 볼지를 두고 다투는 유형의 분쟁이 있다. 구체적인 사안은 변호사나 법률구조공단 상담으로 확인한다.</figcaption>
+    </figure>
+
+    <p>이 규칙을 숫자로 바꾸면 해제의 유인이 보인다. 계약 직후 시세가 오르면 매도인은 배액을 물어 주고 계약을 깬 뒤 더 비싸게 다른 사람에게 팔 수 있다. 시세가 계약금보다 더 오르면 그 거래가 이익이다. 반대로 시세가 내리면 매수인은 계약금을 버리고 더 싼 집을 살 유인이 생긴다. 아래에서 손잡이를 끌어 계약 뒤 시세 변화를 고르고, 계약금 비율을 바꿔 본다.</p>
+
+    <div class="sim" id="sim-cx">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>시세가 움직이면 누가 계약을 깨고 싶어지나</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="cx-cv"></canvas><span class="hint">아래 손잡이를 끌어 계약 뒤 시세 변화를 고른다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>계약금 비율 <output id="cx-d-out"></output></span><input type="range" id="cx-d" min="1" max="20" step="1" value="10"></label>
+          <label class="check"><input type="checkbox" id="cx-mid"> 중도금 지급(이행 착수)</label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">계약 뒤 시세</span><span class="v" id="cx-o-p">—</span></div>
+        <div class="stat"><span class="k">매도인이 깨면 얻는 돈</span><span class="v" id="cx-o-s">—</span></div>
+        <div class="stat"><span class="k">매수인이 깨면 얻는 돈</span><span class="v" id="cx-o-b">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 계약금 10%에서 손잡이를 +5%로 끈다. 시세가 3,100만원 올랐지만 깨는 값이 6,200만원이라 매도인은 계약을 지키는 편이 낫다. ② 계약금을 3%로 낮추고 다시 +5%를 본다. 매도인 쪽 선이 0 위로 올라간다. 계약금이 작으면 상승장에서 계약이 깨지기 쉽다. ③ '중도금 지급'을 켠다. 두 선이 사라지고 해제가 막힌다. 상승기에 매수인이 중도금을 서둘러 넣으려는 이유다. (6억 2,000만원 거래, 해제한 쪽이 시세대로 다시 사고팔 수 있다고 본 단순 계산이다. 거래 비용과 소송 비용, 손해배상 문제는 넣지 않았다.)</div>
+    </div>
+
+    <p>그래프에서 두 선 사이의 넓은 회색 띠가 계약이 지켜지는 구간이다. 그 폭은 계약금의 두 배다. 계약금이 클수록 띠가 넓어져 웬만한 시세 변화에는 누구도 계약을 깰 생각을 하지 않는다. 계약금 10%라는 관행은 이 띠를 시세가 몇 달 안에 쉽게 넘지 못할 만큼 넓게 잡은 숫자로 읽을 수 있다. 집값이 한 달에 몇 %씩 오르던 시기에는 띠를 넘는 일이 실제로 생겼고, 매수인들이 계약 직후 중도금을 일부라도 서둘러 넣어 '이행 착수'를 만드는 일이 흔해졌다. 거꾸로 하락기에는 매수인이 계약금을 포기하고 떠나는 일이 늘어난다. 같은 규칙이 시장의 방향에 따라 다른 쪽을 시험한다.</p>
+  </section>
+
+  <section id="report">
+    <h2>거래 신고와 자금조달계획서: 30일과 돈의 출처</h2>
+    <p>계약을 맺으면 정부에 알려야 한다. <span class="term">부동산 거래 신고</span><span class="en">(Real-transaction price report)</span>는 매매 계약의 실제 가격과 날짜를 계약일부터 30일 안에 시·군·구에 신고하는 제도다(부동산 거래신고 등에 관한 법률 제3조). 중개사가 거래를 중개했다면 중개사가 신고하고, 직거래라면 매도인과 매수인이 함께 신고한다. 신고된 값이 국토교통부 실거래가 공개 시스템에 올라오는 <span class="term">실거래가</span>다. 이 숫자가 어떻게 집계되고 왜 호가와 다르게 움직이는지는 <a href="data.html">16장</a>에서 다룬다. 계약이 해제되면 그 사실도 30일 안에 신고해야 한다. 높은 값에 계약을 신고해 시세를 끌어올린 뒤 해제하는 수법을 막기 위한 장치다.</p>
+    <p>일부 거래에는 돈을 어디서 마련하는지도 적어 내야 한다. <span class="term">자금조달계획서</span><span class="en">(Funding plan)</span>는 집을 사는 돈을 자기 예금, 주식 매각, 보증금 회수, 증여, 금융기관 대출, 그 밖의 차입으로 나눠 적는 서류다. 2026년 기준으로 규제지역(투기과열지구·조정대상지역)에서는 가격과 관계없이 모든 주택 거래에, 그 밖의 지역에서는 6억원 이상 주택 거래에 내야 하는 것으로 보도된다. 투기과열지구에서는 계획서의 내용을 뒷받침하는 예금 잔액 증명, 대출 신청서 같은 증빙도 함께 낸다. 서울 25개 구 전역과 경기 일부가 2025년 10.15 대책 뒤 규제지역이 되었으므로(<a href="policy.html">15장</a>), 서울에서 집을 산다면 금액과 관계없이 이 서류를 쓴다고 보면 된다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 460 286" role="img" aria-label="거래 신고와 자금조달계획서 제출 요건 비교표">
+        <rect x="8" y="8" width="444" height="36" rx="6" class="f-surface"/>
+        <text x="74" y="31" text-anchor="middle" class="lbl-dim">구분</text>
+        <text x="216" y="31" text-anchor="middle" class="lbl-b">규제지역</text>
+        <text x="372" y="31" text-anchor="middle" class="lbl-b">그 밖의 지역</text>
+        <line x1="140" y1="50" x2="140" y2="250" class="s-dash"/>
+        <line x1="294" y1="50" x2="294" y2="250" class="s-dash"/>
+        <text x="74" y="74" text-anchor="middle" class="lbl-b">거래 신고</text>
+        <text x="216" y="74" text-anchor="middle" class="lbl">모든 거래, 계약일부터 30일</text>
+        <text x="372" y="74" text-anchor="middle" class="lbl">같다</text>
+        <text x="74" y="122" text-anchor="middle" class="lbl-b">자금조달</text>
+        <text x="74" y="140" text-anchor="middle" class="lbl-b">계획서</text>
+        <text x="216" y="122" text-anchor="middle" class="lbl-acc">금액과 관계없이</text>
+        <text x="216" y="140" text-anchor="middle" class="lbl-dim">거래 신고와 함께</text>
+        <text x="372" y="122" text-anchor="middle" class="lbl">6억원 이상</text>
+        <text x="372" y="140" text-anchor="middle" class="lbl-dim">(법인은 금액 무관)</text>
+        <text x="74" y="188" text-anchor="middle" class="lbl-b">증빙 서류</text>
+        <text x="216" y="182" text-anchor="middle" class="lbl">투기과열지구</text>
+        <text x="216" y="200" text-anchor="middle" class="lbl-dim">예금·대출·증여 증빙</text>
+        <text x="372" y="188" text-anchor="middle" class="lbl-dim">대개 없음</text>
+        <text x="74" y="236" text-anchor="middle" class="lbl-b">실거주</text>
+        <text x="216" y="230" text-anchor="middle" class="lbl">토지거래허가구역이면</text>
+        <text x="216" y="248" text-anchor="middle" class="lbl-dim">허가와 실거주 의무</text>
+        <text x="372" y="236" text-anchor="middle" class="lbl-dim">없음</text>
+        <text x="230" y="276" text-anchor="middle" class="lbl-dim">경기 B시(가상)는 비규제지역 → 6억 2,000만원이면 계획서 대상</text>
+      </svg>
+      <figcaption><b>그림 3. 신고와 계획서의 요건(2026년 기준).</b> 규제지역 범위와 제출 요건은 대책이 나올 때마다 바뀐다. 거래 전에 국토교통부와 해당 시·군·구에서 현행 기준을 확인한다. 계획서의 자금 출처가 소득·나이에 비해 지나치게 크면 국세청의 자금 출처 조사로 이어질 수 있고, 가족에게 받은 돈을 빌린 돈으로 적으면 차용증과 이자 지급 기록이 필요하다(증여와의 경계는 <a href="tradetax.html">14장</a>).</figcaption>
+    </figure>
+
+    <p>하늘네가 B시에서 6억 2,000만원 집을 산다면 B시가 비규제지역이어도 6억원을 넘으니 자금조달계획서를 낸다. 적을 내용은 이미 손에 있다. 예금 약 8,000만원, 전세 보증금 회수 4억원(그중 2억원은 전세대출 상환), 그리고 주택담보대출이다. 계획서는 돈의 출처를 정직하게 적는 서류일 뿐 숨은 벌칙이 아니다. 문제가 되는 것은 적은 내용과 실제 돈의 흐름이 다를 때다.</p>
+  </section>
+
+  <section id="brokerage">
+    <h2>중개보수: 요율표의 계단</h2>
+    <p>중개사가 받는 <span class="term">중개보수</span><span class="en">(Brokerage fee)</span>는 거래 금액에 상한 요율을 곱한 값을 넘을 수 없다. 2021년 10월 개정된 공인중개사법 시행규칙의 주택 매매 요율은 5,000만원 미만 0.6%(한도 25만원), 2억원 미만 0.5%(한도 80만원), 9억원 미만 0.4%, 12억원 미만 0.5%, 15억원 미만 0.6%, 15억원 이상 0.7%다. 2026년 기준으로도 같다. 이 요율은 '상한'이라 그 안에서 협의할 수 있다. 중개사무소가 일반과세자이면 보수에 부가가치세 10%가 더 붙는다.</p>
+    <p>요율이 금액 구간마다 계단처럼 바뀌는데, 구간이 바뀌면 높아진 요율이 거래 금액 전체에 적용된다. 그래서 보수는 매끄러운 곡선이 아니라 구간 경계에서 뚝 뛰는 모양이 된다. 아래 그래프에서 손잡이를 끌어 9억원 경계를 넘겨 본다.</p>
+
+    <div class="sim" id="sim-br">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>중개보수 상한: 거래 금액에 따른 계단</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="br-cv"></canvas><span class="hint">손잡이를 끌어 거래 금액을 고른다</span></div>
+        <div class="sim-controls">
+          <div class="seg" id="br-kind"><button data-value="sale" class="on">매매</button><button data-value="lease">전세(임대차)</button></div>
+          <label class="check"><input type="checkbox" id="br-vat" checked> 부가가치세 10% 포함</label>
+          <label class="check"><input type="checkbox" id="br-two"> 양쪽(매도인+매수인) 합계</label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">거래 금액</span><span class="v" id="br-o-a">—</span></div>
+        <div class="stat"><span class="k">상한 요율</span><span class="v" id="br-o-r">—</span></div>
+        <div class="stat"><span class="k">중개보수 상한</span><span class="v" id="br-o-f">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 6억 2,000만원(하늘네 후보)에 놓는다. 0.4%로 248만원, 부가가치세를 더하면 272만 8,000원이다. ② 손잡이를 8억 9,000만원에서 9억원 바로 위로 옮긴다. 거래 금액은 1,000만원 늘었는데 보수 상한은 약 356만원에서 450만원으로 뛴다. 요율 0.5%가 9억원 전체에 붙기 때문이다. ③ '양쪽 합계'를 켠다. 중개사가 매도인과 매수인을 모두 중개하면 한 거래에서 두 배를 받는다. (2026년 기준 공인중개사법 시행규칙 별표의 상한 요율. 실제 보수는 이 안에서 협의한다. 임대차 요율표는 같은 별표를 따랐으나 일부 구간은 확인 필요.)</div>
+    </div>
+
+    <p>9억원 바로 위의 집을 사면 그 아래 집보다 보수 상한이 약 90만원 높다. 계단의 높이는 구간 경계에서 요율 차이(0.1%p)에 경계 금액을 곱한 값이다. 9억원에서 90만원, 12억원에서 120만원, 15억원에서 150만원이 뛴다. 상한이라는 점을 기억하면 이 계단은 협상의 근거가 된다. 계약 전에 보수 요율과 금액을 중개사와 서면으로 정해 두면 잔금일에 다툴 일이 줄어든다.</p>
+
+    <div class="callout pro">
+      <strong>보수는 계약 전에, 숫자로 정한다</strong>
+      태호의 사무소는 매물 안내 첫날 요율표를 보여 주고 "상한은 0.4%이고 부가세 별도입니다. 협의 가능합니다"라고 먼저 말한다. 잔금일에 보수 이야기를 처음 꺼내면 손님은 이미 집을 얻은 뒤라 깎아 달라는 말이 나오고, 중개사는 일을 다 한 뒤라 서운해진다. 공인중개사법은 중개사가 상한을 넘겨 받는 것을 금지하고, 중개대상물 확인·설명서에 보수와 실비를 적게 한다. 손님이 자주 묻는 것은 "부가세는 꼭 내야 하나"인데, 일반과세자 사무소는 부가가치세를 받아 신고해야 하고 간이과세자는 다르다. 사무소의 사업자 유형은 사업자등록증으로 확인할 수 있다. 그리고 매도인과 매수인을 한 사무소가 함께 맡으면 그 사무소는 한 거래에서 양쪽 보수를 받는다. 가격 협상에서 중개사가 어느 편에 서 있는지 애매해지는 순간이다. 태호는 이럴 때 "저는 가격을 정하지 않고, 양쪽 숫자를 전달만 합니다"라고 선을 긋는다.
+    </div>
+  </section>
+
+  <section id="acqtax">
+    <h2>취득세: 6억과 9억 사이의 비탈</h2>
+    <p>집을 사면 시·군·구에 <span class="term">취득세</span><span class="en">(Acquisition tax)</span>를 낸다. 주택을 유상으로 사는 경우 1주택 기준 세율은 취득가액 6억원 이하 1%, 9억원 초과 3%이고, 그 사이는 금액에 따라 세율이 조금씩 올라가는 공식을 쓴다(지방세법 제11조). 2020년 전까지는 6억원과 9억원에서 세율이 1%→2%→3%로 계단처럼 뛰었다. 6억원을 조금 넘는 집을 사면 세금이 600만원 넘게 뛰는 절벽이 있었고, 그래서 계약서의 가격을 5억 9,900만원에 맞추는 거래가 몰렸다. 지금의 공식은 그 절벽을 비탈로 바꾼 것이다.</p>
+
+    <div class="formula">
+      $$t(P) = \left(\frac{P}{1\text{억}}\times\frac{2}{3} - 3\right)\%,\qquad 6\text{억} < P \le 9\text{억}$$
+      <div class="where">\(P\) 취득가액, \(t\) 취득세율. 6억원이면 1%, 7억 5,000만원이면 2%, 9억원이면 3%가 되어 양 끝이 이어진다. 세율은 소수점 아래 다섯째 자리에서 반올림한다. 여기에 지방교육세(일반세율이면 대략 취득세의 10%)가 붙고, 전용 85㎡를 넘으면 농어촌특별세 0.2%가 더해진다.</div>
+    </div>
+
+    <p>세율이 이어져도 '내는 돈'은 여전히 가파르다. 세율이 오르면 그 세율이 집값 전체에 다시 곱해지기 때문이다. 6억원에서 9억원으로 3억원이 오를 때 취득세(지방교육세 포함)는 660만원에서 2,970만원으로 2,310만원이 는다. 늘어난 3억원의 7.7%가 세금이다. 그리고 9억원 바로 아래에서는 1억원을 더 낼 때마다 세금이 1,000만원 가까이 는다. 9억원을 넘어서면 세율이 3%로 고정되어 1억원당 330만원으로 꺾인다. 세율 그래프에는 절벽이 사라졌지만, '1억원을 더 낼 때 세금이 얼마나 느는가'를 그리면 9억원에 절벽이 남아 있다. 아래에서 확인한다.</p>
+
+    <div class="sim" id="sim-acq">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>취득세율, 낼 세금, 1억원을 더 낼 때 느는 세금</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="acq-cv"></canvas><span class="hint">손잡이를 끌어 집값을 고른다</span></div>
+        <div class="sim-controls">
+          <div class="seg" id="acq-h"><button data-value="1" class="on">무주택→1주택</button><button data-value="t">일시적 2주택</button><button data-value="r2">조정지역 2주택</button><button data-value="u3">비조정 3주택</button></div>
+          <label class="check"><input type="checkbox" id="acq-first" checked> 생애최초 감면</label>
+          <label class="check"><input type="checkbox" id="acq-big"> 전용 85㎡ 초과</label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">집값</span><span class="v" id="acq-o-p">—</span></div>
+        <div class="stat"><span class="k">취득세율</span><span class="v" id="acq-o-r">—</span></div>
+        <div class="stat"><span class="k">낼 세금(합계)</span><span class="v" id="acq-o-t">—</span></div>
+        <div class="stat"><span class="k">1억원 더 낼 때</span><span class="v" id="acq-o-m">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 6억 2,000만원(기본값)에서 생애최초 감면을 켜고 끈다. 세율은 1.13%, 감면 200만원이 빠지면 낼 세금이 약 773만원에서 573만원으로 준다. ② 손잡이를 8억 9,000만원 근처로 끈다. 아래쪽 점선(1억원을 더 낼 때 느는 세금)이 10% 가까이 올라갔다가 9억원을 넘는 순간 3%로 떨어진다. 세율의 절벽은 사라졌지만 한계 부담의 절벽은 남았다. ③ '조정지역 2주택'을 고른다. 세율이 8%로 뛰어 6억 2,000만원 집의 세금이 5,208만원이 된다. 집을 한 채 더 사는 일을 비싸게 만드는 중과다. (2026년 기준 지방세법의 세율과 지방교육세·농어촌특별세를 교육용으로 단순화한 엔진 RE.acqTax로 계산했다. 생애최초 감면은 12억원 이하, 최대 200만원. 실제 세액은 위택스 모의계산이나 세무 전문가에게 확인한다.)</div>
+    </div>
+
+    <p>위쪽 굵은 선(실효 세율)은 6억원에서 9억원까지 이어지는 비탈이고, 아래쪽 점선이 '한 걸음 더'의 비용이다. 이 차이는 협상에서 의미가 있다. 8억 9,000만원짜리 집을 9,000만원 깎아 8억원에 사면 취득세만 약 820만원 준다. 깎은 돈의 9%가 넘는다. 반대로 9억 2,000만원과 9억 8,000만원 사이의 협상에서는 깎은 돈의 3.3%만 세금에서 준다. 같은 1,000만원의 가격 협상이 구간에 따라 다른 무게를 갖는다.</p>
+
+    <p><b>생애최초 감면</b>은 본인과 배우자가 한 번도 주택을 가진 적이 없는 가구가 12억원 이하 주택을 살 때 취득세를 최대 200만원 줄여 주는 제도다(지방세특례제한법 제36조의3). 2026년 기준 소득 요건은 없고, 산출세액이 200만원 이하이면 전액 면제된다. 대신 조건이 붙는다. 취득일부터 3개월 안에 그 집에 전입해 살아야 하고, 3년 안에 팔거나 증여하거나 임대로 돌리면 감면받은 세금을 다시 낸다. 일몰은 2028년 말로 알려져 있으나 확인이 필요하고, 40세 미만에게 감면을 300만원으로 늘리는 안은 2026 지방세제 개편안에 담겨 추진 중이다(확정 전).</p>
+    <p><b>다주택 중과</b>는 반대 방향의 장치다. 취득 후 주택 수가 조정대상지역에서 2주택이면 8%, 3주택 이상이면 12%, 그 밖의 지역에서는 3주택 8%, 4주택 이상 12%의 세율이 적용된다(지방세법 제13조의2). 이사 때문에 새집을 먼저 사고 헌집을 나중에 파는 <span class="term">일시적 2주택</span>은 정해진 기한 안에 종전 주택을 처분하는 조건으로 일반세율을 적용받는다. 이 처분 기한은 취득세와 양도소득세에서 따로 정해져 있고, 양도소득세 쪽은 두 집이 모두 조정대상지역이면 2년(2026년 10월 1일 시행, 그 전 취득·계약분은 3년), 그 밖은 3년이다. 취득세 쪽 처분 기한은 대체로 3년으로 안내되나 확인이 필요하다.</p>
+  </section>
+
+  <section id="filing">
+    <h2>60일의 숙제: 취득세 납부, 등기, 법무비, 국민주택채권</h2>
+    <p>잔금을 치른 날이 세법의 <span class="term">취득일</span>이다. 취득세는 취득일부터 60일 안에 신고하고 내야 하며(지방세법 제20조), 늦으면 가산세가 붙는다. 소유권이전등기도 잔금일부터 60일 안에 신청해야 한다(부동산등기 특별조치법). 대출을 끼고 사면 은행이 근저당을 설정해야 하므로 실무에서는 잔금일 당일 은행이 지정한 법무사가 취득세 납부와 등기 접수를 한꺼번에 처리한다. 하늘네가 받는 법무사 청구서에는 보통 다섯 가지 줄이 있다. 취득세 등 세금, 등기 신청 수수료와 인지세, 국민주택채권 할인 비용, 법무사 보수, 그리고 제증명 발급 같은 실비다.</p>
+    <p>이 중 낯선 것이 <span class="term">국민주택채권</span><span class="en">(National housing bond)</span>이다. 소유권이전등기를 하는 사람은 주택도시기금이 발행하는 이 채권을 시가표준액(주택은 공시가격)에 지역과 가액별 비율을 곱한 만큼 사야 한다(주택도시기금법). 예를 들어 서울·광역시에서 시가표준액 6억원 이상 주택은 그 3.1%를 산다. 대부분의 사람은 산 채권을 그 자리에서 은행에 되판다(즉시 매도). 채권은 금리가 낮은 장기 채권이라 시장 가격이 액면보다 낮고, 그 차액(할인료)이 매수인이 실제로 내는 비용이 된다. 할인율은 시장 금리에 따라 매일 바뀌어 주택도시기금이 공시한다.</p>
+
+    <div class="sim" id="sim-bd">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>국민주택채권을 사서 바로 팔면 남는 비용</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="bd-cv"></canvas></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>공시가격(시가표준액) <output id="bd-v-out"></output></span><input type="range" id="bd-v" min="1" max="15" step="0.1" value="4.3"></label>
+          <label class="ctrl"><span>매입 비율 <output id="bd-r-out"></output></span><input type="range" id="bd-r" min="1" max="3.1" step="0.1" value="2.5"></label>
+          <label class="ctrl"><span>즉시 매도 할인율 <output id="bd-d-out"></output></span><input type="range" id="bd-d" min="2" max="14" step="0.5" value="7"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">사야 하는 채권</span><span class="v" id="bd-o-f">—</span></div>
+        <div class="stat"><span class="k">팔고 받는 돈</span><span class="v" id="bd-o-s">—</span></div>
+        <div class="stat"><span class="k">실제 비용(할인료)</span><span class="v" id="bd-o-c">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 기본값(공시가격 4억 3,000만원, 매입 비율 2.5%, 할인율 7%)에서 사야 하는 채권은 1,075만원, 실제 비용은 약 75만원이다. ② 할인율을 12%로 올린다. 시장 금리가 오를수록 채권 값이 내려가 같은 등기의 비용이 커진다. 금리 상승기에 등기 비용이 늘어나는 숨은 경로다. ③ 공시가격을 12억원, 매입 비율을 3.1%로 올린다. 고가 주택은 비율도 높아 비용이 수백만원이 된다. (매입 비율은 지역·가액별로 정해져 있어 이 슬라이더는 범위를 보여 주는 교육용 값이다. B시 84㎡의 실제 비율과 그날의 할인율은 법무사·은행에서 확인한다.)</div>
+    </div>
+
+    <p>법무사 보수는 사무소마다 다르고 여러 곳에서 견적을 받을 수 있다. 대출 은행이 법무사를 지정하더라도 보수와 실비 내역서를 미리 받아 볼 수 있다. 이 책의 엔진은 법무사 보수와 등기 실비를 합쳐 집값의 약 0.2%로 잡는다(교육용). 6억 2,000만원 집이면 124만원이다. 셀프 등기로 이 비용을 아끼는 사람도 있지만, 대출이 있으면 은행이 근저당 설정 때문에 법무사를 쓰게 하는 경우가 대부분이다.</p>
+
+    <div class="callout buyer">
+      <strong>잔금일 아침에 다시 볼 서류</strong>
+      <ul>
+        <li><b>등기부등본(당일 발급)</b>: 계약일 이후 새로 생긴 근저당·가압류·가처분이 없는가. 매도인의 기존 대출은 잔금으로 갚고 말소하기로 했는가, 말소 서류를 법무사가 받았는가.</li>
+        <li><b>매도인 신분과 소유자 일치</b>: 신분증, 인감증명서(부동산 매도용, 매수인 인적 사항 기재)와 등기부의 소유자가 같은가.</li>
+        <li><b>잔금 계좌</b>: 계약서에 적힌 매도인 명의 계좌인가. 당일 문자로 계좌가 바뀌었다는 연락은 의심한다.</li>
+        <li><b>관리비·공과금 정산</b>: 잔금일 기준 관리비, 장기수선충당금(세입자가 아니라 소유자가 내는 돈), 도시가스 요금이 정산되었는가.</li>
+        <li><b>법무사 청구서</b>: 취득세 금액이 생애최초 감면을 반영했는가, 국민주택채권 할인료와 보수·실비가 항목별로 적혀 있는가.</li>
+      </ul>
+      등기부를 읽는 법은 <a href="contract.html">7장</a>에서 다루었다.
+    </div>
+  </section>
+
+  <section id="moving">
+    <h2>영수증에 없는 돈: 이사와 수리, 그리고 시간</h2>
+    <p>세금과 수수료는 법이 정한 숫자라 미리 계산된다. 이사와 수리는 그렇지 않다. 포장이사 비용은 짐의 양과 거리, 계절에 따라 수십만원에서 수백만원까지 차이가 나고, 손 없는 날과 월말에 몰리면 비싸진다. 지은 지 17년 된 C아파트 같은 집을 사면 도배·장판만 할 수도, 욕실과 주방까지 고칠 수도, 확장과 배관까지 손댈 수도 있다. 수리비는 거래 비용이라기보다 '집값의 일부를 나중에 내는 것'에 가깝다. 같은 단지에서 수리가 잘된 집이 수천만원 비싸게 거래되는 것도 그래서다.</p>
+    <p>수리는 시간도 잡아먹는다. 잔금 뒤 2~4주 공사를 하려면 그 사이 살 곳이 필요하다. 세입자가 사는 집을 사면 그 세입자의 만기까지 들어갈 수 없다. 하늘네처럼 전세 만기와 잔금일을 맞춘 가구가 큰 수리를 원하면, 매도인과 협의해 잔금 전에 공사를 시작하게 해 달라고 하거나(분쟁 위험 때문에 매도인이 꺼린다) 만기를 조금 늦춰 달라고 집주인과 협의해야 한다. 앞의 일정표 시뮬레이터에서 본 '공백 비용'이 이렇게 생긴다.</p>
+    <p>한 가지 더. 수리비와 중개보수, 취득세는 나중에 이 집을 팔 때 <span class="term">필요경비</span>로 인정받아 양도소득세를 줄일 수 있는 것과 그렇지 않은 것으로 나뉜다. 섀시 교체나 확장처럼 집의 가치를 늘리는 공사는 대개 인정되고, 도배·장판처럼 유지·보수 성격의 지출은 대개 인정되지 않는다. 영수증과 계약서를 보관해 두는 이유다. 자세한 계산은 <a href="tradetax.html">14장</a>에서 한다.</p>
+  </section>
+
+  <section id="seller">
+    <h2>매도인의 시각: 파는 사람의 영수증</h2>
+    <p>거래에는 반대편이 있다. 하늘네의 집주인 남궁현이 C아파트를 판다고 해 보자. 그는 2021년에 이 집을 6억 8,000만원에 사면서 세입자의 보증금 4억 5,000만원을 끼고 자기 돈 2억 3,000만원을 넣었다(<span class="term">갭투자</span>). 2025년 재계약 때 시세가 내려 보증금을 4억원으로 낮추면서 5,000만원을 돌려줘야 했다(<span class="term">역전세</span>, <a href="jeonse.html">5장</a>). 지금 시세는 6억 2,000만원이다.</p>
+    <p>매도인의 영수증은 매수인과 모양이 다르다. 취득세는 없지만 매도 중개보수를 내고, 세입자가 있으면 보증금을 돌려주거나 매수인에게 승계시켜야 하며, 남는 차익에는 <span class="term">양도소득세</span>가 붙는다. 양도소득세는 보유 기간, 주택 수, 지역에 따라 크게 달라지고 2026년 5월부터 조정대상지역 다주택자 중과가 다시 적용되므로, 계산은 <a href="tradetax.html">14장</a>에서 따로 한다. 아래에서는 세금 앞의 단계, 곧 '팔면 손에 무엇이 남는가'를 본다.</p>
+
+    <div class="sim" id="sim-sl">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>남궁현이 C아파트를 팔면 손에 남는 돈</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="sl-cv"></canvas></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>매도 가격 <output id="sl-p-out"></output></span><input type="range" id="sl-p" min="4.5" max="8" step="0.05" value="6.2"></label>
+          <div class="seg" id="sl-way"><button data-value="carry" class="on">세입자 낀 채 매도</button><button data-value="vacant">만기에 비우고 매도</button></div>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">넣은 돈(갭+역전세)</span><span class="v" id="sl-o-in">—</span></div>
+        <div class="stat"><span class="k">손에 남는 돈(세전)</span><span class="v" id="sl-o-out">—</span></div>
+        <div class="stat"><span class="k">넣은 돈 대비</span><span class="v" id="sl-o-d">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 기본값 6억 2,000만원에서 세입자를 낀 채 팔면 보증금 4억원을 매수인이 떠안고, 남궁현에게 2억 2,000만원에서 중개보수 248만원을 뺀 약 2억 1,752만원이 남는다. 넣은 돈 2억 8,000만원보다 약 6,248만원 적다. ② 매도 가격을 6억 8,000만원(산 값)까지 올린다. 그래도 넣은 돈을 다 찾지 못한다. 역전세로 돌려준 5,000만원과 중개보수가 남기 때문이다. ③ '만기에 비우고 매도'를 고른다. 실거주할 매수인도 살 수 있어 사려는 사람이 늘어나는 대신, 만기까지 기다리고 하늘네에게 보증금 4억원 전액을 돌려줄 돈을 먼저 마련해야 한다. (그동안 받은 이익이나 낸 세금, 2021년의 취득세는 넣지 않았다. 양도소득세는 14장에서 계산한다. 시세는 교육용 값이다.)</div>
+    </div>
+
+    <p>남궁현의 숫자는 갭투자의 비대칭을 그대로 보여 준다. 집값이 9% 내렸을 뿐인데 그가 넣은 돈은 4분의 1 가까이 줄었다. 그가 집을 살 때 쓴 지렛대(보증금)가 손실도 키웠다(<a href="leverage.html">10장</a>). 이 가격 변화는 어느 힘에서 왔는가. 2021년의 고점은 낮은 금리와 기대가 겹친 시기였고, 2022년 이후의 하락에는 금리 상승이 가장 큰 몫을 했다(<a href="value.html">3장</a>). 거기에 B시 인근의 입주 물량(<a href="supply.html">4장</a>)과 대출 규제의 변화가 더해졌다. C아파트 자체는 그대로인데 그 위를 지나간 힘들이 값을 바꿨다. 이 책은 그 몫을 정확히 나누지는 않는다. 다만 매도인의 손실이 대개 '집'이 아니라 '시점과 지렛대'에서 온다는 것은 분명하다.</p>
+    <p>매도인에게는 날짜의 문제도 있다. 세입자를 낀 채로 팔면 매수인은 전세를 끼고 사는 투자자이거나 만기까지 기다릴 수 있는 사람으로 좁혀진다. 비우고 팔면 실수요자가 붙지만 세입자에게 돌려줄 보증금을 먼저 마련해야 한다. 그리고 새집을 먼저 산 1주택자라면 <span class="term">일시적 2주택</span> 처분 기한 안에 헌집을 팔아야 양도소득세 비과세와 취득세 일반세율을 지킬 수 있다. 하락기에 이 기한에 쫓겨 값을 낮추는 매도인이 생긴다. 매수인은 이런 사정을 협상에서 알게 되지만, 그것을 이용하는 것과 존중하는 것 사이의 선은 각자가 정한다.</p>
+
+    <div class="callout pro">
+      <strong>매도인이 자주 묻는 세 가지</strong>
+      태호가 매도인 상담에서 가장 많이 듣는 질문은 이렇다. "얼마에 내놓아야 팔리나요?"에는 최근 실거래가와 지금 나와 있는 매물의 호가를 나란히 보여 주고, 호가가 실거래가보다 높으면 팔리는 데 시간이 걸린다고 말한다. "세입자가 있는데 팔 수 있나요?"에는 팔 수 있지만 매수인이 보증금을 승계하는지, 세입자가 계약갱신청구권을 쓸 수 있는지(<a href="rent.html">6장</a>)를 계약서에 분명히 적어야 한다고 답한다. 실거주하려는 매수인에게 세입자가 갱신을 요구하면 분쟁이 되는 유형이 있다. "세금은 얼마인가요?"에는 답하지 않는다. 양도소득세는 세무사의 영역이고, 중개사가 어림한 세금 때문에 계약을 했다가 다투는 일이 생기기 때문이다. 대신 홈택스 모의계산과 세무 상담을 먼저 받으라고 권한다.
+    </div>
+  </section>
+
+  <section id="receipt">
+    <h2>매수 영수증 종합</h2>
+    <p>이제 앞에서 하나씩 본 비용을 한 장의 영수증에 모은다. 집값, 지역, 주택 수, 생애최초 여부, 중개보수 부가가치세, 수리비를 바꾸면 영수증이 다시 찍힌다. 막대는 각 비용이 집값의 몇 %인지, 맨 오른쪽 숫자는 그 비용이 하늘네 월 저축 250만원의 몇 달 치인지 보여 준다.</p>
+
+    <div class="sim" id="sim-rc">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>매수 영수증: 집값 말고 드는 돈 전부</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="rc-cv"></canvas><span class="hint">막대를 누르면 그 항목을 설명한다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>집값 <output id="rc-p-out"></output></span><input type="range" id="rc-p" min="2" max="16" step="0.1" value="6.2"></label>
+          <div class="seg" id="rc-h"><button data-value="1" class="on">무주택→1주택</button><button data-value="t">일시적 2주택</button><button data-value="r2">조정지역 2주택</button></div>
+          <label class="check"><input type="checkbox" id="rc-first" checked> 생애최초 감면</label>
+          <label class="check"><input type="checkbox" id="rc-vat" checked> 중개보수 부가세</label>
+          <label class="ctrl"><span>수리비 <output id="rc-r-out"></output></span><input type="range" id="rc-r" min="0" max="6000" step="100" value="1000"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">거래 비용 합계</span><span class="v" id="rc-o-t">—</span></div>
+        <div class="stat"><span class="k">집값 대비</span><span class="v" id="rc-o-r">—</span></div>
+        <div class="stat"><span class="k">수리비 뺀 순수 거래 비용</span><span class="v" id="rc-o-x">—</span></div>
+        <div class="stat"><span class="k">월 저축 몇 달 치</span><span class="v" id="rc-o-m">—</span></div>
+      </div>
+      <div class="slip" id="rc-slip" style="margin:0 18px 14px"></div>
+      <div class="sim-note">해볼 것: ① 기본값(6억 2,000만원, 생애최초, 수리비 1,000만원)의 합계는 약 2,245만원, 집값의 3.6%이고 하늘네 저축 9개월 치다. 수리비를 0으로 하면 약 1,245만원(2.0%)이 순수한 거래 비용이다. ② 집값을 9억원 위로 올린다. 취득세율이 3%로, 중개보수 요율이 0.5%로 함께 올라 막대가 갑자기 길어진다. ③ '조정지역 2주택'을 고른다. 취득세 한 줄이 나머지 전부보다 커진다. (2026년 기준 제도를 단순화한 교육용 계산이다. 취득세는 RE.acqTax, 중개보수는 RE.brokerage 상한, 법무사 보수·등기 실비는 집값의 0.2%, 국민주택채권 할인료는 공시가격을 시세의 69%로 보고 매입 비율 2.5%·할인율 7%, 이사는 200만원으로 잡았다. 85㎡ 이하로 보아 농어촌특별세는 없다. 대출 관련 비용(인지세, 보증료)은 9장에서 본다.)</div>
+    </div>
+
+    <p>집을 살 때 드는 돈의 순서는 분명하다. 다주택 중과를 받는 경우가 아니면 취득세가 가장 크고, 그다음이 중개보수, 이사, 법무비, 채권 순이다. 수리비는 사람마다 다르지만 대개 다른 항목을 다 합친 것과 비슷하거나 크다. 그리고 이 비용은 대출이 아니라 자기 돈으로 내야 하는 경우가 대부분이다. 은행은 집값을 기준으로 빌려줄 뿐 취득세를 빌려주지 않는다. "집값의 몇 %를 대출로"라는 계산에 거래 비용을 따로 더해야 하는 이유다.</p>
+
+    <div class="callout buyer">
+      <strong>가계약금을 보내기 전에</strong>
+      <ul>
+        <li><b>등기부등본</b>을 직접 떼어 소유자 이름과 매도인이 같은지, 근저당 채권최고액과 가압류가 있는지 본다.</li>
+        <li>가계약금은 <b>등기부상 소유자 명의 계좌</b>로만 보낸다. 대리인 계좌라면 위임장과 인감증명서를 먼저 받는다.</li>
+        <li>문자로 <b>매매가, 계약일, 중도금 유무와 금액, 잔금일</b>, 그리고 가계약금의 성격(본 계약 불발 시 반환 여부)을 남긴다.</li>
+        <li>잔금일이 내 <b>전세 만기와 보증금 반환일</b>에 맞는지, 집주인과 날짜를 확인했는지 본다.</li>
+        <li>대출이 필요하면 은행에서 <b>한도를 미리 상담</b>했는지 본다. 한도가 모자라 잔금을 못 치르면 계약금을 잃을 수 있다(<a href="mortgage.html">9장</a>).</li>
+        <li>취득세 생애최초 감면 대상인지, <b>자금조달계획서</b> 대상인지 확인한다.</li>
+      </ul>
+    </div>
+
+    <div class="callout warn">
+      <strong>제도와 수치는 해마다 바뀐다</strong>
+      이 장의 수치(중개보수 상한 요율, 취득세율과 중과, 생애최초 감면 200만원, 거래 신고 30일, 취득세·등기 60일, 자금조달계획서 요건)는 2026년 기준이다. 취득세 감면과 중과는 지방세법·지방세특례제한법 개정으로, 자금조달계획서 요건과 규제지역은 정부 대책으로 자주 바뀐다. 2026 지방세제 개편안의 생애최초 감면 확대(40세 미만 300만원)는 추진 중이고 확정 전이다. 국민주택채권 매입 비율과 할인율은 지역·가액·날짜에 따라 다르다. 이 장의 계산은 교육용 모델이며 법률·세무 자문이 아니다. 계약 전에는 국토교통부, 위택스, 인터넷등기소, 주택도시기금의 공식 자료와 전문가에게 확인한다.
+    </div>
+  </section>
+
+  <section id="case">
+    <h2>하늘네 집 노트</h2>
+    <div class="casefile">
+      <div class="tag"><b>CASE 하늘네</b><span>집 노트 · 8장</span></div>
+      <h4>6억 2,000만원 집의 영수증 2,245만원, 그리고 4월 30일</h4>
+      <p>태호는 하늘네가 B시에서 C아파트와 같은 84㎡를 6억 2,000만원에 산다고 가정하고 영수증을 뽑았다. 이 책의 모델로 계산하면 취득세는 세율 1.13%로 702만 6,460원, 지방교육세 70만 2,646원이고, 둘 다 집을 가진 적이 없어 생애최초 감면 200만원을 빼면 572만 9,106원이다. 중개보수 상한은 0.4%로 248만원, 부가가치세를 더해 272만 8,000원이다. 법무사 보수와 등기 실비 약 124만원, 국민주택채권 할인료 약 75만원(공시가격 약 4억 2,780만원 × 2.5% × 할인율 7%, 교육용 가정), 이사 200만원을 더하면 순수한 거래 비용이 약 1,245만원, 집값의 2.0%다. 17년 된 집의 도배·장판과 일부 수리에 1,000만원을 잡으면 약 2,245만원이 된다. 하늘네의 월 저축 250만원으로 9개월 치다. B시는 비규제지역이지만 6억원을 넘으니 자금조달계획서를 내야 한다.</p>
+      <p>날짜도 정했다. 계약금은 관행대로 10%인 6,200만원으로 하되, 예금 8,000만원으로 낼 수 있게 중도금은 두지 않는다. 잔금일은 전세 만기(4월 말로 가정)와 같은 날로 잡고, 남궁현에게 그날 오전 보증금 반환을 약속받는다. 보증금 4억원이 돌아오면 전세대출 2억원을 먼저 갚고, 남은 2억원과 예금, 주택담보대출로 잔금을 치른다. 태호는 "잔금일을 만기보다 일주일 늦출 수 있게 매도인과 특약을 넣자"고 했다. 남궁현의 보증금 반환이 늦어질 때를 대비한 여유다. 남궁현 쪽에서 보면 하늘네가 나가는 것은 새 세입자를 구하거나 집을 팔아야 한다는 뜻이다. 지금 시세에 세입자를 낀 채 팔면 그가 넣은 2억 8,000만원 가운데 약 6,248만원이 돌아오지 않는다(세전). 하늘이 "그럼 우리가 이 집을 사면 어떨까"라고 묻자, 태호는 그 경우도 영수증은 같고 날짜만 쉬워진다고 답했다. 그리고 그것을 지금 정할 일은 아니라고 덧붙였다.</p>
+      <div class="clue"><div><b>이 장에서 정한 것</b>B시 6억 2,000만원 매수 시 거래 비용 약 1,245만원(수리 포함 약 2,245만원), 계약금 6,200만원·중도금 없음·잔금일 = 전세 만기라는 일정의 원칙.</div><div><b>아직 남은 문제</b>잔금에 필요한 주택담보대출을 얼마나 받을 수 있는가? 금리가 오르면 그 한도와 월 상환액은 어떻게 되는가?</div><div><b>다음 단계</b>9장: 하늘네 소득으로 본 DSR 한도와 LTV, 스트레스 금리, 상환 방식과 금리 시나리오.</div></div>
+    </div>
+  </section>
+
+  <section class="keypoints" id="summary">
+    <h2>핵심 정리</h2>
+    <ol>
+      <li>매매는 가계약금 → 계약금(관행 10%) → 중도금 → 잔금·소유권이전등기로 이어진다. 세입자의 매수에서는 잔금일을 전세 만기와 맞추는 일정이 돈만큼 중요하다.</li>
+      <li>이행에 착수하기 전에는 매수인은 계약금을 포기하고, 매도인은 배액을 돌려주고 계약을 해제할 수 있다. 양쪽이 계약금만큼을 걸고 있어서, 시세가 계약금보다 크게 움직이면 해제 유인이 생긴다.</li>
+      <li>거래 신고는 계약일부터 30일, 취득세 신고·납부와 등기 신청은 잔금일부터 60일 안에 한다. 자금조달계획서는 2026년 기준 규제지역에서는 모든 주택, 그 밖에서는 6억원 이상 주택 거래에 낸다.</li>
+      <li>중개보수는 상한 요율 안에서 협의하는 돈이고, 요율이 바뀌는 구간 경계(9억·12억·15억원)에서 거래 금액 전체에 새 요율이 붙어 계단이 생긴다.</li>
+      <li>1주택 취득세는 6억원 이하 1%, 9억원 초과 3%, 그 사이는 공식으로 이어진다. 세율의 절벽은 없어졌지만 9억원 바로 아래에서 1억원을 더 낼 때 느는 세금은 약 10%에 이른다. 생애최초 감면은 최대 200만원, 다주택 중과는 8~12%다.</li>
+      <li>법무사 보수·등기 실비, 국민주택채권 할인료, 이사·수리비까지 더하면 6억원대 집의 매수 비용은 집값의 2~4%이고, 대부분 대출이 아니라 자기 돈으로 낸다.</li>
+      <li>매도인은 중개보수와 양도소득세를 내고 보증금 반환·승계와 처분 기한을 따진다. 갭투자로 산 집은 집값 하락이 넣은 돈에 몇 배로 들어온다.</li>
+    </ol>
+  </section>
+
+  <section class="quiz-sec" id="quiz">
+    <h2>확인 퀴즈</h2>
+    <div class="quiz">
+      <div class="quiz-q">
+        <p>6억원짜리 아파트를 계약금 6,000만원에 계약했다. 중도금을 치르기 전 시세가 7억원으로 올랐다. 매도인이 민법상 해약금 규정으로 계약을 해제하고 7억원에 다른 사람에게 판다면, 매도인의 셈으로 가장 알맞은 것은? (거래 비용은 무시)</p>
+        <div class="opts">
+          <button class="opt">계약금 6,000만원을 돌려주면 되므로 1억원 이익이다</button>
+          <button class="opt" data-correct>1억 2,000만원(배액)을 돌려주는데 그중 6,000만원은 받은 돈이므로, 1억원 − 6,000만원 = 4,000만원 이익이다</button>
+          <button class="opt">계약서에 서명했으므로 어떤 경우에도 해제할 수 없다</button>
+          <button class="opt">1억 2,000만원을 잃으므로 2,000만원 손해다</button>
+        </div>
+        <div class="quiz-exp">이행 착수 전에는 매도인이 받은 계약금의 두 배를 돌려주고 해제할 수 있다. 두 배 중 절반은 원래 매수인의 돈이므로 매도인의 실제 손실은 계약금 6,000만원이다. 시세 상승분 1억원에서 이를 빼면 4,000만원이 남는다. 시세 변화가 계약금보다 크면 해제 유인이 생기는 이유이고, 매수인이 중도금을 일찍 넣어 '이행 착수'를 만들려는 이유다.</div>
+      </div>
+      <div class="quiz-q">
+        <p>2026년 기준 1주택자의 주택 취득세에 대한 설명으로 옳은 것은?</p>
+        <div class="opts">
+          <button class="opt">6억원을 1원이라도 넘으면 세율이 2%로 뛴다</button>
+          <button class="opt">9억원을 넘으면 세율이 4%가 된다</button>
+          <button class="opt">생애최초 감면은 연소득 7,000만원 이하 가구만 받는다</button>
+          <button class="opt" data-correct>6억~9억원 사이는 세율이 금액에 따라 1%에서 3%로 이어져 오르고, 9억원 바로 아래에서는 집값 1억원당 늘어나는 세금이 가장 크다</button>
+        </div>
+        <div class="quiz-exp">6억~9억원 구간은 (취득가/1억 × 2/3 − 3)% 공식으로 세율이 이어진다. 세율이 오르면 그 세율이 집값 전체에 곱해지므로, 9억원 바로 아래에서는 1억원을 더 낼 때 세금이 약 10%씩 는다(지방교육세 포함). 9억원을 넘으면 3%로 고정된다. 생애최초 감면(최대 200만원, 12억원 이하)에는 2026년 기준 소득 요건이 없다.</div>
+      </div>
+      <div class="quiz-q">
+        <p>전세 보증금 4억원(그중 2억원은 전세대출)을 4월 30일 만기에 돌려받는 세입자가 집을 산다. 다음 중 일정 위험이 가장 작은 계획은?</p>
+        <div class="opts">
+          <button class="opt" data-correct>계약금은 예금으로, 중도금은 두지 않고, 잔금일을 만기 당일로 하되 반환이 늦어질 때를 대비해 잔금일 조정 특약을 넣는다</button>
+          <button class="opt">계약금 10%와 중도금 30%를 계약 후 한 달 안에 내고, 잔금은 만기 두 달 전에 치른다</button>
+          <button class="opt">잔금일을 만기보다 석 달 뒤로 잡고, 그사이 짐은 보관하며 지낸다</button>
+          <button class="opt">집주인에게 알리지 않고 잔금일만 만기에 맞춘다</button>
+        </div>
+        <div class="quiz-exp">세입자는 보증금이 만기에야 풀리므로, 만기 전에 나가는 돈(계약금·중도금)을 예금으로 감당할 수 있게 줄이고, 잔금일을 보증금 반환일에 맞추는 것이 기본이다. 집주인의 반환이 늦어질 수 있으니 반환 시각을 미리 약속받고, 매도인과는 잔금일을 며칠 조정할 수 있는 특약을 둔다. 잔금을 너무 일찍 치르면 브리지 대출이, 너무 늦으면 임시 거처와 이사 비용이 생긴다.</div>
+      </div>
+      <div class="quiz-q">
+        <p>국민주택채권 '즉시 매도'에 대한 설명으로 가장 알맞은 것은?</p>
+        <div class="opts">
+          <button class="opt">채권 매입액 전체가 사라지는 세금이다</button>
+          <button class="opt">시세가 오르면 이익을 보는 투자 상품이다</button>
+          <button class="opt" data-correct>등기할 때 시가표준액에 비율을 곱한 만큼 채권을 사서 바로 되팔고, 그 할인 차액이 실제 비용이 되며 시장 금리가 오르면 그 비용이 커진다</button>
+          <button class="opt">대출을 받는 사람만 사는 채권이다</button>
+        </div>
+        <div class="quiz-exp">소유권이전등기를 하려면 국민주택채권을 의무적으로 사야 한다. 대부분은 그 자리에서 되파는데, 금리가 낮은 장기 채권이라 시장 가격이 액면보다 낮아 그 차액(할인료)을 부담한다. 할인율은 시장 금리에 따라 매일 바뀌어, 금리가 오르면 같은 등기의 비용이 늘어난다.</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  const TAU = Math.PI * 2;
+  function T(ctx, s, x, y, o) {
+    o = o || {};
+    ctx.font = EB.font(o.size || 12, o.mono, o.weight);
+    ctx.fillStyle = o.color; ctx.textAlign = o.align || "left"; ctx.textBaseline = o.base || "alphabetic";
+    ctx.fillText(s, x, y);
+  }
+  function rrect(ctx, x, y, w, h, r) {
+    r = Math.max(0, Math.min(r, Math.abs(w) / 2, Math.abs(h) / 2));
+    ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
+  }
+  function handle(ctx, x, y, P, r) {
+    ctx.beginPath(); ctx.arc(x, y, r || 8, 0, TAU); ctx.fillStyle = P.text; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = P.bg; ctx.stroke();
+  }
+  const pw = (id) => document.getElementById(id).parentElement.clientWidth;
+  const signWon = (x) => (x > 0 ? "+" : "") + EB.won(x);
+  const wonFull = (x) => Math.round(x).toLocaleString("ko-KR");
+  const C = RE.CASE;
+  const PRICE = C.home.price;
+
+  /* ---------------------------------------------------------- 1. 일정표 */
+  (function () {
+    const DAY = 864e5;
+    const T0 = Date.UTC(2026, 9, 8);                 // 오늘 2026-10-08
+    const MAT = Math.round((Date.UTC(2027, 3, 30) - T0) / DAY); // 전세 만기(가정) 2027-04-30
+    const END = Math.round((Date.UTC(2027, 8, 30) - T0) / DAY);
+    const dG = EB.range("tl-d", (v) => v + "%", draw);
+    const mG = EB.range("tl-m", (v) => v + "%", draw);
+    let contract = Math.round((Date.UTC(2026, 11, 10) - T0) / DAY), close = MAT, box = null, which = null;
+    const dstr = (d) => { const t = new Date(T0 + d * DAY); return t.getUTCFullYear() + "." + (t.getUTCMonth() + 1) + "." + t.getUTCDate(); };
+    const dlong = (d) => { const t = new Date(T0 + d * DAY); return t.getUTCFullYear() + "년 " + (t.getUTCMonth() + 1) + "월 " + t.getUTCDate() + "일"; };
+    const savingsAt = (d) => C.savings + C.monthlySaving * Math.floor(d / 30.4);
+    function calc() {
+      const dep = PRICE * dG() / 100, mid = PRICE * mG() / 100;
+      const midDay = Math.round((contract + close) / 2);
+      const gap = close - MAT;
+      let cost = 0, kind = "";
+      if (gap < 0) { cost = C.ownDeposit * 0.06 * (-gap) / 365; kind = "bridge"; }
+      else if (gap > 0) { cost = 7e4 * gap + RE.KR.moving; kind = "void"; }
+      const cashAtContract = savingsAt(contract), cashAtMid = savingsAt(midDay);
+      const shortC = dep > cashAtContract, shortM = mid > 0 && dep + mid > cashAtMid;
+      return { dep, mid, midDay, gap, cost, kind, cashAtContract, cashAtMid, shortC, shortM };
+    }
+    const cv = EB.canvas("#tl-cv", (ctx, w, h) => {
+      const P = EB.palette(), c = calc();
+      const x0 = 18, x1 = w - 18, X = (d) => x0 + d / END * (x1 - x0);
+      const axisY = h - 70;
+      box = { X, inv: (px) => (px - x0) / (x1 - x0) * END, axisY };
+      // 달 눈금
+      for (let m = 0; m < 12; m++) {
+        const d = Math.round((Date.UTC(2026, 9 + m, 1) - T0) / DAY);
+        if (d < 0) continue;
+        ctx.strokeStyle = P.grid; ctx.beginPath(); ctx.moveTo(X(d), 30); ctx.lineTo(X(d), axisY); ctx.stroke();
+        const mo = ((9 + m) % 12) + 1;
+        if (w > 420 || mo % 2 === 1) T(ctx, (mo === 1 ? "27." : "") + mo + "월", X(d) + 2, axisY + 24, { size: 10, color: P.dim });
+      }
+      ctx.strokeStyle = P.axis; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(x0, axisY); ctx.lineTo(x1, axisY); ctx.stroke(); ctx.lineWidth = 1;
+      // 만기
+      ctx.save(); ctx.setLineDash([5, 4]); ctx.strokeStyle = P.accent2; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(X(MAT), 22); ctx.lineTo(X(MAT), axisY); ctx.stroke(); ctx.restore();
+      T(ctx, "전세 만기", X(MAT) + 4, 18, { size: 11, color: P.accent2, weight: 700 });
+      // 신고 기한(계약+30), 취득세·등기(잔금+60)
+      const band = (a, b, y, col, label) => { ctx.fillStyle = col; ctx.globalAlpha = 0.18; ctx.fillRect(X(a), y, Math.max(2, X(Math.min(b, END)) - X(a)), 14); ctx.globalAlpha = 1; T(ctx, label, X(a) + 3, y + 11, { size: 10, color: P.dim }); };
+      band(contract, contract + 30, 34, P.accent, "신고 30일");
+      band(close, close + 60, 34, P.ok, "취득세·등기 60일");
+      // 잔금-만기 사이 어긋남
+      if (c.gap !== 0) {
+        const a = Math.min(close, MAT), b = Math.max(close, MAT);
+        ctx.fillStyle = P.bad; ctx.globalAlpha = 0.14; ctx.fillRect(X(a), 52, X(b) - X(a), axisY - 52); ctx.globalAlpha = 1;
+        T(ctx, c.kind === "bridge" ? "보증금 묶임 → 브리지" : "살 곳 공백", (X(a) + X(b)) / 2, 66, { size: 10, color: P.bad, align: "center", weight: 700 });
+      }
+      // 돈 막대: 계약금·중도금 vs 그때 예금
+      const maxV = PRICE * 0.6;
+      const barH = (v) => Math.min(axisY - 80, v / maxV * (axisY - 80));
+      const bar = (d, v, have, short, label) => {
+        const x = X(d), bw = 14;
+        ctx.fillStyle = P.dim; ctx.globalAlpha = 0.25; ctx.fillRect(x - bw - 1, axisY - barH(have), bw, barH(have)); ctx.globalAlpha = 1;
+        ctx.fillStyle = short ? P.bad : P.accent; ctx.fillRect(x + 1, axisY - barH(v), bw, barH(v));
+        T(ctx, label, x, axisY - Math.max(barH(v), barH(have)) - 6, { size: 10, color: short ? P.bad : P.text, align: "center", weight: 700 });
+      };
+      bar(contract, c.dep, c.cashAtContract, c.shortC, "계약금 " + EB.wonAxis(c.dep));
+      if (c.mid > 0) bar(c.midDay, c.dep + c.mid, c.cashAtMid, c.shortM, "누적 " + EB.wonAxis(c.dep + c.mid));
+      // 잔금 막대(보증금 반환과 대출로 치르는 돈)
+      const bal = PRICE - c.dep - c.mid;
+      ctx.fillStyle = P.ok; ctx.globalAlpha = 0.55; ctx.fillRect(X(close) + 1, axisY - barH(bal), 14, barH(bal)); ctx.globalAlpha = 1;
+      T(ctx, "잔금 " + EB.wonAxis(bal), X(close) + 8, axisY - barH(bal) - 6, { size: 10, color: P.text, align: "center", weight: 700 });
+      // 범례
+      ctx.fillStyle = P.dim; ctx.globalAlpha = 0.35; ctx.fillRect(x0, 8, 10, 8); ctx.globalAlpha = 1;
+      T(ctx, "그때 예금", x0 + 14, 16, { size: 10, color: P.dim });
+      ctx.fillStyle = P.accent; ctx.fillRect(x0 + 70, 8, 10, 8);
+      T(ctx, "낼 돈(누적)", x0 + 84, 16, { size: 10, color: P.dim });
+      // 손잡이
+      handle(ctx, X(contract), axisY, P); T(ctx, "계약", X(contract), axisY + 42, { size: 10, color: P.text, align: "center", weight: 700 });
+      handle(ctx, X(close), axisY, P); T(ctx, "잔금", X(close), axisY + 42, { size: 10, color: P.text, align: "center", weight: 700 });
+    }, { get height() { return pw("tl-cv") < 480 ? 330 : 320; } });
+    EB.drag(cv.canvas, {
+      start(x) { if (!box) return; which = Math.abs(box.X(contract) - x) < Math.abs(box.X(close) - x) ? "c" : "z"; },
+      move(x) {
+        if (!box) return;
+        const d = Math.round(EB.clamp(box.inv(x), 1, END));
+        if (which === "c") contract = Math.min(d, close - 14); else close = Math.max(d, contract + 14);
+        contract = Math.max(1, contract); close = Math.min(END, close);
+        draw();
+      },
+    });
+    function draw() {
+      const c = calc();
+      EB.stat("tl-o-r", dlong(contract + 30));
+      EB.stat("tl-o-t", dlong(close + 60));
+      EB.stat("tl-o-g", c.gap === 0 ? '<span class="plus">같은 날</span>' : (c.gap < 0 ? "잔금이 " + (-c.gap) + "일 빠름" : "잔금이 " + c.gap + "일 늦음"));
+      let s = c.cost === 0 ? '<span class="plus">0원</span>' : '<span class="minus">' + EB.won(c.cost) + "</span>";
+      if (c.shortC || c.shortM) s += ' <small class="bad-t">· 현금 부족</small>';
+      EB.stat("tl-o-c", s);
+      cv.redraw();
+    }
+    void dstr;
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 2. 계약 해제 유인 */
+  (function () {
+    const dG = EB.range("cx-d", (v) => v + "%", draw);
+    const midEl = document.getElementById("cx-mid");
+    midEl.addEventListener("change", draw);
+    let g = 0.05, box = null;
+    const seller = (gg, d) => PRICE * gg - PRICE * d;   // 배액 상환 후 시세로 재매도
+    const buyer = (gg, d) => -PRICE * gg - PRICE * d;   // 계약금 포기 후 더 싸게 매수
+    const cv = EB.canvas("#cx-cv", (ctx, w, h) => {
+      const P = EB.palette(), d = dG() / 100, mid = midEl.checked;
+      const xs = []; for (let x = -0.2; x <= 0.2001; x += 0.005) xs.push(x);
+      const c = EB.chart(ctx, { x: 56, y: 26, w: w - 70, h: h - 76 }, {
+        x: [-0.2, 0.2], y: [-1.5e8, 1.5e8], xTicks: [-0.2, -0.1, 0, 0.1, 0.2], yTicks: [-1.5e8, -1e8, -5e7, 0, 5e7, 1e8, 1.5e8],
+        xFmt: (v) => (v > 0 ? "+" : "") + Math.round(v * 100) + "%", yFmt: EB.wonAxis,
+        series: mid ? [] : [
+          { data: xs.map((x) => [x, seller(x, d)]), color: P.accent2, width: 2.4 },
+          { data: xs.map((x) => [x, buyer(x, d)]), color: P.accent, width: 2.4 },
+        ],
+        hlines: [{ y: 0, color: P.axis, dash: [] }],
+      });
+      box = c;
+      if (!mid) {
+        // 계약이 지켜지는 띠: −d < g < d
+        ctx.save(); ctx.fillStyle = P.dim; ctx.globalAlpha = 0.12; ctx.fillRect(c.X(-d), c.box.y, c.X(d) - c.X(-d), c.box.h); ctx.restore();
+        T(ctx, "계약 유지 구간", c.X(0), c.box.y + 14, { size: 11, color: P.dim, align: "center", weight: 700 });
+        T(ctx, "매도인 해제 이익", c.box.x + c.box.w - 4, c.Y(seller(0.2, d)) + 16, { size: 11, color: P.accent2, align: "right", weight: 700 });
+        T(ctx, "매수인 해제 이익", c.box.x + 4, c.Y(buyer(-0.2, d)) - 8, { size: 11, color: P.accent, weight: 700 });
+        const ys = seller(g, d), yb = buyer(g, d);
+        ctx.beginPath(); ctx.arc(c.X(g), c.Y(EB.clamp(ys, -1.5e8, 1.5e8)), 5, 0, TAU); ctx.fillStyle = ys > 0 ? P.bad : P.accent2; ctx.fill();
+        ctx.beginPath(); ctx.arc(c.X(g), c.Y(EB.clamp(yb, -1.5e8, 1.5e8)), 5, 0, TAU); ctx.fillStyle = yb > 0 ? P.bad : P.accent; ctx.fill();
+      } else {
+        rrect(ctx, c.box.x + c.box.w / 2 - 120, c.box.y + c.box.h / 2 - 34, 240, 52, 8); ctx.fillStyle = P.surface; ctx.fill(); ctx.strokeStyle = P.bad; ctx.stroke();
+        T(ctx, "이행 착수: 계약금으로 해제 불가", c.box.x + c.box.w / 2, c.box.y + c.box.h / 2 - 12, { size: 12, color: P.bad, align: "center", weight: 700 });
+        T(ctx, "어기면 손해배상 문제가 된다", c.box.x + c.box.w / 2, c.box.y + c.box.h / 2 + 6, { size: 11, color: P.dim, align: "center" });
+      }
+      ctx.save(); ctx.setLineDash([3, 3]); ctx.strokeStyle = P.text; ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.moveTo(c.X(g), c.box.y); ctx.lineTo(c.X(g), c.box.y + c.box.h); ctx.stroke(); ctx.restore();
+      handle(ctx, c.X(g), c.box.y + c.box.h, P);
+    }, { get height() { return pw("cx-cv") < 480 ? 290 : 310; } });
+    EB.drag(cv.canvas, { move(x) { if (!box) return; g = EB.clamp(Math.round(((x - box.box.x) / box.box.w * 0.4 - 0.2) * 200) / 200, -0.2, 0.2); draw(); } });
+    function draw() {
+      const d = dG() / 100, mid = midEl.checked;
+      EB.stat("cx-o-p", EB.won(PRICE * (1 + g)) + ' <small style="color:var(--text-faint)">(' + (g > 0 ? "+" : "") + Math.round(g * 1000) / 10 + "%)</small>");
+      const fmt = (v) => mid ? "해제 불가" : '<span class="' + (v > 0 ? "minus" : "") + '">' + signWon(v) + (v > 0 ? " · 깰 유인" : "") + "</span>";
+      EB.stat("cx-o-s", fmt(seller(g, d)));
+      EB.stat("cx-o-b", fmt(buyer(g, d)));
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 3. 중개보수 계단 */
+  (function () {
+    const kG = EB.seg("br-kind", draw);
+    const vatEl = document.getElementById("br-vat"), twoEl = document.getElementById("br-two");
+    vatEl.addEventListener("change", draw); twoEl.addEventListener("change", draw);
+    let amt = PRICE, box = null;
+    const fee = (a) => { const b = RE.brokerage(a, kG()); return b.fee * (vatEl.checked ? 1 + RE.KR.brokerage.vat : 1) * (twoEl.checked ? 2 : 1); };
+    const cv = EB.canvas("#br-cv", (ctx, w, h) => {
+      const P = EB.palette(), XMAX = 18e8;
+      const ymax = fee(XMAX) * 1.08;
+      const data = []; let prev = null;
+      for (let a = 1e7; a <= XMAX; a += 5e6) {
+        const f = fee(a);
+        if (prev != null && Math.abs(f - prev) > ymax * 0.02) data.push([a - 1, NaN]);
+        data.push([a, f]); prev = f;
+      }
+      const c = EB.chart(ctx, { x: 60, y: 22, w: w - 74, h: h - 74 }, {
+        x: [0, XMAX], y: [0, ymax], xTicks: [0, 3e8, 6e8, 9e8, 12e8, 15e8, 18e8], xFmt: EB.wonAxis, yFmt: EB.wonAxis,
+        series: [{ data, color: P.warn, width: 2.6 }],
+        vlines: [9e8, 12e8, 15e8].map((x) => ({ x, color: P.faint })),
+      });
+      box = c;
+      const f = fee(amt), px = c.X(amt), py = c.Y(f);
+      ctx.save(); ctx.setLineDash([3, 3]); ctx.strokeStyle = P.text; ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.moveTo(px, c.box.y + c.box.h); ctx.lineTo(px, py); ctx.lineTo(c.box.x, py); ctx.stroke(); ctx.restore();
+      ctx.beginPath(); ctx.arc(px, py, 5, 0, TAU); ctx.fillStyle = P.warn; ctx.fill();
+      handle(ctx, px, c.box.y + c.box.h, P);
+      const r = RE.brokerage(amt, kG()).rate;
+      T(ctx, "요율 " + +(r * 100).toFixed(1) + "% · " + EB.won(f), EB.clamp(px, c.box.x + 60, c.box.x + c.box.w - 60), Math.max(c.box.y + 12, py - 12), { size: 11, color: P.text, align: "center", weight: 700 });
+      T(ctx, kG() === "sale" ? "매매 상한" : "임대차 상한", c.box.x + 6, c.box.y + 4, { size: 11, color: P.dim });
+    }, { get height() { return pw("br-cv") < 480 ? 270 : 290; } });
+    EB.drag(cv.canvas, { move(x) { if (!box) return; amt = EB.clamp(Math.round(((x - box.box.x) / box.box.w * 18e8) / 1e7) * 1e7, 1e7, 18e8); draw(); } });
+    function draw() {
+      const b = RE.brokerage(amt, kG());
+      EB.stat("br-o-a", EB.won(amt));
+      EB.stat("br-o-r", +(b.rate * 100).toFixed(1) + "%" + (b.max ? " (한도 " + EB.won(b.max) + ")" : ""));
+      EB.stat("br-o-f", '<span class="minus">' + EB.won(fee(amt)) + "</span>");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 4. 취득세 */
+  (function () {
+    const hG = EB.seg("acq-h", draw);
+    const fEl = document.getElementById("acq-first"), bigEl = document.getElementById("acq-big");
+    fEl.addEventListener("change", draw); bigEl.addEventListener("change", draw);
+    let price = PRICE, box = null;
+    const opt = () => { const h = hG(); return { homes: h === "1" ? 1 : h === "t" ? 2 : h === "r2" ? 2 : 3, temporary: h === "t", regulated: h === "r2", firstHome: fEl.checked && h === "1", area: bigEl.checked ? 102 : 84 }; };
+    const tax = (p) => RE.acqTax(Object.assign({ price: p }, opt()));
+    const marginal = (p) => { const o = Object.assign({}, opt(), { firstHome: false }); return (RE.acqTax(Object.assign({ price: p + 5e6 }, o)).total - RE.acqTax(Object.assign({ price: p - 5e6 }, o)).total) / 1e7; };
+    const cv = EB.canvas("#acq-cv", (ctx, w, h) => {
+      const P = EB.palette();
+      const heavy = tax(price).heavy;
+      const ymax = heavy ? 0.16 : 0.12;
+      const xs = []; for (let p = 3e8; p <= 15e8; p += 2.5e6) xs.push(p);
+      const c = EB.chart(ctx, { x: 46, y: 24, w: w - 60, h: h - 74 }, {
+        x: [3e8, 15e8], y: [0, ymax], xTicks: [3e8, 6e8, 9e8, 12e8, 15e8], yTicks: heavy ? [0, 0.04, 0.08, 0.12, 0.16] : [0, 0.02, 0.04, 0.06, 0.08, 0.1, 0.12], xFmt: EB.wonAxis, yFmt: (v) => Math.round(v * 100) + "%",
+        bands: heavy ? [] : [{ x0: 6e8, x1: 9e8, color: EB.color("accent-soft") }],
+        series: [
+          { data: xs.map((p) => [p, tax(p).total / p]), color: P.bad, width: 2.6 },
+          { data: xs.map((p) => [p, marginal(p)]), color: P.warn, width: 1.8, dash: [5, 4] },
+        ],
+      });
+      box = c;
+      T(ctx, "실효 세율(낼 세금 ÷ 집값)", c.box.x + 6, 14, { size: 11, color: P.bad, weight: 700 });
+      ctx.font = EB.font(11, false, 700);
+      const lw = ctx.measureText("실효 세율(낼 세금 ÷ 집값)").width;
+      if (c.box.x + lw + 200 < w) T(ctx, "1억원 더 낼 때 느는 세금 비율", c.box.x + lw + 22, 14, { size: 11, color: P.warn, weight: 700 });
+      if (!heavy) T(ctx, "공식 구간", c.X(7.5e8), c.box.y + c.box.h - 8, { size: 10, color: P.accent, align: "center" });
+      const t = tax(price), px = c.X(price), py = c.Y(t.total / price);
+      ctx.save(); ctx.setLineDash([3, 3]); ctx.strokeStyle = P.text; ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.moveTo(px, c.box.y + c.box.h); ctx.lineTo(px, py); ctx.stroke(); ctx.restore();
+      ctx.beginPath(); ctx.arc(px, py, 5, 0, TAU); ctx.fillStyle = P.bad; ctx.fill();
+      const my = c.Y(Math.min(ymax, marginal(price)));
+      ctx.beginPath(); ctx.arc(px, my, 4, 0, TAU); ctx.fillStyle = P.warn; ctx.fill();
+      handle(ctx, px, c.box.y + c.box.h, P);
+      if (opt().firstHome) { ctx.save(); ctx.setLineDash([2, 3]); ctx.strokeStyle = P.ok; ctx.beginPath(); ctx.moveTo(c.X(12e8), c.box.y); ctx.lineTo(c.X(12e8), c.box.y + c.box.h); ctx.stroke(); ctx.restore(); T(ctx, "감면 끝(12억)", c.X(12e8) + 4, c.box.y + 26, { size: 10, color: P.ok }); }
+    }, { get height() { return pw("acq-cv") < 480 ? 280 : 300; } });
+    EB.drag(cv.canvas, { move(x) { if (!box) return; price = EB.clamp(Math.round((3e8 + (x - box.box.x) / box.box.w * 12e8) / 1e6) * 1e6, 3e8, 15e8); draw(); } });
+    function draw() {
+      const t = tax(price);
+      EB.stat("acq-o-p", EB.won(price));
+      EB.stat("acq-o-r", +(t.rate * 100).toFixed(4) + "%" + (t.heavy ? ' <small class="bad-t">중과</small>' : ""));
+      EB.stat("acq-o-t", '<span class="minus">' + EB.won(t.total) + "</span>" + (t.credit ? ' <small class="ok-t">감면 −' + EB.won(t.credit) + "</small>" : ""));
+      EB.stat("acq-o-m", EB.won(marginal(price) * 1e8) + ' <small style="color:var(--text-faint)">(' + +(marginal(price) * 100).toFixed(1) + "%)</small>");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 5. 국민주택채권 */
+  (function () {
+    const vG = EB.range("bd-v", (v) => EB.won(v * 1e8), draw);
+    const rG = EB.range("bd-r", (v) => v.toFixed(1) + "%", draw);
+    const dG = EB.range("bd-d", (v) => v + "%", draw);
+    const calc = () => { const face = vG() * 1e8 * rG() / 100; const cost = face * dG() / 100; return { face, cost, sale: face - cost }; };
+    const cv = EB.canvas("#bd-cv", (ctx, w, h) => {
+      const P = EB.palette(), c = calc();
+      // 위: 액면 막대(팔고 받는 돈 + 할인료)
+      const x0 = 16, bw = w - 32, maxFace = 15e8 * 0.031;
+      const fw = Math.max(6, c.face / maxFace * bw), sw = fw * (1 - dG() / 100);
+      T(ctx, "사야 하는 채권(액면)", x0, 22, { size: 11, color: P.dim, weight: 700 });
+      rrect(ctx, x0, 30, fw, 30, 5); ctx.fillStyle = P.surface; ctx.fill(); ctx.strokeStyle = P.border; ctx.stroke();
+      ctx.fillStyle = P.ok; ctx.globalAlpha = 0.7; ctx.fillRect(x0, 30, sw, 30); ctx.globalAlpha = 1;
+      ctx.fillStyle = P.bad; ctx.fillRect(x0 + sw, 30, fw - sw, 30);
+      T(ctx, EB.won(c.face), Math.min(x0 + fw + 6, w - 90), 50, { size: 11, mono: true, color: P.text });
+      T(ctx, "초록: 즉시 매도로 돌려받음 · 빨강: 할인료(비용)", x0, 78, { size: 10, color: P.faint });
+      // 아래: 할인율에 따른 비용 곡선
+      const xs = []; for (let d = 2; d <= 14; d += 0.5) xs.push(d);
+      const ymax = Math.max(1e6, vG() * 1e8 * 0.031 * 0.14);
+      const ch = EB.chart(ctx, { x: 56, y: 96, w: w - 70, h: h - 132 }, {
+        x: [2, 14], y: [0, ymax], xTicks: [2, 4, 6, 8, 10, 12, 14], xFmt: (v) => v + "%", yFmt: EB.wonAxis,
+        series: [{ data: xs.map((d) => [d, c.face * d / 100]), color: P.bad, width: 2.2 }],
+        points: [{ x: dG(), y: c.cost, color: P.bad, r: 5 }],
+      });
+      T(ctx, "할인율(시장 금리가 오르면 커진다)", ch.box.x + ch.box.w / 2, h - 6, { size: 11, color: P.dim, align: "center" });
+    }, { get height() { return pw("bd-cv") < 480 ? 260 : 270; } });
+    function draw() {
+      const c = calc();
+      EB.stat("bd-o-f", EB.won(c.face));
+      EB.stat("bd-o-s", '<span class="plus">' + EB.won(c.sale) + "</span>");
+      EB.stat("bd-o-c", '<span class="minus">' + EB.won(c.cost) + "</span>");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 6. 매도인 */
+  (function () {
+    const pG = EB.range("sl-p", (v) => EB.won(v * 1e8), draw);
+    const wG = EB.seg("sl-way", draw);
+    const L = C.landlord, DEP = C.home.jeonse;
+    const IN = (L.buyPrice - L.depositAtBuy) + (L.depositAtBuy - DEP); // 갭 2.3억 + 역전세 5천만
+    function calc() {
+      const p = pG() * 1e8, fee = RE.brokerage(p).fee;
+      const out = p - DEP - fee;
+      return { p, fee, out, diff: out - IN };
+    }
+    const cv = EB.canvas("#sl-cv", (ctx, w, h) => {
+      const P = EB.palette(), c = calc();
+      const items = [
+        { k: "매도 가격", v: c.p, col: P.ok, t: "in" },
+        { k: wGLabel(), v: -DEP, col: P.accent2 },
+        { k: "매도 중개보수", v: -c.fee, col: P.warn },
+        { k: "양도소득세", v: 0, col: P.faint, note: "14장" },
+        { k: "손에 남는 돈", v: c.out, col: c.out >= IN ? P.ok : P.bad, total: true },
+        { k: "넣은 돈(갭+역전세)", v: IN, col: P.dim, ref: true },
+      ];
+      const narrow = w < 480;
+      const bx = narrow ? 112 : 132, box = { x: bx, y: 8, w: w - bx - 16, h: h - 30 };
+      const rowH = box.h / items.length, hi = 8.2e8;
+      const X = (v) => box.x + v / hi * box.w;
+      let run = 0;
+      items.forEach((it, i) => {
+        const y = box.y + i * rowH + rowH * 0.2, bh = rowH * 0.6;
+        let a, b;
+        if (it.total || it.ref) { a = 0; b = it.v; } else if (i === 0) { a = 0; b = it.v; run = b; } else { a = run + it.v; b = run; run = a; }
+        ctx.fillStyle = it.col; ctx.globalAlpha = it.ref ? 0.35 : 0.8;
+        ctx.fillRect(X(Math.min(a, b)), y, Math.max(1.5, Math.abs(X(b) - X(a))), bh); ctx.globalAlpha = 1;
+        T(ctx, it.k, box.x - 8, y + bh / 2, { size: narrow ? 11 : 12, color: it.total ? P.text : P.dim, align: "right", base: "middle", weight: it.total ? 700 : 400 });
+        const s = it.note ? "→ " + it.note : (it.v < 0 ? "−" : "") + EB.wonAxis(Math.abs(it.v));
+        T(ctx, s, Math.min(X(Math.max(a, b)) + 6, w - 50), y + bh / 2, { size: 11, mono: !it.note, color: P.text, base: "middle" });
+      });
+      if (c.out < IN) {
+        const y = box.y + 4 * rowH + rowH * 0.2;
+        ctx.save(); ctx.setLineDash([3, 3]); ctx.strokeStyle = P.bad; ctx.beginPath(); ctx.moveTo(X(IN), y - 4); ctx.lineTo(X(IN), y + rowH * 1.7); ctx.stroke(); ctx.restore();
+      }
+      T(ctx, "교육용 값 · 세전", w - 8, h - 8, { size: 10, color: P.faint, align: "right" });
+    }, { get height() { return pw("sl-cv") < 480 ? 260 : 270; } });
+    function wGLabel() { return wG() === "carry" ? "보증금 승계" : "보증금 반환"; }
+    function draw() {
+      const c = calc();
+      EB.stat("sl-o-in", EB.won(IN));
+      EB.stat("sl-o-out", EB.won(c.out));
+      EB.stat("sl-o-d", '<span class="' + (c.diff < 0 ? "minus" : "plus") + '">' + signWon(c.diff) + "</span>" + (wG() === "vacant" ? ' <small style="color:var(--text-faint)">· 만기에 4억원 먼저 필요</small>' : ""));
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 7. 매수 영수증 종합 */
+  (function () {
+    const pG = EB.range("rc-p", (v) => EB.won(v * 1e8), draw);
+    const hG = EB.seg("rc-h", draw);
+    const fEl = document.getElementById("rc-first"), vatEl = document.getElementById("rc-vat");
+    fEl.addEventListener("change", draw); vatEl.addEventListener("change", draw);
+    const rG = EB.range("rc-r", (v) => EB.won(v * 1e4), draw);
+    let sel = -1, rows = [];
+    const NOTES = [
+      "취득세 + 지방교육세(생애최초 감면 반영). 잔금일부터 60일 안에 낸다.",
+      "중개보수 상한(협의 가능). 일반과세자 사무소면 부가가치세 10%.",
+      "법무사 보수·등기 신청 수수료·인지 등. 교육용으로 집값의 0.2%.",
+      "국민주택채권 즉시 매도 할인료. 공시가격(시세의 69%) × 2.5% × 할인율 7%, 교육용.",
+      "이사·청소. 짐의 양과 시기에 따라 크게 다르다. 교육용 200만원.",
+      "수리비. 집 상태와 선택에 따라 다르다.",
+    ];
+    function calc() {
+      const p = pG() * 1e8, h = hG();
+      const t = RE.acqTax({ price: p, homes: h === "1" ? 1 : 2, temporary: h === "t", regulated: h === "r2", firstHome: fEl.checked && h === "1", area: 84 });
+      const br = RE.brokerage(p).fee * (vatEl.checked ? 1 + RE.KR.brokerage.vat : 1);
+      const legal = p * RE.KR.legal, bond = p * RE.KR.publicRatio * 0.025 * 0.07, mv = RE.KR.moving, rep = rG() * 1e4;
+      const items = [
+        { k: "취득세 등", v: t.total, key: "bad" },
+        { k: "중개보수", v: br, key: "warn" },
+        { k: "법무·등기", v: legal, key: "accent" },
+        { k: "채권 할인료", v: bond, key: "accent2" },
+        { k: "이사", v: mv, key: "dim" },
+        { k: "수리", v: rep, key: "faint" },
+      ];
+      const total = items.reduce((s, x) => s + x.v, 0);
+      return { p, t, items, total, pure: total - rep };
+    }
+    const cv = EB.canvas("#rc-cv", (ctx, w, h) => {
+      const P = EB.palette(), c = calc();
+      const narrow = w < 480, bx = narrow ? 76 : 92;
+      const box = { x: bx, y: 10, w: w - bx - (narrow ? 84 : 110), h: h - 66 };
+      const max = Math.max(c.p * 0.04, ...c.items.map((x) => x.v)) * 1.05;
+      const rowH = box.h / c.items.length;
+      rows = [];
+      c.items.forEach((it, i) => {
+        const y = box.y + i * rowH + rowH * 0.18, bh = rowH * 0.64, bw = it.v / max * box.w;
+        ctx.fillStyle = P[it.key]; ctx.globalAlpha = sel === -1 || sel === i ? 0.85 : 0.3; ctx.fillRect(box.x, y, Math.max(1.5, bw), bh); ctx.globalAlpha = 1;
+        T(ctx, it.k, box.x - 8, y + bh / 2, { size: narrow ? 11 : 12, color: sel === i ? P.text : P.dim, align: "right", base: "middle", weight: sel === i ? 700 : 400 });
+        T(ctx, EB.wonAxis(it.v) + " · " + +(it.v / c.p * 100).toFixed(2) + "%", box.x + bw + 6, y + bh / 2, { size: 11, mono: true, color: P.text, base: "middle" });
+        rows.push({ y, h: bh + rowH * 0.36 });
+      });
+      ctx.strokeStyle = P.axis; ctx.beginPath(); ctx.moveTo(box.x, box.y); ctx.lineTo(box.x, box.y + box.h); ctx.stroke();
+      const msg = sel >= 0 ? NOTES[sel] : "합계 " + EB.won(c.total) + " = 집값의 " + (c.total / c.p * 100).toFixed(1) + "%";
+      ctx.font = EB.font(11);
+      const lines = []; let cur = "";
+      msg.split(" ").forEach((wd) => { const t = cur ? cur + " " + wd : wd; if (ctx.measureText(t).width > w - 16 && cur) { lines.push(cur); cur = wd; } else cur = t; });
+      lines.push(cur);
+      lines.forEach((ln, k) => T(ctx, ln, 8, h - 44 + k * 15, { size: 11, color: sel >= 0 ? P.text : P.dim }));
+    }, { get height() { return pw("rc-cv") < 480 ? 280 : 280; } });
+    EB.drag(cv.canvas, { start(x, y) { const i = rows.findIndex((r) => y >= r.y - 4 && y <= r.y + r.h); sel = i === sel ? -1 : i; draw(); } });
+    function draw() {
+      const c = calc();
+      EB.stat("rc-o-t", '<span class="minus">' + EB.won(c.total) + "</span>");
+      EB.stat("rc-o-r", EB.pct(c.total / c.p, 1));
+      EB.stat("rc-o-x", EB.won(c.pure) + ' <small style="color:var(--text-faint)">(' + EB.pct(c.pure / c.p, 1) + ")</small>");
+      EB.stat("rc-o-m", (c.total / C.monthlySaving).toFixed(1) + "개월");
+      const slip = '<div class="row"><span>매매대금</span><span>' + wonFull(c.p) + "</span></div>" +
+        c.items.map((it) => '<div class="row"><span>' + it.k + "</span><span>" + wonFull(it.v) + "</span></div>").join("") +
+        '<div class="row total"><span>집값 + 거래 비용</span><span>' + wonFull(c.p + c.total) + "</span></div>";
+      EB.stat("rc-slip", slip);
+      cv.redraw();
+    }
+    draw();
+  })();
+})();
+</script>
+</body>
+</html>

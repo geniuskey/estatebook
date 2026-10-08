@@ -1,0 +1,844 @@
+<!doctype html>
+<!-- Copyright (c) 2026 geniuskey and EstateBook contributors.
+     Executable code: MIT (see ../LICENSE-MIT).
+     Text, illustrations, questions and explanations: CC-BY-4.0 (see ../LICENSE.md). -->
+<html lang="ko">
+<head>
+<!--head:start {"desc": "은행은 세 개의 자로 주택담보대출 한도를 잰다. LTV·DTI·DSR의 차이, 실제 금리가 아니라 한도 계산에만 쓰는 스트레스 금리, 세 한도 중 가장 작은 값이 한도가 되는 원리, 금리가 오르면 살 수 있는 집값이 무너지는 모습, 상환 방식과 고정·변동·주기형 금리, 중도상환수수료와 정책대출의 구조를 시뮬레이터로 본다."}-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>주택담보대출 · EstateBook</title>
+<meta name="description" content="은행은 세 개의 자로 주택담보대출 한도를 잰다. LTV·DTI·DSR의 차이, 실제 금리가 아니라 한도 계산에만 쓰는 스트레스 금리, 세 한도 중 가장 작은 값이 한도가 되는 원리, 금리가 오르면 살 수 있는 집값이 무너지는 모습, 상환 방식과 고정·변동·주기형 금리, 중도상환수수료와 정책대출의 구조를 시뮬레이터로 본다.">
+<link rel="canonical" href="https://estatebook.euiyun.com/chapters/mortgage.html">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<meta name="theme-color" content="#0f766e">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EstateBook">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="주택담보대출 · EstateBook">
+<meta property="og:description" content="은행은 세 개의 자로 주택담보대출 한도를 잰다. LTV·DTI·DSR의 차이, 실제 금리가 아니라 한도 계산에만 쓰는 스트레스 금리, 세 한도 중 가장 작은 값이 한도가 되는 원리, 금리가 오르면 살 수 있는 집값이 무너지는 모습, 상환 방식과 고정·변동·주기형 금리, 중도상환수수료와 정책대출의 구조를 시뮬레이터로 본다.">
+<meta property="og:url" content="https://estatebook.euiyun.com/chapters/mortgage.html">
+<meta property="og:image" content="https://estatebook.euiyun.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Chapter","LearningResource"],"@id":"https://estatebook.euiyun.com/chapters/mortgage.html#chapter","name":"주택담보대출","headline":"주택담보대출 · EstateBook","description":"은행은 세 개의 자로 주택담보대출 한도를 잰다. LTV·DTI·DSR의 차이, 실제 금리가 아니라 한도 계산에만 쓰는 스트레스 금리, 세 한도 중 가장 작은 값이 한도가 되는 원리, 금리가 오르면 살 수 있는 집값이 무너지는 모습, 상환 방식과 고정·변동·주기형 금리, 중도상환수수료와 정책대출의 구조를 시뮬레이터로 본다.","url":"https://estatebook.euiyun.com/chapters/mortgage.html","position":9,"inLanguage":"ko","isAccessibleForFree":true,"learningResourceType":"인터랙티브 교재","educationalLevel":"일반 성인","image":"https://estatebook.euiyun.com/og.png","dateModified":"2026-10-08","isPartOf":{"@type":"Book","@id":"https://estatebook.euiyun.com/#book","name":"EstateBook · 집값과 전세를 숫자로 푸는 부동산 교과서","url":"https://estatebook.euiyun.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"EstateBook","item":"https://estatebook.euiyun.com/"},{"@type":"ListItem","position":2,"name":"9. 주택담보대출","item":"https://estatebook.euiyun.com/chapters/mortgage.html"}]}]}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../css/style.css">
+<script src="../js/common.js"></script>
+<script src="../js/estate.js"></script>
+<!--head:end-->
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3d6151a0abc94ede89285d462527fa80"}'></script>
+<!-- End Cloudflare Web Analytics -->
+</head>
+<body data-chapter="mortgage">
+<main class="chapter">
+  <header class="chapter-hero">
+    <div class="eyebrow">Chapter 09</div>
+    <h1>주택담보대출</h1>
+    <p class="lead">하늘네가 은행 창구에서 들은 첫 대답은 숫자 하나가 아니라 세 개였다. "집값으로 보면 4억 3,400만원, 소득으로 보면 4억 6,000만원 남짓, 그리고 이 지역은 6억이 상한입니다. 셋 중 가장 작은 게 한도예요." 그리고 덧붙였다. "소득으로 보는 한도는 실제 금리 4%가 아니라 7%로 계산합니다." 같은 집, 같은 소득인데 왜 금리를 두 번 쓰는가. 왜 서울의 더 비싼 집에서는 오히려 빌릴 수 있는 돈이 비슷하거나 줄어드는가. 금리가 1%p 오르면 한도와 집값은 어떻게 되는가. 이 장은 주택담보대출을 결정하는 세 개의 자(LTV, DTI, DSR), 한도 계산에만 쓰는 스트레스 금리, 상환 방식과 금리 유형을 숫자로 끌어 보며 하늘네의 한도를 계산한다.</p>
+    <ul class="objectives">
+      <li>LTV·DTI·DSR이 각각 무엇을 재는지 구분하고, 2026년 기준 규제 수치(LTV 40~70%, 은행 DSR 40%, 수도권·규제지역 주담대 6억 상한)를 적용한다.</li>
+      <li>스트레스 DSR이 실제 금리가 아니라 한도 계산용 가산 금리라는 것을 설명하고, 가산 폭에 따라 한도가 얼마나 줄어드는지 계산한다.</li>
+      <li>세 한도 중 가장 작은 값이 실제 한도가 되는 구조를 읽고, 금리가 오를 때 한도와 지불 가능한 집값이 함께 줄어드는 모습을 본다.</li>
+      <li>원리금균등·원금균등·만기일시·거치식 상환과 고정·변동·혼합(주기형) 금리의 장단을 금리 경로와 함께 비교한다.</li>
+      <li>중도상환수수료와 정책대출(디딤돌·보금자리론·신생아 특례)의 구조를 알고, 하늘네에게 맞는 선택지를 걸러 낸다.</li>
+    </ul>
+  </header>
+
+  <section id="rulers">
+    <h2>은행의 세 개의 자: LTV, DTI, DSR</h2>
+    <p>주택담보대출(줄여서 주담대)은 집을 담보로 잡고 빌려주는 돈이다. 갚지 못하면 은행은 집을 경매에 넘겨 돈을 회수한다(<a href="leverage.html">10장</a>). 그래서 은행과 금융 당국은 두 가지를 잰다. 하나는 '집이 빚을 감당할 만큼 값어치가 있는가', 다른 하나는 '사람이 빚을 갚을 만큼 소득이 있는가'다. 앞의 것을 재는 자가 LTV, 뒤의 것을 재는 자가 DTI와 DSR이다.</p>
+    <p><span class="term">LTV</span><span class="en">(Loan-to-value ratio, 담보인정비율)</span>는 집값 중 빌릴 수 있는 비율이다. LTV 70%면 6억 2,000만원 집에 4억 3,400만원까지 빌려준다. <span class="term">DTI</span><span class="en">(Debt-to-income ratio, 총부채상환비율)</span>는 이번 주담대의 연간 원리금에 다른 빚의 이자만 더해 연소득으로 나눈 비율이다. <span class="term">DSR</span><span class="en">(Debt service ratio, 총부채원리금상환비율)</span>은 주담대뿐 아니라 신용대출·자동차 할부·카드론까지 모든 빚의 연간 원리금을 연소득으로 나눈 비율이다. DTI는 다른 빚의 원금 상환을 빼고 보지만 DSR은 넣는다. 그래서 신용대출이 있는 사람은 DSR에서 한도가 크게 깎인다. 2026년 기준 한국의 대출 규제는 DSR을 중심으로 돌아간다. 은행은 차주 한 사람의 DSR이 40%, 저축은행·보험사 같은 2금융권은 50%를 넘지 않게 빌려준다.</p>
+
+    <div class="formula">
+      $$\text{DSR} = \frac{\text{모든 대출의 연간 원리금 상환액}}{\text{연소득}} \le 40\%$$
+      <div class="where">주담대는 실제 상환 방식대로 계산한 원리금, 신용대출은 만기를 5년으로 가정한 원리금, 전세대출은 대체로 이자만(반영 범위는 아래 절) 넣는다. 연소득은 부부가 함께 빌리면 합산 소득을 쓰는 것이 일반적이다. 한도 계산 때는 주담대 금리에 스트레스 금리를 더한다.</div>
+    </div>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 460 300" role="img" aria-label="LTV, DTI, DSR이 재는 대상 비교: LTV는 집값, DTI와 DSR은 소득 대비 상환액">
+        <rect x="8" y="8" width="140" height="190" rx="8" class="f-acc-soft"/>
+        <text x="78" y="32" text-anchor="middle" class="lbl-acc">LTV</text>
+        <text x="78" y="50" text-anchor="middle" class="lbl-dim">집을 잰다</text>
+        <rect x="38" y="66" width="80" height="116" rx="4" class="f-surface"/>
+        <rect x="38" y="101" width="80" height="81" rx="4" class="f-acc"/>
+        <text x="78" y="88" text-anchor="middle" class="lbl-dim">내 돈</text>
+        <text x="78" y="146" text-anchor="middle" class="lbl-b">대출</text>
+        <text x="78" y="164" text-anchor="middle" class="lbl-b">≤ 70%</text>
+        <rect x="160" y="8" width="140" height="190" rx="8" class="f-acc2-soft"/>
+        <text x="230" y="32" text-anchor="middle" class="lbl-acc2">DTI</text>
+        <text x="230" y="50" text-anchor="middle" class="lbl-dim">소득을 잰다(일부)</text>
+        <text x="174" y="80" class="lbl">이번 주담대 원리금</text>
+        <text x="174" y="100" class="lbl">+ 다른 빚의 이자만</text>
+        <line x1="174" y1="112" x2="286" y2="112" class="s-line"/>
+        <text x="230" y="132" text-anchor="middle" class="lbl">연소득</text>
+        <text x="230" y="170" text-anchor="middle" class="lbl-dim">다른 빚 원금은 빠짐</text>
+        <rect x="312" y="8" width="140" height="190" rx="8" class="f-bad-soft"/>
+        <text x="382" y="32" text-anchor="middle" class="lbl-bad">DSR</text>
+        <text x="382" y="50" text-anchor="middle" class="lbl-dim">소득을 잰다(전부)</text>
+        <text x="326" y="80" class="lbl">모든 빚의</text>
+        <text x="326" y="100" class="lbl">원금 + 이자</text>
+        <line x1="326" y1="112" x2="438" y2="112" class="s-line"/>
+        <text x="382" y="132" text-anchor="middle" class="lbl">연소득</text>
+        <text x="382" y="160" text-anchor="middle" class="lbl-b">은행 ≤ 40%</text>
+        <text x="382" y="178" text-anchor="middle" class="lbl-dim">2금융권 ≤ 50%</text>
+        <text x="230" y="226" text-anchor="middle" class="lbl">집값이 비싸도 소득이 작으면 DSR이 막고,</text>
+        <text x="230" y="246" text-anchor="middle" class="lbl">소득이 커도 집값이 작으면 LTV가 막는다</text>
+        <text x="230" y="276" text-anchor="middle" class="lbl-dim">여기에 지역별 금액 상한(수도권·규제지역 6억)이 하나 더 있다</text>
+      </svg>
+      <figcaption><b>그림 1. 세 개의 자.</b> LTV는 담보(집)의 값, DTI와 DSR은 사람(소득)의 상환 능력을 잰다. DTI는 이번 주담대만 원리금으로 보고 다른 빚은 이자만 넣지만, DSR은 모든 빚의 원금까지 넣는다. 2026년 기준 LTV는 비규제지역 70%, 규제지역 무주택자 40%, 생애최초 70%, 규제지역 다주택자 0%다(10.15 대책). 같은 제도를 MoneyBook <a href="https://moneybook.euiyun.com/chapters/loan.html">대출 상환의 구조</a>가 짧게 다루었고, 이 장은 주담대에 집중해 규제와 한도의 구조를 더 깊이 판다.</figcaption>
+    </figure>
+  </section>
+
+  <section id="min">
+    <h2>세 한도 중 가장 작은 값</h2>
+    <p>은행은 세 가지 한도를 따로 계산한다. LTV로 본 한도(집값 × LTV), DSR로 본 한도(소득으로 감당할 수 있는 원리금을 대출 원금으로 되돌린 값), 그리고 정부가 정한 금액 상한이다. 2025년 6.27 대책 뒤 수도권과 규제지역의 주택 구입용 주담대는 최대 6억원이고, 10.15 대책으로 시가 15억원 초과~25억원 주택은 4억원, 25억원 초과 주택은 2억원으로 더 낮아졌다. 실제로 빌릴 수 있는 돈은 셋 중 가장 작은 값이다. 어느 자가 한도를 정했는지를 <span class="term">구속 조건</span><span class="en">(Binding constraint)</span>이라 부르자. 구속 조건이 무엇이냐에 따라 한도를 늘리는 방법이 완전히 달라진다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 460 260" role="img" aria-label="세 한도(DSR, LTV, 금액 상한) 중 가장 작은 값이 대출 한도가 되는 그림">
+        <defs><marker id="mg-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="context-stroke"/></marker></defs>
+        <rect x="14" y="20" width="132" height="70" rx="8" class="f-bad-soft"/>
+        <text x="80" y="44" text-anchor="middle" class="lbl-bad">DSR 한도</text>
+        <text x="80" y="62" text-anchor="middle" class="lbl-dim">소득 × 40% →</text>
+        <text x="80" y="78" text-anchor="middle" class="lbl-dim">원금으로 환산</text>
+        <rect x="164" y="20" width="132" height="70" rx="8" class="f-acc-soft"/>
+        <text x="230" y="44" text-anchor="middle" class="lbl-acc">LTV 한도</text>
+        <text x="230" y="62" text-anchor="middle" class="lbl-dim">집값 × LTV</text>
+        <text x="230" y="78" text-anchor="middle" class="lbl-dim">(40~70%)</text>
+        <rect x="314" y="20" width="132" height="70" rx="8" class="f-acc2-soft"/>
+        <text x="380" y="44" text-anchor="middle" class="lbl-acc2">금액 상한</text>
+        <text x="380" y="62" text-anchor="middle" class="lbl-dim">수도권·규제지역</text>
+        <text x="380" y="78" text-anchor="middle" class="lbl-dim">6억 / 4억 / 2억</text>
+        <path d="M80 92 L210 150" class="s-line" marker-end="url(#mg-ar)"/>
+        <path d="M230 92 L230 148" class="s-line" marker-end="url(#mg-ar)"/>
+        <path d="M380 92 L250 150" class="s-line" marker-end="url(#mg-ar)"/>
+        <rect x="150" y="154" width="160" height="44" rx="22" class="f-surface"/>
+        <text x="230" y="182" text-anchor="middle" class="lbl-b">min( , , ) = 한도</text>
+        <text x="230" y="224" text-anchor="middle" class="lbl">소득이 막으면 → 빚을 줄이거나 기간을 늘린다</text>
+        <text x="230" y="246" text-anchor="middle" class="lbl-dim">집값이 막으면 → 내 돈을 늘린다 · 상한이 막으면 → 바꿀 수 없다</text>
+      </svg>
+      <figcaption><b>그림 2. 한도는 가장 짧은 자가 정한다.</b> DSR 한도가 구속 조건이면 신용대출을 갚거나 만기를 늘리거나 고정형 상품을 골라(스트레스 가산이 작다) 한도를 키울 수 있다. LTV가 구속 조건이면 소득이 늘어도 한도가 그대로이고 내 돈을 더 넣어야 한다. 금액 상한이 구속 조건이면 개인이 바꿀 방법이 없다. 2026년 기준 수치이며, 정부 대책이 나올 때마다 바뀐다.</figcaption>
+    </figure>
+
+    <p>아래 시뮬레이터에서 소득, 금리, 다른 빚을 바꿔 가며 세 막대 중 어느 것이 가장 짧은지 본다. 가장 짧은 막대에 테두리가 생기고, 그 길이가 한도다.</p>
+
+    <div class="sim" id="sim-lim">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>세 한도의 경주: 가장 짧은 막대가 한도</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="lim-cv"></canvas></div>
+        <div class="sim-controls">
+          <div class="seg" id="lim-reg"><button data-value="B" class="on">수도권 비규제(B시)</button><button data-value="A">서울 규제지역</button><button data-value="D">지방 비규제</button></div>
+          <label class="ctrl"><span>부부 연소득 <output id="lim-i-out"></output></span><input type="range" id="lim-i" min="3000" max="20000" step="100" value="9200"></label>
+          <label class="ctrl"><span>주담대 금리 <output id="lim-r-out"></output></span><input type="range" id="lim-r" min="2.5" max="8" step="0.25" value="4"></label>
+          <label class="ctrl"><span>다른 빚의 연 원리금 <output id="lim-o-out"></output></span><input type="range" id="lim-o" min="0" max="2400" step="50" value="0"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">집값(지역 대표값)</span><span class="v" id="lim-o-p">—</span></div>
+        <div class="stat"><span class="k">대출 한도</span><span class="v" id="lim-o-m">—</span></div>
+        <div class="stat"><span class="k">구속 조건</span><span class="v" id="lim-o-b">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 기본값(B시 6억 2,000만원, 소득 9,200만원, 금리 4%)에서 LTV 막대(4억 3,400만원)가 가장 짧다. 소득을 1억 5,000만원으로 올려도 한도는 그대로다. ② '서울 규제지역'(12억 5,000만원)을 고른다. LTV 40%로 5억원, 상한 6억원보다 DSR 한도가 짧아진다. 집값이 두 배인데 한도는 B시와 큰 차이가 없다. ③ 다른 빚의 연 원리금을 1,200만원(신용대출 약 5,000만원 수준)으로 올린다. DSR 막대가 1억원 넘게 줄어든다. (30년 원리금균등, 은행 DSR 40%. 스트레스 금리는 수도권·규제지역 3.0%p, 지방 0.75%p(3단계 기준, 지방 주담대 유예로 실제로는 더 낮을 수 있다)로 넣었다. 지방 집값은 교육용 3억원이다. 서울 규제지역은 무주택 일반 LTV 40%다. 생애최초는 규제지역도 70%이지만 여기서는 넣지 않았다.)</div>
+    </div>
+
+    <p>B시 같은 비규제지역에서 하늘네 정도의 소득이면 집값이 한도를 정한다. 서울처럼 비싸고 규제가 센 곳에서는 소득과 금액 상한이 정한다. 그래서 집값이 두 배인 곳에서도 빌릴 수 있는 돈은 거의 같고, 차이는 고스란히 내 돈으로 메워야 한다. 대출 규제가 비싼 지역의 수요를 막는 방식이 바로 이것이다. 이 효과는 <a href="policy.html">15장</a>에서 '풍선 효과'와 함께 다시 본다.</p>
+  </section>
+
+  <section id="stress">
+    <h2>스트레스 DSR: 한도 계산에만 쓰는 금리</h2>
+    <p>지금 4%에 빌린 변동금리 대출의 금리가 몇 년 뒤 6%가 되면 원리금이 늘어난다. 그때도 갚을 수 있는지 미리 확인하려고, 금융 당국은 한도를 계산할 때만 실제 금리에 일정 폭을 더한다. 이 가산 폭을 <span class="term">스트레스 금리</span><span class="en">(Stress rate)</span>, 이렇게 계산한 DSR을 <span class="term">스트레스 DSR</span>이라 한다. 중요한 것은 이 금리가 실제로 내는 이자가 아니라는 점이다. 4%로 빌렸다면 매달 4%로 계산한 원리금을 낸다. 다만 은행이 "얼마까지 빌려줄까"를 계산할 때 7%로 빌렸다고 치고 DSR 40%를 맞춘다.</p>
+    <p>2026년 기준 스트레스 DSR은 3단계다. 2025년 7월부터 은행권 주담대에 수도권 1.5%p, 지방 0.75%p를 더했고(지방 주담대는 2026년 말까지 2단계 수준 유지), 2025년 10월 16일(10.15 대책)부터는 수도권과 규제지역 주담대의 가산 폭 하한을 3.0%p로 올렸다. 경기 B시는 규제지역이 아니어도 수도권이라 3.0%p를 더한다. 가산 폭은 금리가 바뀔 위험이 클수록 크게 반영한다. 변동금리와 고정 기간이 짧은 상품은 전부 반영하고, 고정 기간이 긴 혼합형·주기형은 일부만 반영하며, 만기까지 금리가 고정된 상품은 거의 반영하지 않는다(상품별 반영 비율은 은행에서 확인 필요).</p>
+
+    <div class="sim" id="sim-st">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>가산 금리가 한도를 깎는 폭</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="st-cv"></canvas><span class="hint">아래 손잡이를 끌어 실제 금리를 고른다</span></div>
+        <div class="sim-controls">
+          <div class="seg" id="st-s"><button data-value="0">가산 0</button><button data-value="0.75">0.75%p</button><button data-value="1.5">1.5%p</button><button data-value="3" class="on">3.0%p</button></div>
+          <label class="ctrl"><span>연소득 <output id="st-i-out"></output></span><input type="range" id="st-i" min="4000" max="16000" step="100" value="9200"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">실제 금리 / 한도 계산 금리</span><span class="v" id="st-o-r">—</span></div>
+        <div class="stat"><span class="k">DSR 한도</span><span class="v" id="st-o-l">—</span></div>
+        <div class="stat"><span class="k">가산 없을 때보다</span><span class="v" id="st-o-d">—</span></div>
+        <div class="stat"><span class="k">한도까지 빌리면 실제 DSR</span><span class="v" id="st-o-x">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 기본값(소득 9,200만원, 실제 금리 4%, 가산 3.0%p)의 DSR 한도는 약 4억 6,094만원이다. 가산이 없다면 6억 4,235만원이니 약 28%가 깎였다. ② 한도까지 빌렸을 때의 실제 DSR을 본다. 약 29%다. 규제는 40%인데 실제로는 소득의 29%만 갚도록 여유를 남긴 셈이다. 그 여유 11%p가 금리가 7%까지 올라도 버틸 수 있는 완충이다. ③ 손잡이를 7%로 끈다. 실제 금리가 오르면 한도 곡선 위의 점이 계속 내려간다. 금리 상승과 스트레스 가산이 겹치면 한도는 처음의 절반 남짓이 된다. (30년 원리금균등, 은행 DSR 40%, 다른 빚 없음. 엔진 RE.maxLoan으로 계산했다.)</div>
+    </div>
+
+    <p>그래프의 세 곡선은 같은 소득에 서로 다른 가산 폭을 넣은 한도다. 곡선은 모두 오른쪽 아래로 내려간다. 금리가 오르면 같은 원리금으로 갚을 수 있는 원금이 줄기 때문이다. 스트레스 가산은 곡선 전체를 왼쪽으로 3%p 미는 것과 같다. 실제 금리가 4%여도 7% 지점의 한도를 받는다. 대출자에게는 한도가 줄어드는 규제지만, 그 대가로 금리가 올랐을 때 원리금이 소득의 40%를 넘지 않는다는 보장을 얻는다. 당국의 입장에서는 금리가 오를 때 한꺼번에 상환 불능이 생기는 일을 막는 장치이고, 시장 전체로는 빌릴 수 있는 돈을 줄여 집값을 누르는 힘이 된다.</p>
+
+    <div class="callout deep">
+      <strong>왜 고정금리일수록 가산을 덜 하는가</strong>
+      스트레스 금리는 '앞으로 금리가 오를 위험'을 한도에 미리 반영하는 장치다. 만기까지 금리가 고정된 대출은 시장 금리가 올라도 내 원리금이 그대로라 그 위험이 없다. 5년 고정 뒤 변동으로 바뀌는 혼합형이나 5년마다 금리를 다시 정하는 주기형은 그 위험이 줄어들 뿐 없어지지 않는다. 그래서 고정 기간이 길수록 가산 반영 비율이 작다. 이 설계는 은행이 고정금리 상품을 더 많이 팔도록 하는 유인이기도 하다. 금리 위험을 대출자 대신 은행(또는 그 뒤의 채권 시장)이 지게 하려는 것이다. 대신 대출자는 고정 기간이 긴 상품일수록 처음 금리가 더 높은 경우가 많다. 그 차이가 금리 위험을 넘기는 값이다.
+    </div>
+  </section>
+
+  <section id="collapse">
+    <h2>금리가 오르면 살 수 있는 집값이 무너진다</h2>
+    <p>한도는 집값을 정하는 데 쓰이기도 한다. 내 돈이 정해져 있다면 살 수 있는 가장 비싼 집은 '내 돈 + 빌릴 수 있는 돈'이다. 그런데 빌릴 수 있는 돈 자체가 집값(LTV)과 소득(DSR)에 달려 있으니, 세 가지 조건을 동시에 만족하는 가장 비싼 집을 찾아야 한다. LTV가 구속 조건이면 내 돈 ÷ (1 − LTV), DSR이 구속 조건이면 내 돈 + DSR 한도, 금액 상한이면 내 돈 + 6억원이고, 그중 가장 작은 값이 살 수 있는 집값이다.</p>
+    <p>아래에서 '금리 상승 재생'을 누르거나 손잡이를 끌어 금리를 3%에서 8%까지 올려 본다. 굵은 선이 하늘네(내 돈 2억 4,000만원, 소득 9,200만원)가 살 수 있는 집값의 상한이고, 가로 점선이 B시 84㎡ 시세 6억 2,000만원이다.</p>
+
+    <div class="sim" id="sim-af">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>금리 상승과 지불 가능 집값의 무너짐</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="af-cv"></canvas><span class="hint">손잡이를 끌거나 재생한다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>내 돈(집값에 넣는 돈) <output id="af-e-out"></output></span><input type="range" id="af-e" min="1" max="5" step="0.1" value="2.4"></label>
+          <label class="check"><input type="checkbox" id="af-st" checked> 스트레스 가산 3.0%p</label>
+          <div class="btn-row"><button class="btn primary" id="af-go">금리 상승 재생</button><button class="btn" id="af-re">4%로</button></div>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">실제 금리</span><span class="v" id="af-o-r">—</span></div>
+        <div class="stat"><span class="k">살 수 있는 집값</span><span class="v" id="af-o-p">—</span></div>
+        <div class="stat"><span class="k">구속 조건</span><span class="v" id="af-o-b">—</span></div>
+        <div class="stat"><span class="k">금리 4% 때보다</span><span class="v" id="af-o-d">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 4%에서 살 수 있는 집값은 약 7억 94만원이다. 이미 DSR이 구속 조건이다. ② 손잡이를 6%로 끈다. 6억 2,113만원으로 내려와 B시 84㎡ 시세에 겨우 닿는다. 금리가 6%를 조금만 넘어도 같은 소득과 같은 돈으로 지금 사는 단지의 같은 집을 살 수 없다. ③ 스트레스 가산을 끈다. 5% 근처까지는 LTV가 막아 8억원에서 평평하다가, 그 위로 가면 DSR이 막으며 내려간다. 가산은 같은 무너짐을 3%p 낮은 금리에서 일으킨다. (30년 원리금균등, LTV 70%, 금액 상한 6억원, 은행 DSR 40%, 다른 빚 없음. 거래 비용은 내 돈과 따로 마련한다고 보았다.)</div>
+    </div>
+
+    <p>곡선이 꺾이는 모양에 이 책의 첫 번째 질문, '집값은 무엇이 정하는가'의 한 조각이 있다. 금리가 오르면 사람마다 빌릴 수 있는 돈이 줄고, 그만큼 낼 수 있는 값이 준다. 같은 집을 사려는 사람들이 모두 같은 일을 겪으니 시장 전체의 수요가 줄고 가격이 눌린다. 이 가격 변화는 어느 힘에서 왔는가. 이 그래프 하나에 두 힘이 겹쳐 있다. 실제 금리가 오른 몫(금리의 힘, <a href="value.html">3장</a>)과 스트레스 가산·LTV·금액 상한이라는 규제가 그 효과를 미리 당겨 오거나 덮어쓴 몫(대출 규제의 힘)이다. 스트레스 가산을 켜고 끄며 본 차이가 정확히 규제의 몫이다. 이 장은 가격을 예측하지 않는다. 다만 대출로 집을 사는 사람이 많은 시장에서는 금리와 대출 규제가 집값에 빠르게 전달된다는 것을 보여 준다.</p>
+  </section>
+
+  <section id="repay">
+    <h2>상환 방식: 같은 빚, 다른 달력</h2>
+    <p>한도가 정해지면 갚는 방식을 고른다. <span class="term">원리금균등</span><span class="en">(Level payment)</span>은 매달 같은 금액을 내고, 그 안에서 이자의 몫이 점점 줄고 원금의 몫이 점점 는다. <span class="term">원금균등</span><span class="en">(Equal principal)</span>은 원금을 매달 같은 금액씩 갚아 첫 달이 가장 무겁고 갈수록 가벼워진다. <span class="term">만기일시</span><span class="en">(Bullet)</span>는 이자만 내다가 만기에 원금 전부를 갚는다. <span class="term">거치</span><span class="en">(Grace period)</span>는 처음 몇 년은 이자만 내고 그 뒤부터 원금을 나눠 갚는다. 은행 주담대는 처음부터 원금을 나눠 갚는 분할상환을 원칙으로 하고, 만기일시나 긴 거치는 예외로만 허용하는 것이 2026년 기준 대체적인 관행이다.</p>
+
+    <div class="formula">
+      $$M = P\cdot\frac{r(1+r)^n}{(1+r)^n - 1}$$
+      <div class="where">\(M\) 원리금균등 월 상환액, \(P\) 대출 원금, \(r\) 월 금리(연 금리 ÷ 12), \(n\) 상환 개월 수. 3억 8,000만원을 연 4%, 30년(360개월)에 빌리면 \(M\)은 약 181만원이다. 첫 달 이자는 \(P\cdot r\) = 약 127만원이라 첫 달 원금 상환은 54만원에 그친다.</div>
+    </div>
+
+    <p>아래 그래프는 30년 동안 매달 내는 돈을 이자(빨강)와 원금(청록)으로 쌓은 것이다. 손잡이를 끌어 특정 달의 구성을 본다. 상환 방식을 바꾸면 그래프의 모양과 총이자가 바뀐다.</p>
+
+    <div class="sim" id="sim-pay">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>30년의 달력: 매달 내는 돈의 이자와 원금</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="pay-cv"></canvas><span class="hint">손잡이를 끌어 달을 고른다</span></div>
+        <div class="sim-controls">
+          <div class="seg" id="pay-m"><button data-value="level" class="on">원리금균등</button><button data-value="principal">원금균등</button><button data-value="grace">거치 3년</button><button data-value="bullet">만기일시</button></div>
+          <label class="ctrl"><span>대출 원금 <output id="pay-p-out"></output></span><input type="range" id="pay-p" min="1" max="6" step="0.1" value="3.8"></label>
+          <label class="ctrl"><span>금리 <output id="pay-r-out"></output></span><input type="range" id="pay-r" min="2" max="8" step="0.25" value="4"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k" id="pay-o-mk">고른 달</span><span class="v" id="pay-o-m">—</span></div>
+        <div class="stat"><span class="k">그달 이자 / 원금</span><span class="v" id="pay-o-s">—</span></div>
+        <div class="stat"><span class="k">첫 달 상환액</span><span class="v" id="pay-o-f">—</span></div>
+        <div class="stat"><span class="k">30년 총이자</span><span class="v" id="pay-o-t">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 원리금균등(3억 8,000만원, 4%)에서 손잡이를 첫 달에 둔다. 181만원 중 127만원이 이자다. 손잡이를 끌어 이자와 원금의 몫이 뒤바뀌는 달(약 13년 차)을 찾는다. ② 원금균등을 고른다. 첫 달 232만원으로 51만원 더 무겁지만 30년 총이자가 2억 7,310만원에서 2억 2,863만원으로 약 4,400만원 준다. 원금을 빨리 줄일수록 이자가 덜 붙는다. ③ 만기일시를 고른다. 매달 127만원만 내다 마지막 달에 3억 8,000만원을 한꺼번에 갚아야 하고, 총이자는 4억 5,600만원이다. 금리를 8%로 올리면 원리금균등의 이자가 원금보다 커진다. (엔진 RE.payment, 금리는 30년 고정으로 가정했다.)</div>
+    </div>
+
+    <p>원리금균등은 매달 같은 돈이 나가 가계부를 짜기 쉽고, 원금균등은 초반이 무겁지만 총이자가 적다. DSR 계산에서는 첫해 원리금을 쓰므로 원금균등을 고르면 같은 소득에서 한도가 작아진다. 거치와 만기일시는 초반 부담을 줄여 주는 대신 원금이 줄지 않아 총이자가 커지고, 거치가 끝나는 순간 월 상환액이 뛴다. 이 갑작스러운 증가를 <span class="term">상환 절벽</span>이라 부르기도 한다. 거치 3년을 고르면 3년 차 끝에서 막대가 127만원에서 192만원으로 뛰는 모습이 보인다. 상환 방식의 기초는 MoneyBook <a href="https://moneybook.euiyun.com/chapters/loan.html">대출 상환의 구조</a>에 더 자세히 있다.</p>
+  </section>
+
+  <section id="rate">
+    <h2>고정·변동·혼합(주기형): 금리 위험을 누가 지는가</h2>
+    <p>주담대 금리는 크게 세 가지다. <span class="term">변동금리</span><span class="en">(Variable rate)</span>는 기준이 되는 시장 금리(예: 은행의 자금 조달 비용을 모은 지수인 코픽스)에 가산금리를 더해 6개월이나 1년마다 다시 정한다. <span class="term">혼합형</span><span class="en">(Hybrid)</span>은 처음 5년 정도는 고정했다가 그 뒤 변동으로 바뀐다. <span class="term">주기형</span><span class="en">(Periodic)</span>은 5년마다 그때의 시장 금리로 다시 고정한다. 그리고 만기까지 금리가 같은 <span class="term">순수 고정금리</span>가 있다(정책 모기지 일부). 시장 금리가 오르면 변동금리 대출자가 그 부담을 바로 지고, 고정금리 대출자는 은행에 그 부담을 넘긴다. 그래서 고정 기간이 긴 상품은 처음 금리가 대개 더 높다.</p>
+    <p>아래 그래프의 점선은 앞으로 10년 동안 시장 금리가 움직이는 가상의 길이다. 점을 위아래로 끌어 길을 바꾸면, 네 가지 상품의 금리(계단 선)와 10년 동안 내는 이자가 따라 바뀐다.</p>
+
+    <div class="sim" id="sim-path">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>금리의 길을 그리면: 변동·혼합·주기형·고정</h3></div>
+      <div class="sim-body">
+        <div class="sim-view"><canvas id="path-cv"></canvas><span class="hint">점선 위의 점을 위아래로 끈다</span></div>
+        <div class="sim-controls">
+          <div class="btn-row"><button class="btn" id="path-up">금리 상승 길</button><button class="btn" id="path-down">금리 하락 길</button><button class="btn" id="path-flat">제자리</button></div>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">변동 10년 이자</span><span class="v" id="path-o-0">—</span></div>
+        <div class="stat"><span class="k">혼합(5년 고정)</span><span class="v" id="path-o-1">—</span></div>
+        <div class="stat"><span class="k">주기형(5년)</span><span class="v" id="path-o-2">—</span></div>
+        <div class="stat"><span class="k">순수 고정</span><span class="v" id="path-o-3">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① '금리 상승 길'을 누른다. 변동금리의 이자가 가장 많고, 처음에 비싸게 고정한 상품이 이긴다. ② '금리 하락 길'을 누른다. 이번에는 변동금리가 가장 싸고, 고정금리는 비싸게 고정한 값을 10년 내내 낸다. ③ 점을 끌어 처음 5년은 오르고 뒤 5년은 내리는 길을 만든다. 혼합형이 앞의 상승을 피하고 뒤의 하락을 누리는 길이 된다. 어느 상품이 유리한지는 길을 미리 알아야 정할 수 있는데, 그 길은 아무도 모른다. (3억 8,000만원, 30년 원리금균등, 금리가 바뀔 때마다 남은 원금과 기간으로 다시 계산한다. 가산금리는 변동 +1.0%p, 혼합 +1.4%p, 주기형 +1.3%p, 순수 고정 +1.8%p로 둔 교육용 가정이고, 시장 금리의 길은 교육용 가상 데이터다.)</div>
+    </div>
+
+    <p>네 상품의 차이는 '누가 금리 위험을 지느냐'와 '그 값으로 얼마를 내느냐'의 차이다. 변동금리는 위험을 대출자가 지는 대신 처음 금리가 낮다. 순수 고정금리는 위험을 은행이 지는 대신 처음부터 웃돈을 낸다. 혼합형과 주기형은 그 사이에서 고정 기간만큼만 위험을 넘긴다. 금리 경로를 맞히려고 하기보다 '금리가 3%p 올라도 우리 가계가 원리금을 낼 수 있는가'를 기준으로 고르는 편이 안전하다. 그 질문이 곧 스트레스 DSR이 묻는 것이다. 월 상환액이 소득에서 차지하는 몫이 크고 다른 완충(비상금, 맞벌이)이 작을수록 고정 쪽이 맞고, 몇 년 안에 갈아타거나 크게 갚을 계획이 있으면 변동 쪽이 맞을 수 있다.</p>
+
+    <div class="callout pro">
+      <strong>대출 상담은 매물보다 먼저</strong>
+      태호는 매수 손님에게 집을 보여 주기 전에 은행 두세 곳에서 '대출 가심사'(소득과 기존 빚으로 본 예상 한도와 금리)를 먼저 받아 오라고 한다. 계약하고 나서 한도가 생각보다 작다는 것을 알면 잔금을 못 치러 계약금을 잃을 수 있기 때문이다(<a href="buy.html">8장</a>). 은행 창구에서 자주 생기는 오해는 세 가지다. 첫째, 인터넷에서 본 '최저 금리'는 우대 조건을 모두 채웠을 때의 숫자다. 급여 이체, 카드 사용, 자동이체 같은 조건과 그 유지 기간을 확인한다. 둘째, 한도를 LTV로만 계산해 오는 손님이 많다. 소득 증빙(원천징수영수증, 소득금액증명원)과 기존 신용대출이 DSR 한도를 크게 바꾼다. 셋째, 중개사가 소개하는 대출 상담사는 은행에서 모집 수수료를 받는다. 태호는 그 구조를 먼저 말하고, 손님이 직접 은행 앱과 창구에서 비교해 보라고 권한다.
+    </div>
+  </section>
+
+  <section id="prepay">
+    <h2>중도상환수수료: 일찍 갚는 값</h2>
+    <p>보너스나 상속받은 돈으로 대출을 일찍 갚으면 이자가 줄어든다. 그런데 대출 후 일정 기간 안에 갚으면 은행은 <span class="term">중도상환수수료</span><span class="en">(Prepayment fee)</span>를 받는다. 은행이 그 돈을 빌려주려고 들인 비용(자금 조달, 모집 비용)을 회수하지 못하기 때문이라는 것이 명분이다. 대개 대출 후 3년 안에 갚을 때만 받고, 남은 기간에 비례해 줄어드는 방식이다. 2025년 1월 13일부터 금융위원회의 개편으로 은행은 실제 비용 안에서만 수수료를 받게 되었고, 5대 시중은행의 고정금리 주담대 평균 수수료율이 약 1.4%에서 0.65%로, 변동금리는 약 1.2%에서 0.65%로 내려갔다고 발표되었다. 수수료율은 은행과 상품마다 다르고 개편 전 대출에는 적용되지 않으니 대출 약정서에서 확인한다.</p>
+
+    <div class="sim" id="sim-pre">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>지금 갚을까, 수수료가 없어질 때까지 기다릴까</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="pre-cv"></canvas><span class="hint">손잡이를 끌어 갚는 시점을 고른다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>미리 갚을 돈 <output id="pre-a-out"></output></span><input type="range" id="pre-a" min="1000" max="20000" step="500" value="5000"></label>
+          <label class="ctrl"><span>수수료율 <output id="pre-f-out"></output></span><input type="range" id="pre-f" min="0.3" max="1.5" step="0.05" value="0.65"></label>
+          <label class="ctrl"><span>대출 금리 <output id="pre-r-out"></output></span><input type="range" id="pre-r" min="2" max="8" step="0.25" value="4"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">갚는 시점</span><span class="v" id="pre-o-t">—</span></div>
+        <div class="stat"><span class="k">수수료</span><span class="v" id="pre-o-f">—</span></div>
+        <div class="stat"><span class="k">기다리는 동안 더 내는 이자</span><span class="v" id="pre-o-i">—</span></div>
+        <div class="stat"><span class="k">지금 갚는 쪽이</span><span class="v" id="pre-o-n">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 기본값(5,000만원, 수수료율 0.65%, 금리 4%)에서 손잡이를 대출 1년 차에 둔다. 수수료는 약 21만 7,000원이고, 3년 차까지 기다리면 그사이 이자로 약 400만원을 더 낸다. 지금 갚는 쪽이 훨씬 낫다. ② 수수료율을 1.5%(개편 전 수준)로 올려도 결론은 같다. 수수료는 남은 기간에 비례해 줄지만 이자는 매달 붙는다. ③ 금리를 2%로 낮추고 돈을 예금(연 3% 가정)에 둘 수 있다면 어떨지 생각해 본다. 이 그래프는 '갚을 돈을 다른 데 쓰지 않는다'는 가정이다. 대출 금리보다 확실히 높은 수익이 없다면 갚는 것이 위험 없는 수익이다. (수수료 = 갚는 돈 × 수수료율 × 남은 기간 ÷ 3년, 3년 뒤 면제로 단순화했다. 실제 산식과 면제 조건은 약정서를 따른다.)</div>
+    </div>
+
+    <p>대부분의 경우 수수료는 기다리는 동안 붙는 이자보다 훨씬 작다. 수수료 때문에 상환을 미루는 것은 대개 손해다. 예외는 갚을 돈을 대출 금리보다 높은 확정 수익에 넣을 수 있거나, 그 돈이 곧 다른 데 필요한 경우(비상금)다. 비상금까지 털어 갚았다가 몇 달 뒤 급전이 필요해 더 비싼 신용대출을 받으면 거꾸로 된다. 같은 이유로, 은행을 옮기는 <span class="term">대환대출</span>을 할 때도 새 대출의 금리 차이로 아끼는 이자와 기존 대출의 중도상환수수료, 새 대출의 부대비용(인지세, 근저당 설정 비용)을 함께 비교한다.</p>
+  </section>
+
+  <section id="policy">
+    <h2>정책대출과 전세대출: 누구를 위한 대출인가</h2>
+    <p>정부는 소득과 자산이 일정 기준 아래인 가구가 시중보다 낮은 금리로 집을 살 수 있게 <span class="term">정책대출</span>을 운영한다. 주택도시기금의 <b>디딤돌대출</b>(구입)과 <b>버팀목대출</b>(전세), 한국주택금융공사의 <b>보금자리론</b>(장기 고정금리 구입 자금), 출산 가구를 위한 <b>신생아 특례대출</b>이 대표적이다. 구조는 비슷하다. 소득 상한, 순자산 상한, 주택 가격 상한, 대출 금액 상한이 있고, 그 안에서 소득이 낮을수록·자녀가 많을수록 금리가 낮다. 정책대출도 6.27 대책 뒤 한도가 줄었고, 금리와 한도는 해마다 조정된다. 아래 표의 수치는 2026년 기준 보도와 안내를 정리한 것으로, 신청 전에 주택도시기금(기금e든든)과 한국주택금융공사에서 확인해야 한다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 460 330" role="img" aria-label="정책대출 비교표: 디딤돌, 보금자리론, 신생아 특례의 소득, 주택 가격, 한도 조건">
+        <rect x="8" y="8" width="444" height="36" rx="6" class="f-surface"/>
+        <text x="62" y="31" text-anchor="middle" class="lbl-dim">상품</text>
+        <text x="178" y="31" text-anchor="middle" class="lbl-dim">부부 소득 상한</text>
+        <text x="296" y="31" text-anchor="middle" class="lbl-dim">주택 가격</text>
+        <text x="396" y="31" text-anchor="middle" class="lbl-dim">대출 한도</text>
+        <line x1="118" y1="50" x2="118" y2="248" class="s-dash"/>
+        <line x1="240" y1="50" x2="240" y2="248" class="s-dash"/>
+        <line x1="352" y1="50" x2="352" y2="248" class="s-dash"/>
+        <text x="62" y="76" text-anchor="middle" class="lbl-b">디딤돌</text>
+        <text x="62" y="94" text-anchor="middle" class="lbl-dim">주택도시기금</text>
+        <text x="178" y="76" text-anchor="middle" class="lbl">6,000만</text>
+        <text x="178" y="94" text-anchor="middle" class="lbl-dim">생애최초 등 7천</text>
+        <text x="178" y="110" text-anchor="middle" class="lbl-dim">신혼 8,500만</text>
+        <text x="296" y="76" text-anchor="middle" class="lbl">5억 이하</text>
+        <text x="296" y="94" text-anchor="middle" class="lbl-dim">신혼 등 6억</text>
+        <text x="396" y="76" text-anchor="middle" class="lbl">약 2억~</text>
+        <text x="396" y="94" text-anchor="middle" class="lbl-dim">유형별 다름</text>
+        <text x="62" y="146" text-anchor="middle" class="lbl-b">보금자리론</text>
+        <text x="62" y="164" text-anchor="middle" class="lbl-dim">주택금융공사</text>
+        <text x="178" y="146" text-anchor="middle" class="lbl">7,000만</text>
+        <text x="178" y="164" text-anchor="middle" class="lbl-dim">신혼 등 완화</text>
+        <text x="296" y="146" text-anchor="middle" class="lbl">6억 이하</text>
+        <text x="396" y="146" text-anchor="middle" class="lbl">약 3.6억</text>
+        <text x="396" y="164" text-anchor="middle" class="lbl-dim">장기 고정금리</text>
+        <text x="62" y="208" text-anchor="middle" class="lbl-b">신생아 특례</text>
+        <text x="62" y="226" text-anchor="middle" class="lbl-dim">2년 내 출산</text>
+        <text x="178" y="208" text-anchor="middle" class="lbl">1.3억</text>
+        <text x="178" y="226" text-anchor="middle" class="lbl-dim">맞벌이 2억</text>
+        <text x="296" y="208" text-anchor="middle" class="lbl">9억·85㎡ 이하</text>
+        <text x="396" y="208" text-anchor="middle" class="lbl">약 4억</text>
+        <text x="396" y="226" text-anchor="middle" class="lbl-dim">확인 필요</text>
+        <rect x="8" y="258" width="444" height="62" rx="8" class="f-warn-soft"/>
+        <text x="230" y="282" text-anchor="middle" class="lbl-b">공통: 무주택(또는 처분 조건), 순자산 상한(약 5억 원대), DSR 대신 자체 기준</text>
+        <text x="230" y="304" text-anchor="middle" class="lbl-dim">금리·한도는 수시로 바뀐다. 모든 수치 2026년 기준, 신청 전 공식 안내로 확인</text>
+      </svg>
+      <figcaption><b>그림 3. 정책대출의 구조(2026년 기준, 일부 확인 필요).</b> 디딤돌 소득 기준(일반 6,000만원, 생애최초·2자녀 이상 7,000만원, 신혼 8,500만원), 신생아 특례 소득 기준(1억 3,000만원, 맞벌이 2억원)과 주택 기준(9억원·85㎡ 이하)은 보도와 기금 안내를 따랐다. 디딤돌·보금자리론·신생아 특례의 정확한 한도와 금리, 6.27 대책 뒤 수도권 한도 축소 폭은 확인 필요다. 상품마다 LTV와 방공제(소액임차보증금만큼 한도를 깎는 것) 적용이 다르다.</figcaption>
+    </figure>
+
+    <p>정책대출이 시중 주담대와 다른 점은 금리만이 아니다. 보금자리론은 만기까지 금리가 고정되어 금리 위험을 대출자가 지지 않는다. 대신 소득·주택 가격 상한 때문에 수도권의 많은 아파트와 맞벌이 중산층 가구는 대상이 아니다. 정책대출은 '누가 받을 수 있는가'가 먼저이고, 받을 수 있다면 대부분 시중 대출보다 유리하다.</p>
+
+    <p><b>전세대출과 DSR.</b> 오랫동안 전세대출은 DSR 계산에서 빠져 있었다. 2025년 10월 29일부터는 수도권·규제지역에서 집을 가진 1주택자가 전세대출을 받으면 그 이자분을 DSR에 넣는다. 무주택자의 전세대출은 2026년 기준 여전히 DSR에 넣지 않는다(확대 여부는 확인 필요). 하늘네는 무주택자라 지금의 전세대출 2억원이 주담대 한도를 깎지 않고, 이사하면서 보증금으로 갚으니 더더욱 상관없다. 반대로 집을 한 채 가진 채 다른 곳에 전세로 사는 사람(이른바 '전세 끼고 내 집 + 나는 전세')은 전세대출 이자만큼 주담대 한도가 준다.</p>
+
+    <div class="callout buyer">
+      <strong>대출 약정서에서 서명 전에 볼 것</strong>
+      <ul>
+        <li><b>금리 유형과 변경 주기</b>: 변동·혼합·주기형 중 무엇인가, 기준 금리(코픽스 등)는 무엇이고 몇 개월마다 바뀌는가, 가산금리와 우대금리 조건은 무엇이고 우대 조건을 못 지키면 얼마나 오르는가.</li>
+        <li><b>상환 방식과 거치 기간</b>: 원리금균등인가 원금균등인가, 거치가 있다면 거치가 끝난 뒤 월 상환액은 얼마인가.</li>
+        <li><b>중도상환수수료</b>: 수수료율, 면제 기간(대개 3년), 일부 상환 시 면제 한도가 있는가.</li>
+        <li><b>근저당 채권최고액</b>: 대출 원금의 110~120% 수준으로 잡힌다. 등기부에 찍힐 금액이다(<a href="contract.html">7장</a>).</li>
+        <li><b>부대 비용</b>: 인지세(대출 금액에 따라 은행과 나눠 부담), 근저당 설정 비용과 그 부담 주체, 보증료가 있는가.</li>
+        <li><b>실행일</b>: 잔금일과 같은 날 실행되는지, 실행에 필요한 서류(매매계약서, 거래신고필증, 자금조달계획서 등) 마감은 언제인지.</li>
+      </ul>
+    </div>
+
+    <div class="callout warn">
+      <strong>제도와 수치는 해마다 바뀐다</strong>
+      이 장의 대출 규제(LTV 40~70%, 수도권·규제지역 주담대 6억원 상한과 15억·25억원 초과 구간의 4억·2억원, 은행 DSR 40%·2금융권 50%, 스트레스 금리 수도권 1.5%p·지방 0.75%p와 수도권·규제지역 주담대 하한 3.0%p, 전세대출 DSR 반영 범위)는 2026년 기준이다. 2025년에만 6.27 대책과 10.15 대책으로 두 번 크게 바뀌었고, 지방 주담대의 스트레스 금리 유예는 2026년 말까지로 알려져 있다. 정책대출의 소득·주택 가격·한도·금리, 중도상환수수료율은 상품과 은행마다 다르고 수시로 조정된다. 이 장의 계산은 교육용 모델이며 금융 자문이 아니다. 실제 한도와 금리는 금융위원회·금융감독원 발표와 은행의 가심사로 확인한다.
+    </div>
+  </section>
+
+  <section id="case-sim">
+    <h2>하늘네의 대출 계산서</h2>
+    <p>이제 이 장의 모든 조각을 하늘네에게 맞춘다. 후보 지역 세 곳 가운데 하나를 고르고, 금리와 넣을 돈을 정하면 세 한도, 구속 조건, 필요한 대출이 한도 안에 들어오는지, 매달 얼마를 내는지가 계산된다. 그래프의 손잡이를 끌어 금리 3.5~6% 사이를 오가 본다.</p>
+
+    <div class="sim" id="sim-case">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>하늘네 주담대 종합: 한도, 필요한 대출, 월 상환</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="case-cv"></canvas><span class="hint">손잡이를 끌어 금리를 고른다</span></div>
+        <div class="sim-controls">
+          <div class="seg" id="case-a"><button data-value="A">서울 A구</button><button data-value="B" class="on">경기 B시</button><button data-value="E">경기 E시</button></div>
+          <label class="ctrl"><span>넣을 내 돈 <output id="case-e-out"></output></span><input type="range" id="case-e" min="1" max="4" step="0.1" value="2.4"></label>
+          <div class="seg" id="case-m"><button data-value="level" class="on">원리금균등</button><button data-value="principal">원금균등</button></div>
+          <label class="check"><input type="checkbox" id="case-f" checked> 생애최초(규제지역 LTV 70%)</label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">대출 한도(구속 조건)</span><span class="v" id="case-o-l">—</span></div>
+        <div class="stat"><span class="k">필요한 대출</span><span class="v" id="case-o-n">—</span></div>
+        <div class="stat"><span class="k">첫 달 상환액</span><span class="v" id="case-o-p">—</span></div>
+        <div class="stat"><span class="k">월 실수령 대비 · 실제 DSR</span><span class="v" id="case-o-d">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 기본값(B시 6억 2,000만원, 내 돈 2억 4,000만원, 금리 4%)에서 필요한 대출 3억 8,000만원은 한도 4억 3,400만원(LTV가 구속) 안에 들어온다. 첫 달 181만원, 월 실수령 650만원의 28%다. ② 손잡이를 6%로 끈다. DSR 한도가 3억 8,113만원으로 내려와 필요한 대출에 거의 닿고, 월 상환은 228만원이 된다. 그 너머로 가면 한도가 모자라 빨간 영역이 된다. ③ 서울 A구를 고른다. 생애최초 LTV 70%여도 DSR 한도(4% 기준 약 4억 6,094만원)가 막아, 12억 5,000만원 집에 내 돈이 약 7억 9,000만원 필요하다. (연소득 9,200만원, 30년, 은행 DSR 40%, 수도권 스트레스 3.0%p, 주담대 상한 6억원. 전세대출은 이사하며 보증금으로 갚는다고 보아 DSR에 넣지 않았다. 거래 비용과 비상금은 내 돈과 따로 둔다.)</div>
+    </div>
+
+    <p>하늘네의 계산서에서 보이는 것은 두 가지다. 첫째, B시라면 지금 금리에서 대출 한도는 문제가 아니다. 한도를 정하는 것은 집값(LTV)이고, 필요한 대출은 그보다 5,000만원 넘게 작다. 둘째, 문제는 한도가 아니라 매달 내는 돈이다. 금리가 4%에서 6%로 오르면 월 상환이 47만원 늘고, DSR 한도도 필요한 대출에 바짝 붙는다. 같은 대출이 금리에 따라 '여유 있는 빚'에서 '아슬아슬한 빚'으로 바뀐다. 이 차이를 고정금리로 사 둘지, 변동금리의 낮은 첫 금리를 택할지가 하늘네가 은행에서 정해야 할 일이다.</p>
+  </section>
+
+  <section id="case">
+    <h2>하늘네 집 노트</h2>
+    <div class="casefile">
+      <div class="tag"><b>CASE 하늘네</b><span>집 노트 · 9장</span></div>
+      <h4>한도 4억 3,400만원, 필요한 돈 3억 8,000만원, 그리고 6%라는 선</h4>
+      <p>하늘네의 부부 합산 연소득은 9,200만원이고, 지금 빚은 전세대출 2억원뿐이다. 하늘네는 무주택자라 전세대출은 DSR에 들어가지 않고, 이사하는 날 보증금으로 갚는다. 이 책의 모델로 계산하면 금리 4%, 30년 원리금균등일 때 DSR 한도는 스트레스 금리 3.0%p를 더한 7%로 계산해 약 4억 6,094만원이다. B시는 규제지역이 아니어도 수도권이라 이 3.0%p 하한과 주담대 6억원 상한이 함께 적용된다. LTV는 비규제지역이라 70%(생애최초여도 같다)로 4억 3,400만원이다. 셋 중 가장 작은 LTV 한도 4억 3,400만원이 하늘네의 B시 한도다. 서울 A구(12억 5,000만원)는 규제지역이라 일반 LTV 40%로 5억원이고, 생애최초면 70%까지 올라가지만 6억원 상한과 DSR 한도 4억 6,094만원에 막힌다. 어느 쪽이든 A구에서는 내 돈이 약 7억 9,000만원 필요하다.</p>
+      <p>8장의 영수증과 비상금을 남기고 집값에 자기 돈 약 2억 4,000만원을 넣는다면 B시에서 필요한 대출은 약 3억 8,000만원이다. 원리금균등 월 상환액은 금리 3.5%에서 약 171만원, 4%에서 181만원, 4.5%에서 193만원, 5%에서 204만원, 5.5%에서 216만원, 6%에서 228만원이다. 지금 매달 내는 전세대출 이자 약 63만원이 사라지는 대신 이 돈이 나간다. 금리 6%에서는 DSR 한도(약 3억 8,113만원)가 필요한 대출에 거의 닿는다. 그 위로 금리가 오르면 같은 소득으로 같은 대출을 받을 수 없다. 태호와 은행 상담 직원은 고정·변동의 장단을 이렇게 정리해 주었다. 변동금리는 지금 첫 금리가 낮고 스트레스 가산을 모두 받아 한도가 가장 작다. 5년 혼합형이나 주기형은 처음 금리가 조금 높지만 5년 동안 월 상환이 흔들리지 않고 한도 계산에서 가산을 덜 받는다. 하늘네처럼 아이가 어리고 몇 년 안에 크게 갚을 계획이 없는 가구는 월 상환을 고정하는 쪽의 이점이 크다.</p>
+      <p>정책대출은 대부분 해당하지 않는다. 디딤돌은 신혼부부 기준으로도 소득 8,500만원, 보금자리론은 7,000만원(신혼 등 완화) 이하라 9,200만원인 하늘네는 소득 요건을 넘는다. 신생아 특례는 소득 기준(맞벌이 2억원)은 맞지만 대출 신청일 기준 2년 안에 출산한 가구가 대상이라, 딸이 세 살인 하늘네는 해당하지 않는다(요건 세부는 확인 필요). 하늘네는 시중 은행 주담대로 계산해야 한다.</p>
+      <div class="clue"><div><b>이 장에서 정한 것</b>B시 한도 4억 3,400만원(LTV 구속), 필요한 대출 약 3억 8,000만원, 월 상환 171만~228만원(금리 3.5~6%), 금리 6%가 한도의 경계. 정책대출은 대상 아님.</div><div><b>아직 남은 문제</b>3억 8,000만원을 빌려 6억 2,000만원 집을 사면, 집값이 오르거나 내릴 때 우리 돈은 얼마나 흔들리는가? 못 갚으면 무슨 일이 생기는가?</div><div><b>다음 단계</b>10장: 레버리지. 자기 돈 2억 4,000만원에 대출 3억 8,000만원을 얹었을 때 집값 ±20%의 의미.</div></div>
+    </div>
+  </section>
+
+  <section class="keypoints" id="summary">
+    <h2>핵심 정리</h2>
+    <ol>
+      <li>LTV는 집값 대비 대출, DTI와 DSR은 소득 대비 상환액을 잰다. DSR은 모든 빚의 원금과 이자를 넣으며, 2026년 기준 은행 40%·2금융권 50%가 한도다.</li>
+      <li>실제 한도는 DSR 한도, LTV 한도, 금액 상한(수도권·규제지역 6억원, 15억 초과 4억원, 25억 초과 2억원) 중 가장 작은 값이다. 무엇이 구속 조건인지에 따라 한도를 늘리는 방법이 다르다.</li>
+      <li>스트레스 DSR은 실제 금리가 아니라 한도 계산에만 더하는 가산 금리다. 2026년 기준 수도권·규제지역 주담대는 3.0%p, 지방은 더 낮다. 변동금리일수록 많이, 고정 기간이 길수록 적게 반영한다.</li>
+      <li>금리가 오르면 DSR 한도가 줄고, 같은 소득·같은 돈으로 살 수 있는 집값이 함께 줄어든다. 대출로 집을 사는 시장에서 금리와 대출 규제가 집값에 빠르게 전달되는 경로다.</li>
+      <li>원리금균등은 매달 같은 돈, 원금균등은 초반이 무겁지만 총이자가 적고, 거치·만기일시는 초반이 가볍지만 총이자가 크고 상환 절벽이 있다.</li>
+      <li>변동·혼합·주기형·고정의 차이는 금리 위험을 누가 지느냐와 그 값이다. 경로를 맞히기보다 '금리가 3%p 올라도 갚을 수 있는가'로 고른다. 중도상환수수료는 대개 기다리는 동안의 이자보다 작다.</li>
+      <li>정책대출은 소득·자산·주택 가격 상한 안의 가구를 위한 것이고, 무주택자의 전세대출은 2026년 기준 DSR에 넣지 않는다(수도권·규제지역 1주택자는 이자분 반영).</li>
+    </ol>
+  </section>
+
+  <section class="quiz-sec" id="quiz">
+    <h2>확인 퀴즈</h2>
+    <div class="quiz">
+      <div class="quiz-q">
+        <p>실제 금리 4%로 주담대를 받은 사람에게 스트레스 금리 3.0%p가 적용되었다. 이 사람이 매달 내는 원리금은 어떤 금리로 계산되는가?</p>
+        <div class="opts">
+          <button class="opt">7%로 계산된 원리금을 낸다</button>
+          <button class="opt" data-correct>4%로 계산된 원리금을 낸다. 7%는 대출 한도(DSR)를 계산할 때만 쓴다</button>
+          <button class="opt">처음 3년은 7%, 그 뒤는 4%로 낸다</button>
+          <button class="opt">은행이 3.0%p를 따로 적립해 두었다가 돌려준다</button>
+        </div>
+        <div class="quiz-exp">스트레스 금리는 한도 계산용 가산 금리다. 은행은 7%로 빌렸다고 치고 DSR 40%에 맞는 원금을 계산하지만, 실제 상환은 약정 금리 4%로 한다. 그래서 한도까지 빌려도 실제 DSR은 40%보다 낮고, 그 차이가 금리 상승에 대비한 여유가 된다.</div>
+      </div>
+      <div class="quiz-q">
+        <p>연소득이 충분히 높은 사람이 비규제지역에서 6억원짜리 집을 산다. LTV 70%, DSR 한도 6억 5,000만원, 금액 상한은 없다. 소득이 두 배가 되면 대출 한도는?</p>
+        <div class="opts">
+          <button class="opt">두 배인 8억 4,000만원이 된다</button>
+          <button class="opt">DSR 한도인 13억원이 된다</button>
+          <button class="opt" data-correct>그대로 4억 2,000만원이다. LTV가 구속 조건이기 때문이다</button>
+          <button class="opt">6억원 전액을 빌릴 수 있다</button>
+        </div>
+        <div class="quiz-exp">한도는 세 한도 중 가장 작은 값이다. LTV 한도는 6억원 × 70% = 4억 2,000만원으로 DSR 한도 6억 5,000만원보다 작아 이미 구속 조건이다. 소득이 늘어 DSR 한도가 커져도 LTV 한도는 그대로이므로, 더 빌리려면 내 돈을 늘리는 수밖에 없다.</div>
+      </div>
+      <div class="quiz-q">
+        <p>3억원을 30년 동안 연 4%로 빌린다. 원리금균등과 원금균등을 비교한 설명으로 옳은 것은?</p>
+        <div class="opts">
+          <button class="opt" data-correct>원금균등은 첫 달 상환액이 더 크지만 원금이 빨리 줄어 30년 총이자가 더 적다</button>
+          <button class="opt">두 방식의 30년 총이자는 같다</button>
+          <button class="opt">원리금균등은 매달 내는 돈 중 원금의 몫이 처음에 가장 크다</button>
+          <button class="opt">원금균등은 DSR 한도 계산에서 더 유리하다</button>
+        </div>
+        <div class="quiz-exp">원금균등은 매달 같은 원금을 갚아 잔액이 빨리 줄고, 이자는 잔액에 붙으므로 총이자가 적다. 대신 첫 달이 가장 무거워 첫해 원리금으로 계산하는 DSR 한도가 작아진다. 원리금균등은 초반에 이자의 몫이 크고 원금의 몫이 작다.</div>
+      </div>
+      <div class="quiz-q">
+        <p>대출 1년 차에 5,000만원을 미리 갚으려 한다. 중도상환수수료율 0.65%, 3년 뒤 면제, 남은 기간에 비례해 줄어드는 방식이고 대출 금리는 4%다. 가장 알맞은 판단은?</p>
+        <div class="opts">
+          <button class="opt">수수료가 아까우니 3년 차까지 기다렸다 갚는 것이 언제나 낫다</button>
+          <button class="opt">수수료가 5,000만원의 0.65%인 32만 5,000원이라 갚을 이유가 없다</button>
+          <button class="opt">중도상환수수료는 2025년부터 폐지되었다</button>
+          <button class="opt" data-correct>수수료는 약 21만 7,000원이지만 2년을 기다리면 이자로 약 400만원을 더 내므로, 다른 쓸 곳이 없다면 지금 갚는 편이 낫다</button>
+        </div>
+        <div class="quiz-exp">수수료는 5,000만원 × 0.65% × (남은 2년 ÷ 3년) ≈ 21만 7,000원이다. 기다리는 2년 동안 그 5,000만원에 붙는 이자는 약 400만원이다. 대부분의 경우 수수료는 기다리는 동안의 이자보다 훨씬 작다. 다만 그 돈이 비상금이라면 갚은 뒤 더 비싼 대출을 받게 될 수 있어 따로 따진다.</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  const TAU = Math.PI * 2;
+  function T(ctx, s, x, y, o) {
+    o = o || {};
+    ctx.font = EB.font(o.size || 12, o.mono, o.weight);
+    ctx.fillStyle = o.color; ctx.textAlign = o.align || "left"; ctx.textBaseline = o.base || "alphabetic";
+    ctx.fillText(s, x, y);
+  }
+  function rrect(ctx, x, y, w, h, r) {
+    r = Math.max(0, Math.min(r, Math.abs(w) / 2, Math.abs(h) / 2));
+    ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
+  }
+  function handle(ctx, x, y, P, r) {
+    ctx.beginPath(); ctx.arc(x, y, r || 8, 0, TAU); ctx.fillStyle = P.text; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = P.bg; ctx.stroke();
+  }
+  const pw = (id) => document.getElementById(id).parentElement.clientWidth;
+  const C = RE.CASE, L = RE.KR.loan;
+  const INCOME = C.income;
+  const pctS = (x, d) => +(x * 100).toFixed(d == null ? 1 : d) + "%";
+  const BIND = { dsr: "DSR(소득)", ltv: "LTV(집값)", cap: "금액 상한" };
+  // 지역 설정: 수도권·규제지역 스트레스 3.0%p, 지방 0.75%p(3단계 기준, 지방 주담대 유예 중이면 더 낮다)
+  const REG = {
+    B: { name: "수도권 비규제", price: 6.2e8, ltv: L.ltv.unregulated, stress: L.stress.metroFloor, cap: L.capMetro },
+    A: { name: "서울 규제지역", price: 1.25e9, ltv: L.ltv.regulated, stress: L.stress.metroFloor, cap: L.capMetro },
+    D: { name: "지방 비규제", price: 3.0e8, ltv: L.ltv.unregulated, stress: L.stress.local, cap: null },
+  };
+
+  /* ---------------------------------------------------------- 1. 세 한도 */
+  (function () {
+    const regG = EB.seg("lim-reg", draw);
+    const iG = EB.range("lim-i", (v) => EB.won(v * 1e4), draw);
+    const rG = EB.range("lim-r", (v) => v + "%", draw);
+    const oG = EB.range("lim-o", (v) => EB.won(v * 1e4), draw);
+    function calc() {
+      const R = REG[regG()];
+      const m = RE.maxLoan({ income: iG() * 1e4, rate: rG() / 100, years: 30, price: R.price, ltv: R.ltv, stress: R.stress, otherAnnual: oG() * 1e4, cap: R.cap });
+      return { R, m };
+    }
+    const cv = EB.canvas("#lim-cv", (ctx, w, h) => {
+      const P = EB.palette(), c = calc(), m = c.m;
+      const items = [
+        { k: "DSR 한도", s: "소득 40% · +" + pctS(c.R.stress, 2) + "p", v: m.byDsr, key: "dsr", col: P.bad },
+        { k: "LTV 한도", s: "집값 × " + Math.round(c.R.ltv * 100) + "%", v: m.byLtv, key: "ltv", col: P.accent },
+        { k: "금액 상한", s: c.R.cap ? "수도권·규제지역" : "없음", v: c.R.cap || Infinity, key: "cap", col: P.accent2 },
+      ];
+      const narrow = w < 480, bx = narrow ? 92 : 112;
+      const box = { x: bx, y: 28, w: w - bx - (narrow ? 64 : 80), h: h - 70 };
+      const max = 10e8, X = (v) => box.x + Math.min(v, max) / max * box.w;
+      T(ctx, "대출 원금", box.x, 16, { size: 11, color: P.dim });
+      [0, 2e8, 4e8, 6e8, 8e8, 10e8].forEach((v) => { ctx.strokeStyle = P.grid; ctx.beginPath(); ctx.moveTo(X(v), box.y); ctx.lineTo(X(v), box.y + box.h); ctx.stroke(); T(ctx, EB.wonAxis(v), X(v), box.y + box.h + 14, { size: 10, color: P.dim, align: "center", mono: true }); });
+      const rowH = box.h / 3;
+      items.forEach((it, i) => {
+        const y = box.y + i * rowH + rowH * 0.22, bh = rowH * 0.56, on = m.binding === it.key;
+        const inf = !isFinite(it.v);
+        ctx.fillStyle = it.col; ctx.globalAlpha = on ? 0.9 : 0.35;
+        if (inf) { ctx.globalAlpha = 0.12; ctx.fillRect(box.x, y, box.w, bh); }
+        else ctx.fillRect(box.x, y, X(it.v) - box.x, bh);
+        ctx.globalAlpha = 1;
+        if (on) { ctx.strokeStyle = P.text; ctx.lineWidth = 2; ctx.strokeRect(box.x, y, X(it.v) - box.x, bh); ctx.lineWidth = 1; }
+        T(ctx, it.k, box.x - 8, y + bh / 2 - 6, { size: 12, color: on ? P.text : P.dim, align: "right", base: "middle", weight: on ? 700 : 400 });
+        T(ctx, it.s, box.x - 8, y + bh / 2 + 9, { size: 10, color: P.faint, align: "right", base: "middle" });
+        T(ctx, inf ? "없음" : EB.wonAxis(it.v) + (it.v > max ? "+" : ""), inf ? box.x + 6 : Math.min(X(it.v), box.x + box.w) + 6, y + bh / 2, { size: 11, mono: true, color: P.text, base: "middle", weight: on ? 700 : 400 });
+      });
+      // 한도 선
+      ctx.save(); ctx.setLineDash([4, 3]); ctx.strokeStyle = P.text; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(X(m.max), box.y - 6); ctx.lineTo(X(m.max), box.y + box.h); ctx.stroke(); ctx.restore();
+      T(ctx, "한도", X(m.max), box.y - 9, { size: 11, color: P.text, align: "center", weight: 700 });
+      // 집값 표시
+      T(ctx, "집값 " + EB.wonAxis(c.R.price), box.x + box.w, 16, { size: 11, color: P.dim, align: "right" });
+    }, { get height() { return pw("lim-cv") < 480 ? 250 : 260; } });
+    function draw() {
+      const c = calc();
+      EB.stat("lim-o-p", EB.won(c.R.price));
+      EB.stat("lim-o-m", EB.won(c.m.max));
+      EB.stat("lim-o-b", BIND[c.m.binding]);
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 2. 스트레스 DSR */
+  (function () {
+    const sG = EB.seg("st-s", draw);
+    const iG = EB.range("st-i", (v) => EB.won(v * 1e4), draw);
+    let rate = 0.04, box = null;
+    const lim = (r, s) => RE.maxLoan({ income: iG() * 1e4, rate: r, years: 30, stress: s }).byDsr;
+    const cv = EB.canvas("#st-cv", (ctx, w, h) => {
+      const P = EB.palette(), s = Number(sG()) / 100;
+      const xs = []; for (let r = 0.02; r <= 0.0801; r += 0.0025) xs.push(r);
+      const ymax = Math.ceil(lim(0.02, 0) / 2e8) * 2e8;
+      const sets = [{ s: 0, col: P.faint }, { s: 0.015, col: P.accent2 }, { s: 0.03, col: P.bad }];
+      const c = EB.chart(ctx, { x: 56, y: 22, w: w - 70, h: h - 74 }, {
+        x: [0.02, 0.08], y: [0, ymax], xTicks: [0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08], xFmt: (v) => Math.round(v * 100) + "%", yFmt: EB.wonAxis,
+        series: sets.map((o) => ({ data: xs.map((r) => [r, lim(r, o.s)]), color: o.col, width: Math.abs(o.s - s) < 1e-9 ? 2.8 : 1.4, dash: Math.abs(o.s - s) < 1e-9 ? [] : [5, 4] })).concat(
+          [0, 0.015, 0.03].some((v) => Math.abs(v - s) < 1e-9) ? [] : [{ data: xs.map((r) => [r, lim(r, s)]), color: P.warn, width: 2.8 }]),
+      });
+      box = c;
+      T(ctx, "가산 0", c.X(0.02) + 6, c.Y(lim(0.02, 0)) + 14, { size: 10, color: P.dim });
+      T(ctx, "+1.5%p", c.X(0.02) + 6, c.Y(lim(0.02, 0.015)) + 14, { size: 10, color: P.accent2 });
+      T(ctx, "+3.0%p", c.X(0.02) + 6, c.Y(lim(0.02, 0.03)) + 14, { size: 10, color: P.bad });
+      const v = lim(rate, s), v0 = lim(rate, 0), px = c.X(rate);
+      ctx.save(); ctx.setLineDash([3, 3]); ctx.strokeStyle = P.text; ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.moveTo(px, c.box.y + c.box.h); ctx.lineTo(px, c.Y(v0)); ctx.stroke(); ctx.restore();
+      // 깎인 폭
+      ctx.strokeStyle = P.bad; ctx.lineWidth = 3; ctx.globalAlpha = 0.6; ctx.beginPath(); ctx.moveTo(px, c.Y(v0)); ctx.lineTo(px, c.Y(v)); ctx.stroke(); ctx.globalAlpha = 1; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.arc(px, c.Y(v0), 4, 0, TAU); ctx.fillStyle = P.faint; ctx.fill();
+      ctx.beginPath(); ctx.arc(px, c.Y(v), 6, 0, TAU); ctx.fillStyle = P.bad; ctx.fill();
+      handle(ctx, px, c.box.y + c.box.h, P);
+      T(ctx, "DSR 한도(연소득 " + EB.wonAxis(iG() * 1e4) + ")", c.box.x + c.box.w - 4, c.box.y + 6, { size: 11, color: P.dim, align: "right", base: "top" });
+    }, { get height() { return pw("st-cv") < 480 ? 280 : 300; } });
+    EB.drag(cv.canvas, { move(x) { if (!box) return; rate = EB.clamp(Math.round((0.02 + (x - box.box.x) / box.box.w * 0.06) * 400) / 400, 0.02, 0.08); draw(); } });
+    function draw() {
+      const s = Number(sG()) / 100, v = lim(rate, s), v0 = lim(rate, 0);
+      const real = RE.payment({ principal: v, rate, years: 30 }).annualFirst / (iG() * 1e4);
+      EB.stat("st-o-r", pctS(rate, 2) + " / " + pctS(rate + s, 2));
+      EB.stat("st-o-l", EB.won(v));
+      EB.stat("st-o-d", s ? '<span class="minus">−' + EB.won(v0 - v) + " (" + pctS((v0 - v) / v0, 0) + ")</span>" : "같다");
+      EB.stat("st-o-x", pctS(real, 1));
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 3. 지불 가능 집값 */
+  (function () {
+    const eG = EB.range("af-e", (v) => EB.won(v * 1e8), draw);
+    const stEl = document.getElementById("af-st");
+    stEl.addEventListener("change", draw);
+    let rate = 0.04, box = null, playing = false, dir = 1;
+    function afford(r) {
+      const E = eG() * 1e8, s = stEl.checked ? L.stress.metroFloor : 0, ltv = L.ltv.unregulated;
+      const D = RE.maxLoan({ income: INCOME, rate: r, years: 30, stress: s }).byDsr;
+      const c = [{ k: "ltv", v: E / (1 - ltv) }, { k: "dsr", v: E + D }, { k: "cap", v: E + L.capMetro }];
+      return c.reduce((a, b) => (b.v < a.v ? b : a));
+    }
+    const cv = EB.canvas("#af-cv", (ctx, w, h) => {
+      const P = EB.palette();
+      const xs = []; for (let r = 0.03; r <= 0.0801; r += 0.001) xs.push(r);
+      const top = Math.max(9e8, Math.ceil(afford(0.03).v / 1e8) * 1e8 + 1e8);
+      const c = EB.chart(ctx, { x: 56, y: 22, w: w - 70, h: h - 74 }, {
+        x: [0.03, 0.08], y: [3e8, top], xTicks: [0.03, 0.04, 0.05, 0.06, 0.07, 0.08], xFmt: (v) => Math.round(v * 100) + "%", yFmt: EB.wonAxis,
+        series: [{ data: xs.map((r) => [r, afford(r).v]), color: P.accent, width: 2.8 }],
+        hlines: [{ y: C.home.price, color: P.accent2, label: "B시 84㎡ 6.2억" }],
+      });
+      box = c;
+      // 6.2억 아래 영역
+      const cross = xs.find((r) => afford(r).v < C.home.price);
+      if (cross) { ctx.save(); ctx.fillStyle = P.bad; ctx.globalAlpha = 0.08; ctx.fillRect(c.X(cross), c.box.y, c.box.x + c.box.w - c.X(cross), c.box.h); ctx.restore(); T(ctx, "같은 집을 못 산다", c.box.x + c.box.w - 6, c.box.y + 14, { size: 11, color: P.bad, align: "right", weight: 700 }); }
+      const a = afford(rate), px = c.X(rate), py = c.Y(a.v);
+      ctx.save(); ctx.setLineDash([3, 3]); ctx.strokeStyle = P.text; ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.moveTo(px, c.box.y + c.box.h); ctx.lineTo(px, py); ctx.lineTo(c.box.x, py); ctx.stroke(); ctx.restore();
+      ctx.beginPath(); ctx.arc(px, py, 6, 0, TAU); ctx.fillStyle = a.v < C.home.price ? P.bad : P.accent; ctx.fill();
+      T(ctx, EB.wonAxis(a.v), EB.clamp(px, c.box.x + 30, c.box.x + c.box.w - 30), py - 12, { size: 12, color: P.text, align: "center", weight: 700, mono: true });
+      handle(ctx, px, c.box.y + c.box.h, P);
+      T(ctx, "살 수 있는 집값 상한", c.box.x + 6, c.box.y + 14, { size: 11, color: P.accent, weight: 700 });
+    }, { get height() { return pw("af-cv") < 480 ? 280 : 300; } });
+    EB.drag(cv.canvas, { move(x) { if (!box) return; playing = false; rate = EB.clamp(Math.round((0.03 + (x - box.box.x) / box.box.w * 0.05) * 1000) / 1000, 0.03, 0.08); draw(); } });
+    const go = document.getElementById("af-go");
+    go.addEventListener("click", () => { playing = !playing; if (playing && rate >= 0.0799) rate = 0.03; dir = 1; draw(); });
+    document.getElementById("af-re").addEventListener("click", () => { playing = false; rate = 0.04; draw(); });
+    EB.loop(cv.canvas, (dt) => {
+      if (!playing) return;
+      rate += dir * dt * 0.008;
+      if (rate >= 0.08) { rate = 0.08; playing = false; }
+      draw();
+    });
+    function draw() {
+      const a = afford(rate), a4 = afford(0.04);
+      go.textContent = playing ? "멈춤" : "금리 상승 재생";
+      EB.stat("af-o-r", pctS(rate, 1));
+      EB.stat("af-o-p", '<span class="' + (a.v < C.home.price ? "minus" : "") + '">' + EB.won(a.v) + "</span>");
+      EB.stat("af-o-b", BIND[a.k]);
+      const d = a.v - a4.v;
+      EB.stat("af-o-d", Math.abs(d) < 5e5 ? "같다" : '<span class="' + (d < 0 ? "minus" : "plus") + '">' + (d > 0 ? "+" : "") + EB.won(d) + "</span>");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 4. 상환 방식 */
+  (function () {
+    const mG = EB.seg("pay-m", draw);
+    const pG = EB.range("pay-p", (v) => EB.won(v * 1e8), draw);
+    const rG = EB.range("pay-r", (v) => v + "%", draw);
+    let month = 1, box = null;
+    const sched = () => { const m = mG(); return RE.payment({ principal: pG() * 1e8, rate: rG() / 100, years: 30, method: m === "grace" ? "level" : m, graceYears: m === "grace" ? 3 : 0 }); };
+    const cv = EB.canvas("#pay-cv", (ctx, w, h) => {
+      const P = EB.palette(), s = sched(), rows = s.rows;
+      const isBullet = mG() === "bullet";
+      const maxPay = Math.max(...rows.slice(0, isBullet ? 359 : 360).map((r) => r.pay)) * 1.15;
+      const box0 = { x: 56, y: 22, w: w - 70, h: h - 74 };
+      const c = EB.chart(ctx, box0, { x: [0, 360], y: [0, maxPay], xTicks: [0, 60, 120, 180, 240, 300, 360], xFmt: (v) => v / 12 + "년", yFmt: EB.wonAxis });
+      box = c;
+      const bw = c.box.w / 360;
+      rows.forEach((r, i) => {
+        if (isBullet && i === 359) return;
+        const x = c.X(i);
+        ctx.fillStyle = P.bad; ctx.globalAlpha = 0.75; ctx.fillRect(x, c.Y(r.interest), bw + 0.4, c.Y(0) - c.Y(r.interest));
+        ctx.fillStyle = P.accent; ctx.fillRect(x, c.Y(r.interest + r.principal), bw + 0.4, c.Y(r.interest) - c.Y(r.interest + r.principal)); ctx.globalAlpha = 1;
+      });
+      if (isBullet) { T(ctx, "마지막 달 원금 " + EB.wonAxis(rows[359].principal) + " 한꺼번에", c.box.x + c.box.w - 4, c.box.y + 12, { size: 11, color: P.bad, align: "right", weight: 700 }); }
+      const r = rows[month - 1], px = c.X(month - 0.5);
+      ctx.save(); ctx.setLineDash([3, 3]); ctx.strokeStyle = P.text; ctx.globalAlpha = 0.6; ctx.beginPath(); ctx.moveTo(px, c.box.y); ctx.lineTo(px, c.box.y + c.box.h); ctx.stroke(); ctx.restore();
+      handle(ctx, px, c.box.y + c.box.h, P);
+      ctx.fillStyle = P.bad; ctx.fillRect(c.box.x + 4, 8, 10, 8); T(ctx, "이자", c.box.x + 18, 16, { size: 11, color: P.dim });
+      ctx.fillStyle = P.accent; ctx.fillRect(c.box.x + 52, 8, 10, 8); T(ctx, "원금", c.box.x + 66, 16, { size: 11, color: P.dim });
+      void r;
+    }, { get height() { return pw("pay-cv") < 480 ? 270 : 290; } });
+    EB.drag(cv.canvas, { move(x) { if (!box) return; month = EB.clamp(Math.round((x - box.box.x) / box.box.w * 360) + 1, 1, 360); draw(); } });
+    function draw() {
+      const s = sched(), r = s.rows[month - 1];
+      const y = Math.floor((month - 1) / 12) + 1, mo = ((month - 1) % 12) + 1;
+      document.getElementById("pay-o-mk").textContent = y + "년 차 " + mo + "번째 달";
+      EB.stat("pay-o-m", EB.won(r.pay));
+      EB.stat("pay-o-s", '<span class="minus">' + EB.wonAxis(r.interest) + "</span> / " + EB.wonAxis(r.principal));
+      EB.stat("pay-o-f", EB.won(s.first));
+      EB.stat("pay-o-t", '<span class="minus">' + EB.won(s.totalInterest) + "</span>");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 5. 금리 경로 */
+  (function () {
+    const P0 = 3.8e8, N = 360, YEARS = 10;
+    const KX = [0, 2, 4, 6, 8, 10];
+    const PRESET = { up: [3.0, 3.6, 4.4, 5.2, 5.6, 5.8], down: [3.0, 2.6, 2.2, 1.9, 1.8, 1.8], flat: [3.0, 3.0, 3.0, 3.0, 3.0, 3.0] };
+    let K = [3.0, 3.4, 4.2, 4.6, 3.6, 3.2], box = null, drag = -1;
+    const path = (t) => { for (let i = 0; i < KX.length - 1; i++) if (t <= KX[i + 1]) { const u = (t - KX[i]) / (KX[i + 1] - KX[i]); return (K[i] + (K[i + 1] - K[i]) * u) / 100; } return K[K.length - 1] / 100; };
+    const PROD = [
+      { k: "변동", rate: (t) => path(Math.floor(t * 2) / 2) + 0.01, key: "bad" },
+      { k: "혼합(5년 고정)", rate: (t) => (t < 5 ? path(0) + 0.014 : path(Math.floor(t * 2) / 2) + 0.01), key: "accent2" },
+      { k: "주기형(5년)", rate: (t) => path(Math.floor(t / 5) * 5) + 0.013, key: "accent" },
+      { k: "순수 고정", rate: () => path(0) + 0.018, key: "ok" },
+    ];
+    function sim(p) {
+      let bal = P0, pay = 0, prev = null, interest = 0;
+      const rates = [];
+      for (let m = 0; m < YEARS * 12; m++) {
+        const r = p.rate(m / 12);
+        if (prev === null || Math.abs(r - prev) > 1e-12) { const i = r / 12, n = N - m; pay = bal * i / (1 - Math.pow(1 + i, -n)); prev = r; }
+        const it = bal * r / 12; interest += it; bal -= pay - it; rates.push(r);
+      }
+      return { interest, rates, pay };
+    }
+    const cv = EB.canvas("#path-cv", (ctx, w, h) => {
+      const P = EB.palette();
+      const ty = w < 480 ? 40 : 26;
+      const c = EB.chart(ctx, { x: 44, y: ty, w: w - 58, h: h - ty - 50 }, {
+        x: [0, YEARS], y: [0.01, 0.08], xTicks: [0, 2, 4, 6, 8, 10], xFmt: (v) => v + "년", yFmt: (v) => Math.round(v * 100) + "%",
+        series: PROD.map((p) => ({ data: sim(p).rates.map((r, m) => [m / 12, r]).concat([[YEARS, sim(p).rates[YEARS * 12 - 1]]]), color: P[p.key], width: 2.2 })).concat([
+          { data: Array.from({ length: 101 }, (_, i) => [i / 10, path(i / 10)]), color: P.text, width: 1.4, dash: [5, 4] },
+        ]),
+      });
+      box = c;
+      KX.forEach((x, i) => { ctx.beginPath(); ctx.arc(c.X(x), c.Y(K[i] / 100), drag === i ? 9 : 7, 0, TAU); ctx.fillStyle = P.text; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = P.bg; ctx.stroke(); });
+      const lg = PROD.map((p) => [p.k, P[p.key]]).concat([["시장 금리(끌기)", P.text]]);
+      ctx.font = EB.font(10);
+      const items = []; let lx = c.box.x, row = 0;
+      lg.forEach(([s, col]) => { const tw = ctx.measureText(s).width + 24; if (lx + tw > w - 4) { lx = c.box.x; row++; } items.push([s, col, lx, row]); lx += tw; });
+      items.forEach(([s, col, x, r]) => { const y = 12 + r * 13; ctx.fillStyle = col; ctx.fillRect(x, y - 6, 10, 3); T(ctx, s, x + 13, y, { size: 10, color: P.dim }); });
+    }, { get height() { return pw("path-cv") < 480 ? 300 : 320; } });
+    EB.drag(cv.canvas, {
+      start(x) { if (!box) return; let best = 0, bd = Infinity; KX.forEach((k, i) => { const d = Math.abs(box.X(k) - x); if (d < bd) { bd = d; best = i; } }); drag = best; },
+      move(x, y) { if (!box || drag < 0) return; const v = 1 + (box.box.y + box.box.h - y) / box.box.h * 7; K[drag] = EB.clamp(Math.round(v * 10) / 10, 1, 7); draw(); },
+      end() { drag = -1; draw(); },
+    });
+    ["up", "down", "flat"].forEach((k) => document.getElementById("path-" + k).addEventListener("click", () => { K = PRESET[k].slice(); draw(); }));
+    function draw() {
+      const res = PROD.map(sim), best = Math.min(...res.map((r) => r.interest));
+      res.forEach((r, i) => EB.stat("path-o-" + i, '<span class="' + (r.interest === best ? "plus" : "minus") + '">' + EB.won(r.interest) + "</span>" + ' <small style="color:var(--text-faint)">10년 차 월 ' + EB.wonAxis(r.pay) + "</small>"));
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 6. 중도상환수수료 */
+  (function () {
+    const aG = EB.range("pre-a", (v) => EB.won(v * 1e4), draw);
+    const fG = EB.range("pre-f", (v) => v.toFixed(2) + "%", draw);
+    const rG = EB.range("pre-r", (v) => v + "%", draw);
+    let t = 1, box = null;
+    const fee = (tt) => aG() * 1e4 * fG() / 100 * Math.max(0, 3 - tt) / 3;
+    const waitInt = (tt) => aG() * 1e4 * rG() / 100 * Math.max(0, 3 - tt);
+    const cv = EB.canvas("#pre-cv", (ctx, w, h) => {
+      const P = EB.palette();
+      const xs = []; for (let x = 0; x <= 3.0001; x += 0.05) xs.push(x);
+      const ymax = Math.max(waitInt(0), fee(0)) * 1.1;
+      const c = EB.chart(ctx, { x: 56, y: 22, w: w - 70, h: h - 74 }, {
+        x: [0, 3], y: [0, ymax], xTicks: [0, 0.5, 1, 1.5, 2, 2.5, 3], xFmt: (v) => v + "년", yFmt: EB.wonAxis,
+        series: [
+          { data: xs.map((x) => [x, waitInt(x)]), color: P.bad, width: 2.4 },
+          { data: xs.map((x) => [x, fee(x)]), color: P.warn, width: 2.4 },
+        ],
+      });
+      box = c;
+      T(ctx, "3년 차까지 기다리면 더 내는 이자", c.box.x + 6, c.box.y + 12, { size: 11, color: P.bad, weight: 700 });
+      T(ctx, "지금 갚을 때 수수료", c.box.x + 6, c.Y(fee(0)) - 8, { size: 11, color: P.warn, weight: 700 });
+      const px = c.X(t);
+      ctx.save(); ctx.setLineDash([3, 3]); ctx.strokeStyle = P.text; ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.moveTo(px, c.box.y); ctx.lineTo(px, c.box.y + c.box.h); ctx.stroke(); ctx.restore();
+      ctx.beginPath(); ctx.arc(px, c.Y(waitInt(t)), 5, 0, TAU); ctx.fillStyle = P.bad; ctx.fill();
+      ctx.beginPath(); ctx.arc(px, c.Y(fee(t)), 5, 0, TAU); ctx.fillStyle = P.warn; ctx.fill();
+      handle(ctx, px, c.box.y + c.box.h, P);
+    }, { get height() { return pw("pre-cv") < 480 ? 260 : 280; } });
+    EB.drag(cv.canvas, { move(x) { if (!box) return; t = EB.clamp(Math.round((x - box.box.x) / box.box.w * 3 * 12) / 12, 0, 3); draw(); } });
+    function draw() {
+      const f = fee(t), wi = waitInt(t);
+      EB.stat("pre-o-t", "대출 " + (t * 12 % 12 === 0 ? t + "년" : Math.floor(t) + "년 " + Math.round(t * 12 % 12) + "개월") + " 차");
+      EB.stat("pre-o-f", '<span class="minus">' + EB.won(f, { digits: 1 }) + "</span>");
+      EB.stat("pre-o-i", '<span class="minus">' + EB.won(wi) + "</span>");
+      EB.stat("pre-o-n", t >= 3 ? "수수료 없음" : '<span class="plus">' + EB.won(wi - f) + " 이득</span>");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 7. 하늘네 종합 */
+  (function () {
+    const aG = EB.seg("case-a", draw);
+    const eG = EB.range("case-e", (v) => EB.won(v * 1e8), draw);
+    const mG = EB.seg("case-m", draw);
+    const fEl = document.getElementById("case-f");
+    fEl.addEventListener("change", draw);
+    let rate = 0.04, box = null;
+    function area() {
+      const a = C.areas.find((x) => x.key === aG());
+      const regulated = a.key === "A";
+      const ltv = regulated ? (fEl.checked ? L.ltv.firstHome : L.ltv.regulated) : L.ltv.unregulated;
+      return { a, ltv, regulated };
+    }
+    function calc(r) {
+      const A = area(), price = A.a.price, need = Math.max(0, price - eG() * 1e8);
+      const m = RE.maxLoan({ income: INCOME, rate: r, years: 30, price, ltv: A.ltv, stress: L.stress.metroFloor, cap: L.capMetro });
+      const pay = RE.payment({ principal: Math.min(need, m.max), rate: r, years: 30, method: mG() });
+      const payNeed = RE.payment({ principal: need, rate: r, years: 30, method: mG() });
+      return { A, price, need, m, pay, payNeed, ok: need <= m.max + 1 };
+    }
+    const cv = EB.canvas("#case-cv", (ctx, w, h) => {
+      const P = EB.palette();
+      const xs = []; for (let r = 0.035; r <= 0.0601; r += 0.0025) xs.push(r);
+      const c0 = calc(0.04);
+      const top = Math.ceil(Math.max(c0.m.byLtv === Infinity ? 0 : Math.min(c0.m.byLtv, 7e8), c0.need, calc(0.035).m.byDsr, L.capMetro) / 1e8 + 0.6) * 1e8;
+      const c = EB.chart(ctx, { x: 56, y: 22, w: w - 70, h: h - 74 }, {
+        x: [0.035, 0.06], y: [2e8, top], xTicks: [0.035, 0.04, 0.045, 0.05, 0.055, 0.06], xFmt: (v) => +(v * 100).toFixed(1) + "%", yFmt: EB.wonAxis,
+        series: [
+          { data: xs.map((r) => [r, calc(r).m.byDsr]), color: P.bad, width: 2 },
+          { data: xs.map((r) => [r, calc(r).m.max]), color: P.text, width: 2.8 },
+        ],
+        hlines: [
+          { y: c0.m.byLtv, color: P.accent, label: "LTV " + Math.round(c0.A.ltv * 100) + "%" },
+          { y: L.capMetro, color: P.accent2, label: "상한 6억" },
+          { y: c0.need, color: P.ok, dash: [] },
+        ],
+      });
+      box = c;
+      // 한도 부족 영역
+      const short = xs.filter((r) => !calc(r).ok);
+      if (short.length) { const x0 = c.X(Math.max(0.035, short[0] - 0.00125)); ctx.save(); ctx.fillStyle = P.bad; ctx.globalAlpha = 0.09; ctx.fillRect(x0, c.box.y, c.box.x + c.box.w - x0, c.box.h); ctx.restore(); }
+      T(ctx, "한도(굵은 선) = min(DSR, LTV, 상한)", c.box.x + 6, 14, { size: 11, color: P.dim });
+      if (c0.need > 2e8 && c0.need < top) T(ctx, "필요한 대출 " + EB.wonAxis(c0.need), c.box.x + 6, c.Y(c0.need) + 14, { size: 11, color: P.ok, weight: 700 });
+      T(ctx, "DSR 한도", c.box.x + 6, c.Y(calc(0.035).m.byDsr) - 6, { size: 11, color: P.bad, weight: 700 });
+      const cr = calc(rate), px = c.X(rate);
+      ctx.save(); ctx.setLineDash([3, 3]); ctx.strokeStyle = P.text; ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.moveTo(px, c.box.y); ctx.lineTo(px, c.box.y + c.box.h); ctx.stroke(); ctx.restore();
+      ctx.beginPath(); ctx.arc(px, c.Y(cr.m.max), 6, 0, TAU); ctx.fillStyle = cr.ok ? P.text : P.bad; ctx.fill();
+      handle(ctx, px, c.box.y + c.box.h, P);
+    }, { get height() { return pw("case-cv") < 480 ? 290 : 310; } });
+    EB.drag(cv.canvas, { move(x) { if (!box) return; rate = EB.clamp(Math.round((0.035 + (x - box.box.x) / box.box.w * 0.025) * 800) / 800, 0.035, 0.06); draw(); } });
+    function draw() {
+      const c = calc(rate);
+      EB.stat("case-o-l", EB.won(c.m.max) + ' <small style="color:var(--text-faint)">(' + BIND[c.m.binding] + ")</small>");
+      EB.stat("case-o-n", '<span class="' + (c.ok ? "plus" : "minus") + '">' + EB.won(c.need) + "</span>" + (c.ok ? "" : ' <small class="bad-t">한도 부족 ' + EB.won(c.need - c.m.max) + "</small>"));
+      EB.stat("case-o-p", EB.won(c.payNeed.first) + ' <small style="color:var(--text-faint)">@' + pctS(rate, 2) + "</small>");
+      const real = c.payNeed.annualFirst / INCOME;
+      EB.stat("case-o-d", pctS(c.payNeed.first / C.monthlyNet, 0) + " · " + pctS(real, 1));
+      cv.redraw();
+    }
+    draw();
+  })();
+})();
+</script>
+</body>
+</html>

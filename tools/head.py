@@ -8,7 +8,7 @@
   ... (이 사이는 스크립트가 덮어쓴다)
   <!--head:end-->
 제목·장 번호는 js/common.js 의 CHAPTERS 에서 읽는다. 사이트맵과 index.html JSON-LD hasPart 도 갱신한다.
-실행: python3 tools/head.py [slug ...]   (slug를 주면 그 장의 head만 고친다)
+실행: python3 tools/head.py [slug ...]   (slug를 주면 그 장의 head만 고친다, --site는 사이트맵·JSON-LD만)
 """
 import json, re, pathlib, datetime, sys
 
@@ -60,8 +60,11 @@ def head(c, meta):
     out += '<script src="../js/estate.js"></script>' + "\n"
     return out
 
-ONLY = sys.argv[1:]
-if ONLY:
+SITE_ONLY = sys.argv[1:] == ["--site"]   # 사이트맵과 index.html JSON-LD만 갱신
+ONLY = [] if SITE_ONLY else sys.argv[1:]
+if SITE_ONLY:
+    CH_RUN = []
+elif ONLY:
     CH_RUN = [c for c in CH if c["slug"] in ONLY]
 else:
     CH_RUN = CH
