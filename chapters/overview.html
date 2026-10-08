@@ -1,0 +1,979 @@
+<!doctype html>
+<!-- Copyright (c) 2026 geniuskey and EstateBook contributors.
+     Executable code: MIT (see ../LICENSE-MIT).
+     Text, illustrations, questions and explanations: CC-BY-4.0 (see ../LICENSE.md). -->
+<html lang="ko">
+<head>
+<!--head:start {"desc": "부동산은 움직이지 않고, 하나뿐이고, 비싸고, 빚으로 사고, 살면서 투자하는 이상한 자산이다. 가계 자산의 약 4분의 3이 부동산인 나라에서 집값을 움직이는 다섯 힘과 이 책의 지도를 시뮬레이터로 둘러본다."}-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>부동산의 지도 · EstateBook</title>
+<meta name="description" content="부동산은 움직이지 않고, 하나뿐이고, 비싸고, 빚으로 사고, 살면서 투자하는 이상한 자산이다. 가계 자산의 약 4분의 3이 부동산인 나라에서 집값을 움직이는 다섯 힘과 이 책의 지도를 시뮬레이터로 둘러본다.">
+<link rel="canonical" href="https://estatebook.euiyun.com/chapters/overview.html">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<meta name="theme-color" content="#0f766e">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EstateBook">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="부동산의 지도 · EstateBook">
+<meta property="og:description" content="부동산은 움직이지 않고, 하나뿐이고, 비싸고, 빚으로 사고, 살면서 투자하는 이상한 자산이다. 가계 자산의 약 4분의 3이 부동산인 나라에서 집값을 움직이는 다섯 힘과 이 책의 지도를 시뮬레이터로 둘러본다.">
+<meta property="og:url" content="https://estatebook.euiyun.com/chapters/overview.html">
+<meta property="og:image" content="https://estatebook.euiyun.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Chapter","LearningResource"],"@id":"https://estatebook.euiyun.com/chapters/overview.html#chapter","name":"부동산의 지도","headline":"부동산의 지도 · EstateBook","description":"부동산은 움직이지 않고, 하나뿐이고, 비싸고, 빚으로 사고, 살면서 투자하는 이상한 자산이다. 가계 자산의 약 4분의 3이 부동산인 나라에서 집값을 움직이는 다섯 힘과 이 책의 지도를 시뮬레이터로 둘러본다.","url":"https://estatebook.euiyun.com/chapters/overview.html","position":1,"inLanguage":"ko","isAccessibleForFree":true,"learningResourceType":"인터랙티브 교재","educationalLevel":"일반 성인","image":"https://estatebook.euiyun.com/og.png","dateModified":"2026-10-08","isPartOf":{"@type":"Book","@id":"https://estatebook.euiyun.com/#book","name":"EstateBook · 집값과 전세를 숫자로 푸는 부동산 교과서","url":"https://estatebook.euiyun.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"EstateBook","item":"https://estatebook.euiyun.com/"},{"@type":"ListItem","position":2,"name":"1. 부동산의 지도","item":"https://estatebook.euiyun.com/chapters/overview.html"}]}]}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../css/style.css">
+<script src="../js/common.js"></script>
+<script src="../js/estate.js"></script>
+<!--head:end-->
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3d6151a0abc94ede89285d462527fa80"}'></script>
+<!-- End Cloudflare Web Analytics -->
+</head>
+<body data-chapter="overview">
+<main class="chapter">
+  <header class="chapter-hero">
+    <div class="eyebrow">Chapter 01</div>
+    <h1>부동산의 지도</h1>
+    <p class="lead">경기 B시의 84㎡ 아파트에 전세로 사는 오하늘과 정재원 부부는 2027년 4월에 계약이 끝난다. 보증금 4억원 가운데 2억원은 은행에서 빌린 돈이다. 세 살 딸이 곧 유치원에 가고, 재원이 일하는 초등학교는 집에서 15분 거리다. 같은 단지의 같은 평형은 지금 약 6억 2,000만원에 거래된다. 저녁 식탁에서 하늘이 묻는다. "만기 때 다시 전세로 갈까, 이번엔 살까?" 그 질문은 금방 다른 질문들로 갈라진다. 집값은 왜 지금 이 값인가. 우리 보증금은 안전한가. 사려면 얼마를 빌릴 수 있고, 빌려도 되는가. 세금은 얼마이고, 2년 뒤 집값은 어떻게 될까. 이 책은 그 질문들을 숫자로 하나씩 푼다. 이 장에서는 먼저 부동산이 어떤 자산인지, 집값을 움직이는 힘이 무엇인지, 이 책이 어떤 순서로 그 힘들을 다루는지 지도를 그린다.</p>
+    <ul class="objectives">
+      <li>부동산이 예금·주식과 다른 다섯 가지 성질(움직이지 않음, 하나뿐, 비쌈, 빚으로 삼, 거주와 투자의 겸용)을 설명한다.</li>
+      <li>가계 자산의 약 4분의 3이 부동산이라는 사실이 집값 변화에 대한 가계의 민감도를 어떻게 바꾸는지 계산한다.</li>
+      <li>세입자·집주인·중개사·은행·정부가 얽힌 부동산 생태계의 지도를 그린다.</li>
+      <li>집값을 움직이는 다섯 힘(입지, 금리, 공급, 대출 규제, 기대)을 구분하고 각각이 어느 장에서 풀리는지 찾는다.</li>
+      <li>하늘네의 출발점을 대차대조표로 적는다.</li>
+    </ul>
+  </header>
+
+  <section id="strange">
+    <h2>부동산이라는 이상한 자산</h2>
+    <p>예금 1,000만원은 어느 은행에 넣어도 1,000만원이다. 삼성전자 주식 한 주는 누가 사든 같은 한 주이고, 오늘 팔면 이틀 뒤 돈이 들어온다. 집은 다르다. 같은 단지, 같은 평형이라도 5층과 15층, 남향과 북향, 역 쪽 동과 안쪽 동의 값이 다르다. 내놓아도 몇 달 동안 안 팔릴 수 있고, 사고팔 때마다 세금과 수수료가 수백만원씩 붙는다. 무엇보다 대부분의 사람은 집을 자기 돈만으로 사지 않는다.</p>
+    <p>경제학은 <span class="term">부동산</span><span class="en">(Real estate)</span>을 토지와 그 위에 붙어 있는 건물이라고 정의한다. 이 정의의 핵심은 '붙어 있다'는 데 있다. 땅은 옮길 수 없고, 건물은 땅에서 떼어 낼 수 없다. 그래서 집의 값은 집 자체보다 그 집이 놓인 자리에서 더 많이 나온다. 아래 그림은 이 책 전체가 다루는 부동산의 다섯 가지 성질을 예금·주식과 나란히 놓은 것이다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 460 350" role="img" aria-label="예금·주식과 부동산의 다섯 가지 차이 비교표">
+        <rect x="8" y="8" width="444" height="38" rx="6" class="f-surface"/>
+        <text x="60" y="32" text-anchor="middle" class="lbl-dim">성질</text>
+        <text x="190" y="32" text-anchor="middle" class="lbl-b">예금·주식</text>
+        <text x="350" y="32" text-anchor="middle" class="lbl-acc">부동산</text>
+        <line x1="120" y1="52" x2="120" y2="318" class="s-dash"/>
+        <line x1="262" y1="52" x2="262" y2="318" class="s-dash"/>
+        <text x="60" y="80" text-anchor="middle" class="lbl-b">자리</text>
+        <text x="190" y="80" text-anchor="middle" class="lbl">어디서 사든 같다</text>
+        <text x="350" y="76" text-anchor="middle" class="lbl">옮길 수 없다</text>
+        <text x="350" y="94" text-anchor="middle" class="lbl-dim">값의 대부분이 자리에서</text>
+        <text x="60" y="132" text-anchor="middle" class="lbl-b">같은 것</text>
+        <text x="190" y="132" text-anchor="middle" class="lbl">한 주는 한 주</text>
+        <text x="350" y="128" text-anchor="middle" class="lbl">똑같은 집은 없다</text>
+        <text x="350" y="146" text-anchor="middle" class="lbl-dim">가격이 하나로 안 정해진다</text>
+        <text x="60" y="184" text-anchor="middle" class="lbl-b">크기</text>
+        <text x="190" y="184" text-anchor="middle" class="lbl">만원 단위로 산다</text>
+        <text x="350" y="180" text-anchor="middle" class="lbl">소득의 몇 년 치</text>
+        <text x="350" y="198" text-anchor="middle" class="lbl-dim">사고팔 때 비용도 크다</text>
+        <text x="60" y="236" text-anchor="middle" class="lbl-b">돈의 출처</text>
+        <text x="190" y="236" text-anchor="middle" class="lbl">대개 내 돈</text>
+        <text x="350" y="232" text-anchor="middle" class="lbl">대출·전세금을 낀다</text>
+        <text x="350" y="250" text-anchor="middle" class="lbl-dim">손익이 몇 배로 커진다</text>
+        <text x="60" y="288" text-anchor="middle" class="lbl-b">쓰임</text>
+        <text x="190" y="288" text-anchor="middle" class="lbl">투자만 한다</text>
+        <text x="350" y="284" text-anchor="middle" class="lbl">살면서 투자한다</text>
+        <text x="350" y="302" text-anchor="middle" class="lbl-dim">팔면 이사를 가야 한다</text>
+        <text x="230" y="338" text-anchor="middle" class="lbl-dim">오른쪽 칸 하나하나가 이 책의 부 하나씩이 된다</text>
+      </svg>
+      <figcaption><b>그림 1. 예금·주식과 부동산.</b> 옮길 수 없다는 성질은 입지와 지대의 문제를(<a href="location.html">2장</a>), 똑같은 것이 없다는 성질은 가격을 어떻게 재는가의 문제를(<a href="data.html">16장</a>), 크기는 거래 비용과 세금의 문제를(<a href="buy.html">8장</a>, <a href="tradetax.html">14장</a>), 빚으로 산다는 성질은 대출과 레버리지의 문제를(<a href="mortgage.html">9장</a>, <a href="leverage.html">10장</a>), 거주와 투자의 겸용은 사느냐 빌리느냐의 문제를(<a href="decision.html">20장</a>) 불러온다. 한국에는 여기에 하나가 더 붙는다. 세입자가 집주인에게 목돈을 맡기는 <a href="jeonse.html">전세</a>다.</figcaption>
+    </figure>
+  </section>
+
+  <section id="share">
+    <h2>가계 자산의 4분의 3</h2>
+    <p>이 다섯 성질이 왜 중요한지는 한국 가계의 재산 목록을 보면 드러난다. 통계청·한국은행·금융감독원이 해마다 내는 <span class="term">가계금융복지조사</span>에 따르면 2025년 3월 말 기준 가구당 평균 자산은 약 5억 6,678만원이고, 그중 75.8%가 <span class="term">실물자산</span><span class="en">(Real assets)</span>이다. 실물자산은 예금·주식 같은 금융자산이 아닌 자산으로, 대부분이 거주 주택과 그 밖의 부동산이다. 금융자산은 24.2%에 그친다. 한국 가계의 재산은 대부분 집이라는 뜻이다.</p>
+    <p>재산이 한 바구니에 담겨 있으면 그 바구니의 값이 조금만 흔들려도 재산 전체가 크게 흔들린다. 그리고 그 바구니를 빚으로 샀다면 흔들림은 더 커진다. 아래에서 세 가구를 골라 집값을 움직여 본다. 평균 가구, 지금처럼 전세로 사는 하늘네, 그리고 하늘네가 지금 가진 돈으로 C아파트를 산다고 가정한 경우다.</p>
+
+    <div class="sim" id="sim-bs">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>집값이 움직이면 우리 집 재산은</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="bs-cv"></canvas></div>
+        <div class="sim-controls">
+          <div class="seg" id="bs-who"><button data-value="avg" class="on">평균 가구</button><button data-value="rent">하늘네(전세)</button><button data-value="buy">하늘네(매수 가정)</button></div>
+          <label class="ctrl"><span>집값 변화 <output id="bs-g-out"></output></span><input type="range" id="bs-g" min="-30" max="30" step="1" value="10"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">자산 중 부동산</span><span class="v" id="bs-o-sh">—</span></div>
+        <div class="stat"><span class="k" id="bs-o-nk">순자산 변화</span><span class="v" id="bs-o-nw">—</span></div>
+        <div class="stat"><span class="k">집값 1%당 변화</span><span class="v" id="bs-o-x">—</span></div>
+      </div>
+      <div class="sim-note" id="bs-msg">해볼 것: ① 평균 가구에서 집값을 +10%로 둔다. 자산의 약 4분의 3이 부동산이라 총자산이 약 7.6% 늘어난다. ② 하늘네(전세)로 바꾼다. 보증금은 집값과 상관없이 정해진 돈이라 순자산은 그대로다. 대신 '같은 집까지 남은 거리'가 벌어진다. 세입자는 집값이 오르면 상대적으로 가난해진다. ③ 하늘네(매수 가정)에서 집값을 −30%까지 내린다. 순자산의 대부분이 사라진다. (평균 가구는 2025 가계금융복지조사의 평균 자산과 실물자산 비중을 썼고, 실물자산이 모두 집값과 같이 움직인다고 단순화했다. 매수 가정은 대출 3억 8,000만원, 거래비용을 뺀 나머지를 예금으로 둔다.)</div>
+    </div>
+
+    <p>세 가구가 같은 집값 변화를 전혀 다르게 겪는다. 평균 가구는 자산의 4분의 3이 집이라 집값이 10% 오르면 총자산이 7.6% 오른다. 하늘네처럼 전세로 사는 가구는 순자산이 그대로인 대신 사고 싶은 집에서 멀어진다. 그리고 빚을 내 산 가구는 집값 변화가 순자산에 두 배 넘게 증폭되어 들어온다. 같은 숫자를 보고도 누구는 기뻐하고 누구는 불안해하는 이유다. 이 증폭의 정체는 이 장 뒤쪽과 <a href="leverage.html">10장</a>에서 다시 만난다.</p>
+
+    <div class="callout deep">
+      <strong>세입자는 집값에 '공매도'를 한 셈이다</strong>
+      집이 없는 사람은 언젠가 살 집 하나를 '빌려 쓰고 있는' 상태다. 집값과 임대료가 오르면 같은 주거를 얻는 데 드는 돈이 늘어나니, 집값이 오를 때 손해를 보는 위치에 있다. 금융에서는 이것을 주택에 대한 <span class="term">숏 포지션</span><span class="en">(Short position)</span>이라 부르기도 한다. 반대로 집 한 채만 가진 사람은 집값이 올라도 비슷하게 오른 다른 집으로 옮겨야 하니 생각만큼 부자가 되지 않는다. 그래서 '집 한 채는 투자가 아니라 주거비를 고정하는 장치'라는 관점이 있다. 이 관점은 <a href="decision.html">20장</a>에서 숫자로 확인한다.
+    </div>
+  </section>
+
+  <section id="immobile">
+    <h2>움직이지 않는다: 값은 자리에서 나온다</h2>
+    <p>집을 옮길 수 없다는 것은 집의 값이 그 자리에서 무엇에 닿을 수 있는가로 정해진다는 뜻이다. 일자리에 몇 분 만에 닿는지, 역까지 몇 분을 걷는지, 아이가 어느 학교에 다니는지, 공원과 병원이 가까운지. 같은 건물을 다른 자리에 옮겨 놓으면 값이 두 배가 되기도 하고 절반이 되기도 한다. 이것을 <span class="term">입지</span><span class="en">(Location)</span>라 한다.</p>
+    <p>아래 지도는 가상의 도시다. 왼쪽 끝에 일자리가 몰린 도심이 있고, 지하철 한 줄이 오른쪽으로 뻗어 있다. 집을 끌어 여기저기 놓아 본다. 바탕의 색이 진할수록 같은 84㎡ 아파트가 비싸다. 가격은 통근 시간, 역까지 걷는 시간, 건물 나이로 계산한다.</p>
+
+    <div class="sim" id="sim-map">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>지도 위에서 집을 옮기면</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="map-cv"></canvas><span class="hint">집을 끌어 옮긴다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>건물 나이 <output id="map-age-out"></output></span><input type="range" id="map-age" min="0" max="40" step="1" value="15"></label>
+          <label class="check"><input type="checkbox" id="map-new"> 새 노선 개통(점선)</label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">도심까지 통근</span><span class="v" id="map-o-c">—</span></div>
+        <div class="stat"><span class="k">역까지 도보</span><span class="v" id="map-o-w">—</span></div>
+        <div class="stat"><span class="k">84㎡ 추정 가격</span><span class="v" id="map-o-p">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 집을 도심 옆 역에서 노선을 따라 오른쪽 끝 역까지 끌고 간다. 같은 집인데 가격이 절반 남짓으로 내려간다. 역에서도 먼 오른쪽 아래 구석까지 가면 3분의 1 수준이다. ② 지도 가운데에서 역 바로 옆과 그 아래 역에서 먼 곳을 비교한다. 도심에서 같은 거리라도 역까지 걸어서 30분이 넘으면 값이 20% 넘게 내려간다. ③ '새 노선 개통'을 켠다. 아래쪽에 역이 생기면서 그 주변의 색이 진해진다. 새 철도 계획이 발표될 때 주변 집값이 먼저 움직이는 이유다. (교육용 헤도닉 모형. 통근 시간은 걸어서 역까지 간 뒤 지하철을 타는 경우와 차로 가는 경우 중 짧은 쪽으로 잡았다. 실제 시세가 아니다.)</div>
+    </div>
+
+    <p>이 지도에서 집값을 정한 것은 집 자체가 아니라 집에서 도심까지의 '시간'이었다. 도심에서 멀어질수록 통근에 드는 시간과 돈이 늘어나고, 사람들은 그만큼 낮은 값만 내려 한다. 19세기 경제학자들이 농지의 <span class="term">지대</span><span class="en">(Land rent)</span>를 시장까지의 거리로 설명한 이론이 도시의 집값에도 거의 그대로 들어맞는다. 새 노선이 생기면 지도 위 거리는 그대로인데 시간이 줄어 값이 오른다. <a href="location.html">2장</a>은 이 원리를 하늘네의 후보 지역 세 곳에 적용하고, 집값을 통근·역세권·학군·건물 나이 같은 속성으로 쪼개는 <span class="term">헤도닉 가격 모형</span><span class="en">(Hedonic pricing model)</span>을 다룬다.</p>
+  </section>
+
+  <section id="costly">
+    <h2>하나뿐이고 비싸다: 사고파는 데 드는 돈</h2>
+    <p>똑같은 집이 없으니 집값은 주식처럼 한 줄의 시세로 정해지지 않는다. 같은 단지의 최근 거래 몇 건, 집주인이 부르는 값(<span class="term">호가</span>), 감정평가액이 모두 조금씩 다르다. 사는 사람과 파는 사람은 서로 다른 숫자를 들고 협상한다. 이 일을 이어 주는 사람이 <span class="term">공인중개사</span>이고, 그 대가가 <span class="term">중개보수</span>다. 집을 사면 여기에 <span class="term">취득세</span>가 붙고, 소유권을 옮기는 <span class="term">등기</span> 비용과 이사 비용이 더해진다.</p>
+    <p>이 비용은 한 번 내면 끝이지만, 몇 년 살다 파느냐에 따라 한 해 부담이 달라진다. 아래에서 집값과 보유 기간을 바꿔 본다. 막대는 사고팔 때 드는 돈 전체를 보유 연수로 나눈 '한 해 몫'이다.</p>
+
+    <div class="sim" id="sim-cost">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>사고팔 때 드는 돈, 몇 년에 나눠 낼까</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="cost-cv"></canvas><span class="hint">막대를 누르면 그 연수를 고른다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>집값 <output id="cost-p-out"></output></span><input type="range" id="cost-p" min="2" max="20" step="0.2" value="6.2"></label>
+          <div class="seg" id="cost-h"><button data-value="1" class="on">1주택</button><button data-value="2">조정대상지역 2주택</button></div>
+          <label class="check"><input type="checkbox" id="cost-first"> 생애최초 감면</label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">사고팔 때 드는 돈</span><span class="v" id="cost-o-t">—</span></div>
+        <div class="stat"><span class="k">집값 대비</span><span class="v" id="cost-o-r">—</span></div>
+        <div class="stat"><span class="k" id="cost-o-yk">고른 연수의 한 해 몫</span><span class="v" id="cost-o-y">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 기본값(6억 2,000만원, 1주택)에서 1년 막대를 본다. 사고팔기만 했는데 집값의 약 2.6%가 사라진다. 10년을 살면 한 해 0.26%다. ② 집값을 9억 넘게 올린다. 취득세율이 3%로 뛰면서 막대가 길어진다. ③ '조정대상지역 2주택'을 고른다. 취득세가 8%로 중과되어 왕복 비용이 집값의 10%에 가까워진다. 짧게 사고파는 거래를 비싸게 만들려는 제도다. (2026년 기준 취득세·지방교육세, 중개보수 상한 요율, 법무비 집값의 0.2%, 이사 200만원을 넣었다. 85㎡ 이하로 보아 농어촌특별세는 없다. 팔 때의 양도소득세와 대출 관련 비용은 넣지 않았다.)</div>
+    </div>
+
+    <p>상장 주식은 사고팔 때 드는 비용이 대개 거래 금액의 1%에도 못 미친다. 집은 한 번 사고팔면 몇 %가 사라진다. 그래서 집은 자주 사고팔기 어렵고, 한번 사면 오래 갖고 가는 자산이 된다. 집값 통계가 매일이 아니라 한 달에 한 번 나오고 그나마 거래가 적은 달에는 크게 출렁이는 것도, 집값이 한번 방향을 잡으면 몇 년씩 같은 쪽으로 가는 것도 여기에 뿌리가 있다(<a href="data.html">16장</a>, <a href="bubble.html">17장</a>).</p>
+
+    <div class="callout pro">
+      <strong>첫 상담에서 보수 구조를 먼저 밝힌다</strong>
+      중개보수는 거래가 성사될 때만 받는다. 계약이 안 되면 몇 주 동안 집을 보여 주고 서류를 떼어 준 시간은 한 푼도 되지 않는다. 그래서 중개사에게는 '거래가 일어나는 것' 자체가 이익이고, 손님에게 지금 사지 말라고 말하는 것이 손해처럼 느껴지는 순간이 생긴다. 매매에서는 파는 사람과 사는 사람 양쪽에서 보수를 받는 경우가 많아서 가격 협상에서 어느 편에 서야 하는지도 애매하다. 오래 일한 중개사들은 첫 만남에서 이 구조를 먼저 말한다. "보수는 이 요율표 안에서 받고, 계약이 돼야 받습니다. 그래서 제가 서두르는 것처럼 보이면 그렇게 말씀해 주세요." 보수 상한 요율은 법(공인중개사법 시행규칙)이 정하고, 그 안에서 협의할 수 있다는 것도 함께 알려 준다.
+    </div>
+  </section>
+
+  <section id="leverage">
+    <h2>빚으로 산다: 집값 10%가 내 돈의 몇 %인가</h2>
+    <p>집은 소득의 몇 년 치이기 때문에 거의 모든 사람이 빚을 내서 산다. 은행의 <span class="term">주택담보대출</span>이거나, 세입자의 보증금이다. 빚을 끼고 자산을 사는 것을 <span class="term">레버리지</span><span class="en">(Leverage)</span>라 한다. 지렛대처럼 작은 내 돈으로 큰 자산을 움직인다는 뜻이다. 지렛대는 양쪽으로 똑같이 작동한다.</p>
+
+    <div class="formula">
+      $$\text{자기자본 수익률} = g\cdot\frac{P}{E} \;-\; r\cdot\frac{D}{E}$$
+      <div class="where">\(P\) 집값, \(E\) 내 돈(자기자본), \(D = P - E\) 빚, \(g\) 한 해 집값 변화율, \(r\) 대출 금리. 집값 변화가 \(P/E\)배로 커져서 내 돈에 들어오고, 이자는 빚의 크기만큼 깎인다. 세금·수선비·임대수입은 뺐다.</div>
+    </div>
+
+    <p>아래 그래프의 가로축은 한 해 동안의 집값 변화, 세로축은 내 돈의 변화다. 회색 점선은 빚 없이 산 경우로, 집값이 10% 오르면 내 돈도 10% 는다. 집값 변화 손잡이를 끌고, 담보인정비율(<span class="term">LTV</span>, 집값 중 빌린 돈의 비율)과 금리를 바꿔 본다.</p>
+
+    <div class="sim" id="sim-lev">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>레버리지 확대경</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="lev-cv"></canvas><span class="hint">아래 손잡이를 끌어 집값 변화를 고른다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>LTV(집값 중 대출) <output id="lev-l-out"></output></span><input type="range" id="lev-l" min="0" max="90" step="5" value="60"></label>
+          <label class="ctrl"><span>대출 금리 <output id="lev-r-out"></output></span><input type="range" id="lev-r" min="1" max="8" step="0.25" value="4"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">고른 집값 변화</span><span class="v" id="lev-o-g">—</span></div>
+        <div class="stat"><span class="k">내 돈의 변화</span><span class="v" id="lev-o-e">—</span></div>
+        <div class="stat"><span class="k">내 돈이 0이 되는 하락</span><span class="v" id="lev-o-z">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① LTV 60%, 금리 4%에서 집값 +10%를 본다. 내 돈은 19% 늘어난다. 집값이 2.5배로 커지고 이자 6%가 빠진 결과다. ② 손잡이를 −10%로 끈다. 내 돈은 31% 줄어든다. 같은 10%인데 손실이 이익보다 크다. 집값이 움직이지 않아도 이자는 나가기 때문이다. ③ LTV를 90%로 올린다. 집값이 10%만 빠져도 내 돈이 전부 사라지고, 그 아래로는 빚이 집값보다 커진다. 세입자의 보증금도 집주인에게는 이자 없는 빚이라 같은 그림이 그려진다(<a href="jeonse.html">5장</a>). (1년 보유, 세금·수선비·거래비용은 뺐다.)</div>
+    </div>
+
+    <p>레버리지는 내 돈만으로는 살 수 없는 집을 살 수 있게 해 주고, 집값이 오르는 시기에는 자기 돈의 수익률을 몇 배로 키운다. 같은 지렛대가 하락기에는 손실을 몇 배로 키우고, 금리가 오르면 집값이 그대로여도 손해를 만든다. 한국의 부동산 시장에서 일어난 큰 사건들, 갭투자의 유행, 역전세, 깡통전세, 영끌 매수자의 이자 부담은 모두 이 그래프의 어딘가에 있다. 은행이 빌려주는 한도는 <a href="mortgage.html">9장</a>에서, 레버리지의 위험은 <a href="leverage.html">10장</a>에서 다룬다.</p>
+  </section>
+
+  <section id="dual">
+    <h2>살면서 투자한다: 집의 두 얼굴</h2>
+    <p>주식은 들고 있어도 그 안에서 잠을 잘 수는 없다. 집은 갖고 있는 동안 그 안에서 산다. 그래서 집을 가진 사람은 매년 두 가지를 얻는다. 하나는 남에게 집세를 내지 않아도 되는 이익이고, 다른 하나는 집값의 변화다. 앞의 것은 눈에 보이지 않지만 분명히 있는 돈이다. 같은 집을 빌려 산다면 냈어야 할 임대료를 경제학은 <span class="term">귀속임대료</span><span class="en">(Imputed rent)</span>라 부른다. 대신 집을 가진 사람은 대출 이자, 집에 묶인 내 돈의 기회비용, 보유세, 수선비를 낸다.</p>
+    <p>아래 폭포 그래프는 C아파트를 산 사람이 한 해에 얻고 잃는 것을 쌓은 것이다. 녹색은 들어오는 몫, 빨간색은 나가는 몫이다. 집값 상승률과 대출 금리를 움직여 마지막 막대(한 해 순이익)가 어떻게 변하는지 본다.</p>
+
+    <div class="sim" id="sim-dual">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>집 한 채의 한 해 손익</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="dual-cv"></canvas></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>집값 상승률(연) <output id="dual-g-out"></output></span><input type="range" id="dual-g" min="-6" max="8" step="0.5" value="0"></label>
+          <label class="ctrl"><span>대출 금리 <output id="dual-r-out"></output></span><input type="range" id="dual-r" min="2" max="8" step="0.25" value="4"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">아끼는 주거비(귀속임대료)</span><span class="v" id="dual-o-i">—</span></div>
+        <div class="stat"><span class="k">보유 비용</span><span class="v" id="dual-o-c">—</span></div>
+        <div class="stat"><span class="k">한 해 순이익</span><span class="v" id="dual-o-n">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 집값이 그대로(0%)이고 금리가 4%일 때, 아끼는 주거비보다 보유 비용이 크다. 집값이 오르지 않으면 이 집은 빌려 사는 것보다 한 해 수백만원 비싸다. ② 상승률을 올려 순이익이 0이 되는 지점을 찾는다. 이 값이 '빌리는 것과 사는 것이 같아지는 집값 상승률'이다. ③ 금리를 7%로 올린다. 같은 집값 전망에서 사는 쪽의 계산이 크게 나빠진다. 금리가 집값을 누르는 경로 중 하나다(<a href="value.html">3장</a>). (집값 6억 2,000만원, 대출 3억 8,000만원, 내 돈의 기회비용 연 3%, 귀속임대료는 같은 집 전세 4억원을 법정 전환율 상한 연 5%로 환산한 값. 보유세는 1주택 기준 교육용 계산, 수선비는 집값의 0.5%, 거래비용은 10년에 나눠 넣었다.)</div>
+    </div>
+
+    <p>이 그래프는 '집을 사면 무조건 이득'도 '빌려 사는 게 무조건 합리적'도 아니라는 것을 보여 준다. 답은 집값 상승률, 금리, 내 돈을 다른 데 두었을 때의 수익률, 얼마나 오래 살지에 달려 있다. 그리고 숫자로 다 잡히지 않는 것이 있다. 2년마다 이사를 걱정하지 않아도 되는 안정, 아이의 학교를 바꾸지 않아도 되는 것, 집을 마음대로 고칠 수 있는 자유다. 반대로 집을 사면 직장을 옮기거나 지역을 바꾸기가 어려워진다. <a href="decision.html">20장</a>은 이 모든 것을 같은 저울에 올린다. MoneyBook의 <a href="https://moneybook.euiyun.com/chapters/housing.html">집: 월세·전세·매매</a>가 그 첫 단계를 짧게 다루었다면, 이 책은 그 저울에 들어가는 숫자 하나하나가 어디서 오는지를 판다.</p>
+  </section>
+
+  <section id="ecosystem">
+    <h2>집 한 채를 둘러싼 사람들</h2>
+    <p>집 한 채가 거래되거나 임대될 때 등장하는 사람은 생각보다 많다. 세입자와 집주인, 사는 사람과 파는 사람이 있고, 그 사이를 공인중개사가 잇는다. 은행은 사는 사람에게 주택담보대출을, 세입자에게 전세대출을 내준다. 집을 짓는 쪽에는 땅을 사서 사업을 꾸리는 <span class="term">시행사</span>와 공사를 맡는 <span class="term">시공사(건설사)</span>가 있다. 정부는 세금을 걷고, 대출을 규제하고, 공급을 계획한다. 세입자의 보증금을 지켜 주는 보증기관과 권리 관계를 기록하는 등기소도 빠질 수 없다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 460 412" role="img" aria-label="부동산 생태계 지도: 세입자, 집주인, 매수인·매도인, 공인중개사, 은행, 시행사·시공사, 정부, 보증기관, 등기소의 관계">
+        <defs><marker id="ov-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="context-stroke"/></marker></defs>
+        <rect x="150" y="8" width="160" height="50" rx="8" class="f-acc2-soft"/>
+        <text x="230" y="29" text-anchor="middle" class="lbl-acc2">정부·지자체</text>
+        <text x="230" y="47" text-anchor="middle" class="lbl-dim">세금·대출 규제·공급 계획</text>
+        <rect x="10" y="96" width="120" height="58" rx="8" class="f-ok-soft"/>
+        <text x="70" y="120" text-anchor="middle" class="lbl-b">세입자·매수인</text>
+        <text x="70" y="139" text-anchor="middle" class="lbl-dim">보증금·잔금을 낸다</text>
+        <rect x="330" y="96" width="120" height="58" rx="8" class="f-acc-soft"/>
+        <text x="390" y="120" text-anchor="middle" class="lbl-acc">집주인·매도인</text>
+        <text x="390" y="139" text-anchor="middle" class="lbl-dim">빌려주거나 판다</text>
+        <path d="M132 112 L326 112" class="s-line" marker-end="url(#ov-ar)"/>
+        <text x="230" y="104" text-anchor="middle" class="lbl-dim">보증금·매매대금</text>
+        <path d="M326 140 L134 140" class="s-ok" marker-end="url(#ov-ar)"/>
+        <text x="230" y="157" text-anchor="middle" class="lbl-dim">집(사용권·소유권)</text>
+        <rect x="170" y="176" width="120" height="56" rx="8" class="f-warn-soft"/>
+        <text x="230" y="199" text-anchor="middle" class="lbl-b">공인중개사</text>
+        <text x="230" y="218" text-anchor="middle" class="lbl-dim">설명·중개, 양쪽 보수</text>
+        <path d="M168 196 L104 156" class="s-dash"/>
+        <path d="M292 196 L356 156" class="s-dash"/>
+        <rect x="10" y="264" width="120" height="58" rx="8" class="f-surface"/>
+        <text x="70" y="288" text-anchor="middle" class="lbl-b">은행</text>
+        <text x="70" y="307" text-anchor="middle" class="lbl-dim">주담대·전세대출</text>
+        <rect x="170" y="264" width="120" height="58" rx="8" class="f-surface"/>
+        <text x="230" y="288" text-anchor="middle" class="lbl-b">보증기관</text>
+        <text x="230" y="307" text-anchor="middle" class="lbl-dim">HUG 등 반환 보증</text>
+        <rect x="330" y="264" width="120" height="58" rx="8" class="f-surface"/>
+        <text x="390" y="288" text-anchor="middle" class="lbl-b">시행사·시공사</text>
+        <text x="390" y="307" text-anchor="middle" class="lbl-dim">새 집을 짓고 판다</text>
+        <path d="M70 262 L70 158" class="s-line" marker-end="url(#ov-ar)"/>
+        <text x="62" y="214" text-anchor="end" class="lbl-dim">대출</text>
+        <path d="M390 262 L390 158" class="s-dash" marker-end="url(#ov-ar)"/>
+        <text x="398" y="214" class="lbl-dim">분양</text>
+        <path d="M180 262 L112 158" class="s-dash" marker-end="url(#ov-ar)"/>
+        <path d="M150 40 L74 94" class="s-dash" marker-end="url(#ov-ar)"/>
+        <path d="M310 40 L386 94" class="s-dash" marker-end="url(#ov-ar)"/>
+        <rect x="120" y="352" width="220" height="50" rx="8" class="f-bad-soft"/>
+        <text x="230" y="373" text-anchor="middle" class="lbl-bad">등기소(등기부등본)</text>
+        <text x="230" y="391" text-anchor="middle" class="lbl-dim">누가 주인이고 빚이 얼마인가</text>
+        <path d="M230 350 L230 324" class="s-dash" marker-end="url(#ov-ar)"/>
+      </svg>
+      <figcaption><b>그림 2. 부동산 생태계 지도.</b> 실선은 돈의 흐름(세입자·매수인 → 집주인·매도인), 녹색은 그 대가로 넘어가는 집의 사용권이나 소유권, 점선은 제도와 정보다. 가운데의 공인중개사는 양쪽을 잇지만 보수를 양쪽에서 받고 거래가 성사돼야 받는다. 세입자의 보증금은 집주인에게 이자 없는 빚이 되어 다시 집값을 받치는 돈이 된다. 이 고리가 끊어지는 순간이 역전세와 깡통전세다(<a href="jeonse.html">5장</a>, <a href="contract.html">7장</a>).</figcaption>
+    </figure>
+
+    <p>이 지도에서 한국 시장만의 특징은 세입자에서 집주인으로 가는 굵은 화살표, 곧 <span class="term">전세 보증금</span>이다. 세입자는 집값의 60~70%에 이르는 목돈을 맡기고 월세 없이 살다가 나갈 때 그대로 돌려받는다. 집주인 입장에서는 이자 없이 큰돈을 빌린 셈이고, 그 돈과 자기 돈을 합쳐 집을 사는 것이 <span class="term">갭투자</span>다. 하늘네의 집주인 남궁현이 바로 그렇게 C아파트를 산 2주택자다. 그의 셈법과 하늘네 보증금의 안전은 <a href="jeonse.html">5장</a>에서 함께 계산한다.</p>
+  </section>
+
+  <section id="forces">
+    <h2>집값을 움직이는 다섯 힘</h2>
+    <p>뉴스는 날마다 집값이 왜 올랐고 왜 내렸는지 설명한다. 금리 때문이라고도 하고, 공급 부족 때문이라고도 하고, 대출 규제나 심리 때문이라고도 한다. 대부분 틀린 말은 아니다. 문제는 여러 힘이 동시에 작용한다는 데 있다. 이 책은 집값을 움직이는 힘을 다섯 갈래로 나누고, 장마다 "이 가격 변화는 어느 힘에서 왔는가"를 한 번은 묻는다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 460 330" role="img" aria-label="집값을 움직이는 다섯 힘과 해당 장">
+        <circle cx="230" cy="165" r="56" class="f-acc-soft"/>
+        <text x="230" y="161" text-anchor="middle" class="lbl-acc">집값</text>
+        <text x="230" y="181" text-anchor="middle" class="lbl-dim">= 수요와 공급</text>
+        <rect x="150" y="8" width="160" height="54" rx="8" class="f-surface"/>
+        <text x="230" y="31" text-anchor="middle" class="lbl-b">① 입지와 소득</text>
+        <text x="230" y="50" text-anchor="middle" class="lbl-dim">일자리·교통·학교 (2·19장)</text>
+        <rect x="318" y="96" width="136" height="54" rx="8" class="f-surface"/>
+        <text x="386" y="119" text-anchor="middle" class="lbl-b">② 금리</text>
+        <text x="386" y="138" text-anchor="middle" class="lbl-dim">할인율·이자 (3·9장)</text>
+        <rect x="300" y="236" width="154" height="54" rx="8" class="f-surface"/>
+        <text x="377" y="259" text-anchor="middle" class="lbl-b">③ 공급의 시차</text>
+        <text x="377" y="278" text-anchor="middle" class="lbl-dim">착공→입주 3~5년 (4·12장)</text>
+        <rect x="6" y="236" width="154" height="54" rx="8" class="f-surface"/>
+        <text x="83" y="259" text-anchor="middle" class="lbl-b">④ 대출과 규제</text>
+        <text x="83" y="278" text-anchor="middle" class="lbl-dim">LTV·DSR·세금 (9·13~15장)</text>
+        <rect x="6" y="96" width="136" height="54" rx="8" class="f-warn-soft"/>
+        <text x="74" y="119" text-anchor="middle" class="lbl-b">⑤ 기대와 심리</text>
+        <text x="74" y="138" text-anchor="middle" class="lbl-dim">군집·추격 (17장)</text>
+        <path d="M230 62 L230 107" class="s-dash"/>
+        <path d="M318 132 L282 148" class="s-dash"/>
+        <path d="M310 240 L272 205" class="s-dash"/>
+        <path d="M150 240 L188 205" class="s-dash"/>
+        <path d="M142 132 L178 148" class="s-dash"/>
+        <text x="230" y="318" text-anchor="middle" class="lbl-dim">①은 느리게 오래, ②·④는 빠르게, ③은 몇 년 늦게, ⑤는 다른 힘을 키운다</text>
+      </svg>
+      <figcaption><b>그림 3. 집값을 움직이는 다섯 힘.</b> 입지와 소득은 집값의 '수준'을 정한다(<a href="location.html">2장</a>). 금리는 같은 임대료의 값을 바꾼다(<a href="value.html">3장</a>). 공급은 몇 년 늦게 반응해서 가격의 파도를 만든다(<a href="supply.html">4장</a>). 대출 규제와 세금은 살 수 있는 사람의 수와 돈의 양을 바꾼다(<a href="mortgage.html">9장</a>, <a href="policy.html">15장</a>). 기대와 심리는 홀로 가격을 만들기보다 다른 힘이 만든 움직임을 키운다(<a href="bubble.html">17장</a>).</figcaption>
+    </figure>
+
+    <p>각 힘이 시간에 따라 어떻게 다르게 작동하는지 가상의 12년으로 본다. 아래 그래프의 굵은 선은 다섯 힘을 모두 합친 가격 지수이고, 아래쪽 가는 선들은 각 힘이 따로 만든 몫이다. 힘을 하나씩 끄고 켜 본다.</p>
+
+    <div class="sim" id="sim-force">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>다섯 힘으로 만든 12년의 가격 지수</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="force-cv"></canvas></div>
+        <div class="sim-controls">
+          <label class="check"><input type="checkbox" id="force-0" checked> ① 입지와 소득(추세)</label>
+          <label class="check"><input type="checkbox" id="force-1" checked> ② 금리(내렸다 오른다)</label>
+          <label class="check"><input type="checkbox" id="force-2" checked> ③ 공급의 시차</label>
+          <label class="check"><input type="checkbox" id="force-3" checked> ④ 대출 규제(9년 차)</label>
+          <label class="check"><input type="checkbox" id="force-4" checked> ⑤ 기대와 심리(추격)</label>
+          <label class="ctrl"><span>기대의 세기 <output id="force-m-out"></output></span><input type="range" id="force-m" min="0" max="0.9" step="0.05" value="0.4"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">12년 뒤 지수</span><span class="v" id="force-o-e">—</span></div>
+        <div class="stat"><span class="k">고점에서 저점까지</span><span class="v" id="force-o-d">—</span></div>
+        <div class="stat"><span class="k">가장 크게 움직인 힘</span><span class="v" id="force-o-b">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 모두 켠 상태에서 지수가 오르다 꺾이는 모양을 본다. ② ⑤ 기대와 심리를 끈다. 오르내림의 폭이 확 줄어든다. 기대는 혼자서 가격을 만들지 않고, 금리와 공급이 만든 움직임을 추격해 키운다. ③ 기대의 세기를 0.9까지 올린다. 작은 흔들림이 큰 파도가 된다. 이것이 거품이 생기는 한 경로다(<a href="bubble.html">17장</a>). ④ ① 입지와 소득만 남긴다. 긴 시간의 집값은 결국 이 선을 따라간다. (교육용 가상 데이터다. 실제 시장의 지수가 아니며 어떤 지역의 전망도 아니다. 금리 경로는 3%에서 2%로 내렸다가 5%로 오르는 가상의 길이고, 공급은 4장의 거미집 모형, 기대는 지난 1년 상승률의 일부를 다음 해에 더하는 단순한 규칙이다.)</div>
+    </div>
+
+    <p>현실에서는 이 다섯 힘을 깨끗하게 떼어 볼 수 없다. 금리가 내리면 대출이 쉬워지고(②와 ④), 가격이 오르면 건설사가 착공을 늘리고(③), 오르는 가격을 보고 사람들이 서두른다(⑤). 그래서 "집값이 오른 건 ○○ 때문"이라는 한 줄 설명은 거의 언제나 반쪽짜리다. 이 책은 집값을 예측하지 않는다. 대신 어떤 힘이 어떤 방향으로, 얼마나 빨리, 얼마나 오래 작동하는지를 알아서 뉴스의 설명을 스스로 따져 볼 수 있게 한다.</p>
+
+    <div class="callout warn">
+      <strong>제도와 수치는 해마다 바뀐다</strong>
+      이 책의 제도 수치(세율, 대출 규제, 청약 요건, 임대차 규칙)는 2026년 한국 제도를 기준으로 한 대표값이다. 부동산 제도는 다른 어떤 분야보다 자주 바뀐다. 2025년에만 대출 한도와 규제지역이 두 번 크게 바뀌었고, 2026년에는 다주택자 양도세 중과 유예가 끝났으며, 보유세와 장기보유특별공제를 고치는 세제 개편안이 국회에서 논의되고 있다(확정 전). 이 책의 계산은 교육용 모델의 결과이고, 특정 지역·단지·상품을 권하지 않으며 투자·세무·법률 자문이 아니다. 실제 계약과 세금 신고 전에는 국토교통부·국세청·금융위원회 등 공식 자료와 전문가에게 확인한다.
+    </div>
+  </section>
+
+  <section id="map">
+    <h2>이 책의 지도와 읽는 법</h2>
+    <p>책은 여섯 부로 나뉜다. <b>원리</b>(2~4장)는 입지, 금리, 공급의 시차로 집값이 정해지는 원리를 다룬다. <b>주거</b>(5~8장)는 전세와 월세, 계약과 권리 지키기, 매매 절차와 거래 비용처럼 집을 구할 때 마주치는 일을 다룬다. <b>금융</b>(9~12장)은 주택담보대출, 레버리지, 청약, 재건축·재개발처럼 집을 사는 돈의 구조를 다룬다. <b>세금과 제도</b>(13~15장)는 보유세, 사고팔 때의 세금, 정책과 규제를 다룬다. <b>시장</b>(16~19장)은 통계 읽기, 거품과 하락, 주택 밖의 부동산, 인구와 도시의 미래를 다룬다. <b>설계</b>(20~21장)는 이 모든 것을 모아 사느냐 빌리느냐를 판단하고 내 집 마련 계획을 짜는 법을 다룬다. 22장 실험실에서는 자기 숫자를 넣어 30년 주거 경로를 돌려 본다.</p>
+    <p>모든 장을 순서대로 읽을 필요는 없다. 아래에서 지금 내 처지를 고르면 먼저 읽을 장이 순서와 함께 표시된다.</p>
+
+    <div class="sim" id="sim-rd">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>나에게 맞는 읽기 경로</h3></div>
+      <div class="sim-body">
+        <div class="sim-view"><canvas id="rd-cv"></canvas><span class="hint">공개된 장은 상자를 누르면 그 장으로 간다</span></div>
+        <div class="sim-controls">
+          <div class="seg" id="rd-who"><button data-value="first" class="on">첫 전월세</button><button data-value="couple">신혼부부 내 집 마련</button><button data-value="parent">부모 집 상속·증여</button><button data-value="invest">투자 관점</button></div>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">추천 순서</span><span class="v" id="rd-o-l">—</span></div>
+        <div class="stat"><span class="k">왜</span><span class="v" id="rd-o-w" style="font-size:14px;font-family:var(--font);font-weight:500">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 처지를 바꿔 가며 경로가 어떻게 달라지는지 본다. ② 어느 경로든 5장(전세)과 7장(계약과 권리)이 자주 들어간다. 한국에서 집을 구하거나 빌려주는 사람 모두가 보증금의 구조를 알아야 하기 때문이다. ③ 투자 관점 경로에는 거품과 하락, 레버리지의 위험이 먼저 나온다. 돈을 버는 법보다 잃지 않는 법을 먼저 본다.</div>
+    </div>
+
+    <p>각 장에는 세 종류의 상자가 있다. <b>중개사 노트</b>는 현장에서 일하는 사람의 설명 방식과 흔한 실수, 중개사와 손님의 이해가 부딪히는 순간을 담는다. <b>계약 전 체크</b>는 등기부등본·계약서·대출 서류에서 서명 전에 직접 확인할 항목을 담는다. <b>심화</b>는 수식이나 제도의 깊은 이야기를 담는다. 첫 전월세를 구하는 사람이라면 계약 전 체크만 모아 읽어도 큰 사고는 피할 수 있다.</p>
+
+    <div class="callout buyer">
+      <strong>집 문제가 생기면 먼저 꺼낼 서류 다섯 가지</strong>
+      <ul>
+        <li><b>등기부등본</b>(인터넷등기소에서 누구나 발급): 지금 집주인이 누구이고, 집에 근저당·가압류 같은 빚이 얼마나 얹혀 있는가.</li>
+        <li><b>임대차계약서</b>: 보증금, 계약 기간, 특약. 확정일자 도장이 찍혀 있는가.</li>
+        <li><b>주민등록 초본(전입 기록)</b>: 이 집에 언제 전입신고를 했는가. 보증금을 지키는 힘(대항력)은 이 날짜에서 나온다.</li>
+        <li><b>대출 약정서</b>: 금리가 고정인지 변동인지, 변동이면 언제 바뀌는지, 중도상환수수료는 얼마인지.</li>
+        <li><b>보증서</b>(가입했다면): 전세보증금반환보증의 보증 기간과 금액이 계약과 맞는가.</li>
+      </ul>
+      각 서류를 읽는 법은 <a href="contract.html">7장</a>과 <a href="mortgage.html">9장</a>에서 하나씩 짚는다.
+    </div>
+  </section>
+
+  <section id="case">
+    <h2>하늘네 집 노트</h2>
+    <p>이 책의 장마다 같은 가족이 등장한다. 34세 회계 담당 오하늘과 35세 초등학교 교사 정재원 부부, 세 살 딸, 그리고 B시에서 20년째 중개사무소를 하는 공인중개사 민태호다. 하늘네가 사는 C아파트의 집주인 남궁현과 지방 D시에 사는 하늘의 아버지도 가끔 나온다. 모두 가상의 인물이다. 아래는 하늘네의 지금 숫자다. 아래쪽 시간 축의 손잡이를 끌어 전세 만기까지 몇 달이 남았고 그때 손에 쥘 돈이 얼마인지 본다.</p>
+
+    <div class="sim" id="sim-case">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>하늘네의 출발점</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="case-cv"></canvas><span class="hint">시간 축의 손잡이를 끈다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>월 저축 <output id="case-s-out"></output></span><input type="range" id="case-s" min="100" max="350" step="10" value="250"></label>
+          <label class="ctrl"><span>예금·투자 수익률(연) <output id="case-r-out"></output></span><input type="range" id="case-r" min="0" max="6" step="0.5" value="3"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">고른 시점</span><span class="v" id="case-o-t">—</span></div>
+        <div class="stat"><span class="k">그때 예금·투자</span><span class="v" id="case-o-s">—</span></div>
+        <div class="stat"><span class="k">그때 순자산</span><span class="v" id="case-o-n">—</span></div>
+        <div class="stat"><span class="k">C아파트 시세까지</span><span class="v" id="case-o-g">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 손잡이를 2027년 4월 만기에 둔다. 지금보다 예금이 1,600만원쯤 늘어 순자산이 약 2억 9,600만원이 된다. ② 월 저축을 150만원으로 줄인다. 아이가 크면서 생활비가 늘면 이 속도가 줄어든다. ③ 손잡이를 2029년까지 끈다. 계약을 2년 연장한다면 그사이 모을 수 있는 돈이다. 하지만 같은 2년 동안 집값과 전세가가 얼마나 움직일지는 이 그래프가 알려 주지 않는다. (보증금 4억원 중 전세대출 2억원은 순자산에서 뺐다. 생활비 400만원에는 전세대출 이자가 들어 있다.)</div>
+    </div>
+
+    <div class="casefile">
+      <div class="tag"><b>CASE 하늘네</b><span>집 노트 · 1장</span></div>
+      <h4>보증금 4억, 그중 2억은 빚. "다시 전세냐, 이번엔 사느냐"</h4>
+      <p>하늘네의 재산을 한 장에 적으면 이렇다. 전세 보증금 4억원(그중 2억원은 연 3.8% 전세대출), 예금·투자 8,000만원. 빚을 빼면 순자산은 약 2억 8,000만원이다. 둘의 월 실수령은 합쳐서 650만원이고, 전세대출 이자를 포함한 생활비 400만원을 쓰고 250만원을 모은다. 계약은 2027년 4월에 끝나고, 아직 <span class="term">계약갱신청구권</span>(세입자가 한 번 2년 연장을 요구할 수 있는 권리, <a href="rent.html">6장</a>)을 쓰지 않았다. 같은 단지 84㎡의 시세는 약 6억 2,000만원으로, 순자산의 2.2배다.</p>
+      <p>하늘은 회사 동료 몇이 "작년에 샀어야 했다"고 말하는 것을 듣고 불안해졌다. 재원은 반대로 "지금 사면 꼭지 아니냐"고 묻는다. 둘은 단지 앞 중개사무소의 민태호를 찾아간다. 태호는 매물 목록을 꺼내기 전에 두 가지를 먼저 말한다. 하나, 오늘은 아무것도 보여 주지 않고 하늘네의 숫자부터 정리한다. 둘, 자기 보수는 거래가 성사될 때만 받는 구조라 "사라"는 말이 자기에게 이익이 된다는 것을 숨기지 않겠다. 그리고 덧붙인다. "지금 집주인 남궁현 씨도 이 사무소 손님입니다. 그분 사정도 제가 아는 만큼은 말씀드리되, 그분 개인 정보는 빼고요." 하늘네의 집주인은 서울에 자기 집이 있고 C아파트를 전세를 끼고 산 2주택자다.</p>
+      <div class="clue"><div><b>이 장에서 정한 것</b>출발점을 숫자로 적었다: 순자산 2억 8,000만원, 월 저축 250만원, 만기 2027년 4월, 갱신청구권 미사용.</div><div><b>아직 남은 문제</b>어디에 살아야 하는가? C아파트 6억 2,000만원은 비싼가? 우리 보증금은 안전한가? 사면 얼마를 빌릴 수 있는가?</div><div><b>다음 단계</b>2장: 두 사람의 직장을 기준으로 후보 지역 세 곳을 통근 시간과 가격으로 비교한다.</div></div>
+    </div>
+  </section>
+
+  <section class="keypoints" id="summary">
+    <h2>핵심 정리</h2>
+    <ol>
+      <li>부동산은 움직이지 않고, 똑같은 것이 없고, 소득의 몇 년 치로 비싸고, 대개 빚으로 사고, 살면서 동시에 투자하는 자산이다. 각 성질이 입지, 가격 측정, 거래 비용, 레버리지, 사느냐 빌리느냐의 문제를 낳는다.</li>
+      <li>2025년 기준 한국 가계 자산의 75.8%가 실물자산(대부분 부동산)이다. 재산이 한곳에 몰려 있어 집값 변화가 가계 재산에 그대로 전달된다.</li>
+      <li>집값 변화는 가구마다 다르게 들어온다. 빚 없이 가진 사람은 그대로, 빚을 낸 사람은 몇 배로, 세입자는 반대 방향으로(사고 싶은 집에서 멀어지는 방향으로) 겪는다.</li>
+      <li>집의 값은 대부분 자리에서 나온다. 일자리까지의 시간, 역까지의 거리, 학교와 생활 인프라가 같은 건물의 값을 몇 배로 바꾼다.</li>
+      <li>사고파는 데 집값의 몇 %가 든다. 그래서 집은 오래 갖는 자산이 되고, 짧은 보유는 비싸다. 다주택 취득세 중과는 이 비용을 일부러 키운 제도다.</li>
+      <li>집 한 채의 한 해 손익은 아끼는 주거비와 집값 변화에서 이자·기회비용·세금·수선비를 뺀 값이다. 집값 상승률과 금리에 따라 사는 쪽이 유리할 수도, 빌리는 쪽이 유리할 수도 있다.</li>
+      <li>집값을 움직이는 힘은 입지와 소득, 금리, 공급의 시차, 대출과 규제, 기대와 심리 다섯 가지다. 이 힘들은 서로 얽혀 있어 한 줄 설명은 대개 반쪽짜리다.</li>
+    </ol>
+  </section>
+
+  <section class="quiz-sec" id="quiz">
+    <h2>확인 퀴즈</h2>
+    <div class="quiz">
+      <div class="quiz-q">
+        <p>같은 건물이라도 어디에 있느냐에 따라 집값이 크게 달라지는 가장 근본적인 이유는?</p>
+        <div class="opts">
+          <button class="opt">건설사마다 짓는 품질이 다르기 때문이다</button>
+          <button class="opt">지역마다 취득세율이 다르기 때문이다</button>
+          <button class="opt" data-correct>집은 옮길 수 없어서, 그 자리에서 일자리·교통·학교에 얼마나 쉽게 닿는지가 값에 들어가기 때문이다</button>
+          <button class="opt">도심에 가까운 집일수록 면적이 넓기 때문이다</button>
+        </div>
+        <div class="quiz-exp">부동산은 토지에 붙어 있어 옮길 수 없다. 그래서 그 자리가 주는 접근성(통근 시간, 역까지 거리, 학교, 생활 인프라)이 값의 큰 부분을 차지한다. 새 철도 노선이 생기면 건물은 그대로인데 값이 오르는 것도 같은 이유다.</div>
+      </div>
+      <div class="quiz-q">
+        <p>집값 6억원짜리 집을 대출 4억 5,000만원(LTV 75%)을 끼고 샀다. 한 해 동안 집값이 10% 내리고 대출 금리가 4%라면 내 돈은 대략 얼마나 변하는가? (세금·수선비는 무시)</p>
+        <div class="opts">
+          <button class="opt">약 −10%</button>
+          <button class="opt">약 −25%</button>
+          <button class="opt" data-correct>약 −52%</button>
+          <button class="opt">약 −100%</button>
+        </div>
+        <div class="quiz-exp">내 돈은 1억 5,000만원이다. 집값 하락 6,000만원과 이자 1,800만원(4억 5,000만원 × 4%)을 합친 7,800만원을 잃으므로 내 돈의 52%가 사라진다. 식으로는 \(g\cdot P/E - r\cdot D/E = -10\% \times 4 - 4\% \times 3 = -52\%\)다.</div>
+      </div>
+      <div class="quiz-q">
+        <p>전세로 사는 무주택 가구에게 집값이 10% 오르는 일의 의미로 가장 알맞은 것은?</p>
+        <div class="opts">
+          <button class="opt" data-correct>보증금은 그대로라 순자산은 변하지 않지만, 같은 집을 사는 데 필요한 돈이 늘어 집에서 더 멀어진다</button>
+          <button class="opt">보증금이 집값에 연동되어 순자산이 10% 늘어난다</button>
+          <button class="opt">집주인이 보증금을 돌려주지 못할 위험이 커진다</button>
+          <button class="opt">아무 영향이 없다</button>
+        </div>
+        <div class="quiz-exp">전세 보증금은 정해진 금액을 돌려받는 채권이라 집값과 함께 움직이지 않는다. 집값이 오르면 집주인의 보증금 반환 위험은 오히려 줄어든다. 대신 세입자가 살 집의 값과 다음 계약의 전세가가 오르기 쉬워, 무주택 가구는 집값 상승에 반대 방향으로 노출되어 있다.</div>
+      </div>
+      <div class="quiz-q">
+        <p>"집값이 오른 것은 금리 때문이다"라는 설명에 대한 이 책의 관점으로 가장 알맞은 것은?</p>
+        <div class="opts">
+          <button class="opt">금리는 집값과 관계가 없으므로 틀린 설명이다</button>
+          <button class="opt">금리가 집값을 정하는 유일한 힘이므로 충분한 설명이다</button>
+          <button class="opt">집값은 심리로만 움직이므로 어떤 설명도 의미가 없다</button>
+          <button class="opt" data-correct>금리는 다섯 힘 중 하나이고 대출·공급·기대와 얽혀 작동하므로, 다른 힘이 함께 어떻게 움직였는지 확인해야 한다</button>
+        </div>
+        <div class="quiz-exp">금리는 같은 임대료의 값을 바꾸고 대출 부담을 바꿔 집값에 중요한 힘이다. 하지만 같은 시기에 공급, 대출 규제, 기대도 함께 움직인다. 기대는 금리가 만든 움직임을 키우기도 한다. 한 가지 원인만 드는 설명은 대개 반쪽짜리다.</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  const TAU = Math.PI * 2;
+  function T(ctx, s, x, y, o) {
+    o = o || {};
+    ctx.font = EB.font(o.size || 12, o.mono, o.weight);
+    ctx.fillStyle = o.color; ctx.textAlign = o.align || "left"; ctx.textBaseline = o.base || "alphabetic";
+    ctx.fillText(s, x, y);
+  }
+  function rrect(ctx, x, y, w, h, r) {
+    r = Math.max(0, Math.min(r, Math.abs(w) / 2, Math.abs(h) / 2));
+    ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
+  }
+  const pw = (id) => document.getElementById(id).parentElement.clientWidth;
+  const signPct = (x, d) => (x > 0 ? "+" : x < 0 ? "−" : "") + Math.abs(+(x * 100).toFixed(d == null ? 1 : d)) + "%";
+  const signWon = (x) => (x > 0 ? "+" : "") + EB.won(x);
+  const C = RE.CASE;
+  // 하늘네 매수 가정: 대출 3억 8,000만원, 거래비용을 뺀 나머지는 예금
+  const BUY = (function () {
+    const P = C.home.price, loan = 3.8e8;
+    const cost = RE.acqTax({ price: P, homes: 1, area: C.home.area }).total + RE.brokerage(P).fee + P * RE.KR.legal + RE.KR.moving;
+    return { price: P, loan, cost, cash: C.netWorth - (P - loan) - cost };
+  })();
+
+  /* ---------------------------------------------------------- 1. 자산 저울 */
+  (function () {
+    const whoG = EB.seg("bs-who", draw);
+    const gG = EB.range("bs-g", (v) => (v > 0 ? "+" : "") + v + "%", draw);
+    function book(g) {
+      const w = whoG();
+      if (w === "avg") {
+        const A = RE.KR.householdAssets, re = A * RE.KR.householdRealShare;
+        return { assets: [{ k: "부동산(실물자산)", v: re * (1 + g), c: "accent" }, { k: "금융자산", v: A - re, c: "accent2" }], debts: [], base: A, now: A + re * g, label: "총자산 변화", share: RE.KR.householdRealShare };
+      }
+      if (w === "rent") {
+        return { assets: [{ k: "전세 보증금", v: C.home.jeonse, c: "accent2" }, { k: "예금·투자", v: C.savings, c: "dim" }], debts: [{ k: "전세대출", v: C.home.jeonseLoan }], base: C.netWorth, now: C.netWorth, label: "순자산 변화", share: 0, gap: C.home.price * (1 + g) - C.netWorth, gap0: C.home.price - C.netWorth };
+      }
+      const nw0 = BUY.price + BUY.cash - BUY.loan;
+      return { assets: [{ k: "C아파트", v: BUY.price * (1 + g), c: "accent" }, { k: "예금", v: BUY.cash, c: "dim" }], debts: [{ k: "주택담보대출", v: BUY.loan }], base: nw0, now: nw0 + BUY.price * g, label: "순자산 변화", share: BUY.price / (BUY.price + BUY.cash) };
+    }
+    const cv = EB.canvas("#bs-cv", (ctx, w, h) => {
+      const P = EB.palette(), g = gG() / 100, b = book(g), bMax = book(0.3);
+      const top = 34, base = h - 30, colW = Math.min(110, w * 0.26);
+      const maxV = Math.max(bMax.assets.reduce((s, a) => s + a.v, 0), 1);
+      const sc = (base - top) / maxV;
+      const xA = w * 0.5 - colW - 18, xB = w * 0.5 + 18;
+      T(ctx, "자산", xA + colW / 2, 20, { size: 12, color: P.dim, align: "center", weight: 700 });
+      T(ctx, "빚 + 순자산", xB + colW / 2, 20, { size: 12, color: P.dim, align: "center", weight: 700 });
+      let y = base;
+      b.assets.forEach((a) => {
+        const hh = a.v * sc; y -= hh;
+        ctx.fillStyle = P[a.c]; ctx.globalAlpha = a.c === "dim" ? 0.45 : 0.85; ctx.fillRect(xA, y, colW, hh - 1); ctx.globalAlpha = 1;
+        if (hh > 30) { T(ctx, a.k, xA + colW / 2, y + hh / 2 - 7, { size: 11, color: "#fff", align: "center", base: "middle", weight: 700 }); T(ctx, EB.wonAxis(a.v), xA + colW / 2, y + hh / 2 + 9, { size: 11, mono: true, color: "#fff", align: "center", base: "middle" }); }
+        else if (hh > 12) T(ctx, a.k + " " + EB.wonAxis(a.v), xA - 6, y + hh / 2, { size: 11, color: P.dim, align: "right", base: "middle" });
+      });
+      const assetTop = y;
+      // 오른쪽: 빚(아래) + 순자산(위)
+      y = base;
+      const total = b.assets.reduce((s, a) => s + a.v, 0);
+      b.debts.forEach((d) => {
+        const hh = d.v * sc; y -= hh;
+        ctx.fillStyle = P.bad; ctx.globalAlpha = 0.75; ctx.fillRect(xB, y, colW, hh - 1); ctx.globalAlpha = 1;
+        if (hh > 30) { T(ctx, d.k, xB + colW / 2, y + hh / 2 - 7, { size: 11, color: "#fff", align: "center", base: "middle", weight: 700 }); T(ctx, EB.wonAxis(d.v), xB + colW / 2, y + hh / 2 + 9, { size: 11, mono: true, color: "#fff", align: "center", base: "middle" }); }
+      });
+      const debt = b.debts.reduce((s, d) => s + d.v, 0), nw = total - debt;
+      if (nw > 0) {
+        const hh = nw * sc; y -= hh;
+        ctx.fillStyle = P.ok; ctx.globalAlpha = 0.8; ctx.fillRect(xB, y, colW, hh - 1); ctx.globalAlpha = 1;
+        if (hh > 30) { T(ctx, b.debts.length ? "순자산" : "총자산", xB + colW / 2, y + hh / 2 - 7, { size: 11, color: "#fff", align: "center", base: "middle", weight: 700 }); T(ctx, EB.wonAxis(nw), xB + colW / 2, y + hh / 2 + 9, { size: 11, mono: true, color: "#fff", align: "center", base: "middle" }); }
+      } else {
+        T(ctx, "순자산이 마이너스: " + EB.wonAxis(nw), xB + colW / 2, y - 10, { size: 11, color: P.bad, align: "center", weight: 700 });
+      }
+      // 기준선(집값 변화 0일 때의 높이)
+      const b0 = book(0), t0 = b0.assets.reduce((s, a) => s + a.v, 0);
+      const y0 = base - t0 * sc;
+      ctx.save(); ctx.setLineDash([4, 4]); ctx.strokeStyle = P.text; ctx.globalAlpha = 0.5;
+      ctx.beginPath(); ctx.moveTo(xA - 8, y0); ctx.lineTo(xB + colW + 8, y0); ctx.stroke(); ctx.restore();
+      T(ctx, "변화 전", xB + colW + 10, y0, { size: 10, color: P.faint, base: "middle" });
+      ctx.strokeStyle = P.axis; ctx.beginPath(); ctx.moveTo(8, base); ctx.lineTo(w - 8, base); ctx.stroke();
+      if (whoG() === "rent") {
+        T(ctx, "C아파트까지 남은 거리 " + EB.wonAxis(b.gap) + " (변화 전 " + EB.wonAxis(b.gap0) + ")", w / 2, base + 18, { size: 11, color: b.gap > b.gap0 ? P.bad : P.ok, align: "center", base: "middle", weight: 700 });
+      } else {
+        T(ctx, "자산 최고 높이: 집값 +30%일 때", w / 2, base + 18, { size: 10, color: P.faint, align: "center", base: "middle" });
+      }
+      void assetTop;
+    }, { get height() { return pw("bs-cv") < 480 ? 300 : 320; } });
+    function draw() {
+      const g = gG() / 100, b = book(g);
+      const ch = (b.now - b.base) / b.base;
+      EB.stat("bs-o-sh", Math.round(b.share * 100) + "%");
+      document.getElementById("bs-o-nk").textContent = b.label;
+      EB.stat("bs-o-nw", '<span class="' + (ch < 0 ? "minus" : ch > 0 ? "plus" : "") + '">' + signPct(ch) + "</span>");
+      EB.stat("bs-o-x", g === 0 ? "—" : (ch / g).toFixed(2) + "배");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 2. 지도 위의 집 */
+  (function () {
+    const KM = 24;                 // 지도 가로 폭 = 24km
+    const BASE = 9.2e6;            // 기준 ㎡당 가격(교육용)
+    const ageG = EB.range("map-age", (v) => v + "년", draw);
+    const newEl = document.getElementById("map-new");
+    newEl.addEventListener("change", () => { heat = null; draw(); });
+    let house = { u: 0.55, v: 0.42 };        // 지도 좌표(0~1)
+    let L = null, heat = null;
+    // 지하철: 도심(0.06,0.5)에서 오른쪽으로. 정거장 좌표(0~1)
+    const LINE = [[0.06, 0.5], [0.13, 0.48], [0.2, 0.455], [0.27, 0.43], [0.34, 0.41], [0.41, 0.4], [0.48, 0.405], [0.55, 0.39], [0.62, 0.375], [0.69, 0.355], [0.76, 0.34], [0.83, 0.325], [0.9, 0.31], [0.96, 0.3]];
+    const NEW = [[0.34, 0.41], [0.4, 0.55], [0.47, 0.66], [0.55, 0.74], [0.64, 0.8], [0.74, 0.84], [0.84, 0.86]];
+    function stations() {
+      const s = LINE.map((p, i) => ({ u: p[0], v: p[1], ride: i === 0 ? 0 : null }));
+      // 선로 따라 누적 거리(km)로 탑승 시간
+      let acc = 0;
+      for (let i = 1; i < s.length; i++) { acc += dist(s[i - 1], s[i]); s[i].ride = acc * 1.5 + i * 0.7; }
+      if (newEl.checked) {
+        let a2 = s[4].ride, prev = s[4];
+        NEW.slice(1).forEach((p, j) => { const st = { u: p[0], v: p[1] }; a2 += dist(prev, st) * 1.4 + 0.7 + (j === 0 ? 3 : 0); st.ride = a2; s.push(st); prev = st; });
+      }
+      return s;
+    }
+    function dist(a, b) { const ar = L ? L.h / L.w : 0.5; return Math.hypot((a.u - b.u) * KM, (a.v - b.v) * KM * ar); }
+    function commute(p, st) {
+      const cbd = { u: LINE[0][0], v: LINE[0][1] };
+      let best = Infinity, walk = Infinity;
+      st.forEach((s) => {
+        const d = dist(p, s), wk = d / 4.5 * 60;              // 시속 4.5km 걷기
+        walk = Math.min(walk, wk);
+        const access = wk > 20 ? 8 + d * 2.5 : wk;             // 20분 넘으면 마을버스
+        best = Math.min(best, access + s.ride + (s.ride > 0 ? 5 : 0));
+      });
+      const car = dist(p, cbd) * 2.4 + 12;                     // 차: km당 2.4분 + 주차·정체
+      return { commute: Math.min(best, car), walk, byCar: car < best };
+    }
+    function priceAt(p, st) {
+      const c = commute(p, st);
+      return { c, price: RE.hedonic({ commute: c.commute, walk: Math.min(c.walk, 30), age: ageG(), base: BASE }).price };
+    }
+    const cv = EB.canvas("#map-cv", (ctx, w, h) => {
+      const P = EB.palette();
+      L = { w, h };
+      const st = stations();
+      // 가격 바탕(캐시)
+      const cell = w < 480 ? 9 : 11;
+      if (!heat || heat.w !== w || heat.h !== h || heat.age !== ageG() || heat.dark !== EB.isDark()) {
+        const vals = [];
+        for (let y = 0; y < h; y += cell) for (let x = 0; x < w; x += cell) vals.push([x, y, priceAt({ u: (x + cell / 2) / w, v: (y + cell / 2) / h }, st).price]);
+        heat = { w, h, age: ageG(), dark: EB.isDark(), vals };
+      }
+      heat.vals.forEach(([x, y, pr]) => {
+        const t = EB.clamp((Math.log(pr) - Math.log(2.8e8)) / (Math.log(1.2e9) - Math.log(2.8e8)), 0, 1);
+        ctx.fillStyle = P.accent; ctx.globalAlpha = 0.03 + 0.72 * t; ctx.fillRect(x, y, cell, cell);
+      });
+      ctx.globalAlpha = 1;
+      // 도심
+      const cx = LINE[0][0] * w, cy = LINE[0][1] * h;
+      ctx.fillStyle = P.accent2; for (let i = 0; i < 5; i++) ctx.fillRect(cx - 14 + i * 6, cy - 10 - (i % 3) * 7, 5, 22 + (i % 3) * 7);
+      T(ctx, "도심(일자리)", cx - 12, cy + 26, { size: 11, color: P.text, weight: 700 });
+      // 노선
+      const drawLine = (pts, dash) => { ctx.save(); ctx.strokeStyle = P.text; ctx.lineWidth = 3; ctx.globalAlpha = 0.75; if (dash) ctx.setLineDash([6, 5]); ctx.beginPath(); pts.forEach((p, i) => (i ? ctx.lineTo(p[0] * w, p[1] * h) : ctx.moveTo(p[0] * w, p[1] * h))); ctx.stroke(); ctx.restore(); };
+      drawLine(LINE, false);
+      if (newEl.checked) drawLine(NEW, true);
+      st.forEach((s, i) => { if (i === 0) return; ctx.beginPath(); ctx.arc(s.u * w, s.v * h, 4.5, 0, TAU); ctx.fillStyle = P.bg; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = P.text; ctx.stroke(); });
+      // 축척
+      const kmPx = w / KM * 5;
+      ctx.strokeStyle = P.dim; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(10, h - 12); ctx.lineTo(10 + kmPx, h - 12); ctx.stroke();
+      T(ctx, "5km", 10 + kmPx / 2, h - 16, { size: 10, color: P.dim, align: "center" });
+      // 집
+      const hx = house.u * w, hy = house.v * h, r = priceAt(house, st);
+      ctx.save(); ctx.translate(hx, hy);
+      ctx.beginPath(); ctx.moveTo(-12, -2); ctx.lineTo(0, -14); ctx.lineTo(12, -2); ctx.lineTo(9, -2); ctx.lineTo(9, 11); ctx.lineTo(-9, 11); ctx.lineTo(-9, -2); ctx.closePath();
+      ctx.fillStyle = P.bad; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = P.bg; ctx.stroke(); ctx.restore();
+      const lbl = EB.won(r.price, { short: true });
+      ctx.font = EB.font(12, false, 700);
+      const tw = ctx.measureText(lbl).width + 12, lx = EB.clamp(hx - tw / 2, 4, w - tw - 4), ly = hy - 40 < 4 ? hy + 16 : hy - 40;
+      rrect(ctx, lx, ly, tw, 20, 6); ctx.fillStyle = P.surface; ctx.fill(); ctx.strokeStyle = P.border; ctx.lineWidth = 1; ctx.stroke();
+      T(ctx, lbl, lx + tw / 2, ly + 10, { size: 12, weight: 700, color: P.text, align: "center", base: "middle" });
+    }, { get height() { const w = pw("map-cv"); return Math.round(Math.max(280, Math.min(380, w * 0.62))); } });
+    EB.drag(cv.canvas, {
+      move(x, y) { if (!L) return; house = { u: EB.clamp(x / L.w, 0.03, 0.97), v: EB.clamp(y / L.h, 0.05, 0.95) }; draw(); },
+    });
+    function draw() {
+      const st = stations(), r = priceAt(house, st);
+      const ref = priceAt({ u: 0.13, v: 0.48 }, st).price;
+      EB.stat("map-o-c", Math.round(r.c.commute) + "분" + (r.c.byCar ? " (차)" : ""));
+      EB.stat("map-o-w", r.c.walk > 30 ? "30분 넘음" : Math.round(r.c.walk) + "분");
+      EB.stat("map-o-p", EB.won(r.price) + ' <small style="color:var(--text-faint)">(도심 옆 역의 ' + Math.round(r.price / ref * 100) + "%)</small>");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 3. 사고팔 때 드는 돈 */
+  (function () {
+    const pG = EB.range("cost-p", (v) => EB.won(v * 1e8), draw);
+    const hG = EB.seg("cost-h", draw);
+    const fEl = document.getElementById("cost-first");
+    fEl.addEventListener("change", draw);
+    let selY = 1, bars = null;
+    function calc() {
+      const P = pG() * 1e8, two = hG() === "2";
+      const a = RE.acqTax({ price: P, homes: two ? 2 : 1, regulated: two, area: 84, firstHome: fEl.checked && !two });
+      const br = RE.brokerage(P).fee;
+      return { P, tax: a.total, rate: a.rate, broker: br * 2, etc: P * RE.KR.legal + RE.KR.moving, total: a.total + br * 2 + P * RE.KR.legal + RE.KR.moving };
+    }
+    const YRS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15];
+    const cv = EB.canvas("#cost-cv", (ctx, w, h) => {
+      const P = EB.palette(), c = calc();
+      const yMax = Math.max(0.03, Math.ceil(c.total / c.P * 100) / 100 + 0.005);
+      bars = EB.bars(ctx, { x: 48, y: 18, w: w - 62, h: h - 64 }, {
+        labels: YRS.map((y) => y + "년"),
+        stacks: [
+          { label: "취득세 등", color: P.bad, data: YRS.map((y) => c.tax / c.P / y) },
+          { label: "중개보수(살 때+팔 때)", color: P.warn, data: YRS.map((y) => c.broker / c.P / y) },
+          { label: "법무·이사", color: P.dim, data: YRS.map((y) => c.etc / c.P / y) },
+        ],
+        y: [0, yMax], yFmt: (v) => +(v * 100).toFixed(1) + "%", highlight: YRS.indexOf(selY),
+      });
+      const lg = [["취득세 등", P.bad], ["중개보수", P.warn], ["법무·이사", P.dim]];
+      let lx = 56;
+      lg.forEach(([s, col]) => { ctx.fillStyle = col; ctx.fillRect(lx, 8, 10, 8); T(ctx, s, lx + 14, 15, { size: 11, color: P.dim }); ctx.font = EB.font(11); lx += ctx.measureText(s).width + 30; });
+    }, { get height() { return pw("cost-cv") < 480 ? 260 : 280; } });
+    EB.drag(cv.canvas, {
+      start(x) { if (!bars) return; let best = 0, bd = Infinity; YRS.forEach((y, i) => { const d = Math.abs(bars.X(i) + bars.bw / 2 - x); if (d < bd) { bd = d; best = i; } }); selY = YRS[best]; draw(); },
+    });
+    function draw() {
+      const c = calc();
+      EB.stat("cost-o-t", '<span class="minus">' + EB.won(c.total) + "</span>");
+      EB.stat("cost-o-r", EB.pct(c.total / c.P, 2) + " (취득세율 " + +(c.rate * 100).toFixed(2) + "%)");
+      document.getElementById("cost-o-yk").textContent = selY + "년 보유 시 한 해 몫";
+      EB.stat("cost-o-y", EB.won(c.total / selY) + " · " + EB.pct(c.total / c.P / selY, 2));
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 4. 레버리지 확대경 */
+  (function () {
+    const lG = EB.range("lev-l", (v) => v + "%", draw);
+    const rG = EB.range("lev-r", (v) => v + "%", draw);
+    let g = 0.1, box = null;
+    const roe = (gg, ltv, r) => (ltv >= 1 ? -Infinity : (gg - r * ltv) / (1 - ltv));
+    const cv = EB.canvas("#lev-cv", (ctx, w, h) => {
+      const P = EB.palette(), ltv = lG() / 100, r = rG() / 100;
+      const xs = []; for (let x = -0.3; x <= 0.3001; x += 0.01) xs.push(x);
+      const c = EB.chart(ctx, { x: 52, y: 14, w: w - 66, h: h - 70 }, {
+        x: [-0.3, 0.3], y: [-1.5, 1.5], xFmt: (v) => Math.round(v * 100) + "%", yFmt: (v) => Math.round(v * 100) + "%",
+        xTicks: [-0.3, -0.2, -0.1, 0, 0.1, 0.2, 0.3], yTicks: [-1.5, -1, -0.5, 0, 0.5, 1, 1.5],
+        bands: [],
+        series: [
+          { data: xs.map((x) => [x, x]), color: P.faint, width: 1.5, dash: [5, 4] },
+          { data: xs.map((x) => [x, roe(x, ltv, r)]), color: P.accent, width: 2.6 },
+        ],
+        hlines: [{ y: -1, color: P.bad, label: "내 돈 전부 사라짐" }, { y: 0, color: P.axis, dash: [] }],
+      });
+      box = c;
+      // 깡통 영역
+      const zx = c.X(Math.max(-0.3, -(1 - ltv) + r * ltv));
+      ctx.save(); ctx.fillStyle = P.bad; ctx.globalAlpha = 0.08; ctx.fillRect(c.box.x, c.box.y, Math.max(0, zx - c.box.x), c.box.h); ctx.restore();
+      // 선택점
+      const y = roe(g, ltv, r), px = c.X(g), py = c.Y(EB.clamp(y, -1.5, 1.5));
+      ctx.save(); ctx.setLineDash([3, 3]); ctx.strokeStyle = P.text; ctx.globalAlpha = 0.5;
+      ctx.beginPath(); ctx.moveTo(px, c.box.y + c.box.h); ctx.lineTo(px, py); ctx.lineTo(c.box.x, py); ctx.stroke(); ctx.restore();
+      ctx.beginPath(); ctx.arc(px, py, 5, 0, TAU); ctx.fillStyle = y < 0 ? P.bad : P.ok; ctx.fill();
+      const hy = c.box.y + c.box.h;
+      ctx.beginPath(); ctx.arc(px, hy, 8, 0, TAU); ctx.fillStyle = P.text; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = P.bg; ctx.stroke();
+      T(ctx, "LTV " + lG() + "%", c.box.x + 8, c.box.y + 14, { size: 11, color: P.accent, weight: 700 });
+      T(ctx, "빚 없이(LTV 0%)", c.box.x + 8, c.box.y + 30, { size: 11, color: P.faint });
+    }, { get height() { return pw("lev-cv") < 480 ? 280 : 300; } });
+    EB.drag(cv.canvas, { move(x) { if (!box) return; g = EB.clamp(Math.round(((x - box.box.x) / box.box.w * 0.6 - 0.3) * 100) / 100, -0.3, 0.3); draw(); } });
+    function draw() {
+      const ltv = lG() / 100, r = rG() / 100, y = roe(g, ltv, r);
+      EB.stat("lev-o-g", signPct(g, 0));
+      EB.stat("lev-o-e", '<span class="' + (y < 0 ? "minus" : "plus") + '">' + (y <= -1 ? "−100% 이하" : signPct(y, 0)) + "</span>");
+      const z = -(1 - ltv) + r * ltv;
+      EB.stat("lev-o-z", ltv === 0 ? "없음(−100%)" : signPct(z, 1));
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 5. 집의 두 얼굴 */
+  (function () {
+    const gG = EB.range("dual-g", (v) => (v > 0 ? "+" : "") + v + "%", draw);
+    const rG = EB.range("dual-r", (v) => v + "%", draw);
+    const imputed = C.home.jeonse * RE.conversionCap();
+    function calc() {
+      const hc = RE.housingCost({ mode: "buy", price: C.home.price, loan: BUY.loan, loanRate: rG() / 100, oppRate: 0.03, growth: gG() / 100, area: C.home.area, years: 10 });
+      const get = (k) => hc.parts.find((p) => p.key === k).value;
+      const items = [
+        { k: "아끼는 주거비", v: imputed },
+        { k: "집값 변화", v: -get("gain") },
+        { k: "대출 이자", v: -get("interest") },
+        { k: "내 돈 기회비용", v: -get("opp") },
+        { k: "보유세", v: -get("tax") },
+        { k: "수선·관리", v: -get("upkeep") },
+        { k: "거래비용 상각", v: -get("tx") },
+      ];
+      const net = items.reduce((s, x) => s + x.v, 0);
+      const cost = -items.slice(2).reduce((s, x) => s + x.v, 0);
+      return { items, net, cost };
+    }
+    const cv = EB.canvas("#dual-cv", (ctx, w, h) => {
+      const P = EB.palette(), c = calc();
+      const all = c.items.concat([{ k: "한 해 순이익", v: c.net, total: true }]);
+      let run = 0, lo = 0, hi = 0;
+      all.forEach((it) => { if (it.total) return; run += it.v; lo = Math.min(lo, run); hi = Math.max(hi, run); });
+      lo = Math.min(lo, c.net, -2e6); hi = Math.max(hi, imputed, c.net) * 1.08;
+      const narrow = w < 480;
+      const box = { x: narrow ? 100 : 112, y: 10, w: w - (narrow ? 100 : 112) - 14, h: h - 34 };
+      const rowH = box.h / all.length;
+      const X = (v) => box.x + (v - lo) / (hi - lo) * box.w;
+      ctx.strokeStyle = P.axis; ctx.beginPath(); ctx.moveTo(X(0), box.y); ctx.lineTo(X(0), box.y + box.h); ctx.stroke();
+      run = 0;
+      all.forEach((it, i) => {
+        const y = box.y + i * rowH + rowH * 0.18, bh = rowH * 0.64;
+        let a, b;
+        if (it.total) { a = 0; b = it.v; } else { a = run; b = run + it.v; run = b; }
+        const x0 = X(Math.min(a, b)), x1 = X(Math.max(a, b));
+        ctx.fillStyle = it.total ? (it.v >= 0 ? P.ok : P.bad) : it.v >= 0 ? P.ok : P.bad;
+        ctx.globalAlpha = it.total ? 1 : 0.75; ctx.fillRect(x0, y, Math.max(1.5, x1 - x0), bh); ctx.globalAlpha = 1;
+        T(ctx, it.k, box.x - 8, y + bh / 2, { size: narrow ? 11 : 12, color: it.total ? P.text : P.dim, align: "right", base: "middle", weight: it.total ? 700 : 400 });
+        const s = (it.v >= 0 ? "+" : "−") + EB.wonAxis(Math.abs(it.v));
+        const right = x1 + 4 + 50 < box.x + box.w;
+        T(ctx, s, right ? x1 + 4 : x0 - 4, y + bh / 2, { size: 11, mono: true, color: P.text, align: right ? "left" : "right", base: "middle" });
+        if (!it.total && i < all.length - 2) { ctx.strokeStyle = P.faint; ctx.setLineDash([2, 2]); ctx.beginPath(); ctx.moveTo(X(b), y + bh); ctx.lineTo(X(b), y + rowH); ctx.stroke(); ctx.setLineDash([]); }
+      });
+      T(ctx, "0", X(0), h - 10, { size: 10, color: P.faint, align: "center" });
+    }, { get height() { return pw("dual-cv") < 480 ? 290 : 300; } });
+    function draw() {
+      const c = calc();
+      EB.stat("dual-o-i", '<span class="plus">' + EB.won(imputed) + "</span>");
+      EB.stat("dual-o-c", '<span class="minus">' + EB.won(c.cost) + "</span>");
+      EB.stat("dual-o-n", '<span class="' + (c.net < 0 ? "minus" : "plus") + '">' + signWon(c.net) + "</span>");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 6. 다섯 힘 */
+  (function () {
+    const NAMES = ["입지와 소득", "금리", "공급의 시차", "대출 규제", "기대와 심리"];
+    const els = NAMES.map((_, i) => document.getElementById("force-" + i));
+    const mG = EB.range("force-m", (v) => v.toFixed(2), draw);
+    els.forEach((e) => e.addEventListener("change", draw));
+    const YEARS = 12, Q = 4, N = YEARS * Q;
+    // 금리 경로: 3% → 2%(2~3년) → 5%(5~7년) → 4%
+    const rate = (t) => (t < 1 ? 0.03 : t < 3 ? 0.03 - 0.005 * (t - 1) : t < 5 ? 0.02 : t < 7 ? 0.02 + 0.015 * (t - 5) : t < 9 ? 0.05 - 0.005 * (t - 7) : 0.04);
+    const supply = RE.cobweb({ years: YEARS, lag: 3, k: 1.05, shockYear: 1, shock: 0.06 });
+    function series() {
+      const on = els.map((e) => e.checked), m = mG();
+      const comp = [[], [], [], [], []], total = [];
+      let lnP = 0;
+      const hist = [0];
+      for (let q = 0; q <= N; q++) {
+        const t = q / Q;
+        const c0 = on[0] ? 0.025 * t : 0;
+        const c1 = on[1] ? Math.log((0.03 + 0.02 - 0.015) / (rate(t) + 0.02 - 0.015)) * 0.55 : 0;
+        const c2 = on[2] ? Math.log(supply[Math.min(q, supply.length - 1)].price) * 0.8 : 0;
+        const c3 = on[3] ? (t < 8.5 ? 0 : -0.07 * Math.min(1, (t - 8.5) / 1.5)) : 0;
+        const fundamental = c0 + c1 + c2 + c3;
+        // 기대: 지난 1년 변화의 일부를 다음 분기에 더한다(분기마다 누적)
+        let c4 = 0;
+        if (on[4] && q >= Q) {
+          const past = hist[q - 1] - hist[q - Q];
+          c4 = (comp[4][q - 1] || 0) * 0.93 + m * past / Q;
+        } else if (on[4] && q > 0) c4 = (comp[4][q - 1] || 0) * 0.93;
+        lnP = fundamental + c4;
+        hist[q] = lnP;
+        comp[0].push(c0); comp[1].push(c1); comp[2].push(c2); comp[3].push(c3); comp[4].push(c4);
+        total.push(100 * Math.exp(lnP));
+      }
+      return { comp, total };
+    }
+    const cv = EB.canvas("#force-cv", (ctx, w, h) => {
+      const P = EB.palette(), s = series();
+      const cols = [P.accent2, P.accent, P.warn, P.bad, P.ok];
+      const hTop = Math.round(h * 0.6);
+      const ymax = Math.max(150, Math.ceil(Math.max(...s.total) / 25) * 25), ymin = Math.min(80, Math.floor(Math.min(...s.total) / 10) * 10);
+      EB.chart(ctx, { x: 44, y: 12, w: w - 58, h: hTop - 34 }, {
+        x: [0, YEARS], y: [ymin, ymax], xTicks: [0, 2, 4, 6, 8, 10, 12], xFmt: (v) => v + "년",
+        series: [{ data: s.total.map((v, q) => [q / Q, v]), color: P.text, width: 2.6 }],
+        hlines: [{ y: 100, color: P.faint }],
+      });
+      T(ctx, "가격 지수(시작 = 100)", 50, 24, { size: 11, color: P.dim });
+      const comps = s.comp.map((arr) => arr.map((v) => 100 * (Math.exp(v) - 1)));
+      const all = comps.flat(), mx = Math.max(10, ...all.map(Math.abs));
+      EB.chart(ctx, { x: 44, y: hTop + 6, w: w - 58, h: h - hTop - 30 }, {
+        x: [0, YEARS], y: [-mx, mx], xTicks: [0, 2, 4, 6, 8, 10, 12], xFmt: (v) => v + "년", yTicks: [-Math.round(mx), 0, Math.round(mx)], yFmt: (v) => (v > 0 ? "+" : "") + Math.round(v),
+        series: comps.map((arr, i) => ({ data: arr.map((v, q) => [q / Q, v]), color: cols[i], width: 1.6 })),
+        hlines: [{ y: 0, color: P.axis, dash: [] }],
+      });
+      const short = ["①", "②", "③", "④", "⑤"];
+      let lx = 50;
+      short.forEach((s2, i) => { ctx.fillStyle = cols[i]; ctx.fillRect(lx, hTop + 10, 10, 3); T(ctx, s2, lx + 13, hTop + 15, { size: 11, color: P.dim }); lx += 34; });
+      T(ctx, "힘별 몫", lx + 4, hTop + 15, { size: 11, color: P.dim });
+    }, { get height() { return pw("force-cv") < 480 ? 360 : 380; } });
+    function draw() {
+      const s = series(), end = s.total[s.total.length - 1];
+      let peak = -Infinity, dd = 0;
+      s.total.forEach((v) => { peak = Math.max(peak, v); dd = Math.max(dd, 1 - v / peak); });
+      const amp = s.comp.map((arr) => Math.max(...arr) - Math.min(...arr));
+      const bi = amp.indexOf(Math.max(...amp));
+      EB.stat("force-o-e", end.toFixed(0));
+      EB.stat("force-o-d", dd > 0.001 ? '<span class="minus">−' + (dd * 100).toFixed(0) + "%</span>" : "하락 없음");
+      EB.stat("force-o-b", amp[bi] > 0 ? NAMES[bi] : "—");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 7. 읽기 경로 */
+  (function () {
+    const PATHS = {
+      first:  { list: ["jeonse", "rent", "contract", "mortgage", "decision"], why: "보증금이 어떻게 지켜지고 어떻게 사라지는지가 먼저다. 전세와 월세의 비용을 같은 저울에 올리고, 계약서와 등기부등본을 읽는 법을 익힌다." },
+      couple: { list: ["location", "value", "mortgage", "buy", "subscription", "tradetax", "decision", "plan"], why: "어디에, 얼마에, 얼마를 빌려 살 것인가. 입지와 가격, 대출 한도, 거래 비용과 세금, 청약을 거쳐 사느냐 빌리느냐와 자금 계획으로 간다." },
+      parent: { list: ["holdingtax", "tradetax", "policy", "future", "beyond", "plan"], why: "물려받거나 물려줄 집의 세금(보유세·양도세·상속·증여), 주택 수가 바뀔 때의 효과, 지방 주택과 인구 변화를 본다." },
+      invest: { list: ["bubble", "leverage", "jeonse", "value", "supply", "holdingtax", "tradetax", "beyond"], why: "잃지 않는 법이 먼저다. 거품과 하락, 레버리지의 위험, 전세를 낀 투자의 구조를 본 뒤 가치·공급·세금으로 간다." },
+    };
+    const whoG = EB.seg("rd-who", draw);
+    let boxes = [];
+    const cv = EB.canvas("#rd-cv", (ctx, w, h) => {
+      const P = EB.palette(), path = PATHS[whoG()].list;
+      const chs = EB.CHAPTERS.filter((c) => c.slug !== "glossary");
+      const cols = w < 480 ? 4 : 6, gap = 6, bw = (w - 24 - gap * (cols - 1)) / cols, bh = 42;
+      boxes = [];
+      chs.forEach((c, i) => {
+        const x = 12 + (i % cols) * (bw + gap), y = 12 + Math.floor(i / cols) * (bh + gap);
+        const k = path.indexOf(c.slug);
+        rrect(ctx, x, y, bw, bh, 7);
+        ctx.fillStyle = k >= 0 ? EB.color("accent-soft") : P.surface; ctx.fill();
+        ctx.strokeStyle = k >= 0 ? P.accent : P.border; ctx.lineWidth = k >= 0 ? 1.5 : 1; ctx.stroke();
+        T(ctx, c.num, x + 7, y + 15, { size: 11, mono: true, color: k >= 0 ? P.accent : P.faint, weight: 700 });
+        if (k >= 0) T(ctx, String(k + 1), x + bw - 7, y + 15, { size: 11, mono: true, color: P.accent2, align: "right", weight: 700 });
+        ctx.font = EB.font(11);
+        let s = c.title; while (ctx.measureText(s).width > bw - 12 && s.length > 2) s = s.slice(0, -1);
+        if (s !== c.title) s = s.slice(0, -1) + "…";
+        T(ctx, s, x + 7, y + 33, { size: 11, color: k >= 0 ? P.text : P.dim });
+        boxes.push({ x, y, w: bw, h: bh, slug: c.slug });
+      });
+    }, { get height() { const w = pw("rd-cv"); const cols = w < 480 ? 4 : 6; return 24 + Math.ceil(22 / cols) * 48 + 20; } });
+    EB.drag(cv.canvas, { start(x, y) { const b = boxes.find((b) => x >= b.x && x <= b.x + b.w && y >= b.y && y <= b.y + b.h); if (b && EB.CHAPTERS.find((c) => c.slug === b.slug).ready) location.href = b.slug + ".html"; } });
+    function draw() {
+      const p = PATHS[whoG()];
+      EB.stat("rd-o-l", p.list.map((s) => EB.CHAPTERS.find((c) => c.slug === s).num).join(" → "));
+      EB.stat("rd-o-w", p.why);
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 8. 하늘네의 출발점 */
+  (function () {
+    const sG = EB.range("case-s", (v) => v + "만원", draw);
+    const rG = EB.range("case-r", (v) => v + "%", draw);
+    // 2025-04(입주) ~ 2029-04, 오늘 2026-10, 만기 2027-04. 단위: 2025-04부터의 개월
+    const START = 0, TODAY = 18, END = 24, MAX = 48;
+    let sel = END, box = null;
+    const label = (m) => { const y = 2025 + Math.floor((3 + m) / 12), mo = ((3 + m) % 12) + 1; return y + "년 " + mo + "월"; };
+    function savingsAt(m) {
+      const r = rG() / 100 / 12, s = sG() * 1e4;
+      let v = C.savings;
+      for (let i = TODAY; i < m; i++) v = v * (1 + r) + s;
+      if (m < TODAY) { for (let i = m; i < TODAY; i++) v = (v - s) / (1 + r); }
+      return v;
+    }
+    const cv = EB.canvas("#case-cv", (ctx, w, h) => {
+      const P = EB.palette();
+      const data = []; for (let m = START; m <= MAX; m++) data.push([m, savingsAt(m) + C.ownDeposit]);
+      const ymax = Math.ceil((savingsAt(MAX) + C.ownDeposit) / 5e7) * 5e7;
+      const c = EB.chart(ctx, { x: 52, y: 26, w: w - 80, h: h - 70 }, {
+        x: [START, MAX], y: [0, ymax], xTicks: [0, 12, 24, 36, 48], xFmt: (m) => label(m).slice(2).replace("년 ", ".").replace("월", ""), yFmt: EB.wonAxis,
+        series: [
+          { data: data.map(([m]) => [m, C.ownDeposit]), color: P.accent2, width: 1.5, fill: EB.color("accent-2-soft") },
+          { data, color: P.ok, width: 2.4 },
+        ],
+        bands: [{ x0: START, x1: TODAY, color: P.grid }],
+        vlines: [{ x: END, color: P.bad, label: "만기" }, { x: TODAY, color: P.faint, label: "지금" }],
+      });
+      box = c;
+      T(ctx, "순자산 = 보증금 중 자기 돈 2억 + 예금·투자", 58, 16, { size: 11, color: P.dim });
+      const px = c.X(sel), py = c.Y(savingsAt(sel) + C.ownDeposit), hy = c.box.y + c.box.h;
+      ctx.save(); ctx.setLineDash([3, 3]); ctx.strokeStyle = P.text; ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.moveTo(px, hy); ctx.lineTo(px, py); ctx.stroke(); ctx.restore();
+      ctx.beginPath(); ctx.arc(px, py, 5, 0, TAU); ctx.fillStyle = P.ok; ctx.fill();
+      ctx.beginPath(); ctx.arc(px, hy, 8, 0, TAU); ctx.fillStyle = P.text; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = P.bg; ctx.stroke();
+    }, { get height() { return pw("case-cv") < 480 ? 280 : 300; } });
+    EB.drag(cv.canvas, { move(x) { if (!box) return; sel = EB.clamp(Math.round((x - box.box.x) / box.box.w * MAX), TODAY, MAX); draw(); } });
+    function draw() {
+      const s = savingsAt(sel);
+      const left = sel - TODAY;
+      EB.stat("case-o-t", label(sel) + (sel === END ? " (만기)" : left ? " · " + left + "개월 뒤" : " (지금)"));
+      EB.stat("case-o-s", EB.won(s));
+      EB.stat("case-o-n", EB.won(s + C.ownDeposit));
+      EB.stat("case-o-g", EB.won(C.home.price - s - C.ownDeposit) + ' <small style="color:var(--text-faint)">(시세가 그대로라면)</small>');
+      cv.redraw();
+    }
+    draw();
+  })();
+})();
+</script>
+</body>
+</html>
