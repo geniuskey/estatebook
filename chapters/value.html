@@ -108,8 +108,8 @@
       <div class="sim-body side">
         <div class="sim-view"><canvas id="yd-cv"></canvas></div>
         <div class="sim-controls">
-          <label class="ctrl"><span>매매 시세 <output id="yd-p-out"></output></span><input type="range" id="yd-p" min="3" max="15" step="0.1" value="6.2"></label>
-          <label class="ctrl"><span>전세 보증금 <output id="yd-j-out"></output></span><input type="range" id="yd-j" min="1" max="10" step="0.1" value="4"></label>
+          <label class="ctrl"><span>매매 시세 <output id="yd-p-out"></output></span><input type="range" id="yd-p" min="3" max="50" step="0.1" value="6.2"></label>
+          <label class="ctrl"><span>전세 보증금 <output id="yd-j-out"></output></span><input type="range" id="yd-j" min="1" max="25" step="0.1" value="4"></label>
           <label class="ctrl"><span>전월세 전환율 <output id="yd-c-out"></output></span><input type="range" id="yd-c" min="3" max="8" step="0.25" value="5"></label>
         </div>
       </div>
@@ -119,7 +119,7 @@
         <div class="stat"><span class="k">순 임대수익률</span><span class="v" id="yd-o-n">—</span></div>
         <div class="stat"><span class="k">전세가율</span><span class="v" id="yd-o-j">—</span></div>
       </div>
-      <div class="sim-note">해볼 것: ① 기본값(C아파트)에서 총수익률은 3.23%, 보유세와 수선비를 빼면 약 2.6%다. 기준금리 3.0%보다 낮다. 이 집을 순수하게 임대료만 보고 사는 사람은 예금보다 덜 번다는 뜻이다. 그런데도 이 값에 거래되는 것은 시장이 임대료가 오르고 집값이 오를 것을 기대하기 때문이다. ② 시세를 12.5억, 전세를 6.5억으로 놓는다(서울 A구). 총수익률이 2.6%로 더 낮다. 비싼 동네일수록 수익률이 낮은 것은 흔한 현상이고, 성장 기대가 더 높게 들어 있다는 신호로 읽는다. ③ 전세를 시세에 가깝게 올린다. 전세가율이 오르면 수익률도 오르지만, 그것은 세입자 보증금이 깡통이 되기 쉬운 구조이기도 하다(<a href="jeonse.html">5장</a>). (재산세는 공시가격을 시세의 69%로 보고 1세대1주택 특례 없이 계산한 교육용 값이다. 공실과 중개보수는 넣지 않았다.)</div>
+      <div class="sim-note">해볼 것: ① 기본값(C아파트)에서 총수익률은 3.23%, 보유세와 수선비를 빼면 약 2.6%다. 기준금리 3.0%보다 낮다. 이 집을 순수하게 임대료만 보고 사는 사람은 예금보다 덜 번다는 뜻이다. 그런데도 이 값에 거래되는 것은 시장이 임대료가 오르고 집값이 오를 것을 기대하기 때문이다. ② 시세를 17억, 전세를 7억으로 놓는다(서울 A구). 총수익률이 2.06%, 순수익률은 약 1.35%로 더 낮다. 비싼 동네일수록 수익률이 낮은 것은 흔한 현상이고, 성장 기대가 더 높게 들어 있다는 신호로 읽는다. ③ 시세를 40억, 전세를 16억으로 놓는다. 2026년 서울 강남권 84㎡가 40억원대에 거래되고, 송파·용산·서초의 전세가율이 40% 안팎(KB, 2026년 1월)인 것을 본뜬 값이다. 총수익률은 2.0%이고, 재산세(공시가격 약 27억 6,000만원 기준)와 수선비를 빼면 순수익률은 약 1.26%로 2%에 한참 못 미친다. 전세가율이 40%를 조금만 밑돌아도 총수익률마저 2% 아래로 내려간다. ④ 전세를 시세에 가깝게 올린다. 전세가율이 오르면 수익률도 오르지만, 그것은 세입자 보증금이 깡통이 되기 쉬운 구조이기도 하다(<a href="jeonse.html">5장</a>). (재산세는 공시가격을 시세의 69%로 보고 1세대1주택 특례 없이 계산한 교육용 값이다. 종합부동산세, 공실, 중개보수는 넣지 않았다. 종부세까지 넣으면 고가 주택의 순수익률은 더 낮아진다.)</div>
     </div>
 
     <p>여기서 이상한 점이 하나 보인다. C아파트의 순수익률은 기준금리보다 낮다. 돈을 은행에 두는 것보다 집을 사서 세를 놓는 것이 한 해 수입으로는 덜 번다. 그런데도 사람들은 이 값에 집을 사고판다. 그 차이를 메우는 것이 다음 절의 '성장'이다.</p>
@@ -135,13 +135,14 @@
     </div>
 
     <p>이 식으로 앞의 이상한 점이 풀린다. C아파트의 총수익률 3.23%는 분모 \(r + \pi - g\)다. 금리를 3.0%, 위험 프리미엄을 2.0%로 보면 \(3.0 + 2.0 - g = 3.23\)이므로 시장은 임대료가 해마다 약 1.8%씩 오른다고 기대하고 있는 셈이다. 수익률이 금리보다 낮은 것은 이 성장 기대가 위험 프리미엄의 대부분을 메우고 있기 때문이다. 위험 프리미엄과 성장률은 눈에 보이지 않는 값이라, 실제 분석에서는 시장 가격에서 거꾸로 추정한다. 아래 숫자는 크기를 느끼기 위한 교육용 값이다.</p>
-    <p>아래 그래프의 가로축은 금리, 세로축은 C아파트(연 임대료 환산 2,000만원)의 이론 가격이다. 곡선 위의 점을 끌어 금리를 바꾸고, 양쪽의 작은 점이 금리 ±1%p일 때의 가격이다. 위험 프리미엄과 성장률도 바꿔 본다.</p>
+    <p>아래 그래프의 가로축은 금리, 세로축은 C아파트(연 임대료 환산 2,000만원)의 이론 가격이다. 곡선 위의 점을 끌어 금리를 바꾸고, 양쪽의 작은 점이 금리 ±1%p일 때의 가격이다. 위험 프리미엄과 성장률도 바꿔 본다. 집을 서울 A구(17억원, 전세 7억원)나 강남권(40억원, 전세가율 40%의 교육용 대표값)으로 바꾸면 그 집의 임대료 환산과 시세가 들어가고, 성장률은 그 시세가 나오는 값으로 맞춰진다.</p>
 
     <div class="sim" id="sim-cv">
       <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>금리 곡선 위의 집값</h3></div>
       <div class="sim-body side">
         <div class="sim-view"><canvas id="cv-cv"></canvas><span class="hint">곡선 위의 점을 끈다</span></div>
         <div class="sim-controls">
+          <div class="seg" id="cv-h"><button data-value="B" class="on">C아파트</button><button data-value="A">서울 A구</button><button data-value="G">강남권</button></div>
           <label class="ctrl"><span>위험 프리미엄 <output id="cv-p-out"></output></span><input type="range" id="cv-p" min="0" max="5" step="0.1" value="2"></label>
           <label class="ctrl"><span>임대료 기대 성장률 <output id="cv-g-out"></output></span><input type="range" id="cv-g" min="0" max="4" step="0.1" value="1.8"></label>
         </div>
@@ -152,10 +153,11 @@
         <div class="stat"><span class="k">금리 +1%p</span><span class="v" id="cv-o-u">—</span></div>
         <div class="stat"><span class="k">금리 −1%p</span><span class="v" id="cv-o-d">—</span></div>
       </div>
-      <div class="sim-note">해볼 것: ① 금리 3%에서 이론 가격은 6억 2,500만원으로 시세와 거의 같다. 금리가 1%p 오르면 4억 7,600만원(−24%), 1%p 내리면 9억 900만원(+45%)이다. 같은 1%p인데 내릴 때가 오를 때보다 두 배 가까이 크다. ② 점을 금리 6%로 끈다. 같은 ±1%p가 −14%, +19%로 줄어든다. 점을 1%로 끌면 −1%p가 가격을 여섯 배로 만든다. 금리가 낮을수록 1%p가 무겁다. ③ 성장률을 4%로 올리고 점을 왼쪽으로 끈다. 분모가 0에 닿는 곳에서 가격이 무한대로 튀고, 그 왼쪽은 모형이 무너지는 구간이다. (교육용 모형. 임대료는 C아파트 전세 4억원을 연 5%로 환산한 2,000만원으로 고정했다. 금리가 바뀌어도 임대료와 위험 프리미엄, 성장률이 그대로라고 가정했다.)</div>
+      <div class="sim-note">해볼 것: ① 금리 3%에서 이론 가격은 6억 2,500만원으로 시세와 거의 같다. 금리가 1%p 오르면 4억 7,600만원(−24%), 1%p 내리면 9억 900만원(+45%)이다. 같은 1%p인데 내릴 때가 오를 때보다 두 배 가까이 크다. ② 점을 금리 6%로 끈다. 같은 ±1%p가 −14%, +19%로 줄어든다. 점을 1%로 끌면 −1%p가 가격을 여섯 배로 만든다. 금리가 낮을수록 1%p가 무겁다. ③ 성장률을 4%로 올리고 점을 왼쪽으로 끈다. 분모가 0에 닿는 곳에서 가격이 무한대로 튀고, 그 왼쪽은 모형이 무너지는 구간이다. ④ 강남권을 고른다. 임대료 환산 8,000만원(전세 16억원 × 5%)으로 시세 40억원이 나오려면 성장률이 3.0%여야 한다. 분모가 2.0%뿐이라 금리 +1%p에 −33%, −1%p에 +100%다. 성장률을 2.0%로 1%p만 낮춰도 −33%다. 서울 A구도 성장률 2.9%, ±1%p에 −33%·+94%로 비슷하다. (교육용 모형. C아파트의 임대료는 전세 4억원을 연 5%로 환산한 2,000만원으로 고정했다. 금리가 바뀌어도 임대료와 위험 프리미엄, 성장률이 그대로라고 가정했다. 지역 시세는 교육용 값이다.)</div>
     </div>
 
     <p>곡선이 아래로 볼록하게 휘어 있다는 것이 핵심이다. 가격은 분모에 반비례하므로, 분모가 작을 때(금리가 낮을 때) 분모의 같은 변화가 가격을 훨씬 크게 바꾼다. 금리가 낮던 시기에 집값이 크게 오르고, 그 시기에 산 집이 금리가 오를 때 크게 흔들리는 것도 이 볼록성 때문이다.</p>
+    <p>같은 식을 비싼 집에 대 보면 다른 것이 보인다. 2026년 서울 강남권 84㎡가 40억원대에 거래되고 그 동네 전세가율이 40% 안팎이라면, 전세 16억원을 연 5%로 환산한 임대료는 8,000만원이고 총 임대수익률은 2.0%다. 보유세와 수선비를 빼면 2%에 한참 못 미친다. 금리 3.0%에 위험 프리미엄 2.0%를 더한 할인율 5%로 이 값이 나오려면 \(g = 5.0\% - 2.0\% = 3.0\%\), 곧 임대료가 해마다 3% 넘게 영원히 오른다는 기대가 가격에 들어 있어야 한다. C아파트(약 1.8%)보다 훨씬 높다. 바꿔 말하면 이 가격은 지금 받는 임대료보다 앞으로의 성장에 크게 기대는 가격이고, 분모가 작아 금리와 기대의 작은 변화에 크게 흔들린다. 다만 이것은 위험 프리미엄을 모든 지역에 똑같이 2%로 둔 교육용 계산이다. 시장이 강남권의 위험을 더 낮게 본다면 필요한 성장률도 그만큼 낮아진다. 어느 쪽이 맞는지, 그 기대가 실현될지는 이 계산이 말해 주지 않으며 전망도 아니다.</p>
   </section>
 
   <section id="one-pct">
@@ -222,8 +224,8 @@
       <div class="sim-body side">
         <div class="sim-view"><canvas id="af-cv"></canvas><span class="hint">곡선 위의 점을 끈다</span></div>
         <div class="sim-controls">
-          <label class="ctrl"><span>가구 연소득 <output id="af-i-out"></output></span><input type="range" id="af-i" min="3000" max="15000" step="500" value="7000"></label>
-          <label class="ctrl"><span>자기 돈 <output id="af-e-out"></output></span><input type="range" id="af-e" min="0" max="5" step="0.1" value="2"></label>
+          <label class="ctrl"><span>가구 연소득 <output id="af-i-out"></output></span><input type="range" id="af-i" min="3000" max="20000" step="500" value="7000"></label>
+          <label class="ctrl"><span>자기 돈 <output id="af-e-out"></output></span><input type="range" id="af-e" min="0" max="10" step="0.1" value="2"></label>
         </div>
       </div>
       <div class="sim-readout">
@@ -232,7 +234,7 @@
         <div class="stat"><span class="k">살 수 있는 가격</span><span class="v" id="af-o-p">—</span></div>
         <div class="stat"><span class="k">금리 +1%p이면</span><span class="v" id="af-o-u">—</span></div>
       </div>
-      <div class="sim-note">해볼 것: ① 연소득 7,000만원, 자기 돈 2억원, 금리 4%에서 월 233만원까지 갚을 수 있고 약 4억 8,900만원을 빌려 6억 8,900만원짜리 집까지 살 수 있다. ② 점을 5%로 끈다. 월 상환 한도는 그대로인데 빌릴 수 있는 돈이 약 5,400만원 줄어든다. 금리 1%p가 살 수 있는 가격을 8% 가까이 깎는다. ③ 점을 8%까지 끈다. 같은 소득으로 빌릴 수 있는 돈이 3억원 남짓으로 줄어든다. 대출에 기대는 수요가 한꺼번에 줄어드는 순간이다. (교육용 단순화: DSR 40%만 적용했다. 실제 한도는 스트레스 DSR 가산금리, LTV, 주담대 금액 상한이 함께 정한다. 하늘네의 실제 한도는 <a href="mortgage.html">9장</a>에서 계산한다.)</div>
+      <div class="sim-note">해볼 것: ① 연소득 7,000만원, 자기 돈 2억원, 금리 4%에서 월 233만원까지 갚을 수 있고 약 4억 8,900만원을 빌려 6억 8,900만원짜리 집까지 살 수 있다. ② 점을 5%로 끈다. 월 상환 한도는 그대로인데 빌릴 수 있는 돈이 약 5,400만원 줄어든다. 금리 1%p가 살 수 있는 가격을 8% 가까이 깎는다. ③ 점을 8%까지 끈다. 같은 소득으로 빌릴 수 있는 돈이 3억원 남짓으로 줄어든다. 대출에 기대는 수요가 한꺼번에 줄어드는 순간이다. (교육용 단순화: DSR 40%만 적용했다. 실제 한도는 스트레스 DSR 가산금리, LTV, 주담대 금액 상한이 함께 정한다. 2026년 수도권·규제지역의 주담대 금액 상한은 시가 15억원 이하 6억원, 15억원 초과~25억원 4억원, 25억원 초과 2억원이라, 소득을 2억원까지 올려도 비싼 집일수록 빌릴 수 있는 돈은 오히려 줄어든다. 하늘네의 실제 한도는 <a href="mortgage.html">9장</a>에서 계산한다.)</div>
     </div>
 
     <p>두 경로는 같은 방향을 가리킨다. 금리가 오르면 투자자는 같은 임대료를 더 높은 비율로 할인하고, 실수요자는 빌릴 수 있는 돈이 줄어든다. 다만 두 번째 경로에는 제도가 끼어 있다. 은행은 실제 금리에 가산금리를 더해 한도를 계산하고(스트레스 DSR), 정부는 지역과 가격에 따라 대출 비율과 금액을 막는다. 그래서 금리가 같아도 규제가 바뀌면 살 수 있는 가격이 바뀐다. 이 경로는 <a href="mortgage.html">9장</a>에서 하늘네의 숫자로 끝까지 따라간다.</p>
@@ -250,7 +252,7 @@
 
   <section id="pir">
     <h2>소득 대비 가격(PIR)과 상환 부담</h2>
-    <p>집값이 비싼지를 가늠하는 가장 단순한 잣대는 소득과 비교하는 것이다. 집값을 가구의 연소득으로 나눈 값을 <span class="term">소득 대비 주택가격 비율</span><span class="en">(PIR, Price-to-income ratio)</span>이라 한다. PIR이 10이면 한 푼도 쓰지 않고 10년을 모아야 집 한 채를 산다는 뜻이다. 국토교통부의 2024년도 주거실태조사(2025년 11월 발표)에 따르면 자가가구의 PIR은 전국 6.3배, 수도권 8.7배, 서울 13.9배였다(조사의 대상과 산정 방식에 따른 값이다).</p>
+    <p>집값이 비싼지를 가늠하는 가장 단순한 잣대는 소득과 비교하는 것이다. 집값을 가구의 연소득으로 나눈 값을 <span class="term">소득 대비 주택가격 비율</span><span class="en">(PIR, Price-to-income ratio)</span>이라 한다. PIR이 10이면 한 푼도 쓰지 않고 10년을 모아야 집 한 채를 산다는 뜻이다. 국토교통부의 2024년도 주거실태조사(2025년 11월 발표)에 따르면 자가가구의 PIR은 전국 6.3배, 수도권 8.7배, 서울 13.9배였다(조사의 대상과 산정 방식에 따른 값이다). 이 조사는 2024년의 값이라, 서울 아파트값이 크게 오른 2026년 시세로 다시 재면 더 높아졌을 수 있다.</p>
     <p>그런데 PIR은 금리를 모른다. PIR이 같아도 금리가 2%일 때와 6%일 때 매달 갚을 돈은 크게 다르다. 그래서 소득 가운데 대출 상환에 나가는 몫을 함께 본다. 집값의 일정 비율(LTV)을 30년 원리금균등으로 빌렸다면 그 몫은 이렇게 쓸 수 있다.</p>
 
     <div class="formula">
@@ -258,7 +260,7 @@
       <div class="where">\(a(r)\)는 대출 1원당 한 해에 갚는 원리금(30년, 월 상환)이다. 금리 4%에서 약 0.057, 6%에서 약 0.072다. PIR이 같아도 금리가 오르면 상환 부담이 같은 비율로 커진다. 한국주택금융공사의 주택구입부담지수도 같은 생각으로 소득, 집값, 금리를 한데 묶는다.</div>
     </div>
 
-    <p>아래 그래프의 가로축은 PIR, 세로축은 소득 대비 연 상환액이다. 점을 끌어 PIR을 고르고, 금리와 LTV를 바꿔 본다. 가는 점선은 금리가 2%p 낮을 때와 높을 때다.</p>
+    <p>아래 그래프의 가로축은 PIR, 세로축은 소득 대비 연 상환액이다. 점을 끌어 PIR을 고르고, 금리와 LTV를 바꿔 본다. 가는 점선은 금리가 2%p 낮을 때와 높을 때다. 가로축은 하늘네 소득으로 본 강남권 40억원대 84㎡(PIR 40배 남짓)까지 넓혔다. 금액 상한을 켜면 2026년 수도권 주담대 금액 상한(시가 15억원 이하 6억원, 25억원 이하 4억원, 그 위 2억원)이 하늘네 소득 기준 집값에 적용된다.</p>
 
     <div class="sim" id="sim-pir">
       <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>같은 PIR, 다른 부담</h3></div>
@@ -267,14 +269,16 @@
         <div class="sim-controls">
           <label class="ctrl"><span>대출 금리 <output id="pir-r-out"></output></span><input type="range" id="pir-r" min="2" max="8" step="0.25" value="4"></label>
           <label class="ctrl"><span>LTV(집값 중 대출) <output id="pir-l-out"></output></span><input type="range" id="pir-l" min="0" max="80" step="5" value="50"></label>
+          <label class="check"><input type="checkbox" id="pir-cap"> 2026년 주담대 금액 상한 적용(수도권, 하늘네 연소득 9,200만원)</label>
         </div>
       </div>
       <div class="sim-readout">
         <div class="stat"><span class="k">고른 PIR</span><span class="v" id="pir-o-x">—</span></div>
         <div class="stat"><span class="k">소득 대비 연 상환액</span><span class="v" id="pir-o-b">—</span></div>
         <div class="stat"><span class="k">금리 +2%p이면</span><span class="v" id="pir-o-u">—</span></div>
+        <div class="stat"><span class="k">연소득 9,200만원이면 집값 · 대출</span><span class="v" id="pir-o-e">—</span></div>
       </div>
-      <div class="sim-note">해볼 것: ① PIR 6.7(하늘네 소득으로 본 B시 84㎡), LTV 50%, 금리 4%에서 소득의 약 19%가 상환에 나간다. ② 점을 13.6(A구 84㎡)으로 끈다. 같은 조건에서 39%로 은행권 DSR 한도 40%에 바짝 붙는다. 금리를 6%로 올리면 49%로 한도를 넘는다. ③ 금리를 2%로 내린다. PIR 13.6에서도 부담이 30% 아래로 내려간다. 저금리 시기에 높은 PIR이 '감당할 만해' 보였던 이유이고, 금리가 오를 때 그 계산이 한꺼번에 무너지는 이유다. (교육용 단순화: 30년 원리금균등, 세전 소득 기준, 다른 대출 없음. DSR의 스트레스 가산금리는 넣지 않았다.)</div>
+      <div class="sim-note">해볼 것: ① PIR 6.7(하늘네 소득으로 본 B시 84㎡), LTV 50%, 금리 4%에서 소득의 약 19%가 상환에 나간다. ② 점을 18.5(A구 84㎡ 17억원)로 끈다. 같은 조건에서 53%로 은행권 DSR 한도 40%를 넘는다. 금리를 6%로 올리면 66%다. 금리를 2%로 내려도 41%로 한도 언저리다. 서울 조사값 13.9 근처라면 금리 2%에서 31%였다. 저금리 시기에 높은 PIR이 '감당할 만해' 보였던 이유이고, 금리가 오를 때 그 계산이 한꺼번에 무너지는 이유다. ③ 금리를 4%로 되돌리고 금액 상한을 켠다. A구 17억원은 시가 15억원을 넘어 대출이 4억원까지라 부담은 25%로 내려가지만, 집값의 4분의 3이 넘는 13억원을 자기 돈으로 채워야 한다. 점을 PIR 27.2(25억원) 너머로 끌면 대출 상한이 2억원으로 한 번 더 꺾인다. ④ 점을 43.5(강남권 40억원)로 끈다. 상한을 끄면 소득의 125%로 모형부터 성립하지 않고, 켜면 부담은 12%뿐이지만 38억원을 자기 돈으로 내야 한다. 이 가격대에서는 소득과 대출이 아니라 이미 가진 자산이 사는 사람을 정한다. (교육용 단순화: 30년 원리금균등, 세전 소득 기준, 다른 대출 없음. DSR의 스트레스 가산금리와 지역별 LTV 한도는 넣지 않았다.)</div>
     </div>
 
     <p>PIR과 상환 부담을 나란히 보면, 집값이 비싼지 싼지를 한 숫자로 말하기 어렵다는 것이 분명해진다. PIR이 높아도 금리가 낮으면 매달의 부담은 견딜 만하고, PIR이 그대로여도 금리가 오르면 부담이 커진다. 그리고 PIR은 평균 소득 가구를 기준으로 한 숫자라, 실제로 그 동네 집을 사는 가구의 소득과는 다를 수 있다. PIR을 거품의 신호로 쓰는 방법과 한계는 <a href="bubble.html">17장</a>에서 다시 본다.</p>
@@ -341,7 +345,7 @@
       <div class="sim-note">해볼 것: ① 금리 −1%p, 다른 것은 그대로면 이론 가격은 45% 오른다. 앞 절의 계산이다. ② '성장 기대가 따라 움직이는 정도'를 1로 올린다. 경기가 나빠 금리를 1%p 내렸고, 시장이 임대료 성장 기대도 1%p 낮췄다는 뜻이다. 두 효과가 정확히 상쇄되어 가격이 그대로다. ③ 여기에 '전세의 임대료 환산이 금리를 따라감'을 켠다. 전환율 상한이 5%에서 4%로 내려가 같은 전세 4억원의 임대료 환산이 2,000만원에서 1,600만원으로 줄고, 금리를 내렸는데 이론 가격은 20% 내린다. ④ 금리를 +1%p로 바꾸고 따라 움직이는 정도를 1로 둔다. 호황기의 금리 인상에서는 반대로 집값이 그대로이거나 오를 수 있다. (교육용 모형. 출발점은 금리 3%, 위험 프리미엄 2%, 성장 1.8%, C아파트 임대료 환산 2,000만원. 성장 기대 변화 = 따라 움직이는 정도 × 금리 변화로 두었다.)</div>
     </div>
 
-    <p>그래서 "금리가 내렸으니 집값이 오른다", "금리가 올랐으니 집값이 내린다"는 말은 다른 것이 그대로일 때만 맞다. 실제로 이 가격 변화는 어느 힘에서 왔는가를 따질 때는 세 가지를 함께 본다. 첫째, <b>금리</b>가 할인율과 대출 여력으로 들어온 몫. 둘째, 금리를 바꾸게 만든 경기가 소득과 임대료의 <b>기대</b>로 들어온 몫. 셋째, 같은 시기에 따로 움직인 <b>공급</b>(입주 물량, <a href="supply.html">4장</a>)과 <b>대출 규제</b>(<a href="policy.html">15장</a>)의 몫이다. 금리를 올리는 시기에 대출 규제를 풀거나, 금리를 내리는 시기에 입주 물량이 몰리면 금리와 집값이 같은 방향으로 움직이는 것처럼 보인다. 그리고 집값은 거래가 느려서 금리 변화를 몇 분기, 길게는 몇 년에 걸쳐 따라간다.</p>
+    <p>그래서 "금리가 내렸으니 집값이 오른다", "금리가 올랐으니 집값이 내린다"는 말은 다른 것이 그대로일 때만 맞다. 실제로 이 가격 변화는 어느 힘에서 왔는가를 따질 때는 세 가지를 함께 본다. 첫째, <b>금리</b>가 할인율과 대출 여력으로 들어온 몫. 둘째, 금리를 바꾸게 만든 경기가 소득과 임대료의 <b>기대</b>로 들어온 몫. 셋째, 같은 시기에 따로 움직인 <b>공급</b>(입주 물량, <a href="supply.html">4장</a>)과 <b>대출 규제</b>(<a href="policy.html">15장</a>)의 몫이다. 금리를 올리는 시기에 대출 규제를 풀거나, 금리를 내리는 시기에 입주 물량이 몰리면 금리와 집값이 같은 방향으로 움직이는 것처럼 보인다. 최근의 서울도 그렇다. 서울시 아파트 실거래가격지수는 2026년 7월에 전년 같은 달보다 14.56% 높았는데, 그 1년 동안 기준금리는 내려가지 않았고 여름에는 오히려 올랐다. 이 상승을 금리 하나로는 설명하기 어렵다. 입지가 좋은 곳의 공급 부족, 바뀐 대출 규제, 더 오를 것이라는 기대가 함께 작동했을 것이고, 각 힘이 얼마씩이었는지는 단정할 수 없다. 그리고 집값은 거래가 느려서 금리 변화를 몇 분기, 길게는 몇 년에 걸쳐 따라간다.</p>
 
     <div class="callout pro">
       <strong>"금리 내리면 집값 오르죠?"라는 질문에</strong>
@@ -366,6 +370,7 @@
           <tr><td>DSR 한도</td><td>은행권 40%, 제2금융권 50%</td><td>금융위원회</td></tr>
           <tr><td>스트레스 DSR</td><td>수도권·규제지역 주담대에 가산금리 하한 3.0%p 등</td><td>금융위원회(<a href="mortgage.html">9장</a>)</td></tr>
           <tr><td>자가가구 PIR</td><td>전국 6.3배, 수도권 8.7배, 서울 13.9배 (2024년도 조사)</td><td>국토교통부 주거실태조사(2025년 11월 발표)</td></tr>
+          <tr><td>서울 아파트 시세(참고)</td><td>평균 16억 739만원, 중위 12억 9,167만원(2026년 8월). 강남권 84㎡ 40억원대 거래(2026년 사례). 송파·용산·서초 전세가율 40% 안팎(2026년 1월)</td><td>KB부동산 월간 주택가격동향(보도), 실거래 사례</td></tr>
           <tr><td>위험 프리미엄, 임대료 성장률</td><td>2.0%, 1.8% (교육용)</td><td>시장 가격에서 거꾸로 추정하는 값, 이 책의 가정</td></tr>
         </tbody>
       </table>
@@ -398,16 +403,16 @@
         <div class="stat"><span class="k">금리 ±1%p</span><span class="v" id="case-o-s">—</span></div>
         <div class="stat"><span class="k">PIR(B시 · A구)</span><span class="v" id="case-o-x">—</span></div>
       </div>
-      <div class="sim-note">해볼 것: ① 기본값에서 이론 가격 6억 2,500만원은 시세와 거의 같다. 시세에 들어 있는 성장 기대가 약 1.8%라는 뜻이다. 금리 ±1%p의 범위는 4억 7,600만원에서 9억 900만원이다. ② 연동을 켜고 금리를 4%로 올린다. 전환율도 6%가 되어 임대료 환산이 2,400만원으로 늘고, 이론 가격은 5억 7,100만원으로 8.6%만 내린다. 연동을 끈 경우의 −24%보다 훨씬 작다. ③ 성장률을 0으로 내린다. 임대료가 영원히 그대로라면 C아파트의 이론 가격은 4억원으로 전세 보증금과 같아진다. ④ PIR은 금리와 상관없이 그대로다. B시 6.7, A구 13.6, E시 5.3. PIR만으로는 금리가 바꾸는 부담을 볼 수 없다. (교육용 모형. 위험 프리미엄과 성장률은 시장 가격에서 거꾸로 맞춘 가정이고, PIR은 하늘네 두 사람의 연봉 합계 9,200만원 기준이다.)</div>
+      <div class="sim-note">해볼 것: ① 기본값에서 이론 가격 6억 2,500만원은 시세와 거의 같다. 시세에 들어 있는 성장 기대가 약 1.8%라는 뜻이다. 금리 ±1%p의 범위는 4억 7,600만원에서 9억 900만원이다. ② 연동을 켜고 금리를 4%로 올린다. 전환율도 6%가 되어 임대료 환산이 2,400만원으로 늘고, 이론 가격은 5억 7,100만원으로 8.6%만 내린다. 연동을 끈 경우의 −24%보다 훨씬 작다. ③ 성장률을 0으로 내린다. 임대료가 영원히 그대로라면 C아파트의 이론 가격은 4억원으로 전세 보증금과 같아진다. ④ PIR은 금리와 상관없이 그대로다. B시 6.7, A구 18.5, E시 5.3. PIR만으로는 금리가 바꾸는 부담을 볼 수 없다. (교육용 모형. 위험 프리미엄과 성장률은 시장 가격에서 거꾸로 맞춘 가정이고, PIR은 하늘네 두 사람의 연봉 합계 9,200만원 기준이다.)</div>
     </div>
 
     <div class="casefile">
       <div class="tag"><b>CASE 하늘네</b><span>집 노트 · 3장</span></div>
       <h4>6억 2,000만원 안에 들어 있는 금리와 기대</h4>
       <p>태호가 적은 계산은 짧다. C아파트 전세 4억원을 2026년 기준 법정 전환율 상한 연 5%로 바꾸면 연 임대료 환산은 2,000만원이다. 시세 6억 2,000만원으로 나누면 총 임대수익률은 3.23%, 이 책의 모델로 재산세와 수선비를 빼면 순수익률은 약 2.6%다. 기준금리 3.0%보다 낮다. 금리 3.0%에 위험 프리미엄 2.0%를 더한 할인율로 이 가격이 나오려면 시장이 임대료가 해마다 약 1.8% 오른다고 기대하고 있어야 한다. 그 가정으로 본 이론 가격은 6억 2,500만원이다.</p>
-      <p>같은 가정에서 금리만 1%p 오르면 이론 가격은 4억 7,600만원(−24%), 1%p 내리면 9억 900만원(+45%)이다. 하늘이 놀라자 태호가 덧붙인다. "이건 금리만 움직이고 나머지는 꼼짝 안 한다고 칠 때 숫자예요. 금리가 오르면 전세를 월세로 바꾸는 비율도 같이 오르니까, 그것까지 넣으면 −9% 정도입니다. 실제 시세는 이보다 훨씬 느리고, 같은 때 입주 물량이나 대출 규제가 어떻게 되느냐에 따라 또 달라지고요." 재원이 묻는다. "A구는 수익률이 더 낮다면서요?" A구 84㎡(12억 5,000만원, 전세 6억 5,000만원)의 총수익률은 같은 방식으로 약 2.6%다. 시장이 A구의 성장을 더 높게, 위험을 더 낮게 보고 있다는 뜻이고, 그만큼 금리와 기대의 변화에 더 예민하다는 뜻이기도 하다.</p>
-      <p>하늘네 연소득 9,200만원으로 보면 PIR은 B시 약 6.7, A구 약 13.6, E시 약 5.3이다. A구 84㎡는 하늘네가 한 푼도 쓰지 않고 13년 반을 모아야 하는 값이고, 2024년도 주거실태조사의 서울 자가가구 PIR(13.9배)과 비슷한 수준이다. 집주인 남궁현의 입장에서 보면, 2021년에 6억 8,000만원에 산 이 집이 해마다 받는 임대료 환산 2,000만원은 수익률로 3% 남짓이다. 그가 이 집을 들고 있는 이유가 임대료가 아니라 가격에 대한 기대라는 것은 숫자에서 바로 보인다. 다만 이 계산은 '이 가격이 비싸다, 싸다'를 정해 주지 않는다. 시세에 어떤 기대가 들어 있는지를 보여 줄 뿐이다.</p>
-      <div class="clue"><div><b>이 장에서 정한 것</b>C아파트 총 임대수익률 3.23%(순 약 2.6%), 시세에 들어 있는 성장 기대 약 1.8%(위험 프리미엄 2% 가정), 금리 ±1%p의 이론 가격 범위 4.8억~9.1억, PIR B시 6.7·A구 13.6·E시 5.3.</div><div><b>아직 남은 문제</b>시세에 들어 있는 성장 기대는 B시의 공급 전망과 맞는가? 만기인 2027년 4월에 전세가는 어떻게 될까? 사려면 금리에 따라 얼마를 빌릴 수 있는가?</div><div><b>다음 단계</b>4장: B시 인근의 입주 예정 물량과 만기 시점의 전세가 시나리오를 공급의 시차로 본다.</div></div>
+      <p>같은 가정에서 금리만 1%p 오르면 이론 가격은 4억 7,600만원(−24%), 1%p 내리면 9억 900만원(+45%)이다. 하늘이 놀라자 태호가 덧붙인다. "이건 금리만 움직이고 나머지는 꼼짝 안 한다고 칠 때 숫자예요. 금리가 오르면 전세를 월세로 바꾸는 비율도 같이 오르니까, 그것까지 넣으면 −9% 정도입니다. 실제 시세는 이보다 훨씬 느리고, 같은 때 입주 물량이나 대출 규제가 어떻게 되느냐에 따라 또 달라지고요." 재원이 묻는다. "A구는 수익률이 더 낮다면서요?" A구 84㎡(17억원, 전세 7억원)의 연 임대료 환산은 7억원 × 5% = 3,500만원이고, 총수익률은 3,500만원 ÷ 17억원 ≈ 2.1%다. 같은 할인율 5%(금리 3.0% + 위험 프리미엄 2.0%)로 이 가격이 나오려면 시장이 임대료가 해마다 약 2.9% 오른다고 기대하고 있어야 한다(5.0% − 2.1%). C아파트의 1.8%보다 1%p 넘게 높다. 시장이 A구의 성장을 더 높게, 또는 위험을 더 낮게 보고 있다는 뜻이고, 분모가 작은 만큼 금리와 기대의 변화에 더 예민하다는 뜻이기도 하다. 같은 모형으로 금리 ±1%p는 A구 이론 가격을 −33%, +94% 움직인다. 태호가 덧붙인다. "서울 강남권에서 84㎡가 40억원대에 거래되는 집들은 전세가율이 40% 안팎이라 수익률이 2% 언저리이고, 이 식으로는 성장 기대가 3% 넘게 들어 있는 셈이에요. 이건 계산이지 전망은 아닙니다."</p>
+      <p>하늘네 연소득 9,200만원으로 보면 PIR은 B시 약 6.7, A구 약 18.5(17억원 ÷ 9,200만원), E시 약 5.3이다. A구 84㎡는 하늘네가 한 푼도 쓰지 않고 18년 반을 모아야 하는 값이고, 2024년도 주거실태조사의 서울 자가가구 PIR(13.9배)보다 높다. 그 조사 뒤로 서울 시세가 크게 올랐으니 2026년의 서울 PIR도 조사값보다 높아졌을 수 있다. 게다가 A구 17억원은 시가 15억원을 넘어 수도권 주담대가 4억원까지라, 하늘네가 사려면 13억원을 자기 돈으로 채워야 한다. 집주인 남궁현의 입장에서 보면, 2021년에 6억 8,000만원에 산 이 집이 해마다 받는 임대료 환산 2,000만원은 수익률로 3% 남짓이다. 그가 이 집을 들고 있는 이유가 임대료가 아니라 가격에 대한 기대라는 것은 숫자에서 바로 보인다. 다만 이 계산은 '이 가격이 비싸다, 싸다'를 정해 주지 않는다. 시세에 어떤 기대가 들어 있는지를 보여 줄 뿐이다.</p>
+      <div class="clue"><div><b>이 장에서 정한 것</b>C아파트 총 임대수익률 3.23%(순 약 2.6%), 시세에 들어 있는 성장 기대 약 1.8%(위험 프리미엄 2% 가정), 금리 ±1%p의 이론 가격 범위 4.8억~9.1억, A구 총수익률 약 2.1%와 그 안의 성장 기대 약 2.9%, PIR B시 6.7·A구 18.5·E시 5.3.</div><div><b>아직 남은 문제</b>시세에 들어 있는 성장 기대는 B시의 공급 전망과 맞는가? 만기인 2027년 4월에 전세가는 어떻게 될까? 사려면 금리에 따라 얼마를 빌릴 수 있는가?</div><div><b>다음 단계</b>4장: B시 인근의 입주 예정 물량과 만기 시점의 전세가 시나리오를 공급의 시차로 본다.</div></div>
     </div>
   </section>
 
@@ -552,19 +557,26 @@
 
   /* ---------------------------------------------------------- 2. 금리 곡선 위의 집값 */
   (function () {
+    const A = C.areas.find((a) => a.key === "A"), GP = RE.MARKET.gangnam84;
+    const HOUSES = {
+      B: { name: "C아파트", price: C.home.price, rent: RENT, ymax: 20e8 },
+      A: { name: "A구", price: A.price, rent: A.jeonse * RE.conversionCap(), ymax: 50e8 },
+      G: { name: "강남권", price: GP, rent: GP * 0.4 * RE.conversionCap(), ymax: 120e8 },   // 전세가율 40% 안팎(교육용 대표값)
+    };
+    const hG = EB.seg("cv-h", (v) => { const H = HOUSES[v]; r = 0.03; pG.set(2); gG.set(Math.round((0.05 - H.rent / H.price) * 1000) / 10); draw(); });
     const pG = EB.range("cv-p", pctFmt, draw);
     const gG = EB.range("cv-g", pctFmt, draw);
     let r = 0.03, box = null;
-    const YMAX = 20e8;
-    const price = (rr) => RE.capValue(RENT, rr + pG() / 100, gG() / 100);
+    const H = () => HOUSES[hG()];
+    const price = (rr) => RE.capValue(H().rent, rr + pG() / 100, gG() / 100);
     const cv = EB.canvas("#cv-cv", (ctx, w, h) => {
-      const P = EB.palette();
+      const P = EB.palette(), YMAX = H().ymax;
       const xs = []; for (let x = 0; x <= 0.08 + 1e-9; x += 0.0005) xs.push(x);
       const asym = gG() / 100 - pG() / 100;   // 분모 = 0인 금리
       const c = EB.chart(ctx, { x: 54, y: 14, w: w - 68, h: h - 64 }, {
         x: [0, 0.08], y: [0, YMAX], xTicks: [0, 0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08], xFmt: (v) => Math.round(v * 100) + "%", yFmt: EB.wonAxis,
         series: [{ data: xs.map((x) => [x, Math.min(price(x), YMAX * 1.5)]).filter((d) => isFinite(d[1])), color: P.accent, width: 2.6 }],
-        hlines: [{ y: C.home.price, color: P.accent2, label: "시세 6.2억" }],
+        hlines: [{ y: H().price, color: P.accent2, label: "시세 " + EB.wonAxis(H().price) }],
       });
       box = c;
       if (asym > 0) { ctx.save(); ctx.globalAlpha = 0.1; ctx.fillStyle = P.bad; ctx.fillRect(c.box.x, c.box.y, c.X(Math.min(asym, 0.08)) - c.box.x, c.box.h); ctx.restore(); }
@@ -685,35 +697,42 @@
   (function () {
     const rG = EB.range("pir-r", pctFmt, draw);
     const lG = EB.range("pir-l", (v) => v + "%", draw);
+    const capEl = document.getElementById("pir-cap");
+    capEl.addEventListener("change", draw);
     let x0 = 6.7, box = null;
-    const burden = (pir, r) => pir * lG() / 100 * ann(r);
+    const XMAX = 45, YMAX = 1.2;
+    const capOf = (price) => RE.KR.loan.capByPrice.find((b) => price <= b.upTo).cap;
+    const loanAt = (pir) => { const price = pir * C.income, l = price * lG() / 100; return capEl.checked ? Math.min(l, capOf(price)) : l; };
+    const burden = (pir, r) => loanAt(pir) / C.income * ann(r);
     const cv = EB.canvas("#pir-cv", (ctx, w, h) => {
       const P = EB.palette(), r = rG() / 100;
-      const xs = []; for (let x = 2; x <= 20.001; x += 0.25) xs.push(x);
+      const xs = []; for (let x = 2; x <= XMAX + 0.001; x += 0.1) xs.push(x);
       const c = EB.chart(ctx, { x: 46, y: 14, w: w - 60, h: h - 64 }, {
-        x: [2, 20], y: [0, 0.8], xTicks: [2, 5, 8, 11, 14, 17, 20], xFmt: (v) => v + "배", yTicks: [0, 0.2, 0.4, 0.6, 0.8], yFmt: (v) => Math.round(v * 100) + "%",
+        x: [2, XMAX], y: [0, YMAX], xTicks: w < 480 ? [2, 15, 30, 45] : [2, 10, 20, 30, 40], xFmt: (v) => v + "배", yTicks: [0, 0.4, 0.8, 1.2], yFmt: (v) => Math.round(v * 100) + "%",
         series: [
-          { data: xs.map((x) => [x, burden(x, Math.max(0, r - 0.02))]), color: P.ok, width: 1.3, dash: [5, 4] },
-          { data: xs.map((x) => [x, burden(x, r + 0.02)]), color: P.bad, width: 1.3, dash: [5, 4] },
-          { data: xs.map((x) => [x, burden(x, r)]), color: P.accent, width: 2.6 },
+          { data: xs.map((x) => [x, Math.min(burden(x, Math.max(0, r - 0.02)), YMAX)]), color: P.ok, width: 1.3, dash: [5, 4] },
+          { data: xs.map((x) => [x, Math.min(burden(x, r + 0.02), YMAX)]), color: P.bad, width: 1.3, dash: [5, 4] },
+          { data: xs.map((x) => [x, Math.min(burden(x, r), YMAX)]), color: P.accent, width: 2.6 },
         ],
         hlines: [{ y: 0.4, color: P.warn, label: "은행권 DSR 40%" }],
-        vlines: [{ x: 6.3, color: P.faint, label: "전국" }, { x: 8.7, color: P.faint, label: "수도권" }, { x: 13.9, color: P.faint, label: "서울" }],
+        vlines: [{ x: 6.3, color: P.faint }, { x: 8.7, color: P.faint }, { x: 13.9, color: P.faint, label: "서울" }],
       });
       box = c;
       T(ctx, "PIR →", c.box.x + c.box.w - 4, c.box.y + c.box.h - 22, { size: 11, color: P.dim, align: "right" });
-      T(ctx, "세로선: 2024년도 주거실태조사 자가가구 PIR", c.box.x + 6, c.box.y + c.box.h - 8, { size: 10, color: P.faint });
-      const b = burden(x0, r), py = c.Y(Math.min(b, 0.8));
+      T(ctx, w < 480 ? "세로선: 2024년도 PIR 전국·수도권·서울" : "세로선: 2024년도 주거실태조사 자가가구 PIR(전국 6.3·수도권 8.7·서울 13.9)", c.box.x + 6, c.box.y + c.box.h - 8, { size: 10, color: P.faint });
+      const b = burden(x0, r), py = c.Y(Math.min(b, YMAX));
       ctx.save(); ctx.setLineDash([3, 3]); ctx.strokeStyle = P.text; ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.moveTo(c.X(x0), c.box.y + c.box.h); ctx.lineTo(c.X(x0), py); ctx.stroke(); ctx.restore();
       handle(ctx, c.X(x0), py, b > 0.4 ? P.bad : P.text, P);
       label(ctx, Math.round(b * 100) + "%", c.X(x0), py, P, c.box);
     }, { get height() { return pw("pir-cv") < 480 ? 300 : 310; } });
-    EB.drag(cv.canvas, { move(x) { if (!box) return; x0 = EB.clamp(Math.round((2 + (x - box.box.x) / box.box.w * 18) * 10) / 10, 2, 20); draw(); } });
+    EB.drag(cv.canvas, { move(x) { if (!box) return; x0 = EB.clamp(Math.round((2 + (x - box.box.x) / box.box.w * (XMAX - 2)) * 10) / 10, 2, XMAX); draw(); } });
     function draw() {
       const r = rG() / 100, b = burden(x0, r), bu = burden(x0, r + 0.02);
       EB.stat("pir-o-x", x0.toFixed(1) + "배");
       EB.stat("pir-o-b", '<span class="' + (b > 0.4 ? "minus" : "") + '">' + Math.round(b * 100) + "%</span>");
       EB.stat("pir-o-u", '<span class="' + (bu > 0.4 ? "minus" : "") + '">' + Math.round(bu * 100) + "%</span>");
+      const price = x0 * C.income, L = loanAt(x0);
+      EB.stat("pir-o-e", EB.wonAxis(price) + " · " + EB.wonAxis(L) + ' <small style="color:var(--text-faint)">(자기 돈 ' + EB.wonAxis(price - L) + ")</small>");
       cv.redraw();
     }
     draw();

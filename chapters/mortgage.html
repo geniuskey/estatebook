@@ -132,20 +132,22 @@
         <div class="sim-view"><canvas id="lim-cv"></canvas></div>
         <div class="sim-controls">
           <div class="seg" id="lim-reg"><button data-value="B" class="on">수도권 비규제(B시)</button><button data-value="A">서울 규제지역</button><button data-value="D">지방 비규제</button></div>
+          <label class="ctrl"><span>집값 <output id="lim-p-out"></output></span><input type="range" id="lim-p" min="1" max="50" step="0.1" value="6.2"></label>
           <label class="ctrl"><span>부부 연소득 <output id="lim-i-out"></output></span><input type="range" id="lim-i" min="3000" max="20000" step="100" value="9200"></label>
           <label class="ctrl"><span>주담대 금리 <output id="lim-r-out"></output></span><input type="range" id="lim-r" min="2.5" max="8" step="0.25" value="4"></label>
           <label class="ctrl"><span>다른 빚의 연 원리금 <output id="lim-o-out"></output></span><input type="range" id="lim-o" min="0" max="2400" step="50" value="0"></label>
         </div>
       </div>
       <div class="sim-readout">
-        <div class="stat"><span class="k">집값(지역 대표값)</span><span class="v" id="lim-o-p">—</span></div>
+        <div class="stat"><span class="k">집값</span><span class="v" id="lim-o-p">—</span></div>
         <div class="stat"><span class="k">대출 한도</span><span class="v" id="lim-o-m">—</span></div>
         <div class="stat"><span class="k">구속 조건</span><span class="v" id="lim-o-b">—</span></div>
+        <div class="stat"><span class="k">필요한 내 돈(집값 − 한도)</span><span class="v" id="lim-o-e">—</span></div>
       </div>
-      <div class="sim-note">해볼 것: ① 기본값(B시 6억 2,000만원, 소득 9,200만원, 금리 4%)에서 LTV 막대(4억 3,400만원)가 가장 짧다. 소득을 1억 5,000만원으로 올려도 한도는 그대로다. ② '서울 규제지역'(12억 5,000만원)을 고른다. LTV 40%로 5억원, 상한 6억원보다 DSR 한도가 짧아진다. 집값이 두 배인데 한도는 B시와 큰 차이가 없다. ③ 다른 빚의 연 원리금을 1,200만원(신용대출 약 5,000만원 수준)으로 올린다. DSR 막대가 1억원 넘게 줄어든다. (30년 원리금균등, 은행 DSR 40%. 스트레스 금리는 수도권·규제지역 3.0%p, 지방 0.75%p(3단계 기준, 지방 주담대 유예로 실제로는 더 낮을 수 있다)로 넣었다. 지방 집값은 교육용 3억원이다. 서울 규제지역은 무주택 일반 LTV 40%다. 생애최초는 규제지역도 70%이지만 여기서는 넣지 않았다.)</div>
+      <div class="sim-note">해볼 것: ① 기본값(B시 6억 2,000만원, 소득 9,200만원, 금리 4%)에서 LTV 막대(4억 3,400만원)가 가장 짧다. 소득을 1억 5,000만원으로 올려도 한도는 그대로다. ② '서울 규제지역'을 고르면 집값이 서울 A구 17억원으로 바뀐다. LTV 40%로 6억 8,000만원, DSR 한도 4억 6,094만원보다 시가 15억원 초과 구간의 금액 상한 4억원이 더 짧다. 집값이 B시의 2.7배인데 한도는 B시(4억 3,400만원)보다 오히려 작고, 내 돈이 13억원 필요하다. ③ 집값 슬라이더를 15억원에서 15억 1,000만원으로 넘긴다. 상한이 6억원에서 4억원으로 내려가 한도가 DSR 4억 6,094만원에서 4억원으로 떨어진다. 25억원을 넘기면 상한이 2억원이 된다. 40억원(서울 강남권 84㎡ 수준)에서는 한도 2억원, 필요한 내 돈 38억원이다. ④ 다른 빚의 연 원리금을 1,200만원(신용대출 약 5,000만원 수준)으로 올린다. DSR 막대가 1억원 넘게 줄어든다. (30년 원리금균등, 은행 DSR 40%. 금액 상한은 수도권·규제지역에서 시가 15억원 이하 6억, 25억원 이하 4억, 그 위 2억원(RE.KR.loan.capByPrice). 스트레스 금리는 수도권·규제지역 3.0%p, 지방 0.75%p(3단계 기준, 지방 주담대 유예로 실제로는 더 낮을 수 있다)로 넣었다. 지방 집값은 교육용 3억원이다. 서울 규제지역은 무주택 일반 LTV 40%다. 생애최초는 규제지역도 70%이지만 여기서는 넣지 않았다.)</div>
     </div>
 
-    <p>B시 같은 비규제지역에서 하늘네 정도의 소득이면 집값이 한도를 정한다. 서울처럼 비싸고 규제가 센 곳에서는 소득과 금액 상한이 정한다. 그래서 집값이 두 배인 곳에서도 빌릴 수 있는 돈은 거의 같고, 차이는 고스란히 내 돈으로 메워야 한다. 대출 규제가 비싼 지역의 수요를 막는 방식이 바로 이것이다. 이 효과는 <a href="policy.html">15장</a>에서 '풍선 효과'와 함께 다시 본다.</p>
+    <p>B시 같은 비규제지역에서 하늘네 정도의 소득이면 집값이 한도를 정한다. 서울처럼 비싸고 규제가 센 곳에서는 소득과 금액 상한이 정한다. 그래서 집값이 두세 배인 곳에서도 빌릴 수 있는 돈은 거의 같거나 오히려 적고, 차이는 고스란히 내 돈으로 메워야 한다. 2026년 8월 KB부동산 기준 서울 아파트 평균 매매가격은 16억 739만원으로, 서울의 평균적인 아파트가 이미 15억원 경계 위에 있다. 2026년에 40억원대 거래가 나온 서울 강남권 84㎡를 40억원에 산다면 소득이 아무리 높아도 주담대는 2억원이고, 집값의 95%인 38억원을 자기 돈으로 마련해야 한다. 이 구간에서 대출은 집값을 정하는 변수가 아니게 된다. 대출 규제가 비싼 지역의 수요를 막는 방식이 바로 이것이다. 이 효과는 <a href="policy.html">15장</a>에서 '풍선 효과'와 함께 다시 본다.</p>
   </section>
 
   <section id="stress">
@@ -181,7 +183,7 @@
 
   <section id="collapse">
     <h2>금리가 오르면 살 수 있는 집값이 무너진다</h2>
-    <p>한도는 집값을 정하는 데 쓰이기도 한다. 내 돈이 정해져 있다면 살 수 있는 가장 비싼 집은 '내 돈 + 빌릴 수 있는 돈'이다. 그런데 빌릴 수 있는 돈 자체가 집값(LTV)과 소득(DSR)에 달려 있으니, 세 가지 조건을 동시에 만족하는 가장 비싼 집을 찾아야 한다. LTV가 구속 조건이면 내 돈 ÷ (1 − LTV), DSR이 구속 조건이면 내 돈 + DSR 한도, 금액 상한이면 내 돈 + 6억원이고, 그중 가장 작은 값이 살 수 있는 집값이다.</p>
+    <p>한도는 집값을 정하는 데 쓰이기도 한다. 내 돈이 정해져 있다면 살 수 있는 가장 비싼 집은 '내 돈 + 빌릴 수 있는 돈'이다. 그런데 빌릴 수 있는 돈 자체가 집값(LTV)과 소득(DSR)에 달려 있으니, 세 가지 조건을 동시에 만족하는 가장 비싼 집을 찾아야 한다. LTV가 구속 조건이면 내 돈 ÷ (1 − LTV), DSR이 구속 조건이면 내 돈 + DSR 한도, 금액 상한이면 내 돈 + 상한이고, 그중 가장 작은 값이 살 수 있는 집값이다. 수도권·규제지역의 상한은 집값에 따라 6억원(15억원 이하), 4억원(25억원 이하), 2억원(그 위)으로 내려가므로, 내 돈을 늘려도 살 수 있는 집값이 15억원과 25억원에서 한동안 멈춘다. 15억원을 1원이라도 넘는 순간 대출이 2억원 줄어, 그만큼 내 돈이 더 있어야 경계를 넘을 수 있기 때문이다.</p>
     <p>아래에서 '금리 상승 재생'을 누르거나 손잡이를 끌어 금리를 3%에서 8%까지 올려 본다. 굵은 선이 하늘네(내 돈 2억 4,000만원, 소득 9,200만원)가 살 수 있는 집값의 상한이고, 가로 점선이 B시 84㎡ 시세 6억 2,000만원이다.</p>
 
     <div class="sim" id="sim-af">
@@ -189,7 +191,8 @@
       <div class="sim-body side">
         <div class="sim-view"><canvas id="af-cv"></canvas><span class="hint">손잡이를 끌거나 재생한다</span></div>
         <div class="sim-controls">
-          <label class="ctrl"><span>내 돈(집값에 넣는 돈) <output id="af-e-out"></output></span><input type="range" id="af-e" min="1" max="5" step="0.1" value="2.4"></label>
+          <div class="seg" id="af-reg"><button data-value="B" class="on">수도권 비규제(LTV 70%)</button><button data-value="A">서울 규제지역(LTV 40%)</button></div>
+          <label class="ctrl"><span>내 돈(집값에 넣는 돈) <output id="af-e-out"></output></span><input type="range" id="af-e" min="1" max="45" step="0.1" value="2.4"></label>
           <label class="check"><input type="checkbox" id="af-st" checked> 스트레스 가산 3.0%p</label>
           <div class="btn-row"><button class="btn primary" id="af-go">금리 상승 재생</button><button class="btn" id="af-re">4%로</button></div>
         </div>
@@ -200,10 +203,11 @@
         <div class="stat"><span class="k">구속 조건</span><span class="v" id="af-o-b">—</span></div>
         <div class="stat"><span class="k">금리 4% 때보다</span><span class="v" id="af-o-d">—</span></div>
       </div>
-      <div class="sim-note">해볼 것: ① 4%에서 살 수 있는 집값은 약 7억 94만원이다. 이미 DSR이 구속 조건이다. ② 손잡이를 6%로 끈다. 6억 2,113만원으로 내려와 B시 84㎡ 시세에 겨우 닿는다. 금리가 6%를 조금만 넘어도 같은 소득과 같은 돈으로 지금 사는 단지의 같은 집을 살 수 없다. ③ 스트레스 가산을 끈다. 5% 근처까지는 LTV가 막아 8억원에서 평평하다가, 그 위로 가면 DSR이 막으며 내려간다. 가산은 같은 무너짐을 3%p 낮은 금리에서 일으킨다. (30년 원리금균등, LTV 70%, 금액 상한 6억원, 은행 DSR 40%, 다른 빚 없음. 거래 비용은 내 돈과 따로 마련한다고 보았다.)</div>
+      <div class="sim-note">해볼 것: ① 4%에서 살 수 있는 집값은 약 7억 94만원이다. 이미 DSR이 구속 조건이다. ② 손잡이를 6%로 끈다. 6억 2,113만원으로 내려와 B시 84㎡ 시세에 겨우 닿는다. 금리가 6%를 조금만 넘어도 같은 소득과 같은 돈으로 지금 사는 단지의 같은 집을 살 수 없다. ③ 스트레스 가산을 끈다. 5% 근처까지는 LTV가 막아 8억원에서 평평하다가, 그 위로 가면 DSR이 막으며 내려간다. 가산은 같은 무너짐을 3%p 낮은 금리에서 일으킨다. ④ '서울 규제지역'을 고르고 내 돈을 10억 4,000만원에서 11억원까지 올린다. 살 수 있는 집값이 15억원에서 움직이지 않는다. 15억원 위의 집은 상한이 4억원이라 내 돈이 11억원을 넘어야 한다. 내 돈 21억~23억원에서는 25억원에서 같은 일이 생긴다. 내 돈을 38억원에 놓으면 살 수 있는 집값은 40억원(대출 2억원)이고, 금리를 올려도 선이 평평하다. 이 구간에서는 금리가 아니라 금액 상한이 집값을 정한다. (30년 원리금균등, LTV 70% 또는 40%, 금액 상한 6억·4억·2억원(시가 15억·25억원 경계), 은행 DSR 40%, 다른 빚 없음. 거래 비용은 내 돈과 따로 마련한다고 보았다.)</div>
     </div>
 
     <p>곡선이 꺾이는 모양에 이 책의 첫 번째 질문, '집값은 무엇이 정하는가'의 한 조각이 있다. 금리가 오르면 사람마다 빌릴 수 있는 돈이 줄고, 그만큼 낼 수 있는 값이 준다. 같은 집을 사려는 사람들이 모두 같은 일을 겪으니 시장 전체의 수요가 줄고 가격이 눌린다. 이 가격 변화는 어느 힘에서 왔는가. 이 그래프 하나에 두 힘이 겹쳐 있다. 실제 금리가 오른 몫(금리의 힘, <a href="value.html">3장</a>)과 스트레스 가산·LTV·금액 상한이라는 규제가 그 효과를 미리 당겨 오거나 덮어쓴 몫(대출 규제의 힘)이다. 스트레스 가산을 켜고 끄며 본 차이가 정확히 규제의 몫이다. 이 장은 가격을 예측하지 않는다. 다만 대출로 집을 사는 사람이 많은 시장에서는 금리와 대출 규제가 집값에 빠르게 전달된다는 것을 보여 준다.</p>
+    <p>반대 방향의 사실도 함께 적어 둔다. 서울시 집계로 2026년 7월 서울 아파트 실거래가격지수는 1년 전보다 14.56% 높았다. 10.15 대책으로 시가 15억원·25억원 초과 주택의 주담대 상한이 4억원·2억원으로 내려가고, 2026년 여름 기준금리가 3.00%로 오른 시기와 겹친다. 대출이 막는 힘이 있었는데도 서울 집값이 올랐다면, 그 몫은 이 그래프 밖의 힘(입지, 공급, 기대)에서 왔을 수 있다. 특히 금액 상한이 2억원에 묶이는 비싼 집일수록 사는 사람은 대출보다 이미 가진 자산으로 값을 치르므로, 대출 규제의 힘이 약하게 닿을 수 있다. 다섯 힘 각각의 몫이 얼마인지는 이 장의 계산만으로 가를 수 없고, 이 책은 단정하지 않는다.</p>
   </section>
 
   <section id="repay">
@@ -371,7 +375,7 @@
         <div class="sim-view"><canvas id="case-cv"></canvas><span class="hint">손잡이를 끌어 금리를 고른다</span></div>
         <div class="sim-controls">
           <div class="seg" id="case-a"><button data-value="A">서울 A구</button><button data-value="B" class="on">경기 B시</button><button data-value="E">경기 E시</button></div>
-          <label class="ctrl"><span>넣을 내 돈 <output id="case-e-out"></output></span><input type="range" id="case-e" min="1" max="4" step="0.1" value="2.4"></label>
+          <label class="ctrl"><span>넣을 내 돈 <output id="case-e-out"></output></span><input type="range" id="case-e" min="1" max="14" step="0.1" value="2.4"></label>
           <div class="seg" id="case-m"><button data-value="level" class="on">원리금균등</button><button data-value="principal">원금균등</button></div>
           <label class="check"><input type="checkbox" id="case-f" checked> 생애최초(규제지역 LTV 70%)</label>
         </div>
@@ -382,7 +386,7 @@
         <div class="stat"><span class="k">첫 달 상환액</span><span class="v" id="case-o-p">—</span></div>
         <div class="stat"><span class="k">월 실수령 대비 · 실제 DSR</span><span class="v" id="case-o-d">—</span></div>
       </div>
-      <div class="sim-note">해볼 것: ① 기본값(B시 6억 2,000만원, 내 돈 2억 4,000만원, 금리 4%)에서 필요한 대출 3억 8,000만원은 한도 4억 3,400만원(LTV가 구속) 안에 들어온다. 첫 달 181만원, 월 실수령 650만원의 28%다. ② 손잡이를 6%로 끈다. DSR 한도가 3억 8,113만원으로 내려와 필요한 대출에 거의 닿고, 월 상환은 228만원이 된다. 그 너머로 가면 한도가 모자라 빨간 영역이 된다. ③ 서울 A구를 고른다. 생애최초 LTV 70%여도 DSR 한도(4% 기준 약 4억 6,094만원)가 막아, 12억 5,000만원 집에 내 돈이 약 7억 9,000만원 필요하다. (연소득 9,200만원, 30년, 은행 DSR 40%, 수도권 스트레스 3.0%p, 주담대 상한 6억원. 전세대출은 이사하며 보증금으로 갚는다고 보아 DSR에 넣지 않았다. 거래 비용과 비상금은 내 돈과 따로 둔다.)</div>
+      <div class="sim-note">해볼 것: ① 기본값(B시 6억 2,000만원, 내 돈 2억 4,000만원, 금리 4%)에서 필요한 대출 3억 8,000만원은 한도 4억 3,400만원(LTV가 구속) 안에 들어온다. 첫 달 181만원, 월 실수령 650만원의 28%다. ② 손잡이를 6%로 끈다. DSR 한도가 3억 8,113만원으로 내려와 필요한 대출에 거의 닿고, 월 상환은 228만원이 된다. 그 너머로 가면 한도가 모자라 빨간 영역이 된다. ③ 서울 A구를 고른다. 17억원은 시가 15억원 초과 구간이라 주담대 상한이 4억원이다. 생애최초 LTV 70%(11억 9,000만원)도, DSR 한도(4% 기준 약 4억 6,094만원)도 아닌 금액 상한 4억원이 한도를 정해, 내 돈이 13억원 필요하다. 내 돈 2억 4,000만원이면 한도가 10억 6,000만원 모자란다. 금리를 6% 가까이 올리면 DSR 한도(약 3억 8,113만원)가 상한보다 짧아진다. (연소득 9,200만원, 30년, 은행 DSR 40%, 수도권 스트레스 3.0%p, 주담대 상한은 시가 15억원 이하 6억·25억원 이하 4억·그 위 2억원. 전세대출은 이사하며 보증금으로 갚는다고 보아 DSR에 넣지 않았다. 거래 비용과 비상금은 내 돈과 따로 둔다.)</div>
     </div>
 
     <p>하늘네의 계산서에서 보이는 것은 두 가지다. 첫째, B시라면 지금 금리에서 대출 한도는 문제가 아니다. 한도를 정하는 것은 집값(LTV)이고, 필요한 대출은 그보다 5,000만원 넘게 작다. 둘째, 문제는 한도가 아니라 매달 내는 돈이다. 금리가 4%에서 6%로 오르면 월 상환이 47만원 늘고, DSR 한도도 필요한 대출에 바짝 붙는다. 같은 대출이 금리에 따라 '여유 있는 빚'에서 '아슬아슬한 빚'으로 바뀐다. 이 차이를 고정금리로 사 둘지, 변동금리의 낮은 첫 금리를 택할지가 하늘네가 은행에서 정해야 할 일이다.</p>
@@ -393,7 +397,7 @@
     <div class="casefile">
       <div class="tag"><b>CASE 하늘네</b><span>집 노트 · 9장</span></div>
       <h4>한도 4억 3,400만원, 필요한 돈 3억 8,000만원, 그리고 6%라는 선</h4>
-      <p>하늘네의 부부 합산 연소득은 9,200만원이고, 지금 빚은 전세대출 2억원뿐이다. 하늘네는 무주택자라 전세대출은 DSR에 들어가지 않고, 이사하는 날 보증금으로 갚는다. 이 책의 모델로 계산하면 금리 4%, 30년 원리금균등일 때 DSR 한도는 스트레스 금리 3.0%p를 더한 7%로 계산해 약 4억 6,094만원이다. B시는 규제지역이 아니어도 수도권이라 이 3.0%p 하한과 주담대 6억원 상한이 함께 적용된다. LTV는 비규제지역이라 70%(생애최초여도 같다)로 4억 3,400만원이다. 셋 중 가장 작은 LTV 한도 4억 3,400만원이 하늘네의 B시 한도다. 서울 A구(12억 5,000만원)는 규제지역이라 일반 LTV 40%로 5억원이고, 생애최초면 70%까지 올라가지만 6억원 상한과 DSR 한도 4억 6,094만원에 막힌다. 어느 쪽이든 A구에서는 내 돈이 약 7억 9,000만원 필요하다.</p>
+      <p>하늘네의 부부 합산 연소득은 9,200만원이고, 지금 빚은 전세대출 2억원뿐이다. 하늘네는 무주택자라 전세대출은 DSR에 들어가지 않고, 이사하는 날 보증금으로 갚는다. 이 책의 모델로 계산하면 금리 4%, 30년 원리금균등일 때 DSR 한도는 스트레스 금리 3.0%p를 더한 7%로 계산해 약 4억 6,094만원이다. B시는 규제지역이 아니어도 수도권이라 이 3.0%p 하한과 주담대 6억원 상한이 함께 적용된다. LTV는 비규제지역이라 70%(생애최초여도 같다)로 4억 3,400만원이다. 셋 중 가장 작은 LTV 한도 4억 3,400만원이 하늘네의 B시 한도다. 서울 A구(17억원)는 규제지역이라 일반 LTV 40%로 6억 8,000만원이고, 생애최초면 70%(11억 9,000만원)까지 올라가지만 소용이 없다. 시가 15억원을 넘는 집이라 주담대 상한이 6억원이 아니라 4억원이고, 이 상한이 DSR 한도 4억 6,094만원보다도 작기 때문이다. 어느 쪽이든 A구에서는 대출 4억원에 내 돈이 13억원 필요하다. 하늘네 순자산 약 2억 8,000만원의 4.6배다.</p>
       <p>8장의 영수증과 비상금을 남기고 집값에 자기 돈 약 2억 4,000만원을 넣는다면 B시에서 필요한 대출은 약 3억 8,000만원이다. 원리금균등 월 상환액은 금리 3.5%에서 약 171만원, 4%에서 181만원, 4.5%에서 193만원, 5%에서 204만원, 5.5%에서 216만원, 6%에서 228만원이다. 지금 매달 내는 전세대출 이자 약 63만원이 사라지는 대신 이 돈이 나간다. 금리 6%에서는 DSR 한도(약 3억 8,113만원)가 필요한 대출에 거의 닿는다. 그 위로 금리가 오르면 같은 소득으로 같은 대출을 받을 수 없다. 태호와 은행 상담 직원은 고정·변동의 장단을 이렇게 정리해 주었다. 변동금리는 지금 첫 금리가 낮고 스트레스 가산을 모두 받아 한도가 가장 작다. 5년 혼합형이나 주기형은 처음 금리가 조금 높지만 5년 동안 월 상환이 흔들리지 않고 한도 계산에서 가산을 덜 받는다. 하늘네처럼 아이가 어리고 몇 년 안에 크게 갚을 계획이 없는 가구는 월 상환을 고정하는 쪽의 이점이 크다.</p>
       <p>정책대출은 대부분 해당하지 않는다. 디딤돌은 신혼부부 기준으로도 소득 8,500만원, 보금자리론은 7,000만원(신혼 등 완화) 이하라 9,200만원인 하늘네는 소득 요건을 넘는다. 신생아 특례는 소득 기준(맞벌이 2억원)은 맞지만 대출 신청일 기준 2년 안에 출산한 가구가 대상이라, 딸이 세 살인 하늘네는 해당하지 않는다(요건 세부는 확인 필요). 하늘네는 시중 은행 주담대로 계산해야 한다.</p>
       <div class="clue"><div><b>이 장에서 정한 것</b>B시 한도 4억 3,400만원(LTV 구속), 필요한 대출 약 3억 8,000만원, 월 상환 171만~228만원(금리 3.5~6%), 금리 6%가 한도의 경계. 정책대출은 대상 아님.</div><div><b>아직 남은 문제</b>3억 8,000만원을 빌려 6억 2,000만원 집을 사면, 집값이 오르거나 내릴 때 우리 돈은 얼마나 흔들리는가? 못 갚으면 무슨 일이 생기는가?</div><div><b>다음 단계</b>10장: 레버리지. 자기 돈 2억 4,000만원에 대출 3억 8,000만원을 얹었을 때 집값 ±20%의 의미.</div></div>
@@ -482,23 +486,28 @@
   const C = RE.CASE, L = RE.KR.loan;
   const INCOME = C.income;
   const pctS = (x, d) => +(x * 100).toFixed(d == null ? 1 : d) + "%";
-  const BIND = { dsr: "DSR(소득)", ltv: "LTV(집값)", cap: "금액 상한" };
+  const BIND = { dsr: "DSR(소득)", ltv: "LTV(집값)", cap: "금액 상한", tier: "상한 경계" };
+  // 수도권·규제지역 주담대 금액 상한(시가 기준): 15억 이하 6억, 25억 이하 4억, 그 위 2억
+  const capFor = (p) => L.capByPrice.find((t) => p <= t.upTo).cap;
+  const AREA_A = C.areas.find((x) => x.key === "A");
   // 지역 설정: 수도권·규제지역 스트레스 3.0%p, 지방 0.75%p(3단계 기준, 지방 주담대 유예 중이면 더 낮다)
   const REG = {
-    B: { name: "수도권 비규제", price: 6.2e8, ltv: L.ltv.unregulated, stress: L.stress.metroFloor, cap: L.capMetro },
-    A: { name: "서울 규제지역", price: 1.25e9, ltv: L.ltv.regulated, stress: L.stress.metroFloor, cap: L.capMetro },
-    D: { name: "지방 비규제", price: 3.0e8, ltv: L.ltv.unregulated, stress: L.stress.local, cap: null },
+    B: { name: "수도권 비규제", price: C.home.price, ltv: L.ltv.unregulated, stress: L.stress.metroFloor, metro: true },
+    A: { name: "서울 규제지역", price: AREA_A.price, ltv: L.ltv.regulated, stress: L.stress.metroFloor, metro: true },
+    D: { name: "지방 비규제", price: 3.0e8, ltv: L.ltv.unregulated, stress: L.stress.local, metro: false },
   };
 
   /* ---------------------------------------------------------- 1. 세 한도 */
   (function () {
-    const regG = EB.seg("lim-reg", draw);
+    const regG = EB.seg("lim-reg", (v) => pG.set(REG[v].price / 1e8));
+    const pG = EB.range("lim-p", (v) => EB.won(v * 1e8), draw);
     const iG = EB.range("lim-i", (v) => EB.won(v * 1e4), draw);
     const rG = EB.range("lim-r", (v) => v + "%", draw);
     const oG = EB.range("lim-o", (v) => EB.won(v * 1e4), draw);
     function calc() {
-      const R = REG[regG()];
-      const m = RE.maxLoan({ income: iG() * 1e4, rate: rG() / 100, years: 30, price: R.price, ltv: R.ltv, stress: R.stress, otherAnnual: oG() * 1e4, cap: R.cap });
+      const R0 = REG[regG()], price = Math.round(pG() * 10) * 1e7;
+      const R = Object.assign({}, R0, { price, cap: R0.metro ? capFor(price) : null });
+      const m = RE.maxLoan({ income: iG() * 1e4, rate: rG() / 100, years: 30, price, ltv: R.ltv, stress: R.stress, otherAnnual: oG() * 1e4, cap: R.cap });
       return { R, m };
     }
     const cv = EB.canvas("#lim-cv", (ctx, w, h) => {
@@ -506,7 +515,7 @@
       const items = [
         { k: "DSR 한도", s: "소득 40% · +" + pctS(c.R.stress, 2) + "p", v: m.byDsr, key: "dsr", col: P.bad },
         { k: "LTV 한도", s: "집값 × " + Math.round(c.R.ltv * 100) + "%", v: m.byLtv, key: "ltv", col: P.accent },
-        { k: "금액 상한", s: c.R.cap ? "수도권·규제지역" : "없음", v: c.R.cap || Infinity, key: "cap", col: P.accent2 },
+        { k: "금액 상한", s: c.R.cap ? (c.R.price > 25e8 ? "시가 25억 초과" : c.R.price > 15e8 ? "시가 15억 초과" : "수도권·규제지역") : "없음", v: c.R.cap || Infinity, key: "cap", col: P.accent2 },
       ];
       const narrow = w < 480, bx = narrow ? 92 : 112;
       const box = { x: bx, y: 28, w: w - bx - (narrow ? 64 : 80), h: h - 70 };
@@ -537,6 +546,7 @@
       EB.stat("lim-o-p", EB.won(c.R.price));
       EB.stat("lim-o-m", EB.won(c.m.max));
       EB.stat("lim-o-b", BIND[c.m.binding]);
+      EB.stat("lim-o-e", '<span class="minus">' + EB.won(Math.max(0, c.R.price - c.m.max)) + "</span>");
       cv.redraw();
     }
     draw();
@@ -587,31 +597,42 @@
   /* ---------------------------------------------------------- 3. 지불 가능 집값 */
   (function () {
     const eG = EB.range("af-e", (v) => EB.won(v * 1e8), draw);
+    const regG = EB.seg("af-reg", draw);
     const stEl = document.getElementById("af-st");
     stEl.addEventListener("change", draw);
     let rate = 0.04, box = null, playing = false, dir = 1;
     function afford(r) {
-      const E = eG() * 1e8, s = stEl.checked ? L.stress.metroFloor : 0, ltv = L.ltv.unregulated;
+      const E = eG() * 1e8, s = stEl.checked ? L.stress.metroFloor : 0, ltv = regG() === "A" ? L.ltv.regulated : L.ltv.unregulated;
       const D = RE.maxLoan({ income: INCOME, rate: r, years: 30, stress: s }).byDsr;
-      const c = [{ k: "ltv", v: E / (1 - ltv) }, { k: "dsr", v: E + D }, { k: "cap", v: E + L.capMetro }];
-      return c.reduce((a, b) => (b.v < a.v ? b : a));
+      // 금액 상한 구간마다 세 조건과 구간 경계를 함께 만족하는 가장 비싼 집을 찾고, 그중 최댓값
+      let best = null, lo = 0;
+      L.capByPrice.forEach((t) => {
+        const c = [{ k: "ltv", v: E / (1 - ltv) }, { k: "dsr", v: E + D }, { k: "cap", v: E + t.cap }, { k: "tier", v: t.upTo }].reduce((a, b) => (b.v < a.v ? b : a));
+        if (c.v > lo && (!best || c.v > best.v + 1)) best = c;
+        lo = t.upTo;
+      });
+      return best;
     }
     const cv = EB.canvas("#af-cv", (ctx, w, h) => {
       const P = EB.palette();
       const xs = []; for (let r = 0.03; r <= 0.0801; r += 0.001) xs.push(r);
-      const top = Math.max(9e8, Math.ceil(afford(0.03).v / 1e8) * 1e8 + 1e8);
+      const hi = afford(0.03).v, lo = afford(0.08).v;
+      const big = hi > 12e8, step = big ? 5e8 : 1e8;
+      const top = Math.max(9e8, Math.ceil(hi / step) * step + step), bottom = big ? Math.max(0, Math.floor(lo / step) * step - step) : 3e8;
+      const marks = [{ y: C.home.price, color: P.accent2, label: "B시 84㎡ 6.2억" }, { y: AREA_A.price, color: P.warn, label: "A구 17억" }, { y: 15e8, color: P.faint, label: "15억" }, { y: 25e8, color: P.faint, label: "25억" }, { y: RE.MARKET.gangnam84, color: P.bad, label: "강남권 84㎡ 40억" }]
+        .filter((m) => m.y > bottom && m.y < top);
       const c = EB.chart(ctx, { x: 56, y: 22, w: w - 70, h: h - 74 }, {
-        x: [0.03, 0.08], y: [3e8, top], xTicks: [0.03, 0.04, 0.05, 0.06, 0.07, 0.08], xFmt: (v) => Math.round(v * 100) + "%", yFmt: EB.wonAxis,
+        x: [0.03, 0.08], y: [bottom, top], xTicks: [0.03, 0.04, 0.05, 0.06, 0.07, 0.08], xFmt: (v) => Math.round(v * 100) + "%", yFmt: EB.wonAxis,
         series: [{ data: xs.map((r) => [r, afford(r).v]), color: P.accent, width: 2.8 }],
-        hlines: [{ y: C.home.price, color: P.accent2, label: "B시 84㎡ 6.2억" }],
+        hlines: marks,
       });
       box = c;
       // 6.2억 아래 영역
-      const cross = xs.find((r) => afford(r).v < C.home.price);
+      const cross = !big && xs.find((r) => afford(r).v < C.home.price);
       if (cross) { ctx.save(); ctx.fillStyle = P.bad; ctx.globalAlpha = 0.08; ctx.fillRect(c.X(cross), c.box.y, c.box.x + c.box.w - c.X(cross), c.box.h); ctx.restore(); T(ctx, "같은 집을 못 산다", c.box.x + c.box.w - 6, c.box.y + 14, { size: 11, color: P.bad, align: "right", weight: 700 }); }
       const a = afford(rate), px = c.X(rate), py = c.Y(a.v);
       ctx.save(); ctx.setLineDash([3, 3]); ctx.strokeStyle = P.text; ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.moveTo(px, c.box.y + c.box.h); ctx.lineTo(px, py); ctx.lineTo(c.box.x, py); ctx.stroke(); ctx.restore();
-      ctx.beginPath(); ctx.arc(px, py, 6, 0, TAU); ctx.fillStyle = a.v < C.home.price ? P.bad : P.accent; ctx.fill();
+      ctx.beginPath(); ctx.arc(px, py, 6, 0, TAU); ctx.fillStyle = !big && a.v < C.home.price ? P.bad : P.accent; ctx.fill();
       T(ctx, EB.wonAxis(a.v), EB.clamp(px, c.box.x + 30, c.box.x + c.box.w - 30), py - 12, { size: 12, color: P.text, align: "center", weight: 700, mono: true });
       handle(ctx, px, c.box.y + c.box.h, P);
       T(ctx, "살 수 있는 집값 상한", c.box.x + 6, c.box.y + 14, { size: 11, color: P.accent, weight: 700 });
@@ -630,7 +651,7 @@
       const a = afford(rate), a4 = afford(0.04);
       go.textContent = playing ? "멈춤" : "금리 상승 재생";
       EB.stat("af-o-r", pctS(rate, 1));
-      EB.stat("af-o-p", '<span class="' + (a.v < C.home.price ? "minus" : "") + '">' + EB.won(a.v) + "</span>");
+      EB.stat("af-o-p", '<span class="' + (eG() < 5 && a.v < C.home.price ? "minus" : "") + '">' + EB.won(a.v) + "</span>" + ' <small style="color:var(--text-faint)">대출 ' + EB.won(a.v - eG() * 1e8) + "</small>");
       EB.stat("af-o-b", BIND[a.k]);
       const d = a.v - a4.v;
       EB.stat("af-o-d", Math.abs(d) < 5e5 ? "같다" : '<span class="' + (d < 0 ? "minus" : "plus") + '">' + (d > 0 ? "+" : "") + EB.won(d) + "</span>");
@@ -792,7 +813,7 @@
     }
     function calc(r) {
       const A = area(), price = A.a.price, need = Math.max(0, price - eG() * 1e8);
-      const m = RE.maxLoan({ income: INCOME, rate: r, years: 30, price, ltv: A.ltv, stress: L.stress.metroFloor, cap: L.capMetro });
+      const m = RE.maxLoan({ income: INCOME, rate: r, years: 30, price, ltv: A.ltv, stress: L.stress.metroFloor, cap: capFor(price) });
       const pay = RE.payment({ principal: Math.min(need, m.max), rate: r, years: 30, method: mG() });
       const payNeed = RE.payment({ principal: need, rate: r, years: 30, method: mG() });
       return { A, price, need, m, pay, payNeed, ok: need <= m.max + 1 };
@@ -801,7 +822,8 @@
       const P = EB.palette();
       const xs = []; for (let r = 0.035; r <= 0.0601; r += 0.0025) xs.push(r);
       const c0 = calc(0.04);
-      const top = Math.ceil(Math.max(c0.m.byLtv === Infinity ? 0 : Math.min(c0.m.byLtv, 7e8), c0.need, calc(0.035).m.byDsr, L.capMetro) / 1e8 + 0.6) * 1e8;
+      const cap0 = capFor(c0.price);
+      const top = Math.ceil(Math.max(c0.m.byLtv === Infinity ? 0 : Math.min(c0.m.byLtv, 7e8), c0.need, calc(0.035).m.byDsr, cap0) / 1e8 + 0.6) * 1e8;
       const c = EB.chart(ctx, { x: 56, y: 22, w: w - 70, h: h - 74 }, {
         x: [0.035, 0.06], y: [2e8, top], xTicks: [0.035, 0.04, 0.045, 0.05, 0.055, 0.06], xFmt: (v) => +(v * 100).toFixed(1) + "%", yFmt: EB.wonAxis,
         series: [
@@ -810,7 +832,7 @@
         ],
         hlines: [
           { y: c0.m.byLtv, color: P.accent, label: "LTV " + Math.round(c0.A.ltv * 100) + "%" },
-          { y: L.capMetro, color: P.accent2, label: "상한 6억" },
+          { y: cap0, color: P.accent2, label: "상한 " + cap0 / 1e8 + "억" },
           { y: c0.need, color: P.ok, dash: [] },
         ],
       });
@@ -819,7 +841,7 @@
       const short = xs.filter((r) => !calc(r).ok);
       if (short.length) { const x0 = c.X(Math.max(0.035, short[0] - 0.00125)); ctx.save(); ctx.fillStyle = P.bad; ctx.globalAlpha = 0.09; ctx.fillRect(x0, c.box.y, c.box.x + c.box.w - x0, c.box.h); ctx.restore(); }
       T(ctx, "한도(굵은 선) = min(DSR, LTV, 상한)", c.box.x + 6, 14, { size: 11, color: P.dim });
-      if (c0.need > 2e8 && c0.need < top) T(ctx, "필요한 대출 " + EB.wonAxis(c0.need), c.box.x + 6, c.Y(c0.need) + 14, { size: 11, color: P.ok, weight: 700 });
+      if (c0.need > 2e8 && c0.need < top) T(ctx, "필요한 대출 " + EB.won(c0.need), c.box.x + 6, c.Y(c0.need) + 14, { size: 11, color: P.ok, weight: 700 });
       T(ctx, "DSR 한도", c.box.x + 6, c.Y(calc(0.035).m.byDsr) - 6, { size: 11, color: P.bad, weight: 700 });
       const cr = calc(rate), px = c.X(rate);
       ctx.save(); ctx.setLineDash([3, 3]); ctx.strokeStyle = P.text; ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.moveTo(px, c.box.y); ctx.lineTo(px, c.box.y + c.box.h); ctx.stroke(); ctx.restore();

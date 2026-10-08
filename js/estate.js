@@ -629,6 +629,23 @@
     return { rights, contribution: o.newPrice - rights, refund: Math.max(0, rights - o.newPrice) };
   };
 
+  /* ------------------------------------------------------------ 2026년 시장 수준(실제 통계) */
+  // 본문에서 "2026년 8월 KB 기준"처럼 기준 시점과 출처를 함께 쓴다. 시세는 달마다 바뀌므로 예시 계산의 크기를 맞추는 용도다.
+  RE.MARKET = {
+    asOf: "2026-08",
+    source: "KB부동산 월간 주택가격동향(2026-08-10 조사, 2026-08-23 발표) 보도",
+    seoulAvg: 1.6074e9,          // 서울 아파트 평균 매매가격 16억 739만원
+    seoulMedian: 1.29167e9,      // 서울 아파트 중위 매매가격 12억 9,167만원
+    gangbukMedian: 1.00167e9,    // 강북 14개구 중위 10억 167만원
+    gangnamMedian: 1.63167e9,    // 한강 이남 11개구 중위 16억 3,167만원
+    seoulJeonseAvg: 6.8147e8,    // 서울 아파트 평균 전세가격 6억 8,147만원(2026-04, KB)
+    seoulJeonseMedian: 6.0e8,    // 서울 아파트 중위 전세가격 약 6억원(2026-04, KB)
+    seoulJeonseRatio: 0.45,      // 서울 아파트 전세가율 50% 아래, 송파·용산·서초 40% 안팎(2026-01, KB 보도) — 교육용 대표값 약 45%
+    seoulDealAvg: 1.2182e9,      // 서울시 신고 실거래 평균 12억 1,820만원(2026-06 계약) — 시세 평균과 다르다
+    seoulDealYoY: 0.1456,        // 서울 아파트 실거래가격지수 전년 동월 대비 +14.56%(2026-07, 서울시)
+    gangnam84: 4.0e9,            // 강남권 전용 84㎡ 40억원대 거래(2026년 사례, 교육용 대표값)
+  };
+
   /* ------------------------------------------------------------ 케이스: 하늘네 집 노트 */
   // 가상의 인물·지역·단지이며 실제와 무관하다. 금액은 교육용으로 정한 값이다.
   RE.CASE = {
@@ -651,7 +668,7 @@
     commute: { haneulWork: "서울 도심", jaewonWork: "경기 B시 초등학교" },
     // 02장에서 비교하는 후보 지역(84㎡ 기준 교육용 시세)
     areas: [
-      { key: "A", name: "서울 A구", price: 1.25e9, jeonse: 6.5e8, commuteH: 25, commuteJ: 60, walk: 6 },
+      { key: "A", name: "서울 A구", price: 1.7e9, jeonse: 7.0e8, commuteH: 25, commuteJ: 60, walk: 6 },
       { key: "B", name: "경기 B시(지금)", price: 6.2e8, jeonse: 4.0e8, commuteH: 55, commuteJ: 15, walk: 12 },
       { key: "E", name: "경기 E시 신도시", price: 4.9e8, jeonse: 3.0e8, commuteH: 75, commuteJ: 35, walk: 18 },
     ],

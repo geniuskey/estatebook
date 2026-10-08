@@ -106,7 +106,7 @@
       <div class="sim-body side">
         <div class="sim-view"><canvas id="far-cv"></canvas><span class="hint">새 건물 꼭대기 손잡이를 끈다</span></div>
         <div class="sim-controls">
-          <label class="ctrl"><span>일반분양가(84㎡) <output id="far-p-out"></output></span><input type="range" id="far-p" min="9" max="17" step="0.5" value="13"></label>
+          <label class="ctrl"><span>일반분양가(84㎡) <output id="far-p-out"></output></span><input type="range" id="far-p" min="10" max="20" step="0.5" value="14"></label>
           <div class="seg" id="far-q"><button data-value="300" class="on">상한 300%</button><button data-value="360">상한 360%</button></div>
         </div>
       </div>
@@ -116,7 +116,7 @@
         <div class="stat"><span class="k">비례율</span><span class="v" id="far-o-r">—</span></div>
         <div class="stat"><span class="k">평균 조합원 분담금</span><span class="v" id="far-o-c">—</span></div>
       </div>
-      <div class="sim-note">해볼 것: ① 기본값 300%에서 새 세대는 727세대, 그중 127세대가 일반분양이다. 비례율은 약 100%이고 평균 조합원(감정가 6억원)은 84㎡를 받으려고 약 4억원을 더 낸다. ② 손잡이를 아래로 끌어 250% 아래로 내린다. 일반분양이 0이 되고, 조합원 모두를 84㎡로 넓혀 주기에도 바닥면적이 모자란다. 헌 건물 높이(180%)까지 내리면 비례율이 50% 안팎으로 떨어지고 분담금이 7억원에 이른다. 이것이 '용적률이 이미 높은 중층 단지는 재건축 사업성이 낮다'는 말의 뜻이다. ③ 상한을 360%로 바꾸고 끝까지 올린다. 일반분양이 늘면서 비례율이 올라간다. 일반분양가를 9억원까지 내리면 같은 용적률에서도 분담금이 크게 는다. (교육용 가상 단지. 기존 세대당 바닥면적 80㎡, 새 84㎡형 세대당 110㎡, 조합원 분양가 10억원, 공사비 평당 780만원(지하 포함 연면적 기준), 그 밖의 사업비·이자는 단순화했다. 임대주택·기부채납은 넣지 않았다.)</div>
+      <div class="sim-note">해볼 것: ① 기본값 300%에서 새 세대는 727세대, 그중 127세대가 일반분양이다. 비례율은 약 100%이고 평균 조합원(감정가 8억원)은 84㎡를 받으려고 약 4억원을 더 낸다. ② 손잡이를 아래로 끌어 250% 아래로 내린다. 일반분양이 0이 되고, 조합원 모두를 84㎡로 넓혀 주기에도 바닥면적이 모자란다. 헌 건물 높이(180%)까지 내리면 비례율이 53% 안팎으로 떨어지고 분담금이 약 7억 8,000만원에 이른다. 이것이 '용적률이 이미 높은 중층 단지는 재건축 사업성이 낮다'는 말의 뜻이다. ③ 상한을 360%로 바꾸고 끝까지 올린다. 일반분양이 늘면서 비례율이 127% 안팎까지 올라가고 분담금은 약 1억 8,000만원으로 준다. 이 상태에서 일반분양가를 10억원까지 내리면 같은 용적률에서도 분담금이 약 3억 7,000만원으로 두 배가 된다. (교육용 가상 단지. 기존 세대당 바닥면적 80㎡, 새 84㎡형 세대당 110㎡, 조합원 분양가 12억원, 일반분양가 기본 14억원(같은 구의 84㎡ 시세 17억원보다 낮게 잡았다), 공사비 평당 780만원(지하 포함 연면적 기준), 그 밖의 사업비·이자는 단순화했다. 임대주택·기부채납은 넣지 않았다.)</div>
     </div>
 
     <p>용적률을 올릴수록 일반분양이 늘고, 일반분양 수입이 공사비를 덜어 조합원이 내는 돈이 준다. 반대로 이미 용적률이 높은 단지는 더 지을 여지가 적어서, 조합원이 공사비 대부분을 직접 내야 한다. 같은 서울 A구 안에서도 저층 단지와 중층 단지의 재건축 사업성이 크게 다른 이유다. 그리고 일반분양가가 얼마에 팔리느냐가 조합원 모두의 계산을 바꾼다. 분양가를 제한하는 <span class="term">분양가상한제</span>(<a href="subscription.html">11장</a>)가 재건축 조합에게 민감한 이유가 여기에 있다. 일반분양자에게는 싼 새 집이지만, 조합원에게는 줄어든 수입이다.</p>
@@ -182,9 +182,9 @@
       <div class="sim-body side">
         <div class="sim-view"><canvas id="ratio-cv"></canvas></div>
         <div class="sim-controls">
-          <label class="ctrl"><span>일반분양가(84㎡) <output id="ratio-s-out"></output></span><input type="range" id="ratio-s" min="9" max="17" step="0.5" value="13"></label>
+          <label class="ctrl"><span>일반분양가(84㎡) <output id="ratio-s-out"></output></span><input type="range" id="ratio-s" min="10" max="20" step="0.5" value="14"></label>
           <label class="ctrl"><span>공사비(평당) <output id="ratio-c-out"></output></span><input type="range" id="ratio-c" min="500" max="1300" step="20" value="780"></label>
-          <label class="ctrl"><span>조합원 분양가(84㎡) <output id="ratio-m-out"></output></span><input type="range" id="ratio-m" min="7" max="13" step="0.5" value="10"></label>
+          <label class="ctrl"><span>조합원 분양가(84㎡) <output id="ratio-m-out"></output></span><input type="range" id="ratio-m" min="9" max="15" step="0.5" value="12"></label>
         </div>
       </div>
       <div class="sim-readout">
@@ -192,7 +192,7 @@
         <div class="stat"><span class="k">평균 조합원 권리가액</span><span class="v" id="ratio-o-a">—</span></div>
         <div class="stat"><span class="k">평균 조합원 분담금</span><span class="v" id="ratio-o-c">—</span></div>
       </div>
-      <div class="sim-note">해볼 것: ① 공사비를 평당 1,000만원 넘게 올린다. 빨간 막대가 길어지고 남는 몫이 줄어 비례율이 70%대로 내려간다. ② 일반분양가를 올리면 녹색 막대 하나만 길어진다. 일반분양 세대가 127세대뿐이라 분양가 1억원이 비례율을 약 3.5%p 움직인다. ③ 조합원 분양가를 7억원에서 13억원까지 움직인다. 비례율은 크게 오르내리는데 평균 조합원의 분담금은 그대로다. 조합원 분양가를 올리면 수입이 늘어 권리가액도 같이 오르기 때문이다. 비례율이 높다는 광고만 보고 사업이 좋다고 판단하면 안 되는 이유다. (F아파트 교육용 가상 데이터. 종전자산 총액 3,600억원 = 600세대 × 평균 감정가 6억원.)</div>
+      <div class="sim-note">해볼 것: ① 공사비를 평당 1,000만원 넘게 올린다. 빨간 막대가 길어지고 남는 몫이 줄어 비례율이 70%대로 내려간다. ② 일반분양가를 올리면 녹색 막대 하나만 길어진다. 일반분양 세대가 127세대뿐이라 분양가 1억원이 비례율을 약 2.6%p 움직인다. ③ 조합원 분양가를 9억원에서 15억원까지 움직인다. 비례율은 크게 오르내리는데 평균 조합원의 분담금은 그대로다. 조합원 분양가를 올리면 수입이 늘어 권리가액도 같이 오르기 때문이다. 비례율이 높다는 광고만 보고 사업이 좋다고 판단하면 안 되는 이유다. (F아파트 교육용 가상 데이터. 종전자산 총액 4,800억원 = 600세대 × 평균 감정가 8억원.)</div>
     </div>
 
     <p>비례율은 사업의 성적표이지만, 숫자 하나만 보면 속기 쉽다. 조합원 분양가를 높게 잡으면 종후자산이 커져 비례율이 올라가고, 낮게 잡으면 비례율이 내려간다. 평균 조합원에게는 어느 쪽이든 결과가 같다. 차이는 감정가가 평균보다 크거나 작은 조합원 사이에서, 그리고 큰 평형과 작은 평형을 신청한 사람 사이에서 생긴다. 그래서 비례율을 볼 때는 언제나 조합원 분양가, 일반분양가, 총사업비를 함께 본다. 진짜 사업성은 '공사비와 이자를 일반분양 수입이 얼마나 덮는가'에 있다.</p>
@@ -214,8 +214,8 @@
       <div class="sim-body side">
         <div class="sim-view"><canvas id="contrib-cv"></canvas><span class="hint">가운데 막대 꼭대기를 끌어 비례율을 바꾼다</span></div>
         <div class="sim-controls">
-          <label class="ctrl"><span>내 집 감정가(종전자산) <output id="contrib-v-out"></output></span><input type="range" id="contrib-v" min="3" max="10" step="0.1" value="6"></label>
-          <div class="seg" id="contrib-t"><button data-value="59">59㎡ 7.5억</button><button data-value="84" class="on">84㎡ 10억</button><button data-value="114">114㎡ 13억</button></div>
+          <label class="ctrl"><span>내 집 감정가(종전자산) <output id="contrib-v-out"></output></span><input type="range" id="contrib-v" min="4" max="13" step="0.1" value="8"></label>
+          <div class="seg" id="contrib-t"><button data-value="59">59㎡ 9억</button><button data-value="84" class="on">84㎡ 12억</button><button data-value="114">114㎡ 15.5억</button></div>
         </div>
       </div>
       <div class="sim-readout">
@@ -223,10 +223,10 @@
         <div class="stat"><span class="k">권리가액</span><span class="v" id="contrib-o-a">—</span></div>
         <div class="stat"><span class="k" id="contrib-o-ck">분담금</span><span class="v" id="contrib-o-c">—</span></div>
       </div>
-      <div class="sim-note">해볼 것: ① 감정가 6억원, 비례율 100%, 84㎡를 신청하면 분담금은 4억원이다. ② 비례율을 80%로 끌어내린다. 권리가액이 1억 2,000만원 줄고, 그만큼 분담금이 늘어 5억 2,000만원이 된다. 비례율 20%p가 내 돈 1억 2,000만원이다. ③ 감정가를 9억원으로 올리고 59㎡를 고른다. 권리가액이 분양가보다 커서 차액을 돌려받는다. 큰 집을 가진 조합원이 작은 평형을 신청하면 현금이 나오고, 작은 집을 가진 조합원이 큰 평형을 원하면 분담금이 커진다. (조합원 분양가는 교육용 가정. 실제로는 층·향·동에 따라 다르고, 평형 신청과 배정 규칙은 조합 정관과 관리처분계획을 따른다.)</div>
+      <div class="sim-note">해볼 것: ① 감정가 8억원, 비례율 100%, 84㎡(조합원 분양가 12억원)를 신청하면 분담금은 4억원이다. ② 비례율을 80%로 끌어내린다. 권리가액이 1억 6,000만원 줄고, 그만큼 분담금이 늘어 5억 6,000만원이 된다. 비례율 20%p가 내 돈 1억 6,000만원이다. ③ 감정가를 11억원으로 올리고 59㎡(9억원)를 고른다. 권리가액이 분양가보다 커서 차액 2억원을 돌려받는다. 큰 집을 가진 조합원이 작은 평형을 신청하면 현금이 나오고, 작은 집을 가진 조합원이 큰 평형을 원하면 분담금이 커진다. (조합원 분양가는 교육용 가정. 실제로는 층·향·동에 따라 다르고, 평형 신청과 배정 규칙은 조합 정관과 관리처분계획을 따른다.)</div>
     </div>
 
-    <p>분담금은 비례율에 대해 '지렛대'처럼 움직인다. 감정가 6억원인 집에서 비례율이 20%p 떨어지면 권리가액은 1억 2,000만원 줄어든다. 그런데 분담금 4억원에 비하면 이것은 30% 늘어난 것이다. 감정가가 작은 조합원일수록 같은 비례율 하락에도 분담금이 크게 늘어난 것처럼 느껴지지 않지만, 자기 재산에 비하면 부담은 오히려 크다. 사업 막바지에 비례율이 크게 떨어져 조합원들이 예상하지 못한 큰 분담금을 내게 되는 일을 업계에서는 <span class="term">분담금 폭탄</span>이라 부른다. 다음 두 절은 그 폭탄이 어디서 오는지를 본다. 하나는 시간, 다른 하나는 공사비다.</p>
+    <p>분담금은 비례율에 대해 '지렛대'처럼 움직인다. 감정가 8억원인 집에서 비례율이 20%p 떨어지면 권리가액은 1억 6,000만원 줄어든다. 그런데 분담금 4억원에 비하면 이것은 40% 늘어난 것이다. 감정가가 작은 조합원일수록 같은 비례율 하락에도 분담금이 크게 늘어난 것처럼 느껴지지 않지만, 자기 재산에 비하면 부담은 오히려 크다. 사업 막바지에 비례율이 크게 떨어져 조합원들이 예상하지 못한 큰 분담금을 내게 되는 일을 업계에서는 <span class="term">분담금 폭탄</span>이라 부른다. 다음 두 절은 그 폭탄이 어디서 오는지를 본다. 하나는 시간, 다른 하나는 공사비다.</p>
 
     <div class="callout buyer">
       <strong>재건축·재개발 매물을 사기 전에 받아 볼 서류</strong>
@@ -303,9 +303,9 @@
         <div class="stat"><span class="k">입주까지</span><span class="v" id="time-o-t">—</span></div>
         <div class="stat"><span class="k">몸테크 / 이주 기간</span><span class="v" id="time-o-m">—</span></div>
         <div class="stat"><span class="k">비례율</span><span class="v" id="time-o-r">—</span></div>
-        <div class="stat"><span class="k">분담금(감정가 6억·84㎡)</span><span class="v" id="time-o-c">—</span></div>
+        <div class="stat"><span class="k">분담금(감정가 8억·84㎡)</span><span class="v" id="time-o-c">—</span></div>
       </div>
-      <div class="sim-note">해볼 것: ① 계획대로(조합 설립부터 입주까지 10년)일 때 비례율은 약 100%, 분담금은 약 4억원이다. 몸테크 6년 뒤 이주해 4년을 다른 집에서 산다. ② 사업시행인가 막대를 3년에서 6년으로 늘인다. 조합 운영비는 조금 늘 뿐인데, 공사비가 지연 기간만큼 올라 비례율이 89% 안팎으로 10%p 넘게 떨어진다. 시간이 무서운 것은 이자보다 공사비 때문이다. ③ 계획대로를 누른 뒤 착공~준공 막대를 3년 늘인다. 비례율이 79% 안팎이다. 이주한 뒤의 지연은 이주비 대출 이자와 사업비 이자가 함께 쌓여 더 비싸다. 금리를 8%로 올리면 차이가 커진다. (F아파트 교육용 모형. 이주비는 감정가의 50%를 조합이 빌려 이자를 사업비로 낸다고 가정했다. 아래 '하나' 줄은 하늘네 딸의 나이다.)</div>
+      <div class="sim-note">해볼 것: ① 계획대로(조합 설립부터 입주까지 10년)일 때 비례율은 약 100%, 분담금은 약 4억원이다. 몸테크 6년 뒤 이주해 4년을 다른 집에서 산다. ② 사업시행인가 막대를 3년에서 6년으로 늘인다. 조합 운영비는 조금 늘 뿐인데, 공사비가 지연 기간만큼 올라 비례율이 92% 안팎으로 8%p 남짓 떨어지고, 분담금은 약 4억 7,000만원이 된다. 시간이 무서운 것은 이자보다 공사비 때문이다. ③ 계획대로를 누른 뒤 착공~준공 막대를 3년 늘인다. 비례율이 83% 안팎, 분담금은 약 5억 4,000만원이다. 이주한 뒤의 지연은 이주비 대출 이자와 사업비 이자가 함께 쌓여 더 비싸다. 금리를 8%로 올리면 차이가 커진다. (F아파트 교육용 모형. 이주비는 감정가의 50%를 조합이 빌려 이자를 사업비로 낸다고 가정했다. 아래 '하나' 줄은 하늘네 딸의 나이다.)</div>
     </div>
 
     <p>일정표가 보여 주는 것은 두 가지다. 첫째, 같은 1년 지연이라도 언제 생기느냐에 따라 비용이 다르다. 이주 전의 지연은 주로 공사비 상승을 통해, 이주 뒤의 지연은 이자를 통해 사업을 갉아먹는다. 둘째, 계획표의 '10년'은 약속이 아니라 가정이다. 국토교통부가 평균 사업 기간을 약 15년으로 보았다는 것은, 10년 계획표를 들고 들어간 많은 조합원이 그보다 훨씬 오래 기다렸다는 뜻이기도 하다. 몸테크를 하는 사람에게 지연은 숫자만이 아니다. 아이가 세 살에 낡은 집에 들어가 초등학교를 마칠 때까지 그 집에 살 수도 있다.</p>
@@ -326,20 +326,20 @@
       <div class="sim-body side">
         <div class="sim-view"><canvas id="cost-cv"></canvas><span class="hint">세로선 위 손잡이를 끈다</span></div>
         <div class="sim-controls">
-          <label class="ctrl"><span>일반분양가(84㎡) <output id="cost-s-out"></output></span><input type="range" id="cost-s" min="9" max="17" step="0.5" value="13"></label>
+          <label class="ctrl"><span>일반분양가(84㎡) <output id="cost-s-out"></output></span><input type="range" id="cost-s" min="10" max="20" step="0.5" value="14"></label>
           <label class="ctrl"><span>새 용적률 <output id="cost-f-out"></output></span><input type="range" id="cost-f" min="250" max="360" step="10" value="300"></label>
         </div>
       </div>
       <div class="sim-readout">
         <div class="stat"><span class="k">공사비 상승</span><span class="v" id="cost-o-u">—</span></div>
         <div class="stat"><span class="k">비례율</span><span class="v" id="cost-o-r">—</span></div>
-        <div class="stat"><span class="k">감정가 4억 조합원 분담금</span><span class="v" id="cost-o-a">—</span></div>
-        <div class="stat"><span class="k">감정가 8억 조합원 분담금</span><span class="v" id="cost-o-b">—</span></div>
+        <div class="stat"><span class="k">감정가 6억 조합원 분담금</span><span class="v" id="cost-o-a">—</span></div>
+        <div class="stat"><span class="k">감정가 10억 조합원 분담금</span><span class="v" id="cost-o-b">—</span></div>
       </div>
-      <div class="sim-note">해볼 것: ① 공사비가 20% 오르면 비례율이 약 100%에서 79%로 떨어진다. 감정가 6억원 조합원의 분담금은 4억원에서 약 5억 2,000만원으로 1억원 넘게 는다. ② 손잡이를 끝까지(+60%) 끈다. 비례율이 30%대로 내려가 헌 집 값의 60% 넘게 사업비로 사라진다. 감정가 4억원 조합원은 새 집 값 10억원의 대부분을 현금으로 내야 한다. ③ 용적률을 250%로 낮춘다. 일반분양 수입이라는 쿠션이 사라져 같은 공사비 상승에 비례율이 더 빨리 무너진다. (F아파트 교육용 모형. 공사비 상승은 공사비 본체에만 적용하고 그 밖의 사업비는 공사비에 비례한다고 단순화했다.)</div>
+      <div class="sim-note">해볼 것: ① 공사비가 20% 오르면 비례율이 약 100%에서 85%로 떨어진다. 감정가 8억원 조합원의 분담금은 4억원에서 약 5억 2,000만원으로 1억원 넘게 는다. ② 손잡이를 끝까지(+60%) 끈다. 비례율이 54% 안팎으로 내려가 헌 집 값의 절반 가까이가 사업비로 사라진다. 감정가 6억원 조합원은 새 집 값 12억원의 70% 넘게(약 8억 8,000만원)를 현금으로 내야 한다. ③ 용적률을 250%로 낮춘다. 일반분양 수입이라는 쿠션이 사라져 같은 공사비 상승에 비례율이 더 빨리 무너진다. (F아파트 교육용 모형. 공사비 상승은 공사비 본체에만 적용하고 그 밖의 사업비는 공사비에 비례한다고 단순화했다.)</div>
     </div>
 
-    <p>공사비 상승이 무서운 이유는 지렛대 구조 때문이다. F아파트에서 총사업비는 약 4,000억원, 종전자산은 3,600억원이다. 사업비가 10% 늘면 약 400억원이 사라지는데, 이것은 종전자산의 11%다. 즉 공사비 10% 상승이 비례율을 약 10%p 깎는다. 일반분양 수입이 크면 이 충격을 일부 흡수하지만, 일반분양이 적은 단지는 그대로 조합원에게 넘어간다. 그리고 그 충격은 모든 조합원에게 같은 비율로 가지만, 같은 금액이 감정가가 작은 조합원에게는 재산의 더 큰 부분이다. 오래 살아 온 고령의 원주민 조합원이 분담금을 감당하지 못해 입주권을 팔고 떠나는 일이 생기는 이유다.</p>
+    <p>공사비 상승이 무서운 이유는 지렛대 구조 때문이다. F아파트에서 총사업비는 약 4,200억원, 종전자산은 4,800억원이다. 공사비가 10% 오르면 공사비에 딸린 사업비까지 약 370억원이 사라지는데, 이것은 종전자산의 약 8%다. 즉 공사비 10% 상승이 비례율을 약 8%p 깎는다. 서울 집값이 오르면서 종전자산(헌 집의 감정가)도 커졌기 때문에 같은 공사비 충격의 비율은 예전보다 작아 보이지만, 금액으로는 그대로다. 일반분양 수입이 크면 이 충격을 일부 흡수하지만, 일반분양이 적은 단지는 그대로 조합원에게 넘어간다. 그리고 그 충격은 모든 조합원에게 같은 비율로 가지만, 같은 금액이 감정가가 작은 조합원에게는 재산의 더 큰 부분이다. 오래 살아 온 고령의 원주민 조합원이 분담금을 감당하지 못해 입주권을 팔고 떠나는 일이 생기는 이유다.</p>
 
     <div class="callout pro">
       <strong>공사비 인상 요구가 왔을 때 조합원이 확인할 것</strong>
@@ -367,7 +367,7 @@
         <div class="stat"><span class="k">중간 매수자</span><span class="v" id="who-o-b">—</span></div>
         <div class="stat"><span class="k">일반분양자</span><span class="v" id="who-o-c">—</span></div>
       </div>
-      <div class="sim-note">해볼 것: ① 입주 시세 15억원에서 원조합원(2008년에 4억원에 산 사람)은 크게 남고, 일반분양자(분양가 13억원)도 남는다. 조합 설립 전에 9억원을 주고 들어온 중간 매수자는 자금비용까지 치면 손해다. ② 손잡이를 왼쪽으로 끌어 12억원으로 내린다. 일반분양자도 손해를 보지만 손해가 가장 큰 사람은 중간 매수자다. 그는 헌 집 값에 이미 '미래의 새 집 값'을 웃돈으로 냈기 때문이다. ③ 재건축부담금을 켜고 시세를 20억원 넘게 올린다. 조합원 이익의 일부가 부담금으로 빠진다. 일반분양자에게는 부담금이 없다. (교육용 가상 숫자. 감정가 6억원, 조합원 분양가 10억원, 비례율 100%. 자금비용은 들인 돈의 연 4%를 단순 합산하고 낡은 집에 살며 아낀 주거비를 뺐다. 원조합원은 2008년부터 18년, 중간 매수자는 10년, 일반분양자는 계약금·중도금을 낸 3년만 셈한다. 부담금은 제도의 구간 구조만 흉내 낸 근사다.)</div>
+      <div class="sim-note">해볼 것: ① 입주 시세가 지금 A구 84㎡ 시세와 같은 17억원이면 원조합원(2008년에 4억원에 산 사람)은 크게 남고, 일반분양자(분양가 14억원)도 남는다. 조합 설립 전에 12억원을 주고 들어온 중간 매수자는 자금비용까지 치면 약 3억원 손해이고, 시세가 20억원은 넘어야 본전 근처에 온다. ② 손잡이를 왼쪽으로 끌어 13억원으로 내린다. 일반분양자도 손해를 보지만 손해가 가장 큰 사람은 중간 매수자다. 그는 헌 집 값에 이미 '미래의 새 집 값'을 웃돈으로 냈기 때문이다. ③ 재건축부담금을 켜고 시세를 22억원 넘게 올린다. 조합원 이익의 일부가 부담금으로 빠진다. 일반분양자에게는 부담금이 없다. (교육용 가상 숫자. 감정가 8억원, 조합원 분양가 12억원, 비례율 100%. 자금비용은 들인 돈의 연 4%를 단순 합산하고 낡은 집에 살며 아낀 주거비를 뺐다. 원조합원은 2008년부터 18년, 중간 매수자는 10년, 일반분양자는 계약금·중도금을 낸 3년만 셈한다. 부담금은 제도의 구간 구조만 흉내 낸 근사다.)</div>
     </div>
 
     <p>세 사람의 처지를 가르는 것은 '언제, 무엇을 주고 들어왔는가'다. 원조합원은 헌 집 값이 쌀 때 들어와 오랜 기다림과 불편을 치렀다. 중간 매수자는 기다림을 줄이는 대신 그만큼 웃돈을 낸다. 시장이 미래의 새 집 값을 이미 지금 가격에 반영해 두었다면, 중간 매수자가 얻을 몫은 생각보다 작고 위험(지연·공사비·집값)은 그대로 진다. 일반분양자는 조합이 정한 분양가를 내고 기다림이 가장 짧다. 분양가상한제가 적용되는 곳에서는 일반분양자가 시세보다 싼 값에 들어오기도 하는데, 그 차이는 조합원의 줄어든 수입과 맞바꾼 것이다. 누구의 셈법이 옳다는 것이 아니라, 같은 사업 안에서 위험과 보상이 이렇게 나뉜다는 것이다.</p>
@@ -403,14 +403,14 @@
 
   <section id="case">
     <h2>하늘네 집 노트</h2>
-    <p>하늘이 회사 동료에게서 들은 단지를 F아파트로 놓고, 하늘네가 지금 이 단지를 산다면 무슨 일이 벌어지는지 계산한다. F아파트는 재건축진단을 통과하고 정비구역 지정까지 마쳤으며 조합 설립을 앞두고 있다. 조합설립인가 전이라 지금 사면 조합원 자격을 얻을 수 있다. 하늘이 본 매물은 전용 59㎡로 매수가 9억원, 추정 감정가 6억원이다. 매수가, 입주까지 걸리는 기간, 공사비 상승을 바꿔 본다.</p>
+    <p>하늘이 회사 동료에게서 들은 단지를 F아파트로 놓고, 하늘네가 지금 이 단지를 산다면 무슨 일이 벌어지는지 계산한다. F아파트는 재건축진단을 통과하고 정비구역 지정까지 마쳤으며 조합 설립을 앞두고 있다. 조합설립인가 전이라 지금 사면 조합원 자격을 얻을 수 있다. 하늘이 본 매물은 전용 59㎡로 매수가 12억원, 추정 감정가 8억원이다. 같은 구의 새 84㎡ 시세가 17억원 안팎이니(2026년 8월 KB 기준 서울 아파트 평균 매매가격은 16억원대다), 낡은 59㎡에도 새 아파트에 대한 기대가 크게 얹혀 있다. 매수가, 입주까지 걸리는 기간, 공사비 상승을 바꿔 본다.</p>
 
     <div class="sim" id="sim-case">
       <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>하늘네 몸테크 계산기</h3></div>
       <div class="sim-body side">
         <div class="sim-view"><canvas id="case-cv"></canvas></div>
         <div class="sim-controls">
-          <label class="ctrl"><span>매수가(59㎡) <output id="case-b-out"></output></span><input type="range" id="case-b" min="7" max="11" step="0.1" value="9"></label>
+          <label class="ctrl"><span>매수가(59㎡) <output id="case-b-out"></output></span><input type="range" id="case-b" min="10" max="15" step="0.1" value="12"></label>
           <label class="ctrl"><span>입주까지 기간 <output id="case-y-out"></output></span><input type="range" id="case-y" min="8" max="18" step="1" value="10"></label>
           <label class="ctrl"><span>공사비 상승(계약 대비) <output id="case-c-out"></output></span><input type="range" id="case-c" min="0" max="50" step="5" value="0"></label>
         </div>
@@ -421,16 +421,16 @@
         <div class="stat"><span class="k">입주까지 들어간 돈</span><span class="v" id="case-o-t">—</span></div>
         <div class="stat"><span class="k">입주 때 하나 나이</span><span class="v" id="case-o-a">—</span></div>
       </div>
-      <div class="sim-note">해볼 것: ① 기본값(9억원, 10년, 공사비 그대로)에서 분담금은 약 4억원, 취득세와 자금비용까지 합친 들어간 돈은 약 16억원이다. 새 84㎡를 일반분양가 13억원에 받는 것보다 3억원 넘게 많다. 입주 때 새 아파트 시세가 16억원을 넘어야 본전이다. ② 기간을 14년으로 늘인다. 공사비가 지연 기간만큼 올라 비례율이 82% 안팎으로 떨어지고, 분담금이 5억원을 넘는다. ③ 공사비 상승을 20%로 더한다. 분담금이 6억 5,000만원 안팎으로 커지고 들어간 돈은 약 19억 6,000만원이 된다. 하나는 입주 때 열일곱 살이다. (교육용 모형. 자금비용은 매수가의 연 4%(대출 이자와 예금 기회비용의 중간)를 단순 합산하고, 낡은 집에 사는 동안 아낀 주거비(같은 집 전세 3억 5,000만원 × 4%)를 뺐다. 이주 기간에는 이주비 대출로 전세를 구한다고 보았다. 할인율, 재건축부담금, 보유세는 넣지 않았다.)</div>
+      <div class="sim-note">해볼 것: ① 기본값(12억원, 10년, 공사비 그대로)에서 분담금은 약 4억원, 취득세와 자금비용까지 합친 들어간 돈은 약 20억원이다. 새 84㎡를 일반분양가 14억원에 받는 것보다 6억원 넘게 많고, 지금 A구 84㎡ 시세 17억원보다도 3억원 넘게 많다. 입주 때 새 아파트 시세가 20억원을 넘어야 본전이다. ② 기간을 14년으로 늘인다. 공사비가 지연 기간만큼 올라 비례율이 86% 안팎으로 떨어지고, 분담금이 5억원을 넘는다. ③ 공사비 상승을 20%로 더한다. 분담금이 6억 6,000만원 안팎으로 커지고 들어간 돈은 약 24억 2,000만원이 된다. 하나는 입주 때 열일곱 살이다. (교육용 모형. 자금비용은 매수가의 연 4%(대출 이자와 예금 기회비용의 중간)를 단순 합산하고, 낡은 집에 사는 동안 아낀 주거비(같은 집 전세 4억원 × 4%)를 뺐다. 이주 기간에는 이주비 대출로 전세를 구한다고 보았다. 할인율, 재건축부담금, 보유세는 넣지 않았다.)</div>
     </div>
 
     <div class="casefile">
       <div class="tag"><b>CASE 하늘네</b><span>집 노트 · 12장</span></div>
-      <h4>서울 A구 재건축 몸테크: 분담금 4억에서 6억 5,000만까지, 그리고 우리 가족의 10년</h4>
-      <p>하늘이 본 F아파트 59㎡는 매수가 9억원, 추정 감정가 6억원이다. 시세와 감정가의 차이 3억원이 미래의 새 집 값을 미리 낸 웃돈이다. 이 책의 모델로 계산하면 사업이 계획대로 10년 만에 끝나고 공사비가 오르지 않을 때 비례율은 약 100%, 권리가액은 약 6억원이고, 새 84㎡(조합원 분양가 10억원)를 받으려면 분담금 약 4억원을 더 낸다(<code>RE.redevelop</code>). 매수가와 분담금에 취득세 약 2,970만원, 10년 동안의 자금비용 약 3억 6,000만원을 더하고, 낡은 집에 살며 아낀 주거비 약 8,400만원을 빼면 입주까지 들어간 돈은 약 16억 600만원이다. 같은 단지 84㎡의 일반분양가 13억원보다 3억원 넘게 많다.</p>
-      <p>민태호는 두 가지 시나리오를 더 얹었다. 사업이 4년 늦어져 그사이 공사비가 연 3%씩 오르면 비례율은 약 82%로 떨어지고 분담금은 약 5억 1,000만원, 들어간 돈은 약 18억 2,000만원이 된다. 공사비가 계약보다 20% 오르는 일까지 겹치면 비례율은 약 58%, 분담금은 약 6억 5,000만원, 들어간 돈은 약 19억 6,000만원이다. 태호는 덧붙였다. "입주 때 새 아파트가 그 값보다 비싸면 남는 거고, 아니면 손해입니다. 그건 제가 말씀드릴 수 없는 부분이에요. 제가 말씀드릴 수 있는 건 이 계산이 몇 년, 몇 %에 얼마나 민감한지입니다."</p>
-      <p>하늘네가 내린 결론은 숫자보다 가족에서 나왔다. 첫째, 돈의 크기다. 하늘네 순자산은 약 2억 8,000만원인데 매수가만 9억원이고, 서울은 규제지역이라 대출 한도가 낮다(<a href="mortgage.html">9장</a>). 사더라도 분담금 4억원 이상을 몇 년 뒤 다시 마련해야 한다. 둘째, 몸테크의 몸이 누구인가다. 토지거래허가구역이라 사면 들어가 살아야 하는데, 재원의 직장은 B시라 통근이 15분에서 한 시간으로 늘어난다(<a href="location.html">2장</a>). 세 살 하나는 녹물과 주차난이 있는 낡은 단지에서 유치원과 초등학교 시절 대부분을 보내고, 이주 때 한 번 더 학교를 옮길 수 있다. 셋째, 시간의 불확실성이다. 10년은 계획이고, 늦어질수록 분담금과 아이의 나이가 함께 늘어난다. 하늘은 "재건축이 나쁜 게 아니라, 지금 우리 가족에게 맞는 집이 아니다"라고 정리했다. 이미 그 지역에 살 이유가 분명하고, 자금 여유가 있어 긴 기간을 버틸 수 있고, 아이 학교 문제가 없는 가구라면 같은 계산에서 다른 결론이 나올 수 있다.</p>
-      <div class="clue"><div><b>이 장에서 정한 것</b>F아파트 몸테크는 계획대로여도 들어간 돈이 약 16억원, 지연·공사비 상승이 겹치면 약 19억 6,000만원. 가족 상황(재원 직장 B시, 세 살 아이, 순자산 2억 8,000만원)과 맞지 않아 후보에서 뺀다.</div><div><b>아직 남은 문제</b>집을 사면 해마다 내는 세금은 얼마인가? 1주택과 집주인 남궁현 같은 2주택은 얼마나 다른가?</div><div><b>다음 단계</b>13장: B시 6억 2,000만원 집을 1주택으로 가질 때의 재산세·종부세를 계산하고 남궁현의 보유세와 비교한다.</div></div>
+      <h4>서울 A구 재건축 몸테크: 분담금 4억에서 6억 6,000만까지, 그리고 우리 가족의 10년</h4>
+      <p>하늘이 본 F아파트 59㎡는 매수가 12억원, 추정 감정가 8억원이다. 시세와 감정가의 차이 4억원이 미래의 새 집 값을 미리 낸 웃돈이다. 이 책의 모델로 계산하면 사업이 계획대로 10년 만에 끝나고 공사비가 오르지 않을 때 비례율은 약 100%, 권리가액은 약 8억원이고, 새 84㎡(조합원 분양가 12억원)를 받으려면 분담금 약 4억원을 더 낸다(<code>RE.redevelop</code>). 매수가와 분담금에 취득세 약 3,960만원(9억원 초과라 3%에 지방교육세), 10년 동안의 자금비용 약 4억 8,000만원을 더하고, 낡은 집에 살며 아낀 주거비 약 9,600만원을 빼면 입주까지 들어간 돈은 약 20억 2,000만원이다. 같은 단지 84㎡의 일반분양가 14억원보다 6억원 넘게 많고, 지금 A구 84㎡ 시세 17억원보다도 3억원 넘게 많다.</p>
+      <p>민태호는 두 가지 시나리오를 더 얹었다. 사업이 4년 늦어져 그사이 공사비가 연 3%씩 오르면 비례율은 약 86%로 떨어지고 분담금은 약 5억 1,000만원, 들어간 돈은 약 22억 8,000만원이 된다. 공사비가 계약보다 20% 오르는 일까지 겹치면 비례율은 약 68%, 분담금은 약 6억 6,000만원, 들어간 돈은 약 24억 2,000만원이다. 태호는 덧붙였다. "입주 때 새 아파트가 그 값보다 비싸면 남는 거고, 아니면 손해입니다. 그건 제가 말씀드릴 수 없는 부분이에요. 제가 말씀드릴 수 있는 건 이 계산이 몇 년, 몇 %에 얼마나 민감한지입니다."</p>
+      <p>하늘네가 내린 결론은 숫자보다 가족에서 나왔다. 첫째, 돈의 크기다. 하늘네 순자산은 약 2억 8,000만원인데 매수가만 12억원이고, 서울은 규제지역이라 대출 한도가 낮다(<a href="mortgage.html">9장</a>, <a href="policy.html">15장</a>). 주담대를 시가 15억원 이하 집의 한도인 6억원까지 받는다 해도 취득세까지 6억 4,000만원 가까운 자기 돈이 필요하다. 사더라도 분담금 4억원 이상을 몇 년 뒤 다시 마련해야 한다. 둘째, 몸테크의 몸이 누구인가다. 토지거래허가구역이라 사면 들어가 살아야 하는데, 재원의 직장은 B시라 통근이 15분에서 한 시간으로 늘어난다(<a href="location.html">2장</a>). 세 살 하나는 녹물과 주차난이 있는 낡은 단지에서 유치원과 초등학교 시절 대부분을 보내고, 이주 때 한 번 더 학교를 옮길 수 있다. 셋째, 시간의 불확실성이다. 10년은 계획이고, 늦어질수록 분담금과 아이의 나이가 함께 늘어난다. 하늘은 "재건축이 나쁜 게 아니라, 지금 우리 가족에게 맞는 집이 아니다"라고 정리했다. 이미 그 지역에 살 이유가 분명하고, 자금 여유가 있어 긴 기간을 버틸 수 있고, 아이 학교 문제가 없는 가구라면 같은 계산에서 다른 결론이 나올 수 있다.</p>
+      <div class="clue"><div><b>이 장에서 정한 것</b>F아파트 몸테크는 계획대로여도 들어간 돈이 약 20억원, 지연·공사비 상승이 겹치면 약 24억 2,000만원. 가족 상황(재원 직장 B시, 세 살 아이, 순자산 2억 8,000만원)과 맞지 않아 후보에서 뺀다.</div><div><b>아직 남은 문제</b>집을 사면 해마다 내는 세금은 얼마인가? 1주택과 집주인 남궁현 같은 2주택은 얼마나 다른가?</div><div><b>다음 단계</b>13장: B시 6억 2,000만원 집을 1주택으로 가질 때의 재산세·종부세를 계산하고 남궁현의 보유세와 비교한다.</div></div>
     </div>
   </section>
 
@@ -451,14 +451,14 @@
     <h2>확인 퀴즈</h2>
     <div class="quiz">
       <div class="quiz-q">
-        <p>종전자산 총액 3,000억원, 종후자산 총액 7,000억원, 총사업비 4,300억원인 사업에서 감정가 5억원인 조합원이 조합원 분양가 9억원짜리 집을 신청했다. 분담금은?</p>
+        <p>종전자산 총액 4,000억원, 종후자산 총액 9,000억원, 총사업비 5,400억원인 사업에서 감정가 8억원인 조합원이 조합원 분양가 12억원짜리 집을 신청했다. 분담금은?</p>
         <div class="opts">
           <button class="opt">4억원</button>
-          <button class="opt" data-correct>4억 5,000만원</button>
-          <button class="opt">5억 5,000만원</button>
-          <button class="opt">환급 5,000만원</button>
+          <button class="opt" data-correct>4억 8,000만원</button>
+          <button class="opt">5억 6,000만원</button>
+          <button class="opt">환급 8,000만원</button>
         </div>
-        <div class="quiz-exp">비례율 = (7,000 − 4,300) ÷ 3,000 = 90%다. 권리가액 = 5억원 × 90% = 4억 5,000만원, 분담금 = 9억원 − 4억 5,000만원 = 4억 5,000만원이다.</div>
+        <div class="quiz-exp">비례율 = (9,000 − 5,400) ÷ 4,000 = 90%다. 권리가액 = 8억원 × 90% = 7억 2,000만원, 분담금 = 12억원 − 7억 2,000만원 = 4억 8,000만원이다.</div>
       </div>
       <div class="quiz-q">
         <p>조합이 조합원 분양가를 1억원씩 올리자 비례율이 크게 높아졌다. 감정가가 조합원 평균과 같은 조합원에게 생기는 일로 가장 알맞은 것은?</p>
@@ -516,7 +516,7 @@
 
   /* ---------------------------------------------------------- F아파트 모형(교육용 가상 단지) */
   const PY = 3.3058;
-  const BASE = { N0: 600, oldArea: 80, f0: 1.8, unitArea: 110, gross: 1.65, memberPrice: 10e8, salePrice: 13e8, costPy: 7.8e6, priorAvg: 6e8, pre: 6, post: 4, rate: 0.05, costUp: 0, f: 3.0 };
+  const BASE = { N0: 600, oldArea: 80, f0: 1.8, unitArea: 110, gross: 1.65, memberPrice: 12e8, salePrice: 14e8, costPy: 7.8e6, priorAvg: 8e8, pre: 6, post: 4, rate: 0.05, costUp: 0, f: 3.0 };
   function project(o) {
     o = Object.assign({}, BASE, o || {});
     const site = o.N0 * o.oldArea / o.f0;
@@ -540,7 +540,7 @@
     const costUp = (1 + (extraCost || 0)) * Math.pow(1 + esc, extra) - 1;
     return { pre, post, costUp };
   }
-  const CASE = { prior: 6e8, buy: 9e8, oldJeonse: 3.5e8, fundRate: 0.04, esc: 0.03 };
+  const CASE = { prior: 8e8, buy: 12e8, oldJeonse: 4e8, fundRate: 0.04, esc: 0.03 };
   const C = RE.CASE;
 
   /* ---------------------------------------------------------- 1. 용적률 */
@@ -654,13 +654,13 @@
 
   /* ---------------------------------------------------------- 3. 권리가액과 분담금 */
   (function () {
-    const PRICE = { 59: 7.5e8, 84: 10e8, 114: 13e8 };
+    const PRICE = { 59: 9e8, 84: 12e8, 114: 15.5e8 };
     const vG = EB.range("contrib-v", (v) => EB.won(v * 1e8), draw);
     const tG = EB.seg("contrib-t", draw);
     let ratio = 1.0, L = null;
     const cv = EB.canvas("#contrib-cv", (ctx, w, h) => {
       const P = EB.palette(), v = vG() * 1e8, np = PRICE[tG()], rd = RE.redevelop({ rightsValue: v, ratio, newPrice: np });
-      const base = h - 58, top = 30, maxV = 14e8, sc = (base - top) / maxV;
+      const base = h - 58, top = 30, maxV = 18.5e8, sc = (base - top) / maxV;
       const bw = Math.min(90, w * 0.2), gap = (w - 3 * bw) / 4;
       const xs = [gap, gap * 2 + bw, gap * 3 + bw * 2];
       const bars = [
@@ -784,7 +784,7 @@
     const sG = EB.range("cost-s", (v) => EB.won(v * 1e8), draw);
     const fG = EB.range("cost-f", (v) => v + "%", draw);
     let u = 0.2, box = null;
-    const OWN = [4e8, 6e8, 8e8];
+    const OWN = [6e8, 8e8, 10e8];
     const at = (up) => project({ costUp: up, salePrice: sG() * 1e8, f: fG() / 100 });
     const contrib = (ratio, v) => RE.redevelop({ rightsValue: v, ratio: Math.max(0, ratio), newPrice: BASE.memberPrice }).contribution;
     const cv = EB.canvas("#cost-cv", (ctx, w, h) => {
@@ -793,10 +793,10 @@
       const rs = xs.map((x) => at(x).ratio);
       const cols = [P.bad, P.warn, P.accent];
       const c = EB.chart(ctx, { x: 56, y: 34, w: w - 72, h: h - 84 }, {
-        x: [0, 0.6], y: [-2e8, 11e8], xTicks: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6], xFmt: (v) => "+" + Math.round(v * 100) + "%", yFmt: EB.wonAxis,
-        yTicks: [0, 2e8, 4e8, 6e8, 8e8, 10e8],
+        x: [0, 0.6], y: [-2e8, 13e8], xTicks: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6], xFmt: (v) => "+" + Math.round(v * 100) + "%", yFmt: EB.wonAxis,
+        yTicks: [0, 3e8, 6e8, 9e8, 12e8],
         series: OWN.map((v, i) => ({ data: xs.map((x, k) => [x, contrib(rs[k], v)]), color: cols[i], width: 2.4 })),
-        hlines: [{ y: BASE.memberPrice, color: P.faint, label: "새 집 값 전부(10억)" }, { y: 0, color: P.axis, dash: [] }],
+        hlines: [{ y: BASE.memberPrice, color: P.faint, label: "새 집 값 전부(" + EB.wonAxis(BASE.memberPrice) + ")" }, { y: 0, color: P.axis, dash: [] }],
       });
       box = c;
       const px = c.X(u);
@@ -805,7 +805,7 @@
       OWN.forEach((v, i) => { const yy = c.Y(contrib(r, v)); ctx.beginPath(); ctx.arc(px, yy, 4.5, 0, TAU); ctx.fillStyle = cols[i]; ctx.fill(); });
       knob(ctx, px, c.box.y, P);
       let lx = 62;
-      ["감정가 4억", "6억", "8억"].forEach((s, i) => { ctx.fillStyle = cols[i]; ctx.fillRect(lx, 10, 12, 3); T(ctx, s, lx + 16, 15, { size: 11, color: P.dim }); ctx.font = EB.font(11); lx += ctx.measureText(s).width + 32; });
+      ["감정가 6억", "8억", "10억"].forEach((s, i) => { ctx.fillStyle = cols[i]; ctx.fillRect(lx, 10, 12, 3); T(ctx, s, lx + 16, 15, { size: 11, color: P.dim }); ctx.font = EB.font(11); lx += ctx.measureText(s).width + 32; });
       T(ctx, "비례율 " + pct0(r), Math.min(px + 12, c.box.x + c.box.w - 80), c.box.y + 24, { size: 11, color: r < 0.7 ? P.bad : P.text, weight: 700 });
     }, { get height() { return pw("cost-cv") < 480 ? 300 : 316; } });
     EB.drag(cv.canvas, { move(x) { if (!box) return; u = EB.clamp(Math.round((x - box.box.x) / box.box.w * 0.6 * 50) / 50, 0, 0.6); draw(); } });
@@ -813,8 +813,8 @@
       const r = at(u).ratio;
       EB.stat("cost-o-u", "+" + Math.round(u * 100) + "%");
       EB.stat("cost-o-r", '<span class="' + (r < 0.9 ? "minus" : "") + '">' + pct0(r) + "</span>");
-      const a = contrib(r, 4e8), b = contrib(r, 8e8);
-      EB.stat("cost-o-a", contribHtml(a) + ' <small style="color:var(--text-faint)">(감정가의 ' + Math.round(a / 4e8 * 100) + "%)</small>");
+      const a = contrib(r, OWN[0]), b = contrib(r, OWN[2]);
+      EB.stat("cost-o-a", contribHtml(a) + ' <small style="color:var(--text-faint)">(감정가의 ' + Math.round(a / OWN[0] * 100) + "%)</small>");
       EB.stat("cost-o-b", contribHtml(b));
       cv.redraw();
     }
@@ -825,8 +825,8 @@
   (function () {
     const fEl = document.getElementById("who-f"), tEl = document.getElementById("who-t");
     fEl.addEventListener("change", draw); tEl.addEventListener("change", draw);
-    let price = 15e8, box = null;
-    // 재건축부담금 근사: 1인당 초과이익 = 입주 시세 − 조합설립 때 시세(9억) − 정상 상승(연 2.5%, 10년) − 분담금
+    let price = C.areas[0].price, box = null;
+    // 재건축부담금 근사: 1인당 초과이익 = 입주 시세 − 조합설립 때 시세(12억) − 정상 상승(연 2.5%, 10년) − 분담금
     function levy(p) {
       const start = CASE.buy, normal = start * (Math.pow(1.025, 10) - 1), excess = p - start - normal - 4e8;
       if (excess <= 8e7) return 0;
@@ -841,27 +841,27 @@
       const a = p - (4e8 + contrib) - (fund ? 4e8 * CASE.fundRate * 18 - CASE.oldJeonse * CASE.fundRate * 14 : 0) - lv * 0.5;
       const b = p - (CASE.buy + RE.acqTax({ price: CASE.buy, homes: 1, area: 59 }).total + contrib) - (fund ? CASE.buy * CASE.fundRate * 10 - CASE.oldJeonse * CASE.fundRate * 6 : 0) - lv;
       const c = p - BASE.salePrice - (fund ? BASE.salePrice * 0.3 * CASE.fundRate * 3 : 0);
-      return [{ k: "원조합원", sub: "2008년 4억", v: a }, { k: "중간 매수자", sub: "지금 9억", v: b }, { k: "일반분양자", sub: "분양가 13억", v: c }];
+      return [{ k: "원조합원", sub: "2008년 4억", v: a }, { k: "중간 매수자", sub: "지금 " + EB.wonAxis(CASE.buy), v: b }, { k: "일반분양자", sub: "분양가 " + EB.wonAxis(BASE.salePrice), v: c }];
     }
     const cv = EB.canvas("#who-cv", (ctx, w, h) => {
       const P = EB.palette(), A = actors(price);
       const left = 56, right = w - 16;
-      // 위: 입주 시세 손잡이 축(8~22억)
-      const pyMin = 8e8, pyMax = 22e8, ty = 30;
+      // 위: 입주 시세 손잡이 축(10~28억)
+      const pyMin = 10e8, pyMax = 28e8, ty = 30;
       const PX = (v) => left + (v - pyMin) / (pyMax - pyMin) * (right - left);
       T(ctx, "입주 때 새 84㎡ 시세", left, 12, { size: 11, color: P.dim, base: "middle" });
       ctx.strokeStyle = P.border; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(left, ty); ctx.lineTo(right, ty); ctx.stroke();
       ctx.strokeStyle = P.accent; ctx.beginPath(); ctx.moveTo(left, ty); ctx.lineTo(PX(price), ty); ctx.stroke(); ctx.lineWidth = 1;
-      [8e8, 12e8, 16e8, 20e8].forEach((v) => T(ctx, EB.wonAxis(v), PX(v), ty + 18, { size: 10, mono: true, color: P.dim, align: "center" }));
+      [10e8, 14e8, 18e8, 22e8, 26e8].forEach((v) => T(ctx, EB.wonAxis(v), PX(v), ty + 18, { size: 10, mono: true, color: P.dim, align: "center" }));
       [BASE.salePrice].forEach((v) => { ctx.fillStyle = P.ok; ctx.fillRect(PX(v) - 1, ty - 7, 2, 14); });
       knob(ctx, PX(price), ty, P);
       // 아래: 손익 막대
       const top = 64, bot = h - 66;
-      const midY = top + (bot - top) * 0.5, sc = (bot - top) / 2 / 12e8;
-      [-12e8, -8e8, -4e8, 0, 4e8, 8e8, 12e8].forEach((v) => { const y = midY - v * sc; ctx.strokeStyle = v === 0 ? P.axis : P.grid; ctx.beginPath(); ctx.moveTo(left, y); ctx.lineTo(right, y); ctx.stroke(); T(ctx, (v > 0 ? "+" : "") + EB.wonAxis(v), left - 6, y, { size: 10, mono: true, color: P.dim, align: "right", base: "middle" }); });
+      const midY = top + (bot - top) * 0.5, sc = (bot - top) / 2 / 16e8;
+      [-16e8, -8e8, 0, 8e8, 16e8].forEach((v) => { const y = midY - v * sc; ctx.strokeStyle = v === 0 ? P.axis : P.grid; ctx.beginPath(); ctx.moveTo(left, y); ctx.lineTo(right, y); ctx.stroke(); T(ctx, (v > 0 ? "+" : "") + EB.wonAxis(v), left - 6, y, { size: 10, mono: true, color: P.dim, align: "right", base: "middle" }); });
       const slot = (right - left) / 3, bw = slot * 0.46;
       A.forEach((a, i) => {
-        const cx = left + slot * (i + 0.5), vv = EB.clamp(a.v, -12e8, 12e8);
+        const cx = left + slot * (i + 0.5), vv = EB.clamp(a.v, -16e8, 16e8);
         ctx.fillStyle = a.v >= 0 ? P.ok : P.bad; ctx.globalAlpha = 0.8;
         ctx.fillRect(cx - bw / 2, Math.min(midY, midY - vv * sc), bw, Math.max(1.5, Math.abs(vv * sc))); ctx.globalAlpha = 1;
         T(ctx, a.k, cx, bot + 16, { size: 12, color: P.text, align: "center", weight: 700 });
@@ -910,14 +910,14 @@
       }
       const end = series[series.length - 1][1];
       series.push([c.yrs, end + c.rd.contribution]);
-      const ymax = Math.max(22e8, Math.ceil((c.total + 1e8) / 2e8) * 2e8);
+      const ymax = Math.max(26e8, Math.ceil((c.total + 1e8) / 2e8) * 2e8);
       const ch = EB.chart(ctx, { x: 56, y: 22, w: w - 72, h: h - 104 }, {
-        x: [0, YM], y: [6e8, ymax], xTicks: [0, 3, 6, 9, 12, 15, 18], xFmt: (t) => String(2026 + t).slice(2) + "년", yFmt: EB.wonAxis,
+        x: [0, YM], y: [10e8, ymax], xTicks: [0, 3, 6, 9, 12, 15, 18], xFmt: (t) => String(2026 + t).slice(2) + "년", yFmt: EB.wonAxis,
         series: [{ data: series, color: P.bad, width: 2.6 }],
-        hlines: [{ y: BASE.salePrice, color: P.ok, label: "일반분양가 13억" }, { y: C.areas[0].price, color: P.faint, label: "" }],
+        hlines: [{ y: BASE.salePrice, color: P.ok, label: "일반분양가 " + EB.wonAxis(BASE.salePrice) }, { y: C.areas[0].price, color: P.faint, label: "" }],
         vlines: [{ x: c.live, color: P.warn, label: "이주" }, { x: c.yrs, color: P.bad, label: "입주" }],
       });
-      T(ctx, "A구 84㎡ 지금 시세 12.5억", ch.box.x + 6, ch.Y(C.areas[0].price) + 13, { size: 10, color: P.faint });
+      T(ctx, "A구 84㎡ 지금 시세 " + EB.wonAxis(C.areas[0].price), ch.box.x + 6, ch.Y(C.areas[0].price) + 13, { size: 10, color: P.faint });
       const ex = ch.X(c.yrs), ey = ch.Y(c.total);
       ctx.beginPath(); ctx.arc(ex, ey, 5, 0, TAU); ctx.fillStyle = P.bad; ctx.fill();
       T(ctx, "본전 시세 " + EB.wonAxis(c.total), Math.min(ex + 8, ch.box.x + ch.box.w - 96), ey - 8, { size: 12, color: P.bad, weight: 700 });

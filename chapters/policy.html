@@ -115,7 +115,7 @@
         <div class="sim-view"><canvas id="zone-cv"></canvas></div>
         <div class="sim-controls">
           <div class="seg" id="zone-who"><button data-value="none" class="on">무주택</button><button data-value="first">생애최초</button><button data-value="multi">1주택자 추가 구입</button></div>
-          <label class="ctrl"><span>집값 <output id="zone-p-out"></output></span><input type="range" id="zone-p" min="3" max="30" step="0.5" value="10"></label>
+          <label class="ctrl"><span>집값 <output id="zone-p-out"></output></span><input type="range" id="zone-p" min="3" max="50" step="0.5" value="10"></label>
         </div>
       </div>
       <div class="sim-readout">
@@ -123,7 +123,7 @@
         <div class="stat"><span class="k">규제지역: 필요한 자기 돈</span><span class="v" id="zone-o-r">—</span></div>
         <div class="stat"><span class="k">규제로 늘어난 현금</span><span class="v" id="zone-o-d">—</span></div>
       </div>
-      <div class="sim-note">해볼 것: ① 무주택, 10억원에서 두 막대를 비교한다. LTV가 70%에서 40%로 줄어(수도권 6억 한도도 함께) 필요한 현금이 2억원 늘어난다. ② '1주택자 추가 구입'을 고른다. 규제지역에서는 대출이 0원이 되고 취득세가 8%로 뛰어, 집값 전부와 세금을 현금으로 내야 한다. ③ 집값을 15억원 넘게, 다시 25억원 넘게 올린다. 규제지역의 주담대 한도가 6억 → 4억 → 2억으로 계단처럼 줄어 필요 현금이 갑자기 뛴다. (취득세는 85㎡ 이하, 비규제 다주택은 LTV 60%로 가정했다. 비규제지역도 수도권이면 주담대 6억 한도를 적용했다. DSR(소득 기준 한도)은 이 그림에서 빼고 <a href="mortgage.html">9장</a>에서 따로 본다. 중개보수·법무비 제외.)</div>
+      <div class="sim-note">해볼 것: ① 무주택, 10억원에서 두 막대를 비교한다. LTV가 70%에서 40%로 줄어(수도권 6억 한도도 함께) 필요한 현금이 2억원 늘어난다. ② '1주택자 추가 구입'을 고른다. 규제지역에서는 대출이 0원이 되고 취득세가 8%로 뛰어, 집값 전부와 세금을 현금으로 내야 한다. ③ 집값을 15억원 넘게, 다시 25억원 넘게 올린다. 규제지역의 주담대 한도가 6억 → 4억 → 2억으로 계단처럼 줄어 필요 현금이 갑자기 뛴다. 40억원(2026년 서울 강남권 84㎡ 거래 수준)까지 밀면 규제지역 대출은 2억원, 집값의 5%뿐이라 취득세까지 약 39억 3,000만원을 자기 돈으로 내야 한다. (취득세는 85㎡ 이하, 비규제 다주택은 LTV 60%로 가정했다. 비규제지역도 수도권이면 주담대 6억 한도를 적용했다. DSR(소득 기준 한도)은 이 그림에서 빼고 <a href="mortgage.html">9장</a>에서 따로 본다. 중개보수·법무비 제외.)</div>
     </div>
 
     <p>규제지역 지정이 가격에 닿는 경로는 대부분 이 "필요한 현금"을 통한다. 같은 10억원짜리 집을 살 수 있는 사람의 수가 줄면, 그 집을 사려는 경쟁이 줄고 가격 상승 압력이 약해진다. 반대로 이미 그 지역에 집을 가진 사람은 팔기도 어려워진다(사는 사람이 줄고, 다주택이면 양도세가 무겁다). 그래서 지정 직후에는 대개 가격보다 <b>거래량</b>이 먼저 크게 줄어든다. 가격 통계에 효과가 나타나는 것은 그다음이고, 그 사이 거래가 적어 통계 자체가 출렁이기도 한다(<a href="data.html">16장</a>).</p>
@@ -144,7 +144,7 @@
       <div class="sim-body side">
         <div class="sim-view"><canvas id="gap-cv"></canvas><span class="hint">전세가율 손잡이를 위아래로 끈다</span></div>
         <div class="sim-controls">
-          <label class="ctrl"><span>집값 <output id="gap-p-out"></output></span><input type="range" id="gap-p" min="4" max="25" step="0.5" value="12.5"></label>
+          <label class="ctrl"><span>집값 <output id="gap-p-out"></output></span><input type="range" id="gap-p" min="4" max="45" step="0.5" value="17"></label>
           <label class="ctrl"><span>실거주 LTV <output id="gap-l-out"></output></span><input type="range" id="gap-l" min="0" max="70" step="5" value="40"></label>
         </div>
       </div>
@@ -154,7 +154,7 @@
         <div class="stat"><span class="k">실거주 필요 현금</span><span class="v" id="gap-o-r">—</span></div>
         <div class="stat"><span class="k">허가제 아래 진입 문턱</span><span class="v" id="gap-o-x">—</span></div>
       </div>
-      <div class="sim-note">해볼 것: ① 기본값(12억 5,000만원, 전세가율 52%, LTV 40%)에서 갭투자는 약 6억원, 실거주는 7억 5,000만원이 든다. ② 전세가율 손잡이를 70% 넘게 올린다. 갭투자에 필요한 돈이 실거주의 절반 아래로 떨어진다. 전세가율이 높은 곳일수록 갭투자가 쉬웠고, 허가제가 막는 문이 크다. ③ 전세가율을 30%대로 내린다. 갭이 커져 갭투자의 매력이 줄고, 허가제의 차이도 작아진다. (전세가율이 높을수록 세입자의 보증금 위험도 커진다는 점은 5장을 본다. 실거주 LTV는 규제지역 무주택 40%, 생애최초 70%. 주담대 한도 6억(15억 초과 4억, 25억 초과 2억)을 적용했다.)</div>
+      <div class="sim-note">해볼 것: ① 기본값(서울 A구 84㎡ 17억원, 전세 7억원이라 전세가율 41%, LTV 40%)에서 갭투자는 약 10억원, 실거주는 13억원이 든다. 실거주 쪽은 LTV 40%면 6억 8,000만원이지만 시가 15억원 초과 주택의 한도 4억원에 걸린다. 서울 아파트 전세가율은 2026년 1월 KB 기준 50% 아래로 내려가 있어(송파·용산·서초 40% 안팎) 갭 자체가 크다. ② 전세가율 손잡이를 70% 넘게 올린다. 갭투자에 필요한 돈이 실거주의 절반 아래로 떨어진다. 전세가율이 높은 곳일수록 갭투자가 쉬웠고, 허가제가 막는 문이 크다. ③ 전세가율을 30%대로 내린다. 갭이 커져 갭투자의 매력이 줄고, 허가제의 차이도 작아진다. (전세가율이 높을수록 세입자의 보증금 위험도 커진다는 점은 5장을 본다. 실거주 LTV는 규제지역 무주택 40%, 생애최초 70%. 주담대 한도 6억(15억 초과 4억, 25억 초과 2억)을 적용했다.)</div>
     </div>
 
     <p>허가제는 집값을 직접 누르지 않는다. 대신 그 지역의 매수자를 "직접 살 사람"으로 좁힌다. 투자 수요가 빠지면 거래가 줄고, 매수자 가운데 대출을 크게 쓸 수 없는 사람도 빠진다. 대가도 있다. 세입자가 사는 집은 사려는 사람이 바로 들어가 살 수 없어서 팔기 어려워진다. 이 문제 때문에 2026년 5월에는 세입자가 있는 집을 무주택자가 사면 기존 임대차가 끝날 때까지 입주를 미뤄 주는 유예 특례가 나왔고, 9월에는 신청 기한을 2027년 말까지 늘리고 세입자의 계약갱신까지 기다릴 수 있게 넓히는 개정이 발표됐다(세부 조건은 확인 필요). 규제는 이렇게 부작용이 드러나면 예외가 붙으며 점점 복잡해진다.</p>
@@ -188,7 +188,7 @@
         <div class="sim-controls">
           <label class="ctrl"><span>LTV <output id="dem-l-out"></output></span><input type="range" id="dem-l" min="0" max="80" step="5" value="40"></label>
           <label class="ctrl"><span>DSR 산정 금리(스트레스 포함) <output id="dem-r-out"></output></span><input type="range" id="dem-r" min="3" max="10" step="0.25" value="7"></label>
-          <label class="check"><input type="checkbox" id="dem-cap" checked> 주담대 한도 6억</label>
+          <label class="check"><input type="checkbox" id="dem-cap" checked> 주담대 한도(6억·4억·2억)</label>
         </div>
       </div>
       <div class="sim-readout">
@@ -197,10 +197,11 @@
         <div class="stat"><span class="k">LTV 70%·한도 없을 때</span><span class="v" id="dem-o-b">—</span></div>
         <div class="stat"><span class="k">가장 많이 묶는 제약</span><span class="v" id="dem-o-k">—</span></div>
       </div>
-      <div class="sim-note">해볼 것: ① 손잡이를 12억원에 둔다. LTV 40%·한도 6억 아래에서 이 집을 살 수 있는 가구는 약 6.3%로, 'LTV 70%·한도 없을 때'의 약 9.4%보다 3분의 1가량 적다. 이 가구들은 대부분 LTV, 곧 가진 돈에 묶여 있다. ② LTV를 0%로 내린다. 막대가 왼쪽으로 몰리고 12억원 집을 살 수 있는 가구가 2%로 줄어든다. 대출 없이 집을 사라는 규칙은 현금이 많은 가구만 남긴다. ③ LTV를 70% 넘게 올린 뒤 DSR 산정 금리를 10%까지 올린다. 이번에는 가진 돈이 아니라 소득이 묶어 '가장 많이 묶는 제약'이 DSR로 바뀐다. LTV를 풀어도 DSR이 남아 있으면 수요가 생각만큼 늘지 않는다. (교육용 가상 가구: 가진 돈 중위 약 2억원, 연소득 중위 약 7,000만원의 로그정규 분포, 30년 원리금균등, DSR 40%, 다른 대출 없음. 취득세·거래비용 제외. 실제 가구 분포가 아니다.)</div>
+      <div class="sim-note">해볼 것: ① 손잡이를 12억원에 둔다. LTV 40%·한도 6억(15억 이하) 아래에서 이 집을 살 수 있는 가구는 약 6.3%로, 'LTV 70%·한도 없을 때'의 약 9.4%보다 3분의 1가량 적다. 이 가구들은 대부분 LTV, 곧 가진 돈에 묶여 있다. ② LTV를 0%로 내린다. 막대가 왼쪽으로 몰리고 12억원 집을 살 수 있는 가구가 2%로 줄어든다. 대출 없이 집을 사라는 규칙은 현금이 많은 가구만 남긴다. ③ LTV를 70% 넘게 올린 뒤 DSR 산정 금리를 10%까지 올린다. 이번에는 가진 돈이 아니라 소득이 묶어 '가장 많이 묶는 제약'이 DSR로 바뀐다. LTV를 풀어도 DSR이 남아 있으면 수요가 생각만큼 늘지 않는다. ④ 기본값으로 돌아가 손잡이를 17억원(A구)으로 옮긴다. 한도가 4억원으로 줄어드는 구간이라 살 수 있는 가구는 1.4%로, 회색(2.8%)의 절반이다. 25억원을 넘기면 한도 2억원 구간에 들어가 이 가상 가구 가운데 살 수 있는 가구가 사실상 없어진다. (교육용 가상 가구: 가진 돈 중위 약 2억원, 연소득 중위 약 7,000만원의 로그정규 분포, 30년 원리금균등, DSR 40%, 다른 대출 없음. 취득세·거래비용 제외. 실제 가구 분포가 아니다.)</div>
     </div>
 
     <p>대출 규제는 사람들의 '사고 싶은 마음'은 그대로 두고 '살 수 있는 능력'만 줄인다. 그래서 효과는 두 갈래로 나타난다. 살 수 있는 사람이 줄어든 가격대에서는 거래와 가격 상승 압력이 줄어든다. 하지만 사고 싶은 마음은 사라지지 않았으니, 그 수요는 대출이 덜 필요한 더 싼 집, 규제가 없는 옆 지역, 또는 나중으로 옮겨 간다. 대출 규제가 풀리는 순간 미뤄 둔 수요가 한꺼번에 돌아오기도 한다. 대출 한도가 어떻게 계산되는지는 <a href="mortgage.html">9장</a>에서, MoneyBook의 <a href="https://moneybook.euiyun.com/chapters/loan.html">대출 상환의 구조</a>에서 원리금 계산의 기초를 볼 수 있다.</p>
+    <p>가격이 아주 높은 집에서는 이 원리가 다르게 보인다. 2026년 서울 강남권에서는 전용 84㎡가 40억원대에 거래된 사례가 있다. 규제지역에서 40억원짜리 집을 사면 주담대 한도는 2억원, 집값의 5%다. 취득세(약 1억 3,200만원)까지 약 39억 3,000만원을 자기 돈으로 마련해야 하니, 이 가격대의 매수자는 원래부터 대출에 거의 기대지 않는 사람들, 곧 현금 자산이 많거나 이미 가진 집을 팔아 옮기는 사람들이다. 대출 규제는 대출에 기대는 사람을 시장에서 빼는 장치라서, 대출을 거의 쓰지 않는 매수자가 대부분인 가격대에서는 살 수 있는 사람의 수를 덜 바꾼다. 대신 한도가 6억 → 4억 → 2억으로 꺾이는 15억원과 25억원 바로 위에서 필요한 현금이 계단처럼 뛰고(아래 하늘네 집 노트의 A구 손잡이로 볼 수 있다), 그 아래 가격대에서 갈아타려는 사람의 문턱이 높아진다. 대출 규제가 강해진 뒤에도 서울 아파트 실거래가격지수가 1년 사이 14.56% 올랐다(2026년 7월, 서울시)는 사실은, 서울 집값이 대출 규제(④) 하나가 아니라 입지(①), 금리(②), 공급(③), 기대(⑤)와 함께 움직인다는 점을 떠올리게 한다. 어느 힘이 얼마나 컸는지는 이 책이 단정하지 않는다.</p>
 
     <div class="callout pro">
       <strong>대책 발표 다음 날의 중개사무소</strong>
@@ -382,7 +383,7 @@
         <div class="sim-controls">
           <label class="check"><input type="checkbox" id="case-first" checked> 생애최초(LTV 70%)</label>
           <label class="check"><input type="checkbox" id="case-bz"> B시가 규제지역으로 지정된다면(가정)</label>
-          <label class="ctrl"><span>A구 집값 <output id="case-pa-out"></output></span><input type="range" id="case-pa" min="8" max="20" step="0.5" value="12.5"></label>
+          <label class="ctrl"><span>A구 집값 <output id="case-pa-out"></output></span><input type="range" id="case-pa" min="8" max="45" step="0.5" value="17"></label>
         </div>
       </div>
       <div class="sim-readout">
@@ -391,16 +392,16 @@
         <div class="stat"><span class="k">필요한 자기 돈(취득세 포함)</span><span class="v" id="case-o-c">—</span></div>
         <div class="stat"><span class="k">바뀌는 규칙</span><span class="v" id="case-o-r" style="font-size:14px;font-family:var(--font);font-weight:500">—</span></div>
       </div>
-      <div class="sim-note">해볼 것: ① 기본값에서 A구 기둥을 누른다. 생애최초 LTV 70%를 받아도 주담대 한도 6억에 걸려, 자기 돈이 약 6억 9,000만원 필요하다. 하늘네 자기 돈 선(2억 4,000만원)보다 훨씬 위다. 생애최초를 끄면 LTV 40%라 약 7억 9,000만원이 된다. ② 'B시가 규제지역으로 지정된다면'을 켜고 생애최초를 끈다. B시의 필요 자기 돈이 약 1억 9,000만원에서 약 3억 8,000만원으로 두 배가 된다. 생애최초를 켜면 LTV 70%가 유지되어 그대로다. ③ A구 집값을 15억원 넘게 올린다. 한도가 4억원으로 줄어 필요한 돈이 다시 뛴다. (규제가 정하는 대출만 보았다. 소득으로 정하는 DSR 한도, 금리, 월 상환액은 <a href="mortgage.html">9장</a>에서 따로 계산한다. 취득세는 1주택·85㎡ 이하·생애최초 감면 반영, 중개보수·법무비 제외. 자기 돈 기본값 2억 4,000만원은 순자산에서 비상금을 남긴 교육용 가정.)</div>
+      <div class="sim-note">해볼 것: ① 기본값에서 A구 기둥을 누른다. 17억원은 시가 15억원 초과라 주담대 한도가 4억원이다. 생애최초 LTV 70%(11억 9,000만원)도, 생애최초를 끈 LTV 40%(6억 8,000만원)도 모두 이 한도에 걸려 대출은 4억원으로 같고, 취득세 약 5,610만원까지 자기 돈이 약 13억 5,600만원 필요하다. 하늘네 자기 돈 선(2억 4,000만원)의 다섯 배가 넘는다. ② 'B시가 규제지역으로 지정된다면'을 켜고 생애최초를 끈다. B시의 필요 자기 돈이 약 1억 9,000만원에서 약 3억 8,000만원으로 두 배가 된다. 생애최초를 켜면 LTV 70%가 유지되어 그대로다. ③ A구 집값 손잡이를 15억원과 15억 5,000만원 사이에서 오간다. 한도가 6억원에서 4억원으로 꺾여 집값은 5,000만원 오르는데 필요한 자기 돈은 약 9억 5,000만원에서 약 12억원으로 2억 5,000만원 넘게 뛴다. 25억원을 넘기면 한도가 2억원으로 한 번 더 꺾이고, 40억원(2026년 서울 강남권 84㎡ 거래 수준)에서는 자기 돈이 약 39억 3,000만원이다. (규제가 정하는 대출만 보았다. 소득으로 정하는 DSR 한도, 금리, 월 상환액은 <a href="mortgage.html">9장</a>에서 따로 계산한다. 취득세는 1주택·85㎡ 이하·생애최초 감면 반영(12억원 초과는 감면 없음), 중개보수·법무비 제외. 자기 돈 기본값 2억 4,000만원은 순자산에서 비상금을 남긴 교육용 가정.)</div>
     </div>
 
     <div class="casefile">
       <div class="tag"><b>CASE 하늘네</b><span>집 노트 · 15장</span></div>
       <h4>A구는 대출과 실거주 두 겹으로 막혔고, B시는 아직 열려 있다. 그리고 "옆 동네가 오른다"의 정체</h4>
-      <p><b>서울 A구.</b> 2026년 기준 서울 전역이 규제지역이자 토지거래허가구역이라 A구의 84㎡(약 12억 5,000만원)를 사려면 세 가지가 동시에 걸린다. 첫째 LTV가 무주택자 40%로, 대출은 5억원까지다. 하늘네는 생애최초라 LTV 70%를 받을 수 있지만 수도권·규제지역 주담대 한도 6억원에 걸린다. 이 책의 모델로 계산하면 취득세 약 4,125만원(12억원을 넘어 생애최초 감면도 없다)까지 더해 자기 돈이 약 6억 9,000만원(생애최초가 아니면 약 7억 9,000만원) 필요하다. 하늘네의 순자산 2억 8,000만원의 두 배를 훌쩍 넘는다. 둘째, 토지거래허가를 받아야 하고 허가 후 4개월 안에 들어가 2년을 살아야 한다. 먼저 사 두고 전세를 놓은 뒤 나중에 들어가는 길(갭투자)은 막혀 있다. 셋째, 취득 당시 조정대상지역이라 나중에 팔 때 1주택 비과세를 받으려면 2년 거주가 필요하다(<a href="tradetax.html">14장</a>). 소득으로 정해지는 DSR 한도는 아직 계산하지 않았지만, 규제만으로도 A구는 지금의 하늘네에게 닿지 않는 곳이 됐다.</p>
+      <p><b>서울 A구.</b> 2026년 기준 서울 전역이 규제지역이자 토지거래허가구역이라 A구의 84㎡(약 17억원)를 사려면 세 가지가 동시에 걸린다. 첫째 대출이다. LTV는 무주택자 40%(6억 8,000만원), 생애최초 70%(11억 9,000만원)지만, 시가 15억원을 넘는 집은 수도권·규제지역 주담대 한도가 4억원이라 어느 쪽이든 대출은 4억원이다. 이 책의 모델로 계산하면 취득세 약 5,610만원(9억원 초과 3%, 12억원을 넘어 생애최초 감면도 없다)까지 더해 자기 돈이 약 13억 5,600만원 필요하다. 하늘네의 순자산 2억 8,000만원의 다섯 배 가까이다. 둘째, 토지거래허가를 받아야 하고 허가 후 4개월 안에 들어가 2년을 살아야 한다. 먼저 사 두고 전세를 놓은 뒤 나중에 들어가는 길(갭투자)은 막혀 있다. 셋째, 취득 당시 조정대상지역이라 나중에 팔 때 1주택 비과세를 받으려면 2년 거주가 필요하다(<a href="tradetax.html">14장</a>). 소득으로 정해지는 DSR 한도는 아직 계산하지 않았지만, 규제만으로도 A구는 지금의 하늘네에게 닿지 않는 곳이 됐다.</p>
       <p><b>경기 B시.</b> B시는 비규제지역이다. 생애최초가 아니어도 LTV 70%가 적용되어 6억 2,000만원 집에 대출 4억 3,400만원까지, 필요한 자기 돈은 취득세를 더해 약 1억 9,200만원이다. 허가도 실거주 의무도 없고, 팔 때 비과세는 2년 보유로 충분하다. 다만 B시가 언제까지 비규제일지는 아무도 확정할 수 없다. 만약 지정되면 무주택자 LTV가 40%로 줄어 필요한 자기 돈이 약 3억 7,800만원으로 늘고(생애최초 70%는 유지), 이후 사는 집에는 2년 거주 요건이 붙는다. 태호는 "규제 지정은 그날 이후 계약분부터라, 이미 산 집의 대출이 줄지는 않는다. 대신 다음에 사는 사람의 조건이 바뀌니 그 집을 팔 때 사려는 사람이 줄 수 있다"고 설명했다.</p>
       <p><b>"B시 같은 데가 오른다"의 정체.</b> 남궁현의 말은 풍선 효과의 원리다. 서울 전역과 인근 경기 지역이 묶이면 그곳에서 막힌 수요의 일부는 통근이 가능한 비규제지역으로 옮겨 간다. B시처럼 서울 도심으로 55분이면 닿는 곳은 대체 가능성이 작지 않다. 하지만 원리가 결과를 보장하지는 않는다. 옮겨 오는 수요의 크기는 B시의 크기, 서울과의 대체 가능성, 같은 시기의 입주 물량(<a href="supply.html">4장</a>)과 금리에 따라 달라지고, 옆 지역 가격이 크게 오르면 그 지역도 규제지역으로 지정될 수 있다. 태호는 남궁현에게도, 하늘네에게도 같은 말을 했다. "풍선 효과는 방향을 알려 줄 뿐 크기와 시기는 알려 주지 않습니다. 그걸로 사고팔 시점을 정하는 건 전망에 돈을 거는 겁니다."</p>
-      <div class="clue"><div><b>이 장에서 정한 것</b>A구는 규제(대출 한도 6억, 허가·2년 실거주, 비과세 거주 요건) 때문에 지금 하늘네의 자금으로는 후보에서 사실상 빠진다. B시와 E시는 비규제라 규제가 정하는 필요 자기 돈은 각각 약 1억 9,200만원, 약 1억 5,000만원이다.</div><div><b>아직 남은 문제</b>B시 집값이 오르는 이야기들(풍선 효과, 반등 기사)은 실제 숫자로 무엇을 말하는가? 지수와 실거래가는 왜 다르게 움직이는가?</div><div><b>다음 단계</b>16장: 태호가 보여 준 C아파트 실거래가와 호가, "B시 집값 반등" 기사의 숫자를 거래량과 중위값으로 다시 계산한다.</div></div>
+      <div class="clue"><div><b>이 장에서 정한 것</b>A구는 규제(15억 초과라 대출 한도 4억, 허가·2년 실거주, 비과세 거주 요건) 때문에 지금 하늘네의 자금으로는 후보에서 사실상 빠진다. B시와 E시는 비규제라 규제가 정하는 필요 자기 돈은 각각 약 1억 9,200만원, 약 1억 5,000만원이다.</div><div><b>아직 남은 문제</b>B시 집값이 오르는 이야기들(풍선 효과, 반등 기사)은 실제 숫자로 무엇을 말하는가? 지수와 실거래가는 왜 다르게 움직이는가?</div><div><b>다음 단계</b>16장: 태호가 보여 준 C아파트 실거래가와 호가, "B시 집값 반등" 기사의 숫자를 거래량과 중위값으로 다시 계산한다.</div></div>
     </div>
   </section>
 
@@ -538,7 +539,7 @@
   (function () {
     const pG = EB.range("gap-p", (v) => EB.won(v * 1e8), draw);
     const lG = EB.range("gap-l", (v) => v + "%", draw);
-    let j = 0.52, G = null;
+    let j = C.areas[0].jeonse / C.areas[0].price, G = null;
     function calc() {
       const P = pG() * 1e8, ltv = lG() / 100;
       const gap = P * (1 - j), loan = loanFor(P, ltv, true), live = P - loan;
@@ -591,24 +592,29 @@
     const N = 2000, rnd = EB.rng(15);
     const gauss = () => { let u = 0, v = 0; while (u === 0) u = rnd(); v = rnd(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(TAU * v); };
     const HH = []; for (let i = 0; i < N; i++) { const z1 = gauss(), z2 = 0.5 * z1 + Math.sqrt(0.75) * gauss(); HH.push({ cash: 2e8 * Math.exp(0.85 * z1), income: 7e7 * Math.exp(0.45 * z2) }); }
-    const XMAX = 25e8;
+    const XMAX = 30e8;
     let price = 12e8, box = null;
     function afford(hh, ltv, rate, cap) {
       const dsrLoan = RE.pv(rate / 12, 360, hh.income * L.dsr.bank / 12);
       const byLtv = ltv >= 1 ? Infinity : hh.cash / (1 - ltv);
-      const other = hh.cash + Math.min(cap ? L.capMetro : Infinity, dsrLoan);
-      const p = Math.min(byLtv, other);
-      const k = p === byLtv ? "ltv" : (cap && L.capMetro < dsrLoan ? "cap" : "dsr");
-      return { p, k };
+      if (!cap) { const p = Math.min(byLtv, hh.cash + dsrLoan); return { p, k: p === byLtv ? "ltv" : "dsr" }; }
+      // 시가 구간별 한도(15억 이하 6억, 25억 이하 4억, 초과 2억): 구간마다 살 수 있는 최고 가격을 구해 가장 큰 값을 쓴다
+      let best = { p: 0, k: "ltv" }, lo = 0;
+      L.capByPrice.forEach((b) => {
+        const p = Math.min(byLtv, hh.cash + Math.min(b.cap, dsrLoan), b.upTo);
+        if (p > lo && p > best.p) best = { p, k: p === byLtv ? "ltv" : p === b.upTo || b.cap < dsrLoan ? "cap" : "dsr" };
+        lo = b.upTo;
+      });
+      return best;
     }
     function run(ltv, rate, cap) { return HH.map((hh) => afford(hh, ltv, rate, cap)); }
     const cv = EB.canvas("#dem-cv", (ctx, w, h) => {
       const P = EB.palette(), res = run(lG() / 100, rG() / 100, capEl.checked), ref = run(0.7, rG() / 100, false);
-      const NB = 25, bins = new Array(NB).fill(0), rbins = new Array(NB).fill(0);
+      const NB = 30, bins = new Array(NB).fill(0), rbins = new Array(NB).fill(0);
       res.forEach((r) => { bins[Math.min(NB - 1, Math.floor(r.p / XMAX * NB))]++; });
       ref.forEach((r) => { rbins[Math.min(NB - 1, Math.floor(r.p / XMAX * NB))]++; });
       const ymax = Math.max(...bins, ...rbins) * 1.1;
-      const c = EB.chart(ctx, { x: 46, y: 20, w: w - 60, h: h - 76 }, { x: [0, XMAX], y: [0, ymax], xTicks: [0, 5e8, 10e8, 15e8, 20e8, 25e8], xFmt: EB.wonAxis, yFmt: (v) => Math.round(v / N * 100) + "%", yTicks: [0, ymax / 2, ymax] });
+      const c = EB.chart(ctx, { x: 46, y: 20, w: w - 60, h: h - 76 }, { x: [0, XMAX], y: [0, ymax], xTicks: [0, 5e8, 10e8, 15e8, 20e8, 25e8, 30e8], xFmt: EB.wonAxis, yFmt: (v) => Math.round(v / N * 100) + "%", yTicks: [0, ymax / 2, ymax] });
       box = c;
       const bw = c.box.w / NB;
       for (let i = 0; i < NB; i++) {
@@ -814,7 +820,7 @@
       const mx = Math.max(...res.map((r) => r.price + r.acq), 1.25e9) * 1.08;
       const box = { x: 50, y: 24, w: w - 62, h: h - 24 - 76 };
       const Y = (v) => box.y + box.h - v / mx * box.h;
-      [0, 5e8, 10e8, 15e8, 20e8].filter((v) => v < mx).forEach((v) => { const y = Y(v); ctx.strokeStyle = P.grid; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(box.x, y); ctx.lineTo(box.x + box.w, y); ctx.stroke(); T(ctx, EB.wonAxis(v), box.x - 6, y, { size: 10, mono: true, color: P.faint, align: "right", base: "middle" }); });
+      (mx > 26e8 ? [0, 10e8, 20e8, 30e8, 40e8] : [0, 5e8, 10e8, 15e8, 20e8]).filter((v) => v < mx).forEach((v) => { const y = Y(v); ctx.strokeStyle = P.grid; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(box.x, y); ctx.lineTo(box.x + box.w, y); ctx.stroke(); T(ctx, EB.wonAxis(v), box.x - 6, y, { size: 10, mono: true, color: P.faint, align: "right", base: "middle" }); });
       const lg = [["최대 대출", P.accent], ["필요한 자기 돈", P.ok]];
       let lx = box.x; lg.forEach(([s, col]) => { ctx.fillStyle = col; ctx.fillRect(lx, 6, 10, 9); T(ctx, s, lx + 14, 11, { size: 11, color: P.dim, base: "middle" }); ctx.font = EB.font(11); lx += ctx.measureText(s).width + 28; });
       const gap = narrow ? 18 : 40, bw = (box.w - gap * 4) / 3;

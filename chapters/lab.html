@@ -122,7 +122,7 @@
 
   <section id="input">
     <h2>우리 집 입력</h2>
-    <p>먼저 가구를 넣는다. 위쪽 프리셋으로 출발점을 고른 뒤 숫자를 바꾼다. '하늘네'는 <code>RE.CASE</code>에서 가져온 값이다. 연소득 9,200만원(하늘 4,800만 + 재원 4,400만), 월 실수령 650만원, 보증금 4억원 중 전세대출 2억원, 경기 B시(수도권 비규제). 예금은 지금의 8,000만원에 전세 만기(2027년 4월)까지 6개월 동안 모을 돈을 더한 약 9,600만원으로 넣었다(<a href="overview.html">1장</a>의 계산). 이 장의 '0년'은 결정하는 시점이고, 하늘네에게는 2027년 4월이다. 나머지 셋은 처지가 전혀 다른 가상의 가구다. 수도권 빌라에 전세로 사는 28세 사회초년생, 은퇴를 5년 앞둔 서울의 50대 부부, 지방 D시의 맞벌이 4인 가족.</p>
+    <p>먼저 가구를 넣는다. 위쪽 프리셋으로 출발점을 고른 뒤 숫자를 바꾼다. '하늘네'는 <code>RE.CASE</code>에서 가져온 값이다. 연소득 9,200만원(하늘 4,800만 + 재원 4,400만), 월 실수령 650만원, 보증금 4억원 중 전세대출 2억원, 경기 B시(수도권 비규제). 예금은 지금의 8,000만원에 전세 만기(2027년 4월)까지 6개월 동안 모을 돈을 더한 약 9,600만원으로 넣었다(<a href="overview.html">1장</a>의 계산). 이 장의 '0년'은 결정하는 시점이고, 하늘네에게는 2027년 4월이다. 나머지 넷은 처지가 전혀 다른 가상의 가구다. 수도권 빌라에 전세로 사는 28세 사회초년생, 은퇴를 5년 앞둔 서울의 50대 부부, 지방 D시의 맞벌이 4인 가족, 서울 강남권에 전세로 사는 맞벌이 고소득 가구. 서울 두 가구의 숫자는 2026년 시세에 맞췄다. 50대 부부의 목표 집값 10억원은 서울 강북 14개구 아파트 중위 매매가격(10억 167만원, 2026년 8월 KB)에, 보증금 6억원은 서울 아파트 중위 전세가격(약 6억원, 2026년 4월 KB)에 맞춘 값이다. 강남권 가구의 목표 집값 40억원은 2026년 강남권 84㎡ 40억원대 거래를 본떴고, 지금 사는 집의 전세가율은 약 42%로 서울 고가 지역의 40% 안팎(2026년 1월 KB)에 맞췄다. 서울 아파트 평균 매매가격은 16억원대, 평균 전세가격은 6억 8,000만원대다(KB).</p>
     <p>세 가지를 조심해서 넣는다. 첫째, <b>월 생활비에는 주거비를 넣지 않는다.</b> 전세대출 이자, 월세, 주담대 상환은 경로마다 다르기 때문에 모형이 따로 계산한다. 하늘네의 생활비 400만원에는 전세대출 이자 약 63만원(2억원 × 3.8% ÷ 12)이 들어 있으므로, 여기에는 약 337만원을 넣었다. 둘째, <b>연소득은 세금을 떼기 전 금액</b>이다. 은행은 이 숫자로 DSR을 계산한다. 셋째, <b>은퇴까지 남은 해</b>가 지나면 실수령과 연소득이 지금의 45%(공적연금·퇴직연금을 합친 교육용 어림값)로 줄어든다고 본다. 30년 경로에서 가장 크게 꺾이는 곳이 여기다.</p>
 
     <div class="sim" id="sim-in">
@@ -134,6 +134,7 @@
           <button data-value="young">사회초년생 28세</button>
           <button data-value="retire">은퇴 5년 전 부부</button>
           <button data-value="local">지방 맞벌이 4인</button>
+          <button data-value="gangnam">서울 강남권 맞벌이 고소득(가상)</button>
         </div>
       </div>
       <div class="lab-grid">
@@ -145,12 +146,12 @@
           <label class="ctrl"><span>월 생활비(주거비 제외) <output id="in-cost-out"></output></span><input type="range" id="in-cost" min="50" max="1500" step="1" value="337"></label>
           <label class="ctrl"><span>은퇴까지 남은 해 <output id="in-ret-out"></output></span><input type="range" id="in-ret" min="1" max="30" step="1" value="26"></label>
           <div class="lab-sub">자산과 지금의 집(만원)</div>
-          <label class="ctrl"><span>예금·투자(결정 시점) <output id="in-cash-out"></output></span><input type="range" id="in-cash" min="0" max="100000" step="100" value="9600"></label>
-          <label class="ctrl"><span>지금 보증금 <output id="in-dep-out"></output></span><input type="range" id="in-dep" min="0" max="150000" step="500" value="40000"></label>
+          <label class="ctrl"><span>예금·투자(결정 시점) <output id="in-cash-out"></output></span><input type="range" id="in-cash" min="0" max="300000" step="100" value="9600"></label>
+          <label class="ctrl"><span>지금 보증금 <output id="in-dep-out"></output></span><input type="range" id="in-dep" min="0" max="200000" step="500" value="40000"></label>
           <label class="ctrl"><span>그중 전세대출 <output id="in-jl-out"></output></span><input type="range" id="in-jl" min="0" max="100000" step="500" value="20000"></label>
           <label class="ctrl"><span>비상금(생활비+상환 몇 달 치) <output id="in-rsv-out"></output></span><input type="range" id="in-rsv" min="0" max="12" step="1" value="6"></label>
           <div class="lab-sub">살 집과 지역</div>
-          <label class="ctrl"><span>목표 집값 <output id="in-price-out"></output></span><input type="range" id="in-price" min="10000" max="250000" step="500" value="60000"></label>
+          <label class="ctrl"><span>목표 집값 <output id="in-price-out"></output></span><input type="range" id="in-price" min="10000" max="500000" step="500" value="60000"></label>
           <div class="lab-row"><span class="cap">지역</span><div class="seg" id="in-reg"><button data-value="seoul">서울 규제지역</button><button data-value="metro" class="on">수도권 비규제</button><button data-value="local">지방</button></div></div>
           <label class="check"><input type="checkbox" id="in-first" checked> 생애최초 구입(규제지역 LTV 70%, 취득세 감면)</label>
           <div class="lab-sub">청약 가점</div>
@@ -165,7 +166,7 @@
         <div class="stat"><span class="k">청약 가점(84점 만점)</span><span class="v" id="in-o-sc">—</span></div>
         <div class="stat"><span class="k">이 지역의 대출 규칙</span><span class="v" id="in-o-rule">—</span></div>
       </div>
-      <div class="sim-note">해볼 것: ① 하늘네에서 '목표 집값까지' 막대를 본다. 순자산 약 2억 9,600만원으로 6억원 집을 사려면 거래 비용과 비상금을 남기고 3억 4,000만원 남짓을 빌려야 한다. ② 지역을 '서울 규제지역'으로 바꾸고 생애최초를 끈다. LTV가 40%로 내려가 대출 가능 표시선이 왼쪽으로 물러난다. ③ 프리셋을 '사회초년생 28세'로 바꾼다. 목표 집값 3억 5,000만원에 비해 대출 가능선이 한참 짧다. 막대의 붉은 부분이 아무리 모아도 메우기 어려운 거리다. (가정: 0년의 월 저축 = 실수령 − 생활비 − 전세대출 이자. 전세대출 금리는 금리 곡선의 첫해 값보다 0.2%p 낮게 잡았다. 청약 가점은 주택공급에 관한 규칙의 점수표를 단순화한 <code>RE.subscriptionScore</code>로 계산한다.)</div>
+      <div class="sim-note">해볼 것: ① 하늘네에서 '목표 집값까지' 막대를 본다. 순자산 약 2억 9,600만원으로 6억원 집을 사려면 거래 비용과 비상금을 남기고 3억 4,000만원 남짓을 빌려야 한다. ② 지역을 '서울 규제지역'으로 바꾸고 생애최초를 끈다. LTV가 40%로 내려가 대출 가능 표시선이 왼쪽으로 물러난다. ③ 프리셋을 '사회초년생 28세'로 바꾼다. 목표 집값 3억 5,000만원에 비해 대출 가능선이 한참 짧다. 막대의 붉은 부분이 아무리 모아도 메우기 어려운 거리다. ④ 프리셋을 '서울 강남권 맞벌이 고소득(가상)'으로 바꾼다. 40억원 집을 사려면 취득세 약 1억 3,200만원(9억 초과 3%와 지방교육세), 중개보수 2,800만원(0.7%)을 더해 약 41억 7,000만원이 든다. 비상금을 남기고 순자산 25억원 대부분을 넣어도 17억원 넘게 빌려야 하는데, 시가 25억원 초과 주택의 주담대 한도는 2억원이라 붉은 부분이 15억원을 넘는다. 소득이 높아도 이 문은 열리지 않는다. (가정: 0년의 월 저축 = 실수령 − 생활비 − 전세대출 이자. 전세대출 금리는 금리 곡선의 첫해 값보다 0.2%p 낮게 잡았다. 청약 가점은 주택공급에 관한 규칙의 점수표를 단순화한 <code>RE.subscriptionScore</code>로 계산한다.)</div>
     </div>
 
     <p>그림의 네 줄은 이 실험실이 가구를 보는 방식이다. 맨 위는 지금의 대차대조표다. 보증금은 자산이지만 그중 전세대출은 빚이므로, 순자산은 '보증금 중 자기 돈 + 예금'이다. 둘째 줄은 한 달 돈의 흐름으로, 실수령에서 생활비와 주거비를 빼고 남는 저축이 30년 경로의 연료다. 셋째 줄은 목표 집을 지금 산다고 할 때의 자금 구조다. 집값과 거래 비용을 합친 금액 가운데 자기 돈으로 낼 몫(비상금을 남기고)과 빌려야 할 몫이 갈리고, 세로선은 규제가 허락하는 최대 대출이다. 빌려야 할 몫이 이 선을 넘으면 그 부분이 붉게 칠해진다. 맨 아래는 청약 가점이다. 하늘네의 36점(무주택 10 + 부양가족 15 + 통장 11)은 <a href="subscription.html">11장</a>에서 본 것처럼 인기 단지의 가점제 커트라인과 거리가 멀다. 이 숫자가 아래 '청약 당첨 가정' 경로를 읽을 때의 단서가 된다.</p>
@@ -203,7 +204,7 @@
         <div class="stat"><span class="k">지금 사려면 필요한 대출</span><span class="v" id="ln-o-need">—</span></div>
         <div class="stat"><span class="k">DSR(실제 금리 / 스트레스)</span><span class="v" id="ln-o-dsr">—</span></div>
       </div>
-      <div class="sim-note">해볼 것: ① 하늘네 기본값에서 세 막대를 본다. DSR 한도 약 4억 6,000만원, LTV 한도 4억 2,000만원, 금액 상한 6억원 가운데 LTV가 묶는다. 필요한 대출 약 3억 4,400만원은 그 안에 있다. ② 금리를 7%까지 올린다. 집값은 그대로인데 DSR 막대만 약 3억 4,900만원으로 줄어들고, 묶는 규제가 DSR로 바뀐다. 필요한 대출이 이 선을 넘어 붉은 점선이 된다. 금리가 오르면 같은 소득으로 빌릴 수 있는 돈이 줄어 살 수 있는 집값이 내려간다. 금리가 집값을 누르는 경로 하나다(<a href="value.html">3장</a>). ③ 다른 빚의 원리금을 1,500만원으로 올린다. 신용대출이나 자동차 할부가 DSR의 자리를 먹는다. (가정: 30년 원리금균등, 다른 빚은 이미 생활비 안에서 갚고 있다고 본다. 게이지 바늘은 필요한 대출을 스트레스 금리로 계산한 DSR이고, 옅은 바늘은 실제 금리로 계산한 값이다.)</div>
+      <div class="sim-note">해볼 것: ① 하늘네 기본값에서 세 막대를 본다. DSR 한도 약 4억 6,000만원, LTV 한도 4억 2,000만원, 금액 상한 6억원 가운데 LTV가 묶는다. 필요한 대출 약 3억 4,400만원은 그 안에 있다. ② 금리를 7%까지 올린다. 집값은 그대로인데 DSR 막대만 약 3억 4,900만원으로 줄어들고, 묶는 규제가 DSR로 바뀐다. 필요한 대출이 이 선을 넘어 붉은 점선이 된다. 금리가 오르면 같은 소득으로 빌릴 수 있는 돈이 줄어 살 수 있는 집값이 내려간다. 금리가 집값을 누르는 경로 하나다(<a href="value.html">3장</a>). ③ 다른 빚의 원리금을 1,500만원으로 올린다. 신용대출이나 자동차 할부가 DSR의 자리를 먹는다. ④ 프리셋을 '서울 강남권 맞벌이 고소득(가상)'으로 바꾼다. 연소득 2억 4,000만원이면 DSR 한도는 약 12억원, LTV 40% 한도는 16억원인데 금액 상한 2억원이 묶는다. 손잡이를 끌어 집값을 25억원 아래로 내리면 상한이 4억원, 15억원 아래로 내리면 6억원으로 계단처럼 올라간다. 필요한 대출 17억원을 다 빌린다고 치면 스트레스 DSR이 60%에 가까워 DSR로도 막힌다. (가정: 30년 원리금균등, 다른 빚은 이미 생활비 안에서 갚고 있다고 본다. 게이지 바늘은 필요한 대출을 스트레스 금리로 계산한 DSR이고, 옅은 바늘은 실제 금리로 계산한 값이다.)</div>
     </div>
 
     <p>한도를 볼 때 두 가지를 기억한다. 하나, <b>한도는 최대치이지 권장치가 아니다.</b> DSR 40%는 세전 소득 기준이라 실수령으로 따지면 상환액이 월급의 절반 가까이가 될 수 있다. 둘, <b>한도는 해마다 바뀐다.</b> 금리, 소득, 규제가 바뀌면 같은 집에 대한 한도가 달라진다. 그래서 아래의 'N년 뒤 매수'와 '청약 당첨' 경로는 그 해의 소득과 금리, 그 해의 집값으로 한도를 다시 계산한다. 몇 년을 기다리는 동안 집값이 오르고 금리가 오르면, 모은 돈보다 한도가 더 빨리 줄어들 수도 있다.</p>
@@ -363,7 +364,7 @@
         <div class="stat"><span class="k">청약 당첨 가정</span><span class="v" id="pa-o-sub">—</span></div>
       </div>
       <div class="lab-warn" id="pa-warn"></div>
-      <div class="sim-note">해볼 것: ① 하늘네 기본값(4% 유지, 집값·전세가 연 2%)에서 손잡이를 10년에 둔다. 이 책의 모델로 계산하면 전세 계속 약 6억 9,200만원, 지금 매수 약 6억 9,700만원으로 거의 같고, 월세는 약 6억 2,300만원으로 뒤처진다. ② 금리 시나리오를 '급등 후 복귀'로 바꾸고 주담대 금리를 '변동'으로 바꾼다. 지금 매수 선이 처음 몇 해 동안 눌리고, 주기형은 덜 눌린다. ③ 프리셋을 '은퇴 5년 전 부부'로 바꾼다. 9억원 집을 대출로 사는 경로는 은퇴 뒤 상환액을 감당하지 못해 예금이 바닥나고, 선이 아래로 꺾여 내려간다. 무너지는 모습이다. (가정: 그림 3의 계산. 매수 시 비상금은 '생활비 + 월 상환액'의 입력 개월 수만큼 예금에 남긴다. 청약 분양가는 당첨 해 시세의 80%, 잔금은 입주 해 금리와 소득으로 다시 심사한다. 한도가 모자라면 그 경로는 사지 못하고 전세로 남으며, 청약은 계약금을 잃는다고 본다.)</div>
+      <div class="sim-note">해볼 것: ① 하늘네 기본값(4% 유지, 집값·전세가 연 2%)에서 손잡이를 10년에 둔다. 이 책의 모델로 계산하면 전세 계속 약 6억 9,200만원, 지금 매수 약 6억 9,700만원으로 거의 같고, 월세는 약 6억 2,300만원으로 뒤처진다. ② 금리 시나리오를 '급등 후 복귀'로 바꾸고 주담대 금리를 '변동'으로 바꾼다. 지금 매수 선이 처음 몇 해 동안 눌리고, 주기형은 덜 눌린다. ③ 프리셋을 '은퇴 5년 전 부부'로 바꾼다. 10억원 집을 대출로 사는 경로는 은퇴 뒤 상환액을 감당하지 못해 예금이 바닥나고, 선이 아래로 꺾여 내려간다. 무너지는 모습이다. ④ 프리셋을 '서울 강남권 맞벌이 고소득(가상)'으로 바꾼다. 사는 세 경로가 모두 '살 수 없음'(×)으로 표시되고 전세로 남는다. 순자산이 25억원이어도 시가 25억원 초과 주택의 주담대 한도 2억원 앞에서는 모자람이 15억원 안팎이라, 무너지는 곳이 소득이 아니라 대출 문 앞이다. (가정: 그림 3의 계산. 매수 시 비상금은 '생활비 + 월 상환액'의 입력 개월 수만큼 예금에 남긴다. 청약 분양가는 당첨 해 시세의 80%, 잔금은 입주 해 금리와 소득으로 다시 심사한다. 한도가 모자라면 그 경로는 사지 못하고 전세로 남으며, 청약은 계약금을 잃는다고 본다.)</div>
     </div>
 
     <p>기본 시나리오에서 하늘네의 다섯 선은 처음 10년 동안 거의 겹친다. 사는 경로는 첫해에 취득세·중개보수·이사비 약 1,020만원을 내고 이자와 보유세, 수선비를 감당하는 대신 집값 상승분을 갖는다. 전세 경로는 2억원 전세대출 이자만 내고 남는 돈을 예금으로 굴린다. 집값 상승률 2%와 예금 수익률 3%, 주담대 금리 4%가 맞물리면 두 쪽이 비슷해진다. 30년 뒤에는 매수 쪽이 약 20억원, 전세 쪽이 약 18억 7,000만원으로 벌어지는데, 대출 원금을 다 갚은 뒤 집값 상승분이 온전히 쌓이기 때문이다. 청약 당첨 가정이 가장 높은 것은 시세의 80%에 산다는 가정이 그대로 순자산이 되기 때문이고, 그 가정 자체가 하늘네의 가점(36점)으로는 쉽지 않다는 것을 잊으면 안 된다. 월세 경로가 가장 낮은 것은 이 시나리오에서 전환율(5%)이 예금 수익률(3%)보다 높아, 보증금을 빼서 굴리는 것보다 월세로 나가는 돈이 크기 때문이다.</p>
@@ -404,7 +405,7 @@
       <div class="sim-body side">
         <div class="sim-view"><canvas id="dp-cv"></canvas><span class="hint">손잡이를 끌어 집값 하락률을 고른다</span></div>
         <div class="sim-controls">
-          <label class="ctrl"><span>지금 사는 집 시세 <output id="dp-hp-out"></output></span><input type="range" id="dp-hp" min="5000" max="250000" step="500" value="62000"></label>
+          <label class="ctrl"><span>지금 사는 집 시세 <output id="dp-hp-out"></output></span><input type="range" id="dp-hp" min="5000" max="500000" step="500" value="62000"></label>
           <label class="ctrl"><span>선순위 채권(근저당 등) <output id="dp-sr-out"></output></span><input type="range" id="dp-sr" min="0" max="100000" step="500" value="0"></label>
           <label class="ctrl"><span>낙찰가율 <output id="dp-ar-out"></output></span><input type="range" id="dp-ar" min="50" max="100" step="1" value="80"></label>
         </div>
@@ -771,8 +772,10 @@
     haneul: { H: { income: C.income, net: C.monthlyNet, cost: Math.round((C.livingCost - C.home.jeonseLoan * C.home.loanRate / 12) / MAN) * MAN, cash: 9.6e7, deposit: C.home.jeonse, jloan: C.home.jeonseLoan,
       region: "metro", first: true, price: 6.0e8, homePrice: C.home.price, senior: C.landlord.seniorDebt, homeless: 4, deps: 2, acct: 9, retire: 26, reserveM: 6, other: 0 }, later: 2, win: 2 },
     young: { H: { income: 3.6e7, net: 2.5e6, cost: 1.5e6, cash: 3.0e7, deposit: 1.5e8, jloan: 1.2e8, region: "metro", first: true, price: 3.5e8, homePrice: 2.0e8, senior: 3.0e7, homeless: 0, deps: 0, acct: 5, retire: 30, reserveM: 6, other: 0 }, later: 5, win: 5 },
-    retire: { H: { income: 1.0e8, net: 6.0e6, cost: 2.8e6, cash: 2.0e8, deposit: 5.0e8, jloan: 0, region: "seoul", first: false, price: 9.0e8, homePrice: 8.0e8, senior: 0, homeless: 8, deps: 1, acct: 15, retire: 5, reserveM: 6, other: 0 }, later: 3, win: 2 },
+    retire: { H: { income: 1.0e8, net: 6.0e6, cost: 2.8e6, cash: 2.0e8, deposit: 6.0e8, jloan: 0, region: "seoul", first: false, price: 10.0e8, homePrice: 13.0e8, senior: 0, homeless: 8, deps: 1, acct: 15, retire: 5, reserveM: 6, other: 0 }, later: 3, win: 2 },
     local: { H: { income: 7.0e7, net: 4.8e6, cost: 3.0e6, cash: 6.0e7, deposit: 2.0e8, jloan: 0, region: "local", first: true, price: 3.5e8, homePrice: 3.0e8, senior: 0, homeless: 7, deps: 3, acct: 10, retire: 24, reserveM: 6, other: 0 }, later: 3, win: 2 },
+    // 서울 강남권 84㎡ 40억원대(RE.MARKET.gangnam84, 2026년 거래 사례)를 본뜬 가상의 가구. 지금은 같은 생활권에서 전세(전세가율 약 42%)로 산다.
+    gangnam: { H: { income: 2.4e8, net: 1.35e7, cost: 7.0e6, cash: 1.0e9, deposit: 1.5e9, jloan: 0, region: "seoul", first: false, price: RE.MARKET.gangnam84, homePrice: 3.6e9, senior: 0, homeless: 10, deps: 2, acct: 15, retire: 20, reserveM: 6, other: 0 }, later: 3, win: 2 },
   };
   const H = Object.assign({}, PRESETS.haneul.H);
   const SC = { g: 0.02, jg: 0.02, ret: 0.03, pts: [[0, 0.04], [2, 0.04], [5, 0.04], [10, 0.04], [15, 0.04], [20, 0.04], [30, 0.04]] };
@@ -906,7 +909,7 @@
   const lnR = EB.range("ln-r", (v) => v.toFixed(1) + "%", (v) => { SC.pts[0][1] = v / 100; if (!rateSync) updateAll(); });
   const othG = EB.range("ln-oth", Wm, (v) => { H.other = v * MAN; updateAll(); });
   let lnBox = null;
-  const PMIN = 1e8, PMAX = 2.5e9;
+  const PMIN = 1e8, PMAX = 5e9;
   const cvLn = EB.canvas("#ln-cv", (ctx, w, h) => {
     const P = EB.palette(), S = scen(), r = S.rates[0];
     const f = LAB.finance(H, H.cash + H.deposit - H.jloan, H.price, r, 0, null, dsrCap());
@@ -956,6 +959,7 @@
     const px = tx0 + (Math.log(H.price / PMIN) / Math.log(PMAX / PMIN)) * (tx1 - tx0);
     T(ctx, "목표 집값 " + EB.won(H.price, { short: true }), EB.clamp(px, 70, w - 70), ty - 14, { size: 12, weight: 700, color: P.text, align: "center" });
     T(ctx, "1억", tx0, ty + 2, { size: 10, color: P.faint, align: "right", base: "middle" });
+    T(ctx, "50억", tx1 + 4, ty + 2, { size: 10, color: P.faint, align: "left", base: "middle" });
     handle(ctx, px, ty, P);
     lnBox = { tx0, tx1, ty };
   }, { get height() { return pw("ln-cv") < 480 ? 410 : 420; } });
