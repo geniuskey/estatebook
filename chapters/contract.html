@@ -247,9 +247,9 @@
         <div class="sim-controls">
           <div class="seg" id="hug-type"><button data-value="apt" class="on">아파트(시세)</button><button data-value="villa">빌라(공시가격)</button></div>
           <div class="seg" id="hug-reg"><button data-value="metro" class="on">수도권</button><button data-value="other">그 밖</button></div>
-          <label class="ctrl"><span id="hug-v-lbl">시세 <output id="hug-v-out"></output></span><input type="range" id="hug-v" min="1" max="12" step="0.1" value="6.2"></label>
+          <label class="ctrl"><span id="hug-v-lbl">시세 <output id="hug-v-out"></output></span><input type="range" id="hug-v" min="1" max="20" step="0.1" value="6.2"></label>
           <label class="ctrl"><span>선순위 채권(최고액) <output id="hug-s-out"></output></span><input type="range" id="hug-s" min="0" max="5" step="0.1" value="0"></label>
-          <label class="ctrl"><span>보증금 <output id="hug-d-out"></output></span><input type="range" id="hug-d" min="0.5" max="8" step="0.1" value="4.2"></label>
+          <label class="ctrl"><span>보증금 <output id="hug-d-out"></output></span><input type="range" id="hug-d" min="0.5" max="10" step="0.1" value="4.2"></label>
         </div>
       </div>
       <div class="sim-readout">
@@ -257,7 +257,7 @@
         <div class="stat"><span class="k">선순위 + 보증금</span><span class="v" id="hug-o-u">—</span></div>
         <div class="stat"><span class="k">판정</span><span class="v" id="hug-o-j">—</span></div>
       </div>
-      <div class="sim-note">해볼 것: ① 기본값은 하늘네가 갱신청구권으로 4억 2,000만원에 갱신하는 경우다(시세 6억 2,000만원, 선순위 없음). 한도 5억 5,800만원 안이라 요건을 맞춘다. ② 선순위 채권을 2억원으로 올린다. 같은 보증금이라도 빚과 합쳐 한도를 넘는다. ③ '빌라(공시가격)'로 바꾸고 공시가격 2억원, 보증금 2억 6,000만원을 넣는다. 공시가격의 126%가 2억 5,200만원이라 가입이 안 된다. 공시가격이 시세보다 높게 잡혔다면 이 계산은 오히려 실제 위험을 가린다. ④ 보증금을 7억원 넘게 올린다. 수도권 한도에 걸린다. (HUG 요건의 핵심만 단순화했다. 실제 심사에는 신청 기한, 건물 용도, 위반건축물 여부, 집주인의 보증 사고 이력 등이 더 들어간다. 가입 전에 HUG나 취급 은행에 확인한다.)</div>
+      <div class="sim-note">해볼 것: ① 기본값은 하늘네가 갱신청구권으로 4억 2,000만원에 갱신하는 경우다(시세 6억 2,000만원, 선순위 없음). 한도 5억 5,800만원 안이라 요건을 맞춘다. ② 선순위 채권을 2억원으로 올린다. 같은 보증금이라도 빚과 합쳐 한도를 넘는다. ③ '빌라(공시가격)'로 바꾸고 공시가격 2억원, 보증금 2억 6,000만원을 넣는다. 공시가격의 126%가 2억 5,200만원이라 가입이 안 된다. 공시가격이 시세보다 높게 잡혔다면 이 계산은 오히려 실제 위험을 가린다. ④ 보증금을 7억원 넘게 올린다. 수도권 한도에 걸린다. 2026년 4월 KB 기준 서울 아파트 평균 전세가격이 6억 8,000만원대라, 서울에서는 평균 수준의 아파트 전세도 이 한도 바로 아래에 있다. ⑤ 시세를 16억원(2026년 8월 KB 기준 서울 아파트 평균 매매가격 수준)으로 올리고 보증금을 7억원에 둔다. 비율 요건은 넉넉하게 맞지만 보증금이 7억원을 조금만 넘어도 가입이 막힌다. 시세가 높은 집일수록 걸리는 쪽은 비율이 아니라 금액 한도다. (HUG 요건의 핵심만 단순화했다. 실제 심사에는 신청 기한, 건물 용도, 위반건축물 여부, 집주인의 보증 사고 이력 등이 더 들어간다. 가입 전에 HUG나 취급 은행에 확인한다.)</div>
     </div>
 
     <p>보증에 가입하면 집주인이 돌려주지 못할 때 기다림과 소송의 부담을 보증기관이 진다. 그 대가로 보증료를 내고, 가입 요건을 못 맞추는 집은 처음부터 걸러진다. 그래서 보증 가입이 '되느냐 안 되느냐' 자체가 그 집의 위험을 알려 주는 신호가 된다. 집주인이 "보증은 안 되지만 문제없다"고 말하는 집은 다시 본다. 다만 보증이 된다고 집이 안전하다는 뜻은 아니다. 요건은 시세와 공시가격으로 계산하는데, 그 시세가 부풀려졌다면 보증 심사도 뚫릴 수 있다.</p>
