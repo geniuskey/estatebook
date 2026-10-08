@@ -1,0 +1,850 @@
+<!doctype html>
+<!-- Copyright (c) 2026 geniuskey and EstateBook contributors.
+     Executable code: MIT (see ../LICENSE-MIT).
+     Text, illustrations, questions and explanations: CC-BY-4.0 (see ../LICENSE.md). -->
+<html lang="ko">
+<head>
+<!--head:start {"desc": "등기부등본과 건축물대장을 직접 읽고, 근저당·가압류·신탁등기의 위험 신호를 찾는다. 대항력과 확정일자의 하루 틈, 최우선변제, 전세보증금반환보증 요건, 임차권등기명령, 전세사기의 유형까지 보증금을 지키는 장치를 시뮬레이터로 익힌다."}-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>계약과 권리 지키기 · EstateBook</title>
+<meta name="description" content="등기부등본과 건축물대장을 직접 읽고, 근저당·가압류·신탁등기의 위험 신호를 찾는다. 대항력과 확정일자의 하루 틈, 최우선변제, 전세보증금반환보증 요건, 임차권등기명령, 전세사기의 유형까지 보증금을 지키는 장치를 시뮬레이터로 익힌다.">
+<link rel="canonical" href="https://estatebook.euiyun.com/chapters/contract.html">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<meta name="theme-color" content="#0f766e">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EstateBook">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="계약과 권리 지키기 · EstateBook">
+<meta property="og:description" content="등기부등본과 건축물대장을 직접 읽고, 근저당·가압류·신탁등기의 위험 신호를 찾는다. 대항력과 확정일자의 하루 틈, 최우선변제, 전세보증금반환보증 요건, 임차권등기명령, 전세사기의 유형까지 보증금을 지키는 장치를 시뮬레이터로 익힌다.">
+<meta property="og:url" content="https://estatebook.euiyun.com/chapters/contract.html">
+<meta property="og:image" content="https://estatebook.euiyun.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Chapter","LearningResource"],"@id":"https://estatebook.euiyun.com/chapters/contract.html#chapter","name":"계약과 권리 지키기","headline":"계약과 권리 지키기 · EstateBook","description":"등기부등본과 건축물대장을 직접 읽고, 근저당·가압류·신탁등기의 위험 신호를 찾는다. 대항력과 확정일자의 하루 틈, 최우선변제, 전세보증금반환보증 요건, 임차권등기명령, 전세사기의 유형까지 보증금을 지키는 장치를 시뮬레이터로 익힌다.","url":"https://estatebook.euiyun.com/chapters/contract.html","position":7,"inLanguage":"ko","isAccessibleForFree":true,"learningResourceType":"인터랙티브 교재","educationalLevel":"일반 성인","image":"https://estatebook.euiyun.com/og.png","dateModified":"2026-10-08","isPartOf":{"@type":"Book","@id":"https://estatebook.euiyun.com/#book","name":"EstateBook · 집값과 전세를 숫자로 푸는 부동산 교과서","url":"https://estatebook.euiyun.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"EstateBook","item":"https://estatebook.euiyun.com/"},{"@type":"ListItem","position":2,"name":"7. 계약과 권리 지키기","item":"https://estatebook.euiyun.com/chapters/contract.html"}]}]}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../css/style.css">
+<script src="../js/common.js"></script>
+<script src="../js/estate.js"></script>
+<!--head:end-->
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3d6151a0abc94ede89285d462527fa80"}'></script>
+<!-- End Cloudflare Web Analytics -->
+</head>
+<body data-chapter="contract">
+<main class="chapter">
+  <header class="chapter-hero">
+    <div class="eyebrow">Chapter 07</div>
+    <h1>계약과 권리 지키기</h1>
+    <p class="lead">태호의 사무소 책상 위에 서류 두 묶음이 놓인다. 하나는 하늘네가 지금 사는 C아파트의 등기부등본이고, 다른 하나는 같은 단지에 매물로 나온 다른 집의 등기부등본이다. "집을 사든 다시 빌리든, 계약서보다 이 종이를 먼저 읽어야 합니다." 하늘은 처음 보는 서류에 '갑구', '을구', '채권최고액' 같은 말이 빼곡한 것을 보고 막막해진다. 그런데 몇 해 사이 뉴스에 오르내린 전세사기 피해의 상당수는 이 종이와 몇 가지 날짜만 제대로 봤어도 줄일 수 있었던 일이다. 보증금은 대개 한 가구 재산의 가장 큰 덩어리이고, 그 돈을 지키는 장치는 법에 여러 겹으로 마련되어 있다. 다만 그 장치는 세입자가 정해진 날짜에 정해진 일을 했을 때만 작동한다. 이 장에서는 그 서류를 읽는 법과 그 날짜들을 하나씩 익힌다.</p>
+    <ul class="objectives">
+      <li>등기부등본의 표제부·갑구·을구를 읽고 근저당, 가압류, 신탁등기 같은 위험 신호를 찾는다.</li>
+      <li>채권최고액과 선순위·후순위의 뜻을 알고, 경매 때 내 보증금이 몇 번째로 돌아오는지 계산한다.</li>
+      <li>건축물대장에서 위반건축물과 용도(근린생활시설)를 확인한다.</li>
+      <li>대항력(전입신고 + 점유, 다음 날 0시)과 확정일자·우선변제권이 생기는 시각의 차이를 설명한다.</li>
+      <li>소액임차인 최우선변제와 전세보증금반환보증(HUG)의 요건을 내 숫자로 점검한다.</li>
+      <li>전세사기의 대표 유형과 피해 뒤에 쓸 수 있는 제도(임차권등기명령, 전세사기피해자 특별법)의 구조를 안다.</li>
+    </ul>
+  </header>
+
+  <section id="papers">
+    <h2>계약서보다 먼저 읽는 서류</h2>
+    <p>전세든 매매든 집에 큰돈을 넣기 전에 읽어야 할 공적 서류가 있다. 가장 중요한 것은 <span class="term">등기부등본</span><span class="en">(Real estate register)</span>이다. 정식 이름은 등기사항전부증명서로, 이 집의 주인이 누구이고 이 집에 어떤 빚과 권리가 얹혀 있는지를 국가가 기록해 둔 문서다. 대법원 인터넷등기소에서 누구나 몇백 원에서 1,000원 남짓에 뗄 수 있다. 집주인의 허락이 필요 없다.</p>
+    <p>등기부는 세 부분으로 나뉜다. 맨 앞의 <span class="term">표제부</span>는 집의 주소와 구조, 면적을 적은 '신분증'이다. <span class="term">갑구</span>는 소유권에 관한 기록으로 누가 언제 어떤 이유로 주인이 되었는지, 그 소유권을 묶는 압류·가압류·신탁 같은 기록이 있는지를 적는다. <span class="term">을구</span>는 소유권 밖의 권리, 대표적으로 은행의 근저당권과 전세권·임차권을 적는다. 아래 그림은 세 부분과 세입자가 각각에서 확인할 것을 정리한 것이다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 460 360" role="img" aria-label="등기부등본의 구조: 표제부, 갑구, 을구와 각각에서 확인할 것">
+        <rect x="10" y="10" width="440" height="34" rx="6" class="f-surface"/>
+        <text x="230" y="32" text-anchor="middle" class="lbl-b">등기사항전부증명서(집합건물)</text>
+        <rect x="10" y="54" width="200" height="86" rx="8" class="f-acc-soft"/>
+        <text x="110" y="78" text-anchor="middle" class="lbl-acc">표제부</text>
+        <text x="110" y="100" text-anchor="middle" class="lbl">주소·동·호수</text>
+        <text x="110" y="120" text-anchor="middle" class="lbl">구조·면적·용도</text>
+        <rect x="230" y="54" width="220" height="86" rx="8" class="f-surface"/>
+        <text x="340" y="78" text-anchor="middle" class="lbl-b">확인할 것</text>
+        <text x="340" y="100" text-anchor="middle" class="lbl-dim">계약서 주소·호수와 같은가</text>
+        <text x="340" y="120" text-anchor="middle" class="lbl-dim">주거용인가(대장과 대조)</text>
+        <rect x="10" y="150" width="200" height="96" rx="8" class="f-acc2-soft"/>
+        <text x="110" y="174" text-anchor="middle" class="lbl-acc2">갑구(소유권)</text>
+        <text x="110" y="196" text-anchor="middle" class="lbl">소유자·취득 원인·날짜</text>
+        <text x="110" y="216" text-anchor="middle" class="lbl">압류·가압류·가처분</text>
+        <text x="110" y="236" text-anchor="middle" class="lbl">신탁·경매개시결정</text>
+        <rect x="230" y="150" width="220" height="96" rx="8" class="f-surface"/>
+        <text x="340" y="174" text-anchor="middle" class="lbl-b">확인할 것</text>
+        <text x="340" y="196" text-anchor="middle" class="lbl-dim">계약하는 사람이 소유자인가</text>
+        <text x="340" y="216" text-anchor="middle" class="lbl-dim">소유권을 묶는 기록이 있는가</text>
+        <text x="340" y="236" text-anchor="middle" class="lbl-dim">최근에 주인이 바뀌었는가</text>
+        <rect x="10" y="256" width="200" height="86" rx="8" class="f-bad-soft"/>
+        <text x="110" y="280" text-anchor="middle" class="lbl-bad">을구(그 밖의 권리)</text>
+        <text x="110" y="302" text-anchor="middle" class="lbl">근저당권·채권최고액</text>
+        <text x="110" y="322" text-anchor="middle" class="lbl">전세권·임차권등기</text>
+        <rect x="230" y="256" width="220" height="86" rx="8" class="f-surface"/>
+        <text x="340" y="280" text-anchor="middle" class="lbl-b">확인할 것</text>
+        <text x="340" y="302" text-anchor="middle" class="lbl-dim">말소되지 않은 빚의 합</text>
+        <text x="340" y="322" text-anchor="middle" class="lbl-dim">(빚 + 내 보증금) ÷ 시세</text>
+      </svg>
+      <figcaption><b>그림 1. 등기부등본의 세 부분.</b> 표제부는 집의 신분증, 갑구는 주인과 주인을 묶는 기록, 을구는 집에 얹힌 빚이다. 줄이 그어진 기록은 이미 지워진(말소된) 것이다. 등기부에는 집주인의 세금 체납, 먼저 들어온 세입자의 보증금, 건물의 불법 증축처럼 나오지 않는 위험도 있어서 다른 서류와 함께 본다.</figcaption>
+    </figure>
+
+    <p>등기부 말고도 함께 볼 서류가 있다. 건물의 용도와 불법 여부를 적은 <b>건축물대장</b>, 집주인의 세금 체납 여부를 보여 주는 <b>납세증명서</b>, 같은 건물에 먼저 들어와 있는 세입자를 보여 주는 <b>전입세대 확인서</b>와 <b>확정일자 부여 현황</b>이다. 이 장은 이 서류들을 차례로 읽고, 그 서류에 적힌 날짜들이 어떻게 보증금의 순서를 정하는지 본다. MoneyBook의 <a href="https://moneybook.euiyun.com/chapters/housing.html">집: 월세·전세·매매</a>가 등기부와 대항력의 기초를 짧게 다루었다면, 이 장은 신탁·가압류·건축물대장, 최우선변제와 보증 요건, 피해 뒤의 제도까지 더 깊게 들어간다.</p>
+  </section>
+
+  <section id="register">
+    <h2>등기부등본 읽기 실습</h2>
+    <p>아래는 교육용으로 만든 가상의 등기부 세 장이다. 하늘네가 지금 사는 C아파트, 같은 단지에 매물로 나온 집, 그리고 연습용 빌라 한 채다. 줄을 눌러 위험하다고 생각하는 기록에 표시한다. 맞게 고르면 빨간색(위험)이나 노란색(주의)으로, 위험이 아닌 줄을 고르면 녹색으로 바뀌고 아래에 그 줄의 뜻이 나온다. 각 등기부에서 위험 신호를 모두 찾아본다.</p>
+
+    <div class="sim" id="sim-reg">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>등기부에서 위험 신호 찾기</h3></div>
+      <div class="sim-body">
+        <div class="sim-view"><canvas id="reg-cv"></canvas></div>
+        <div class="sim-controls">
+          <div class="seg" id="reg-doc"><button data-value="now" class="on">지금 전셋집</button><button data-value="buy">매수 후보 매물</button><button data-value="villa">연습용 빌라</button></div>
+          <div class="btn-row"><button class="btn" id="reg-show">답 모두 보기</button><button class="btn" id="reg-reset">지우기</button></div>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">찾은 위험·주의 신호</span><span class="v" id="reg-o-n">—</span></div>
+        <div class="stat"><span class="k">고른 줄의 뜻</span><span class="v" id="reg-o-t" style="font-size:14px;font-family:var(--font);font-weight:500">줄을 눌러 본다</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① '지금 전셋집'에서 을구의 근저당을 누른다. 줄이 그어진 기록은 이미 갚고 지운 빚이다. 이 집에는 살아 있는 빚이 없다. ② '매수 후보 매물'에서 갑구와 을구의 신호를 모두 찾는다. 날짜를 함께 본다. 가장 최근 기록이 무엇인가. ③ '연습용 빌라'에서 을구가 비어 있다는 것에 안심하기 전에 갑구의 마지막 줄과 표제부의 용도를 본다. (모든 이름·주소·금액·날짜는 교육용 가상이다. 실제 등기부에는 접수 번호, 등기 원인, 권리자의 주소 등이 더 적힌다.)</div>
+    </div>
+
+    <p>세 장의 등기부는 서로 다른 교훈을 준다. 지금 전셋집처럼 을구에 줄이 그어진 기록만 있다면 살아 있는 빚이 없다는 뜻이다. 매수 후보 매물처럼 을구에 근저당이 둘 있고 갑구에 최근 가압류가 있다면, 집주인이 돈 문제로 다툼 중이라는 신호다. 연습용 빌라처럼 을구가 깨끗해도 갑구에 신탁이 있으면 법적 주인은 계약하러 나온 사람이 아니다. 등기부는 '빚이 얼마인가'만이 아니라 '누구와 계약해야 하는가'와 '지금 이 집주인에게 무슨 일이 일어나고 있는가'를 함께 보여 준다.</p>
+
+    <div class="callout pro">
+      <strong>등기부는 세 번 뗀다</strong>
+      태호는 손님에게 등기부를 세 번 떼라고 말한다. 첫 번째는 계약서를 쓰기 직전이다. 중개사가 미리 떼어 둔 것이 아니라 그 자리에서 새로 뗀 것을 본다. 두 번째는 잔금을 보내기 직전이다. 계약과 잔금 사이 몇 주 동안 집주인이 대출을 받거나 집을 팔거나 가압류가 들어올 수 있기 때문이다. 세 번째는 이사하고 전입신고를 한 다음 날이다. 내 대항력이 생긴 시각과 그사이에 새로 생긴 기록을 비교한다. 등기부를 뗄 때는 '말소사항 포함'으로 떼야 과거에 지워진 기록까지 보인다. 짧은 기간에 근저당이 여러 번 설정되고 지워졌다면 집주인의 자금 사정이 빠듯하다는 신호일 수 있다.
+    </div>
+  </section>
+
+  <section id="mortgage">
+    <h2>근저당과 채권최고액: 내 앞에 선 빚</h2>
+    <p>을구에서 가장 자주 보는 기록은 <span class="term">근저당권</span><span class="en">(Collateral mortgage)</span>이다. 은행이 집을 담보로 돈을 빌려주면서 '돈을 못 갚으면 이 집을 경매로 팔아 먼저 가져가겠다'는 권리를 등기해 둔 것이다. 근저당에는 빌린 원금이 아니라 <span class="term">채권최고액</span>이 적힌다. 원금에 밀린 이자와 비용까지 더해 은행이 이 집에서 최대로 받아 갈 수 있는 한도다. 관행적으로 은행은 대출 원금의 120% 안팎, 2금융권은 130% 안팎으로 잡는 경우가 많다. 그래서 채권최고액 3억 6,000만원은 대략 원금 3억원짜리 대출로 읽는다. 실제 남은 빚은 갚은 만큼 줄어 있을 수 있지만, 세입자는 안전하게 채권최고액 전부를 내 앞의 빚으로 보고 계산한다.</p>
+    <p>경매에서는 등기된 순서와 날짜대로 돈을 나눈다. 나보다 먼저 권리를 얻은 채권자를 <span class="term">선순위</span>, 나중에 얻은 채권자를 <span class="term">후순위</span>라 한다. 선순위 근저당이 있는 집에 들어가면 경매 때 은행이 먼저 채권최고액 한도까지 가져가고, 나는 남은 돈에서 보증금을 받는다. 아래는 시세 3억원짜리 가상의 빌라다. 왼쪽 막대의 낙찰가 선을 위아래로 끌어 집이 경매에서 얼마에 팔리는지 정하고, 오른쪽에서 그 돈이 누구에게 먼저 가는지 본다.</p>
+
+    <div class="sim" id="sim-wf">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>경매 대금은 누구에게 먼저 가는가</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="wf-cv"></canvas><span class="hint">낙찰가 선을 위아래로 끈다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>선순위 대출 원금 <output id="wf-p-out"></output></span><input type="range" id="wf-p" min="0" max="2.4" step="0.1" value="1"></label>
+          <div class="seg" id="wf-r"><button data-value="1.2" class="on">원금의 120%로 설정</button><button data-value="1.3">130%로 설정</button></div>
+          <label class="ctrl"><span>내 보증금 <output id="wf-d-out"></output></span><input type="range" id="wf-d" min="0.5" max="3" step="0.1" value="1.6"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">채권최고액</span><span class="v" id="wf-o-m">—</span></div>
+        <div class="stat"><span class="k">(최고액 + 보증금) ÷ 시세</span><span class="v" id="wf-o-r">—</span></div>
+        <div class="stat"><span class="k">돌려받는 보증금</span><span class="v" id="wf-o-b">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 기본값(원금 1억, 120% 설정 → 최고액 1억 2,000만원, 보증금 1억 6,000만원)에서 낙찰가율 80%면 보증금 중 약 4,300만원을 잃는다. 시세 대비 빚과 보증금의 합이 93%다. ② 낙찰가 선을 위로 끌어 손실이 0이 되는 지점을 찾는다. (최고액 + 보증금)보다 조금 더 높아야 한다. ③ 원금을 0으로 내린다. 선순위가 없으면 같은 낙찰가에서 보증금을 거의 다 받는다. ④ 낙찰가 선을 끝까지 내린다. 선순위 몫이 먼저 채워지고 보증금은 통째로 사라진다. (보수적으로 채권최고액 전부를 선순위 빚으로 보았고 경매 비용은 낙찰가의 1%로 두었다. 소액임차인 최우선변제와 세금은 넣지 않았다.)</div>
+    </div>
+
+    <p>그래프에서 본 것은 순서의 힘이다. 같은 낙찰가라도 내 앞에 선 빚이 크면 내 몫이 먼저 깎인다. 그래서 세입자가 계산할 숫자는 전세가율 하나가 아니라 <b>(선순위 채권최고액 + 내 보증금) ÷ 시세</b>다. 이 비율이 높을수록 집값이 조금만 내려도, 또는 경매에서 시세보다 싸게 팔리기만 해도 보증금이 깎인다. 경매에서 집은 대개 시세보다 낮은 값에 팔리고, 빌라처럼 거래가 적은 집은 그 차이가 더 크다. 이 비율이 어느 선을 넘으면 위험한지는 집의 종류와 시장에 따라 다르지만, 뒤에서 볼 보증기관의 기준(90%)이 하나의 참고선이 된다.</p>
+    <p>순서는 반대로도 작동한다. 내가 이사하고 전입신고와 확정일자를 마친 뒤에 집주인이 새로 받은 근저당은 나보다 후순위다. 그래서 '내가 들어간 날 이후에 생긴 빚'은 내 보증금에 직접 영향을 주지 않는다. 문제는 그 '들어간 날'의 기준이 하루 단위로 정해진다는 데 있다. 이것은 뒤의 대항력 절에서 다룬다.</p>
+  </section>
+
+  <section id="flags">
+    <h2>갑구의 경고등과 건축물대장</h2>
+    <p>을구가 빚의 크기를 보여 준다면, 갑구는 집주인에게 무슨 일이 일어나고 있는지를 보여 준다. 다음 기록이 보이면 계약을 멈추고 이유를 확인한다.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>기록</th><th>뜻</th><th>세입자에게 위험한 이유</th></tr></thead>
+        <tbody>
+          <tr><td>압류</td><td>세금을 밀렸거나 확정된 빚 때문에 국가·채권자가 집을 묶었다</td><td>곧 공매·경매로 갈 수 있다. 세금은 내 보증금보다 앞설 수 있다</td></tr>
+          <tr><td>가압류</td><td>빚 다툼이 끝나기 전에 채권자가 집을 미리 묶어 두었다</td><td>나보다 먼저 들어온 가압류 채권자는 경매 때 나와 돈을 나누거나 앞선다. 집주인 자금 사정의 신호다</td></tr>
+          <tr><td>가처분</td><td>소유권 등 특정 권리를 두고 다툼이 있어 집의 처분을 막았다</td><td>다툼 결과에 따라 소유자가 바뀌면 지금 집주인과 맺은 계약이 흔들릴 수 있다</td></tr>
+          <tr><td>신탁</td><td>소유권이 신탁회사(수탁자)로 넘어가 있다</td><td>원래 집주인(위탁자)은 법적 주인이 아니다. 수탁자 동의 없는 임대차는 보호받지 못할 수 있다</td></tr>
+          <tr><td>경매개시결정</td><td>이미 경매 절차가 시작되었다</td><td>이 기록 뒤에 들어간 세입자는 최우선변제도 받기 어렵다</td></tr>
+          <tr><td>최근의 소유권 이전</td><td>몇 달 안에 주인이 바뀌었다</td><td>그 자체로 위험은 아니지만, 보증금보다 싸게 산 새 주인(이른바 바지 집주인)일 수 있어 이유를 묻는다</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><span class="term">신탁등기</span><span class="en">(Trust registration)</span>는 따로 짚을 만하다. 집주인이 대출을 받거나 관리를 맡기려고 집의 소유권을 부동산신탁회사에 넘기는 경우가 있다. 이때 등기부의 소유자는 신탁회사이고, 원래 집주인은 '위탁자'로 남는다. 을구에 근저당이 없어 깨끗해 보여도, 실제로는 신탁 계약서(신탁원부)에 대출해 준 금융기관이 '우선수익자'로 올라 있어 그 돈이 내 보증금보다 앞설 수 있다. 신탁된 집과 계약하려면 등기소에서 신탁원부를 떼어 임대 권한이 누구에게 있는지 보고, 신탁회사(그리고 우선수익자)의 동의서를 받아야 한다. 위탁자인 원래 집주인과만 계약하면 법적으로 보호받지 못하는 경우가 있고, 이런 유형의 분쟁이 실제로 적지 않다.</p>
+    <p>등기부에 나오지 않는 위험은 <span class="term">건축물대장</span><span class="en">(Building register)</span>에서 찾는다. 정부24나 세움터에서 뗄 수 있는 이 서류에는 건물의 용도, 층별 면적, 그리고 불법 증축·용도 변경이 적발되면 붙는 <b>위반건축물</b> 표시가 나온다. 위반건축물은 이행강제금이 부과되고, 전세대출이나 전세보증 가입이 거절될 수 있다. 용도도 중요하다. 건축물대장의 용도가 주택이 아니라 <b>근린생활시설</b>(1층 상가처럼 동네 생활을 위한 시설)이나 업무시설인데 실제로는 방으로 꾸며 세를 놓는 경우가 있다. 이런 집은 주거로 쓰고 있어도 전세대출과 보증 가입이 막히는 경우가 많고, 나중에 원상 복구 명령이 나오면 살던 집에서 나가야 할 수도 있다. 다가구주택이라면 집 전체가 하나의 등기라서 같은 건물에 먼저 들어온 다른 세입자들의 보증금 합계가 내 앞의 빚이 된다. 이 합계는 전입세대 확인서와 확정일자 부여 현황으로 확인한다.</p>
+
+    <div class="callout deep">
+      <strong>등기부에 나오지 않는 빚: 세금</strong>
+      집주인이 밀린 세금은 등기부에 압류가 걸리기 전까지 보이지 않는다. 그런데 경매에서 세금은 법정기일에 따라 확정일자보다 먼저 배당될 수 있다. 특히 그 집 자체에 매겨진 세금(당해세)은 원래 날짜와 상관없이 먼저 가져갔다. 2023년 4월부터는 국세기본법 개정으로 세입자의 확정일자보다 법정기일이 늦은 당해세는 그 배분 몫만큼 보증금에 먼저 돌리도록 바뀌었다(대체로 확인). 그래도 집주인의 다른 체납 세금이 확정일자보다 앞서면 여전히 위험하다. 같은 해(2023년) 주택임대차보호법 개정으로 임대인은 계약할 때 납세증명서를 보여 줄 의무가 생겼고(제3조의7), 임대인이 동의하면 세무서에서 미납 국세를 열람할 수도 있다. 계약 당일 국세·지방세 납세증명서를 함께 확인하는 것이 안전하다.
+    </div>
+  </section>
+
+  <section id="opposability">
+    <h2>대항력과 확정일자: 하루의 틈</h2>
+    <p>세입자의 보증금을 지키는 두 가지 법적 힘이 있다. <span class="term">대항력</span><span class="en">(Opposability)</span>은 집주인이 바뀌어도 새 주인에게 "계약 기간 동안 살고, 끝나면 보증금을 돌려받겠다"고 주장할 수 있는 힘이다. 집에 실제로 들어가 사는 것(점유)과 그 주소로 전입신고를 하는 것, 두 가지를 갖추면 <b>그다음 날 0시</b>에 생긴다(주택임대차보호법 제3조). <span class="term">우선변제권</span><span class="en">(Preferential repayment right)</span>은 집이 경매로 넘어갔을 때 나보다 늦게 권리를 얻은 채권자보다 먼저 보증금을 받을 권리다. 대항력 요건에 더해 계약서에 <span class="term">확정일자</span>를 받아야 생긴다(제3조의2). 확정일자는 주민센터나 인터넷등기소에서 받을 수 있고, <a href="rent.html">6장</a>에서 본 임대차 신고를 하면 받은 것으로 본다.</p>
+    <p>함정은 시각이다. 은행의 근저당은 등기소에 접수한 그 순간 효력이 생긴다. 세입자의 대항력은 전입신고 다음 날 0시에 생긴다. 집주인이 내 잔금일 당일 집을 담보로 대출을 받으면, 같은 날이라도 은행이 나보다 앞선다. 아래 타임라인의 세 표식을 끌어 날짜와 시각을 바꿔 본다.</p>
+
+    <div class="sim" id="sim-tl">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>순위 타임라인: 같은 날이면 누가 먼저인가</h3></div>
+      <div class="sim-body">
+        <div class="sim-view"><canvas id="tl-cv"></canvas><span class="hint">세 표식을 좌우로 끈다</span></div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">대항력이 생기는 때</span><span class="v" id="tl-o-a">—</span></div>
+        <div class="stat"><span class="k">우선변제권이 생기는 때</span><span class="v" id="tl-o-p">—</span></div>
+        <div class="stat"><span class="k">경매 때 순서</span><span class="v" id="tl-o-o">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 기본값은 잔금일(D일)에 이사와 전입신고, 확정일자를 모두 마쳤지만 집주인이 같은 날 오전 10시에 근저당을 접수한 경우다. 은행이 앞선다. 내 대항력은 D+1일 0시에야 생긴다. ② 근저당 표식을 D+1일 오전으로 끈다. 이제 내가 앞선다. 0시가 은행 업무 시간보다 이르기 때문이다. ③ 확정일자 표식을 D+2일로 끈다. 대항력은 D+1일에 생겼지만 우선변제권은 확정일자를 받은 D+2일에야 생겨, 그사이 접수된 근저당보다 뒤로 밀린다. 대항력과 우선변제권은 따로 움직인다. (교육용 단순화다. 같은 날 확정일자와 근저당이 겹치는 경우 등 세부 순위는 법률 전문가에게 확인한다.)</div>
+    </div>
+
+    <p>타임라인이 보여 주는 하루의 틈은 전세사기의 대표적인 수법 하나가 노리는 자리다(그림 2의 ②). 그래서 실무에서는 계약서에 "임대인은 잔금일 다음 날까지 이 집에 담보권 설정 등 권리 변동을 일으키지 않는다. 어기면 임차인은 계약을 해제할 수 있고 임대인은 손해를 배상한다"는 특약을 넣고, 잔금을 보내기 직전에 등기부를 다시 뗀다. 이사 날 전입신고를 미루지 않는 것, 계약 기간 동안 주소를 다른 곳으로 옮기지 않는 것도 같은 이유다. 주소를 옮기면 대항력이 사라지고, 다시 전입해도 그날 다음 날부터 새로 생긴다. 계약을 갱신하며 보증금을 올렸다면 늘어난 금액에 대해서는 새로 확정일자를 받아야 한다. 그 증액분의 순위는 새 확정일자 날짜로 정해진다.</p>
+  </section>
+
+  <section id="small">
+    <h2>최우선변제: 소액 보증금의 안전판</h2>
+    <p>보증금이 작은 세입자에게는 특별한 보호가 하나 더 있다. 보증금이 일정 금액 이하인 <span class="term">소액임차인</span>은 경매에서 선순위 근저당보다도 먼저 일정 금액을 받는다. 이것을 <span class="term">최우선변제</span><span class="en">(Top-priority repayment)</span>라 한다. 경매개시결정 등기 전에 대항력 요건(점유 + 전입신고)을 갖추기만 하면 되고 확정일자는 필요 없다. 2026년 기준 금액은 다음과 같다(주택임대차보호법 시행령 제10조·제11조, 2023년 2월 21일 이후 담보물권 설정분).</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>지역</th><th class="num">보증금이 이 금액 이하면</th><th class="num">먼저 받는 금액</th></tr></thead>
+        <tbody>
+          <tr><td>서울특별시</td><td class="num">1억 6,500만원</td><td class="num">5,500만원</td></tr>
+          <tr><td>과밀억제권역(서울 제외)·세종·용인·화성·김포</td><td class="num">1억 4,500만원</td><td class="num">4,800만원</td></tr>
+          <tr><td>광역시(과밀억제권역·군 제외)·안산·광주·파주·이천·평택</td><td class="num">8,500만원</td><td class="num">2,800만원</td></tr>
+          <tr><td>그 밖의 지역</td><td class="num">7,500만원</td><td class="num">2,500만원</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>여기에는 중요한 단서가 둘 있다. 첫째, 어느 기준표를 쓸지는 내가 계약한 날이 아니라 그 집의 <b>가장 앞선 담보물권(근저당 등)이 설정된 날</b>로 정한다. 근저당이 오래전에 설정된 집이라면 그때의 더 낮은 기준이 적용될 수 있다. 은행이 대출해 줄 때 예상하지 못한 금액이 앞에 끼어들지 않게 하려는 것이다. 둘째, 최우선변제 금액의 합은 집값(배당할 금액)의 2분의 1을 넘지 못한다. 세입자가 많은 다가구주택에서는 이 한도 때문에 각자 덜 받을 수 있다. 아래에서 보증금 손잡이를 끌어 본다.</p>
+
+    <div class="sim" id="sim-st">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>최우선변제의 절벽</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="st-cv"></canvas><span class="hint">아래 손잡이로 보증금을 정한다</span></div>
+        <div class="sim-controls">
+          <div class="seg" id="st-reg"><button data-value="seoul" class="on">서울</button><button data-value="metro">과밀억제권역 등</button><button data-value="city">광역시 등</button><button data-value="other">그 밖</button></div>
+          <label class="ctrl"><span>경매 배당 금액 <output id="st-s-out"></output></span><input type="range" id="st-s" min="0.4" max="3" step="0.1" value="2"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">소액임차인 해당</span><span class="v" id="st-o-y">—</span></div>
+        <div class="stat"><span class="k">먼저 받는 금액</span><span class="v" id="st-o-p">—</span></div>
+        <div class="stat"><span class="k">보증금 중 보호되는 비율</span><span class="v" id="st-o-r">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 서울에서 보증금을 1억 6,500만원 바로 아래에 둔다. 5,500만원을 먼저 받는다. ② 손잡이를 100만원만 더 오른쪽으로 끈다. 소액임차인에서 빠지면서 먼저 받는 돈이 0이 된다. 보증금이 조금 많다고 보호가 조금 줄어드는 것이 아니라 통째로 사라진다. ③ 배당 금액을 6,000만원으로 내린다. 2분의 1 한도(3,000만원)에 막혀 5,500만원을 다 받지 못한다. (2023-02-21 이후 담보물권이 설정된 집 기준. 이 세입자 혼자 최우선변제를 받는다고 가정했다.)</div>
+    </div>
+
+    <p>최우선변제는 사회초년생의 원룸이나 작은 빌라 보증금을 지키는 마지막 그물이다. 하지만 그 그물은 금액이 정해져 있어서, 보증금이 기준을 넘는 순간 통째로 빠진다. 수도권 아파트 전세처럼 보증금이 억 단위로 큰 세입자에게는 해당하지 않는다. 하늘네의 보증금 4억원도 어느 지역 기준으로도 소액임차인이 아니다. 이런 세입자에게 남은 장치가 다음 절의 보증이다.</p>
+  </section>
+
+  <section id="hug">
+    <h2>전세보증금반환보증과 만기 뒤의 장치</h2>
+    <p><span class="term">전세보증금반환보증</span><span class="en">(Jeonse deposit return guarantee)</span>은 집주인이 만기에 보증금을 돌려주지 못하면 보증기관이 대신 돌려주고, 나중에 집주인에게 받아 내는 상품이다. 주택도시보증공사(HUG), 한국주택금융공사(HF), 서울보증보험(SGI)이 비슷한 상품을 운영한다. 세입자가 보증료를 내고 가입하며, 가입하려면 집과 계약이 몇 가지 조건을 맞춰야 한다. HUG의 2026년 기준 주요 요건은 다음과 같다(대체로 확인).</p>
+
+    <div class="formula">
+      $$\text{선순위 채권} + \text{보증금} \;\le\; \text{주택가격} \times 90\%$$
+      <div class="where">주택가격은 아파트처럼 시세가 있는 집은 시세를, 시세를 알기 어려운 빌라 등은 공시가격 × 140%를 먼저 쓴다. 그래서 공시가격 기준으로는 \((\text{선순위} + \text{보증금}) \le \text{공시가격} \times 140\% \times 90\% = \text{공시가격} \times 126\%\)가 된다. 보증금 자체는 수도권 7억원, 그 밖 5억원 이하여야 한다. 이 밖에 신청 기한(계약 기간의 절반이 지나기 전으로 안내됨), 위반건축물·근린생활시설 제외 등의 조건이 있다.</div>
+    </div>
+
+    <p>126%라는 숫자가 '공시가격의 126%까지 전세를 놓을 수 있다'는 기준처럼 읽히면서, 시세보다 공시가격이 높게 잡힌 빌라나 감정가를 부풀린 집에서 보증금이 실제 가치를 넘는 일이 생겼다. 그래서 2023년 5월에 기준이 '공시가격 150%, 전세가율 100%'에서 지금의 '140%, 90%'로 강화되었다. 담보인정비율을 더 낮추는 방안이 논의된 적은 있지만 2026년 10월 기준 시행 근거는 확인하지 못했다. 아래에서 집의 종류와 금액을 바꿔 가입 요건을 점검해 본다.</p>
+
+    <div class="sim" id="sim-hug">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>보증 가입 요건 점검기</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="hug-cv"></canvas></div>
+        <div class="sim-controls">
+          <div class="seg" id="hug-type"><button data-value="apt" class="on">아파트(시세)</button><button data-value="villa">빌라(공시가격)</button></div>
+          <div class="seg" id="hug-reg"><button data-value="metro" class="on">수도권</button><button data-value="other">그 밖</button></div>
+          <label class="ctrl"><span id="hug-v-lbl">시세 <output id="hug-v-out"></output></span><input type="range" id="hug-v" min="1" max="12" step="0.1" value="6.2"></label>
+          <label class="ctrl"><span>선순위 채권(최고액) <output id="hug-s-out"></output></span><input type="range" id="hug-s" min="0" max="5" step="0.1" value="0"></label>
+          <label class="ctrl"><span>보증금 <output id="hug-d-out"></output></span><input type="range" id="hug-d" min="0.5" max="8" step="0.1" value="4.2"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">인정 주택가격 × 90%</span><span class="v" id="hug-o-c">—</span></div>
+        <div class="stat"><span class="k">선순위 + 보증금</span><span class="v" id="hug-o-u">—</span></div>
+        <div class="stat"><span class="k">판정</span><span class="v" id="hug-o-j">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 기본값은 하늘네가 갱신청구권으로 4억 2,000만원에 갱신하는 경우다(시세 6억 2,000만원, 선순위 없음). 한도 5억 5,800만원 안이라 요건을 맞춘다. ② 선순위 채권을 2억원으로 올린다. 같은 보증금이라도 빚과 합쳐 한도를 넘는다. ③ '빌라(공시가격)'로 바꾸고 공시가격 2억원, 보증금 2억 6,000만원을 넣는다. 공시가격의 126%가 2억 5,200만원이라 가입이 안 된다. 공시가격이 시세보다 높게 잡혔다면 이 계산은 오히려 실제 위험을 가린다. ④ 보증금을 7억원 넘게 올린다. 수도권 한도에 걸린다. (HUG 요건의 핵심만 단순화했다. 실제 심사에는 신청 기한, 건물 용도, 위반건축물 여부, 집주인의 보증 사고 이력 등이 더 들어간다. 가입 전에 HUG나 취급 은행에 확인한다.)</div>
+    </div>
+
+    <p>보증에 가입하면 집주인이 돌려주지 못할 때 기다림과 소송의 부담을 보증기관이 진다. 그 대가로 보증료를 내고, 가입 요건을 못 맞추는 집은 처음부터 걸러진다. 그래서 보증 가입이 '되느냐 안 되느냐' 자체가 그 집의 위험을 알려 주는 신호가 된다. 집주인이 "보증은 안 되지만 문제없다"고 말하는 집은 다시 본다. 다만 보증이 된다고 집이 안전하다는 뜻은 아니다. 요건은 시세와 공시가격으로 계산하는데, 그 시세가 부풀려졌다면 보증 심사도 뚫릴 수 있다.</p>
+    <p>만기가 지났는데도 보증금을 돌려받지 못한 세입자가 다른 집으로 이사해야 한다면 <span class="term">임차권등기명령</span>을 쓴다. 법원에 신청해 등기부에 '이 집에 보증금을 받지 못한 세입자가 있다'는 임차권등기를 하는 제도다. 등기가 마쳐지면 세입자가 이사하고 주소를 옮겨도 그동안의 대항력과 우선변제권이 유지된다. 2023년 7월부터는 집주인에게 결정이 송달되기 전에도 등기할 수 있게 바뀌어, 집주인이 연락을 끊어도 등기가 가능해졌다. 효력은 법원 결정이 아니라 <b>등기가 마쳐진 때</b> 생기므로, 등기부에서 임차권등기가 올라온 것을 확인한 뒤에 이사한다.</p>
+  </section>
+
+  <section id="fraud">
+    <h2>전세사기의 유형과 피해자 지원</h2>
+    <p>2020년대 초반 수도권 빌라·오피스텔을 중심으로 대규모 전세사기가 잇따랐고, 피해자의 상당수가 처음 목돈을 맡긴 20~30대였다. 수법은 여러 가지지만 뼈대는 이 장에서 본 장치의 빈틈을 파고든다. 아래 그림은 대표적인 네 유형이다. 특정 사건이 아니라 반복되어 온 구조를 일반화한 것이다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 460 400" role="img" aria-label="전세사기의 네 가지 유형: 깡통전세, 하루 틈과 이중계약, 신탁 사기, 바지 집주인">
+        <rect x="8" y="8" width="216" height="186" rx="8" class="f-bad-soft"/>
+        <text x="116" y="32" text-anchor="middle" class="lbl-bad">① 깡통전세 만들기</text>
+        <rect x="40" y="48" width="40" height="96" rx="3" class="f-surface"/>
+        <text x="60" y="160" text-anchor="middle" class="lbl-dim">실제 가치</text>
+        <rect x="132" y="44" width="40" height="100" rx="3" class="f-acc2-soft"/>
+        <text x="152" y="160" text-anchor="middle" class="lbl-dim">보증금</text>
+        <text x="116" y="180" text-anchor="middle" class="lbl">시세·감정가 부풀리기</text>
+        <rect x="236" y="8" width="216" height="186" rx="8" class="f-warn-soft"/>
+        <text x="344" y="32" text-anchor="middle" class="lbl-b">② 하루 틈·이중계약</text>
+        <line x1="256" y1="96" x2="432" y2="96" class="s-axis"/>
+        <text x="282" y="84" text-anchor="middle" class="t-mono lbl-dim">D</text>
+        <text x="400" y="84" text-anchor="middle" class="t-mono lbl-dim">D+1</text>
+        <line x1="282" y1="90" x2="282" y2="102" class="s-line"/>
+        <line x1="400" y1="90" x2="400" y2="102" class="s-acc"/>
+        <text x="282" y="124" text-anchor="middle" class="lbl-bad">근저당·매도</text>
+        <text x="400" y="124" text-anchor="middle" class="lbl-acc">내 대항력</text>
+        <text x="344" y="156" text-anchor="middle" class="lbl">같은 날 대출을 받거나</text>
+        <text x="344" y="176" text-anchor="middle" class="lbl">한 집을 여러 명과 계약</text>
+        <rect x="8" y="206" width="216" height="186" rx="8" class="f-acc-soft"/>
+        <text x="116" y="230" text-anchor="middle" class="lbl-acc">③ 신탁된 집</text>
+        <text x="116" y="262" text-anchor="middle" class="lbl">등기상 주인: 신탁회사</text>
+        <text x="116" y="286" text-anchor="middle" class="lbl">계약하러 온 사람: 위탁자</text>
+        <text x="116" y="322" text-anchor="middle" class="lbl-dim">수탁자 동의 없이</text>
+        <text x="116" y="342" text-anchor="middle" class="lbl-dim">세를 놓고 보증금을 받는다</text>
+        <rect x="236" y="206" width="216" height="186" rx="8" class="f-surface"/>
+        <text x="344" y="230" text-anchor="middle" class="lbl-b">④ 바지 집주인</text>
+        <text x="344" y="262" text-anchor="middle" class="lbl">잔금일에 집을 넘긴다</text>
+        <text x="344" y="286" text-anchor="middle" class="lbl">돈 없는 새 주인에게</text>
+        <text x="344" y="322" text-anchor="middle" class="lbl-dim">돌려줄 사람이</text>
+        <text x="344" y="342" text-anchor="middle" class="lbl-dim">사라진다</text>
+      </svg>
+      <figcaption><b>그림 2. 전세사기의 네 가지 뼈대.</b> ①은 보증금을 집의 실제 가치만큼 또는 그 이상으로 받는 것이다. 신축 빌라처럼 거래 사례가 없는 집에서 분양 대행·중개 쪽과 짜고 시세를 부풀리는 경우가 있다. ②는 대항력이 생기는 하루의 틈을 노리거나 한 집을 여러 사람과 계약하는 것이다. ③은 계약할 권한이 없는 위탁자가 세를 놓는 것이다. ④는 보증금을 받은 뒤 갚을 능력이 없는 사람에게 집을 넘기는 것이다. 막는 법은 각각 시세 확인과 보증 가입, 특약과 당일 등기부, 신탁원부와 동의서, 소유권 변동 금지 특약과 보증 가입이다.</figcaption>
+    </figure>
+
+    <p>이 사기들이 왜 2020년대 초반에 몰렸는지 물으면, 이 책의 다섯 힘 가운데 여럿이 겹친 결과로 볼 수 있다. 금리가 낮던 시기에 전세대출과 보증이 쉽게 나와 세입자가 큰 보증금을 낼 수 있었고(<b>금리</b>와 <b>대출 제도</b>), 빌라처럼 거래가 적은 집에서는 시세를 확인하기 어려웠으며, 집값이 오를 것이라는 <b>기대</b>가 보증금으로 집을 사는 무자본 갭투자를 부추겼다. 이후 금리가 오르고 빌라 시세가 내려가자 보증금을 돌려줄 수 없는 집이 한꺼번에 드러났다(<a href="jeonse.html">5장</a>의 역전세 구조). 사기는 범죄지만, 그 범죄가 커질 수 있었던 바탕에는 가격과 금리의 힘이 있었다.</p>
+    <p>피해가 커지자 2023년 6월 <span class="term">전세사기피해자 지원 및 주거안정에 관한 특별법</span>이 시행되었다. 처음에는 2년 한시법이었지만 2025년 개정으로 2027년 5월 말까지 연장되었다(대체로 확인). 큰 구조는 다음과 같다. 세입자가 신청하면 국토교통부의 전세사기피해지원위원회가 요건(대항력과 확정일자 등을 갖춘 임차인, 일정 금액 이하의 보증금, 여러 명의 피해 또는 그 우려, 임대인의 반환 의사가 없다고 의심할 사정 등)을 심사해 피해자로 결정한다. 피해자로 결정되면 경매 유예·정지 신청, 경매에서 그 집을 먼저 살 수 있는 우선매수권, 우선매수권을 한국토지주택공사(LH)에 넘겨 LH가 산 뒤 공공임대로 계속 살 수 있게 하는 방안, 저리 대출과 긴급 주거 지원 같은 금융·주거 지원을 받을 수 있다. 2024년 개정으로 LH가 경매로 싸게 산 차액(경매 차익)을 피해자의 임대료 지원이나 퇴거 시 지급에 쓰는 방식도 더해졌다. 보증금 기준액, 요건의 세부, 지원 내용은 개정이 잦아 신청 전에 국토교통부와 LH의 최신 안내로 확인해야 한다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 460 300" role="img" aria-label="전세사기피해자 특별법의 지원 흐름">
+        <defs><marker id="ct-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="context-stroke"/></marker></defs>
+        <rect x="150" y="8" width="160" height="50" rx="8" class="f-warn-soft"/>
+        <text x="230" y="30" text-anchor="middle" class="lbl-b">피해 신청</text>
+        <text x="230" y="48" text-anchor="middle" class="lbl-dim">시·도를 거쳐</text>
+        <path d="M230 60 L230 84" class="s-line" marker-end="url(#ct-ar)"/>
+        <rect x="120" y="86" width="220" height="50" rx="8" class="f-surface"/>
+        <text x="230" y="108" text-anchor="middle" class="lbl-b">피해지원위원회 심의</text>
+        <text x="230" y="126" text-anchor="middle" class="lbl-dim">요건 확인 → 피해자 결정</text>
+        <path d="M170 138 L84 176" class="s-line" marker-end="url(#ct-ar)"/>
+        <path d="M230 138 L230 176" class="s-line" marker-end="url(#ct-ar)"/>
+        <path d="M290 138 L376 176" class="s-line" marker-end="url(#ct-ar)"/>
+        <rect x="8" y="178" width="148" height="76" rx="8" class="f-acc-soft"/>
+        <text x="82" y="202" text-anchor="middle" class="lbl-acc">경매 단계</text>
+        <text x="82" y="222" text-anchor="middle" class="lbl-dim">유예·정지 신청</text>
+        <text x="82" y="240" text-anchor="middle" class="lbl-dim">우선매수권</text>
+        <rect x="164" y="178" width="132" height="76" rx="8" class="f-ok-soft"/>
+        <text x="230" y="202" text-anchor="middle" class="lbl-b">계속 살기</text>
+        <text x="230" y="222" text-anchor="middle" class="lbl-dim">LH 매입 후</text>
+        <text x="230" y="240" text-anchor="middle" class="lbl-dim">공공임대</text>
+        <rect x="304" y="178" width="148" height="76" rx="8" class="f-acc2-soft"/>
+        <text x="378" y="202" text-anchor="middle" class="lbl-acc2">금융·주거</text>
+        <text x="378" y="222" text-anchor="middle" class="lbl-dim">저리 대출</text>
+        <text x="378" y="240" text-anchor="middle" class="lbl-dim">긴급 주거 지원</text>
+        <text x="230" y="282" text-anchor="middle" class="lbl-dim">세부 요건·지원은 개정이 잦다(2026년 기준, 신청 기한 2027년 5월 말)</text>
+      </svg>
+      <figcaption><b>그림 3. 전세사기피해자 특별법의 지원 흐름(요약).</b> 세입자가 신청하면 위원회가 요건을 심사해 피해자로 결정하고, 경매 단계의 절차 지원, 집을 공공임대로 바꿔 계속 사는 길, 금융·주거 지원 가운데 상황에 맞는 것을 쓴다. 보증금을 전액 돌려받게 해 주는 제도는 아니다. 그래서 사후 구제보다 계약 전 확인이 훨씬 싸다.</figcaption>
+    </figure>
+
+    <div class="callout pro">
+      <strong>중개사가 말을 아끼게 되는 순간</strong>
+      전세사기 사건 가운데에는 중개사가 '이 집은 보증 가입이 된다', '집주인이 집이 여러 채인 자산가다'라고 설명해 세입자를 안심시킨 경우가 적지 않았다. 중개사는 거래가 성사돼야 보수를 받고, 일부 신축 빌라에서는 분양 쪽에서 중개사에게 높은 장려금을 주며 세입자를 데려오게 한 구조도 드러났다. 태호는 그래서 손님에게 "제 설명을 믿지 마시고 서류를 같이 보세요"라고 말한다. 중개사는 계약 전에 중개대상물 확인·설명서로 등기부의 권리관계, 건축물대장의 용도와 위반 여부, 선순위 임차인 정보 등을 설명할 의무가 있다. 설명서에 적힌 내용이 실제 서류와 같은지 손님이 직접 대조하고, 이상하면 서명 전에 묻는다. "이 가격에 이런 집은 다시 안 나온다, 오늘 가계약금부터 넣자"는 말이 나오면 그날은 계약하지 않는 것이 원칙이다.
+    </div>
+
+    <div class="callout buyer">
+      <strong>전세 계약 단계별 확인표</strong>
+      <ul>
+        <li><b>집을 보기 전</b>: 같은 단지·동네의 실거래가와 전세 시세(국토교통부 실거래가 공개시스템, 안심전세앱 등)로 (선순위 + 보증금) ÷ 시세를 어림한다. 신축 빌라처럼 시세가 없으면 공시가격과 감정가를 따로 본다.</li>
+        <li><b>계약서 쓰기 직전</b>: 등기부등본을 새로 떼어 소유자, 갑구의 압류·가압류·가처분·신탁, 을구의 채권최고액을 본다. 건축물대장에서 용도(주택인가)와 위반건축물 표시를 본다.</li>
+        <li><b>계약하는 사람</b>: 신분증과 등기부의 소유자를 대조한다. 대리인이면 위임장과 인감증명서를 확인하고 소유자와 직접 통화한다. 신탁된 집이면 신탁원부와 수탁자 동의서를 받는다. 보증금은 소유자 명의 계좌로만 보낸다.</li>
+        <li><b>집주인의 세금과 다른 세입자</b>: 납세증명서(국세·지방세)를 받는다. 다가구라면 전입세대 확인서와 확정일자 부여 현황으로 먼저 들어온 세입자의 보증금 합계를 확인한다.</li>
+        <li><b>특약</b>: 잔금일 다음 날까지 근저당 설정·소유권 이전 등 권리 변동 금지, 어기면 해제와 배상. 보증 가입이 거절되면 계약을 해제하고 계약금을 돌려받는다. 매매로 집주인이 바뀌면 미리 알린다.</li>
+        <li><b>잔금 당일</b>: 송금 직전에 등기부를 다시 뗀다. 바로 이사하고 그날 전입신고를 하며, 임대차 신고(또는 확정일자)를 마친다.</li>
+        <li><b>입주 뒤</b>: 다음 날 등기부를 다시 떼어 내 대항력보다 앞선 기록이 새로 생기지 않았는지 본다. 전세보증 가입은 신청 기한 안에 한다.</li>
+        <li><b>만기 6~2개월 전</b>: 갱신 여부를 기록이 남는 방식으로 주고받는다. 돌려받지 못할 조짐이 보이면 보증기관에 미리 알리고, 이사해야 하면 임차권등기를 마친 뒤 주소를 옮긴다.</li>
+      </ul>
+    </div>
+
+    <div class="callout warn">
+      <strong>제도와 수치는 해마다 바뀐다</strong>
+      이 장의 제도 수치(최우선변제 기준표, HUG 보증 요건, 임차권등기명령 절차, 전세사기피해자 특별법의 기한과 지원 내용)는 2026년 한국 제도를 기준으로 한 값이며, 일부는 언론 보도와 공공기관 안내로만 확인했다. 전세사기 이후 임대차 관련 제도는 해마다 고쳐지고 있다. 이 장의 등기부·사례는 모두 교육용 가상이고, 실제 사건이나 특정 기관·회사를 가리키지 않는다. 이 책은 법률 자문이 아니다. 실제 계약 전에는 인터넷등기소, 정부24, HUG, 국가법령정보센터 등 공식 자료를 확인하고, 다툼이 생기면 대한법률구조공단이나 변호사와 상담한다.
+    </div>
+  </section>
+
+  <section id="case">
+    <h2>하늘네 집 노트</h2>
+    <p>태호는 6장에서 계산한 만기의 세 갈래를 이번에는 '보증금이 얼마나 지켜지는가'의 눈으로 본다. 하늘네 C아파트의 등기부는 깨끗하다. 을구에는 2021년에 지워진 전 주인의 근저당만 있고, 갑구의 마지막 기록은 2021년 남궁현의 매매다. 하늘네의 주민등록초본에는 2025년 4월 입주일에 전입한 기록이 있고, 계약서에는 같은 날 확정일자가 찍혀 있다. 아래 그래프에서 집값 하락 손잡이를 끌고, 갱신 뒤 집주인이 근저당을 새로 설정하는 경우도 켜 본다.</p>
+
+    <div class="sim" id="sim-case">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>하늘네 보증금 종합 점검</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="case-cv"></canvas><span class="hint">곡선 위 손잡이를 끌어 집값 하락을 정한다</span></div>
+        <div class="sim-controls">
+          <div class="seg" id="case-opt"><button data-value="now" class="on">지금 4억</button><button data-value="renew">갱신 4.2억</button><button data-value="half">반전세 2억</button></div>
+          <label class="ctrl"><span>경매 낙찰가율 <output id="case-a-out"></output></span><input type="range" id="case-a" min="60" max="100" step="1" value="80"></label>
+          <label class="check"><input type="checkbox" id="case-m"> 갱신 계약 뒤 집주인이 근저당(최고액 1억 2,000만원) 설정</label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">하락 후 시세</span><span class="v" id="case-o-v">—</span></div>
+        <div class="stat"><span class="k">돌려받는 보증금</span><span class="v" id="case-o-r">—</span></div>
+        <div class="stat"><span class="k">잃는 돈</span><span class="v" id="case-o-l">—</span></div>
+        <div class="stat"><span class="k">HUG 요건(시세 기준)</span><span class="v" id="case-o-h">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① '지금 4억'에서 손잡이를 20%에 둔다. 낙찰가율 80%면 배당 재원이 약 3억 9,200만원이라 보증금의 약 98%가 돌아온다. 30%면 약 86%다. ② '갱신 4.2억'으로 바꾸고 근저당 설정을 켠다. 원래 4억원은 확정일자가 2025년 4월이라 새 근저당보다 앞서지만, 늘어난 2,000만원은 새 확정일자를 받은 날짜로 순위가 정해져 근저당 뒤로 밀린다. 하락 20%에서 증액분이 먼저 사라진다. ③ '반전세 2억'을 고른다. 맡긴 돈이 작아 하락 40%에서도 다 돌아온다. 대신 6장에서 본 대로 매달 월세를 낸다. (시세 6억 2,000만원, 경매 비용 1%, 최우선변제는 해당 없음, 세금 체납은 없다고 가정한 교육용 계산. 실제 경매에서는 이자·비용과 기간이 더 든다.)</div>
+    </div>
+
+    <div class="casefile">
+      <div class="tag"><b>CASE 하늘네</b><span>집 노트 · 7장</span></div>
+      <h4>지금 전셋집은 깨끗하고, 매수 후보 매물에는 신호가 셋 있다</h4>
+      <p><b>지금 전셋집(C아파트, 시세 약 6억 2,000만원).</b> 갑구의 소유자는 2021년에 6억 8,000만원에 산 남궁현이고, 압류·가압류·신탁은 없다. 을구의 근저당은 전 주인이 2021년에 갚고 지운 것뿐이라 하늘네 앞에 선 빚은 0원이다. 하늘네는 2025년 4월 입주일에 전입신고를 했고 같은 날 확정일자를 받았으니, 입주 다음 날 0시부터 대항력과 우선변제권이 있다. 이 책의 모델로 계산하면 보증금 4억원은 시세가 20% 내려도 낙찰가율 80%에서 약 98%, 30% 내려도 약 86%가 돌아온다(<a href="jeonse.html">5장</a>의 회수율 계산과 같은 엔진). 갱신해서 4억 2,000만원이 되면 HUG 기준으로 (선순위 0 + 4억 2,000만원) ≤ 6억 2,000만원 × 90% = 5억 5,800만원이라 시세 기준 요건을 맞춘다. 공시가격(현실화율 약 69%로 어림하면 약 4억 2,800만원) × 126%로 보아도 약 5억 3,900만원이라 넉넉하다. 보증금도 수도권 한도 7억원 안이다.</p>
+      <p><b>태호가 짚는 위험 신호.</b> 첫째, 갱신으로 늘어나는 2,000만원은 새 확정일자를 받아야 하고, 그 전에 집주인이 근저당을 설정하면 증액분은 그 뒤로 밀린다. 갱신 계약서를 쓰는 날 등기부를 다시 떼고, 그날 바로 확정일자를 받는다. 둘째, 남궁현은 2주택자라 그의 세금 사정은 등기부에 나오지 않는다. 2023년 개정법에 따라 갱신 계약 때도 납세증명서를 요청한다. 셋째, 보증 가입을 원하면 갱신 계약을 맺자마자 신청 기한 안에 신청한다. <b>매수 후보 매물(같은 단지 105동, 교육용 가상)</b>에서는 신호가 셋이다. 을구에 은행 근저당(채권최고액 3억 6,000만원, 원금 약 3억원 추정)과 2024년에 설정된 저축은행 근저당(채권최고액 6,500만원)이 있고, 갑구에 2026년 8월의 가압류(청구금액 4,000만원)가 있다. 태호는 "근저당은 잔금으로 갚고 지우는 게 보통이지만, 2금융 추가 대출과 최근 가압류는 매도인 자금 사정이 빠듯하다는 뜻입니다. 계약한다면 잔금 때 모든 말소를 동시에 처리하는 조건과, 계약 뒤 새 압류가 들어오면 해제할 수 있다는 특약이 필요합니다"라고 말한다. 매매 절차와 비용은 다음 장의 몫이다.</p>
+      <div class="clue"><div><b>이 장에서 정한 것</b>지금 전셋집은 선순위 빚 0원, 전입·확정일자 2025년 4월 같은 날, 갱신 4억 2,000만원이어도 HUG 시세 기준 한도(5억 5,800만원) 안. 매수 후보 매물의 위험 신호 3개: 근저당 2건(최고액 합 4억 2,500만원), 최근 가압류.</div><div><b>아직 남은 문제</b>매수 후보 매물을 산다면 잔금일과 전세 만기를 어떻게 맞추고, 말소와 등기는 누가 어떤 순서로 처리하는가? 사는 데 드는 돈은 모두 얼마인가?</div><div><b>다음 단계</b>8장: B시 84㎡ 6억 2,000만원을 산다고 할 때의 영수증(취득세, 중개보수, 법무비)과 가계약금·계약금·잔금의 일정.</div></div>
+    </div>
+  </section>
+
+  <section class="keypoints" id="summary">
+    <h2>핵심 정리</h2>
+    <ol>
+      <li>등기부등본의 표제부는 집의 신분증, 갑구는 소유권과 그것을 묶는 기록(압류·가압류·가처분·신탁), 을구는 근저당 같은 빚이다. 계약 직전, 잔금 직전, 전입 다음 날 세 번 뗀다.</li>
+      <li>근저당에는 원금이 아니라 채권최고액(관행적으로 원금의 120~130%대)이 적힌다. 세입자는 (선순위 채권최고액 + 내 보증금) ÷ 시세로 위험을 본다.</li>
+      <li>신탁된 집의 법적 주인은 신탁회사다. 건축물대장의 위반건축물·근린생활시설 표시는 대출·보증을 막고 거주 자체를 흔들 수 있다.</li>
+      <li>대항력은 점유 + 전입신고 다음 날 0시에, 우선변제권은 여기에 확정일자를 더해 생긴다. 근저당은 접수 즉시 효력이 생겨 같은 날이면 은행이 앞선다. 갱신 증액분은 새 확정일자 날짜로 순위가 정해진다.</li>
+      <li>소액임차인 최우선변제는 지역별 기준 이하의 보증금에서 일정액을 선순위보다 먼저 준다. 기준표는 가장 앞선 담보물권 설정일로 정하고, 기준을 넘으면 보호가 통째로 사라진다.</li>
+      <li>HUG 전세보증은 (선순위 + 보증금) ≤ 주택가격 × 90%, 공시가격 기준이면 공시가격의 126%가 핵심 요건이다. 가입 가능 여부 자체가 위험 신호지만, 시세가 부풀려지면 심사도 뚫릴 수 있다.</li>
+      <li>만기 뒤 돌려받지 못하면 임차권등기를 마친 뒤 이사한다. 전세사기피해자 특별법(2027년 5월 말까지)은 피해자 결정, 경매 지원, 공공임대, 금융 지원을 제공하지만 보증금 전액 회복을 보장하지 않는다.</li>
+    </ol>
+  </section>
+
+  <section class="quiz-sec" id="quiz">
+    <h2>확인 퀴즈</h2>
+    <div class="quiz">
+      <div class="quiz-q">
+        <p>잔금일인 5월 10일 오후에 이사하고 그날 전입신고와 확정일자를 마쳤다. 집주인은 같은 날 오전에 은행 근저당을 접수했다. 경매가 열리면 누가 먼저 배당받는가?</p>
+        <div class="opts">
+          <button class="opt">세입자. 전입신고를 같은 날 했기 때문이다</button>
+          <button class="opt" data-correct>은행. 근저당은 접수 즉시 효력이 생기고, 세입자의 대항력은 5월 11일 0시에 생기기 때문이다</button>
+          <button class="opt">둘이 같은 순위로 보증금과 대출을 나눈다</button>
+          <button class="opt">확정일자가 있으므로 세입자가 최우선변제를 받는다</button>
+        </div>
+        <div class="quiz-exp">대항력은 점유와 전입신고를 마친 다음 날 0시에 생기고, 우선변제권도 그 대항력 위에서 생긴다. 근저당은 등기 접수 시점에 효력이 생기므로 같은 날 접수된 근저당이 앞선다. 그래서 잔금일 다음 날까지 권리 변동을 금지하는 특약과 잔금 직전의 등기부 확인이 필요하다.</div>
+      </div>
+      <div class="quiz-q">
+        <p>등기부 을구에 '근저당권설정, 채권최고액 금 240,000,000원'이 말소되지 않은 채 있다. 세입자가 이 기록을 읽는 방법으로 가장 알맞은 것은?</p>
+        <div class="opts">
+          <button class="opt">집주인이 빌린 원금이 정확히 2억 4,000만원이다</button>
+          <button class="opt">이미 다 갚았을 가능성이 높으니 신경 쓰지 않아도 된다</button>
+          <button class="opt" data-correct>원금은 대략 2억원 안팎으로 짐작되지만, 경매 때 은행이 최대 2억 4,000만원까지 나보다 먼저 가져갈 수 있다고 보고 계산한다</button>
+          <button class="opt">채권최고액은 세입자의 보증금보다 항상 뒤에 배당된다</button>
+        </div>
+        <div class="quiz-exp">채권최고액은 원금에 이자·비용까지 더해 은행이 받아 갈 수 있는 한도이고, 관행적으로 원금의 120~130%대로 잡는다. 실제 남은 빚은 더 작을 수 있지만, 말소되지 않은 선순위 근저당은 최고액 전부를 내 앞의 빚으로 보고 (최고액 + 보증금) ÷ 시세를 계산하는 것이 안전하다.</div>
+      </div>
+      <div class="quiz-q">
+        <p>서울의 한 빌라에 보증금 1억 7,000만원으로 들어가려 한다. 이 집의 첫 근저당은 2024년에 설정되었다. 소액임차인 최우선변제에 대한 설명으로 옳은 것은? (2026년 기준)</p>
+        <div class="opts">
+          <button class="opt" data-correct>보증금이 서울 기준 1억 6,500만원을 넘으므로 최우선변제를 받을 수 없다</button>
+          <button class="opt">1억 6,500만원까지는 최우선변제를 받고 나머지 500만원만 순서대로 받는다</button>
+          <button class="opt">5,500만원을 받는다. 보증금 크기와 상관없이 누구나 받는다</button>
+          <button class="opt">확정일자를 받았다면 기준과 상관없이 받는다</button>
+        </div>
+        <div class="quiz-exp">최우선변제는 보증금이 지역 기준 금액 이하인 소액임차인만 받는다. 기준을 넘으면 일부가 아니라 전부 대상에서 빠진다. 2023-02-21 이후 담보물권이 설정된 서울 주택의 기준은 보증금 1억 6,500만원 이하, 최우선변제금 5,500만원이다. 확정일자는 최우선변제의 요건이 아니다.</div>
+      </div>
+      <div class="quiz-q">
+        <p>공시가격 2억원인 수도권 빌라(시세 정보 없음, 선순위 채권 없음)에 전세보증금반환보증(HUG)을 들려고 한다. 2026년 기준 핵심 요건으로 볼 때 가입할 수 있는 보증금의 최대 금액은 대략 얼마인가?</p>
+        <div class="opts">
+          <button class="opt">1억 8,000만원</button>
+          <button class="opt">2억 8,000만원</button>
+          <button class="opt">3억원</button>
+          <button class="opt" data-correct>2억 5,200만원</button>
+        </div>
+        <div class="quiz-exp">시세가 없는 빌라는 공시가격 × 140%를 주택가격으로 보고, (선순위 + 보증금)이 그 90% 이하여야 한다. 2억원 × 140% × 90% = 2억 5,200만원(공시가격의 126%)이다. 실제 심사에는 신청 기한, 건물 용도, 위반건축물 여부 등이 더 들어간다.</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  const TAU = Math.PI * 2;
+  function T(ctx, s, x, y, o) {
+    o = o || {};
+    ctx.font = EB.font(o.size || 12, o.mono, o.weight);
+    ctx.fillStyle = o.color; ctx.textAlign = o.align || "left"; ctx.textBaseline = o.base || "alphabetic";
+    ctx.fillText(s, x, y);
+  }
+  function rrect(ctx, x, y, w, h, r) {
+    r = Math.max(0, Math.min(r, Math.abs(w) / 2, Math.abs(h) / 2));
+    ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
+  }
+  function knob(ctx, x, y, P, r) {
+    ctx.beginPath(); ctx.arc(x, y, r || 8, 0, TAU); ctx.fillStyle = P.text; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = P.bg; ctx.stroke();
+  }
+  // 글자 폭에 맞춰 줄 나누기(한글은 글자 단위)
+  function wrap(ctx, s, maxW, font) {
+    ctx.font = font; const out = []; let line = "";
+    for (const ch of s) { if (ctx.measureText(line + ch).width > maxW && line) { out.push(line); line = ch.trim() ? ch : ""; } else line += ch; }
+    if (line) out.push(line);
+    return out;
+  }
+  const pw = (id) => document.getElementById(id).parentElement.clientWidth;
+  const man = (x) => Math.round(x / 1e4).toLocaleString("ko-KR") + "만원";
+  const soft = (c, a) => { const ctx = document.createElement("canvas").getContext("2d"); ctx.fillStyle = c; const hex = ctx.fillStyle; if (hex[0] !== "#") return c; const n = parseInt(hex.slice(1), 16); return "rgba(" + (n >> 16) + "," + ((n >> 8) & 255) + "," + (n & 255) + "," + a + ")"; };
+  const C = RE.CASE;
+
+  /* ---------------------------------------------------------- 1. 등기부 실습 */
+  (function () {
+    // risk: 0 괜찮음, 1 위험, 2 주의. del: 말소된 기록
+    const DOCS = {
+      now: { title: "경기 B시 C아파트 제101동 제9층 제9○○호", rows: [
+        { sec: "표제부", what: "1동의 건물 표시", date: "", text: "철근콘크리트조 · 공동주택(아파트) · 2009년 사용승인", risk: 0, note: "건물의 구조와 용도. 아파트(공동주택)로 주거용이다. 계약서의 동·호수와 같은지 본다." },
+        { sec: "표제부", what: "전유부분", date: "", text: "제9층 제9○○호 · 전용 84.9㎡", risk: 0, note: "내가 빌리는 호수와 면적. 계약서와 같다." },
+        { sec: "갑구", what: "1 소유권보존", date: "2009.11.○○", text: "소유자 ○○주택(분양)", risk: 0, note: "새 건물이 처음 등기된 기록이다. 위험이 아니다." },
+        { sec: "갑구", what: "2 소유권이전", date: "2014.03.○○", text: "매매 · 소유자 김○○", risk: 0, note: "전 주인이 산 기록이다." },
+        { sec: "갑구", what: "3 소유권이전", date: "2021.06.○○", text: "매매 · 소유자 남궁현 · 거래가액 금 680,000,000원", risk: 0, note: "지금 주인. 계약하러 나온 사람의 신분증과 이 이름이 같은지 본다. 이후 압류·가압류·신탁 기록이 없다." },
+        { sec: "을구", what: "1 근저당권설정", date: "2014.03.○○", text: "채권최고액 금 240,000,000원 · 근저당권자 ○○은행", risk: 0, del: true, note: "줄이 그어진 기록은 말소된 것이다. 전 주인이 갚고 지운 빚이라 지금은 빚이 아니다." },
+        { sec: "을구", what: "2 1번근저당권설정등기말소", date: "2021.06.○○", text: "해지", risk: 0, note: "위 근저당을 지웠다는 기록. 매매 잔금으로 갚고 말소하는 흔한 흐름이다. 살아 있는 빚이 없다." },
+      ] },
+      buy: { title: "경기 B시 C아파트 제105동 제12층 제12○○호", rows: [
+        { sec: "표제부", what: "1동의 건물 표시", date: "", text: "철근콘크리트조 · 공동주택(아파트) · 2009년 사용승인", risk: 0, note: "같은 단지의 아파트. 주거용이다." },
+        { sec: "표제부", what: "전유부분", date: "", text: "제12층 제12○○호 · 전용 84.9㎡", risk: 0, note: "매물 광고의 동·호수와 같은지 본다." },
+        { sec: "갑구", what: "1 소유권이전", date: "2016.05.○○", text: "매매 · 소유자 박○○", risk: 0, note: "지금 매도인. 매매 계약은 이 사람과 한다." },
+        { sec: "갑구", what: "2 가압류", date: "2026.08.○○", text: "청구금액 금 40,000,000원 · 채권자 ○○카드", risk: 1, note: "위험. 두 달 전에 채권자가 집을 묶었다. 매도인이 빚 다툼 중이라는 뜻이다. 잔금 때 말소를 조건으로 하고, 계약 뒤 압류가 더 들어오면 해제할 수 있게 특약을 둔다." },
+        { sec: "을구", what: "1 근저당권설정", date: "2016.05.○○", text: "채권최고액 금 360,000,000원 · 근저당권자 ○○은행", risk: 2, note: "주의. 집을 살 때 받은 주담대로 보인다(120%면 원금 약 3억원). 매매에서는 잔금으로 갚고 말소하는 것이 보통이다. 잔금일에 상환·말소를 동시에 처리하는 조건을 계약서에 적는다." },
+        { sec: "을구", what: "2 근저당권설정", date: "2024.09.○○", text: "채권최고액 금 65,000,000원 · 근저당권자 ○○저축은행", risk: 1, note: "위험. 2금융권에서 추가로 빌린 돈이다. 1번 근저당 위에 또 빌렸다는 것과 그 뒤 가압류가 들어온 것을 함께 보면 매도인의 자금 사정이 빠듯하다." },
+      ] },
+      villa: { title: "경기 B시 D빌라 제4층 제401호(교육용 가상)", rows: [
+        { sec: "표제부", what: "1동의 건물 표시", date: "", text: "철근콘크리트조 4층 · 1층 근린생활시설, 2~3층 다세대주택, 4층 근린생활시설", risk: 0, note: "층마다 용도가 다르다. 주택은 2~3층뿐이다." },
+        { sec: "표제부", what: "전유부분", date: "", text: "제4층 제401호 · 제2종 근린생활시설 · 49.5㎡", risk: 1, note: "위험. 이 호수의 용도는 주택이 아니라 근린생활시설이다. 방으로 꾸며 세를 놓았어도 전세대출·보증 가입이 막힐 수 있고, 건축물대장에 위반건축물로 올라 있는지도 확인해야 한다." },
+        { sec: "갑구", what: "1 소유권보존", date: "2022.10.○○", text: "소유자 ○○개발", risk: 0, note: "신축 때 처음 등기한 기록." },
+        { sec: "갑구", what: "2 소유권이전", date: "2023.02.○○", text: "매매 · 소유자 이○○", risk: 0, note: "이○○가 샀다. 계약하러 나오는 사람은 이 사람일 것이다." },
+        { sec: "갑구", what: "3 소유권이전", date: "2024.04.○○", text: "신탁 · 수탁자 ○○부동산신탁 · 신탁원부 제2024-○○호", risk: 1, note: "위험. 법적 주인은 신탁회사다. 이○○는 위탁자일 뿐이라 혼자서는 세를 놓을 권한이 없을 수 있다. 신탁원부를 떼어 보고 수탁자와 우선수익자의 동의서가 없으면 계약하지 않는다." },
+        { sec: "을구", what: "(기록사항 없음)", date: "", text: "근저당이 없어 보이지만, 신탁원부에 우선수익자(대출 기관)가 있을 수 있다", risk: 0, note: "을구가 비어 있다고 빚이 없다는 뜻은 아니다. 신탁된 집의 대출은 을구가 아니라 신탁원부에 숨어 있다." },
+      ] },
+    };
+    const docG = EB.seg("reg-doc", () => { picked = null; draw(); });
+    const marks = { now: new Set(), buy: new Set(), villa: new Set() };
+    let show = false, picked = null, hits = [];
+    document.getElementById("reg-show").addEventListener("click", () => { show = !show; draw(); });
+    document.getElementById("reg-reset").addEventListener("click", () => { marks[docG()].clear(); show = false; picked = null; draw(); });
+    function layout(ctx, w, doc) {
+      const narrow = w < 520, pad = 10, out = [];
+      const f2 = EB.font(narrow ? 11 : 12);
+      let y = 46, sec = "";
+      doc.rows.forEach((r, i) => {
+        if (r.sec !== sec) { sec = r.sec; out.push({ head: sec, y, h: 24 }); y += 26; }
+        const lines = wrap(ctx, r.text, w - pad * 2 - (narrow ? 16 : 290), f2);
+        const h = narrow ? 22 + lines.length * 15 + 6 : Math.max(32, 10 + lines.length * 16 + 6);
+        out.push({ i, y, h, lines, narrow });
+        y += h + 2;
+      });
+      return { items: out, total: y + 8 };
+    }
+    const cv = EB.canvas("#reg-cv", (ctx, w, h) => {
+      const P = EB.palette(), key = docG(), doc = DOCS[key], L = layout(ctx, w, doc), mk = marks[key];
+      rrect(ctx, 6, 6, w - 12, h - 12, 8); ctx.fillStyle = P.surface; ctx.fill(); ctx.strokeStyle = P.border; ctx.lineWidth = 1; ctx.stroke();
+      T(ctx, "등기사항전부증명서(말소사항 포함) · 교육용 가상", 16, 24, { size: 11, color: P.faint });
+      T(ctx, doc.title, 16, 39, { size: w < 520 ? 11 : 12, color: P.text, weight: 700 });
+      hits = [];
+      L.items.forEach((it) => {
+        if (it.head) {
+          ctx.fillStyle = P.grid; ctx.fillRect(10, it.y, w - 20, it.h);
+          T(ctx, it.head === "표제부" ? "【 표 제 부 】" : it.head === "갑구" ? "【 갑 구 】 소유권에 관한 사항" : "【 을 구 】 소유권 이외의 권리에 관한 사항", 16, it.y + it.h / 2, { size: 11, color: P.dim, base: "middle", weight: 700 });
+          return;
+        }
+        const r = doc.rows[it.i], on = mk.has(it.i), reveal = show && r.risk;
+        let col = null;
+        if (on) col = r.risk === 1 ? P.bad : r.risk === 2 ? P.warn : P.ok;
+        else if (reveal) col = r.risk === 1 ? P.bad : P.warn;
+        if (col) { ctx.fillStyle = soft(col, on ? 0.16 : 0.08); ctx.fillRect(10, it.y, w - 20, it.h); ctx.fillStyle = col; ctx.fillRect(10, it.y, 3, it.h); }
+        if (picked === it.i) { ctx.strokeStyle = P.accent; ctx.lineWidth = 1.5; ctx.strokeRect(11, it.y + 0.5, w - 22, it.h - 1); }
+        ctx.strokeStyle = P.border; ctx.lineWidth = 1; ctx.setLineDash([2, 3]); ctx.beginPath(); ctx.moveTo(10, it.y + it.h + 1); ctx.lineTo(w - 10, it.y + it.h + 1); ctx.stroke(); ctx.setLineDash([]);
+        const tc = r.del ? P.faint : P.text, dc = r.del ? P.faint : P.dim;
+        if (it.narrow) {
+          T(ctx, r.what, 18, it.y + 15, { size: 12, color: tc, weight: 700 });
+          if (r.date) T(ctx, r.date, w - 18, it.y + 15, { size: 11, mono: true, color: dc, align: "right" });
+          it.lines.forEach((s, k) => T(ctx, s, 18, it.y + 32 + k * 15, { size: 11, color: dc }));
+        } else {
+          T(ctx, r.what, 18, it.y + 20, { size: 12, color: tc, weight: 700 });
+          if (r.date) T(ctx, r.date, 206, it.y + 20, { size: 11, mono: true, color: dc });
+          it.lines.forEach((s, k) => T(ctx, s, 296, it.y + 20 + k * 16, { size: 12, color: dc }));
+        }
+        if (r.del) {
+          ctx.strokeStyle = P.dim; ctx.lineWidth = 1.2; ctx.beginPath();
+          const ys = it.narrow ? [it.y + 11].concat(it.lines.map((_, k) => it.y + 28 + k * 15)) : it.lines.map((_, k) => it.y + 16 + k * 16);
+          ys.forEach((yy) => { ctx.moveTo(16, yy); ctx.lineTo(w - 16, yy); }); ctx.stroke();
+        }
+        if (on || reveal) { const tag = on && !r.risk ? "괜찮음" : r.risk === 1 ? "위험" : "주의"; T(ctx, tag, w - 18, it.y + it.h - 6, { size: 11, color: col, align: "right", weight: 800 }); }
+        hits.push({ i: it.i, y: it.y, h: it.h });
+      });
+    }, { get height() { const w = pw("reg-cv"); const tmp = document.createElement("canvas").getContext("2d"); return Math.max(...Object.values(DOCS).map((d) => layout(tmp, w, d).total)) + 6; } });
+    EB.drag(cv.canvas, { start(x, y) { const hh = hits.find((b) => y >= b.y && y <= b.y + b.h); if (!hh) return; const mk = marks[docG()]; if (mk.has(hh.i) && picked === hh.i) mk.delete(hh.i); else mk.add(hh.i); picked = hh.i; draw(); } });
+    function draw() {
+      const key = docG(), doc = DOCS[key], mk = marks[key];
+      const total = doc.rows.filter((r) => r.risk).length, found = doc.rows.filter((r, i) => r.risk && mk.has(i)).length;
+      EB.stat("reg-o-n", total ? (found === total ? '<span class="plus">' + found + " / " + total + " 모두 찾음</span>" : found + " / " + total) : '<span class="plus">0 / 0 · 살아 있는 위험 기록 없음</span>');
+      EB.stat("reg-o-t", picked == null ? "줄을 눌러 본다" : doc.rows[picked].note);
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 2. 경매 대금 폭포 */
+  (function () {
+    const pG = EB.range("wf-p", (v) => EB.won(v * 1e8), draw);
+    const rG = EB.seg("wf-r", draw);
+    const dG = EB.range("wf-d", (v) => EB.won(v * 1e8), draw);
+    const PRICE = 3e8;
+    let ar = 0.8, box = null;
+    function calc() {
+      const maxD = pG() * 1e8 * Number(rG()), dep = dG() * 1e8;
+      const r = RE.jeonseRisk({ price: PRICE, deposit: dep, seniorDebt: maxD, drop: 0, auctionRate: ar });
+      return { maxD, dep, r, cost: PRICE * ar - r.sale };
+    }
+    const cv = EB.canvas("#wf-cv", (ctx, w, h) => {
+      const P = EB.palette(), c = calc();
+      const top = 34, base = h - 40, sc = (base - top) / Math.max(PRICE * 1.05, c.maxD + c.dep);
+      const bw = Math.min(90, w * 0.2), x1 = w * 0.18, x2 = w * 0.58;
+      const Y = (v) => base - v * sc;
+      T(ctx, "시세 3억 빌라", x1 + bw / 2, 18, { size: 12, color: P.dim, align: "center", weight: 700 });
+      T(ctx, "배당 순서", x2 + bw / 2, 18, { size: 12, color: P.dim, align: "center", weight: 700 });
+      // 시세 막대 + 낙찰가 선
+      ctx.fillStyle = P.grid; ctx.fillRect(x1, Y(PRICE), bw, PRICE * sc);
+      ctx.fillStyle = P.accent; ctx.globalAlpha = 0.55; ctx.fillRect(x1, Y(PRICE * ar), bw, PRICE * ar * sc); ctx.globalAlpha = 1;
+      const ly = Y(PRICE * ar);
+      ctx.strokeStyle = P.text; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(x1 - 10, ly); ctx.lineTo(x1 + bw + 10, ly); ctx.stroke();
+      knob(ctx, x1 - 10, ly, P, 8);
+      T(ctx, "낙찰 " + Math.round(ar * 100) + "%", x1 + bw / 2, ly - 8, { size: 11, color: P.text, align: "center", weight: 700 });
+      box = { x1, bw, Y, sc, base };
+      // 배당 막대: 아래부터 비용, 선순위, 보증금 회수, (위) 손실
+      let y = base;
+      const seg = (v, col, label, a) => { if (v <= 0) return; const hh = v * sc; ctx.fillStyle = col; ctx.globalAlpha = a || 0.85; ctx.fillRect(x2, y - hh, bw, hh - 1); ctx.globalAlpha = 1; if (hh > 15) T(ctx, label + " " + EB.wonAxis(v), x2 + bw + 8, y - hh / 2, { size: 11, color: P.text, base: "middle" }); y -= hh; };
+      seg(c.cost, P.dim, "경매 비용", 0.5);
+      seg(c.r.toSenior, P.warn, "선순위");
+      seg(c.r.recovered, P.ok, "보증금 회수");
+      if (c.r.loss > 0) {
+        const hh = c.r.loss * sc; ctx.save(); ctx.strokeStyle = P.bad; ctx.setLineDash([4, 3]); ctx.lineWidth = 1.5; ctx.strokeRect(x2 + 0.5, y - hh, bw - 1, hh); ctx.restore();
+        ctx.fillStyle = P.bad; ctx.globalAlpha = 0.15; ctx.fillRect(x2, y - hh, bw, hh); ctx.globalAlpha = 1;
+        T(ctx, "잃는 보증금 " + EB.wonAxis(c.r.loss), x2 + bw + 8, y - hh / 2, { size: 11, color: P.bad, base: "middle", weight: 700 });
+      }
+      // 최고액+보증금 선
+      const ty = Y(c.maxD + c.dep);
+      ctx.save(); ctx.setLineDash([3, 3]); ctx.strokeStyle = P.faint; ctx.beginPath(); ctx.moveTo(x1, ty); ctx.lineTo(x2 + bw, ty); ctx.stroke(); ctx.restore();
+      T(ctx, "최고액 + 보증금", x1 + bw + 6, ty - 4, { size: 10, color: P.faint });
+      ctx.strokeStyle = P.axis; ctx.beginPath(); ctx.moveTo(10, base); ctx.lineTo(w - 10, base); ctx.stroke();
+    }, { get height() { return pw("wf-cv") < 480 ? 300 : 320; } });
+    EB.drag(cv.canvas, { move(x, y) { if (!box) return; ar = EB.clamp(Math.round((box.base - y) / box.sc / PRICE * 100) / 100, 0.3, 1); draw(); } });
+    function draw() {
+      const c = calc();
+      EB.stat("wf-o-m", EB.won(c.maxD));
+      const ratio = (c.maxD + c.dep) / PRICE;
+      EB.stat("wf-o-r", '<span class="' + (ratio > 0.9 ? "minus" : "") + '">' + Math.round(ratio * 100) + "%</span>");
+      EB.stat("wf-o-b", EB.won(c.r.recovered) + (c.r.loss > 0 ? ' <small class="minus">(−' + EB.won(c.r.loss) + ")</small>" : ""));
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 3. 순위 타임라인 */
+  (function () {
+    // 시간 단위: 시(hour), 0 = D일 0시. 범위 D-1 0시 ~ D+3 0시
+    const T0 = 0, T1 = 72;
+    const mk = { move: 14, fix: 15, mort: 10 };     // 이사·전입(D 14시), 확정일자(D 15시), 근저당 접수(D 10시)
+    let L = null, drag = null;
+    const PINY = [-13, 1, 15], KEYS = ["mort", "move", "fix"];
+    const dayOf = (t) => Math.floor(t / 24);
+    const dname = (d) => d === 0 ? "D일" : d > 0 ? "D+" + d + "일" : "D" + d + "일";
+    const fmt = (t) => dname(dayOf(t)) + " " + (t - dayOf(t) * 24) + "시";
+    function calc() {
+      const opp = (dayOf(mk.move) + 1) * 24;                 // 다음 날 0시
+      const prior = Math.max(opp, mk.fix);                    // 확정일자를 받은 시각과 대항력 중 늦은 쪽
+      const order = mk.mort < prior ? "bank" : "me";
+      return { opp, prior, order };
+    }
+    const cv = EB.canvas("#tl-cv", (ctx, w, h) => {
+      const P = EB.palette(), c = calc();
+      const x0 = 20, x1 = w - 20, X = (t) => x0 + (t - T0) / (T1 - T0) * (x1 - x0);
+      const ay = 70;
+      L = { X, x0, x1, ay };
+      // 날짜 띠
+      for (let d = 0; d < 3; d++) {
+        ctx.fillStyle = d % 2 ? P.grid : P.surface; ctx.fillRect(X(d * 24), ay - 22, X(24) - X(0), 44);
+        T(ctx, dname(d), X(d * 24 + 12), ay - 30, { size: 11, color: d === 0 ? P.text : P.dim, align: "center", weight: d === 0 ? 700 : 400 });
+        ctx.strokeStyle = P.axis; ctx.beginPath(); ctx.moveTo(X(d * 24), ay - 22); ctx.lineTo(X(d * 24), ay + 22); ctx.stroke();
+        T(ctx, "0시", X(d * 24) + 3, ay + 18, { size: 9, color: P.faint });
+      }
+      T(ctx, "잔금일", X(12), 18, { size: 11, color: P.accent2, align: "center", weight: 700 });
+      // 효력 구간 막대
+      const by = ay + 46;
+      const bar = (t, col, label, row) => {
+        const yy = by + row * 26;
+        ctx.fillStyle = col; ctx.globalAlpha = 0.75; ctx.fillRect(X(Math.min(t, T1)), yy, Math.max(0, x1 - X(Math.min(t, T1))), 10); ctx.globalAlpha = 1;
+        const tx = X(Math.min(t, T1));
+        const right = tx > w * 0.55;
+        T(ctx, label, right ? tx - 6 : tx + 4, yy + 22, { size: 11, color: col, align: right ? "right" : "left", weight: 700 });
+      };
+      bar(mk.mort, P.bad, "근저당 효력(접수 즉시)", 0);
+      bar(c.opp, P.accent, "대항력(전입 다음 날 0시)", 1);
+      bar(c.prior, P.ok, "우선변제권(대항력 + 확정일자)", 2);
+      // 표식
+      const pin = (t, col, label, k) => {
+        const x = X(t), y = ay - 6 + k * 0; ctx.strokeStyle = col; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(x, ay - 22); ctx.lineTo(x, ay + 22); ctx.stroke();
+        const py = ay + PINY[k];
+        knob(ctx, x, py, P, 8);
+        ctx.beginPath(); ctx.arc(x, py, 4.5, 0, TAU); ctx.fillStyle = col; ctx.fill();
+        void y; void label;
+      };
+      pin(mk.mort, P.bad, "근저당", 0); pin(mk.move, P.accent, "전입", 1); pin(mk.fix, P.ok, "확정일자", 2);
+      // 범례
+      const ly = h - 36;
+      let lx = 16;
+      [["● 근저당 접수", P.bad], ["● 이사·전입신고", P.accent], ["● 확정일자", P.ok]].forEach(([s, col]) => { T(ctx, s, lx, ly, { size: 11, color: col, weight: 700 }); ctx.font = EB.font(11, false, 700); lx += ctx.measureText(s).width + 14; });
+      T(ctx, c.order === "bank" ? "경매 때 은행이 먼저" : "경매 때 세입자가 먼저", 16, ly - 20 - (lx > w - 20 ? 0 : 0), { size: 13, color: c.order === "bank" ? P.bad : P.ok, weight: 800 });
+    }, { get height() { return pw("tl-cv") < 480 ? 262 : 246; } });
+    EB.drag(cv.canvas, {
+      start(x, y) { if (!L) return; let bd = Infinity; drag = null; KEYS.forEach((k, i) => { const d = Math.hypot(L.X(mk[k]) - x, (L.ay + PINY[i] - y) * 1.5); if (d < bd) { bd = d; drag = k; } }); },
+      move(x) { if (!L || !drag) return; let t = (x - L.x0) / (L.x1 - L.x0) * (T1 - T0) + T0; t = EB.clamp(Math.round(t), T0 + 9, T1 - 7); const hr = ((t % 24) + 24) % 24; if (hr < 9) t += 9 - hr; if (hr > 17) t -= hr - 17; mk[drag] = t; draw(); },
+      end() { drag = null; },
+    });
+    function draw() {
+      const c = calc();
+      EB.stat("tl-o-a", fmt(c.opp).replace(" 0시", " 0시"));
+      EB.stat("tl-o-p", fmt(c.prior));
+      EB.stat("tl-o-o", c.order === "bank" ? '<span class="minus">근저당(은행) → 세입자</span>' : '<span class="plus">세입자 → 근저당(은행)</span>');
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 4. 최우선변제 */
+  (function () {
+    const regG = EB.seg("st-reg", draw);
+    const sG = EB.range("st-s", (v) => EB.won(v * 1e8), draw);
+    let dep = 1.6e8, box = null;
+    const tbl = () => RE.KR.smallTenant.find((r) => r.key === regG());
+    function prio(d) { const t = tbl(); if (d > t.limit) return 0; return Math.min(t.priority, d, sG() * 1e8 * RE.KR.smallTenantShareCap); }
+    const cv = EB.canvas("#st-cv", (ctx, w, h) => {
+      const P = EB.palette(), t = tbl();
+      const xs = []; for (let d = 0; d <= 2.5e8; d += 1e6) xs.push(d);
+      const c = EB.chart(ctx, { x: 58, y: 22, w: w - 76, h: h - 80 }, {
+        x: [0, 2.5e8], y: [0, 6e7], xTicks: [0, 5e7, 1e8, 1.5e8, 2e8, 2.5e8], xFmt: (v) => v === 0 ? "0" : EB.wonAxis(v), yTicks: [0, 2e7, 4e7, 6e7], yFmt: EB.wonAxis,
+        series: [{ data: xs.map((d) => [d, prio(d)]), color: P.ok, width: 2.8 }],
+        vlines: [{ x: t.limit, color: P.bad, label: "기준 " + EB.wonAxis(t.limit) }],
+        hlines: [{ y: sG() * 1e8 * RE.KR.smallTenantShareCap, color: P.warn, label: "배당 금액의 1/2" }],
+      });
+      box = c;
+      T(ctx, "먼저 받는 금액", 60, 14, { size: 11, color: P.dim });
+      const p = prio(dep);
+      ctx.beginPath(); ctx.arc(c.X(dep), c.Y(p), 5, 0, TAU); ctx.fillStyle = p > 0 ? P.ok : P.bad; ctx.fill();
+      knob(ctx, c.X(dep), c.box.y + c.box.h, P);
+      if (dep > t.limit) T(ctx, "기준 초과: 0원", Math.min(c.X(dep) + 8, c.box.x + c.box.w - 90), c.Y(0) - 10, { size: 11, color: P.bad, weight: 700 });
+    }, { get height() { return pw("st-cv") < 480 ? 270 : 290; } });
+    EB.drag(cv.canvas, { move(x) { if (!box) return; dep = EB.clamp(Math.round((x - box.box.x) / box.box.w * 2.5e8 / 1e6) * 1e6, 1e7, 2.5e8); draw(); } });
+    function draw() {
+      const t = tbl(), p = prio(dep);
+      EB.stat("st-o-y", dep <= t.limit ? '<span class="plus">해당(' + EB.won(dep) + ")</span>" : '<span class="minus">아님(' + EB.won(dep) + ")</span>");
+      EB.stat("st-o-p", EB.won(p));
+      EB.stat("st-o-r", Math.round(p / dep * 100) + "%");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 5. HUG 요건 */
+  (function () {
+    const H = RE.KR.hug;
+    const typeG = EB.seg("hug-type", draw);
+    const regG = EB.seg("hug-reg", draw);
+    const vG = EB.range("hug-v", (v) => EB.won(v * 1e8), draw);
+    const sG = EB.range("hug-s", (v) => (v ? EB.won(v * 1e8) : "없음"), draw);
+    const dG = EB.range("hug-d", (v) => EB.won(v * 1e8), draw);
+    function calc() {
+      const v = vG() * 1e8, apt = typeG() === "apt";
+      const house = apt ? v : v * H.publicMult;
+      const cap = house * H.ratio, used = sG() * 1e8 + dG() * 1e8;
+      const lim = regG() === "metro" ? H.capMetro : H.capOther;
+      const okRatio = used <= cap + 1, okLim = dG() * 1e8 <= lim;
+      return { v, house, cap, used, lim, okRatio, okLim, apt };
+    }
+    const cv = EB.canvas("#hug-cv", (ctx, w, h) => {
+      const P = EB.palette(), c = calc();
+      const max = Math.max(c.house, c.used, c.lim) * 1.08, x0 = 16, bw = w - 32, sc = bw / max;
+      const row = (y, label) => T(ctx, label, x0, y - 8, { size: 12, color: P.dim, weight: 700 });
+      let y = 40;
+      row(y, c.apt ? "인정 주택가격 = 시세" : "인정 주택가격 = 공시가격 × 140%");
+      ctx.fillStyle = P.grid; ctx.fillRect(x0, y, c.house * sc, 26);
+      ctx.fillStyle = P.accent; ctx.globalAlpha = 0.6; ctx.fillRect(x0, y, c.cap * sc, 26); ctx.globalAlpha = 1;
+      T(ctx, "90% = " + EB.wonAxis(c.cap), x0 + 6, y + 13, { size: 11, color: "#fff", base: "middle", weight: 700 });
+      if (!c.apt) T(ctx, "(공시가격의 126%)", Math.min(x0 + c.cap * sc + 6, w - 110), y + 13, { size: 10, color: P.dim, base: "middle" });
+      y += 72;
+      row(y, "선순위 채권 + 보증금");
+      const s = sG() * 1e8, d = dG() * 1e8;
+      ctx.fillStyle = P.warn; ctx.globalAlpha = 0.8; ctx.fillRect(x0, y, s * sc, 26);
+      ctx.fillStyle = P.accent2; ctx.fillRect(x0 + s * sc, y, d * sc, 26); ctx.globalAlpha = 1;
+      if (d * sc > 70) T(ctx, "보증금 " + EB.wonAxis(d), x0 + s * sc + 6, y + 13, { size: 11, color: "#fff", base: "middle", weight: 700 });
+      // 한도선
+      const cx = x0 + c.cap * sc;
+      ctx.save(); ctx.setLineDash([4, 3]); ctx.strokeStyle = c.okRatio ? P.ok : P.bad; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(cx, 34); ctx.lineTo(cx, y + 34); ctx.stroke(); ctx.restore();
+      const lx = x0 + c.lim * sc;
+      ctx.save(); ctx.setLineDash([2, 3]); ctx.strokeStyle = P.text; ctx.globalAlpha = 0.6; ctx.beginPath(); ctx.moveTo(lx, y - 4); ctx.lineTo(lx, y + 52); ctx.stroke(); ctx.restore();
+      T(ctx, "보증금 한도 " + EB.wonAxis(c.lim), Math.min(lx, w - 16), y + 50, { size: 10, color: P.dim, align: lx > w * 0.6 ? "right" : "left" });
+      const msg = c.okRatio && c.okLim ? "핵심 요건 충족" : !c.okRatio ? "선순위 + 보증금이 한도를 넘음" : "보증금이 지역 한도를 넘음";
+      T(ctx, msg, x0, h - 16, { size: 13, color: c.okRatio && c.okLim ? P.ok : P.bad, weight: 800 });
+    }, { get height() { return 200; } });
+    function draw() {
+      const c = calc();
+      document.getElementById("hug-v-lbl").firstChild.textContent = (c.apt ? "시세" : "공시가격") + " ";
+      EB.stat("hug-o-c", EB.won(c.cap));
+      EB.stat("hug-o-u", EB.won(c.used));
+      EB.stat("hug-o-j", c.okRatio && c.okLim ? '<span class="plus">가입 가능(핵심 요건)</span>' : '<span class="minus">가입 어려움</span>');
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 6. 하늘네 종합 점검 */
+  (function () {
+    const optG = EB.seg("case-opt", draw);
+    const aG = EB.range("case-a", (v) => v + "%", draw);
+    const mEl = document.getElementById("case-m");
+    mEl.addEventListener("change", draw);
+    const PRICE = C.home.price, NEWM = 1.2e8;
+    let drop = 0.2, box = null;
+    // 순서: 원래 보증금(2025-04 확정일자) → [새 근저당] → 갱신 증액분(새 확정일자)
+    function calc(dr) {
+      const opt = optG(), base = opt === "half" ? 2e8 : C.home.jeonse, extra = opt === "renew" ? C.home.jeonse * RE.KR.renewal.cap : 0;
+      const dep = base + extra;
+      const r = RE.jeonseRisk({ price: PRICE, deposit: dep, seniorDebt: 0, drop: dr, auctionRate: aG() / 100 });
+      let left = r.sale;
+      const gBase = Math.min(base, left); left -= gBase;
+      const mort = mEl.checked ? Math.min(NEWM, left) : 0; left -= mort;
+      const gExtra = Math.min(extra, left);
+      const rec = gBase + gExtra;
+      return { dep, value: r.value, sale: r.sale, rec, loss: dep - rec, rate: rec / dep, extra, gExtra };
+    }
+    const cv = EB.canvas("#case-cv", (ctx, w, h) => {
+      const P = EB.palette();
+      const xs = []; for (let d = 0; d <= 0.5001; d += 0.01) xs.push(d);
+      const c = EB.chart(ctx, { x: 50, y: 24, w: w - 66, h: h - 80 }, {
+        x: [0, 0.5], y: [0, 1.05], xTicks: [0, 0.1, 0.2, 0.3, 0.4, 0.5], xFmt: (v) => (v ? "−" : "") + Math.round(v * 100) + "%", yTicks: [0, 0.25, 0.5, 0.75, 1], yFmt: (v) => Math.round(v * 100) + "%",
+        series: [{ data: xs.map((d) => [d, calc(d).rate]), color: P.accent, width: 2.8 }],
+        hlines: [{ y: 1, color: P.ok, label: "전액 회수" }],
+      });
+      box = c;
+      T(ctx, "보증금 회수율", 56, 14, { size: 11, color: P.dim });
+      T(ctx, "가로축: 집값 하락", w - 16, 14, { size: 11, color: P.dim, align: "right" });
+      const k = calc(drop);
+      ctx.save(); ctx.setLineDash([3, 3]); ctx.strokeStyle = P.text; ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.moveTo(c.X(drop), c.box.y + c.box.h); ctx.lineTo(c.X(drop), c.Y(k.rate)); ctx.stroke(); ctx.restore();
+      ctx.beginPath(); ctx.arc(c.X(drop), c.Y(k.rate), 5, 0, TAU); ctx.fillStyle = k.rate < 0.999 ? P.bad : P.ok; ctx.fill();
+      knob(ctx, c.X(drop), c.box.y + c.box.h, P);
+    }, { get height() { return pw("case-cv") < 480 ? 280 : 300; } });
+    EB.drag(cv.canvas, { move(x) { if (!box) return; drop = EB.clamp(Math.round((x - box.box.x) / box.box.w * 0.5 * 100) / 100, 0, 0.5); draw(); } });
+    function draw() {
+      const k = calc(drop), H = RE.KR.hug;
+      EB.stat("case-o-v", EB.won(k.value) + ' <small style="color:var(--text-faint)">(−' + Math.round(drop * 100) + "%)</small>");
+      EB.stat("case-o-r", EB.won(k.rec) + " · " + Math.round(k.rate * 1000) / 10 + "%");
+      EB.stat("case-o-l", k.loss > 1 ? '<span class="minus">' + man(k.loss) + (k.extra && k.gExtra < k.extra ? " (증액분부터)" : "") + "</span>" : '<span class="plus">0원</span>');
+      const senior = mEl.checked && optG() === "renew" ? NEWM : 0;
+      const ok = k.dep + 0 <= PRICE * H.ratio && k.dep <= H.capMetro;
+      EB.stat("case-o-h", (ok ? '<span class="plus">충족</span>' : '<span class="minus">미충족</span>') + ' <small style="color:var(--text-faint)">(' + EB.wonAxis(k.dep) + " ≤ " + EB.wonAxis(PRICE * H.ratio) + ")</small>");
+      void senior;
+      cv.redraw();
+    }
+    draw();
+  })();
+})();
+</script>
+</body>
+</html>
