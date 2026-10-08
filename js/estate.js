@@ -376,6 +376,7 @@
    * 가격 편차 x_t = 수요 충격 s_t − (lag년 전 가격에 반응해 착공된 물량이 지금 준공된 양)
    * o: {years, lag(착공→준공, 년), k(공급 반응 ÷ 수요 기울기, 1보다 크면 진동이 커진다), shockYear, shock, demandTrend}
    * 반환: 분기마다 [{t(년), price(1=균형), starts, completions}]
+   * starts·completions는 재고가 아니라 흐름의 편차(무차원)다. 세대수로 바꾸려면 장마다 비율을 정한다. 충격은 shockYear부터 계속된다.
    */
   RE.cobweb = function (o) {
     o = Object.assign({ years: 30, lag: 3, k: 0.8, shockYear: 2, shock: 0.15, demandTrend: 0 }, o || {});
@@ -430,7 +431,7 @@
   /**
    * 레버리지와 자기자본수익률.
    * o: {price, equity, rate(대출 금리), growth(연 집값 변화, 기댓값), rent(연 순임대수입), holdCost(연 보유비용), deposit(세입자 보증금, 무이자 부채), years, sigma(연 변동성), n, seed}
-   * 대출 = price − equity − deposit. 반환: {loan, gain, interest, roe(연, 결정론), sims:{roe:[정렬된 연평균], lossShare, wipeShare, mean}}
+   * 대출 = price − equity − deposit(원금 상환 없이 이자만 계산). 반환: {loan, gain, interest, roe(연, 결정론), multiple, sims:{total:[기간 전체 자기자본 수익률, 정렬], lossShare, wipeShare, median, mean}}
    */
   RE.leverage = function (o) {
     const deposit = o.deposit || 0, loan = Math.max(0, o.price - o.equity - deposit);
