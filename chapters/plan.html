@@ -1,0 +1,970 @@
+<!doctype html>
+<!-- Copyright (c) 2026 geniuskey and EstateBook contributors.
+     Executable code: MIT (see ../LICENSE-MIT).
+     Text, illustrations, questions and explanations: CC-BY-4.0 (see ../LICENSE.md). -->
+<html lang="ko">
+<head>
+<!--head:start {"desc": "자금 계획표와 감당 가능한 가격 역산, 금리 스트레스 테스트, 지역·시점 선택 기준, 잔금일과 전세 만기 맞추기, 갈아타기와 일시적 2주택, 계획을 무너뜨리는 위험까지. 하늘네가 두 길을 모두 계산하고 하나를 고른다."}-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>내 집 마련 계획 · EstateBook</title>
+<meta name="description" content="자금 계획표와 감당 가능한 가격 역산, 금리 스트레스 테스트, 지역·시점 선택 기준, 잔금일과 전세 만기 맞추기, 갈아타기와 일시적 2주택, 계획을 무너뜨리는 위험까지. 하늘네가 두 길을 모두 계산하고 하나를 고른다.">
+<link rel="canonical" href="https://estatebook.euiyun.com/chapters/plan.html">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<meta name="theme-color" content="#0f766e">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EstateBook">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="내 집 마련 계획 · EstateBook">
+<meta property="og:description" content="자금 계획표와 감당 가능한 가격 역산, 금리 스트레스 테스트, 지역·시점 선택 기준, 잔금일과 전세 만기 맞추기, 갈아타기와 일시적 2주택, 계획을 무너뜨리는 위험까지. 하늘네가 두 길을 모두 계산하고 하나를 고른다.">
+<meta property="og:url" content="https://estatebook.euiyun.com/chapters/plan.html">
+<meta property="og:image" content="https://estatebook.euiyun.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Chapter","LearningResource"],"@id":"https://estatebook.euiyun.com/chapters/plan.html#chapter","name":"내 집 마련 계획","headline":"내 집 마련 계획 · EstateBook","description":"자금 계획표와 감당 가능한 가격 역산, 금리 스트레스 테스트, 지역·시점 선택 기준, 잔금일과 전세 만기 맞추기, 갈아타기와 일시적 2주택, 계획을 무너뜨리는 위험까지. 하늘네가 두 길을 모두 계산하고 하나를 고른다.","url":"https://estatebook.euiyun.com/chapters/plan.html","position":21,"inLanguage":"ko","isAccessibleForFree":true,"learningResourceType":"인터랙티브 교재","educationalLevel":"일반 성인","image":"https://estatebook.euiyun.com/og.png","dateModified":"2026-10-08","isPartOf":{"@type":"Book","@id":"https://estatebook.euiyun.com/#book","name":"EstateBook · 집값과 전세를 숫자로 푸는 부동산 교과서","url":"https://estatebook.euiyun.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"EstateBook","item":"https://estatebook.euiyun.com/"},{"@type":"ListItem","position":2,"name":"21. 내 집 마련 계획","item":"https://estatebook.euiyun.com/chapters/plan.html"}]}]}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../css/style.css">
+<script src="../js/common.js"></script>
+<script src="../js/estate.js"></script>
+<!--head:end-->
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3d6151a0abc94ede89285d462527fa80"}'></script>
+<!-- End Cloudflare Web Analytics -->
+</head>
+<body data-chapter="plan">
+<main class="chapter">
+  <header class="chapter-hero">
+    <div class="eyebrow">Chapter 21</div>
+    <h1>내 집 마련 계획</h1>
+    <p class="lead">사기로 했다면 그다음 질문은 훨씬 구체적이다. 얼마짜리 집까지 사도 되는가. 그 돈은 어디서 오고, 잔금일 하루에 어떤 순서로 움직이는가. 은행이 빌려주겠다는 돈과 우리가 갚을 수 있는 돈은 같은가. 금리가 2%p 오르거나, 둘 중 한 사람이 육아휴직을 하거나, 산 뒤 집값이 20% 내리면 우리 생활은 버티는가. 이 장은 지난 스무 장의 도구를 한 장의 계획표로 모은다. 계획은 집값을 맞히는 일이 아니라, 맞히지 못해도 무너지지 않게 짜는 일이다. 그리고 이 책의 마지막 하늘네 집 노트에서, 하늘네는 두 길을 모두 계산한 뒤 하나를 고른다.</p>
+    <ul class="objectives">
+      <li>자기 돈·대출·거래비용·비상금으로 자금 계획표를 짜고, 잔금일에 돈이 어떻게 흐르는지 그린다.</li>
+      <li>월 상환 한도(실수령 × 비율)와 비상금 6개월을 지키는 최대 가격을 역산하고, 금리 +2%p 스트레스로 다시 확인한다.</li>
+      <li>은행의 대출 한도(LTV·DSR)와 내가 감당할 한도가 다르다는 것을 숫자로 구분한다.</li>
+      <li>지역과 시점을 고르는 기준을 정리하고, 시점을 맞히려는 전략이 무엇을 대가로 치르는지 본다.</li>
+      <li>잔금일과 전세 만기, 갈아타기의 일시적 2주택 처분 기한을 타임라인으로 맞춘다.</li>
+      <li>금리 상승, 소득 감소, 집값 하락, 잔금 대출 실패가 계획을 어디서 무너뜨리는지 시험한다.</li>
+    </ul>
+  </header>
+
+  <section id="order">
+    <h2>계획의 순서: 돈에서 시작해 일정으로 끝난다</h2>
+    <p>많은 사람이 집 마련을 매물에서 시작한다. 마음에 드는 집을 보고, 그 값에 맞춰 대출을 알아보고, 모자라는 돈을 어떻게든 메운다. 이 순서로 가면 집값이 계획을 정한다. 이 장은 순서를 거꾸로 한다. 먼저 우리 돈이 얼마이고 매달 얼마를 갚을 수 있는지에서 감당할 가격을 거꾸로 계산하고, 그 가격으로 살 수 있는 지역과 시점을 고르고, 마지막으로 잔금일과 전세 만기를 맞춘다. 그리고 각 단계에서 "이것이 틀리면 어떻게 되는가"를 묻는다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 460 300" role="img" aria-label="내 집 마련 계획의 여섯 단계: 내 돈, 감당 가격, 지역과 시점, 일정, 스트레스, 결정">
+        <defs><marker id="pl-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="context-stroke"/></marker></defs>
+        <rect x="10" y="12" width="135" height="66" rx="8" class="f-acc-soft"/>
+        <text x="77" y="38" text-anchor="middle" class="lbl-acc">① 내 돈</text>
+        <text x="77" y="58" text-anchor="middle" class="lbl-dim">보증금·예금·비상금</text>
+        <rect x="162" y="12" width="135" height="66" rx="8" class="f-surface"/>
+        <text x="229" y="38" text-anchor="middle" class="lbl-b">② 감당 가격</text>
+        <text x="229" y="58" text-anchor="middle" class="lbl-dim">월 상환 한도 역산</text>
+        <rect x="314" y="12" width="136" height="66" rx="8" class="f-surface"/>
+        <text x="382" y="38" text-anchor="middle" class="lbl-b">③ 은행 한도</text>
+        <text x="382" y="58" text-anchor="middle" class="lbl-dim">LTV·DSR은 상한일 뿐</text>
+        <rect x="314" y="118" width="136" height="66" rx="8" class="f-surface"/>
+        <text x="382" y="144" text-anchor="middle" class="lbl-b">④ 지역·시점</text>
+        <text x="382" y="164" text-anchor="middle" class="lbl-dim">맞히지 말고 맞추기</text>
+        <rect x="162" y="118" width="135" height="66" rx="8" class="f-surface"/>
+        <text x="229" y="144" text-anchor="middle" class="lbl-b">⑤ 일정</text>
+        <text x="229" y="164" text-anchor="middle" class="lbl-dim">잔금일 = 만기일</text>
+        <rect x="10" y="118" width="135" height="66" rx="8" class="f-warn-soft"/>
+        <text x="77" y="144" text-anchor="middle" class="lbl-b">⑥ 스트레스</text>
+        <text x="77" y="164" text-anchor="middle" class="lbl-dim">금리·소득·집값·대출</text>
+        <path d="M147 45 L158 45" class="s-line" marker-end="url(#pl-ar)"/>
+        <path d="M299 45 L310 45" class="s-line" marker-end="url(#pl-ar)"/>
+        <path d="M382 80 L382 114" class="s-line" marker-end="url(#pl-ar)"/>
+        <path d="M312 151 L301 151" class="s-line" marker-end="url(#pl-ar)"/>
+        <path d="M160 151 L149 151" class="s-line" marker-end="url(#pl-ar)"/>
+        <rect x="100" y="222" width="260" height="62" rx="8" class="f-acc2-soft"/>
+        <text x="230" y="247" text-anchor="middle" class="lbl-acc2">결정 또는 처음으로</text>
+        <text x="230" y="267" text-anchor="middle" class="lbl-dim">버티면 계약, 무너지면 ②로 돌아간다</text>
+        <path d="M77 186 L140 220" class="s-line" marker-end="url(#pl-ar)"/>
+      </svg>
+      <figcaption><b>그림 1. 계획의 순서.</b> 은행이 빌려주는 한도(③)는 ② 다음에 확인한다. 은행 한도는 "이 이상은 안 된다"는 상한이지 "이만큼 빌려도 된다"는 권고가 아니기 때문이다. 마지막 스트레스 시험에서 계획이 무너지면 가격을 낮추거나, 비상금을 늘리거나, 시점을 미루고 ②로 돌아간다.</figcaption>
+    </figure>
+  </section>
+
+  <section id="budget">
+    <h2>자금 계획표: 돈은 어디서 와서 어디로 가는가</h2>
+    <p><span class="term">자금 계획표</span><span class="en">(Funding plan)</span>는 잔금일에 들어오는 돈과 나가는 돈을 한 줄씩 적은 표다. 하늘네처럼 전세에서 매매로 옮기는 가족은 들어오는 돈이 세 갈래다. 전세 보증금을 돌려받는 돈, 그동안 모은 예금, 새로 받는 주택담보대출이다. 나가는 돈도 집값만이 아니다. <a href="buy.html">8장</a>에서 본 취득세·중개보수·법무비, 이사비와 수리비가 붙는다. 그리고 계획표에서 가장 자주 빠지는 줄이 있다. 잔금을 치르고 난 뒤에도 손대지 않고 남겨 둘 <span class="term">비상금</span><span class="en">(Emergency fund)</span>이다. 이 장은 비상금을 월 생활비 6개월로 잡는다. 하늘네는 400만원 × 6 = 2,400만원이다.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>구분</th><th>항목</th><th class="num">하늘네(6억원 매수 가정)</th><th>근거</th></tr></thead>
+        <tbody>
+          <tr><td>들어오는 돈</td><td>전세 보증금 반환</td><td class="num">4억원</td><td>2027년 4월 만기, 집주인이 반환</td></tr>
+          <tr><td></td><td>전세대출 상환</td><td class="num">−2억원</td><td>보증금에서 은행으로 바로 간다</td></tr>
+          <tr><td></td><td>예금·투자</td><td class="num">약 9,630만원</td><td>지금 8,000만원 + 6개월 저축(1장)</td></tr>
+          <tr><td></td><td>주택담보대출</td><td class="num">3억 4,400만원</td><td>아래에서 역산</td></tr>
+          <tr><td>나가는 돈</td><td>매매대금</td><td class="num">−6억원</td><td>계약금·중도금·잔금 합</td></tr>
+          <tr><td></td><td>취득세·지방교육세</td><td class="num">−460만원</td><td>1%, 생애최초 감면 200만원 반영</td></tr>
+          <tr><td></td><td>중개보수</td><td class="num">−240만원</td><td>상한 0.4%(부가세 별도)</td></tr>
+          <tr><td></td><td>법무비·등기</td><td class="num">−120만원</td><td>교육용 0.2%</td></tr>
+          <tr><td></td><td>이사·수리</td><td class="num">−700만원</td><td>이사 200만원 + 수리 500만원(교육용)</td></tr>
+          <tr><td>남는 돈</td><td>비상금</td><td class="num">약 2,510만원</td><td>목표 2,400만원(생활비 6개월) 이상</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>표의 숫자를 막대로 쌓으면 돈의 흐름이 보인다. 아래 폭포 그래프는 위에서부터 들어오는 돈(초록)을 쌓고 나가는 돈(빨강)을 뺀다. 마지막 막대가 잔금 뒤에 남는 돈이고, 점선은 비상금 목표다. 집값과 대출액을 바꿔 마지막 막대가 점선 아래로 내려가는 지점을 찾는다.</p>
+
+    <div class="sim" id="sim-fund">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>잔금일의 자금 폭포</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="fund-cv"></canvas></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>집값 <output id="fund-p-out"></output></span><input type="range" id="fund-p" min="4.5" max="7.5" step="0.1" value="6"></label>
+          <label class="ctrl"><span>주택담보대출 <output id="fund-l-out"></output></span><input type="range" id="fund-l" min="1.5" max="4.5" step="0.01" value="3.44"></label>
+          <label class="ctrl"><span>비상금 목표(생활비 개월) <output id="fund-e-out"></output></span><input type="range" id="fund-e" min="0" max="12" step="1" value="6"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">거래비용 합계</span><span class="v" id="fund-o-c">—</span></div>
+        <div class="stat"><span class="k">잔금 뒤 남는 돈</span><span class="v" id="fund-o-r">—</span></div>
+        <div class="stat"><span class="k">비상금 목표 대비</span><span class="v" id="fund-o-g">—</span></div>
+        <div class="stat"><span class="k">LTV</span><span class="v" id="fund-o-l">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 기본값(6억원, 대출 3억 4,400만원)에서 잔금 뒤 약 2,510만원이 남아 비상금 목표 2,400만원을 넘는다. ② 집값을 6억 5,000만원으로 올린다. 대출을 그대로 두면 남는 돈이 마이너스가 된다. 대출을 늘려 메우면 비상금은 지키지만 다음 절의 월 상환 한도에 걸린다. ③ 대출을 4억 5,000만원까지 올린다. 집값 6억원이면 LTV가 70%를 넘어 비규제지역에서도 받을 수 없는 대출이 된다. (2026년 기준 취득세 1~3%와 생애최초 감면 최대 200만원, 중개보수 상한 요율, 법무비 0.2%, 이사 200만원·수리 500만원(교육용)을 넣었다. 85㎡ 이하라 농어촌특별세는 없다.)</div>
+    </div>
+
+    <p>폭포에서 보듯 잔금일의 돈은 거의 전부가 빌린 돈과 맡긴 돈이다. 하늘네가 내는 6억원 가운데 3억 4,400만원은 은행에서, 2억원은 집주인에게 맡겼던 보증금에서, 나머지가 예금에서 온다. 이 셋 중 하나라도 잔금일에 제때 들어오지 않으면 계획 전체가 멈춘다. 그래서 자금 계획표는 금액뿐 아니라 '언제 들어오는가'까지 적어야 한다. 이 문제는 아래 잔금일 절에서 다시 본다.</p>
+  </section>
+
+  <section id="afford">
+    <h2>감당 가능한 가격 역산</h2>
+    <p>은행은 소득과 집값으로 대출 한도를 정한다. <a href="mortgage.html">9장</a>에서 본 <span class="term">LTV</span>(집값 대비 대출 비율)와 <span class="term">DSR</span>(연소득 대비 모든 대출의 연 원리금 비율)이다. 하지만 그 한도는 우리 가족의 생활비를 모른다. 은행 기준의 DSR 40%는 세전 연소득에 대한 비율이라, 실수령으로 바꾸면 훨씬 큰 몫이 된다. 그래서 감당할 가격은 반대 방향으로 구한다. 먼저 매달 갚아도 생활이 무너지지 않는 금액, 곧 <span class="term">월 상환 한도</span>를 정하고, 그 금액으로 빌릴 수 있는 원금을 구한 다음, 비상금을 남기고 쓸 수 있는 내 돈을 더한다.</p>
+
+    <div class="formula">
+      $$P_{\max} = \underbrace{(A - S - T)}_{\text{쓸 수 있는 내 돈}} + \underbrace{\mathrm{PV}\!\left(r,\, n,\; \rho \cdot Y\right)}_{\text{갚을 수 있는 대출}}$$
+      <div class="where">\(A\) 잔금일에 가진 돈(보증금 중 내 몫 + 예금), \(S\) 남겨 둘 비상금, \(T\) 거래비용, \(Y\) 월 실수령, \(\rho\) 월 상환 한도 비율, \(r\) 대출 금리, \(n\) 상환 개월 수. PV는 매달 \(\rho Y\)씩 \(n\)개월 갚을 수 있는 원금이다. 이렇게 구한 \(P_{\max}\)가 LTV·DSR 한도보다 크면 은행 한도가, 작으면 우리 한도가 먼저 걸린다.</div>
+    </div>
+
+    <p>아래 그래프의 가로축은 집값, 세로축은 그 집을 사려면 매달 갚아야 하는 원리금이다. 집값이 오를수록 비상금을 지키며 쓸 수 있는 내 돈은 그대로이고 거래비용은 늘어나니, 대출과 월 상환이 빠르게 커진다. 가로 점선은 월 상환 한도다. 손잡이를 끌어 한도를 실수령의 몇 %로 할지 정한다. 곡선이 점선과 만나는 곳이 감당 가능한 최대 가격이다.</p>
+
+    <div class="sim" id="sim-aff">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>월 상환 한도에서 집값을 거꾸로</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="aff-cv"></canvas><span class="hint">오른쪽 손잡이를 위아래로 끈다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>대출 금리 <output id="aff-r-out"></output></span><input type="range" id="aff-r" min="3" max="7" step="0.1" value="4"></label>
+          <label class="ctrl"><span>비상금(생활비 개월) <output id="aff-e-out"></output></span><input type="range" id="aff-e" min="0" max="12" step="1" value="6"></label>
+          <label class="check"><input type="checkbox" id="aff-s" checked> 금리 +2%p 스트레스 곡선 보기</label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k" id="aff-o-hk">월 상환 한도(실수령 30%)</span><span class="v" id="aff-o-h">—</span></div>
+        <div class="stat"><span class="k">감당 가능한 최대 가격</span><span class="v" id="aff-o-p">—</span></div>
+        <div class="stat"><span class="k">+2%p에서도 지키는 가격</span><span class="v" id="aff-o-s">—</span></div>
+        <div class="stat"><span class="k">은행 한도로 본 가격(LTV·DSR)</span><span class="v" id="aff-o-b">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 기본값(금리 4%, 비상금 6개월, 한도 실수령의 30% = 195만원)에서 최대 가격은 약 6억 6,000만원이다. 은행 한도로는 약 8억원까지 살 수 있지만, 그만큼 사면 매달 실수령의 40% 넘게 갚아야 한다. ② 금리 +2%p 곡선을 본다. 같은 한도에서 지킬 수 있는 가격이 약 5억 8,300만원으로 내려간다. 금리가 오를 때를 견디려면 가격을 낮추거나, 금리를 고정하거나, 한도를 넉넉하게 잡아야 한다. ③ 손잡이를 끌어 한도를 40%로 올린다. 가격은 오르지만 생활비와 저축이 들어갈 자리가 크게 줄어든다. (이 책의 모델. 하늘네 2027년 4월 기준: 가진 돈 약 2억 9,630만원, 월 실수령 650만원, 30년 원리금균등, 생애최초 취득세 감면. 은행 한도는 비규제지역 LTV 70%와 DSR 40%(주기형 5년 스트레스 가산 1.2%p, 연소득 9,200만원)로 계산했다.)</div>
+    </div>
+
+    <p>이 그래프에서 기억할 숫자는 셋이다. 은행이 허락하는 가격(약 8억원), 우리가 평소에 감당할 가격(약 6억 6,000만원), 금리가 2%p 올라도 감당할 가격(약 5억 8,300만원)이다. 셋의 차이가 크다는 것이 이 절의 핵심이다. 은행 한도까지 사는 것은 법적으로 가능하지만, 그 계획은 금리나 소득이 조금만 흔들려도 생활비를 잘라서 버텨야 한다. 실수령의 몇 %를 상환 한도로 잡을지는 가족마다 다르다. 아이가 어리고 맞벌이 중 한 사람의 소득이 끊길 가능성이 있다면 낮게, 소득이 안정적이고 다른 고정 지출이 적다면 조금 높게 잡는다. 흔히 쓰이는 기준은 실수령의 25~35% 사이다.</p>
+
+    <div class="callout deep">
+      <strong>금리 +2%p 스트레스는 어디서 왔나</strong>
+      금융당국은 2024년부터 DSR을 계산할 때 실제 금리에 가상의 <span class="term">스트레스 금리</span>를 더하는 스트레스 DSR을 단계적으로 도입했다. 2026년 기준 수도권·규제지역 주택담보대출에는 3.0%p가 적용되고, 금리가 일정 기간 고정되는 대출은 그 일부만 더한다. 금융위원회가 2025년 10월 대책에서 낸 계산 예시를 이 책의 엔진으로 되짚으면 혼합형은 약 80%, 주기형은 약 40%가 반영된다(대체로 확인, 상품별 적용은 은행에 확인 필요). 이 장의 +2%p는 그 제도 수치가 아니라, 대출을 받은 뒤 실제 금리가 2%p 오를 때 우리 생활비가 버티는지를 보는 가계의 시험이다. 은행의 스트레스 DSR은 대출 한도를 줄이고, 가계의 스트레스 테스트는 계획을 바꾼다.
+    </div>
+  </section>
+
+  <section id="where">
+    <h2>지역과 시점: 맞히지 말고 맞추기</h2>
+    <p>감당할 가격이 정해지면 그 가격으로 어디에 살지 고른다. 이 책의 앞 장들이 기준을 하나씩 주었다. 입지는 두 사람의 통근 시간과 아이의 학교로(<a href="location.html">2장</a>), 가격 수준은 소득 대비 가격(PIR)과 임대수익률로(<a href="value.html">3장</a>), 가까운 미래의 가격과 전세 흐름은 입주 물량으로(<a href="supply.html">4장</a>), 보증금과 매매가의 거리는 전세가율로(<a href="jeonse.html">5장</a>), 대출이 얼마나 되는지는 규제지역 여부로(<a href="policy.html">15장</a>) 본다. 하늘네의 세 후보지를 이 기준에 올리면 아래와 같다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 460 300" role="img" aria-label="하늘네 후보 지역 세 곳의 비교: 가격, 전세가율, PIR, 두 사람의 통근 시간, 대출 규제">
+        <rect x="6" y="8" width="448" height="36" rx="6" class="f-surface"/>
+        <text x="60" y="31" text-anchor="middle" class="lbl-dim">기준</text>
+        <text x="190" y="31" text-anchor="middle" class="lbl-b">서울 A구</text>
+        <text x="300" y="31" text-anchor="middle" class="lbl-acc">경기 B시</text>
+        <text x="400" y="31" text-anchor="middle" class="lbl-b">경기 E시</text>
+        <rect x="250" y="48" width="100" height="208" rx="6" class="f-acc-soft"/>
+        <text x="60" y="72" text-anchor="middle" class="lbl-b">84㎡ 가격</text>
+        <text x="190" y="72" text-anchor="middle" class="t-mono lbl">12.5억</text>
+        <text x="300" y="72" text-anchor="middle" class="t-mono lbl">6.2억</text>
+        <text x="400" y="72" text-anchor="middle" class="t-mono lbl">4.9억</text>
+        <text x="60" y="106" text-anchor="middle" class="lbl-b">전세가율</text>
+        <text x="190" y="106" text-anchor="middle" class="t-mono lbl">52%</text>
+        <text x="300" y="106" text-anchor="middle" class="t-mono lbl">65%</text>
+        <text x="400" y="106" text-anchor="middle" class="t-mono lbl">61%</text>
+        <text x="60" y="140" text-anchor="middle" class="lbl-b">PIR(연소득 배)</text>
+        <text x="190" y="140" text-anchor="middle" class="t-mono lbl-bad">13.6</text>
+        <text x="300" y="140" text-anchor="middle" class="t-mono lbl">6.7</text>
+        <text x="400" y="140" text-anchor="middle" class="t-mono lbl">5.3</text>
+        <text x="60" y="174" text-anchor="middle" class="lbl-b">통근(하늘/재원)</text>
+        <text x="190" y="174" text-anchor="middle" class="lbl">25분 / 60분</text>
+        <text x="300" y="174" text-anchor="middle" class="lbl">55분 / 15분</text>
+        <text x="400" y="174" text-anchor="middle" class="lbl-bad">75분 / 35분</text>
+        <text x="60" y="208" text-anchor="middle" class="lbl-b">대출 규제</text>
+        <text x="190" y="208" text-anchor="middle" class="lbl-bad">LTV 40%</text>
+        <text x="300" y="208" text-anchor="middle" class="lbl">LTV 70%</text>
+        <text x="400" y="208" text-anchor="middle" class="lbl">LTV 70%</text>
+        <text x="60" y="242" text-anchor="middle" class="lbl-b">감당 가격 안?</text>
+        <text x="190" y="242" text-anchor="middle" class="lbl-bad">아니다</text>
+        <text x="300" y="242" text-anchor="middle" class="lbl-acc">6억 안팎이면</text>
+        <text x="400" y="242" text-anchor="middle" class="lbl">여유 있다</text>
+        <text x="230" y="284" text-anchor="middle" class="lbl-dim">가격은 2장의 교육용 시세, PIR = 가격 ÷ 연소득 9,200만원</text>
+      </svg>
+      <figcaption><b>그림 2. 하늘네의 세 후보지.</b> 서울 A구는 하늘의 통근이 짧지만 가격이 감당 가격의 두 배에 가깝고, 규제지역이라 LTV 40%와 실거주 의무가 붙는다. 경기 E시는 가장 싸고 전세가율도 적당하지만 두 사람의 통근이 모두 길어지고 아이 학교 계획과 맞지 않는다. B시는 재원의 직장과 아이 학교가 있는 곳이고, 같은 생활권 84㎡가 감당 가격 안에 들어온다. 입주 물량(4장)은 지역마다 해마다 다르므로 계약 전 그해의 물량을 다시 확인한다.</figcaption>
+    </figure>
+
+    <h3>이 가격 차이는 어느 힘에서 왔는가</h3>
+    <p>A구와 E시의 84㎡ 가격 차이 7억 6,000만원은 대부분 입지의 힘이다. 도심 일자리까지의 시간이 값에 들어간 것이다(<a href="location.html">2장</a>). 하지만 지난 몇 년의 가격 변화를 보면 다른 힘들도 보인다. 금리가 내릴 때는 비싼 지역이 더 크게 올랐고(<a href="value.html">3장</a>), 규제지역 지정은 대출을 묶어 사려는 사람의 수를 줄였으며(<a href="policy.html">15장</a>), 인접 지역으로 수요가 밀리는 풍선 효과도 생겼다. B시의 다음 몇 년 가격은 근처 입주 물량(공급)과 금리, 대출 규제가 함께 정한다. 하늘네가 할 수 있는 일은 이 힘들을 예측하는 것이 아니라, 어느 힘이 반대로 움직여도 버티는 계획을 짜는 것이다.</p>
+
+    <p>시점은 어떻게 고르는가. "조금 기다리면 떨어질 것 같다"는 생각은 자연스럽다. 아래 시뮬레이터는 가상의 집값 경로 400개를 만들고 두 전략을 비교한다. '내 일정' 전략은 전세 만기에 맞춰 지금 시세로 산다. '하락 기다리기' 전략은 앞으로 2년(갱신으로 버는 기간) 안에 집값이 정한 폭만큼 내리면 그때 사고, 끝내 내리지 않으면 2년 뒤 그때 시세로 산다.</p>
+
+    <div class="sim" id="sim-time">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>시점을 맞히려 할 때</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="time-cv"></canvas></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>집값의 추세(연, 아무도 모른다) <output id="time-m-out"></output></span><input type="range" id="time-m" min="-4" max="5" step="0.5" value="1"></label>
+          <label class="ctrl"><span>변동성(연) <output id="time-s-out"></output></span><input type="range" id="time-s" min="2" max="15" step="1" value="6"></label>
+          <label class="ctrl"><span>기다리는 하락 폭 <output id="time-d-out"></output></span><input type="range" id="time-d" min="2" max="20" step="1" value="5"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">기다린 쪽 평균 매수가</span><span class="v" id="time-o-a">—</span></div>
+        <div class="stat"><span class="k">원하는 하락을 만난 비율</span><span class="v" id="time-o-h">—</span></div>
+        <div class="stat"><span class="k">나쁜 10% 경로의 매수가</span><span class="v" id="time-o-w">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 기본값(추세 +1%, 변동성 6%, 5% 하락을 기다림)에서 기다린 쪽의 평균 매수가가 지금 시세 6억원보다 조금 높다. 하락을 만난 경로도 꽤 있지만, 만나지 못한 경로는 2년 동안 오른 값에 산다. ② 추세를 0%로 둔다. 평균은 거의 6억원이다. 기다리기는 평균을 바꾸지 못하고 결과의 폭만 넓힌다. ③ 추세를 −3%로 내리면 기다린 쪽이 이긴다. 결국 타이밍 전략의 성적은 아무도 모르는 추세 하나에 달려 있다. (교육용 가상 데이터. 집값이 로그정규 확률 과정을 따른다고 가정한 모의실험이며 어떤 지역의 전망도 아니다. 기다리는 동안의 주거비 차이와 청약 기회는 넣지 않았다.)</div>
+    </div>
+
+    <p>시뮬레이터가 보여 준 것은 시점을 맞히려는 전략의 결과가 결국 '추세'라는 알 수 없는 숫자에 달려 있다는 점이다. 추세를 모르면 기다리기는 평균을 바꾸지 못하고 결과의 폭만 넓힌다. 그 대가로 기다리는 2년 동안 계획의 다른 부분, 곧 아이의 학교, 전세 재계약, 금리가 함께 흔들린다. 그래서 이 장은 시점을 시장에 맞추지 말고 내 일정에 맞추라고 권한다. 전세 만기, 아이의 입학, 직장의 변화처럼 내가 아는 날짜에 계획을 맞추고, 그 날짜에 감당 가격 안에서 살 수 있는 집이 있으면 산다. 감당 가격 안에 없으면 그 자체가 기다릴 이유다.</p>
+  </section>
+
+  <section id="closing">
+    <h2>잔금일과 전세 만기 맞추기</h2>
+    <p>전세에서 매매로 옮기는 가족에게 가장 바쁜 날은 잔금일이다. 이날 오전에 집주인에게서 보증금을 돌려받아 전세대출을 갚고, 그 돈과 예금, 새 대출을 모아 매도인에게 잔금을 보내고, 법무사가 소유권 이전 등기를 접수하고, 이삿짐이 들어간다. 이 모든 것이 같은 날 일어나려면 잔금일과 전세 만기일이 맞아야 한다. 어긋나면 비용이 생긴다. 잔금일이 먼저 오면 보증금이 아직 묶여 있으니 그만큼을 단기로 빌려야 하고(이른바 브릿지 자금), 만기가 먼저 오면 새집에 들어갈 때까지 머물 곳과 짐 보관이 필요하다.</p>
+    <p>아래 타임라인의 잔금일 손잡이를 끌어 만기일과 어긋나게 해 본다. 집주인이 새 세입자를 늦게 구해 보증금 반환이 늦어지는 경우도 넣어 본다.</p>
+
+    <div class="sim" id="sim-close">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>잔금일 타임라인</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="close-cv"></canvas><span class="hint">잔금일 손잡이를 좌우로 끈다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>보증금 반환 지연 <output id="close-d-out"></output></span><input type="range" id="close-d" min="0" max="60" step="5" value="0"></label>
+          <label class="ctrl"><span>단기 자금 금리 <output id="close-r-out"></output></span><input type="range" id="close-r" min="4" max="10" step="0.5" value="6"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">잔금일</span><span class="v" id="close-o-s">—</span></div>
+        <div class="stat"><span class="k">어긋난 기간</span><span class="v" id="close-o-g">—</span></div>
+        <div class="stat"><span class="k">추가 비용</span><span class="v" id="close-o-c">—</span></div>
+      </div>
+      <div class="sim-note" id="close-msg">해볼 것: ① 잔금일을 만기일에 맞춘다. 추가 비용이 0원이다. ② 잔금일을 만기 30일 전으로 끈다. 돌려받지 못한 보증금 중 내 몫 2억원을 30일 동안 빌려야 해서 약 100만원이 든다. ③ 잔금일을 만기 30일 뒤로 끈다. 그 사이 머물 곳과 짐 보관에 약 390만원이 든다. ④ 잔금일을 만기에 맞춰 두고 반환 지연을 30일로 올린다. 잔금일 하루를 지키려면 단기 자금이 필요해진다. (교육용 가정: 단기 숙소 하루 8만원, 짐 보관·이사 추가 150만원, 단기 자금은 내 몫 보증금 2억원을 빌리는 것으로 보았다. 실제 금리와 가능 여부는 은행마다 다르다.)</div>
+    </div>
+
+    <p>잔금일을 만기일에 정확히 맞추는 것이 가장 싸다. 하지만 그날은 내가 혼자 정할 수 없다. 매도인도 이사할 곳이 있어야 하고, 집주인은 새 세입자의 보증금으로 내 보증금을 돌려주는 경우가 많다. 이 사슬에서 한 사람이라도 늦어지면 비용은 사슬 끝의 사람에게 몰린다. 그래서 계약서의 잔금일은 날짜 하나가 아니라 협상의 결과다. 매매 계약 전에 집주인에게 이사 계획을 알리고 반환 일정을 맞추는 것이 먼저다.</p>
+
+    <div class="callout pro">
+      <strong>잔금일을 맞추는 실무 순서</strong>
+      경험 많은 중개사는 매수 계약서를 쓰기 전에 지금 집주인 쪽 일정을 먼저 확인한다. ① 지금 집주인에게 만기에 나간다고 알리고(세입자는 만기 2개월 전까지 알려야 묵시적 갱신을 피한다), 보증금을 새 세입자 보증금으로 돌려줄지 집주인 돈으로 줄지 묻는다. ② 그 답을 듣고 매매 계약의 잔금일을 만기일이나 그 하루 이틀 뒤로 잡는다. ③ 매수 대출의 실행일을 잔금일로 은행과 확정한다. ④ 이사업체를 잔금일 오후로 예약한다(이사 수요가 몰리는 날은 미리). 잔금일 오전에 보증금 반환 → 전세대출 상환 → 잔금 송금 → 등기 접수 순서로 움직이고, 법무사와 은행 담당자의 연락처를 한곳에 모아 둔다. 중개사 입장에서는 두 계약(전세 반환, 매매 잔금)이 엇갈리면 양쪽 손님이 모두 손해를 보므로, 일정 조율이 보수보다 중요한 일이 된다.
+    </div>
+
+    <div class="callout buyer">
+      <strong>잔금 전에 직접 확인할 것</strong>
+      <ul>
+        <li><b>대출 승인서</b>: 승인 금액·금리 유형·실행일이 계약서의 잔금일과 맞는가. '가승인'이나 상담 결과가 아니라 최종 승인인가.</li>
+        <li><b>잔금 당일 등기부등본</b>: 계약 뒤 새 근저당·가압류가 생기지 않았는가. 매도인의 기존 대출은 잔금으로 갚고 말소하는가(말소 조건을 특약에).</li>
+        <li><b>보증금 반환 확인</b>: 지금 집주인이 반환할 날짜와 계좌를 문자로 남겼는가. 반환 전에 이사를 나가야 한다면 대항력을 지키기 위해 임차권등기명령을 먼저 한다(만기 뒤 신청할 수 있다).</li>
+        <li><b>전세대출 상환 방법</b>: 보증금이 은행으로 바로 가는지, 내 계좌를 거치는지. 질권 설정이 되어 있으면 집주인이 은행에 직접 돌려준다.</li>
+        <li><b>관리비·공과금 정산</b>: 매도인과 잔금일 기준으로 나누고, 장기수선충당금은 누가 내는지 확인한다.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="switch">
+    <h2>갈아타기와 일시적 2주택</h2>
+    <p>첫 집을 산 사람도 언젠가 다음 집으로 옮긴다. 아이가 커서 더 넓은 집이 필요하거나 직장이 바뀌면, 지금 집을 팔고 새집을 사는 <span class="term">갈아타기</span>를 한다. 갈아타기는 두 가지 순서가 있다. 먼저 팔고 사면 그 사이에 머물 곳이 필요하고 그동안 집값이 오를 위험을 진다. 먼저 사고 팔면 잠시 두 채를 갖게 되어 대출과 세금 문제가 생긴다. 세법은 이사를 위해 잠깐 두 채가 된 경우를 <span class="term">일시적 2주택</span><span class="en">(Temporary two-home ownership)</span>으로 보아, 정해진 기한 안에 이전 집을 팔면 1세대 1주택처럼 비과세를 해 준다.</p>
+    <p>요건은 대략 이렇다. 종전 주택을 산 지 1년 이상 지나서 새집을 사고, 새집을 산 날(잔금일이나 등기일 중 빠른 날)부터 처분 기한 안에 종전 주택을 판다. 종전 주택은 그 자체로 비과세 요건(2년 보유, 취득 때 조정대상지역이었으면 2년 거주)을 갖춰야 한다. 처분 기한은 2026년 10월 1일 양도분부터 바뀌었다. 종전 주택과 새집이 <b>둘 다 조정대상지역</b>이면 2년, 하나라도 아니면 3년이다(2026년 8월 3일까지 새집을 샀거나 계약금을 냈으면 종전처럼 3년). 취득세에도 일시적 2주택 처분 기한이 따로 있는데, 이를 2년으로 맞추는 지방세제 개편안은 추진 중이다(확정 전).</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 460 250" role="img" aria-label="일시적 2주택 타임라인: 종전주택 취득, 1년 뒤 신규주택 취득, 처분 기한 2년 또는 3년">
+        <defs><marker id="pl-ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="context-stroke"/></marker></defs>
+        <line x1="20" y1="120" x2="444" y2="120" class="s-axis" marker-end="url(#pl-ar2)"/>
+        <circle cx="40" cy="120" r="6" class="f-acc"/>
+        <text x="40" y="100" text-anchor="middle" class="lbl-b">종전 주택 취득</text>
+        <circle cx="140" cy="120" r="6" class="f-acc2"/>
+        <text x="140" y="100" text-anchor="middle" class="lbl-b">새집 취득</text>
+        <path d="M40 140 L136 140" class="s-dash" marker-end="url(#pl-ar2)"/>
+        <text x="88" y="158" text-anchor="middle" class="lbl-dim">1년 이상</text>
+        <rect x="140" y="170" width="140" height="26" rx="5" class="f-ok-soft"/>
+        <text x="210" y="188" text-anchor="middle" class="lbl">둘 다 조정: 2년</text>
+        <rect x="140" y="204" width="210" height="26" rx="5" class="f-acc-soft"/>
+        <text x="245" y="222" text-anchor="middle" class="lbl">하나라도 비조정: 3년</text>
+        <line x1="280" y1="60" x2="280" y2="196" class="s-bad"/>
+        <line x1="350" y1="60" x2="350" y2="230" class="s-dash"/>
+        <text x="280" y="52" text-anchor="middle" class="lbl-bad">2년</text>
+        <text x="350" y="52" text-anchor="middle" class="lbl-dim">3년</text>
+        <text x="230" y="30" text-anchor="middle" class="lbl-dim">이 안에 종전 주택을 팔면 1세대 1주택 비과세 판단</text>
+      </svg>
+      <figcaption><b>그림 3. 일시적 2주택의 시간표(2026년 기준).</b> 처분 기한은 새집의 취득일부터 센다. 2026년 10월 1일 이후 양도분부터 둘 다 조정대상지역이면 2년으로 줄었다(소득세법 시행령 개정, 2026-09-29 국무회의 의결 보도). 기한을 넘기면 2주택으로 과세되고, 조정대상지역이면 다주택 중과(+20%p)가 붙을 수 있다. 세부 요건과 예외가 많아 실제 거래 전에는 세무 전문가에게 확인한다.</figcaption>
+    </figure>
+
+    <p>아래 타임라인에서 종전 주택을 파는 날을 끌어 기한 안팎을 오가 본다. 종전 주택은 10년 전 6억원에 사서 계속 살았다고 둔다.</p>
+
+    <div class="sim" id="sim-two">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>종전 주택을 언제 파는가</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="two-cv"></canvas><span class="hint">'팔기' 손잡이를 끈다</span></div>
+        <div class="sim-controls">
+          <div class="seg" id="two-reg"><button data-value="both" class="on">둘 다 조정대상지역</button><button data-value="other">하나라도 아님</button></div>
+          <label class="ctrl"><span>종전 주택 양도가 <output id="two-p-out"></output></span><input type="range" id="two-p" min="6" max="12" step="0.1" value="8"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">파는 시점</span><span class="v" id="two-o-t">—</span></div>
+        <div class="stat"><span class="k">처분 기한</span><span class="v" id="two-o-d">—</span></div>
+        <div class="stat"><span class="k">양도소득세(지방세 포함)</span><span class="v" id="two-o-x">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① '둘 다 조정대상지역'에서 손잡이를 1년 6개월에 둔다. 기한 안이라 양도가 12억원 이하면 세금이 0원이다. ② 손잡이를 2년 3개월로 끈다. 기한을 넘겨 2주택으로 과세되고, 다주택 중과가 붙어 양도가 8억원에서 1억원 가까운 세금이 나온다. ③ '하나라도 아님'을 고른다. 기한이 3년으로 늘어나 같은 날 팔아도 비과세다. (이 책의 모델로 계산한 교육용 단순화. 필요경비 1,000만원, 10년 보유·거주를 넣었다. 기한을 넘긴 경우는 2주택 일반 과세, 조정대상지역이면 중과 +20%p와 장기보유특별공제 배제로 계산했다. 실제 세액은 홈택스 모의계산이나 세무 전문가에게 확인한다.)</div>
+    </div>
+
+    <p>갈아타기의 세금은 날짜 하나로 수천만원이 갈린다. 그래서 갈아타기 계획은 새집을 사는 날이 아니라 종전 주택을 팔 수 있는 날에서 거꾸로 짠다. 팔리는 데 몇 달이 걸릴지 모르니, 기한의 마지막 달이 아니라 몇 달 앞을 목표로 잡는다. 기한 안에 못 팔 위험이 크다면 먼저 팔고 잠시 전세나 월세로 사는 순서도 진지하게 비교할 만하다. 그 비교는 <a href="decision.html">20장</a>의 누적 비용 계산으로 할 수 있다.</p>
+  </section>
+
+  <section id="stress">
+    <h2>계획을 무너뜨리는 것들</h2>
+    <p>좋은 계획은 좋은 날에만 맞는 계획이 아니다. 이 절은 하늘네가 6억원짜리 집을 대출 3억 4,400만원(연 4%, 30년)으로 산 계획에 네 가지 충격을 준다. 금리가 오르는 것, 소득이 줄어드는 것, 산 뒤 집값이 내리는 것, 잔금 대출이 생각보다 적게 나오는 것이다. 네 계기판이 모두 빨간색으로 넘어가는 지점을 찾는다.</p>
+
+    <div class="sim" id="sim-st">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>계획 스트레스 시험</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="st-cv"></canvas></div>
+        <div class="sim-controls">
+          <div class="seg" id="st-type"><button data-value="var">변동금리</button><button data-value="cyc" class="on">주기형(5년)</button><button data-value="fix">고정금리</button></div>
+          <label class="ctrl"><span>금리 상승 <output id="st-r-out"></output></span><input type="range" id="st-r" min="0" max="4" step="0.25" value="2"></label>
+          <label class="ctrl"><span>소득 감소(가구 실수령) <output id="st-i-out"></output></span><input type="range" id="st-i" min="0" max="60" step="5" value="0"></label>
+          <label class="ctrl"><span>산 뒤 집값 변화 <output id="st-p-out"></output></span><input type="range" id="st-p" min="-40" max="10" step="5" value="0"></label>
+          <label class="check"><input type="checkbox" id="st-l"> 잔금 대출이 20% 덜 나옴</label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">월 상환 ÷ 실수령</span><span class="v" id="st-o-a">—</span></div>
+        <div class="stat"><span class="k">한 달 흑자·적자</span><span class="v" id="st-o-b">—</span></div>
+        <div class="stat"><span class="k">비상금으로 버티는 기간</span><span class="v" id="st-o-c">—</span></div>
+        <div class="stat"><span class="k">집의 내 몫</span><span class="v" id="st-o-d">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 주기형(5년)에 금리 +2%p를 둔다. 처음 5년은 상환액이 그대로라 실수령의 25%를 갚는다. 5년 뒤 금리가 다시 정해질 때 2%p가 오르면 약 32%가 된다. 변동금리로 바꾸면 그 충격이 바로 온다. ② 소득 감소를 40%로 올린다(한 사람의 육아휴직이나 실직). 매달 적자가 나고, 비상금 2,510만원으로 버티는 기간이 계기판에 나온다. ③ 집값 변화를 −30%로 내린다. 집의 내 몫이 크게 줄지만, 팔지 않고 상환을 이어 갈 수 있으면 손실은 장부 위에 머문다. 위험은 ②와 ③이 겹칠 때다. ④ '잔금 대출이 20% 덜 나옴'을 켠다. 6,880만원(대출의 20%)이 모자라 비상금을 다 쓰고도 잔금을 못 치른다. (이 책의 모델. 생활비는 전세대출 이자를 뺀 약 337만원, 보유세·수선비는 월할, 대출은 30년 원리금균등. 소득 감소 중에도 생활비는 줄이지 않는다고 보았다.)</div>
+    </div>
+
+    <p>네 충격은 무게가 다르다. 금리 상승은 금리 유형을 고르는 것으로 상당 부분 막을 수 있다. 고정금리나 주기형은 처음 몇 년의 상환액을 묶어 두어 충격을 늦추고, 그사이 원금이 줄고 소득이 오를 시간을 번다. 그 대가로 처음 금리가 변동보다 조금 높은 경우가 많다. 집값 하락은 팔지 않으면 장부 위의 손실이다. 문제는 하락이 소득 감소와 겹쳐 팔아야 하는 상황이 올 때다. 그래서 가장 무거운 충격은 소득 감소이고, 비상금은 그때를 위한 돈이다. 잔금 대출 실패는 발생 확률은 낮지만 한번 일어나면 계약금을 잃을 수도 있는 사고라, 계약 전에 대출 가능 금액을 서면으로 받아 두는 것으로 막는다.</p>
+  </section>
+
+  <section id="checklist">
+    <h2>체크리스트</h2>
+    <p>지금까지의 계획을 한 장의 체크리스트로 줄이면 다음과 같다. 위에서부터 차례로, 하나라도 '아니오'면 앞 단계로 돌아간다.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>단계</th><th>확인할 것</th><th>하늘네</th></tr></thead>
+        <tbody>
+          <tr><td>내 돈</td><td>잔금일에 가진 돈을 날짜별로 적었는가(보증금 반환일, 예금 만기일)</td><td>2억 9,630만원(2027년 4월)</td></tr>
+          <tr><td>비상금</td><td>잔금 뒤 생활비 6개월이 남는가</td><td>2,510만원 ≥ 2,400만원</td></tr>
+          <tr><td>월 상환</td><td>실수령의 30% 이하인가</td><td>164만원, 25%</td></tr>
+          <tr><td>금리 스트레스</td><td>+2%p에서도 35% 이하인가</td><td>206만원, 약 32%</td></tr>
+          <tr><td>은행 한도</td><td>LTV·DSR 안인가(스트레스 DSR 포함)</td><td>LTV 57%, DSR 약 21%(스트레스 3%p 포함 약 30%)</td></tr>
+          <tr><td>보유 기간</td><td>20장의 손익분기 보유 기간보다 오래 살 계획인가</td><td>10년 이상(손익분기 약 6년, 상승률 2% 가정)</td></tr>
+          <tr><td>일정</td><td>잔금일 = 만기일, 대출 실행일 확정, 집주인 반환 일정 확인</td><td>2027년 4월, 2개월 전 통지</td></tr>
+          <tr><td>하락 견디기</td><td>집값 −20%에도 팔지 않고 버틸 수 있는가</td><td>소득이 유지되면 그렇다</td></tr>
+          <tr><td>서류</td><td>등기부, 대출 승인서, 반환 확인, 계약서 특약</td><td>계약 전·잔금 당일 두 번</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout warn">
+      <strong>제도와 수치는 해마다 바뀐다</strong>
+      이 장의 수치는 2026년 한국 제도를 기준으로 한 대표값이다. LTV·DSR·스트레스 금리는 2025년부터 2026년 사이에도 여러 번 바뀌었고, 규제지역은 수시로 추가 지정된다(2026년 6월 30일 경기 일부 지역 추가). 일시적 2주택 처분 기한은 2026년 10월 1일 양도분부터 바뀌었고, 취득세 쪽 기한과 생애최초 감면 확대(40세 미만 300만원)는 지방세제 개편안으로 추진 중이다(확정 전). 이 장의 계산은 교육용 모델의 결과이며, 특정 지역·단지의 매수를 권하지 않고 투자·세무·법률 자문이 아니다. 실제 계약 전에는 은행의 대출 승인 조건과 국세청·지자체의 최신 기준을 확인한다.
+    </div>
+  </section>
+
+  <section id="twopaths">
+    <h2>하늘네의 두 길</h2>
+    <p>이제 하늘네의 실제 선택지로 돌아간다. 2027년 4월 만기에 하늘네 앞에는 두 길이 있다.</p>
+    <ul>
+      <li><b>(가) 2년을 벌고 청약을 병행하는 길.</b> 계약갱신청구권을 써서 보증금을 최대 4억 2,000만원(5% 인상)으로 2년을 더 살고(늘어난 2,000만원은 예금에서), 그동안 청약을 넣는다. 2029년 4월에 그때 시세로 같은 생활권 84㎡를 사거나, 청약에 당첨되면 분양가로 산다.</li>
+      <li><b>(나) 2027년 4월에 사는 길.</b> 만기에 맞춰 B시 같은 생활권의 84㎡(약 6억원)를 대출 3억 4,400만원으로 산다.</li>
+    </ul>
+    <p>아래 종합 시뮬레이터는 두 길의 10년(2027년 4월 ~ 2037년 4월) 순자산을 이 책의 엔진으로 계산한다. 두 길 모두 소득과 생활비는 같고, 남는 돈은 연 3%로 굴린다고 본다. (가)가 2029년에 살 때의 금리는 지금과 달라질 수 있어서 따로 움직인다. 청약 당첨은 2년 동안 여러 번 넣었을 때의 확률로 넣는다. 가로축 손잡이로 원하는 해를 고른다.</p>
+
+    <div class="sim" id="sim-two-path">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>(가) 2년 뒤 사기 vs (나) 지금 사기</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="tp-cv"></canvas><span class="hint">아래 손잡이를 끌어 해를 고른다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>집값 상승률(연) <output id="tp-g-out"></output></span><input type="range" id="tp-g" min="-3" max="5" step="0.25" value="2"></label>
+          <label class="ctrl"><span>대출 금리(나: 2027년 고정) <output id="tp-r-out"></output></span><input type="range" id="tp-r" min="3" max="7" step="0.1" value="4"></label>
+          <label class="ctrl"><span>2029년 금리 변화(가) <output id="tp-dr-out"></output></span><input type="range" id="tp-dr" min="-1.5" max="2.5" step="0.25" value="0"></label>
+          <label class="ctrl"><span>청약 당첨 확률(2년 합계) <output id="tp-w-out"></output></span><input type="range" id="tp-w" min="0" max="50" step="1" value="10"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k" id="tp-o-yk">2037년 4월 순자산 (나)</span><span class="v" id="tp-o-b">—</span></div>
+        <div class="stat"><span class="k">(가) 기댓값</span><span class="v" id="tp-o-a">—</span></div>
+        <div class="stat"><span class="k">두 길이 같아지는 상승률</span><span class="v" id="tp-o-g">—</span></div>
+        <div class="stat"><span class="k">월 상환(나 / 가)</span><span class="v" id="tp-o-p">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 기본값(상승률 2%, 금리 4%, 2029년 금리 그대로, 당첨 확률 10%)에서 2037년 순자산은 두 길이 거의 같다. (나) 약 6억 5,800만원, (가) 기댓값은 청약 몫만큼 조금 높다. 두 길이 같아지는 상승률은 연 2% 남짓이다. ② 상승률을 0%로 내린다. (가)가 3,000만원 넘게 앞선다. 집값이 오르지 않으면 2년 늦게 사는 쪽이 싸다. 3%로 올리면 (나)가 앞선다. ③ 2029년 금리 변화를 +1.5%p로 올린다. (가)는 같은 집을 더 비싼 금리로 사야 해서 격차가 줄거나 뒤집힌다. (나)의 고정·주기형 금리는 이 위험을 지운다. ④ 당첨 확률을 30%로 올린다. 청약은 (가)의 가장 큰 기댓값이지만, 하늘네 가점(2029년 약 42점)으로는 가점제 당첨이 어렵고 추첨에 기대야 한다. (이 책의 모델. 청약 당첨 시 시세의 80%에 2029년 4월 취득한다고 단순화했다. 실제로는 입주까지 몇 년이 걸린다. 2029년 매수도 비상금 6개월을 남기고 대출을 정한다. 5년 뒤 주기형 금리 재설정은 넣지 않았다.)</div>
+    </div>
+
+    <p>돈으로만 보면 두 길은 집값 상승률 연 2% 근처에서 갈린다. 20장에서 사기와 전세가 같아지는 상승률이 연 약 1.7%였던 것과 같은 이야기다. (가)는 2년을 전세로 더 살고 같은 집을 사는 길이니, 그 2년의 사는 비용과 빌리는 비용의 차이가 두 길의 차이가 된다. 그보다 낮으면 (가)가, 높으면 (나)가 앞선다. 여기에 (가)에는 청약이라는 기댓값과 2029년 금리라는 위험이, (나)에는 지금 금리를 묶는 대신 집값 하락을 먼저 맞는 위험이 붙는다. 숫자는 거의 동점이다. 그러니 결정은 숫자 밖의 무게로 내려진다.</p>
+  </section>
+
+  <section id="case">
+    <h2>하늘네 집 노트</h2>
+    <div class="casefile">
+      <div class="tag"><b>CASE 하늘네</b><span>집 노트 · 21장</span></div>
+      <h4>하늘네의 선택: 2027년 4월, B시 같은 생활권의 84㎡</h4>
+      <p>2026년 겨울, 하늘과 재원은 두 길의 계산표를 나란히 놓았다. 이 책의 모델로 계산하면 2037년의 순자산은 집값이 연 2% 오를 때 두 길이 거의 같고, 0%면 (가)가 약 3,300만원, 1%면 약 1,600만원 앞서며, 3%면 (나)가 약 2,000만원 앞선다. 청약 당첨 가능성(지금 가점 36점, 2029년 약 42점, 2년 동안 여러 번 넣어 10% 안팎)은 (가)에 수백만원의 기댓값을 더한다. 돈은 어느 한쪽을 분명히 가리키지 않았다.</p>
+      <p>하늘네는 <b>(나)를 골랐다</b>. 이유는 네 가지다. 첫째, 재원의 직장과 딸이 2030년에 들어갈 초등학교가 B시에 있고, 이 동네에서 10년 넘게 살 계획이다. 20장에서 계산한 손익분기 보유 기간(상승률 2%에서 약 6년, 안정성의 값을 넣으면 약 5년)보다 길다. 둘째, 감당할 수 있다. 2027년 4월에 가진 돈 약 2억 9,630만원에서 거래비용 약 1,520만원과 비상금을 빼고, 6억원 집을 대출 3억 4,400만원으로 사면 월 상환은 약 164만원으로 실수령 650만원의 25%다. DSR은 실제 금리로 약 21%, 스트레스 금리 3%p를 모두 더해도 약 30%이고, LTV는 약 57%로 은행 한도(LTV 70%로 최대 4억 2,000만원)에 한참 못 미친다. 셋째, 잔금 뒤에도 비상금 약 2,510만원(생활비 6개월 2,400만원 이상)이 남는다. 넷째, 금리 위험을 줄이는 대출을 고를 수 있다. 하늘네는 변동금리 대신 5년 동안 금리가 묶이는 주기형을 골랐다(이 장의 계산은 연 4%를 가정한 교육용 값이다). 금리가 2%p 올라 다시 정해져도 월 상환은 약 206만원, 실수령의 약 32%로 하늘네가 정한 상한 35% 안이다. 집을 산 뒤 매달 남는 돈은 약 120만원으로 줄지만, 원금으로 갚는 약 50만원은 강제 저축으로 쌓인다.</p>
+      <p>포기한 것도 적었다. 무주택으로 쌓던 청약 가점과 당첨 기회, 2년 동안 더 지켜볼 수 있는 유동성, 하늘이 서울 쪽으로 직장을 옮길 때 서울 가까이 옮겨 갈 자유다. 하늘의 통근은 앞으로도 55분이다. 하늘이 말했다. "이게 정답이라서가 아니라, 우리 가족이 더 견디기 어려운 쪽이 2년마다의 이사라서 고른 거야." 다른 가족이라면 (가)가 맞을 수 있다. 직장이 바뀔 가능성이 크거나, 청약 가점이 높아 당첨 가능성이 현실적이거나, 지금 사면 비상금을 남기지 못하거나, 집값 하락을 견딜 여유가 없는 가족이다.</p>
+      <p>계약 전, 하늘네는 집주인 남궁현에게 2027년 4월 만기에 나가겠다고 미리 알렸다(만기 2개월 전까지 알려야 하는 기한보다 훨씬 이르게). 남궁현은 집주인의 셈법을 숨기지 않았다. "4억은 새 세입자 보증금으로 돌려드리는 게 계획인데, 혹시 늦어지면 제 대출로라도 날짜는 맞추겠습니다. 2년 전에 역전세로 5,000만원을 돌려드릴 때 한번 겪어 봐서요." 태호는 그 말을 받아 남궁현의 집을 새 세입자에게 소개하는 일과 하늘네의 매수 잔금일을 같은 날로 맞추는 일을 함께 맡았다. 두 계약 모두에서 보수를 받는 자리라는 것도 다시 밝혔다.</p>
+      <p>마지막 상담에서 태호가 말했다. "집을 사는 날보다 사고 나서 첫 3년이 더 중요합니다. 비상금은 대출을 빨리 갚는 데 쓰지 마시고 그대로 두세요. 5년 뒤 금리가 다시 정해지기 1년 전에 한 번 더 계산하시고요. 그리고 집값 뉴스는 이제 덜 보셔도 됩니다. 이 집은 파는 물건이 아니라 사는 곳이니까요."</p>
+      <div class="clue"><div><b>이 장에서 정한 것</b>(나) 2027년 4월 B시 같은 생활권 84㎡ 약 6억원, 대출 3억 4,400만원(주기형 5년), 월 상환 약 164만원(실수령 25%), 비상금 약 2,510만원 유지. 하늘네의 선택이지 정답이 아니다.</div><div><b>아직 남은 문제</b>2032년 금리 재설정, 아이의 진학, 하늘의 직장 변화, 아버지의 D시 아파트. 계획은 해마다 다시 계산한다.</div><div><b>다음 단계</b>22장 실험실: 하늘네 또는 내 가구의 숫자로 30년 주거 경로를 돌려 본다.</div></div>
+    </div>
+  </section>
+
+  <section class="keypoints" id="summary">
+    <h2>핵심 정리</h2>
+    <ol>
+      <li>계획은 매물이 아니라 내 돈에서 시작한다. 잔금일에 들어오는 돈(보증금 반환, 예금, 대출)과 나가는 돈(집값, 취득세·중개보수·법무비·이사·수리)을 적고, 생활비 6개월의 비상금을 남긴다.</li>
+      <li>감당 가능한 가격은 월 상환 한도(실수령 × 비율)에서 거꾸로 구한다. 은행의 LTV·DSR 한도는 상한일 뿐, 하늘네의 경우 은행 한도(약 8억원)와 감당 가격(약 6억 6,000만원)의 차이가 크다.</li>
+      <li>금리 +2%p 스트레스를 넣어 다시 계산한다. 고정·주기형 금리는 충격을 늦추고, 그 대가로 초기 금리가 조금 높을 수 있다.</li>
+      <li>지역은 통근·학교·가격 수준·전세가율·공급·규제로 고르고, 시점은 시장을 맞히려 하지 말고 내 일정(만기, 입학, 직장)에 맞춘다. 시점 전략의 평균 성적은 아무도 모르는 추세에 달려 있다.</li>
+      <li>잔금일을 전세 만기일에 맞추면 추가 비용이 없다. 어긋나면 단기 자금이나 임시 거처 비용이 든다. 보증금 반환 전에 이사를 나가야 하면 임차권등기명령으로 대항력을 지킨다.</li>
+      <li>갈아타기의 일시적 2주택은 새집 취득일부터 처분 기한 안에 종전 주택을 팔아야 비과세다. 2026년 10월 1일 양도분부터 둘 다 조정대상지역이면 2년, 그 밖은 3년이다.</li>
+      <li>숫자가 거의 동점일 때 결정은 우리 가족이 더 견디기 어려운 위험으로 내린다. 하늘네는 (나)를 골랐지만, 다른 가족에게는 (가)가 맞을 수 있다.</li>
+    </ol>
+  </section>
+
+  <section class="quiz-sec" id="quiz">
+    <h2>확인 퀴즈</h2>
+    <div class="quiz">
+      <div class="quiz-q">
+        <p>은행이 DSR 40%까지 대출해 주겠다고 한다. 이 장의 관점에서 가장 알맞은 대응은?</p>
+        <div class="opts">
+          <button class="opt">은행이 심사한 한도이므로 그 한도까지 빌리는 것이 합리적이다</button>
+          <button class="opt" data-correct>DSR은 세전 소득 기준의 상한이므로, 실수령 기준 월 상환 한도와 비상금을 지키는 가격을 따로 역산해 더 낮은 쪽을 쓴다</button>
+          <button class="opt">DSR이 40%를 넘지 않으면 금리가 올라도 문제가 없다</button>
+          <button class="opt">비상금을 모두 집값에 넣어 대출을 줄이는 것이 가장 안전하다</button>
+        </div>
+        <div class="quiz-exp">은행 한도는 "이 이상은 안 된다"는 상한이다. 세전 소득의 40%는 실수령으로 바꾸면 훨씬 큰 몫이 된다. 감당 가격은 실수령 × 비율의 월 상환 한도와 비상금 6개월을 남긴 내 돈에서 역산하고, 금리 +2%p 스트레스로 다시 확인한다. 비상금을 집값에 넣으면 소득이 끊길 때 버틸 돈이 없다.</div>
+      </div>
+      <div class="quiz-q">
+        <p>잔금일이 전세 만기보다 30일 먼저다. 무엇이 필요한가?</p>
+        <div class="opts">
+          <button class="opt">아무것도 필요 없다. 보증금은 만기에 자동으로 매도인에게 간다</button>
+          <button class="opt">30일 동안 머물 단기 숙소가 필요하다</button>
+          <button class="opt" data-correct>돌려받지 못한 보증금 중 내 몫만큼을 30일 동안 빌릴 단기 자금이 필요하고, 먼저 이사를 나간다면 대항력을 지킬 조치가 필요하다</button>
+          <button class="opt">매매 계약을 해제해야 한다</button>
+        </div>
+        <div class="quiz-exp">잔금일이 먼저면 보증금이 아직 집주인에게 있으므로 잔금에 쓸 돈이 모자란다. 그만큼을 단기로 빌려야 하고(이자 비용), 보증금을 받기 전에 이사를 나가면 대항력을 잃을 수 있어 임차권등기명령 같은 조치가 필요하다. 반대로 만기가 먼저면 임시 거처와 짐 보관 비용이 든다.</div>
+      </div>
+      <div class="quiz-q">
+        <p>2026년 11월에 조정대상지역의 새집을 샀다. 종전 주택도 조정대상지역에 있다. 1세대 1주택 비과세를 받으려면 종전 주택을 언제까지 팔아야 하는가? (다른 요건은 갖췄다)</p>
+        <div class="opts">
+          <button class="opt" data-correct>새집 취득일부터 2년 안</button>
+          <button class="opt">새집 취득일부터 3년 안</button>
+          <button class="opt">새집 취득일부터 1년 안</button>
+          <button class="opt">기한 없이 언제 팔아도 된다</button>
+        </div>
+        <div class="quiz-exp">2026년 10월 1일 양도분부터 종전 주택과 새집이 모두 조정대상지역이면 처분 기한이 3년에서 2년으로 줄었다. 2026년 8월 3일까지 새집을 샀거나 계약금을 냈다면 종전처럼 3년이 적용된다. 둘 중 하나라도 조정대상지역이 아니면 3년이다.</div>
+      </div>
+      <div class="quiz-q">
+        <p>"2년만 기다리면 집값이 5% 떨어질 때 살 수 있다"는 전략에 대해 이 장의 시뮬레이션이 보여 준 것은?</p>
+        <div class="opts">
+          <button class="opt">기다리면 언제나 평균적으로 싸게 산다</button>
+          <button class="opt">기다리면 언제나 평균적으로 비싸게 산다</button>
+          <button class="opt">변동성이 클수록 기다리는 전략이 확실히 이긴다</button>
+          <button class="opt" data-correct>평균 성적은 아무도 모르는 추세에 달려 있고, 추세를 모르면 결과의 폭만 넓어진다</button>
+        </div>
+        <div class="quiz-exp">추세가 0이면 기다린 쪽의 평균 매수가는 지금 시세와 거의 같다. 추세가 양수면 기다린 쪽이, 음수면 지금 산 쪽이 평균적으로 손해를 본다. 추세는 미리 알 수 없으므로, 시점은 시장이 아니라 만기·입학·직장 같은 내 일정에 맞추는 편이 계획을 덜 흔든다.</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  const TAU = Math.PI * 2;
+  function T(ctx, s, x, y, o) {
+    o = o || {};
+    ctx.font = EB.font(o.size || 12, o.mono, o.weight);
+    ctx.fillStyle = o.color; ctx.textAlign = o.align || "left"; ctx.textBaseline = o.base || "alphabetic";
+    ctx.fillText(s, x, y);
+  }
+  function rrect(ctx, x, y, w, h, r) {
+    r = Math.max(0, Math.min(r, Math.abs(w) / 2, Math.abs(h) / 2));
+    ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
+  }
+  function handle(ctx, x, y, P) { ctx.beginPath(); ctx.arc(x, y, 8, 0, TAU); ctx.fillStyle = P.text; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = P.bg; ctx.stroke(); }
+  const pw = (id) => document.getElementById(id).parentElement.clientWidth;
+  const pctS = (v) => (v > 0 ? "+" : "") + v + "%";
+  const C = RE.CASE;
+
+  /* ---------------------------------------------------------- 하늘네 계획 모델(이 장 공통) */
+  const NET = C.monthlyNet, LIVING = C.livingCost;
+  const LIVING_NH = LIVING - C.home.jeonseLoan * C.home.loanRate / 12;   // 전세대출 이자를 뺀 생활비
+  const REPAIR = 5e6;
+  const CASH0 = (function () { let s = C.savings; for (let i = 0; i < 6; i++) s = s * (1 + 0.03 / 12) + C.monthlySaving; return s; })(); // 2027-04 예금
+  const AVAIL = CASH0 + C.ownDeposit;                                      // 잔금일에 가진 돈
+  const costParts = (P) => ({ acq: RE.acqTax({ price: P, homes: 1, area: 84, firstHome: true }).total, br: RE.brokerage(P).fee, legal: P * RE.KR.legal, move: RE.KR.moving + REPAIR });
+  const buyCosts = (P) => { const c = costParts(P); return c.acq + c.br + c.legal + c.move; };
+  const needLoan = (P, avail, emerg) => Math.max(0, Math.ceil((P - (avail - buyCosts(P) - emerg)) / 1e6) * 1e6);
+  const pay = (L, r) => RE.payment({ principal: L, rate: r, years: 30 }).monthly;
+  const holdM = (P) => (RE.holdingTax({ value: P * RE.KR.publicRatio, one: true }).total + P * RE.KR.upkeep) / 12;
+  const PLAN = { P: 6e8, L: 3.44e8, r: 0.04, emerg: 6 * LIVING };
+  // 10년(120개월) 순자산 경로. o: {g, r, opp, start(0 = 2027-04, 24 = 2029-04), disc(시세 대비 매수가)}
+  function path(o) {
+    const g = o.g, opp = o.opp, P0 = PLAN.P, disc = o.disc || 1;
+    let cash = CASH0, dep = C.ownDeposit, sched = null, P = 0, L = 0, bought = -1;
+    if (o.start > 0) { cash -= 4.2e8 - C.home.jeonse; dep = 4.2e8 - C.home.jeonseLoan; }
+    const rows = [];
+    for (let m = 0; m <= 120; m++) {
+      if (m === o.start) {
+        const avail = cash + dep; P = P0 * Math.pow(1 + g, m / 12) * disc;
+        L = o.start === 0 && disc === 1 ? PLAN.L : needLoan(P, avail, PLAN.emerg); cash = avail - buyCosts(P) - (P - L); dep = 0; bought = m;
+        sched = RE.payment({ principal: L, rate: o.r, years: 30 });
+      }
+      if (m > 0) {
+        let outM = LIVING;
+        if (bought >= 0 && m > bought) outM = LIVING_NH + sched.rows[m - bought - 1].pay + holdM(P * Math.pow(1 + g, (m - bought) / 12));
+        cash = cash * (1 + opp / 12) + (NET - outM);
+      }
+      const value = bought >= 0 ? P * Math.pow(1 + g, (m - bought) / 12) : 0;
+      const bal = bought >= 0 ? (m === bought ? L : sched.rows[m - bought - 1].balance) : 0;
+      rows.push({ m, nw: value - bal + cash + dep });
+    }
+    return { rows, P, L, pay: sched ? sched.monthly : 0 };
+  }
+
+  /* ---------------------------------------------------------- 1. 자금 폭포 */
+  (function () {
+    const pG = EB.range("fund-p", (v) => EB.won(v * 1e8), draw);
+    const lG = EB.range("fund-l", (v) => EB.won(v * 1e8), draw);
+    const eG = EB.range("fund-e", (v) => v + "개월", draw);
+    function calc() {
+      const P = pG() * 1e8, L = lG() * 1e8, c = costParts(P);
+      const items = [
+        { k: "보증금 반환", v: C.home.jeonse },
+        { k: "전세대출 상환", v: -C.home.jeonseLoan },
+        { k: "예금·투자", v: CASH0 },
+        { k: "주택담보대출", v: L },
+        { k: "매매대금", v: -P },
+        { k: "취득세 등", v: -c.acq },
+        { k: "중개보수", v: -c.br },
+        { k: "법무비", v: -c.legal },
+        { k: "이사·수리", v: -c.move },
+      ];
+      const rest = items.reduce((s, x) => s + x.v, 0);
+      return { P, L, items, rest, cost: c.acq + c.br + c.legal + c.move, target: eG() * LIVING };
+    }
+    const cv = EB.canvas("#fund-cv", (ctx, w, h) => {
+      const P = EB.palette(), c = calc();
+      const all = c.items.concat([{ k: "남는 돈", v: c.rest, total: true }]);
+      let run = 0, hi = 0, lo = 0;
+      all.forEach((it) => { if (!it.total) { run += it.v; hi = Math.max(hi, run); lo = Math.min(lo, run); } });
+      hi *= 1.06; lo = Math.min(lo, c.rest, -3e7);
+      const narrow = w < 480, lab = narrow ? 86 : 104;
+      const box = { x: lab, y: 10, w: w - lab - 16, h: h - 32 };
+      const rowH = box.h / all.length;
+      const X = (v) => box.x + (v - lo) / (hi - lo) * box.w;
+      // 비상금 목표선
+      ctx.save(); ctx.setLineDash([5, 4]); ctx.strokeStyle = P.warn; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(X(c.target), box.y); ctx.lineTo(X(c.target), box.y + box.h); ctx.stroke(); ctx.restore();
+      T(ctx, "비상금 목표", X(c.target) + 4, h - 8, { size: 10, color: P.warn });
+      ctx.strokeStyle = P.axis; ctx.beginPath(); ctx.moveTo(X(0), box.y); ctx.lineTo(X(0), box.y + box.h); ctx.stroke();
+      T(ctx, "0", X(0) - 3, h - 8, { size: 10, color: P.faint, align: "right" });
+      run = 0;
+      all.forEach((it, i) => {
+        const y = box.y + i * rowH + rowH * 0.16, bh = rowH * 0.68;
+        let a, b;
+        if (it.total) { a = 0; b = it.v; } else { a = run; b = run + it.v; run = b; }
+        const x0 = X(Math.min(a, b)), x1 = X(Math.max(a, b));
+        const col = it.total ? (it.v >= c.target ? P.ok : it.v >= 0 ? P.warn : P.bad) : it.v >= 0 ? P.ok : P.bad;
+        ctx.fillStyle = col; ctx.globalAlpha = it.total ? 1 : 0.75; ctx.fillRect(x0, y, Math.max(1.5, x1 - x0), bh); ctx.globalAlpha = 1;
+        T(ctx, it.k, box.x - 8, y + bh / 2, { size: narrow ? 11 : 12, color: it.total ? P.text : P.dim, align: "right", base: "middle", weight: it.total ? 700 : 400 });
+        const s = (it.v >= 0 ? "+" : "−") + EB.wonAxis(Math.abs(it.v));
+        ctx.font = EB.font(11, true);
+        const tw = ctx.measureText(s).width;
+        const right = x1 + 4 + tw < box.x + box.w;
+        T(ctx, s, right ? x1 + 4 : x0 - 4, y + bh / 2, { size: 11, mono: true, color: P.text, align: right ? "left" : "right", base: "middle" });
+        if (!it.total && i < all.length - 2) { ctx.strokeStyle = P.faint; ctx.setLineDash([2, 2]); ctx.beginPath(); ctx.moveTo(X(b), y + bh); ctx.lineTo(X(b), y + rowH); ctx.stroke(); ctx.setLineDash([]); }
+      });
+    }, { get height() { return pw("fund-cv") < 480 ? 340 : 330; } });
+    function draw() {
+      const c = calc(), ltv = c.L / c.P;
+      EB.stat("fund-o-c", '<span class="minus">' + EB.won(c.cost) + "</span>");
+      EB.stat("fund-o-r", '<span class="' + (c.rest >= 0 ? "plus" : "minus") + '">' + EB.won(c.rest) + "</span>");
+      const gap = c.rest - c.target;
+      EB.stat("fund-o-g", gap >= 0 ? '<span class="plus">' + EB.won(gap) + " 여유</span>" : '<span class="minus">' + EB.won(-gap) + " 부족</span>");
+      EB.stat("fund-o-l", ltv > RE.KR.loan.ltv.unregulated ? '<span class="minus">' + Math.round(ltv * 100) + "% · 70% 초과</span>" : Math.round(ltv * 100) + "%");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 2. 감당 가격 역산 */
+  (function () {
+    const rG = EB.range("aff-r", (v) => v.toFixed(1) + "%", draw);
+    const eG = EB.range("aff-e", (v) => v + "개월", draw);
+    const sEl = document.getElementById("aff-s"); sEl.addEventListener("change", draw);
+    let ratio = 0.30, box = null;
+    const PX = [3e8, 9e8];
+    const loanFor = (P) => Math.max(0, P - (AVAIL - buyCosts(P) - eG() * LIVING));
+    const payFor = (P, r) => pay(loanFor(P), r);
+    function maxBy(f) { let lo = 1e8, hi = 2e9; if (!f(lo)) return null; for (let i = 0; i < 50; i++) { const m = (lo + hi) / 2; if (f(m)) lo = m; else hi = m; } return lo; }
+    function calc() {
+      const r = rG() / 100, lim = NET * ratio;
+      const pP = maxBy((P) => payFor(P, r) <= lim);
+      const pS = maxBy((P) => payFor(P, r + 0.02) <= lim);
+      const pL = maxBy((P) => loanFor(P) <= RE.KR.loan.ltv.unregulated * P);
+      const pD = maxBy((P) => RE.dsr({ income: C.income, loans: [{ principal: loanFor(P), rate: r, years: 30 }], stress: RE.KR.loan.stress.metroFloor * 0.4 }).ratio <= RE.KR.loan.dsr.bank);
+      return { r, lim, pP, pS, pL, pD, bank: Math.min(pL || 0, pD || 0) };
+    }
+    const cv = EB.canvas("#aff-cv", (ctx, w, h) => {
+      const P = EB.palette(), c = calc();
+      const ymax = 4e6;
+      const ch = EB.chart(ctx, { x: 56, y: 24, w: w - 84, h: h - 84 }, {
+        x: PX, y: [0, ymax], xTicks: [3e8, 4e8, 5e8, 6e8, 7e8, 8e8, 9e8], xFmt: EB.wonAxis, yFmt: EB.wonAxis, yTicks: [0, 1e6, 2e6, 3e6, 4e6],
+        bands: c.bank ? [{ x0: Math.min(c.bank, PX[1]), x1: PX[1], color: EB.color("bad-soft") || P.grid }] : [],
+        series: [
+          sEl.checked ? { data: sample((P) => payFor(P, c.r + 0.02)), color: P.bad, width: 1.8, dash: [5, 4] } : { data: [] },
+          { data: sample((P) => payFor(P, c.r)), color: P.accent, width: 2.8 },
+        ],
+        hlines: [{ y: c.lim, color: P.warn, width: 1.6, label: "월 상환 한도 " + EB.wonAxis(c.lim) }],
+      });
+      box = ch;
+      if (c.bank && c.bank < PX[1]) T(ctx, "은행 한도 밖", ch.X(Math.min(c.bank, PX[1])) + 4, ch.box.y + 12, { size: 11, color: P.bad, base: "middle" });
+      [[c.pP, P.accent], [sEl.checked ? c.pS : null, P.bad]].forEach(([x, col]) => {
+        if (!x || x < PX[0] || x > PX[1]) return;
+        ctx.save(); ctx.setLineDash([3, 3]); ctx.strokeStyle = col; ctx.globalAlpha = 0.7; ctx.beginPath(); ctx.moveTo(ch.X(x), ch.Y(c.lim)); ctx.lineTo(ch.X(x), ch.box.y + ch.box.h); ctx.stroke(); ctx.restore();
+        ctx.beginPath(); ctx.arc(ch.X(x), ch.Y(c.lim), 5, 0, TAU); ctx.fillStyle = col; ctx.fill();
+      });
+      if (c.pP && c.pP >= PX[0] && c.pP <= PX[1]) T(ctx, EB.wonAxis(c.pP), ch.X(c.pP), ch.box.y + ch.box.h - 10, { size: 11, weight: 700, color: P.accent, align: "center" });
+      // 손잡이(오른쪽 끝)
+      handle(ctx, ch.box.x + ch.box.w + 12, ch.Y(c.lim), P);
+      T(ctx, "필요한 월 상환", 62, 14, { size: 11, color: P.dim });
+    }, { get height() { return pw("aff-cv") < 480 ? 310 : 330; } });
+    function sample(f) { const out = []; for (let i = 0; i <= 60; i++) { const x = PX[0] + i / 60 * (PX[1] - PX[0]); out.push([x, f(x)]); } return out; }
+    EB.drag(cv.canvas, { move(x, y) { if (!box) return; const v = (box.box.y + box.box.h - y) / box.box.h * 4e6; ratio = EB.clamp(Math.round(v / NET * 100) / 100, 0.15, 0.5); draw(); } });
+    function draw() {
+      const c = calc();
+      document.getElementById("aff-o-hk").textContent = "월 상환 한도(실수령 " + Math.round(ratio * 100) + "%)";
+      EB.stat("aff-o-h", EB.won(c.lim));
+      EB.stat("aff-o-p", c.pP ? EB.won(c.pP, { digits: 0 }) + ' <small style="color:var(--text-faint)">(대출 ' + EB.wonAxis(loanFor(c.pP)) + ")</small>" : "—");
+      EB.stat("aff-o-s", c.pS ? EB.won(c.pS) : "—");
+      EB.stat("aff-o-b", c.bank ? EB.won(c.bank) + ' <small style="color:var(--text-faint)">(' + (c.pL < c.pD ? "LTV가" : "DSR이") + " 먼저)</small>" : "—");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 3. 시점 맞히기 */
+  (function () {
+    const mG = EB.range("time-m", (v) => pctS(v), restart);
+    const sG = EB.range("time-s", (v) => v + "%", restart);
+    const dG = EB.range("time-d", (v) => "−" + v + "%", restart);
+    const N = 400, M = 24, P0 = 6e8;
+    let res = null, prog = 1;
+    function simulate() {
+      const mu = mG() / 100, sg = sG() / 100, d = dG() / 100, gs = RE.gauss(20261008);
+      const paths = [], paid = [], when = [];
+      let hit = 0;
+      for (let i = 0; i < N; i++) {
+        let p = P0; const pts = [p]; let buy = null, bm = M;
+        for (let m = 1; m <= M; m++) {
+          p *= Math.exp(mu / 12 - sg * sg / 24 + sg / Math.sqrt(12) * gs());
+          pts.push(p);
+          if (buy == null && p <= P0 * (1 - d)) { buy = p; bm = m; }
+        }
+        if (buy != null) hit++; else buy = pts[M];
+        paths.push(pts); paid.push(buy); when.push(bm);
+      }
+      const sorted = paid.slice().sort((a, b) => a - b);
+      return { paths, paid, when, hit: hit / N, mean: paid.reduce((a, b) => a + b, 0) / N, p90: sorted[Math.floor(N * 0.9)], d };
+    }
+    const cv = EB.canvas("#time-cv", (ctx, w, h) => {
+      const P = EB.palette(); if (!res) return;
+      const lo = P0 * 0.7, hi = P0 * 1.35;
+      const histW = Math.min(110, w * 0.26);
+      const box = { x: 52, y: 24, w: w - 52 - histW - 18, h: h - 58 };
+      const X = (m) => box.x + m / M * box.w, Y = (v) => box.y + box.h - (EB.clamp(v, lo, hi) - lo) / (hi - lo) * box.h;
+      // 축
+      ctx.strokeStyle = P.axis; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(box.x, box.y); ctx.lineTo(box.x, box.y + box.h); ctx.lineTo(box.x + box.w, box.y + box.h); ctx.stroke();
+      [0.8, 1, 1.2].forEach((k) => { ctx.strokeStyle = P.grid; ctx.beginPath(); ctx.moveTo(box.x, Y(P0 * k)); ctx.lineTo(w - 8, Y(P0 * k)); ctx.stroke(); T(ctx, EB.wonAxis(P0 * k), box.x - 6, Y(P0 * k), { size: 11, mono: true, color: P.dim, align: "right", base: "middle" }); });
+      [0, 6, 12, 18, 24].forEach((m) => T(ctx, m + "개월", X(m), box.y + box.h + 15, { size: 11, color: P.dim, align: "center" }));
+      // 기다리는 선
+      ctx.save(); ctx.setLineDash([5, 4]); ctx.strokeStyle = P.ok; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(box.x, Y(P0 * (1 - res.d))); ctx.lineTo(box.x + box.w, Y(P0 * (1 - res.d))); ctx.stroke(); ctx.restore();
+      // 경로(진행)
+      const upto = Math.max(1, Math.round(prog * M));
+      ctx.save(); ctx.beginPath(); ctx.rect(box.x, box.y, box.w + 1, box.h); ctx.clip();
+      for (let i = 0; i < 60; i++) {
+        const pts = res.paths[i], bm = res.when[i];
+        ctx.strokeStyle = bm < M ? P.ok : P.accent2; ctx.globalAlpha = 0.35; ctx.lineWidth = 1.2; ctx.beginPath();
+        for (let m = 0; m <= Math.min(upto, bm); m++) (m ? ctx.lineTo(X(m), Y(pts[m])) : ctx.moveTo(X(m), Y(pts[m])));
+        ctx.stroke();
+        if (bm <= upto) { ctx.globalAlpha = 0.9; ctx.fillStyle = bm < M ? P.ok : P.accent2; ctx.beginPath(); ctx.arc(X(bm), Y(pts[bm]), 2.6, 0, TAU); ctx.fill(); }
+      }
+      ctx.restore(); ctx.globalAlpha = 1;
+      // 지금 사는 점
+      ctx.beginPath(); ctx.arc(X(0), Y(P0), 6, 0, TAU); ctx.fillStyle = P.accent; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = P.bg; ctx.stroke();
+      const tag = (s, x, y, col) => { ctx.font = EB.font(11, false, 700); const tw = ctx.measureText(s).width + 10; rrect(ctx, x, y - 9, tw, 18, 5); ctx.fillStyle = P.surface; ctx.globalAlpha = 0.92; ctx.fill(); ctx.globalAlpha = 1; T(ctx, s, x + 5, y, { size: 11, weight: 700, color: col, base: "middle" }); };
+      tag("지금 6억", X(0) + 10, Y(P0) - 16, P.accent);
+      tag("기다리는 값 " + EB.wonAxis(P0 * (1 - res.d)), X(M) - 104, Y(P0 * (1 - res.d)) + 16, P.ok);
+      // 히스토그램(매수가 분포)
+      if (prog >= 1) {
+        const hx = box.x + box.w + 14, bins = 26, cnt = new Array(bins).fill(0);
+        res.paid.forEach((v) => { const k = Math.floor((EB.clamp(v, lo, hi - 1) - lo) / (hi - lo) * bins); cnt[k]++; });
+        const mx = Math.max(...cnt), bh = box.h / bins;
+        cnt.forEach((n, k) => { const y0 = box.y + box.h - (k + 1) * bh; ctx.fillStyle = (lo + (k + 0.5) / bins * (hi - lo)) < P0 ? P.ok : P.bad; ctx.globalAlpha = 0.65; ctx.fillRect(hx, y0 + 0.5, n / mx * (histW - 6), bh - 1); });
+        ctx.globalAlpha = 1;
+        ctx.strokeStyle = P.text; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(hx - 4, Y(res.mean)); ctx.lineTo(hx + histW - 4, Y(res.mean)); ctx.stroke();
+        T(ctx, "평균", hx + histW - 4, Y(res.mean) - 5, { size: 10, color: P.text, align: "right" });
+        T(ctx, "기다린 쪽 매수가", hx, 14, { size: 11, color: P.dim });
+      }
+      if (w >= 480) T(ctx, "집값 경로 60개(400개 중)", box.x + 4, 14, { size: 11, color: P.dim });
+    }, { get height() { return pw("time-cv") < 480 ? 300 : 320; } });
+    const loop = EB.loop(cv.canvas, (dt) => { if (prog < 1) { prog = Math.min(1, prog + dt / 1.2); cv.redraw(); } });
+    void loop;
+    function restart() { res = simulate(); prog = 0; stats(); cv.redraw(); }
+    function stats() {
+      const rel = res.mean / P0 - 1;
+      EB.stat("time-o-a", EB.won(res.mean) + ' <small style="color:var(--text-faint)">(' + (rel >= 0 ? "+" : "−") + Math.abs(rel * 100).toFixed(1) + "%)</small>");
+      EB.stat("time-o-h", Math.round(res.hit * 100) + "%");
+      EB.stat("time-o-w", '<span class="minus">' + EB.won(res.p90) + "</span>");
+    }
+    res = simulate(); stats(); cv.redraw();
+  })();
+
+  /* ---------------------------------------------------------- 4. 잔금일 타임라인 */
+  (function () {
+    const dG = EB.range("close-d", (v) => v + "일", draw);
+    const rG = EB.range("close-r", (v) => v + "%", draw);
+    const SPAN = 75, STAY = 8e4, STORE = 1.5e6, OWN = C.ownDeposit;
+    let s = 0, box = null;
+    function calc() {
+      const R = dG(), rate = rG() / 100;           // R: 보증금 반환일(만기 기준 +일)
+      let bridge = 0, temp = 0, gap = 0, kind = "맞음";
+      if (s < R) { gap = R - s; bridge = OWN * rate * gap / 365; kind = "잔금이 먼저"; }
+      else if (s > 0) { gap = s - Math.max(0, R); temp = gap > 0 ? STORE + STAY * gap : 0; kind = "만기가 먼저"; }
+      return { R, gap, bridge, temp, total: bridge + temp, kind };
+    }
+    const label = (d) => { const base = new Date(2027, 3, 30); base.setDate(base.getDate() + d); return (base.getMonth() + 1) + "월 " + base.getDate() + "일"; };
+    const cv = EB.canvas("#close-cv", (ctx, w, h) => {
+      const P = EB.palette(), c = calc();
+      const B = { x: 24, w: w - 48 };
+      const X = (d) => B.x + (d + SPAN) / (2 * SPAN) * B.w;
+      box = B;
+      const yA = 70, yB = 140, yC = 210;
+      T(ctx, "지금 전셋집", B.x, yA - 26, { size: 12, weight: 700, color: P.text });
+      T(ctx, "새집(매매)", B.x, yB - 26, { size: 12, weight: 700, color: P.text });
+      // 전셋집 막대: 만기(0)까지 + 반환 지연
+      ctx.fillStyle = P.accent2; ctx.globalAlpha = 0.75; ctx.fillRect(X(-SPAN), yA - 12, X(Math.max(0, c.R)) - X(-SPAN), 18); ctx.globalAlpha = 1;
+      if (c.R > 0) { ctx.fillStyle = P.bad; ctx.globalAlpha = 0.35; ctx.fillRect(X(0), yA - 12, X(c.R) - X(0), 18); ctx.globalAlpha = 1; T(ctx, "반환 지연", X(c.R) + 4, yA + 2, { size: 11, color: P.bad, base: "middle" }); }
+      // 새집 막대: 잔금일부터
+      ctx.fillStyle = P.accent; ctx.globalAlpha = 0.8; ctx.fillRect(X(s), yB - 12, X(SPAN) - X(s), 18); ctx.globalAlpha = 1;
+      // 겹침/공백 구간
+      if (c.bridge > 0) { ctx.fillStyle = P.bad; ctx.globalAlpha = 0.18; ctx.fillRect(X(s), yA - 18, X(c.R) - X(s), yB - yA + 30); ctx.globalAlpha = 1; T(ctx, "단기 자금 필요 " + c.gap + "일", (X(s) + X(c.R)) / 2, yB + 24, { size: 11, weight: 700, color: P.bad, align: "center" }); }
+      if (c.temp > 0) { ctx.fillStyle = P.warn; ctx.globalAlpha = 0.2; ctx.fillRect(X(Math.max(0, c.R)), yA - 18, X(s) - X(Math.max(0, c.R)), yB - yA + 30); ctx.globalAlpha = 1; T(ctx, "머물 곳 필요 " + c.gap + "일", (X(Math.max(0, c.R)) + X(s)) / 2, yB + 24, { size: 11, weight: 700, color: P.warn, align: "center" }); }
+      // 축
+      ctx.strokeStyle = P.axis; ctx.beginPath(); ctx.moveTo(B.x, yC); ctx.lineTo(B.x + B.w, yC); ctx.stroke();
+      [-60, -30, 0, 30, 60].forEach((d) => { ctx.beginPath(); ctx.moveTo(X(d), yC - 4); ctx.lineTo(X(d), yC + 4); ctx.stroke(); T(ctx, d === 0 ? "만기" : (d > 0 ? "+" : "−") + Math.abs(d) + "일", X(d), yC + 18, { size: 11, color: d === 0 ? P.text : P.dim, align: "center", weight: d === 0 ? 700 : 400 }); });
+      ctx.save(); ctx.setLineDash([4, 4]); ctx.strokeStyle = P.text; ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.moveTo(X(0), 30); ctx.lineTo(X(0), yC); ctx.stroke(); ctx.restore();
+      // 잔금일 손잡이
+      ctx.strokeStyle = P.accent; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(X(s), yB - 20); ctx.lineTo(X(s), yC); ctx.stroke(); ctx.lineWidth = 1;
+      handle(ctx, X(s), yC, P);
+      T(ctx, "잔금일", X(s), yB - 26, { size: 11, weight: 700, color: P.accent, align: X(s) > w - 60 ? "right" : X(s) < 70 ? "left" : "center" });
+    }, { get height() { return 262; } });
+    EB.drag(cv.canvas, { move(x) { if (!box) return; s = EB.clamp(Math.round(((x - box.x) / box.w * 2 * SPAN - SPAN) / 5) * 5, -60, 60); draw(); } });
+    function draw() {
+      const c = calc();
+      EB.stat("close-o-s", label(s) + ' <small style="color:var(--text-faint)">(만기 4월 30일 가정)</small>');
+      EB.stat("close-o-g", c.gap ? c.kind + " " + c.gap + "일" : "어긋남 없음");
+      EB.stat("close-o-c", c.total ? '<span class="minus">' + EB.won(c.total) + "</span>" : '<span class="plus">0원</span>');
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 5. 일시적 2주택 */
+  (function () {
+    const regG = EB.seg("two-reg", draw);
+    const pG = EB.range("two-p", (v) => EB.won(v * 1e8), draw);
+    const SPAN = 4;
+    let t = 1.5, box = null;
+    function calc() {
+      const both = regG() === "both", dl = both ? RE.KR.cgt.tempTwoYears : 3, sell = pG() * 1e8;
+      const inTime = t <= dl;
+      const tax = RE.capGainsTax({ buy: 6e8, sell, costs: 1e7, years: 10 + t, live: 10, homes: inTime ? 1 : 2, regulated: both, regulatedAtBuy: both });
+      return { both, dl, inTime, tax };
+    }
+    const cv = EB.canvas("#two-cv", (ctx, w, h) => {
+      const P = EB.palette(), c = calc();
+      const B = { x: 28, w: w - 56 }, X = (y) => B.x + y / SPAN * B.w, yL = 120;
+      box = B;
+      ctx.fillStyle = P.ok; ctx.globalAlpha = 0.16; ctx.fillRect(X(0), 50, X(c.dl) - X(0), yL - 50 + 10); ctx.globalAlpha = 1;
+      ctx.fillStyle = P.bad; ctx.globalAlpha = 0.1; ctx.fillRect(X(c.dl), 50, X(SPAN) - X(c.dl), yL - 50 + 10); ctx.globalAlpha = 1;
+      T(ctx, "처분 기한 " + c.dl + "년 안: 비과세 판단", X(0) + 6, 66, { size: 11, weight: 700, color: P.ok });
+      T(ctx, "기한 넘김", X(SPAN) - 6, 66, { size: 11, weight: 700, color: P.bad, align: "right" });
+      ctx.strokeStyle = P.axis; ctx.beginPath(); ctx.moveTo(B.x, yL); ctx.lineTo(B.x + B.w, yL); ctx.stroke();
+      for (let y = 0; y <= SPAN; y++) { ctx.beginPath(); ctx.moveTo(X(y), yL - 4); ctx.lineTo(X(y), yL + 4); ctx.stroke(); T(ctx, y === 0 ? "새집 취득" : y + "년", X(y), yL + 20, { size: 11, color: y === 0 ? P.text : P.dim, align: y === 0 ? "left" : "center", weight: y === 0 ? 700 : 400 }); }
+      ctx.save(); ctx.strokeStyle = P.bad; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(X(c.dl), 44); ctx.lineTo(X(c.dl), yL + 6); ctx.stroke(); ctx.restore();
+      // 손잡이
+      ctx.strokeStyle = c.inTime ? P.ok : P.bad; ctx.lineWidth = 2.4; ctx.beginPath(); ctx.moveTo(X(t), 86); ctx.lineTo(X(t), yL); ctx.stroke(); ctx.lineWidth = 1;
+      handle(ctx, X(t), yL, P);
+      T(ctx, "팔기", X(t), 80, { size: 12, weight: 700, color: c.inTime ? P.ok : P.bad, align: "center" });
+      // 세금 막대
+      const yT = 168, bw = B.w, mx = 3e8;
+      ctx.fillStyle = P.grid; ctx.fillRect(B.x, yT, bw, 18);
+      ctx.fillStyle = P.bad; ctx.fillRect(B.x, yT, Math.min(1, c.tax.total / mx) * bw, 18);
+      T(ctx, "양도소득세 " + (c.tax.total > 0 ? EB.won(c.tax.total) : "0원") + (c.tax.total > 0 ? "" : " (비과세)"), B.x, yT - 8, { size: 12, weight: 700, color: P.text });
+      T(ctx, "막대 끝 = 3억", B.x + bw, yT + 34, { size: 10, color: P.faint, align: "right" });
+    }, { get height() { return 220; } });
+    EB.drag(cv.canvas, { move(x) { if (!box) return; t = EB.clamp(Math.round((x - box.x) / box.w * SPAN * 4) / 4, 0.25, SPAN); draw(); } });
+    function draw() {
+      const c = calc(), y = Math.floor(t), mo = Math.round((t - y) * 12);
+      EB.stat("two-o-t", "새집 취득 " + (y ? y + "년 " : "") + (mo ? mo + "개월" : "") + " 뒤");
+      EB.stat("two-o-d", c.dl + "년 · " + (c.inTime ? '<span class="plus">기한 안</span>' : '<span class="minus">넘김</span>'));
+      EB.stat("two-o-x", c.tax.total > 0 ? '<span class="minus">' + EB.won(c.tax.total) + "</span>" : '<span class="plus">0원</span>');
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 6. 스트레스 시험 */
+  (function () {
+    const tG = EB.seg("st-type", draw);
+    const rG = EB.range("st-r", (v) => "+" + v + "%p", draw);
+    const iG = EB.range("st-i", (v) => (v ? "−" : "") + v + "%", draw);
+    const pG = EB.range("st-p", (v) => pctS(v), draw);
+    const lEl = document.getElementById("st-l"); lEl.addEventListener("change", draw);
+    function calc() {
+      const type = tG(), dr = rG() / 100, inc = NET * (1 - iG() / 100);
+      const rNow = PLAN.r + (type === "var" ? dr : 0);
+      const payNow = pay(PLAN.L, rNow);
+      const payLater = type === "fix" ? payNow : pay(PLAN.L, PLAN.r + dr);
+      const cash0 = AVAIL - buyCosts(PLAN.P) - (PLAN.P - PLAN.L);
+      const short = lEl.checked ? PLAN.L * 0.2 : 0;
+      const cashAfter = cash0 - short;
+      const surplus = inc - LIVING_NH - payNow - holdM(PLAN.P);
+      const months = surplus >= 0 ? Infinity : Math.max(0, cashAfter) / -surplus;
+      const value = PLAN.P * (1 + pG() / 100), equity = value - PLAN.L;
+      return { type, inc, payNow, payLater, ratioNow: payNow / inc, ratioLater: payLater / inc, surplus, months, cashAfter, short, value, equity, eqShare: equity / value };
+    }
+    const cv = EB.canvas("#st-cv", (ctx, w, h) => {
+      const P = EB.palette(), c = calc();
+      const narrow = w < 480, lab = narrow ? 0 : 150;
+      const gauges = [
+        { k: "월 상환 ÷ 실수령(지금)", v: c.ratioNow, max: 0.6, zones: [0.3, 0.4], fmt: (v) => Math.round(v * 100) + "%" },
+        { k: c.type === "cyc" ? "월 상환 ÷ 실수령(5년 뒤)" : "월 상환 ÷ 실수령(금리 반영)", v: c.ratioLater, max: 0.6, zones: [0.3, 0.4], fmt: (v) => Math.round(v * 100) + "%" },
+        { k: "비상금으로 버티는 개월", v: c.months === Infinity ? 24 : c.months, max: 24, zones: [6, 3], inv: true, fmt: () => (c.months === Infinity ? "흑자" : c.months.toFixed(1) + "개월") },
+        { k: "집의 내 몫(집값 대비)", v: c.eqShare, max: 0.7, zones: [0.3, 0.15], inv: true, fmt: (v) => Math.round(v * 100) + "%" },
+        { k: "잔금 뒤 남는 현금", v: c.cashAfter, max: 4e7, zones: [PLAN.emerg, 0], inv: true, fmt: (v) => EB.won(v) },
+      ];
+      const rowH = (h - 20) / gauges.length;
+      gauges.forEach((g, i) => {
+        const y0 = 10 + i * rowH;
+        const gx = narrow ? 12 : lab + 12, gw = w - gx - 16, gy = narrow ? y0 + 22 : y0 + rowH / 2 - 9, gh = 16;
+        T(ctx, g.k, narrow ? 12 : lab, narrow ? y0 + 12 : gy + gh / 2, { size: 12, color: P.dim, align: narrow ? "left" : "right", base: "middle" });
+        // 구역
+        const Z = (v) => gx + EB.clamp(v / g.max, 0, 1) * gw;
+        const z1 = g.zones[0], z2 = g.zones[1];
+        if (!g.inv) { ctx.fillStyle = P.ok; ctx.globalAlpha = 0.18; ctx.fillRect(gx, gy, Z(z1) - gx, gh); ctx.fillStyle = P.warn; ctx.fillRect(Z(z1), gy, Z(z2) - Z(z1), gh); ctx.fillStyle = P.bad; ctx.fillRect(Z(z2), gy, gx + gw - Z(z2), gh); }
+        else { ctx.fillStyle = P.bad; ctx.globalAlpha = 0.18; ctx.fillRect(gx, gy, Z(z2) - gx, gh); ctx.fillStyle = P.warn; ctx.fillRect(Z(z2), gy, Z(z1) - Z(z2), gh); ctx.fillStyle = P.ok; ctx.fillRect(Z(z1), gy, gx + gw - Z(z1), gh); }
+        ctx.globalAlpha = 1;
+        const bad = g.inv ? g.v < z2 : g.v > z2, warn = g.inv ? g.v < z1 : g.v > z1;
+        const col = bad ? P.bad : warn ? P.warn : P.ok;
+        const vx = Z(g.v);
+        ctx.fillStyle = col; ctx.fillRect(gx, gy + 4, Math.max(2, vx - gx), gh - 8);
+        ctx.beginPath(); ctx.moveTo(vx, gy - 3); ctx.lineTo(vx, gy + gh + 3); ctx.lineWidth = 3; ctx.strokeStyle = col; ctx.stroke(); ctx.lineWidth = 1;
+        const s = g.fmt(g.v);
+        ctx.font = EB.font(12, false, 700); const tw = ctx.measureText(s).width;
+        T(ctx, s, vx + 6 + tw < gx + gw ? vx + 6 : vx - 6, gy - 6, { size: 12, weight: 700, color: col, align: vx + 6 + tw < gx + gw ? "left" : "right" });
+      });
+    }, { get height() { return pw("st-cv") < 480 ? 330 : 300; } });
+    function draw() {
+      const c = calc();
+      EB.stat("st-o-a", '<span class="' + (c.ratioLater > 0.4 ? "minus" : "") + '">' + Math.round(c.ratioNow * 100) + "% → " + Math.round(c.ratioLater * 100) + "%</span>");
+      EB.stat("st-o-b", '<span class="' + (c.surplus >= 0 ? "plus" : "minus") + '">' + (c.surplus >= 0 ? "+" : "") + EB.won(c.surplus) + "</span>");
+      EB.stat("st-o-c", c.cashAfter < 0 ? '<span class="minus">잔금 ' + EB.won(-c.cashAfter) + " 부족</span>" : c.months === Infinity ? '<span class="plus">적자 없음</span>' : '<span class="minus">' + c.months.toFixed(1) + "개월</span>");
+      EB.stat("st-o-d", '<span class="' + (c.equity < 0 ? "minus" : "") + '">' + EB.won(c.equity) + "</span>");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 7. 두 길 */
+  (function () {
+    const gG = EB.range("tp-g", (v) => pctS(v), draw);
+    const rG = EB.range("tp-r", (v) => v.toFixed(1) + "%", draw);
+    const drG = EB.range("tp-dr", (v) => (v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(v) + "%p", draw);
+    const wG = EB.range("tp-w", (v) => v + "%", draw);
+    const OPP = 0.03, DISC = 0.8;
+    let sel = 120, box = null;
+    function calc(g) {
+      g = g == null ? gG() / 100 : g;
+      const r = rG() / 100, r2 = Math.max(0.01, r + drG() / 100), p = wG() / 100;
+      const B = path({ g, r, opp: OPP, start: 0 });
+      const A = path({ g, r: r2, opp: OPP, start: 24 });
+      const W = path({ g, r: r2, opp: OPP, start: 24, disc: DISC });
+      const E = A.rows.map((x, i) => p * W.rows[i].nw + (1 - p) * x.nw);
+      return { B, A, W, E, p };
+    }
+    function gEq() {
+      const f = (g) => { const c = calc(g); return c.B.rows[120].nw - c.E[120]; };
+      let lo = -0.04, hi = 0.08;
+      if (f(lo) > 0) return "−4% 아래"; if (f(hi) < 0) return "8% 넘음";
+      for (let i = 0; i < 26; i++) { const m = (lo + hi) / 2; if (f(m) < 0) lo = m; else hi = m; }
+      return "연 " + (hi * 100).toFixed(1) + "%";
+    }
+    const yr = (m) => (2027 + Math.floor((3 + m) / 12)) + "." + String(((3 + m) % 12) + 1).padStart(2, "0");
+    const cv = EB.canvas("#tp-cv", (ctx, w, h) => {
+      const P = EB.palette(), c = calc();
+      const all = c.B.rows.map((x) => x.nw).concat(c.A.rows.map((x) => x.nw), c.W.rows.map((x) => x.nw));
+      const ymin = Math.floor(Math.min(...all) * 0.95 / 1e8) * 1e8, ymax = Math.ceil(Math.max(...all) * 1.04 / 1e8) * 1e8;
+      const ch = EB.chart(ctx, { x: 56, y: 28, w: w - 72, h: h - 90 }, {
+        x: [0, 120], y: [ymin, ymax], xTicks: [0, 24, 48, 72, 96, 120], xFmt: (m) => String(2027 + m / 12), yFmt: EB.wonAxis,
+        bands: [{ x0: 0, x1: 24, color: P.grid }],
+        series: [
+          { data: c.W.rows.map((x) => [x.m, x.nw]), color: P.accent2, width: 1.4, dash: [4, 4] },
+          { data: c.A.rows.map((x) => [x.m, x.nw]), color: P.accent2, width: 2 },
+          { data: c.E.map((v, i) => [i, v]), color: P.warn, width: 1.4, dash: [2, 3] },
+          { data: c.B.rows.map((x) => [x.m, x.nw]), color: P.accent, width: 2.8 },
+        ],
+        vlines: [{ x: 24, color: P.faint, label: w < 480 ? "(가) 매수" : "(가) 2029년 매수" }],
+      });
+      box = ch;
+      const lg = [["(나) 지금 사기", P.accent], ["(가) 시세로", P.accent2], ["(가) 당첨 시", P.accent2]];
+      let lx = 62; lg.forEach(([s, col], i) => { ctx.fillStyle = col; ctx.globalAlpha = i === 2 ? 0.6 : 1; ctx.fillRect(lx, 12, 14, 3); ctx.globalAlpha = 1; T(ctx, s, lx + 18, 17, { size: 11, color: P.dim }); ctx.font = EB.font(11); lx += ctx.measureText(s).width + 30; });
+      const px = ch.X(sel), yb = ch.box.y + ch.box.h;
+      ctx.save(); ctx.setLineDash([3, 3]); ctx.strokeStyle = P.text; ctx.globalAlpha = 0.55; ctx.beginPath(); ctx.moveTo(px, ch.box.y); ctx.lineTo(px, yb); ctx.stroke(); ctx.restore();
+      [[c.B.rows[sel].nw, P.accent], [c.E[sel], P.warn]].forEach(([v, col]) => { ctx.beginPath(); ctx.arc(px, ch.Y(v), 5, 0, TAU); ctx.fillStyle = col; ctx.fill(); });
+      handle(ctx, px, yb, P);
+      T(ctx, yr(sel), px, ch.box.y + 12, { size: 11, weight: 700, color: P.text, align: px > w - 70 ? "right" : "left", base: "middle" });
+    }, { get height() { return pw("tp-cv") < 480 ? 340 : 400; } });
+    EB.drag(cv.canvas, { move(x) { if (!box) return; sel = EB.clamp(Math.round((x - box.box.x) / box.box.w * 10) * 12, 12, 120); draw(); } });
+    function draw() {
+      const c = calc();
+      document.getElementById("tp-o-yk").textContent = yr(sel).replace(".", "년 ") + "월 순자산 (나)";
+      EB.stat("tp-o-b", EB.won(c.B.rows[sel].nw));
+      const d = c.E[sel] - c.B.rows[sel].nw;
+      EB.stat("tp-o-a", EB.won(c.E[sel]) + ' <small style="color:var(--text-faint)">(' + (d >= 0 ? "+" : "−") + EB.wonAxis(Math.abs(d)) + ")</small>");
+      EB.stat("tp-o-g", gEq());
+      EB.stat("tp-o-p", EB.wonAxis(c.B.pay) + " / " + EB.wonAxis(c.A.pay));
+      cv.redraw();
+    }
+    draw();
+  })();
+})();
+</script>
+</body>
+</html>

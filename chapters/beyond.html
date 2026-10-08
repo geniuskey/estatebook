@@ -1,0 +1,1010 @@
+<!doctype html>
+<!-- Copyright (c) 2026 geniuskey and EstateBook contributors.
+     Executable code: MIT (see ../LICENSE-MIT).
+     Text, illustrations, questions and explanations: CC-BY-4.0 (see ../LICENSE.md). -->
+<html lang="ko">
+<head>
+<!--head:start {"desc": "오피스텔·상가·지식산업센터·토지·리츠처럼 주택 밖의 부동산을 숫자로 본다. 표면 수익률과 실질 수익률의 차이, 공실이 수익률을 무너뜨리는 과정, 팔리는 데 걸리는 시간의 값, 수익률 보장 분양형 상품의 구조를 시뮬레이터로 확인한다."}-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>주택 밖의 부동산 · EstateBook</title>
+<meta name="description" content="오피스텔·상가·지식산업센터·토지·리츠처럼 주택 밖의 부동산을 숫자로 본다. 표면 수익률과 실질 수익률의 차이, 공실이 수익률을 무너뜨리는 과정, 팔리는 데 걸리는 시간의 값, 수익률 보장 분양형 상품의 구조를 시뮬레이터로 확인한다.">
+<link rel="canonical" href="https://estatebook.euiyun.com/chapters/beyond.html">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<meta name="theme-color" content="#0f766e">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EstateBook">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="주택 밖의 부동산 · EstateBook">
+<meta property="og:description" content="오피스텔·상가·지식산업센터·토지·리츠처럼 주택 밖의 부동산을 숫자로 본다. 표면 수익률과 실질 수익률의 차이, 공실이 수익률을 무너뜨리는 과정, 팔리는 데 걸리는 시간의 값, 수익률 보장 분양형 상품의 구조를 시뮬레이터로 확인한다.">
+<meta property="og:url" content="https://estatebook.euiyun.com/chapters/beyond.html">
+<meta property="og:image" content="https://estatebook.euiyun.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Chapter","LearningResource"],"@id":"https://estatebook.euiyun.com/chapters/beyond.html#chapter","name":"주택 밖의 부동산","headline":"주택 밖의 부동산 · EstateBook","description":"오피스텔·상가·지식산업센터·토지·리츠처럼 주택 밖의 부동산을 숫자로 본다. 표면 수익률과 실질 수익률의 차이, 공실이 수익률을 무너뜨리는 과정, 팔리는 데 걸리는 시간의 값, 수익률 보장 분양형 상품의 구조를 시뮬레이터로 확인한다.","url":"https://estatebook.euiyun.com/chapters/beyond.html","position":18,"inLanguage":"ko","isAccessibleForFree":true,"learningResourceType":"인터랙티브 교재","educationalLevel":"일반 성인","image":"https://estatebook.euiyun.com/og.png","dateModified":"2026-10-08","isPartOf":{"@type":"Book","@id":"https://estatebook.euiyun.com/#book","name":"EstateBook · 집값과 전세를 숫자로 푸는 부동산 교과서","url":"https://estatebook.euiyun.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"EstateBook","item":"https://estatebook.euiyun.com/"},{"@type":"ListItem","position":2,"name":"18. 주택 밖의 부동산","item":"https://estatebook.euiyun.com/chapters/beyond.html"}]}]}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../css/style.css">
+<script src="../js/common.js"></script>
+<script src="../js/estate.js"></script>
+<!--head:end-->
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3d6151a0abc94ede89285d462527fa80"}'></script>
+<!-- End Cloudflare Web Analytics -->
+</head>
+<body data-chapter="beyond">
+<main class="chapter">
+  <header class="chapter-hero">
+    <div class="eyebrow">Chapter 18</div>
+    <h1>주택 밖의 부동산</h1>
+    <p class="lead">하늘의 아버지는 올해 66세다. 지방 D시의 오래된 아파트에 살고, 퇴직금과 예금을 합친 노후 자금이 조금 있다. 지난달 아버지는 전화 한 통을 받았다. "관광지 바닷가에 짓는 레지던스 한 실을 1억 8,000만원에 분양합니다. 2년 동안 연 7% 수익을 확정 보장해 드립니다." 은행 예금 금리의 두 배가 넘는 숫자다. 아버지는 하늘에게 물었다. "이거 괜찮은 거냐?" 월세 받는 오피스텔, 1층 상가, 지식산업센터, 개발 예정지 땅, 주식처럼 사고파는 리츠. 집 말고도 '부동산'이라는 이름이 붙은 상품은 많고, 대부분 같은 말로 팔린다. "매달 월세가 들어옵니다." 이 장은 그 월세가 실제로 얼마인지, 무엇이 그것을 깎아 먹는지, 그리고 그 상품을 팔고 싶을 때 무슨 일이 생기는지를 숫자로 따진다.</p>
+    <ul class="objectives">
+      <li>오피스텔·상가·지식산업센터·토지·리츠가 주택과 어떻게 다른지(수익원, 환금성, 대출, 세금, 관리 부담) 비교한다.</li>
+      <li>광고에 나오는 표면 수익률에서 취득세·중개보수·공실·수선비·세금을 빼 실질 수익률을 계산한다.</li>
+      <li>공실과 대출 이자가 겹치면 수익률이 어떻게 무너지는지, 손익분기 공실을 찾는다.</li>
+      <li>같은 오피스텔이라도 실제로 주거용으로 쓰면 주택 수와 세금이 달라진다는 것을 설명한다.</li>
+      <li>팔리는 데 걸리는 시간(환금성)을 비용으로 바꿔 계산하고, 수익률 보장 분양형 상품의 구조를 읽는다.</li>
+    </ul>
+  </header>
+
+  <section id="why">
+    <h2>월세 받는 부동산이라는 약속</h2>
+    <p>집을 사는 사람은 대개 그 집에 살려고 산다. 주택 밖의 부동산을 사는 사람은 거의 언제나 돈을 벌려고 산다. 그래서 이런 상품을 묶어 <span class="term">수익형 부동산</span><span class="en">(Income-producing real estate)</span>이라 부른다. 매달 들어오는 임대료가 주된 목적이고, 값이 오르면 덤이다. 은퇴를 앞두거나 이미 은퇴한 사람에게 "월급 대신 월세"라는 말은 강하게 들린다.</p>
+    <p>하지만 '부동산'이라는 같은 이름 아래 성질이 전혀 다른 물건들이 모여 있다. 오피스텔은 주택처럼 쓰일 수도, 사무실처럼 쓰일 수도 있다. 상가는 세입자의 장사가 잘되어야 임대료가 나온다. 지식산업센터는 공장과 사무실의 중간이고, 토지는 대부분 임대료가 거의 없다. 리츠는 건물 대신 건물을 가진 회사의 주식을 산다. 아래 그림은 이 다섯 가지를 아파트와 나란히 놓은 것이다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 460 392" role="img" aria-label="아파트, 오피스텔, 상가, 지식산업센터, 토지, 상장 리츠의 수익원·환금성·관리 부담·변동 원인 비교표">
+        <rect x="6" y="6" width="448" height="34" rx="6" class="f-surface"/>
+        <text x="52" y="28" text-anchor="middle" class="lbl-dim">종류</text>
+        <text x="152" y="28" text-anchor="middle" class="lbl-b">주된 수익</text>
+        <text x="262" y="28" text-anchor="middle" class="lbl-b">팔기(환금성)</text>
+        <text x="372" y="28" text-anchor="middle" class="lbl-b">가장 큰 위험</text>
+        <line x1="100" y1="46" x2="100" y2="352" class="s-dash"/>
+        <line x1="206" y1="46" x2="206" y2="352" class="s-dash"/>
+        <line x1="318" y1="46" x2="318" y2="352" class="s-dash"/>
+        <text x="52" y="72" text-anchor="middle" class="lbl-acc">아파트</text>
+        <text x="152" y="66" text-anchor="middle" class="lbl">거주 + 시세</text>
+        <text x="152" y="83" text-anchor="middle" class="lbl-dim">임대료는 낮다</text>
+        <text x="262" y="66" text-anchor="middle" class="lbl">수요가 넓다</text>
+        <text x="262" y="83" text-anchor="middle" class="lbl-dim">몇 주~몇 달</text>
+        <text x="372" y="66" text-anchor="middle" class="lbl">금리·대출 규제</text>
+        <text x="372" y="83" text-anchor="middle" class="lbl-dim">값이 크다</text>
+        <text x="52" y="124" text-anchor="middle" class="lbl-b">오피스텔</text>
+        <text x="152" y="118" text-anchor="middle" class="lbl">월세</text>
+        <text x="152" y="135" text-anchor="middle" class="lbl-dim">시세는 덜 오른다</text>
+        <text x="262" y="118" text-anchor="middle" class="lbl">공급이 많다</text>
+        <text x="262" y="135" text-anchor="middle" class="lbl-dim">몇 달</text>
+        <text x="372" y="118" text-anchor="middle" class="lbl">주변 신축 공급</text>
+        <text x="372" y="135" text-anchor="middle" class="lbl-dim">용도에 따른 세금</text>
+        <text x="52" y="176" text-anchor="middle" class="lbl-b">상가</text>
+        <text x="152" y="170" text-anchor="middle" class="lbl">월세</text>
+        <text x="152" y="187" text-anchor="middle" class="lbl-dim">매출에 달림</text>
+        <text x="262" y="170" text-anchor="middle" class="lbl">살 사람이 좁다</text>
+        <text x="262" y="187" text-anchor="middle" class="lbl-dim">몇 달~몇 년</text>
+        <text x="372" y="170" text-anchor="middle" class="lbl-bad">공실·상권 이동</text>
+        <text x="372" y="187" text-anchor="middle" class="lbl-dim">온라인 소비</text>
+        <text x="52" y="222" text-anchor="middle" class="lbl-b">지식산업</text>
+        <text x="52" y="238" text-anchor="middle" class="lbl-b">센터</text>
+        <text x="152" y="222" text-anchor="middle" class="lbl">임대·직접 사용</text>
+        <text x="152" y="239" text-anchor="middle" class="lbl-dim">입주 업종 제한</text>
+        <text x="262" y="222" text-anchor="middle" class="lbl">살 사람이 좁다</text>
+        <text x="262" y="239" text-anchor="middle" class="lbl-dim">몇 달~몇 년</text>
+        <text x="372" y="222" text-anchor="middle" class="lbl-bad">대량 공급·공실</text>
+        <text x="372" y="239" text-anchor="middle" class="lbl-dim">감면 조건 위반</text>
+        <text x="52" y="280" text-anchor="middle" class="lbl-b">토지</text>
+        <text x="152" y="274" text-anchor="middle" class="lbl">개발 기대</text>
+        <text x="152" y="291" text-anchor="middle" class="lbl-dim">임대료 거의 없음</text>
+        <text x="262" y="274" text-anchor="middle" class="lbl">가장 느리다</text>
+        <text x="262" y="291" text-anchor="middle" class="lbl-dim">몇 년도 걸린다</text>
+        <text x="372" y="274" text-anchor="middle" class="lbl-bad">개발이 안 될 때</text>
+        <text x="372" y="291" text-anchor="middle" class="lbl-dim">규제(농지 등)</text>
+        <text x="52" y="332" text-anchor="middle" class="lbl-acc2">상장 리츠</text>
+        <text x="152" y="326" text-anchor="middle" class="lbl">배당</text>
+        <text x="152" y="343" text-anchor="middle" class="lbl-dim">이익 대부분 배당</text>
+        <text x="262" y="326" text-anchor="middle" class="lbl">장중에 팔린다</text>
+        <text x="262" y="343" text-anchor="middle" class="lbl-dim">소액으로 산다</text>
+        <text x="372" y="326" text-anchor="middle" class="lbl">주가 변동</text>
+        <text x="372" y="343" text-anchor="middle" class="lbl-dim">금리에 민감</text>
+        <text x="230" y="378" text-anchor="middle" class="lbl-dim">아래로 갈수록 '월세'라는 말 뒤에 숨은 조건이 많아진다</text>
+      </svg>
+      <figcaption><b>그림 1. 주택 밖의 부동산 지도.</b> 기간은 일반적인 감각을 보여 주는 교육용 표현이고 지역과 시기에 따라 크게 다르다. 오피스텔과 상가는 임대료가 주된 수익이라 공실이 곧 손실이고, 토지는 임대료 대신 '개발되면'이라는 기대에 값을 매긴다. 상장 리츠는 같은 건물 수익을 주식 시장에서 잘게 쪼개 사고판다. 수익이 높아 보일수록 그 수익이 어떤 조건에서 나오는지 먼저 본다.</figcaption>
+    </figure>
+
+    <p>이 표에서 아파트를 빼면 공통점이 하나 보인다. 모두 '내가 살지 않는' 부동산이다. 집은 값이 내려도 그 안에서 살 수 있지만, 수익형 부동산은 세입자가 나가면 그날부터 아무것도 남지 않는다. 그래서 이 장의 질문은 세 가지로 모인다. 들어오는 돈이 실제로 얼마인가, 무엇이 그 돈을 끊는가, 그리고 팔고 싶을 때 팔리는가.</p>
+  </section>
+
+  <section id="yield">
+    <h2>표면 수익률과 실질 수익률</h2>
+    <p>분양 광고와 매물 소개에 나오는 수익률은 대개 <span class="term">표면 수익률</span><span class="en">(Gross yield)</span>이다. 1년 치 월세를 매입가에서 보증금을 뺀 돈으로 나눈 값으로, 월세가 열두 달 빠짐없이 들어오고 다른 비용이 하나도 없다고 칠 때의 수익률이다. 실제로 내 통장에 남는 돈으로 계산한 것이 <span class="term">실질 수익률</span><span class="en">(Net yield)</span>이다. 분자에서는 공실, 수선비, 보유세, 임대소득세를 빼고, 분모에는 취득세와 중개보수처럼 살 때 들어간 돈을 더한다.</p>
+
+    <div class="formula">
+      $$\text{표면} = \frac{12M}{P - D}, \qquad \text{실질} = \frac{12M\,(1-v) - C_{\text{공실}} - C_{\text{수선}} - T_{\text{보유}} - T_{\text{소득}}}{P + A - D}$$
+      <div class="where">\(M\) 월세, \(P\) 매입가, \(D\) 보증금, \(v\) 1년 중 비어 있는 기간의 비율, \(C_{\text{공실}}\) 비어 있는 동안 주인이 내는 관리비, \(C_{\text{수선}}\) 수선·관리비, \(T\) 세금, \(A\) 취득세·중개보수 같은 취득 비용. 대출이 있으면 분자에서 이자를 더 빼고 분모에서 대출금을 뺀다(다음 절).</div>
+    </div>
+
+    <p>아래는 매입가 2억원, 보증금 1,000만원, 월세 80만원인 가상의 오피스텔이다. 광고대로라면 연 5.05%다. 1년 중 비는 달 수, 수선·관리비, 임대소득에 붙는 세율을 바꿔 가며 막대가 얼마나 줄어드는지 본다.</p>
+
+    <div class="sim" id="sim-yr">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>광고의 5%는 통장에 몇 %로 남는가</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="yr-cv"></canvas></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>1년 중 비는 기간 <output id="yr-v-out"></output></span><input type="range" id="yr-v" min="0" max="6" step="0.5" value="1"></label>
+          <label class="ctrl"><span>수선·관리비(매입가 대비 연) <output id="yr-u-out"></output></span><input type="range" id="yr-u" min="0" max="2" step="0.1" value="0.5"></label>
+          <div class="seg" id="yr-t"><button data-value="0">세금 빼고</button><button data-value="15" class="on">소득세율 15%</button><button data-value="24">24%</button><button data-value="35">35%</button></div>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">표면 수익률</span><span class="v" id="yr-o-g">—</span></div>
+        <div class="stat"><span class="k">실질 수익률</span><span class="v" id="yr-o-n">—</span></div>
+        <div class="stat"><span class="k">한 해 손에 남는 돈</span><span class="v" id="yr-o-m">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 기본값(한 달 공실, 수선 0.5%, 소득세율 15%)에서 실질 수익률은 약 3.0%다. 광고의 5.05%에서 3분의 1 넘게 사라졌다. ② '세금 빼고'를 누르고 공실을 0으로 둔다. 그래도 약 4.0%다. 취득세 920만원과 중개보수가 분모를 키웠기 때문이다. ③ 공실을 6개월로 늘린다. 실질 수익률은 약 1%로 예금 이자보다 낮다. (교육용 가정: 비주거용 취득세 4.6%, 중개보수는 주택 외 상한 0.9%를 다 낸다고 보았다. 보유세는 매입가의 0.25%, 비는 동안 관리비 월 15만원. 임대소득세는 다른 소득과 합쳐 매기는 세율을 단순화한 것이다. 시세 변화는 넣지 않았다.)</div>
+    </div>
+
+    <p>막대가 깎이는 순서를 보면 실질 수익률을 가장 크게 끌어내리는 것이 공실과 취득 비용이라는 것을 알 수 있다. 오피스텔이나 상가를 사면 주택이 아니라 일반 건축물로 보아 취득세가 취득가의 4%이고, 여기에 지방교육세·농어촌특별세를 더하면 약 4.6%다(2026년 기준). 6억원 이하 주택의 1%와 비교하면 처음부터 1년 치 월세가 사라지는 셈이다. 그래서 수익형 부동산은 오래 보유할수록 취득 비용이 희석되고, 짧게 사고팔면 거의 남지 않는다. <a href="overview.html">1장</a>에서 본 '사고팔 때 드는 돈'이 여기서는 훨씬 무겁다.</p>
+  </section>
+
+  <section id="vacancy">
+    <h2>공실은 수익률을 어떻게 무너뜨리는가</h2>
+    <p>앞의 계산에는 대출이 없었다. 실제로 상가나 오피스텔을 사는 사람의 상당수는 대출을 끼고 산다. 대출을 끼면 레버리지 덕분에 자기 돈의 수익률이 올라간다(<a href="leverage.html">10장</a>). 대신 이자는 세입자가 있든 없든 매달 나간다. 공실이 길어지면 월세는 0인데 이자와 관리비는 그대로 나가고, 수익률은 0을 지나 마이너스로 떨어진다. 이 경계가 <span class="term">손익분기 공실</span>이다. 1년 중 이 기간보다 오래 비면 자기 돈을 깎아 먹기 시작한다.</p>
+    <p>아래 그래프는 매입가 5억원, 보증금 5,000만원, 월세 250만원(표면 수익률 약 6.7%)인 가상의 1층 상가를 대출 2억 5,000만원을 끼고 산 경우다. 가로축은 1년 중 비어 있는 개월 수, 세로축은 내 돈(취득 비용 포함)에 대한 한 해 현금 수익률이다. 아래 손잡이를 끌어 공실 기간을 고르고, 공실 중 관리비와 대출 금리를 바꿔 본다.</p>
+
+    <div class="sim" id="sim-vac">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>공실 기간을 끌면 내 돈의 수익률은</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="vac-cv"></canvas><span class="hint">아래 손잡이를 끌어 공실 기간을 고른다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>공실 중 관리비(월) <output id="vac-f-out"></output></span><input type="range" id="vac-f" min="0" max="80" step="5" value="30"></label>
+          <label class="ctrl"><span>대출 금리 <output id="vac-r-out"></output></span><input type="range" id="vac-r" min="3" max="9" step="0.25" value="5"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k" id="vac-o-mk">공실</span><span class="v" id="vac-o-cf">—</span></div>
+        <div class="stat"><span class="k">내 돈 수익률(연)</span><span class="v" id="vac-o-roe">—</span></div>
+        <div class="stat"><span class="k">손익분기 공실</span><span class="v" id="vac-o-be">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 공실 0개월에서 내 돈 수익률은 약 6.6%다. 대출 이자 1,250만원을 내고도 한 해 1,500만원이 남는다. ② 손잡이를 6개월로 끈다. 수익률이 0 근처까지 떨어진다. 손익분기는 약 5.4개월이다. ③ 금리를 7%로 올리고 손잡이를 12개월까지 끈다. 한 해 동안 세입자를 못 구하면 내 돈에서 연 2,000만원이 넘게 빠져나간다. 상가 공실이 1년을 넘는 일은 드물지 않다. (교육용 가정: 대출은 이자만 내고, 취득 비용은 취득세 4.6%와 중개보수 0.9%, 수선·보유비는 매입가의 0.5%. 세금과 시세 변화는 뺐다.)</div>
+    </div>
+
+    <p>공실이 무서운 이유는 두 가지가 겹치기 때문이다. 하나는 들어오는 돈이 끊기는 것이고, 다른 하나는 나가는 돈이 끊기지 않는 것이다. 대출이 클수록, 금리가 높을수록, 관리비가 클수록 손익분기 공실은 짧아진다. 금리가 오르는 시기에는 이 두 힘이 같이 온다. 장사가 어려워져 공실이 늘고, 같은 시기에 이자가 오른다. 레버리지는 공실이 없을 때 수익률을 키우지만 공실이 생기면 손실을 같은 배수로 키운다.</p>
+  </section>
+
+  <section id="officetel">
+    <h2>오피스텔: 같은 건물, 다른 세금</h2>
+    <p><span class="term">오피스텔</span><span class="en">(Officetel)</span>은 건축법상 업무시설이다. 서류로는 사무실인데, 부엌과 욕실을 갖추고 있어 실제로는 많은 사람이 집으로 쓴다. 세법은 서류보다 <b>실제로 어떻게 쓰는가</b>를 본다. 그래서 같은 오피스텔이 사무실로 임대되면 주택이 아니고, 누군가 전입신고를 하고 산다면 주택으로 볼 수 있다. 이 차이가 주인이 가진 다른 집의 세금까지 바꾼다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 460 340" role="img" aria-label="오피스텔이 업무용으로 쓰일 때와 주거용으로 쓰일 때 세금과 주택 수가 갈리는 흐름도">
+        <defs><marker id="bo-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="context-stroke"/></marker></defs>
+        <rect x="140" y="8" width="180" height="50" rx="8" class="f-acc-soft"/>
+        <text x="230" y="29" text-anchor="middle" class="lbl-acc">오피스텔 취득</text>
+        <text x="230" y="47" text-anchor="middle" class="lbl-dim">취득세 약 4.6%(용도와 무관)</text>
+        <path d="M200 60 L110 100" class="s-line" marker-end="url(#bo-ar)"/>
+        <path d="M260 60 L350 100" class="s-line" marker-end="url(#bo-ar)"/>
+        <text x="128" y="90" text-anchor="end" class="lbl-dim">사무실로 임대</text>
+        <text x="334" y="90" class="lbl-dim">누군가 산다</text>
+        <rect x="10" y="102" width="200" height="54" rx="8" class="f-surface"/>
+        <text x="110" y="125" text-anchor="middle" class="lbl-b">업무용</text>
+        <text x="110" y="144" text-anchor="middle" class="lbl-dim">건축물분 재산세, 부가세 환급 가능</text>
+        <rect x="250" y="102" width="200" height="54" rx="8" class="f-warn-soft"/>
+        <text x="350" y="125" text-anchor="middle" class="lbl-b">주거용</text>
+        <text x="350" y="144" text-anchor="middle" class="lbl-dim">주택분 재산세, 실제 사용이 기준</text>
+        <path d="M110 158 L110 196" class="s-dash" marker-end="url(#bo-ar)"/>
+        <path d="M350 158 L350 196" class="s-dash" marker-end="url(#bo-ar)"/>
+        <rect x="10" y="198" width="200" height="94" rx="8" class="f-ok-soft"/>
+        <text x="110" y="220" text-anchor="middle" class="lbl-b">주택 수에 들어가지 않는다</text>
+        <text x="110" y="242" text-anchor="middle" class="lbl">가진 아파트 1채 → 1주택</text>
+        <text x="110" y="262" text-anchor="middle" class="lbl-dim">아파트 비과세 판단 그대로</text>
+        <text x="110" y="281" text-anchor="middle" class="lbl-dim">다음 집 취득세도 그대로</text>
+        <rect x="250" y="198" width="200" height="94" rx="8" class="f-bad-soft"/>
+        <text x="350" y="220" text-anchor="middle" class="lbl-bad">주택 수에 들어갈 수 있다</text>
+        <text x="350" y="242" text-anchor="middle" class="lbl">가진 아파트 1채 → 2주택</text>
+        <text x="350" y="262" text-anchor="middle" class="lbl-dim">양도세 비과세가 막힐 수 있다</text>
+        <text x="350" y="281" text-anchor="middle" class="lbl-dim">다음 집 취득세 중과 가능</text>
+        <text x="230" y="318" text-anchor="middle" class="lbl-dim">세목마다 판단 기준과 예외(소형 신축 특례 등)가 다르다</text>
+      </svg>
+      <figcaption><b>그림 2. 오피스텔의 용도와 주택 수.</b> 오피스텔을 살 때는 용도가 정해지지 않았다고 보아 비주거용 세율(취득세 4%, 부가 세목 포함 약 4.6%)을 낸다. 그 뒤 실제로 주거용으로 쓰여 주택분 재산세가 매겨지면 2020년 8월 12일 이후 취득분부터는 다른 주택을 살 때 취득세 주택 수에 들어가고, 양도소득세와 종합부동산세에서도 실제 주거용이면 주택으로 본다. 다만 세목마다 기준일과 예외가 있고, 소형 신축 오피스텔을 일정 기간 주택 수에서 빼 주는 특례처럼 바뀌는 규정이 있어 실제 판단은 세무 전문가에게 확인한다(2026년 기준, 대체로 확인).</figcaption>
+    </figure>
+
+    <p>그림의 오른쪽 길이 실제로 얼마의 차이를 만드는지 계산해 본다. 경기도 비규제 지역에 아파트 한 채(6억 2,000만원, 5년 보유·거주)를 가진 사람이 2억원짜리 오피스텔을 사서 세를 놓는다. 세입자가 사무실로 쓰는 경우와 전입신고를 하고 사는 경우를 바꿔 본다. 아래 막대는 이 사람이 나중에 아파트를 팔 때의 양도소득세, 그리고 비규제 지역에 6억 2,000만원짜리 집을 한 채 더 살 때의 취득세다.</p>
+
+    <div class="sim" id="sim-ot">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>오피스텔 한 채가 아파트의 세금을 바꾼다</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="ot-cv"></canvas></div>
+        <div class="sim-controls">
+          <div class="seg" id="ot-u"><button data-value="biz" class="on">업무용(사무실 임대)</button><button data-value="home">주거용(세입자가 산다)</button></div>
+          <label class="ctrl"><span>아파트 양도차익 <output id="ot-g-out"></output></span><input type="range" id="ot-g" min="0.2" max="4" step="0.1" value="1.6"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">세법상 주택 수</span><span class="v" id="ot-o-h">—</span></div>
+        <div class="stat"><span class="k">아파트 팔 때 양도세</span><span class="v" id="ot-o-c">—</span></div>
+        <div class="stat"><span class="k">집 한 채 더 살 때 취득세</span><span class="v" id="ot-o-a">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 업무용에서 아파트 양도세는 0원이다. 1세대 1주택 비과세(양도가 12억원 이하, 2년 보유) 요건을 채웠다. ② 주거용으로 바꾼다. 같은 아파트, 같은 차익인데 양도세가 약 3,749만원이 된다. 월세 80만원짜리 오피스텔의 4년 치 임대료와 비슷한 돈이다. ③ 집을 한 채 더 살 때의 취득세도 본다. 주거용 오피스텔이 주택 수에 들어가 3주택이 되면 비규제 지역이어도 8% 중과가 붙는다. (이 책의 모델로 계산했다. 비규제 지역, 5년 보유·거주, 필요경비 1,000만원 가정. 일시적 2주택, 소형 신축 오피스텔 특례 같은 예외와 세목별 기준일 차이는 넣지 않았다. 실제 세액은 홈택스·위택스 모의계산이나 세무 전문가에게 확인한다.)</div>
+    </div>
+
+    <p>오피스텔 월세 몇 년 치가 아파트의 양도세 한 번으로 사라질 수 있다. 그래서 오피스텔을 살 사람은 수익률보다 먼저 '내가 가진 다른 집이 있는가'를 확인해야 한다. 반대로 무주택자가 오피스텔 한 채만 가진 경우, 청약에서는 원칙적으로 오피스텔을 주택으로 보지 않는다는 설명이 일반적이지만 이 또한 공급 유형과 시점에 따라 달라 공고문으로 확인해야 한다(<a href="subscription.html">11장</a>). 세금 자체의 계산은 <a href="tradetax.html">14장</a>에서 다룬다.</p>
+
+    <div class="callout pro">
+      <strong>오피스텔 중개보수는 '주거용 요건'부터 확인한다</strong>
+      오피스텔 중개보수는 두 가지로 갈린다. 전용 85㎡ 이하이고 상하수도를 갖춘 전용 입식 부엌, 전용 수세식 화장실과 목욕 시설을 갖춘 오피스텔은 매매 0.5%, 임대차 0.4%가 상한이다. 그 밖의 오피스텔과 상가·토지 같은 주택 외 부동산은 거래금액의 0.9% 이내에서 협의한다(공인중개사법 시행규칙, 2026년 기준). 태호는 오피스텔 손님에게 이것을 먼저 보여 준다. "이 물건은 0.5% 상한이 적용됩니다. 0.9%를 다 받을 수 있는 물건이 아닙니다." 상가를 소개할 때는 반대로 "0.9%는 상한이고 협의할 수 있다"고 말한다. 상한까지 받는 것이 관행처럼 굳은 곳일수록 손님이 이 숫자를 모르는 경우가 많다.
+    </div>
+  </section>
+
+  <section id="store">
+    <h2>상가: 상권이 값을 정한다</h2>
+    <p>상가의 월세는 건물이 아니라 세입자의 매출에서 나온다. 손님이 많이 지나가는 자리라면 장사가 잘되고, 장사가 잘되는 자리는 비싼 월세를 낼 수 있다. 그래서 상가의 값은 사람의 흐름, 곧 <span class="term">상권</span><span class="en">(Trade area)</span>이 정한다. 상권은 고정되어 있지 않다. 지하철 출구가 새로 생기거나, 큰 점포가 옮겨 가거나, 신도시에 새 상가가 한꺼번에 공급되거나, 소비가 온라인으로 옮겨 가면 사람의 흐름이 바뀐다.</p>
+    <p>아래 거리에는 상가가 열두 개 있다. 붉은 테두리가 내 상가다. 사람을 끌어모으는 <b>핵심 시설</b>(역 출구나 큰 점포)을 끌어 옮겨 본다. 점 하나하나는 지나가는 사람이고, 상가의 색이 진할수록 그 자리가 받을 수 있는 월세가 높다. 월세가 일정 수준 아래로 떨어진 칸은 비어 있다.</p>
+
+    <div class="sim" id="sim-st">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>핵심 시설이 옮겨 가면 내 상가는</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="st-cv"></canvas><span class="hint">핵심 시설(역 출구)을 끌어 옮긴다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>상권 쏠림(좁을수록 강함) <output id="st-l-out"></output></span><input type="range" id="st-l" min="0.08" max="0.5" step="0.01" value="0.22"></label>
+          <label class="ctrl"><span>자본환원율(캡레이트) <output id="st-c-out"></output></span><input type="range" id="st-c" min="4" max="9" step="0.25" value="5.5"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">내 상가가 받을 수 있는 월세</span><span class="v" id="st-o-r">—</span></div>
+        <div class="stat"><span class="k">거리의 공실</span><span class="v" id="st-o-v">—</span></div>
+        <div class="stat"><span class="k">내 상가의 수익 가치</span><span class="v" id="st-o-p">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 핵심 시설이 내 상가 바로 앞에 있을 때 월세는 400만원, 수익 가치는 약 8억 7,000만원이다. ② 핵심 시설을 거리 오른쪽 끝으로 끈다. 건물은 그대로인데 월세는 절반 아래로, 가치도 절반 아래로 내려간다. 내 상가 근처 칸들이 비기 시작한다. ③ 상권 쏠림을 가장 좁게 한다. 한 자리에 사람이 몰리는 상권일수록 조금만 비켜나도 값이 무너진다. 캡레이트를 올리면(금리 상승) 같은 월세의 가치가 내려간다. (교육용 모형: 월세 = 기준 월세 400만원 × (0.35 + 0.65 × 거리에 따른 감쇠), 기준의 55% 아래면 공실로 그렸다. 수익 가치 = 연 월세 ÷ 캡레이트. 실제 상권 자료가 아니다.)</div>
+    </div>
+
+    <p>이 그림의 가격 변화가 어디서 왔는지 따져 보면 이 책의 다섯 힘 중 두 가지가 보인다(<a href="overview.html">1장</a>). 핵심 시설을 옮길 때 일어난 변화는 <b>입지</b>의 힘이다. 사람의 흐름이 바뀌어 받을 수 있는 월세가 바뀌었다. 캡레이트를 바꿀 때 일어난 변화는 <b>금리</b>의 힘이다. 월세는 그대로인데, 그 월세를 얼마에 사 줄지가 바뀌었다. 상가 값은 '연 월세 ÷ 자본환원율'로 거칠게 계산하는데, <span class="term">자본환원율</span><span class="en">(Capitalization rate)</span>은 금리에 위험 프리미엄을 더한 값이라 금리가 오르면 함께 오른다. 같은 원리를 집값에 적용한 것이 <a href="value.html">3장</a>이다. 주택보다 상가가 이 식에 훨씬 가깝게 움직인다. 상가는 살면서 얻는 효용이 없고 오직 월세로만 값이 정해지기 때문이다.</p>
+
+    <h3>권리금: 건물주가 아닌 사람들 사이의 돈</h3>
+    <p>상가를 이야기할 때 빠지지 않는 말이 <span class="term">권리금</span><span class="en">(Key money)</span>이다. 권리금은 새로 들어오는 세입자가 나가는 세입자에게 주는 돈으로, 그 자리에서 쌓인 단골, 영업 노하우, 시설, 좋은 위치의 이점을 넘겨받는 대가다. 건물주에게 주는 돈이 아니고, 계약서도 세입자끼리 따로 쓴다. 장사가 잘되는 자리일수록 권리금이 크고, 상권이 기울면 권리금이 먼저 사라진다. 위 시뮬레이터에서 핵심 시설이 옮겨 갈 때 가장 먼저 0이 되는 것이 권리금이다.</p>
+    <p>세입자를 보호하는 법은 <span class="term">상가건물 임대차보호법</span>이다. 세입자는 처음 계약한 날부터 전체 10년이 넘지 않는 범위에서 계약 갱신을 요구할 수 있고(2018년 10월 16일 이후 체결·갱신된 계약), 일정 금액(환산보증금) 이하의 계약에서는 차임·보증금 증액이 청구 당시 금액의 5%를 넘지 못한다. 또 계약이 끝나기 6개월 전부터 끝날 때까지 건물주는 세입자가 데려온 새 세입자에게서 권리금을 받는 것을 정당한 이유 없이 방해해서는 안 된다(권리금 회수기회 보호, 2026년 기준). 건물주 입장에서는 이 규칙들 때문에 월세를 시세대로 빠르게 올리기 어렵고, 세입자 입장에서는 권리금을 지킬 장치가 생긴 셈이다. 건물주가 새 세입자에게 지나치게 높은 월세를 요구하거나 이유 없이 계약을 거절해 권리금 회수가 막혔다며 손해배상을 다투는 유형의 분쟁이 있다.</p>
+
+    <div class="callout pro">
+      <strong>상가를 살 사람에게 '렌트롤'부터 받는다</strong>
+      상가 매물 소개서에는 대개 "현재 월세 ○○만원, 수익률 ○%"가 적혀 있다. 태호는 그 숫자보다 <span class="term">렌트롤</span>(임대 현황표: 호실별 세입자, 업종, 보증금, 월세, 계약 시작일과 만료일, 연체 여부)을 먼저 받는다. 만료가 몇 달 남지 않은 세입자, 최근 1년 안에 들어온 세입자, 매도인의 가족이나 지인이 운영하는 점포는 같은 월세라도 무게가 다르다. 매도 직전에 월세를 시세보다 높게 맞춰 수익률을 부풀리는 경우가 있기 때문이다. 같은 건물의 다른 층 공실, 관리비 체납, 업종 제한(같은 건물에 같은 업종을 못 들이는 약정)도 함께 확인한다. 그리고 손님에게 말한다. "상가는 세입자가 나가면 그다음 세입자를 구하는 것까지가 제 일이 아닙니다. 그 공백이 얼마나 길지는 아무도 장담하지 못합니다."
+    </div>
+  </section>
+
+  <section id="kic-land">
+    <h2>지식산업센터와 토지, 그리고 팔리는 데 걸리는 시간</h2>
+    <p><span class="term">지식산업센터</span><span class="en">(Knowledge industry center)</span>는 제조업, 지식·정보통신 산업 같은 업종의 사업장과 지원시설이 한 건물에 들어선 다층 건물이다. 예전에는 아파트형 공장이라 불렀다. 실제로 사업을 하는 사람이 직접 쓰려고 사면 취득세 감면이나 대출 조건에서 유리한 경우가 있지만, 입주할 수 있는 업종이 정해져 있고 감면을 받고 정해진 기간 안에 직접 쓰지 않거나 임대로 돌리면 감면분을 다시 내야 할 수 있다(구체적인 요건은 지역과 시기별로 확인 필요). 한때 '대출이 잘 나오는 수익형 상품'으로 투자 수요가 몰렸던 지역에서는 비슷한 시기에 대량으로 준공되면서 공실과 가격 하락을 겪은 사례가 보도되었다. 쓸 수 있는 사람이 좁게 정해져 있다는 것은 팔 때 살 수 있는 사람도 좁다는 뜻이다.</p>
+    <p><span class="term">토지</span>는 대부분 임대료가 거의 나오지 않는다. 땅의 값은 '언젠가 개발되면'이라는 기대에서 나온다. 도로가 나고, 용도지역이 바뀌고, 근처에 산업단지나 신도시가 들어설 것이라는 기대다. 기대가 실현되면 값이 크게 오르지만, 실현될지, 언제 될지, 내 땅이 그 범위에 들어갈지는 확정되지 않는다. 그동안 땅은 아무 수익 없이 세금만 낸다. 특히 <span class="term">농지</span>는 농지법이 농사를 짓는 사람이 소유하는 것을 원칙으로 하기 때문에 취득할 때 자격 확인 절차가 있고, 직접 농사를 짓지 않으면 처분 의무가 생길 수 있다(세부 요건은 확인 필요). "개발 예정지 땅을 쪼개 판다"는 광고 가운데에는 실제로 개발이 어려운 땅을 지분으로 나눠 파는 경우가 있어, 사기 유형으로 반복해서 경고되어 왔다.</p>
+    <p>이 둘과 상가에 공통된 문제가 <span class="term">환금성</span><span class="en">(Liquidity)</span>이다. 팔고 싶을 때 제값에 빨리 팔 수 있는 정도를 말한다. 환금성이 낮은 자산은 두 가지 중 하나를 치른다. 값을 깎아 빨리 팔거나, 제값을 고집하며 오래 기다리거나. 기다리는 동안에도 이자와 관리비와 세금은 나간다. 아래에서 자산 종류를 고르고, 호가를 얼마나 깎을지 손잡이로 끌어 본다.</p>
+
+    <div class="sim" id="sim-lq">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>깎아서 빨리 팔까, 버티며 기다릴까</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="lq-cv"></canvas><span class="hint">손잡이를 끌어 호가 할인 폭을 고른다</span></div>
+        <div class="sim-controls">
+          <div class="seg" id="lq-a"><button data-value="apt">아파트</button><button data-value="ot">오피스텔</button><button data-value="store" class="on">상가</button><button data-value="land">토지</button><button data-value="reit">상장 리츠</button></div>
+          <label class="ctrl"><span>기다리는 동안 비용(월, 값 대비) <output id="lq-c-out"></output></span><input type="range" id="lq-c" min="0" max="1" step="0.05" value="0.4"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">팔리기까지 평균</span><span class="v" id="lq-o-t">—</span></div>
+        <div class="stat"><span class="k">손에 쥐는 값(평균)</span><span class="v" id="lq-o-n">—</span></div>
+        <div class="stat"><span class="k">가장 나은 할인 폭</span><span class="v" id="lq-o-b">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 상가에서 손잡이를 0%(제값 고집)에 둔다. 한 달에 팔릴 확률이 낮아 평균 1년 넘게 기다리고, 그동안 비용이 쌓여 손에 쥐는 값이 감정가의 90%대 초반으로 내려간다. ② 손잡이를 오른쪽으로 끌어 곡선의 꼭대기를 찾는다. 어느 정도 깎아 주는 편이 오히려 많이 남는다. ③ 토지로 바꾸고 기다리는 비용을 1%로 올린다. 어떻게 해도 감정가에서 크게 깎인다. 상장 리츠로 바꾸면 곡선이 거의 평평하다. 시장에서 바로 팔린다. 대신 그 시장 가격 자체가 매일 움직인다(다음 절). (교육용 가정: 한 달 안에 팔릴 확률을 자산마다 다르게 두고, 호가를 깎을수록 확률이 올라간다고 했다. 실제 거래 자료가 아니다.)</div>
+    </div>
+
+    <p>환금성은 수익률 표에 나오지 않는 비용이다. 같은 연 5% 수익이라도, 급히 돈이 필요할 때 10% 깎아야 팔리는 자산과 그날 팔 수 있는 자산은 같은 5%가 아니다. 고령의 투자자에게 이 차이는 더 크다. 병원비나 자녀의 결혼, 상속처럼 돈이 필요한 순간은 시장 상황을 기다려 주지 않는다. 그리고 환금성이 낮은 자산은 하락기에 가장 먼저, 가장 크게 팔리지 않는다. 살 사람이 줄어드는 시기에는 할인 폭을 아무리 키워도 확률이 오르지 않기 때문이다.</p>
+  </section>
+
+  <section id="reits">
+    <h2>리츠: 건물을 쪼개 사는 방법</h2>
+    <p><span class="term">리츠</span><span class="en">(REITs, Real Estate Investment Trusts)</span>는 여러 사람의 돈을 모아 오피스, 물류센터, 상가, 임대주택 같은 부동산을 사고 그 임대 수익을 나눠 주는 회사다. 한국에서는 부동산투자회사법이 근거이고, 배당가능이익의 90% 이상을 배당하도록 정해져 있다. 그래서 리츠의 주된 수익은 배당이다. 증권시장에 상장된 리츠는 주식처럼 몇만원으로도 살 수 있고, 장이 열려 있는 동안 언제든 팔 수 있다. 건물 한 채를 통째로 사는 것과 비교하면 소액, 분산, 환금성, 관리 부담이 없다는 장점이 분명하다.</p>
+    <p>대신 대가가 있다. 상장 리츠의 가격은 매일 시장에서 정해진다. 금리가 오르면 같은 배당의 가치가 떨어지므로(앞 절의 캡레이트와 같은 원리) 가격이 내려가고, 시장 전체가 겁을 먹으면 건물 가치와 상관없이 더 내려간다. 아래 그래프는 가상의 상장 리츠 한 종목의 10년이다. 회색 선은 같은 건물을 직접 가졌을 때 감정평가로 매기는 장부상 가치로, 1년에 한 번 정도 다시 매겨 매끄럽게 움직인다. 금리 충격과 시장 심리의 흔들림을 바꿔 본다.</p>
+
+    <div class="sim" id="sim-rt">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>상장 리츠의 10년: 배당과 가격</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="rt-cv"></canvas></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>3년 차 금리 충격 <output id="rt-s-out"></output></span><input type="range" id="rt-s" min="-1" max="3" step="0.25" value="1.5"></label>
+          <label class="ctrl"><span>시장 심리의 흔들림 <output id="rt-v-out"></output></span><input type="range" id="rt-v" min="0" max="30" step="1" value="12"></label>
+          <div class="btn-row"><button class="btn" id="rt-re">다른 경로</button></div>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">가장 깊었던 하락</span><span class="v" id="rt-o-d">—</span></div>
+        <div class="stat"><span class="k">10년 배당 합계(100 투자)</span><span class="v" id="rt-o-y">—</span></div>
+        <div class="stat"><span class="k">10년 뒤 가격 + 배당</span><span class="v" id="rt-o-t">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 금리 충격 +1.5%p에서 3년 차 이후 가격이 크게 내려간다. 배당은 계속 들어오지만 가격 하락이 몇 년 치 배당을 지운다. ② 시장 심리의 흔들림을 0으로 줄인다. 가격이 회색 선(장부상 가치)과 거의 같이 움직인다. 리츠 가격이 출렁이는 것의 상당 부분은 건물이 아니라 시장의 기분이다. ③ 금리 충격을 −1%p로 바꾼다. 같은 건물인데 가격이 오른다. 직접 가진 건물도 금리의 영향을 똑같이 받는다. 다만 매일 가격이 찍히지 않아 보이지 않을 뿐이다. (교육용 가상 데이터. 배당수익률 연 5.5%, 임대료 연 1% 성장, 자본환원율 5.5%에 금리 충격을 그대로 더했다. 실제 종목이나 지수가 아니다.)</div>
+    </div>
+
+    <p>이 그래프에서 배울 점은 두 가지다. 첫째, 리츠의 가격 변동은 위험이지만 동시에 정보다. 직접 가진 상가는 금리가 올라도 시세가 보이지 않아 마음이 편할 뿐, 팔려고 내놓는 순간 같은 하락을 확인한다. 둘째, 배당은 '확정'이 아니다. 리츠의 배당은 건물의 임대 수익에서 나오므로 공실이 늘거나 이자 비용이 커지면 줄어든다. 대출을 많이 낀 리츠는 금리가 오를 때 배당과 가격이 함께 흔들린다. 공모 리츠 배당에는 일정 한도와 보유 기간을 지키면 낮은 세율로 분리과세하는 특례가 있었는데, 적용 기한과 요건은 해마다 세법 개정으로 바뀌므로 확인이 필요하다(2026년 기준, 2026년 말까지로 알려짐).</p>
+
+    <div class="callout deep">
+      <strong>리츠의 '할인'과 '할증'</strong>
+      상장 리츠의 주가는 그 리츠가 가진 부동산의 순자산가치(NAV: 감정가에서 빚을 뺀 값을 주식 수로 나눈 것)와 다르게 움직인다. 주가가 NAV보다 낮으면 '할인되어 거래된다'고 하고, 높으면 '할증되어 거래된다'고 한다. 할인이 크다는 것은 시장이 그 감정가를 믿지 않거나, 금리가 오를 것을 먼저 반영하거나, 단순히 겁을 먹었다는 뜻일 수 있다. 직접 보유한 부동산의 감정가는 실제 거래가 적을 때 시장보다 늦게 움직이는 경향이 있어서, 하락기에는 상장 리츠의 할인이 오히려 진짜 시장의 신호에 가까울 수 있다는 해석이 있다. 어느 쪽이 맞는지는 시기마다 다르다.
+    </div>
+  </section>
+
+  <section id="presale">
+    <h2>분양형 상품의 함정: 수익률 보장</h2>
+    <p>하늘의 아버지가 받은 전화처럼 수익형 부동산 분양 광고에는 자주 "연 ○% 확정 수익 ○년 보장"이 붙는다. 상가, 오피스텔, <span class="term">생활형 숙박시설</span><span class="en">(Serviced residence)</span>, 호텔 객실을 나눠 파는 분양형 호텔 같은 상품이다. 이 말이 실제로 뜻하는 것은 대개 이렇다. 보장 기간 동안은 운영사나 시행사가 약속한 금액을 준다. 보장 기간이 끝나면 실제 운영 수익만 준다.</p>
+    <p>질문은 두 가지다. 첫째, 보장된 수익은 어디서 나오는가. 실제 운영 수익이 약속보다 적다면 그 차이는 누군가 메워야 하고, 그 돈은 결국 분양 대금, 곧 내가 낸 분양가 안에 미리 들어 있는 경우가 많다. 둘째, 보장 기간이 끝난 뒤의 수익은 얼마인가. 그리고 그 수익으로 계산한 건물의 값은 내가 산 값과 얼마나 다른가.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 460 330" role="img" aria-label="분양가가 시장 가치, 보장 재원, 마케팅과 시행 이익으로 나뉘는 구조와 보장 기간 전후의 수익 변화">
+        <text x="70" y="22" text-anchor="middle" class="lbl-b">분양가</text>
+        <rect x="30" y="34" width="80" height="78" class="f-bad-soft"/>
+        <text x="70" y="70" text-anchor="middle" class="lbl-bad">보장 재원</text>
+        <text x="70" y="88" text-anchor="middle" class="lbl-dim">마케팅·이익</text>
+        <rect x="30" y="112" width="80" height="168" class="f-acc-soft"/>
+        <text x="70" y="190" text-anchor="middle" class="lbl-acc">시장 가치</text>
+        <text x="70" y="208" text-anchor="middle" class="lbl-dim">실제 수익</text>
+        <text x="70" y="224" text-anchor="middle" class="lbl-dim">÷ 캡레이트</text>
+        <line x1="20" y1="280" x2="120" y2="280" class="s-axis"/>
+        <path d="M118 112 L136 112" class="s-dash"/>
+        <text x="300" y="22" text-anchor="middle" class="lbl-b">월 수입의 흐름</text>
+        <line x1="160" y1="280" x2="446" y2="280" class="s-axis"/>
+        <line x1="160" y1="40" x2="160" y2="280" class="s-axis"/>
+        <rect x="162" y="90" width="98" height="190" class="f-ok-soft"/>
+        <path d="M162 90 L260 90" class="s-ok"/>
+        <text x="211" y="80" text-anchor="middle" class="lbl">보장 수익</text>
+        <path d="M260 90 L260 176" class="s-dash"/>
+        <path d="M260 176 L300 168 L340 186 L380 172 L420 194 L444 182" class="s-bad"/>
+        <text x="352" y="160" text-anchor="middle" class="lbl-bad">실제 운영 수익</text>
+        <text x="352" y="214" text-anchor="middle" class="lbl-dim">공실·운영비가 빠진다</text>
+        <text x="211" y="300" text-anchor="middle" class="lbl-dim">보장 기간</text>
+        <text x="352" y="300" text-anchor="middle" class="lbl-dim">보장 끝난 뒤</text>
+        <path d="M268 132 L268 168" class="s-bad" marker-end="url(#bo-ar)"/>
+        <text x="276" y="140" class="lbl-bad">급락</text>
+        <text x="230" y="322" text-anchor="middle" class="lbl-dim">보장 수익의 일부는 이미 분양가 위쪽 칸에서 냈다</text>
+      </svg>
+      <figcaption><b>그림 3. 수익률 보장의 구조(교육용 개념도).</b> 왼쪽 막대에서 실제 운영 수익을 시장의 자본환원율로 나눈 값이 그 물건의 시장 가치다. 분양가가 이보다 높다면 그 차이 안에 보장 기간의 웃돈, 분양 마케팅 비용, 시행 이익이 들어 있다. 보장 기간이 끝나면 오른쪽처럼 수입이 실제 운영 수익으로 내려앉고, 팔려고 할 때 시장은 그 내려앉은 수입으로 값을 매긴다. 비율은 상품마다 다르며 이 그림은 실제 상품의 원가 구조가 아니다.</figcaption>
+    </figure>
+
+    <p>아래는 분양가 1억 8,000만원짜리 가상의 생활형 숙박시설 한 실이다. 보장 수익률과 보장이 끝난 뒤의 실제 월 순수익(만실 기준)을 바꾸고, 그래프 위의 세로선을 끌어 보장 기간을 바꿔 본다.</p>
+
+    <div class="sim" id="sim-ps">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>보장 기간이 끝나는 날</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="ps-cv"></canvas><span class="hint">세로선을 끌어 보장 기간을 바꾼다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>보장 수익률(분양가 대비 연) <output id="ps-g-out"></output></span><input type="range" id="ps-g" min="4" max="10" step="0.5" value="7"></label>
+          <label class="ctrl"><span>보장 뒤 실제 월 순수익(만실) <output id="ps-m-out"></output></span><input type="range" id="ps-m" min="20" max="120" step="5" value="70"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">보장 기간 월 수입</span><span class="v" id="ps-o-a">—</span></div>
+        <div class="stat"><span class="k">보장 뒤 월 수입(공실 20%)</span><span class="v" id="ps-o-b">—</span></div>
+        <div class="stat"><span class="k">시장 가치 / 분양가</span><span class="v" id="ps-o-v">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 기본값(연 7% 2년 보장, 보장 뒤 만실 월 70만원)에서 보장 기간 월 105만원이던 수입이 보장 뒤 월 56만원으로 반 토막 난다. ② 그 수입으로 매긴 시장 가치는 약 1억 2,200만원으로 분양가의 68%다. 분양가 가운데 약 5,800만원은 실제 수익으로 설명되지 않는다. ③ 세로선을 5년까지 끌어도 시장 가치는 변하지 않는다. 시장은 보장이 끝난 뒤의 수입으로 값을 매기기 때문이다. 보장 기간이 길수록 그 비용은 더 크게 분양가에 들어갔을 가능성이 크다. (교육용 가상 상품. 보장 뒤 공실 20%, 시장 가치 = 보장 뒤 연 순수입 ÷ 자본환원율 5.5%로 계산했다. 실제 상품의 수익이나 원가가 아니다.)</div>
+    </div>
+
+    <p>보장 수익률이 높을수록 좋아 보이지만, 보장 수익률은 상품의 실제 수익성을 말해 주지 않는다. 오히려 실제 수익이 낮을수록 팔기 위해 높은 보장이 필요할 수 있다. 그리고 '보장'은 보장하는 회사가 그 기간 동안 약속을 지킬 수 있을 때만 보장이다. 운영사나 시행사가 어려워져 약정된 수익이 끊기거나 줄어 분양 계약자들이 단체로 다투는 유형의 분쟁이 여러 차례 있었다. 계약서에 보장을 약속한 주체가 누구인지, 그 회사의 재무 상태가 어떤지, 보장 약정이 분양 계약과 별개의 문서인지 확인해야 한다.</p>
+
+    <p>생활형 숙박시설에는 하나가 더 있다. 생활형 숙박시설은 이름 그대로 <b>숙박시설</b>이라 숙박업 신고를 하고 숙박 영업에 써야 하며, 사람이 전입해 집으로 사는 용도가 아니다. 주거용으로 쓰다 적발되면 이행강제금이 부과될 수 있다. 정부는 2024년 10월 숙박업 신고 기준을 낮추고 오피스텔로 용도를 바꾸는 절차를 완화하는 지원 방안을 내놓았고, 정해진 기한(2025년 9월)까지 숙박업 신고 예비 신청이나 용도변경을 신청한 소유자에게는 이행강제금 부과를 2027년 말까지 미루기로 했다고 보도되었다(2026년 기준, 대체로 확인). 하지만 숙박업 신고에는 일정 객실 수 이상을 묶어 운영해야 하는 등의 조건이 있고, 용도변경은 건물의 구조·주차·소유자 동의 같은 요건을 넘어야 해서 실제로는 쉽지 않다는 보도가 이어졌다. "집처럼 살아도 된다", "나중에 오피스텔로 바뀐다"는 말을 들었다면 그 근거 문서를 받아야 한다.</p>
+
+    <div class="callout buyer">
+      <strong>수익형 부동산 계약 전 체크</strong>
+      <ul>
+        <li><b>건축물대장의 용도</b>: 업무시설(오피스텔), 근린생활시설(상가), 숙박시설(생활형 숙박시설) 중 무엇인가. 광고에서 말한 쓰임과 같은가.</li>
+        <li><b>수익 보장 약정서</b>: 보장하는 주체(시행사·운영사·신탁사)가 누구이고 분양 계약서와 같은 문서인가. 보장이 끊기면 계약을 해제할 수 있는가.</li>
+        <li><b>위탁 운영 계약</b>(숙박시설·분양형 호텔): 운영 수수료, 객실을 내가 쓸 수 있는지, 운영사를 바꿀 수 있는지.</li>
+        <li><b>임대 현황(렌트롤)</b>: 지금 세입자의 계약 기간·월세·연체. 매도 직전에 올린 월세가 아닌가.</li>
+        <li><b>대출 조건</b>: 수익형 부동산 대출은 주택과 다른 기준(임대업 이자상환비율 등)으로 심사된다. 금리가 오를 때 이자를 감당할 수 있는가.</li>
+        <li><b>등기부등본</b>: 신탁등기가 되어 있다면 신탁원부까지 떼어 수익권자와 처분 조건을 본다(<a href="contract.html">7장</a>).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="fit">
+    <h2>맞는 사람, 안 맞는 사람</h2>
+    <p>수익형 부동산이 나쁜 투자인 것은 아니다. 잘 고른 상가나 오피스텔은 오랫동안 꾸준한 월세를 주고, 주택보다 대출 규제가 덜한 경우도 있다. 문제는 광고의 숫자가 아니라 나의 조건과 상품의 성질이 맞는가다. 아래 표는 이 장에서 계산한 것들을 기준으로 정리한 것이다.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>상품</th><th>맞을 수 있는 사람</th><th>안 맞을 수 있는 사람</th></tr></thead>
+      <tbody>
+        <tr><td>오피스텔</td><td>주택이 없거나, 업무용 임대로 관리할 수 있는 사람. 역세권 소형 임대 수요를 잘 아는 사람</td><td>아파트를 가지고 있어 주거용 임대 시 주택 수가 늘어나는 사람. 시세 차익을 기대하는 사람</td></tr>
+        <tr><td>상가</td><td>상권을 직접 보고 판단할 수 있고, 공실 1년을 버틸 여유 자금이 있는 사람</td><td>월세가 생활비의 대부분인 사람. 대출 비중이 큰 사람</td></tr>
+        <tr><td>지식산업센터</td><td>그 업종의 사업자로서 직접 사용할 사람</td><td>투자만 목적이고 입주 업종 제한과 감면 조건을 모르는 사람</td></tr>
+        <tr><td>토지</td><td>오랜 기간 묶여도 되는 여윳돈이 있고 개발 계획을 공식 문서로 확인할 수 있는 사람</td><td>몇 년 안에 돈이 필요한 사람. '지분 쪼개기' 광고로 접한 사람</td></tr>
+        <tr><td>상장 리츠</td><td>소액으로 여러 부동산에 나눠 담고, 가격 변동을 견딜 수 있는 사람</td><td>원금이 매일 흔들리는 것을 견디지 못하는 사람. 배당을 확정 이자로 여기는 사람</td></tr>
+        <tr><td>분양형 수익 보장 상품</td><td>보장 기간 뒤의 실제 수익으로 계산해도 납득되는 가격일 때, 그 손실을 견딜 수 있는 사람</td><td>보장 수익률만 보고 판단하는 사람. 노후 자금 대부분을 넣으려는 사람</td></tr>
+      </tbody>
+    </table></div>
+
+    <p>표의 오른쪽 칸에 공통으로 들어간 사람은 '그 돈이 곧 필요할 수 있는 사람'이다. 수익형 부동산은 수익을 얻는 대신 시간을 묶는다. 시간이 묶여도 되는 돈인지가 상품을 고르는 것보다 먼저다.</p>
+
+    <div class="table-wrap"><table>
+      <thead><tr><th>이 장에 쓴 제도 수치(2026년 기준)</th><th>값</th><th>상태</th></tr></thead>
+      <tbody>
+        <tr><td>비주거용 건축물(오피스텔·상가) 취득세</td><td>4%(지방교육세·농특세 포함 약 4.6%)</td><td>대체로 확인</td></tr>
+        <tr><td>주거용 오피스텔의 주택 수 포함</td><td>실제 사용 기준, 취득세는 2020-08-12 이후 취득분 중 주택분 재산세 과세분</td><td>대체로 확인</td></tr>
+        <tr><td>오피스텔 중개보수 상한</td><td>요건 갖춘 85㎡ 이하 매매 0.5%·임대 0.4%, 그 밖 0.9% 이내 협의</td><td>대체로 확인</td></tr>
+        <tr><td>상가 계약갱신요구권</td><td>최초 계약부터 전체 10년 이내, 증액 상한 5%(환산보증금 기준 이하)</td><td>대체로 확인</td></tr>
+        <tr><td>리츠 배당 의무</td><td>배당가능이익의 90% 이상</td><td>대체로 확인</td></tr>
+        <tr><td>생활형 숙박시설 이행강제금</td><td>2025-09까지 신청한 소유자는 2027년 말까지 부과 유예</td><td>대체로 확인</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="callout warn">
+      <strong>제도와 수치는 해마다 바뀐다</strong>
+      오피스텔의 주택 수 판단, 소형 신축 오피스텔 특례, 생활형 숙박시설의 유예 기한, 리츠 배당의 분리과세 특례는 최근 몇 년 사이 여러 번 바뀌었고 앞으로도 바뀔 수 있다. 2026 지방세제 개편안에는 주거용 오피스텔을 생애최초 취득세 감면 대상에 넣는 안이 들어 있다(추진 중, 확정 전). 이 장의 수익률과 세액은 교육용 모델의 결과이며 특정 상품을 권하거나 말리는 것이 아니다. 계약 전에는 건축물대장, 세무 전문가, 관할 지자체 건축과의 확인을 받는다.
+    </div>
+  </section>
+
+  <section id="case">
+    <h2>하늘네 집 노트</h2>
+    <p>아버지가 받은 분양 안내서를 하늘이 태호에게 보여 주었다. 태호는 안내서의 "연 7% 2년 확정"에 동그라미를 치고, 그 아래에 "3년 차부터는?"이라고 적었다. 그리고 같은 돈을 상장 리츠에 넣는 경우, 정기예금에 넣는 경우와 10년 뒤를 나란히 계산해 보자고 했다. 아래가 그 계산이다. 보장이 끝난 뒤의 공실률, 10년 뒤 팔 때 깎아 줘야 하는 폭(환금성), 리츠 가격의 10년 변화를 바꿔 본다.</p>
+
+    <div class="sim" id="sim-fa">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>아버지의 노후 자금, 10년 뒤 무엇이 남는가</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="fa-cv"></canvas></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>보장 뒤 공실률 <output id="fa-v-out"></output></span><input type="range" id="fa-v" min="0" max="60" step="5" value="20"></label>
+          <label class="ctrl"><span>10년 뒤 매도 할인(환금성) <output id="fa-d-out"></output></span><input type="range" id="fa-d" min="0" max="40" step="5" value="10"></label>
+          <label class="ctrl"><span>리츠 가격 10년 변화 <output id="fa-p-out"></output></span><input type="range" id="fa-p" min="-40" max="30" step="5" value="0"></label>
+          <label class="check"><input type="checkbox" id="fa-loan"> 분양가 절반을 대출(연 5%)</label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">분양형 상품</span><span class="v" id="fa-o-1">—</span></div>
+        <div class="stat"><span class="k">상장 리츠</span><span class="v" id="fa-o-2">—</span></div>
+        <div class="stat"><span class="k">정기예금</span><span class="v" id="fa-o-3">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 기본값에서 아버지가 넣은 1억 8,828만원(분양가 + 취득세)이 10년 뒤 분양형 상품으로는 약 1억 7,200만원이 된다. 10년 동안 월세를 받고도 원금이 줄었다. 매도 가격이 분양가가 아니라 보장 뒤의 수입으로 정해지기 때문이다. ② 리츠 가격 변화를 −40%로 내린다. 배당을 10년 받고도 예금보다 한참 뒤처진다. 하락기에 배당까지 줄면 원금을 잃을 수도 있다. 다만 언제든 팔 수 있고, 한 건물에 몰려 있지 않다. ③ 공실률을 40%로 올리고 대출을 켠다. 이자가 수입을 넘어서면서 분양형 상품의 결과가 크게 무너진다. (교육용 가정: 분양가 1억 8,000만원, 연 7% 2년 보장, 보장 뒤 만실 월 순수익 70만원, 관리·보유비 연 54만원, 시장 가치 = 보장 뒤 연 순수입 ÷ 5.5%. 리츠 배당 연 5.5%, 예금 연 3%. 세금은 셋 모두 수입의 15.4%로 단순화했다. 실제 상품이나 수익 전망이 아니다.)</div>
+    </div>
+
+    <div class="casefile">
+      <div class="tag"><b>CASE 하늘네</b><span>집 노트 · 18장</span></div>
+      <h4>"연 7% 2년 확정"의 3년 차, 그리고 팔고 싶은 날</h4>
+      <p>아버지가 권유받은 상품은 관광지에 짓는 가상의 생활형 숙박시설 한 실, 분양가 1억 8,000만원이다. 취득세 약 4.6%(828만원)를 더하면 아버지 돈은 1억 8,828만원이 들어간다. 안내서대로 2년 동안은 연 7%, 한 해 1,260만원(월 105만원)이 들어온다. 문제는 그다음이다. 운영사가 제시한 만실 기준 월 순수익 70만원에 공실 20%를 반영하면 3년 차부터 월 56만원 정도다. 시장은 이 수입으로 값을 매기므로, 자본환원율 5.5%를 적용한 이 한 실의 시장 가치는 약 1억 2,200만원으로 분양가의 약 68%다. 이 책의 모델로 10년을 돌리면, 월세를 다 받고 10년 뒤 10% 깎아 판 결과가 약 1억 7,200만원으로 넣은 돈보다 적다. 같은 돈을 연 3% 정기예금에 넣었다면 약 2억 4,200만원, 배당 연 5.5%를 유지하고 가격이 그대로인 상장 리츠였다면 약 2억 7,600만원이다(교육용 가정, 세금 15.4% 단순화).</p>
+      <p>태호는 숫자 옆에 세 가지를 적었다. 첫째, 리츠가 이긴 것은 가정 때문이기도 하다. 리츠 가격이 30% 빠지면 배당을 받고도 예금보다 못한 결과가 된다. 리츠를 권하는 것이 아니라, 같은 '부동산 임대 수익'을 사는 다른 방법이 있다는 것을 보여 준 것이다. 둘째, 생활형 숙박시설은 숙박 영업용이라 아버지가 나중에 직접 들어가 살거나 장기로 세를 놓을 수 있는 물건이 아니다. 셋째, 팔고 싶은 날이 문제다. 객실 한 실을 사려는 사람은 많지 않고, 그 사람도 보장이 끝난 뒤의 수입을 보고 값을 부른다. 하늘은 아버지에게 "보장 수익률 말고 3년 차 수입으로 값을 다시 계산해 보시라"고만 전했다. 아버지는 계약금을 넣지 않고 안내서를 접어 두었다. 대신 아버지가 다시 꺼낸 이야기는 지금 사는 D시 아파트였다. "그럼 이 집은 앞으로 어떻게 되는 거냐."</p>
+      <div class="clue"><div><b>이 장에서 정한 것</b>분양형 상품은 보장 수익률이 아니라 보장 뒤 실제 수입과 그 수입으로 매긴 시장 가치로 판단한다. 이 사례에서 시장 가치는 분양가의 약 68%, 10년 결과는 원금 미만이었다.</div><div><b>아직 남은 문제</b>아버지의 D시 아파트(1994년 준공, 시세 약 1억 6,000만원)는 지방 인구가 줄어드는 도시에 있다. 팔지, 물려받을지, 세를 놓을지.</div><div><b>다음 단계</b>19장: 인구와 가구, 빈집 통계로 D시의 30년을 생각할 때 확정할 수 있는 것과 없는 것을 가른다.</div></div>
+    </div>
+  </section>
+
+  <section class="keypoints" id="summary">
+    <h2>핵심 정리</h2>
+    <ol>
+      <li>수익형 부동산(오피스텔·상가·지식산업센터·토지·리츠)은 같은 '부동산'이라도 수익원, 환금성, 대출, 세금, 관리 부담이 모두 다르다. 내가 살지 않는 부동산은 세입자가 나가는 순간 수익이 0이 된다.</li>
+      <li>광고의 표면 수익률에서 공실·수선비·보유세·임대소득세를 빼고 분모에 취득세(비주거용 약 4.6%)와 중개보수를 더하면 실질 수익률은 크게 낮아진다.</li>
+      <li>대출을 끼면 공실이 없을 때 수익률이 오르지만, 공실이 생기면 이자와 관리비가 그대로 나가 손실이 커진다. 손익분기 공실은 대출·금리·관리비가 클수록 짧아진다.</li>
+      <li>오피스텔은 세법상 서류보다 실제 쓰임으로 판단한다. 주거용으로 쓰이면 주택 수에 들어가 가진 아파트의 양도세 비과세나 다음 집의 취득세가 바뀔 수 있다.</li>
+      <li>상가 값은 '연 월세 ÷ 자본환원율'에 가깝게 움직인다. 상권 이동(입지)은 월세를, 금리는 자본환원율을 바꾼다. 권리금은 세입자 사이의 돈이며 상권이 기울면 먼저 사라진다.</li>
+      <li>환금성은 수익률 표에 없는 비용이다. 팔리지 않는 동안의 비용과 깎아 주는 폭을 합쳐 따진다. 상장 리츠는 바로 팔리는 대신 가격이 매일 움직인다.</li>
+      <li>수익률 보장 분양형 상품은 보장 뒤의 실제 수입으로 시장 가치를 다시 계산해야 한다. 보장분은 분양가 안에 이미 들어 있을 수 있고, 생활형 숙박시설은 주거용이 아니다.</li>
+    </ol>
+  </section>
+
+  <section class="quiz-sec" id="quiz">
+    <h2>확인 퀴즈</h2>
+    <div class="quiz">
+      <div class="quiz-q">
+        <p>매입가 2억원, 보증금 1,000만원, 월세 80만원인 오피스텔의 '표면 수익률'이 약 5%라는 광고가 있다. 실질 수익률이 이보다 낮아지는 이유로 가장 거리가 먼 것은?</p>
+        <div class="opts">
+          <button class="opt">공실 기간에는 월세가 들어오지 않고 관리비를 주인이 낸다</button>
+          <button class="opt" data-correct>보증금을 받으면 투자금이 줄어 수익률이 낮아진다</button>
+          <button class="opt">취득세(약 4.6%)와 중개보수가 실제 투자금에 더해진다</button>
+          <button class="opt">수선비와 보유세, 임대소득세가 수입에서 빠진다</button>
+        </div>
+        <div class="quiz-exp">보증금은 실제 투자금을 줄여 주므로 수익률 계산의 분모를 작게 만든다. 표면 수익률도 이미 매입가에서 보증금을 뺀 금액으로 나눈다. 실질 수익률을 낮추는 것은 공실, 취득 비용, 수선비, 세금이다. 이 장의 기본값에서 5.05%가 약 3.0%로 내려갔다.</div>
+      </div>
+      <div class="quiz-q">
+        <p>"연 7% 수익 2년 확정 보장" 분양형 상품을 판단할 때 가장 먼저 다시 계산해야 할 것은?</p>
+        <div class="opts">
+          <button class="opt">보장 기간 2년 동안 받을 수익의 합계</button>
+          <button class="opt">보장 수익률이 예금 금리의 몇 배인가</button>
+          <button class="opt">분양가가 주변 아파트 시세보다 싼가</button>
+          <button class="opt" data-correct>보장이 끝난 뒤의 실제 운영 수입과, 그 수입으로 매긴 시장 가치가 분양가와 얼마나 다른가</button>
+        </div>
+        <div class="quiz-exp">시장은 보장이 끝난 뒤의 수입으로 값을 매긴다. 이 장의 예에서 보장 뒤 월 수입은 105만원에서 56만원으로 줄었고, 그 수입을 자본환원율 5.5%로 나눈 시장 가치는 분양가의 약 68%였다. 보장분은 분양가 안에 이미 들어 있을 수 있다.</div>
+      </div>
+      <div class="quiz-q">
+        <p>경기도 비규제 지역에 아파트 한 채만 가진 사람이 오피스텔을 사서 세입자가 전입신고를 하고 산다. 이 사람에게 생길 수 있는 일로 알맞은 것은?</p>
+        <div class="opts">
+          <button class="opt" data-correct>오피스텔이 주거용으로 쓰여 주택 수에 들어가면, 아파트를 팔 때 1세대 1주택 비과세를 받지 못할 수 있다</button>
+          <button class="opt">오피스텔은 건축법상 업무시설이라 어떤 경우에도 주택 수에 들어가지 않는다</button>
+          <button class="opt">오피스텔 취득세가 주택과 같은 1%로 소급해 낮아진다</button>
+          <button class="opt">세입자가 전입신고를 하면 오피스텔 중개보수 상한이 0.9%로 오른다</button>
+        </div>
+        <div class="quiz-exp">세법은 서류상 용도보다 실제 쓰임을 본다. 주거용으로 쓰이는 오피스텔은 양도소득세 등에서 주택으로 볼 수 있어, 가진 아파트가 2주택 중 하나가 되면 비과세 판단이 바뀐다. 이 책의 모델로는 양도차익 1억 6,000만원의 아파트에서 0원이던 양도세가 약 3,749만원이 되었다. 예외 규정이 있으므로 실제로는 세무 전문가에게 확인한다.</div>
+      </div>
+      <div class="quiz-q">
+        <p>상장 리츠와 상가를 직접 사는 것을 비교한 설명으로 가장 알맞은 것은?</p>
+        <div class="opts">
+          <button class="opt">상장 리츠는 배당이 법으로 확정되어 있어 원금 손실이 없다</button>
+          <button class="opt">직접 가진 상가는 시세가 매일 찍히지 않으므로 금리가 올라도 가치가 변하지 않는다</button>
+          <button class="opt" data-correct>상장 리츠는 소액으로 사고 시장에서 바로 팔 수 있는 대신 가격이 매일 움직이고, 직접 가진 상가도 금리 영향을 받지만 팔 때에야 드러난다</button>
+          <button class="opt">리츠는 부동산이 아니므로 금리와 공실의 영향을 받지 않는다</button>
+        </div>
+        <div class="quiz-exp">리츠는 배당가능이익의 90% 이상을 배당해야 하지만, 배당의 크기는 임대 수익에 따라 변하고 주가는 금리와 시장 심리에 따라 움직인다. 직접 보유한 상가도 같은 금리와 공실의 영향을 받는다. 다만 가격이 매일 보이지 않을 뿐이고, 팔려고 내놓는 순간 확인하게 된다. 대신 상가는 팔리는 데 시간이 오래 걸린다.</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  const TAU = Math.PI * 2;
+  function T(ctx, s, x, y, o) {
+    o = o || {};
+    ctx.font = EB.font(o.size || 12, o.mono, o.weight);
+    ctx.fillStyle = o.color; ctx.textAlign = o.align || "left"; ctx.textBaseline = o.base || "alphabetic";
+    ctx.fillText(s, x, y);
+  }
+  function rrect(ctx, x, y, w, h, r) {
+    r = Math.max(0, Math.min(r, Math.abs(w) / 2, Math.abs(h) / 2));
+    ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
+  }
+  function handle(ctx, P, x, y) {
+    ctx.beginPath(); ctx.arc(x, y, 8, 0, TAU); ctx.fillStyle = P.text; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = P.bg; ctx.stroke();
+  }
+  const pw = (id) => document.getElementById(id).parentElement.clientWidth;
+  const pct = (x, d) => (x < 0 ? "−" : "") + Math.abs(x * 100).toFixed(d == null ? 2 : d) + "%";
+  const signWon = (x) => (x > 0 ? "+" : x < 0 ? "−" : "") + EB.won(Math.abs(x));
+  const cls = (x) => (x < 0 ? "minus" : "plus");
+  // 비주거용 건축물 취득세(취득세 4% + 지방교육세 0.4% + 농어촌특별세 0.2%), 주택 외 중개보수 상한 0.9% — 2026년 기준
+  const ACQ_NONHOME = 0.046, BROKER_NONHOME = 0.009;
+
+  /* ---------------------------------------------------------- 1. 표면 vs 실질 */
+  (function () {
+    const vG = EB.range("yr-v", (v) => v + "개월", draw);
+    const uG = EB.range("yr-u", (v) => v.toFixed(1) + "%", draw);
+    const tG = EB.seg("yr-t", draw);
+    const P = 2e8, D = 1e7, M = 8e5, MGMT = 1.5e5, PTAX = 0.0025;
+    function calc() {
+      const vm = vG(), upk = uG() / 100, tr = +tG() / 100;
+      const acq = P * ACQ_NONHOME, br = P * BROKER_NONHOME;
+      const inv = P + acq + br - D, gross = M * 12;
+      const lost = M * vm, mgmt = MGMT * vm, up = P * upk, ptax = P * PTAX;
+      const pre = gross - lost - mgmt - up - ptax, it = Math.max(0, pre) * tr, net = pre - it;
+      return { inv, acq, br, gross, lost, mgmt, up, ptax, it, net, gY: gross / (P - D), nY: net / inv };
+    }
+    const cv = EB.canvas("#yr-cv", (ctx, w, h) => {
+      const Pa = EB.palette(), c = calc();
+      const items = [
+        { k: "표면 연 임대료", v: c.gross, start: true },
+        { k: "공실로 못 받은 월세", v: -c.lost },
+        { k: "공실 중 관리비", v: -c.mgmt },
+        { k: "수선·관리", v: -c.up },
+        { k: "보유세", v: -c.ptax },
+        { k: "임대소득세", v: -c.it },
+        { k: "손에 남는 돈", v: c.net, total: true },
+      ];
+      const narrow = w < 480;
+      const box = { x: narrow ? 108 : 124, y: 10, w: w - (narrow ? 108 : 124) - 16, h: h - 74 };
+      const rowH = box.h / items.length;
+      const lo = Math.min(0, c.net), hi = c.gross * 1.04;
+      const X = (v) => box.x + (v - lo) / (hi - lo) * box.w;
+      ctx.strokeStyle = Pa.axis; ctx.beginPath(); ctx.moveTo(X(0), box.y); ctx.lineTo(X(0), box.y + box.h); ctx.stroke();
+      let run = 0;
+      items.forEach((it, i) => {
+        const y = box.y + i * rowH + rowH * 0.18, bh = rowH * 0.64;
+        let a, b;
+        if (it.start || it.total) { a = 0; b = it.v; run = it.start ? it.v : run; } else { a = run; b = run + it.v; run = b; }
+        const x0 = X(Math.min(a, b)), x1 = X(Math.max(a, b));
+        ctx.fillStyle = it.start ? Pa.ok : it.total ? (it.v >= 0 ? Pa.accent : Pa.bad) : Pa.bad;
+        ctx.globalAlpha = it.total || it.start ? 0.95 : 0.7; ctx.fillRect(x0, y, Math.max(1.5, x1 - x0), bh); ctx.globalAlpha = 1;
+        T(ctx, it.k, box.x - 8, y + bh / 2, { size: narrow ? 11 : 12, color: it.total ? Pa.text : Pa.dim, align: "right", base: "middle", weight: it.total ? 700 : 400 });
+        const s = (it.start || it.total ? "" : "−") + EB.wonAxis(Math.abs(it.v));
+        const right = x1 + 50 < box.x + box.w;
+        if (right) T(ctx, s, x1 + 4, y + bh / 2, { size: 11, mono: true, color: Pa.text, base: "middle" });
+        else if (x1 - x0 > 54) T(ctx, s, x1 - 6, y + bh / 2, { size: 11, mono: true, color: "#fff", align: "right", base: "middle", weight: 700 });
+        else T(ctx, s, x0 - 4, y + bh / 2, { size: 11, mono: true, color: Pa.text, align: "right", base: "middle" });
+      });
+      // 분모 비교
+      const by = box.y + box.h + 14;
+      T(ctx, "표면 분모: 매입가 − 보증금 = " + EB.wonAxis(P - D), 10, by + 8, { size: 11, color: Pa.dim });
+      T(ctx, "실질 분모: + 취득세 " + EB.wonAxis(c.acq) + " + 중개보수 " + EB.wonAxis(c.br) + " = " + EB.wonAxis(c.inv), 10, by + 28, { size: 11, color: Pa.warn, weight: 700 });
+      T(ctx, "→ " + pct(c.gY) + "  vs  " + pct(c.nY), 10, by + 48, { size: 12, color: Pa.text, weight: 700 });
+    }, { get height() { return pw("yr-cv") < 480 ? 330 : 320; } });
+    function draw() {
+      const c = calc();
+      EB.stat("yr-o-g", pct(c.gY));
+      EB.stat("yr-o-n", '<span class="' + cls(c.nY) + '">' + pct(c.nY) + "</span>");
+      EB.stat("yr-o-m", EB.won(c.net) + ' <small style="color:var(--text-faint)">(월 ' + EB.won(c.net / 12) + ")</small>");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 2. 공실과 레버리지 */
+  (function () {
+    const fG = EB.range("vac-f", (v) => v + "만원", draw);
+    const rG = EB.range("vac-r", (v) => v + "%", draw);
+    const P = 5e8, D = 5e7, L = 2.5e8, M = 2.5e6, HOLD = 0.005;
+    const EQ = P - D - L + P * (ACQ_NONHOME + BROKER_NONHOME);
+    let vm = 0, box = null;
+    function cf(m) { const r = rG() / 100, fee = fG() * 1e4; return M * (12 - m) - L * r - fee * m - P * HOLD; }
+    function breakEven() { const r = rG() / 100, fee = fG() * 1e4; const fixed = L * r + P * HOLD; return (M * 12 - fixed) / (M + fee); }
+    const cv = EB.canvas("#vac-cv", (ctx, w, h) => {
+      const Pa = EB.palette();
+      const xs = []; for (let m = 0; m <= 12.0001; m += 0.25) xs.push(m);
+      const ymin = Math.min(-0.1, Math.floor(cf(12) / EQ * 20) / 20), ymax = 0.1;
+      const c = EB.chart(ctx, { x: 52, y: 14, w: w - 66, h: h - 64 }, {
+        x: [0, 12], y: [ymin, ymax], xTicks: [0, 2, 4, 6, 8, 10, 12], xFmt: (v) => v + "개월", yFmt: (v) => Math.round(v * 100) + "%",
+        series: [{ data: xs.map((m) => [m, cf(m) / EQ]), color: Pa.accent, width: 2.6 }],
+        hlines: [{ y: 0, color: Pa.axis, dash: [] }],
+      });
+      box = c;
+      const be = breakEven();
+      if (be > 0 && be < 12) {
+        const bx = c.X(be);
+        ctx.save(); ctx.fillStyle = Pa.bad; ctx.globalAlpha = 0.08; ctx.fillRect(bx, c.box.y, c.box.x + c.box.w - bx, c.box.h); ctx.restore();
+        T(ctx, "자기 돈을 깎아 먹는 구간", Math.min(bx + 6, c.box.x + c.box.w - 150), c.box.y + 16, { size: 11, color: Pa.bad, weight: 700 });
+      } else if (be <= 0) {
+        ctx.save(); ctx.fillStyle = Pa.bad; ctx.globalAlpha = 0.08; ctx.fillRect(c.box.x, c.box.y, c.box.w, c.box.h); ctx.restore();
+        T(ctx, "공실이 없어도 적자", c.box.x + 8, c.box.y + 16, { size: 11, color: Pa.bad, weight: 700 });
+      }
+      const y = cf(vm) / EQ, px = c.X(vm), py = c.Y(EB.clamp(y, ymin, ymax));
+      ctx.save(); ctx.setLineDash([3, 3]); ctx.strokeStyle = Pa.text; ctx.globalAlpha = 0.5;
+      ctx.beginPath(); ctx.moveTo(px, c.box.y + c.box.h); ctx.lineTo(px, py); ctx.lineTo(c.box.x, py); ctx.stroke(); ctx.restore();
+      ctx.beginPath(); ctx.arc(px, py, 5, 0, TAU); ctx.fillStyle = y < 0 ? Pa.bad : Pa.ok; ctx.fill();
+      handle(ctx, Pa, px, c.box.y + c.box.h);
+    }, { get height() { return pw("vac-cv") < 480 ? 280 : 300; } });
+    EB.drag(cv.canvas, { start: mv, move: mv });
+    function mv(x) { if (!box) return; vm = EB.clamp(Math.round((x - box.box.x) / box.box.w * 12 * 2) / 2, 0, 12); draw(); }
+    function draw() {
+      const v = cf(vm), be = breakEven();
+      document.getElementById("vac-o-mk").textContent = "공실 " + vm + "개월의 한 해 현금";
+      EB.stat("vac-o-cf", '<span class="' + cls(v) + '">' + signWon(v) + "</span>");
+      EB.stat("vac-o-roe", '<span class="' + cls(v) + '">' + pct(v / EQ, 1) + "</span>");
+      EB.stat("vac-o-be", be <= 0 ? '<span class="minus">공실 없어도 적자</span>' : be >= 12 ? "1년 비어도 흑자" : be.toFixed(1) + "개월");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 3. 오피스텔 용도와 주택 수 */
+  (function () {
+    const uG = EB.seg("ot-u", draw);
+    const gG = EB.range("ot-g", (v) => EB.won(v * 1e8), draw);
+    const SELL = 6.2e8, COSTS = 1e7, OT = 2e8;
+    function calc(use) {
+      const gain = gG() * 1e8, homes = use === "home" ? 2 : 1;
+      const cgt = RE.capGainsTax({ buy: SELL - gain - COSTS, sell: SELL, costs: COSTS, years: 5, live: 5, homes, regulated: false, regulatedAtBuy: false });
+      const acqNext = RE.acqTax({ price: 6.2e8, homes: homes + 1, regulated: false, area: 84 });
+      return { homes, otAcq: OT * ACQ_NONHOME, cgt: cgt.total, acqNext: acqNext.total, acqRate: acqNext.rate };
+    }
+    const cv = EB.canvas("#ot-cv", (ctx, w, h) => {
+      const Pa = EB.palette(), a = calc("biz"), b = calc("home"), sel = uG();
+      const rows = [
+        { k: "오피스텔 취득세", a: a.otAcq, b: b.otAcq },
+        { k: "아파트 팔 때 양도세", a: a.cgt, b: b.cgt },
+        { k: "집 한 채 더 살 때 취득세", a: a.acqNext, b: b.acqNext },
+      ];
+      const narrow = w < 480;
+      const lx = 10, top = 34, bx = narrow ? 10 : 150, bw = w - bx - 70;
+      const max = Math.max(...rows.map((r) => Math.max(r.a, r.b)), 1e7);
+      const rowH = (h - top - 12) / rows.length;
+      // 범례
+      ctx.fillStyle = Pa.accent; ctx.fillRect(lx, 10, 10, 10); T(ctx, "업무용", lx + 14, 19, { size: 11, color: Pa.dim });
+      ctx.fillStyle = Pa.bad; ctx.fillRect(lx + 70, 10, 10, 10); T(ctx, "주거용", lx + 84, 19, { size: 11, color: Pa.dim });
+      rows.forEach((r, i) => {
+        const y0 = top + i * rowH;
+        T(ctx, r.k, narrow ? lx : bx - 10, narrow ? y0 + 10 : y0 + rowH * 0.42, { size: 12, color: Pa.text, align: narrow ? "left" : "right", base: "middle", weight: 700 });
+        const yb = narrow ? y0 + 20 : y0 + rowH * 0.12;
+        const bh = narrow ? (rowH - 30) / 2 : rowH * 0.3;
+        [["biz", r.a, Pa.accent], ["home", r.b, Pa.bad]].forEach(([key, v, col], j) => {
+          const yy = yb + j * (bh + 4);
+          const ww = Math.max(2, v / max * bw);
+          ctx.fillStyle = col; ctx.globalAlpha = key === sel ? 0.95 : 0.28; ctx.fillRect(bx, yy, ww, bh); ctx.globalAlpha = 1;
+          T(ctx, v < 1 ? "0원" : EB.won(v, { short: true }), bx + ww + 6, yy + bh / 2, { size: 11, mono: false, color: key === sel ? Pa.text : Pa.faint, base: "middle", weight: key === sel ? 700 : 400 });
+        });
+      });
+    }, { get height() { return pw("ot-cv") < 480 ? 300 : 260; } });
+    function draw() {
+      const c = calc(uG());
+      EB.stat("ot-o-h", c.homes + "주택" + (c.homes > 1 ? ' <small style="color:var(--text-faint)">(아파트 + 오피스텔)</small>' : ""));
+      EB.stat("ot-o-c", c.cgt < 1 ? '<span class="plus">0원(비과세)</span>' : '<span class="minus">' + EB.won(c.cgt) + "</span>");
+      EB.stat("ot-o-a", EB.won(c.acqNext) + ' <small style="color:var(--text-faint)">(세율 ' + +(c.acqRate * 100).toFixed(2) + "%)</small>");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 4. 상권과 핵심 시설 */
+  (function () {
+    const lG = EB.range("st-l", (v) => v.toFixed(2), draw);
+    const cG = EB.range("st-c", (v) => v + "%", draw);
+    const N = 12, MINE = 3, BASE = 4e6, EMPTY = 0.55;
+    let anchor = (MINE + 0.5) / N, L = null, t0 = 0;
+    const slotX = (i) => (i + 0.5) / N;
+    const rentAt = (x) => BASE * (0.35 + 0.65 * Math.exp(-Math.abs(x - anchor) / lG()));
+    const rng = EB.rng(7), people = Array.from({ length: 70 }, () => ({ u: rng(), s: (rng() - 0.5) * 2, ph: rng() * TAU }));
+    const cv = EB.canvas("#st-cv", (ctx, w, h) => {
+      const Pa = EB.palette();
+      const m = 10, sw = (w - 2 * m) / N, shopY = 26, shopH = Math.min(70, h * 0.28), roadY = shopY + shopH + 14, roadH = h - roadY - 40;
+      L = { w, h, m, sw, roadY, roadH };
+      // 상가
+      for (let i = 0; i < N; i++) {
+        const r = rentAt(slotX(i)), rel = r / BASE, x = m + i * sw;
+        const empty = rel < EMPTY;
+        rrect(ctx, x + 2, shopY, sw - 4, shopH, 4);
+        if (empty) { ctx.fillStyle = Pa.surface; ctx.fill(); ctx.strokeStyle = Pa.border; ctx.lineWidth = 1; ctx.setLineDash([3, 3]); ctx.stroke(); ctx.setLineDash([]); T(ctx, "공실", x + sw / 2, shopY + shopH / 2, { size: 10, color: Pa.faint, align: "center", base: "middle" }); }
+        else { ctx.fillStyle = Pa.accent; ctx.globalAlpha = 0.15 + 0.75 * (rel - EMPTY) / (1 - EMPTY); ctx.fill(); ctx.globalAlpha = 1; }
+        if (i === MINE) { rrect(ctx, x + 1, shopY - 1, sw - 2, shopH + 2, 5); ctx.strokeStyle = Pa.bad; ctx.lineWidth = 2.5; ctx.stroke(); T(ctx, "내 상가", x + sw / 2, shopY - 8, { size: 11, color: Pa.bad, align: "center", weight: 700 }); }
+      }
+      // 길
+      ctx.fillStyle = Pa.grid; ctx.fillRect(m, roadY, w - 2 * m, roadH);
+      // 사람
+      const ax = m + anchor * (w - 2 * m);
+      people.forEach((p) => {
+        const spread = lG() * (w - 2 * m) * 1.1;
+        const dx = Math.tan((p.u - 0.5) * Math.PI * 0.92) * spread * 0.35 + Math.sin(t0 * 0.6 + p.ph) * 6;
+        const x = ax + dx;
+        if (x < m || x > w - m) return;
+        const y = roadY + 6 + ((p.s + 1) / 2) * (roadH - 12) + Math.cos(t0 * 0.8 + p.ph) * 2;
+        ctx.beginPath(); ctx.arc(x, y, 2.6, 0, TAU); ctx.fillStyle = Pa.text; ctx.globalAlpha = 0.55; ctx.fill(); ctx.globalAlpha = 1;
+      });
+      // 핵심 시설(손잡이)
+      const hy = roadY + roadH + 16;
+      rrect(ctx, ax - 22, hy - 12, 44, 24, 6); ctx.fillStyle = Pa.accent2; ctx.fill();
+      T(ctx, "출구", ax, hy, { size: 11, color: "#fff", align: "center", base: "middle", weight: 700 });
+      ctx.strokeStyle = Pa.accent2; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(ax, hy - 12); ctx.lineTo(ax, roadY + roadH); ctx.stroke();
+    }, { get height() { return pw("st-cv") < 480 ? 250 : 270; } });
+    EB.drag(cv.canvas, { start: mv, move: mv });
+    function mv(x) { if (!L) return; anchor = EB.clamp((x - L.m) / (L.w - 2 * L.m), 0.02, 0.98); draw(); }
+    EB.loop(cv.canvas, (dt) => { t0 += dt; cv.redraw(); });
+    function draw() {
+      const r = rentAt(slotX(MINE)), cap = cG() / 100;
+      let empty = 0; for (let i = 0; i < N; i++) if (rentAt(slotX(i)) / BASE < EMPTY) empty++;
+      const mineEmpty = r / BASE < EMPTY;
+      EB.stat("st-o-r", EB.won(r) + (mineEmpty ? ' <small class="bad-t">(공실 위험)</small>' : ""));
+      EB.stat("st-o-v", empty + " / " + N + "칸");
+      EB.stat("st-o-p", EB.won(r * 12 / cap));
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 5. 환금성 */
+  (function () {
+    const ASSET = {
+      apt:   { h0: 0.22, name: "아파트" },
+      ot:    { h0: 0.1, name: "오피스텔" },
+      store: { h0: 0.055, name: "상가" },
+      land:  { h0: 0.022, name: "토지" },
+      reit:  { h0: 0.99, name: "상장 리츠", cost: 0.003 },
+    };
+    const aG = EB.seg("lq-a", () => { d = bestD(); draw(); });
+    const cG = EB.range("lq-c", (v) => v.toFixed(2) + "%", draw);
+    let d = 0, box = null;
+    const hz = (dd) => Math.min(0.99, ASSET[aG()].h0 * Math.exp(dd / 0.045));
+    const months = (dd) => 1 / hz(dd);
+    const net = (dd) => { const a = ASSET[aG()]; if (a.cost != null) return 1 - a.cost - dd; return 1 - dd - cG() / 100 * months(dd); };
+    function bestD() { let b = 0, bv = -Infinity; for (let x = 0; x <= 0.3001; x += 0.005) { const v = net(x); if (v > bv) { bv = v; b = x; } } return Math.round(b * 200) / 200; }
+    const cv = EB.canvas("#lq-cv", (ctx, w, h) => {
+      const Pa = EB.palette();
+      const xs = []; for (let x = 0; x <= 0.3001; x += 0.005) xs.push(x);
+      const ymin = Math.max(0.3, Math.floor(Math.min(...xs.map(net)) * 20) / 20 - 0.05);
+      const c = EB.chart(ctx, { x: 54, y: 16, w: w - 68, h: h - 66 }, {
+        x: [0, 0.3], y: [ymin, 1], xTicks: [0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3], xFmt: (v) => Math.round(v * 100) + "%", yFmt: (v) => Math.round(v * 100) + "%",
+        series: [
+          { data: xs.map((x) => [x, 1 - x]), color: Pa.faint, width: 1.5, dash: [5, 4] },
+          { data: xs.map((x) => [x, net(x)]), color: Pa.accent, width: 2.6 },
+        ],
+        hlines: [{ y: 1, color: Pa.axis, label: "감정가" }],
+      });
+      box = c;
+      const b = bestD();
+      ctx.beginPath(); ctx.arc(c.X(b), c.Y(net(b)), 4, 0, TAU); ctx.fillStyle = Pa.ok; ctx.fill();
+      const y = net(d), px = c.X(d), py = c.Y(EB.clamp(y, ymin, 1));
+      ctx.save(); ctx.setLineDash([3, 3]); ctx.strokeStyle = Pa.text; ctx.globalAlpha = 0.5;
+      ctx.beginPath(); ctx.moveTo(px, c.box.y + c.box.h); ctx.lineTo(px, py); ctx.stroke(); ctx.restore();
+      ctx.beginPath(); ctx.arc(px, py, 5, 0, TAU); ctx.fillStyle = Pa.accent; ctx.fill();
+      handle(ctx, Pa, px, c.box.y + c.box.h);
+      T(ctx, "점선: 기다리는 비용이 없을 때", c.box.x + c.box.w - 4, c.box.y + 22, { size: 10, color: Pa.faint, align: "right" });
+    }, { get height() { return pw("lq-cv") < 480 ? 280 : 300; } });
+    EB.drag(cv.canvas, { start: mv, move: mv });
+    function mv(x) { if (!box) return; d = EB.clamp(Math.round((x - box.box.x) / box.box.w * 0.3 * 200) / 200, 0, 0.3); draw(); }
+    function draw() {
+      const a = ASSET[aG()], m = a.cost != null ? 0 : months(d);
+      EB.stat("lq-o-t", a.cost != null ? "그날(장중)" : m < 1.5 ? "약 " + m.toFixed(1) + "개월" : m >= 24 ? "약 " + (m / 12).toFixed(1) + "년" : "약 " + Math.round(m) + "개월");
+      const n = net(d);
+      EB.stat("lq-o-n", '<span class="' + (n < 0.9 ? "minus" : "") + '">감정가의 ' + (n * 100).toFixed(1) + "%</span>");
+      const b = bestD();
+      EB.stat("lq-o-b", (b * 100).toFixed(1) + "% 할인 → " + (net(b) * 100).toFixed(1) + "%");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 6. 상장 리츠의 10년 */
+  (function () {
+    const sG = EB.range("rt-s", (v) => (v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(v) + "%p", draw);
+    const vG = EB.range("rt-v", (v) => v + "%", draw);
+    let seed = 3;
+    document.getElementById("rt-re").addEventListener("click", () => { seed++; draw(); });
+    const N = 120, CAP = 0.055, DIV = 0.055, G = 0.01;
+    function path() {
+      const g = RE.gauss(seed), s = sG() / 100, vol = vG() / 100;
+      const nav = [], book = [], price = [];
+      let mood = 0;
+      for (let m = 0; m <= N; m++) {
+        const t = m / 12;
+        const shock = t < 3 ? 0 : s * Math.min(1, (t - 3) / 0.75);
+        const v = 100 * Math.pow(1 + G, t) * CAP / Math.max(0.02, CAP + shock);
+        nav.push(v);
+        mood = mood * 0.9 + vol * 0.3 * g();
+        price.push(v * Math.exp(mood - (m === 0 ? mood : 0)));
+      }
+      price[0] = 100;
+      for (let m = 0; m <= N; m++) { const k = Math.floor(m / 12) * 12; book.push(nav[Math.max(0, k - 6)] * 0.5 + nav[k] * 0.5); }
+      return { nav, book, price };
+    }
+    const cv = EB.canvas("#rt-cv", (ctx, w, h) => {
+      const Pa = EB.palette(), p = path();
+      const all = p.price.concat(p.book);
+      const ymin = Math.min(60, Math.floor(Math.min(...all) / 10) * 10), ymax = Math.max(140, Math.ceil(Math.max(...all) / 10) * 10);
+      EB.chart(ctx, { x: 46, y: 14, w: w - 60, h: h - 58 }, {
+        x: [0, 10], y: [ymin, ymax], xTicks: [0, 2, 4, 6, 8, 10], xFmt: (v) => v + "년",
+        series: [
+          { data: p.book.map((v, m) => [m / 12, v]), color: Pa.faint, width: 2, dash: [] },
+          { data: p.price.map((v, m) => [m / 12, v]), color: Pa.accent, width: 2.2 },
+        ],
+        hlines: [{ y: 100, color: Pa.axis }],
+        vlines: [{ x: 3, color: Pa.bad, label: "금리 충격" }],
+      });
+      T(ctx, "리츠 주가(시작 = 100)", 54, 28, { size: 11, color: Pa.accent, weight: 700 });
+      T(ctx, "직접 보유 시 장부상 가치(연 1회 감정)", 54, 44, { size: 11, color: Pa.dim });
+      T(ctx, "교육용 가상 데이터", w - 14, h - 6, { size: 10, color: Pa.faint, align: "right" });
+    }, { get height() { return pw("rt-cv") < 480 ? 270 : 290; } });
+    function draw() {
+      const p = path();
+      let peak = -Infinity, dd = 0; p.price.forEach((v) => { peak = Math.max(peak, v); dd = Math.max(dd, 1 - v / peak); });
+      const divs = DIV * 100 * 10;
+      EB.stat("rt-o-d", dd > 0.001 ? '<span class="minus">−' + (dd * 100).toFixed(0) + "%</span>" : "하락 없음");
+      EB.stat("rt-o-y", '<span class="plus">+' + divs.toFixed(0) + "</span>");
+      const tot = p.price[N] + divs;
+      EB.stat("rt-o-t", '<span class="' + (tot < 100 ? "minus" : "plus") + '">' + tot.toFixed(0) + "</span>");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 7. 수익률 보장의 끝 */
+  (function () {
+    const gG = EB.range("ps-g", (v) => v.toFixed(1) + "%", draw);
+    const mG = EB.range("ps-m", (v) => v + "만원", draw);
+    const PRICE = 1.8e8, VAC = 0.2, CAP = 0.055;
+    let T_ = 2, box = null;
+    const guaranteedMonthly = () => PRICE * gG() / 100 / 12;
+    const marketMonthly = () => mG() * 1e4 * (1 - VAC);
+    const value = () => marketMonthly() * 12 / CAP;
+    const cv = EB.canvas("#ps-cv", (ctx, w, h) => {
+      const Pa = EB.palette();
+      const narrow = w < 480;
+      const chartW = narrow ? w - 20 : w * 0.66;
+      const chartH = narrow ? h * 0.56 : h - 50;
+      const ymax = Math.max(1.6e6, Math.ceil(guaranteedMonthly() / 2e5) * 2e5 + 2e5);
+      const data = []; for (let t = 0; t <= 10.0001; t += 0.05) data.push([t, t < T_ ? guaranteedMonthly() : marketMonthly()]);
+      const c = EB.chart(ctx, { x: 48, y: 14, w: chartW - 52, h: chartH - 30 }, {
+        x: [0, 10], y: [0, ymax], xTicks: [0, 2, 4, 6, 8, 10], xFmt: (v) => v + "년", yFmt: EB.wonAxis,
+        series: [{ data, color: Pa.ok, width: 2.6, fill: EB.color("accent-soft") }],
+      });
+      box = c;
+      const lx = c.X(T_);
+      ctx.strokeStyle = Pa.bad; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(lx, c.box.y); ctx.lineTo(lx, c.box.y + c.box.h); ctx.stroke();
+      handle(ctx, Pa, lx, c.box.y + 10);
+      T(ctx, "보장 " + T_ + "년", Math.min(lx + 10, c.box.x + c.box.w - 50), c.box.y + 30, { size: 11, color: Pa.bad, weight: 700 });
+      T(ctx, "월 수입", c.box.x + 4, c.box.y + c.box.h - 8, { size: 10, color: Pa.faint });
+      // 분양가 vs 시장 가치 막대
+      const bx = narrow ? 14 : chartW + 18, by = narrow ? chartH + 6 : 30, bw = narrow ? w - 28 : w - chartW - 34, bh = narrow ? h - chartH - 40 : h - 92;
+      const v = value(), ratio = v / PRICE;
+      if (narrow) {
+        const rowH = bh / 2 - 6;
+        T(ctx, "분양가", bx, by + 4, { size: 11, color: Pa.dim, base: "top" });
+        ctx.fillStyle = Pa.bad; ctx.globalAlpha = 0.35; ctx.fillRect(bx + 52, by, bw - 52, rowH); ctx.globalAlpha = 1;
+        T(ctx, EB.wonAxis(PRICE), bx + bw - 4, by + rowH / 2, { size: 11, color: Pa.text, align: "right", base: "middle", weight: 700 });
+        T(ctx, "시장 가치", bx, by + rowH + 12, { size: 11, color: Pa.dim, base: "top" });
+        const vw = Math.max(2, (bw - 52) * Math.min(1.2, ratio));
+        ctx.fillStyle = Pa.accent; ctx.globalAlpha = 0.85; ctx.fillRect(bx + 52, by + rowH + 8, Math.min(vw, bw - 52), rowH); ctx.globalAlpha = 1;
+        T(ctx, EB.wonAxis(v) + " (" + Math.round(ratio * 100) + "%)", bx + 58, by + rowH + 8 + rowH / 2, { size: 11, color: "#fff", base: "middle", weight: 700 });
+      } else {
+        const sc = bh / Math.max(PRICE, v);
+        const colW = Math.min(46, bw / 2 - 10);
+        const x1 = bx + 4, x2 = bx + colW + 16;
+        ctx.fillStyle = Pa.bad; ctx.globalAlpha = 0.35; ctx.fillRect(x1, by + bh - PRICE * sc, colW, PRICE * sc); ctx.globalAlpha = 1;
+        ctx.fillStyle = Pa.accent; ctx.globalAlpha = 0.85; ctx.fillRect(x2, by + bh - v * sc, colW, v * sc); ctx.globalAlpha = 1;
+        T(ctx, "분양가", x1 + colW / 2, by + bh + 14, { size: 11, color: Pa.dim, align: "center" });
+        T(ctx, "시장 가치", x2 + colW / 2, by + bh + 14, { size: 11, color: Pa.dim, align: "center" });
+        T(ctx, EB.wonAxis(PRICE), x1 + colW / 2, by + bh - PRICE * sc - 6, { size: 11, color: Pa.text, align: "center", weight: 700 });
+        T(ctx, EB.wonAxis(v), x2 + colW / 2, by + bh - v * sc - 6, { size: 11, color: Pa.text, align: "center", weight: 700 });
+        if (v < PRICE) {
+          ctx.save(); ctx.setLineDash([3, 3]); ctx.strokeStyle = Pa.bad; ctx.beginPath(); ctx.moveTo(x2, by + bh - PRICE * sc); ctx.lineTo(x2 + colW, by + bh - PRICE * sc); ctx.stroke(); ctx.restore();
+          T(ctx, "−" + EB.wonAxis(PRICE - v), x2 + colW / 2, by + bh - (PRICE + v) / 2 * sc, { size: 11, color: Pa.bad, align: "center", base: "middle", weight: 700 });
+        }
+      }
+    }, { get height() { return pw("ps-cv") < 480 ? 350 : 300; } });
+    EB.drag(cv.canvas, { start: mv, move: mv });
+    function mv(x) { if (!box) return; T_ = EB.clamp(Math.round((x - box.box.x) / box.box.w * 10), 1, 8); draw(); }
+    function draw() {
+      const a = guaranteedMonthly(), b = marketMonthly(), v = value();
+      EB.stat("ps-o-a", '<span class="plus">' + EB.won(a) + "</span>");
+      EB.stat("ps-o-b", EB.won(b) + ' <small style="color:var(--text-faint)">(' + (b < a ? "−" : "+") + Math.abs(Math.round((b / a - 1) * 100)) + "%)</small>");
+      EB.stat("ps-o-v", '<span class="' + (v < PRICE ? "minus" : "plus") + '">' + Math.round(v / PRICE * 100) + "%</span> " + '<small style="color:var(--text-faint)">(' + EB.won(v, { short: true }) + ")</small>");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 8. 아버지의 10년 결산 */
+  (function () {
+    const vG = EB.range("fa-v", (v) => v + "%", draw);
+    const dG = EB.range("fa-d", (v) => v + "%", draw);
+    const pG = EB.range("fa-p", (v) => (v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(v) + "%", draw);
+    const loanEl = document.getElementById("fa-loan");
+    loanEl.addEventListener("change", draw);
+    const PRICE = 1.8e8, GUAR = 0.07, GY = 2, MKT = 7e5, HOLD = 5.4e5, CAP = 0.055, TAX = 0.154, REIT = 0.055, DEP = 0.03, Y = 10, LR = 0.05;
+    function calc() {
+      const vac = vG() / 100, disc = dG() / 100, rp = pG() / 100, loan = loanEl.checked ? PRICE * 0.5 : 0;
+      const acq = PRICE * ACQ_NONHOME, own = PRICE + acq - loan;
+      let inc = 0;
+      const mktNet = MKT * 12 * (1 - vac);
+      for (let y = 1; y <= Y; y++) {
+        const pre = (y <= GY ? PRICE * GUAR : mktNet) - HOLD - loan * LR;
+        inc += pre > 0 ? pre * (1 - TAX) : pre;
+      }
+      const value = mktNet / CAP, sale = value * (1 - disc) - loan;
+      const ps = { own, income: inc, principal: sale, end: sale + inc, value };
+      const rDiv = own * REIT * (1 - TAX) * Y;
+      const reit = { own, income: rDiv, principal: own * (1 + rp), end: own * (1 + rp) + rDiv };
+      const depEnd = own * Math.pow(1 + DEP * (1 - TAX), Y);
+      const dep = { own, income: depEnd - own, principal: own, end: depEnd };
+      return { ps, reit, dep, own };
+    }
+    const cv = EB.canvas("#fa-cv", (ctx, w, h) => {
+      const Pa = EB.palette(), c = calc();
+      const opts = [["분양형 상품", c.ps], ["상장 리츠", c.reit], ["정기예금", c.dep]];
+      const lo = Math.min(0, ...opts.map(([, o]) => Math.min(o.principal, o.income, o.end))) * 1.1;
+      const hi = Math.max(...opts.map(([, o]) => Math.max(o.end, o.principal + Math.max(0, o.income)))) * 1.12;
+      const nr = w < 480, box = { x: 56, y: nr ? 44 : 26, w: w - 70, h: h - (nr ? 82 : 64) };
+      const Yp = (v) => box.y + (hi - v) / (hi - lo) * box.h;
+      // 격자
+      ctx.strokeStyle = Pa.grid; ctx.lineWidth = 1; ctx.font = EB.font(11);
+      const step = hi - lo > 4e8 ? 1e8 : 5e7;
+      for (let v = Math.ceil(lo / step) * step; v <= hi; v += step) { const y = Yp(v); ctx.beginPath(); ctx.moveTo(box.x, y); ctx.lineTo(box.x + box.w, y); ctx.stroke(); T(ctx, EB.wonAxis(v), box.x - 6, y, { size: 11, color: Pa.faint, align: "right", base: "middle" }); }
+      // 넣은 돈 기준선
+      const oy = Yp(c.own);
+      ctx.save(); ctx.setLineDash([5, 4]); ctx.strokeStyle = Pa.text; ctx.globalAlpha = 0.6; ctx.beginPath(); ctx.moveTo(box.x, oy); ctx.lineTo(box.x + box.w, oy); ctx.stroke(); ctx.restore();
+      const gw = box.w / 3, bw = Math.min(70, gw * 0.5);
+      opts.forEach(([name, o], i) => {
+        const cx = box.x + gw * i + gw / 2, x = cx - bw / 2;
+        // 원금 회수(아래), 수입(위)
+        const y0 = Yp(0), yP = Yp(o.principal);
+        ctx.fillStyle = Pa.accent; ctx.globalAlpha = 0.8; ctx.fillRect(x, Math.min(y0, yP), bw, Math.abs(y0 - yP)); ctx.globalAlpha = 1;
+        const yI = Yp(o.principal + o.income);
+        ctx.fillStyle = o.income >= 0 ? Pa.ok : Pa.bad; ctx.globalAlpha = 0.8; ctx.fillRect(x, Math.min(yP, yI), bw, Math.abs(yP - yI)); ctx.globalAlpha = 1;
+        const endY = Yp(o.end);
+        ctx.strokeStyle = Pa.text; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(x - 6, endY); ctx.lineTo(x + bw + 6, endY); ctx.stroke();
+        T(ctx, EB.wonAxis(o.end), cx, Math.min(endY, yI) - 8, { size: 12, color: o.end < c.own ? Pa.bad : Pa.text, align: "center", weight: 700 });
+        T(ctx, name, cx, box.y + box.h + 18, { size: 12, color: Pa.text, align: "center", weight: 700 });
+      });
+      ctx.strokeStyle = Pa.axis; ctx.beginPath(); ctx.moveTo(box.x, Yp(0)); ctx.lineTo(box.x + box.w, Yp(0)); ctx.stroke();
+      // 범례
+      const lg = [["매도·원금", Pa.accent], ["10년 수입(세후)", Pa.ok]];
+      let lx = box.x; lg.forEach(([s, col]) => { ctx.fillStyle = col; ctx.fillRect(lx, 8, 10, 10); T(ctx, s, lx + 14, 17, { size: 11, color: Pa.dim }); ctx.font = EB.font(11); lx += ctx.measureText(s).width + 26; });
+      const ly = nr ? 31 : 13; if (nr) lx = box.x;
+      ctx.save(); ctx.setLineDash([5, 4]); ctx.strokeStyle = Pa.text; ctx.globalAlpha = 0.6; ctx.beginPath(); ctx.moveTo(lx, ly); ctx.lineTo(lx + 16, ly); ctx.stroke(); ctx.restore();
+      T(ctx, "넣은 돈 " + EB.wonAxis(c.own), lx + 20, ly + 4, { size: 11, color: Pa.dim });
+    }, { get height() { return pw("fa-cv") < 480 ? 320 : 340; } });
+    function fmt(o, own) { const r = Math.pow(Math.max(1e-9, o.end / own), 1 / Y) - 1; return '<span class="' + (o.end < own ? "minus" : "plus") + '">' + EB.won(o.end, { short: true }) + "</span> " + '<small style="color:var(--text-faint)">(연 ' + (o.end <= 0 ? "−100%" : pct(r, 1)) + ")</small>"; }
+    function draw() {
+      const c = calc();
+      EB.stat("fa-o-1", fmt(c.ps, c.own));
+      EB.stat("fa-o-2", fmt(c.reit, c.own));
+      EB.stat("fa-o-3", fmt(c.dep, c.own));
+      cv.redraw();
+    }
+    draw();
+  })();
+})();
+</script>
+</body>
+</html>

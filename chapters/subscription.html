@@ -1,0 +1,885 @@
+<!doctype html>
+<!-- Copyright (c) 2026 geniuskey and EstateBook contributors.
+     Executable code: MIT (see ../LICENSE-MIT).
+     Text, illustrations, questions and explanations: CC-BY-4.0 (see ../LICENSE.md). -->
+<html lang="ko">
+<head>
+<!--head:start {"desc": "새 아파트를 시세보다 싸게 사는 길, 청약. 주택청약종합저축, 국민주택과 민영주택, 가점제 84점과 추첨제, 특별공급, 분양가상한제가 만드는 시세차익과 경쟁률, 당첨 확률, 계약금·중도금·잔금 자금 계획을 시뮬레이터로 계산한다."}-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>청약과 분양 · EstateBook</title>
+<meta name="description" content="새 아파트를 시세보다 싸게 사는 길, 청약. 주택청약종합저축, 국민주택과 민영주택, 가점제 84점과 추첨제, 특별공급, 분양가상한제가 만드는 시세차익과 경쟁률, 당첨 확률, 계약금·중도금·잔금 자금 계획을 시뮬레이터로 계산한다.">
+<link rel="canonical" href="https://estatebook.euiyun.com/chapters/subscription.html">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<meta name="theme-color" content="#0f766e">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EstateBook">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="청약과 분양 · EstateBook">
+<meta property="og:description" content="새 아파트를 시세보다 싸게 사는 길, 청약. 주택청약종합저축, 국민주택과 민영주택, 가점제 84점과 추첨제, 특별공급, 분양가상한제가 만드는 시세차익과 경쟁률, 당첨 확률, 계약금·중도금·잔금 자금 계획을 시뮬레이터로 계산한다.">
+<meta property="og:url" content="https://estatebook.euiyun.com/chapters/subscription.html">
+<meta property="og:image" content="https://estatebook.euiyun.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Chapter","LearningResource"],"@id":"https://estatebook.euiyun.com/chapters/subscription.html#chapter","name":"청약과 분양","headline":"청약과 분양 · EstateBook","description":"새 아파트를 시세보다 싸게 사는 길, 청약. 주택청약종합저축, 국민주택과 민영주택, 가점제 84점과 추첨제, 특별공급, 분양가상한제가 만드는 시세차익과 경쟁률, 당첨 확률, 계약금·중도금·잔금 자금 계획을 시뮬레이터로 계산한다.","url":"https://estatebook.euiyun.com/chapters/subscription.html","position":11,"inLanguage":"ko","isAccessibleForFree":true,"learningResourceType":"인터랙티브 교재","educationalLevel":"일반 성인","image":"https://estatebook.euiyun.com/og.png","dateModified":"2026-10-08","isPartOf":{"@type":"Book","@id":"https://estatebook.euiyun.com/#book","name":"EstateBook · 집값과 전세를 숫자로 푸는 부동산 교과서","url":"https://estatebook.euiyun.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"EstateBook","item":"https://estatebook.euiyun.com/"},{"@type":"ListItem","position":2,"name":"11. 청약과 분양","item":"https://estatebook.euiyun.com/chapters/subscription.html"}]}]}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../css/style.css">
+<script src="../js/common.js"></script>
+<script src="../js/estate.js"></script>
+<!--head:end-->
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3d6151a0abc94ede89285d462527fa80"}'></script>
+<!-- End Cloudflare Web Analytics -->
+</head>
+<body data-chapter="subscription">
+<main class="chapter">
+  <header class="chapter-hero">
+    <div class="eyebrow">Chapter 11</div>
+    <h1>청약과 분양</h1>
+    <p class="lead">하늘의 휴대폰에 분양 광고가 뜬다. "E시 신도시 84㎡, 분양가 4억 4,000만원대. 주변 시세 4억 9,000만원." 같은 크기의 새 아파트를 주변보다 5,000만원 싸게 살 수 있다는 말이다. 회사 동료는 "청약은 로또야, 넣어 봐"라고 하고, 다른 동료는 "가점 40점도 안 되면 꿈도 꾸지 마"라고 한다. 둘 다 반쯤 맞다. 새 아파트를 처음 파는 것을 <span class="term">분양</span><span class="en">(Pre-sale)</span>이라 하고, 그 집을 사겠다고 신청하는 것을 <span class="term">청약</span><span class="en">(Subscription)</span>이라 한다. 분양가가 시세보다 낮으면 신청자가 몰리고, 누가 그 집을 받을지는 점수와 추첨이 정한다. 이 장은 청약통장에서 시작해 가점과 추첨, 특별공급, 분양가상한제가 만드는 시세차익, 경쟁률로 본 당첨 확률, 그리고 당첨된 뒤에 치러야 할 계약금·중도금·잔금의 돈 계획까지 따라간다. 청약에 걸지 말지는 이 장의 숫자를 모두 본 뒤 <a href="plan.html">21장</a>에서 정한다.</p>
+    <ul class="objectives">
+      <li>주택청약종합저축의 납입 인정 금액과 소득공제 요건을 설명하고, 통장이 국민주택과 민영주택에서 어떻게 다르게 쓰이는지 구분한다.</li>
+      <li>가점제 84점(무주택 기간 32, 부양가족 35, 통장 가입 기간 17)을 계산하고, 추첨제와 가점제의 비율이 지역과 면적에 따라 어떻게 달라지는지 본다.</li>
+      <li>특별공급(신혼부부, 생애최초, 다자녀, 노부모부양, 신생아)의 기본 구조와 자격 점검 순서를 익힌다.</li>
+      <li>분양가상한제가 시세차익과 경쟁률을 만드는 구조, 전매제한과 실거주 의무의 뜻을 설명한다.</li>
+      <li>경쟁률과 가점 분포로 당첨 확률을 계산하고, 무순위 청약('줍줍')의 뜻을 안다.</li>
+      <li>계약금·중도금·잔금 일정을 세우고, 지금 사는 집의 전세 만기와 입주 시점을 맞춘다.</li>
+    </ul>
+  </header>
+
+  <section id="account">
+    <h2>청약통장: 줄을 서는 표</h2>
+    <p>새 아파트를 분양받으려면 대부분 먼저 <span class="term">주택청약종합저축</span><span class="en">(Housing subscription savings)</span>에 가입해 있어야 한다. 흔히 청약통장이라 부르는 이 통장은 은행 예금처럼 돈을 모으는 상품이면서, 동시에 '나는 언제부터 집을 기다렸다'는 기록이다. 매달 일정 금액을 넣고, 가입 기간과 넣은 돈이 쌓이면 청약할 자격과 순위가 생긴다.</p>
+    <p>통장의 쓸모는 세 가지로 나뉜다. 첫째, 공공이 짓는 국민주택에서는 넣은 돈의 합계(<span class="term">저축총액</span>)가 많을수록 앞선다. 다만 한 달에 인정해 주는 금액에 상한이 있다. 2024년 11월부터 월 25만원까지 인정한다(그 전에는 10만원). 둘째, 민간이 짓는 민영주택에서는 가입 기간이 가점(최대 17점)이 되고, 지역과 면적별로 정한 <span class="term">예치금</span>(예: 서울 거주자가 전용 85㎡ 이하에 청약하려면 300만원)만 있으면 된다. 셋째, 세금이다. 2026년 기준 총급여 7,000만원 이하인 무주택 세대주(세대주의 배우자 포함)는 한 해 납입액 300만원까지의 40%, 최대 120만원을 소득에서 공제받는다. 소득공제이므로 실제로 줄어드는 세금은 공제액에 자기 세율을 곱한 만큼이다.</p>
+    <p>아래에서 매달 넣는 돈과 넣은 기간을 바꿔 본다. 실제로 넣은 돈과 국민주택에서 인정되는 저축총액이 어떻게 갈라지는지, 그리고 소득공제가 얼마인지 본다.</p>
+
+    <div class="sim" id="sim-acct">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>매달 얼마를 넣을까</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="acct-cv"></canvas></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>월 납입액 <output id="acct-m-out"></output></span><input type="range" id="acct-m" min="2" max="50" step="1" value="10"></label>
+          <label class="ctrl"><span>가입 기간 <output id="acct-y-out"></output></span><input type="range" id="acct-y" min="1" max="15" step="1" value="9"></label>
+          <label class="check"><input type="checkbox" id="acct-d" checked> 소득공제 대상(총급여 7,000만원 이하 무주택 세대주)</label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">실제로 넣은 돈</span><span class="v" id="acct-o-p">—</span></div>
+        <div class="stat"><span class="k">국민주택 인정 저축총액</span><span class="v" id="acct-o-r">—</span></div>
+        <div class="stat"><span class="k">민영주택 통장 가점</span><span class="v" id="acct-o-s">—</span></div>
+        <div class="stat"><span class="k">한 해 줄어드는 세금(추정)</span><span class="v" id="acct-o-t">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 기본값(월 10만원, 9년)에서 통장 가점은 11점이다. 민영주택의 통장 점수는 넣은 돈이 아니라 가입 기간으로 정해진다. ② 월 납입액을 50만원으로 올린다. 실제로 넣은 돈은 늘지만 국민주택 인정 저축총액은 월 25만원에서 멈춘다. 25만원을 넘는 돈은 청약 순위에 보탬이 되지 않는다. ③ 소득공제를 켠 채로 월 25만원에 맞춘다. 한 해 300만원을 넣어 120만원을 공제받고, 세율 16.5%(소득세 15% + 지방소득세)라면 세금이 약 20만원(19만 8,000원) 준다. (교육용 단순화: 인정 저축총액은 매달 min(납입액, 25만원)을 더한 값이고, 2024년 11월 이전의 인정 한도 10만원은 반영하지 않았다. 세율 16.5%는 가정이며 실제 절세액은 과세표준에 따라 다르다.)</div>
+    </div>
+
+    <p>민영주택만 노린다면 매달 큰돈을 넣을 이유가 적다. 통장 점수는 가입 기간으로 정해지고, 예치금만 맞추면 되기 때문이다. 국민주택을 노린다면 인정 한도인 월 25만원까지 꾸준히 넣는 것이 순위에 직접 보탬이 된다. 어느 쪽이든 공통점은 하나다. 통장은 일찍 만들수록 유리하고, 해지하면 그동안 쌓은 기간이 사라진다. 급할 때 깨기 쉬운 통장이지만, 깨는 순간 '기다린 시간'이라는 자산을 버리게 된다.</p>
+    <p>청약할 수 있는 순위도 통장에서 나온다. 1순위가 되려면 가입 기간과 납입 횟수(또는 예치금)를 채워야 한다. 투기과열지구·조정대상지역 같은 규제지역에서는 가입 2년 이상이어야 하고, 세대주만 1순위로 청약할 수 있으며, 5년 안에 세대원 누구도 다른 청약에 당첨되지 않았어야 한다. 2025년 10월 대책 이후 서울 전역과 경기 일부가 규제지역이라(<a href="policy.html">15장</a>) 이 조건이 넓게 적용된다. 비규제지역은 조건이 더 느슨하다(세부 기준은 청약홈과 입주자모집공고 확인).</p>
+  </section>
+
+  <section id="types">
+    <h2>국민주택과 민영주택</h2>
+    <p>분양되는 새 아파트는 누가 짓느냐와 어떤 돈이 들어갔느냐에 따라 두 종류로 나뉜다. <span class="term">국민주택</span><span class="en">(Public housing)</span>은 국가·지방자치단체·LH(한국토지주택공사)·지방공사가 짓거나 주택도시기금의 지원을 받아 짓는 전용 85㎡ 이하 주택이다. 흔히 공공분양이라 부른다. <span class="term">민영주택</span><span class="en">(Private housing)</span>은 그 밖의 주택, 곧 민간 건설사가 짓는 대부분의 아파트다. 두 종류는 당첨자를 뽑는 방식이 다르다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 460 330" role="img" aria-label="국민주택과 민영주택의 당첨자 선정 방식 비교">
+        <rect x="8" y="8" width="444" height="38" rx="6" class="f-surface"/>
+        <text x="62" y="32" text-anchor="middle" class="lbl-dim">구분</text>
+        <text x="190" y="32" text-anchor="middle" class="lbl-acc">국민주택(공공분양)</text>
+        <text x="352" y="32" text-anchor="middle" class="lbl-acc2">민영주택</text>
+        <line x1="116" y1="52" x2="116" y2="300" class="s-dash"/>
+        <line x1="266" y1="52" x2="266" y2="300" class="s-dash"/>
+        <text x="62" y="80" text-anchor="middle" class="lbl-b">누가 짓나</text>
+        <text x="190" y="76" text-anchor="middle" class="lbl">국가·지자체·LH 등</text>
+        <text x="190" y="94" text-anchor="middle" class="lbl-dim">또는 기금 지원, 85㎡ 이하</text>
+        <text x="352" y="80" text-anchor="middle" class="lbl">민간 건설사·시행사</text>
+        <text x="62" y="134" text-anchor="middle" class="lbl-b">일반공급</text>
+        <text x="190" y="130" text-anchor="middle" class="lbl">순차제: 저축총액</text>
+        <text x="190" y="148" text-anchor="middle" class="lbl-dim">(월 25만원까지 인정)</text>
+        <text x="352" y="130" text-anchor="middle" class="lbl">가점제 + 추첨제</text>
+        <text x="352" y="148" text-anchor="middle" class="lbl-dim">비율은 지역·면적별</text>
+        <text x="62" y="188" text-anchor="middle" class="lbl-b">통장 요건</text>
+        <text x="190" y="184" text-anchor="middle" class="lbl">납입 횟수·저축총액</text>
+        <text x="190" y="202" text-anchor="middle" class="lbl-dim">꾸준히 많이 넣을수록</text>
+        <text x="352" y="184" text-anchor="middle" class="lbl">가입 기간 + 예치금</text>
+        <text x="352" y="202" text-anchor="middle" class="lbl-dim">통장 점수 최대 17점</text>
+        <text x="62" y="242" text-anchor="middle" class="lbl-b">자산·소득</text>
+        <text x="190" y="238" text-anchor="middle" class="lbl">유형에 따라 요건</text>
+        <text x="190" y="256" text-anchor="middle" class="lbl-dim">공고문에서 확인</text>
+        <text x="352" y="238" text-anchor="middle" class="lbl">일반공급은 대개 없음</text>
+        <text x="352" y="256" text-anchor="middle" class="lbl-dim">특별공급은 있음</text>
+        <text x="62" y="290" text-anchor="middle" class="lbl-b">공통</text>
+        <text x="270" y="290" text-anchor="middle" class="lbl">특별공급 물량을 먼저 떼고 남은 것이 일반공급</text>
+        <text x="230" y="320" text-anchor="middle" class="lbl-dim">어느 쪽이든 무주택 세대가 중심이다</text>
+      </svg>
+      <figcaption><b>그림 1. 국민주택과 민영주택.</b> 국민주택은 오래, 꾸준히, 많이(한도 안에서) 넣은 사람이 앞서는 줄서기다. 민영주택은 무주택 기간·부양가족·통장 기간을 점수로 매기는 가점제와 무작위로 뽑는 추첨제를 섞는다. 두 경우 모두 신혼부부·생애최초 같은 특별공급 물량을 먼저 떼어 낸다. 세부 요건은 해마다 바뀌고 단지마다 입주자모집공고에 적힌다.</figcaption>
+    </figure>
+
+    <p>이 장은 하늘네가 주로 마주칠 민영주택의 가점제와 추첨제, 그리고 두 종류 모두에 있는 특별공급을 중심으로 본다. 분양 일정은 대개 이렇게 흘러간다. <span class="term">입주자모집공고</span>가 나오고, 특별공급 접수, 1순위, 2순위 접수가 하루씩 이어지고, 당첨자가 발표되면 서류로 자격을 확인한 뒤 계약한다. 이 공고문 한 부에 분양가, 면적별 물량, 가점제 비율, 특별공급 자격, 전매제한과 실거주 의무, 중도금 일정이 모두 적혀 있다.</p>
+  </section>
+
+  <section id="score">
+    <h2>가점제: 84점 만점의 기다림</h2>
+    <p>민영주택의 <span class="term">가점제</span><span class="en">(Point system)</span>는 세 가지 항목에 점수를 매겨 높은 순서대로 당첨자를 정한다. 점수표는 주택공급에 관한 규칙이 정한다.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>항목</th><th>점수 매기는 법</th><th class="num">최대</th></tr></thead>
+      <tbody>
+        <tr><td>무주택 기간</td><td>1년 미만 2점, 그 뒤 1년마다 2점씩, 15년 이상 32점. 만 30세(그 전에 혼인했다면 혼인신고일)부터 센다.</td><td class="num">32</td></tr>
+        <tr><td>부양가족 수</td><td>0명 5점, 1명마다 5점씩, 6명 이상 35점. 배우자·자녀·일정 기간 함께 산 직계존속 등.</td><td class="num">35</td></tr>
+        <tr><td>청약통장 가입 기간</td><td>6개월 미만 1점, 1년 미만 2점, 그 뒤 1년마다 1점씩, 15년 이상 17점. 배우자 통장 기간의 50%를 최대 3점까지 더할 수 있다(2024년 3월~).</td><td class="num">17</td></tr>
+        <tr><td><b>합계</b></td><td></td><td class="num"><b>84</b></td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="formula">
+      $$\text{가점} = \underbrace{\min(32,\;2 + 2\lfloor h\rfloor)}_{\text{무주택}} + \underbrace{\min(35,\;5 + 5d)}_{\text{부양가족}} + \underbrace{\min(17,\;2 + \lfloor a\rfloor)}_{\text{통장}(a\ge1)}$$
+      <div class="where">\(h\) 무주택 기간(년), \(d\) 부양가족 수, \(a\) 통장 가입 기간(년). 점수의 절반 가까이가 부양가족에서 나온다. 무주택 기간과 통장 기간은 시간이 지나면 저절로 오르지만, 부양가족은 가족 구성이 바뀌어야 오른다.</div>
+    </div>
+
+    <p>아래 슬라이더로 세 항목을 바꿔 점수를 계산한다. 아래쪽 그래프는 가족 구성이 그대로일 때 앞으로 몇 년 동안 점수가 어떻게 오르는지를 보여 준다.</p>
+
+    <div class="sim" id="sim-score">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>청약 가점 계산기</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="score-cv"></canvas></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>무주택 기간 <output id="score-h-out"></output></span><input type="range" id="score-h" min="0" max="16" step="1" value="4"></label>
+          <label class="ctrl"><span>부양가족 수 <output id="score-d-out"></output></span><input type="range" id="score-d" min="0" max="6" step="1" value="2"></label>
+          <label class="ctrl"><span>통장 가입 기간 <output id="score-a-out"></output></span><input type="range" id="score-a" min="0" max="16" step="1" value="9"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">무주택</span><span class="v" id="score-o-h">—</span></div>
+        <div class="stat"><span class="k">부양가족</span><span class="v" id="score-o-d">—</span></div>
+        <div class="stat"><span class="k">통장</span><span class="v" id="score-o-a">—</span></div>
+        <div class="stat"><span class="k">합계</span><span class="v" id="score-o-t">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 기본값은 하늘네다. 무주택 4년(10점), 부양가족 2명(15점), 통장 9년(11점), 합계 36점이다. ② 아래 그래프에서 5년 뒤를 본다. 가족이 그대로면 한 해 3점씩 올라 51점이 된다. 무주택 15년, 통장 15년을 다 채워도 부양가족 2명이면 64점이 한계다. ③ 부양가족을 3명으로 늘린다. 한 번에 5점이 오른다. 아이가 하나 더 생기거나 부모님과 함께 살면(직계존속은 일정 기간 같은 주민등록을 유지해야 한다) 점수가 뛴다. 높은 가점이 대개 '오래 기다린 대가족'의 몫인 이유다. (점수표는 주택공급에 관한 규칙 별표 1. 배우자 통장 기간 합산과 부양가족 인정의 세부 요건은 반영하지 않았다.)</div>
+    </div>
+
+    <p>가점제는 '오래 집 없이 기다렸고, 부양할 가족이 많은 사람'에게 새 집을 먼저 주자는 설계다. 그래서 30대 초반 맞벌이 부부는 점수표에서 구조적으로 불리하다. 무주택 기간은 만 30세부터 세고, 통장 기간도 아직 짧고, 아이도 한둘이다. 인기 단지의 당첨 커트라인이 60~70점대에 이른다는 보도가 자주 나오는데, 위 그래프로 보면 부양가족 2명인 가구는 10년 넘게 기다려도 닿기 어려운 점수다. 이 구조를 보완하는 장치가 추첨제와 특별공급이다.</p>
+
+    <div class="callout pro">
+      <strong>가점은 손님이 아니라 서류가 정한다</strong>
+      청약 상담에서 가장 흔한 사고는 점수를 잘못 계산해 당첨된 뒤 부적격 판정을 받는 것이다. 무주택 기간을 만 30세가 아니라 성인이 된 때부터 세거나, 함께 산 기간이 모자란 부모님을 부양가족으로 넣거나, 세대원 중 누가 오래전에 작은 주택을 가졌던 이력을 빠뜨리는 식이다. 부적격이 되면 당첨이 취소되고 일정 기간 다른 청약에 당첨될 수 없는 불이익이 따른다. 민태호는 청약을 묻는 손님에게 점수를 대신 계산해 주지 않고, 청약홈의 가점 계산기와 주민등록등본·가족관계증명서·주택 소유 이력을 함께 놓고 손님이 직접 입력하게 한다. 중개사가 분양 상담을 해도 분양 계약에서는 보수를 받지 않는 경우가 많다는 것도 미리 말한다. 대신 당첨 뒤 지금 살던 집을 정리하는 거래에서 그의 일이 생긴다.
+    </div>
+  </section>
+
+  <section id="lottery">
+    <h2>추첨제와 가점제의 비율</h2>
+    <p>민영주택의 일반공급 물량은 가점제와 <span class="term">추첨제</span><span class="en">(Lottery system)</span>로 나뉜다. 추첨제 물량은 점수와 상관없이 무작위로 뽑는다(규제지역 등에서는 추첨 물량의 상당 부분을 무주택자에게 먼저 배정한다). 가점제 비율은 지역과 면적에 따라 다르다. 2026년 기준 주택공급에 관한 규칙이 정한 비율은 아래와 같다.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>지역</th><th class="num">60㎡ 이하</th><th class="num">60~85㎡</th><th class="num">85㎡ 초과</th></tr></thead>
+      <tbody>
+        <tr><td>투기과열지구</td><td class="num">가점 40%</td><td class="num">가점 70%</td><td class="num">가점 80%</td></tr>
+        <tr><td>조정대상지역</td><td class="num">가점 40%</td><td class="num">가점 70%</td><td class="num">가점 50%</td></tr>
+        <tr><td>그 밖의 지역</td><td class="num">가점 40% 이하</td><td class="num">가점 40% 이하</td><td class="num">추첨 100%</td></tr>
+      </tbody>
+    </table></div>
+    <p>아래에서 지역과 면적을 골라 100가구의 일반공급이 어떻게 나뉘는지 본다. 청록 칸은 가점 순서로, 호박색 칸은 추첨으로 주인을 찾는다.</p>
+
+    <div class="sim" id="sim-split">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>100가구는 어떻게 나뉘나</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="split-cv"></canvas><span class="hint">칸을 누르면 그 칸의 운명을 본다</span></div>
+        <div class="sim-controls">
+          <div class="seg" id="split-r"><button data-value="speculative">투기과열지구</button><button data-value="adjusted">조정대상지역</button><button data-value="other" class="on">그 밖</button></div>
+          <div class="seg" id="split-a"><button data-value="0">60㎡ 이하</button><button data-value="1" class="on">60~85㎡</button><button data-value="2">85㎡ 초과</button></div>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">가점제 물량</span><span class="v" id="split-o-p">—</span></div>
+        <div class="stat"><span class="k">추첨제 물량</span><span class="v" id="split-o-l">—</span></div>
+        <div class="stat"><span class="k">36점이 기댈 곳</span><span class="v" id="split-o-w" style="font-size:14px;font-family:var(--font);font-weight:500">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① '그 밖', '60~85㎡'를 본다. 가점제가 40%(지자체가 더 낮출 수 있다), 추첨제가 60%다. 점수가 낮은 가구가 노릴 수 있는 칸이 가장 많다. ② '투기과열지구'로 바꾼다. 같은 84㎡에서 가점제가 70%로 늘어 추첨 칸이 30개로 준다. 인기 지역일수록 추첨 칸에도 사람이 몰린다. ③ '85㎡ 초과'를 고른다. 그 밖 지역은 전부 추첨이지만 투기과열지구는 80%가 가점이다. 큰 집은 대가족 고가점자에게 가도록 설계되어 있다. (일반공급 100가구 기준. 특별공급은 이미 떼어 냈다고 본다. 비율은 RE.KR.sub.pointShare, 그 밖 지역의 40%는 상한이다.)</div>
+    </div>
+
+    <p>가점제 비율은 정책이 '누구에게 새 집을 먼저 줄 것인가'를 조정하는 손잡이다. 가점 비율을 높이면 오래 기다린 대가족에게 유리하고, 추첨 비율을 높이면 젊은 가구와 1인 가구에게 기회가 열린다. 2023년 개편 때 규제지역의 중소형 추첨 비율이 늘어난 것도 이 손잡이를 돌린 것이다. 비율이 바뀌면 같은 점수의 당첨 확률이 크게 달라지므로, 공고문의 표 한 칸을 먼저 확인한다.</p>
+  </section>
+
+  <section id="special">
+    <h2>특별공급: 정책이 정한 줄</h2>
+    <p>일반공급보다 먼저, 정책적으로 돕기로 한 가구에게 따로 떼어 주는 물량이 <span class="term">특별공급</span><span class="en">(Special supply)</span>이다. 줄여서 '특공'이라 부른다. 한 가구는 평생 한 번만 특별공급에 당첨될 수 있고, 같은 단지에서 일반공급과 함께 신청할 수 있다. 대표적인 유형은 다섯 가지다.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>유형</th><th>기본 요건(일반화)</th><th>주로 보는 것</th></tr></thead>
+      <tbody>
+        <tr><td>신혼부부</td><td>혼인 7년 이내 무주택 세대</td><td>소득 기준(도시근로자 월평균소득의 일정 비율, 맞벌이 완화), 자녀 수</td></tr>
+        <tr><td>생애최초</td><td>세대원 모두 주택을 가진 적이 없음, 일정 기간 소득세 납부</td><td>소득 기준, 가구 구성. 추첨 비중이 큼</td></tr>
+        <tr><td>다자녀</td><td>미성년 자녀 2명 이상(2024년 개편 이후)</td><td>자녀 수, 무주택 기간 등 배점</td></tr>
+        <tr><td>노부모부양</td><td>만 65세 이상 직계존속을 3년 이상 부양한 무주택 세대주</td><td>일반공급과 비슷한 가점</td></tr>
+        <tr><td>신생아</td><td>2세 미만 자녀가 있는 무주택 세대(2024년 도입, 2026년 민영 확대 보도)</td><td>소득 기준, 출생 시점</td></tr>
+      </tbody>
+    </table></div>
+    <p>소득과 자산 기준은 국민주택과 민영주택, 유형, 가구원 수, 맞벌이 여부에 따라 다르고 해마다 기준 소득이 바뀐다. 민영주택에서는 소득 기준을 넘는 가구에도 자산 기준을 조건으로 일부 추첨 물량을 열어 둔 유형이 있다. 이 책은 정확한 비율과 금액을 단정하지 않는다(확인 필요). 자격 점검은 순서가 중요하다. 아래 점검표에서 해당하는 항목을 켜면 다섯 유형 중 어디에 줄을 설 수 있는지가 표시된다. 기본값은 하늘네다.</p>
+
+    <div class="sim" id="sim-sp">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>특별공급 자격 점검표</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="sp-cv"></canvas></div>
+        <div class="sim-controls">
+          <label class="check"><input type="checkbox" id="sp-home" checked> 세대원 전원 무주택</label>
+          <label class="check"><input type="checkbox" id="sp-never" checked> 세대원 모두 주택 소유 이력 없음</label>
+          <label class="check"><input type="checkbox" id="sp-wed" checked> 혼인 7년 이내</label>
+          <label class="check"><input type="checkbox" id="sp-baby"> 2세 미만 자녀 있음</label>
+          <label class="check"><input type="checkbox" id="sp-kids"> 미성년 자녀 2명 이상</label>
+          <label class="check"><input type="checkbox" id="sp-old"> 65세 이상 부모를 3년 이상 부양</label>
+          <label class="check"><input type="checkbox" id="sp-tax" checked> 소득세 납부 기간 요건 충족</label>
+          <label class="check"><input type="checkbox" id="sp-inc"> 공고문의 소득 기준 이내</label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">신청할 수 있는 유형</span><span class="v" id="sp-o-n">—</span></div>
+        <div class="stat"><span class="k">공고문에서 확인할 것</span><span class="v" id="sp-o-c" style="font-size:14px;font-family:var(--font);font-weight:500">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 기본값(하늘네)에서 신혼부부와 생애최초가 '조건부'로 켜진다. 혼인 기간과 주택 소유 이력은 맞지만, 맞벌이 연소득 약 9,200만원이 공고문의 소득 기준 안에 드는지는 공고문의 표로 확인해야 한다. ② '공고문의 소득 기준 이내'를 켠다. 두 유형이 초록으로 바뀐다. ③ '세대원 전원 무주택'을 끈다. 모든 유형이 꺼진다. 특별공급의 첫 관문은 언제나 무주택이다. (교육용 점검표: 실제 자격은 유형마다 세부 요건(거주 지역, 청약통장, 자산, 부양 기간 계산)이 더 있고, 입주자모집공고와 청약홈의 자격 확인으로 정해진다.)</div>
+    </div>
+
+    <p>특별공급은 가점제에서 불리한 가구에게 열린 별도의 문이다. 특히 신혼부부와 생애최초 유형은 30대 맞벌이 무주택 가구가 가장 많이 두드리는 문이다. 그만큼 경쟁도 치열하다. 또 '평생 한 번'이라는 조건 때문에, 당장 넣을 수 있는 단지에 넣을지 더 원하는 단지를 기다릴지도 선택이다. 맞벌이 소득이 기준을 조금 넘는 가구가 많아 소득 기준은 해마다 논쟁거리가 되고, 기준이 바뀌는 일도 잦다. 넣기 전에 그 단지의 공고문 기준을 다시 본다.</p>
+  </section>
+
+  <section id="cap">
+    <h2>분양가상한제와 시세차익: 왜 '로또'가 되는가</h2>
+    <p>새 아파트의 분양가는 원래 시행사가 정한다. 하지만 일부 지역에서는 정부가 분양가의 상한을 정한다. 이것이 <span class="term">분양가상한제</span><span class="en">(Price cap on new housing)</span>다. 땅값(감정평가액)과 정부가 정한 기본형 건축비에 일정한 가산비를 더한 값 아래로 분양가를 묶는다. 공공택지에는 대체로 적용되고, 민간택지에서는 정부가 지정한 지역에만 적용된다.</p>
+    <p>상한이 주변 시세보다 낮으면 당첨되는 순간 시세와 분양가의 차이, 곧 <span class="term">시세차익</span>이 당첨자에게 생긴다. 분양가는 정부가 정했는데 그 차액은 공공이 아니라 운 좋은 당첨자에게 간다. 그래서 신청자가 몰리고, 청약이 '로또'라고 불린다. 아래에서 분양가 막대의 손잡이를 끌어 내리고, 주변 시세를 바꿔 본다. 아래쪽 곡선은 차익이 클수록 신청자가 얼마나 몰리는지를 흉내 낸 교육용 모형이다.</p>
+
+    <div class="sim" id="sim-cap">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>분양가를 끌어 내리면 몰려드는 사람들</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="cap-cv"></canvas><span class="hint">분양가 막대의 손잡이를 위아래로 끈다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>주변 시세(84㎡) <output id="cap-m-out"></output></span><input type="range" id="cap-m" min="3" max="20" step="0.1" value="4.9"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">시세차익</span><span class="v" id="cap-o-g">—</span></div>
+        <div class="stat"><span class="k">경쟁률(교육용 모형)</span><span class="v" id="cap-o-c">—</span></div>
+        <div class="stat"><span class="k">신청 한 번의 기대 차익</span><span class="v" id="cap-o-e">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 기본값(시세 4억 9,000만원, 분양가 4억 4,000만원, 차익 약 10%)에서 경쟁률은 7대 1 가까이이고, 신청 한 번의 기대 차익은 700만원 남짓이다. ② 시세는 그대로 두고 분양가 손잡이를 시세의 60%까지 끌어 내린다. 차익은 약 2억원으로 네 배가 되지만 경쟁률이 70대 1을 넘어, 한 번 신청의 기대 차익은 약 270만원으로 오히려 준다. 차익이 클수록 한 사람이 가져갈 기댓값이 커지는 것이 아니다. 시세를 15억원으로 올리면 같은 비율에서 금액만 세 배쯤 커진다. ③ 분양가를 시세 위로 올린다. 차익이 사라지면 신청자가 줄어 미분양이 생기고, 이것이 뒤에서 볼 무순위 청약('줍줍')으로 이어진다. (교육용 모형: 경쟁률 = 3 × e^(8 × 차익률)로 두고 1~500대 1로 제한했다. 기대 차익 = 차익 ÷ 경쟁률이며 가점·특별공급의 차이는 무시했다. 실제 경쟁률은 입지·물량·대출 규제·전매제한에 따라 다르다.)</div>
+    </div>
+
+    <p>분양가상한제는 새 집의 가격을 낮춰 무주택자의 부담을 덜어 주려는 제도다. 하지만 모두가 싸게 사는 것이 아니라 당첨된 소수가 싸게 산다. 당첨자는 차익을 얻고, 떨어진 사람은 기회비용(통장을 쓰지 못한 시간)만 남는다. 그래서 정부는 차익을 바로 실현하지 못하게 두 가지 장치를 붙인다. 하나는 <span class="term">전매제한</span><span class="en">(Resale restriction)</span>으로, 일정 기간 분양권이나 집을 팔 수 없게 한다. 수도권 분양가상한제 주택은 최장 10년이던 기간이 2023년 시행령 개정으로 최장 3년 수준으로 줄었다. 다른 하나는 <span class="term">실거주 의무</span>로, 분양가상한제 주택에 당첨된 사람이 일정 기간(2~5년) 직접 살게 한다. 2024년 3월 주택법 개정으로 의무를 시작하는 시점이 '최초 입주 가능일'에서 '입주 후 3년 이내'로 늦춰졌다. 입주 때 전세를 한 번 놓아 잔금을 치를 여지가 생긴 것이다. 전매제한과 실거주 의무의 구체적인 기간은 단지와 지역, 공급 시점마다 다르므로 공고문을 확인한다.</p>
+    <p>이 시세차익은 다섯 힘 중 어디에서 오는가. 주변 시세는 입지와 금리, 공급이 만든 값이다(<a href="location.html">2장</a>, <a href="value.html">3장</a>, <a href="supply.html">4장</a>). 분양가는 규제가 정한 값이다. 둘 사이의 틈은 규제(④ 대출과 규제)가 시장 가격과 다른 가격을 만들 때 생기는 '줄 서기의 값'이다. 시세가 오를 것이라는 기대(⑤)가 커지면 같은 틈도 더 크게 보여 경쟁률이 뛴다. 반대로 시세가 내리는 시기에는 틈이 줄거나 사라져, 같은 상한제 단지라도 미분양이 난다.</p>
+
+    <div class="callout deep">
+      <strong>상한제가 공급에 미치는 영향</strong>
+      분양가를 낮게 묶으면 당첨자에게는 이익이지만, 사업자에게는 수익이 줄어든다. 땅값이나 공사비가 오르는 시기에는 사업 자체를 미루는 단지가 생기고, 재건축·재개발 조합은 분담금이 늘어난다(<a href="redevelop.html">12장</a>). 그래서 상한제는 '지금 분양되는 집의 가격'은 낮추지만 '앞으로 분양될 집의 수'를 줄일 수 있다는 지적이 있다. 반대로 상한제가 없으면 분양가가 주변 시세를 따라 올라 주변 집값을 다시 끌어올린다는 반론도 있다. 어느 효과가 더 큰지는 시기와 지역에 따라 다르고 연구자들 사이에서도 평가가 갈린다. 이 책은 어느 쪽이 옳다고 말하지 않는다. 다만 상한제 단지의 '로또'와 공급의 시차(<a href="supply.html">4장</a>)가 같은 동전의 양면이라는 것은 기억해 둔다.
+    </div>
+  </section>
+
+  <section id="odds">
+    <h2>경쟁률과 가점 분포로 본 당첨 확률</h2>
+    <p>"경쟁률 20대 1"은 신청자가 공급 물량의 20배라는 뜻이다. 하지만 내 당첨 확률이 1/20인 것은 아니다. 가점제 물량은 점수 순서로 채워지므로, 내 점수가 커트라인 아래면 가점제에서의 확률은 거의 0이고 위면 거의 1이다. 추첨제 물량은 가점제에서 떨어진 사람들끼리 무작위로 나눈다. 이 책의 모델은 신청자들의 가점이 종 모양(정규분포)으로 퍼져 있다고 보고 두 확률을 합친다.</p>
+
+    <div class="formula">
+      $$P(\text{당첨}) = p_{\text{가점}} + (1 - p_{\text{가점}})\cdot\frac{\text{추첨 물량}}{\text{신청자} - \text{가점 물량}}$$
+      <div class="where">\(p_{\text{가점}}\)은 내 점수가 커트라인보다 높을 확률(커트라인 근처에서만 0과 1 사이), 커트라인은 신청자 점수 분포에서 위에서부터 가점 물량만큼 세었을 때의 점수다. 엔진 RE.odds가 이 계산을 한다.</div>
+    </div>
+
+    <p>아래 그래프는 신청자들의 가점 분포다. 청록 영역이 가점제로 당첨되는 사람들, 그 경계가 커트라인이다. 커트라인을 직접 끌어 보거나(경쟁률이 그에 맞게 바뀐다) 아래쪽 내 점수 손잡이를 끌어 본다.</p>
+
+    <div class="sim" id="sim-odds">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>커트라인과 내 점수</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="odds-cv"></canvas><span class="hint">커트라인(세로선)이나 내 점수 손잡이를 끈다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>경쟁률 <output id="odds-c-out"></output></span><input type="range" id="odds-c" min="1" max="200" step="1" value="20"></label>
+          <label class="ctrl"><span>신청자 평균 가점 <output id="odds-m-out"></output></span><input type="range" id="odds-m" min="30" max="65" step="1" value="50"></label>
+          <div class="seg" id="odds-p"><button data-value="0.4" class="on">가점 40%</button><button data-value="0.7">가점 70%</button></div>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">가점제 커트라인</span><span class="v" id="odds-o-k">—</span></div>
+        <div class="stat"><span class="k">내 점수</span><span class="v" id="odds-o-s">—</span></div>
+        <div class="stat"><span class="k">가점제로 당첨</span><span class="v" id="odds-o-p">—</span></div>
+        <div class="stat"><span class="k">추첨까지 합친 확률</span><span class="v" id="odds-o-t">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 기본값(일반공급 200가구, 경쟁률 20대 1, 평균 50점, 가점 40%)에서 커트라인은 약 75점이다. 36점인 하늘네는 가점제에서 사실상 0%이고, 추첨으로 약 3%다. ② 커트라인을 왼쪽 끝까지 끌어 본다. 경쟁률이 1대 1까지 떨어져도 커트라인은 50점대에 머문다. 신청자가 물량만큼만 와도 가점 칸은 점수 높은 순서로 채워지기 때문이다. 대신 이때는 추첨 칸에서 거의 모두 당첨된다. 평균 가점을 낮추면(젊은 가구가 많이 넣는 단지) 커트라인도 내려간다. ③ 내 점수 손잡이를 커트라인 바로 위아래로 움직인다. 커트라인 근처 몇 점 사이에서 확률이 0에서 1로 뛴다. 1점이 당락을 가르는 이유다. ④ 가점 70%로 바꾸고 경쟁률을 150대 1로 올린다. 추첨 칸이 줄고 몰려든 사람이 많아 36점의 확률은 0.2%까지 떨어진다. (교육용 가정: 신청자 가점은 표준편차 12점의 정규분포. 실제 분포는 단지마다 다르고 청약홈이 발표하는 당첨 가점으로 확인한다. 추첨 물량의 무주택자 우선 배정은 반영하지 않았다.)</div>
+    </div>
+
+    <p>이 그래프가 보여 주는 것은 두 가지다. 하나, 가점제는 '확률'이 아니라 '문턱'이다. 문턱 아래 점수로 가점제에 넣는 것은 거의 의미가 없다. 둘, 추첨제의 확률은 경쟁률에 반비례한다. 20대 1이면 몇 %, 200대 1이면 1%의 몇 분의 일이다. 점수가 낮은 가구에게 청약은 '여러 번 넣어 한 번 걸리는' 게임이고, 그렇다면 몇 번을 넣을 수 있는지와 그동안 무엇을 포기하는지가 중요해진다. 그 계산이 이 장의 마지막 시뮬레이터다.</p>
+
+    <h3>무순위 청약: '줍줍'</h3>
+    <p>정해진 순위 청약이 끝난 뒤에도 주인이 정해지지 않은 집이 생긴다. 당첨자가 계약을 포기하거나, 서류 확인에서 부적격으로 당첨이 취소되거나, 애초에 신청자가 모자라 미분양이 난 경우다. 이 물량을 다시 내놓는 것이 <span class="term">무순위 청약</span><span class="en">(Non-priority subscription)</span>이다. 줍고 또 줍는다는 뜻에서 '줍줍'이라 부른다. 통장이나 가점이 없어도 신청할 수 있는 경우가 많아, 시세차익이 큰 단지의 무순위 물량에는 수십만 명이 몰리기도 한다. 반대로 미분양 때문에 나온 무순위 물량은 차익이 작거나 없을 수 있다. 신청 자격(지역 거주, 무주택 여부)은 제도 개편에 따라 여러 번 바뀌었으므로 공고문으로 확인한다. 무순위 물량이 왜 남았는지를 먼저 묻는 것이 첫 번째 점검이다.</p>
+  </section>
+
+  <section id="funding">
+    <h2>당첨 다음 날부터: 계약금·중도금·잔금</h2>
+    <p>당첨은 끝이 아니라 시작이다. 분양 대금은 한꺼번에 내지 않고 공사가 진행되는 2~3년에 걸쳐 나눠 낸다. 대개 계약할 때 <span class="term">계약금</span>으로 분양가의 10~20%, 공사 중에 <span class="term">중도금</span>으로 60%를 몇 번(흔히 여섯 번)에 나눠, 입주할 때 <span class="term">잔금</span>으로 나머지 20~30%를 낸다. 중도금은 대개 시행사가 연결해 준 은행의 단체 대출(<span class="term">중도금 집단대출</span>)로 내고, 입주할 때 잔금과 함께 이 대출을 갚거나 주택담보대출로 바꾼다(<a href="mortgage.html">9장</a>). 중도금 대출 이자를 누가 언제 내는지(무이자, 이자 후불제, 매달 납부)는 단지마다 다르다. 규제지역에서는 중도금 대출의 LTV가 낮아졌다는 보도가 있으므로(2026년 기준 확인 필요) 계약금과 중도금 일부를 내 돈으로 내야 할 수도 있다.</p>
+    <p>하늘네처럼 전세에 사는 가구에게 가장 어려운 것은 시점이다. 보증금은 전세 계약이 끝나야 돌아오고, 잔금은 입주 날 내야 한다. 아래에서 분양가와 계약금 비율을 고르고, 입주 시점 세로선을 끌어 본다. 하늘네가 2027년 1월에 계약한다고 가정한다.</p>
+
+    <div class="sim" id="sim-fund">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>입주 시점과 전세 만기 맞추기</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="fund-cv"></canvas><span class="hint">입주 시점 세로선을 좌우로 끈다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>분양가 <output id="fund-p-out"></output></span><input type="range" id="fund-p" min="3" max="8" step="0.1" value="4.4"></label>
+          <div class="seg" id="fund-d"><button data-value="0.1" class="on">계약금 10%</button><button data-value="0.2">계약금 20%</button></div>
+          <label class="check"><input type="checkbox" id="fund-l" checked> 중도금 대출(60%)</label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">계약금(내 돈)</span><span class="v" id="fund-o-d">—</span></div>
+        <div class="stat"><span class="k">입주 때 갚고 낼 돈</span><span class="v" id="fund-o-b">—</span></div>
+        <div class="stat"><span class="k">입주 때 쓸 수 있는 내 돈</span><span class="v" id="fund-o-c">—</span></div>
+        <div class="stat"><span class="k">전세 만기와의 간격</span><span class="v" id="fund-o-g">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 기본값(분양가 4억 4,000만원, 계약금 10%, 입주 2029년 7월)을 본다. 계약금 4,400만원은 예금으로 낸다. 전세를 갱신청구권으로 2029년 4월까지 늘려도 입주까지 석 달이 빈다. 그사이 살 곳이 필요하다. ② 입주 선을 2029년 4월에 맞춘다. 보증금이 돌아오는 날과 잔금 날이 겹쳐 가장 깔끔하다. 하지만 실제 입주 날짜는 공사 일정에 따라 정해지고 몇 달씩 밀리기도 한다. ③ 계약금 20%로 바꾸고 중도금 대출을 끈다. 내 돈으로 내야 할 돈이 모을 수 있는 돈을 넘어 빨간 영역이 생긴다. 중도금 대출이 막히면 당첨되고도 계약을 포기하는 가구가 생기는 이유다. (교육용 가정: 예금 8,000만원에서 시작해 매달 250만원을 모은다. 중도금은 입주 전 공사 기간에 여섯 번 나눠 낸다. 전세는 2027년 4월 만기에 갱신청구권을 써 2029년 4월까지 산다고 두었고, 그때 돌아오는 보증금 중 내 돈은 2억원이다. 입주 때 잔금과 중도금 대출 상환액에서 이 돈을 뺀 나머지는 주택담보대출로 메운다고 본다.)</div>
+    </div>
+
+    <p>자금 계획표의 빈칸은 대개 세 군데서 생긴다. 계약금을 낼 현금, 중도금 대출이 안 나올 때의 현금, 그리고 잔금 날 보증금이 아직 묶여 있을 때의 현금이다. 이 빈칸을 메우는 방법(전세 기간 조정, 입주 때 전세를 놓아 잔금 치르기, 잔금 대출)은 각각 비용과 위험이 있다. 입주 때 세를 놓는 길은 실거주 의무가 있는 단지에서는 기간이 제한되고, 잔금 대출은 그 시점의 LTV·DSR 규제에 달려 있다. 당첨 전에 이 표를 한 번 그려 보는 것이 '당첨되고도 계약을 포기하는' 일을 막는다.</p>
+
+    <div class="callout buyer">
+      <strong>입주자모집공고에서 청약 전에 볼 것</strong>
+      <ul>
+        <li><b>공급 유형과 물량</b>: 면적별 특별공급·일반공급 물량, 가점제·추첨제 비율.</li>
+        <li><b>분양가와 납부 일정</b>: 계약금 비율과 납부일(1차·2차로 나뉘는지), 중도금 회차와 날짜, 잔금 비율, 입주 예정 시기.</li>
+        <li><b>중도금 대출 조건</b>: 대출 알선 여부, 이자 부담 방식(무이자·후불제), 대출이 안 될 때의 처리.</li>
+        <li><b>규제 사항</b>: 분양가상한제 적용 여부, 전매제한 기간, 실거주 의무 기간, 재당첨 제한 기간.</li>
+        <li><b>추가 비용</b>: 발코니 확장과 옵션 비용, 취득세(<a href="buy.html">8장</a>), 입주 때의 관리비 예치금.</li>
+        <li><b>자격 기준일</b>: 무주택·거주 기간·부양가족을 판단하는 날짜는 대개 공고일이다. 그 전에 이사나 세대 분리를 하면 점수와 자격이 바뀐다.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="rights">
+    <h2>분양권과 입주권</h2>
+    <p>당첨되어 계약하면 아직 지어지지 않은 집을 입주할 때 받을 권리가 생긴다. 이것이 <span class="term">분양권</span>이다. 재건축·재개발 구역의 조합원이 새 집을 받을 권리는 <span class="term">입주권</span>이라 한다. 둘 다 '미래의 집'이지만 출발점과 세금, 주택 수 계산이 다르다.</p>
+    <figure class="diagram">
+      <svg viewBox="0 0 460 290" role="img" aria-label="분양권과 입주권 비교">
+        <defs><marker id="sb-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="context-stroke"/></marker></defs>
+        <rect x="10" y="12" width="200" height="54" rx="8" class="f-acc-soft"/>
+        <text x="110" y="35" text-anchor="middle" class="lbl-acc">청약 당첨 → 분양 계약</text>
+        <text x="110" y="54" text-anchor="middle" class="lbl-dim">분양가를 나눠 낸다</text>
+        <rect x="250" y="12" width="200" height="54" rx="8" class="f-acc2-soft"/>
+        <text x="350" y="35" text-anchor="middle" class="lbl-acc2">헌 집을 가진 조합원</text>
+        <text x="350" y="54" text-anchor="middle" class="lbl-dim">관리처분계획 인가</text>
+        <path d="M110 68 L110 100" class="s-acc" marker-end="url(#sb-ar)"/>
+        <path d="M350 68 L350 100" class="s-acc2" marker-end="url(#sb-ar)"/>
+        <rect x="30" y="104" width="160" height="46" rx="8" class="f-surface"/>
+        <text x="110" y="132" text-anchor="middle" class="lbl-b">분양권</text>
+        <rect x="270" y="104" width="160" height="46" rx="8" class="f-surface"/>
+        <text x="350" y="132" text-anchor="middle" class="lbl-b">입주권</text>
+        <text x="110" y="176" text-anchor="middle" class="lbl">값 = 분양가 + 웃돈(피)</text>
+        <text x="350" y="176" text-anchor="middle" class="lbl">값 = 권리가액 + 분담금</text>
+        <text x="110" y="200" text-anchor="middle" class="lbl-dim">전매제한 기간엔 못 판다</text>
+        <text x="350" y="200" text-anchor="middle" class="lbl-dim">사업 기간·분담금 위험</text>
+        <path d="M110 214 L196 252" class="s-dash" marker-end="url(#sb-ar)"/>
+        <path d="M350 214 L264 252" class="s-dash" marker-end="url(#sb-ar)"/>
+        <rect x="160" y="236" width="140" height="44" rx="8" class="f-ok-soft"/>
+        <text x="230" y="263" text-anchor="middle" class="lbl-b">준공 → 새 집</text>
+      </svg>
+      <figcaption><b>그림 2. 분양권과 입주권.</b> 분양권은 청약에서, 입주권은 기존 집에서 출발한다. 분양권을 사고팔 때 분양가에 얹어 주는 웃돈을 업계에서 '피'(프리미엄)라 부른다. 둘 다 세법에서 주택 수에 포함되는 경우가 있어, 집을 가진 상태에서 분양권을 얻으면 세금 계산이 달라진다(<a href="tradetax.html">14장</a>). 입주권의 권리가액·비례율·분담금은 <a href="redevelop.html">12장</a>에서 다룬다.</figcaption>
+    </figure>
+
+    <div class="callout pro">
+      <strong>"분양권 피 붙여 팔면 되잖아요"라는 질문</strong>
+      분양 현장 주변에서는 분양권에 웃돈이 얼마 붙었다는 이야기가 빠르게 돈다. 민태호는 이런 질문을 받으면 세 가지를 확인시킨다. 하나, 그 단지의 전매제한이 끝났는가. 전매제한 중의 거래는 불법이고, 거래가 무효가 되거나 처벌받을 수 있다. 둘, 분양권을 팔 때의 세금. 분양권 양도에는 보유 기간에 따라 높은 세율이 붙는다(<a href="tradetax.html">14장</a>). 셋, 웃돈은 시장이 좋을 때의 이야기라는 것. 입주 물량이 몰리는 시기에는 분양가보다 싸게 내놓은 '마이너스 피' 분양권도 나온다. 분양권 거래도 중개 대상이어서 그가 보수를 받을 수 있다는 사실을 함께 밝힌다.
+    </div>
+  </section>
+
+  <section id="plan">
+    <h2>몇 번을 넣고, 몇 년을 기다릴까</h2>
+    <p>점수가 낮은 가구에게 청약은 한 번에 끝나는 승부가 아니다. 한 해에 여러 단지에 넣고, 해마다 점수가 조금씩 오르는 동안 몇 년을 반복한다. 매번의 확률이 몇 %라도 여러 번 넣으면 '한 번이라도 당첨될 확률'은 올라간다. 그 대신 기다리는 동안은 전세나 월세로 살고, 원하는 지역이 아닌 곳에도 넣게 된다. 마지막 시뮬레이터는 하늘네의 점수(36점, 해마다 무주택 +2점, 통장 +1점)로 앞으로 6년 동안의 누적 당첨 확률을 계산한다.</p>
+
+    <div class="sim" id="sim-plan">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>하늘네 청약 6년 시나리오</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="plan-cv"></canvas><span class="hint">막대를 누르면 그해를 고른다</span></div>
+        <div class="sim-controls">
+          <div class="seg" id="plan-r"><button data-value="other" class="on">비규제 신도시(가점 40%)</button><button data-value="reg">규제지역(가점 70%)</button></div>
+          <label class="ctrl"><span>한 해 청약 횟수 <output id="plan-n-out"></output></span><input type="range" id="plan-n" min="1" max="12" step="1" value="4"></label>
+          <label class="ctrl"><span>평균 경쟁률 <output id="plan-c-out"></output></span><input type="range" id="plan-c" min="2" max="200" step="1" value="20"></label>
+          <label class="check"><input type="checkbox" id="plan-sp" checked> 특별공급도 함께(한 해 1회, 교육용 확률)</label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">올해 한 번 넣을 때</span><span class="v" id="plan-o-1">—</span></div>
+        <div class="stat"><span class="k" id="plan-o-yk">고른 해의 점수</span><span class="v" id="plan-o-s">—</span></div>
+        <div class="stat"><span class="k" id="plan-o-ck">고른 해까지 한 번이라도</span><span class="v" id="plan-o-c">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 기본값(비규제 신도시, 한 해 4번, 경쟁률 20대 1, 특별공급 포함)에서 6년 막대를 본다. 점수는 54점까지 오르지만 경쟁률 20대 1에서 커트라인(약 75점)에는 닿지 않는다. 누적 확률을 끌어올리는 것은 추첨과 특별공급이다. ② 특별공급을 끈다. 누적 확률이 눈에 띄게 줄어든다. 하늘네 같은 가구에게 특별공급이 얼마나 큰 몫인지 보인다. ③ 규제지역으로 바꾸고 경쟁률을 150대 1로 올린다. 6년을 넣어도 누적 확률이 한 자릿수 %에 머문다. 인기 지역 청약만 기다리는 것은 매우 긴 줄이다. (교육용 가정: 일반공급 200가구, 신청자 가점 평균 50점·표준편차 12점, 매번의 결과는 서로 독립. 특별공급은 같은 경쟁률에서 당첨 확률을 일반공급 추첨의 2배로 두었다. 실제 확률은 단지마다 크게 다르고, 같은 해에 넣을 수 있는 단지 수도 시장에 따라 다르다.)</div>
+    </div>
+
+    <p>여러 번 넣으면 확률은 쌓이지만, 그 확률은 '어디든 당첨되기만 하면 간다'는 전제 위에 있다. 실제로는 원하는 지역, 아이의 학교, 두 사람의 통근 시간(<a href="location.html">2장</a>)을 생각하면 넣을 수 있는 단지가 줄어든다. 또 당첨이 늦어질수록 그동안의 주거비와 집값 변화가 따라붙는다. 기다리는 동안 집값이 오르면 분양가도 따라 오를 수 있고, 내리면 기존 아파트를 사는 쪽이 나아질 수도 있다. 청약은 '싸게 살 수 있는 확률'과 '기다리는 비용'을 맞바꾸는 선택이다.</p>
+
+    <div class="callout warn">
+      <strong>제도와 수치는 해마다 바뀐다</strong>
+      청약 제도는 부동산 제도 중에서도 가장 자주 바뀐다. 이 장의 수치(청약통장 월 25만원 인정, 소득공제 연 300만원 한도 40%, 가점표, 가점제 비율, 특별공급 유형, 전매제한·실거주 의무)는 2026년 기준의 대표값이고, 특별공급의 소득·자산 기준처럼 이 책이 확정하지 못한 값은 '확인 필요'로 남겼다. 2024년에는 신생아 특별공급과 배우자 통장 기간 합산이, 2026년에는 신생아 특별공급의 민영 확대가 보도되는 등 해마다 변화가 있다. 경쟁률과 가점 분포, 경쟁률 모형은 교육용 가정이다. 특정 단지·지역을 권하지 않으며, 실제 청약 전에는 청약홈과 해당 단지의 입주자모집공고를 반드시 확인한다.
+    </div>
+  </section>
+
+  <section id="case">
+    <h2>하늘네 집 노트</h2>
+    <div class="casefile">
+      <div class="tag"><b>CASE 하늘네</b><span>집 노트 · 11장</span></div>
+      <h4>가점 36점, 줄은 길고 만기는 가깝다</h4>
+      <p>하늘은 청약홈의 가점 계산기를 열고, 재원은 옆에서 이 책의 계산기(RE.subscriptionScore)를 돌린다. 하늘의 무주택 기간은 만 30세부터 센 약 4년으로 10점, 부양가족은 재원과 딸 2명으로 15점, 통장은 9년 전에 만들어 11점이다. 합계 36점. 두 계산이 같다. 가족이 그대로라면 한 해 3점씩 올라 3년 뒤 45점, 5년 뒤 51점이 된다. 민태호가 보여 준 교육용 분포(신청자 평균 50점)에서 경쟁률 20대 1의 커트라인은 약 75점이니, 하늘네가 가점제로 당첨될 가능성은 이 책의 모델로 사실상 0이다. 비규제 신도시 84㎡의 추첨 물량에 넣으면 한 번에 약 3%, 규제지역 인기 단지(가점 70%, 경쟁률 150대 1)라면 약 0.2%다.</p>
+      <p>특별공급을 점검하면 사정이 조금 다르다. 다자녀(자녀 1명), 신생아(딸이 3세), 노부모부양은 해당하지 않는다. 신혼부부는 혼인 7년 이내라는 조건을 맞추는 것으로 보이고(무주택 기간이 4년이라는 것은 30세 무렵부터 셌다는 뜻이다. 정확한 혼인신고일은 서류로 확인한다), 생애최초도 두 사람 모두 집을 가진 적이 없어 기본 조건은 맞는다. 남은 관문은 소득이다. 맞벌이 연소득 약 9,200만원이 그 단지 공고문의 소득 기준 안에 드는지, 넘는다면 자산 기준으로 들어갈 수 있는 물량이 있는지는 공고문의 표로 확인해야 한다. 태호는 "특공은 평생 한 번이니, 넣을 단지를 먼저 고르시라"고 덧붙인다.</p>
+      <p>마지막으로 둘은 당첨됐다고 가정하고 날짜를 세어 본다. E시 신도시 84㎡를 분양가 4억 4,000만원(교육용)에 2027년 1월 계약하면 계약금 10% 4,400만원은 예금에서 낸다. 중도금 60%(2억 6,400만원)는 집단대출에 기대고, 입주는 2029년 여름 무렵이다. 그런데 지금 전세는 2027년 4월에 끝난다. 갱신청구권을 쓰면 2029년 4월까지 살 수 있지만, 입주가 7월이라면 석 달이 빈다. 보증금이 돌아오는 날과 잔금 날을 맞추는 일, 입주가 밀릴 때 살 곳을 구하는 일이 함께 생긴다. 남궁현 쪽에서 보면, 세입자가 2년 뒤 나갈 것을 미리 알고 있는 편이 역전세에 대비하기 쉽다. 태호는 그래서 하늘네가 청약을 병행한다면 집주인에게도 일정을 일찍 알리는 편이 서로에게 낫다고 말한다. 청약에 걸지 말지는 아직 정하지 않는다.</p>
+      <div class="clue"><div><b>이 장에서 정한 것</b>가점 36점(10 + 15 + 11), 가점제로는 어렵고 추첨·특별공급(신혼부부·생애최초, 소득 기준 확인 필요)이 현실적인 문이다. 당첨되면 입주 시점과 전세 만기(갱신 시 2029년 4월)가 어긋날 수 있다.</div><div><b>아직 남은 문제</b>몇 년을 기다릴 것인가? 그동안 갱신청구권을 쓸 것인가? 기존 아파트를 사는 길과 비교하면 어느 쪽이 나은가?</div><div><b>다음 단계</b>12장: 하늘이 관심을 보인 서울 A구 재건축 단지의 '몸테크'를 권리가액·비례율·분담금으로 검토한다.</div></div>
+    </div>
+  </section>
+
+  <section class="keypoints" id="summary">
+    <h2>핵심 정리</h2>
+    <ol>
+      <li>청약통장은 돈을 모으는 상품이면서 '기다린 시간'의 기록이다. 국민주택은 저축총액(월 25만원까지 인정), 민영주택은 가입 기간(최대 17점)과 예치금을 본다. 2026년 기준 총급여 7,000만원 이하 무주택 세대주는 연 300만원 한도로 납입액의 40%를 소득공제받는다.</li>
+      <li>민영주택 가점은 무주택 기간 32 + 부양가족 35 + 통장 가입 기간 17 = 84점이다. 시간이 지나면 한 해 3점쯤 오르지만, 부양가족이 적은 젊은 가구는 구조적으로 불리하다.</li>
+      <li>가점제와 추첨제의 비율은 지역(투기과열·조정·그 밖)과 면적(60·85㎡)에 따라 다르다. 점수가 낮으면 추첨 칸이 많은 곳이 현실적이다.</li>
+      <li>특별공급(신혼부부·생애최초·다자녀·노부모부양·신생아)은 평생 한 번, 무주택이 첫 관문이고 소득·자산 기준은 공고문으로 확인한다.</li>
+      <li>분양가상한제는 시세보다 낮은 분양가를 만들어 당첨자에게 시세차익을 주고, 그 차익이 경쟁률을 끌어올린다. 차익이 클수록 한 번 신청의 기대 차익은 오히려 작아질 수 있다. 전매제한과 실거주 의무가 차익 실현을 늦춘다.</li>
+      <li>가점제는 커트라인이라는 문턱이고, 추첨제의 확률은 경쟁률에 반비례한다. 여러 번 넣으면 누적 확률은 오르지만, 기다리는 비용과 지역 선택의 제약이 따른다.</li>
+      <li>당첨 뒤에는 계약금(10~20%)·중도금(60%, 대개 집단대출)·잔금을 2~3년에 나눠 낸다. 전세 사는 가구는 보증금이 돌아오는 날과 잔금 날을 맞추는 것이 가장 큰 과제다.</li>
+    </ol>
+  </section>
+
+  <section class="quiz-sec" id="quiz">
+    <h2>확인 퀴즈</h2>
+    <div class="quiz">
+      <div class="quiz-q">
+        <p>무주택 기간 6년, 부양가족 3명, 청약통장 가입 기간 10년인 사람의 민영주택 청약 가점은?</p>
+        <div class="opts">
+          <button class="opt">41점</button>
+          <button class="opt" data-correct>46점</button>
+          <button class="opt">51점</button>
+          <button class="opt">56점</button>
+        </div>
+        <div class="quiz-exp">무주택 기간 6년은 2 + 2 × 6 = 14점, 부양가족 3명은 5 + 5 × 3 = 20점, 통장 10년은 2 + 10 = 12점이다. 합계 46점이다.</div>
+      </div>
+      <div class="quiz-q">
+        <p>청약통장에 매달 50만원씩 넣는 사람에 대한 설명으로 알맞은 것은?</p>
+        <div class="opts">
+          <button class="opt">민영주택 통장 가점이 월 25만원 넣는 사람보다 높다</button>
+          <button class="opt">국민주택 저축총액이 월 50만원 전부 인정되어 순위가 더 앞선다</button>
+          <button class="opt" data-correct>국민주택 저축총액은 월 25만원까지만 인정되고, 민영주택 통장 가점은 납입액이 아니라 가입 기간으로 정해진다</button>
+          <button class="opt">소득공제를 연 600만원까지 받을 수 있다</button>
+        </div>
+        <div class="quiz-exp">2024년 11월부터 국민주택 저축총액은 한 달에 25만원까지 인정된다. 민영주택의 통장 점수는 가입 기간으로 정해지고, 소득공제도 연 300만원 납입분까지(공제율 40%)만 적용된다. 25만원을 넘게 넣은 돈은 예금으로서의 의미만 남는다.</div>
+      </div>
+      <div class="quiz-q">
+        <p>분양가상한제 단지에 경쟁률이 크게 몰리는 이유로 가장 알맞은 것은?</p>
+        <div class="opts">
+          <button class="opt" data-correct>분양가가 주변 시세보다 낮게 묶여 당첨자에게 시세차익이 생기기 때문이다</button>
+          <button class="opt">상한제 단지는 전매제한과 실거주 의무가 없기 때문이다</button>
+          <button class="opt">상한제 단지는 모두 국민주택이라 통장이 필요 없기 때문이다</button>
+          <button class="opt">상한제 단지는 중도금을 내지 않아도 되기 때문이다</button>
+        </div>
+        <div class="quiz-exp">상한제는 땅값과 건축비를 기준으로 분양가를 묶는다. 이 값이 시세보다 낮으면 당첨되는 순간 차익이 생겨 신청자가 몰린다. 그래서 차익 실현을 늦추는 전매제한과 실거주 의무가 함께 붙는다.</div>
+      </div>
+      <div class="quiz-q">
+        <p>가점 36점인 사람이 경쟁률 20대 1, 가점제 40%인 단지(가점제 커트라인 약 75점)에 청약했다. 이 사람의 당첨 확률을 주로 결정하는 것은?</p>
+        <div class="opts">
+          <button class="opt">가점 순위. 36점이면 가점제 물량에서 절반쯤 당첨된다</button>
+          <button class="opt">분양가. 분양가가 낮을수록 확률이 올라간다</button>
+          <button class="opt">통장 납입액. 많이 넣었을수록 추첨에서 유리하다</button>
+          <button class="opt" data-correct>추첨제 물량과 그 물량을 놓고 겨루는 신청자 수</button>
+        </div>
+        <div class="quiz-exp">커트라인 아래 점수로는 가점제 물량에서 당첨될 가능성이 거의 없다. 남는 길은 추첨제 물량이고, 그 확률은 추첨 물량 ÷ (신청자 − 가점제 당첨자)로 경쟁률에 반비례한다. 이 책의 모델로는 약 3%다.</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  const TAU = Math.PI * 2;
+  function T(ctx, s, x, y, o) {
+    o = o || {};
+    ctx.font = EB.font(o.size || 12, o.mono, o.weight);
+    ctx.fillStyle = o.color; ctx.textAlign = o.align || "left"; ctx.textBaseline = o.base || "alphabetic";
+    ctx.fillText(s, x, y);
+  }
+  function rrect(ctx, x, y, w, h, r) {
+    r = Math.max(0, Math.min(r, Math.abs(w) / 2, Math.abs(h) / 2));
+    ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
+  }
+  function knob(ctx, x, y, P) { ctx.beginPath(); ctx.arc(x, y, 8, 0, TAU); ctx.fillStyle = P.text; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = P.bg; ctx.stroke(); }
+  const pw = (id) => document.getElementById(id).parentElement.clientWidth;
+  const C = RE.CASE;
+  const S = RE.KR.sub;
+  const pctTxt = (p) => (p >= 0.995 ? "99% 이상" : p >= 0.1 ? Math.round(p * 100) + "%" : p >= 0.001 ? (p * 100).toFixed(1) + "%" : p > 0 ? "0.1% 미만" : "0%");
+
+  /* ---------------------------------------------------------- 1. 청약통장 */
+  (function () {
+    const mG = EB.range("acct-m", (v) => v + "만원", draw);
+    const yG = EB.range("acct-y", (v) => v + "년", draw);
+    const dEl = document.getElementById("acct-d");
+    dEl.addEventListener("change", draw);
+    const CAP = 2.5e5, DED_LIMIT = 3e6, DED_RATE = 0.4, TAX = 0.165;
+    function calc() {
+      const m = mG() * 1e4, y = yG();
+      const paid = m * 12 * y, recog = Math.min(m, CAP) * 12 * y;
+      const ded = dEl.checked ? Math.min(m * 12, DED_LIMIT) * DED_RATE : 0;
+      return { m, y, paid, recog, ded, save: ded * TAX, score: RE.subscriptionScore({ homelessYears: 0, dependents: 0, accountYears: y }).account };
+    }
+    const cv = EB.canvas("#acct-cv", (ctx, w, h) => {
+      const P = EB.palette(), c = calc(), YM = 15;
+      const yMax = Math.max(5e7, Math.ceil(c.m * 12 * YM / 2.5e7) * 2.5e7);
+      const ch = EB.chart(ctx, { x: 58, y: 28, w: w - 74, h: h - 70 }, {
+        x: [0, YM], y: [0, yMax], xTicks: [0, 3, 6, 9, 12, 15], xFmt: (v) => v + "년", yFmt: EB.wonAxis,
+        series: [
+          { data: [[0, 0], [YM, c.m * 12 * YM]], color: P.accent2, width: 2.2 },
+          { data: [[0, 0], [YM, Math.min(c.m, CAP) * 12 * YM]], color: P.accent, width: 2.6 },
+        ],
+        vlines: [{ x: c.y, color: P.text, label: c.y + "년" }],
+      });
+      const lg = [["실제로 넣은 돈", P.accent2], ["국민주택 인정 저축총액", P.accent]];
+      let lx = 64; lg.forEach(([s, col]) => { ctx.fillStyle = col; ctx.fillRect(lx, 12, 12, 3); T(ctx, s, lx + 16, 14, { size: 11, color: P.dim, base: "middle" }); ctx.font = EB.font(11); lx += ctx.measureText(s).width + 30; });
+      [[c.paid, P.accent2], [c.recog, P.accent]].forEach(([v, col]) => { ctx.beginPath(); ctx.arc(ch.X(c.y), ch.Y(v), 4.5, 0, TAU); ctx.fillStyle = col; ctx.fill(); });
+      if (c.m > CAP) T(ctx, "월 25만원 초과분은 인정 안 됨", ch.X(YM) - 4, ch.Y(Math.min(c.m, CAP) * 12 * YM) + 16, { size: 11, color: P.warn, align: "right", weight: 700 });
+    }, { get height() { return pw("acct-cv") < 480 ? 260 : 280; } });
+    function draw() {
+      const c = calc();
+      EB.stat("acct-o-p", EB.won(c.paid));
+      EB.stat("acct-o-r", EB.won(c.recog));
+      EB.stat("acct-o-s", c.score + "점 / 17");
+      EB.stat("acct-o-t", dEl.checked ? '<span class="plus">' + EB.won(c.save) + "</span> <small style=\"color:var(--text-faint)\">(공제 " + EB.won(c.ded) + ")</small>" : "대상 아님");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 2. 가점 계산기 */
+  (function () {
+    const hG = EB.range("score-h", (v) => (v === 0 ? "1년 미만" : v >= 16 ? "15년 이상" : v + "년"), draw);
+    const dG = EB.range("score-d", (v) => (v >= 6 ? "6명 이상" : v + "명"), draw);
+    const aG = EB.range("score-a", (v) => (v === 0 ? "1년 미만" : v >= 16 ? "15년 이상" : v + "년"), draw);
+    const sc = (dy) => RE.subscriptionScore({ homelessYears: hG() + dy, dependents: dG(), accountYears: aG() === 0 && dy === 0 ? 0.7 : aG() + dy });
+    const cv = EB.canvas("#score-cv", (ctx, w, h) => {
+      const P = EB.palette(), s = sc(0), narrow = w < 480;
+      const rows = [["무주택 기간", s.homeless, S.homelessMax, P.accent], ["부양가족", s.dependents, S.depMax, P.accent2], ["통장 기간", s.account, S.acctMax, P.ok]];
+      const lx = narrow ? 72 : 86, bw = w - lx - 60, top = 18, rh = 30;
+      const unit = bw / S.depMax;
+      rows.forEach(([k, v, mx, col], i) => {
+        const y = top + i * (rh + 10);
+        T(ctx, k, lx - 8, y + rh / 2, { size: 11, color: P.dim, align: "right", base: "middle" });
+        rrect(ctx, lx, y, mx * unit, rh, 5); ctx.fillStyle = P.grid; ctx.fill();
+        rrect(ctx, lx, y, Math.max(0, v * unit), rh, 5); ctx.fillStyle = col; ctx.globalAlpha = 0.85; ctx.fill(); ctx.globalAlpha = 1;
+        T(ctx, v + " / " + mx, lx + mx * unit + 8, y + rh / 2, { size: 11, mono: true, color: P.text, base: "middle", weight: 700 });
+      });
+      // 앞으로 10년
+      const gy = top + 3 * (rh + 10) + 18;
+      const data = []; for (let k = 0; k <= 10; k++) data.push([k, sc(k).total]);
+      const ch = EB.chart(ctx, { x: 46, y: gy + 16, w: w - 62, h: h - gy - 50 }, {
+        x: [0, 10], y: [0, 84], xTicks: [0, 2, 4, 6, 8, 10], yTicks: [0, 20, 40, 60, 84], xFmt: (v) => (v ? "+" + v + "년" : "지금"),
+        series: [{ data, color: P.accent, width: 2.4 }],
+        hlines: [{ y: 84, color: P.faint, label: "만점 84" }],
+      });
+      data.forEach(([k, v]) => { ctx.beginPath(); ctx.arc(ch.X(k), ch.Y(v), k === 0 || k === 5 ? 4.5 : 3, 0, TAU); ctx.fillStyle = k === 0 ? P.accent2 : P.accent; ctx.fill(); if (k === 0 || k === 5 || k === 10) T(ctx, String(v), ch.X(k), ch.Y(v) - 9, { size: 11, mono: true, color: P.text, align: "center", weight: 700 }); });
+      T(ctx, "가족 구성이 그대로일 때 앞으로의 점수", 50, gy + 4, { size: 11, color: P.dim, base: "middle" });
+    }, { get height() { return pw("score-cv") < 480 ? 320 : 330; } });
+    function draw() {
+      const s = sc(0);
+      EB.stat("score-o-h", s.homeless + "점");
+      EB.stat("score-o-d", s.dependents + "점");
+      EB.stat("score-o-a", s.account + "점");
+      EB.stat("score-o-t", "<b>" + s.total + "점</b>");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 3. 100가구 나누기 */
+  (function () {
+    const rG = EB.seg("split-r", draw);
+    const aG = EB.seg("split-a", draw);
+    let cells = [], pick = -1;
+    const share = () => S.pointShare[rG()][Number(aG())];
+    const cv = EB.canvas("#split-cv", (ctx, w, h) => {
+      const P = EB.palette(), ps = share(), nP = Math.round(ps * 100);
+      const cols = 10, gap = 4, size = Math.min((w - 24 - gap * 9) / cols, (h - 56 - gap * 9) / 10);
+      const x0 = (w - (size * cols + gap * 9)) / 2, y0 = 30;
+      cells = [];
+      for (let i = 0; i < 100; i++) {
+        const x = x0 + (i % cols) * (size + gap), y = y0 + Math.floor(i / cols) * (size + gap);
+        rrect(ctx, x, y, size, size, 3); ctx.fillStyle = i < nP ? P.accent : P.accent2; ctx.globalAlpha = pick === i ? 1 : 0.78; ctx.fill(); ctx.globalAlpha = 1;
+        if (pick === i) { ctx.lineWidth = 2.5; ctx.strokeStyle = P.text; ctx.stroke(); }
+        cells.push({ x, y, s: size });
+      }
+      T(ctx, "가점제 " + nP + "가구", x0, 18, { size: 12, color: P.accent, weight: 700, base: "middle" });
+      T(ctx, "추첨제 " + (100 - nP) + "가구", x0 + size * cols + gap * 9, 18, { size: 12, color: P.accent2, weight: 700, align: "right", base: "middle" });
+      const msg = pick < 0 ? "칸 하나를 눌러 본다" : pick < nP ? "이 칸: 가점 높은 순으로 주인이 정해진다" : "이 칸: 가점과 상관없이 추첨으로 정해진다";
+      T(ctx, msg, w / 2, h - 12, { size: 12, color: P.dim, align: "center", base: "middle" });
+    }, { get height() { return pw("split-cv") < 480 ? 300 : 320; } });
+    EB.drag(cv.canvas, { start(x, y) { const i = cells.findIndex((c) => x >= c.x && x <= c.x + c.s && y >= c.y && y <= c.y + c.s); pick = i; draw(); } });
+    function draw() {
+      const ps = share(), nP = Math.round(ps * 100);
+      EB.stat("split-o-p", nP + "가구");
+      EB.stat("split-o-l", (100 - nP) + "가구");
+      EB.stat("split-o-w", nP === 100 ? "추첨 칸이 없다" : nP >= 70 ? "추첨 칸 " + (100 - nP) + "개(경쟁이 몰린다)" : "추첨 칸 " + (100 - nP) + "개(가장 넓다)");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 4. 특별공급 점검표 */
+  (function () {
+    const ids = ["home", "never", "wed", "baby", "kids", "old", "tax", "inc"];
+    const el = {}; ids.forEach((k) => { el[k] = document.getElementById("sp-" + k); el[k].addEventListener("change", draw); });
+    const on = (k) => el[k].checked;
+    function types() {
+      const base = on("home");
+      return [
+        { k: "신혼부부", req: [["무주택", on("home")], ["혼인 7년 이내", on("wed")]], inc: true },
+        { k: "생애최초", req: [["무주택", on("home")], ["소유 이력 없음", on("never")], ["소득세 납부", on("tax")]], inc: true },
+        { k: "신생아", req: [["무주택", on("home")], ["2세 미만 자녀", on("baby")]], inc: true },
+        { k: "다자녀", req: [["무주택", on("home")], ["자녀 2명 이상", on("kids")]], inc: false },
+        { k: "노부모부양", req: [["무주택", on("home")], ["부모 3년 부양", on("old")]], inc: false },
+      ].map((t) => {
+        const ok = base && t.req.every((r) => r[1]);
+        const state = !ok ? "no" : t.inc && !on("inc") ? "cond" : "yes";
+        return Object.assign(t, { state });
+      });
+    }
+    const cv = EB.canvas("#sp-cv", (ctx, w, h) => {
+      const P = EB.palette(), ts = types(), narrow = w < 480;
+      const rh = (h - 20) / ts.length, nameW = narrow ? 70 : 90;
+      ts.forEach((t, i) => {
+        const y = 10 + i * rh, col = t.state === "yes" ? P.ok : t.state === "cond" ? P.warn : P.faint;
+        rrect(ctx, 8, y + 4, w - 16, rh - 8, 8); ctx.fillStyle = col; ctx.globalAlpha = t.state === "no" ? 0.08 : 0.16; ctx.fill(); ctx.globalAlpha = 1;
+        ctx.strokeStyle = col; ctx.lineWidth = 1.2; ctx.stroke();
+        T(ctx, t.k, 18, y + rh / 2 - (narrow ? 8 : 0), { size: 13, color: t.state === "no" ? P.dim : P.text, base: "middle", weight: 700 });
+        const label = t.state === "yes" ? "신청 가능" : t.state === "cond" ? "소득 확인 필요" : "해당 없음";
+        T(ctx, label, narrow ? 18 : w - 18, narrow ? y + rh / 2 + 10 : y + rh / 2, { size: 11, color: col === P.faint ? P.dim : col, align: narrow ? "left" : "right", base: "middle", weight: 700 });
+        // 요건 알약
+        let px = narrow ? nameW + 14 : nameW + 30;
+        const maxX = narrow ? w - 14 : w - 120;
+        t.req.concat(t.inc ? [["소득 기준", on("inc")]] : []).forEach(([s, ok]) => {
+          ctx.font = EB.font(10); const tw = ctx.measureText(s).width + 14;
+          if (px + tw > maxX) return;
+          rrect(ctx, px, y + rh / 2 - 9, tw, 18, 9); ctx.fillStyle = ok ? P.ok : P.bad; ctx.globalAlpha = 0.18; ctx.fill(); ctx.globalAlpha = 1;
+          T(ctx, s, px + tw / 2, y + rh / 2, { size: 10, color: ok ? P.ok : P.bad, align: "center", base: "middle" });
+          px += tw + 5;
+        });
+      });
+    }, { get height() { return pw("sp-cv") < 480 ? 330 : 300; } });
+    function draw() {
+      const ts = types();
+      const yes = ts.filter((t) => t.state === "yes").map((t) => t.k), cond = ts.filter((t) => t.state === "cond").map((t) => t.k);
+      EB.stat("sp-o-n", yes.length || cond.length ? (yes.concat(cond.map((k) => k + "(조건부)"))).join(", ") : "없음");
+      EB.stat("sp-o-c", !on("home") ? "무주택 요건부터 맞아야 한다" : cond.length ? "소득·자산 기준표, 거주 지역, 청약통장 요건" : yes.length ? "거주 지역, 청약통장, 세부 배점" : "일반공급(가점·추첨)을 본다");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 5. 분양가상한제와 경쟁률 */
+  (function () {
+    const mG = EB.range("cap-m", (v) => EB.won(v * 1e8), (v) => { ratio = EB.clamp(ratio, 0.5, 1.2); draw(); });
+    let ratio = 4.4 / 4.9, L = null;
+    const comp = (g) => EB.clamp(3 * Math.exp(8 * g), 1, 500);
+    function calc() { const m = mG() * 1e8, p = m * ratio, g = (m - p) / m, c = comp(g); return { m, p, gain: m - p, g, c, exp: Math.max(0, m - p) / c }; }
+    const cv = EB.canvas("#cap-cv", (ctx, w, h) => {
+      const P = EB.palette(), c = calc(), narrow = w < 480;
+      // 왼쪽: 두 막대
+      const lw = narrow ? w * 0.42 : w * 0.36, base = h - 52, top = 40, mx = c.m * 1.25, sc = (base - top) / mx;
+      const bw = Math.min(54, lw * 0.28), xa = lw * 0.26 - bw / 2, xb = lw * 0.64 - bw / 2;
+      L = { base, sc, m: c.m };
+      ctx.fillStyle = P.accent; ctx.globalAlpha = 0.8; ctx.fillRect(xa, base - c.m * sc, bw, c.m * sc); ctx.globalAlpha = 1;
+      ctx.fillStyle = P.accent2; ctx.globalAlpha = 0.85; ctx.fillRect(xb, base - c.p * sc, bw, c.p * sc); ctx.globalAlpha = 1;
+      T(ctx, "시세", xa + bw / 2, base + 16, { size: 11, color: P.dim, align: "center", base: "middle" });
+      T(ctx, "분양가", xb + bw / 2, base + 16, { size: 11, color: P.dim, align: "center", base: "middle" });
+      T(ctx, EB.wonAxis(c.m), xa + bw / 2, base - c.m * sc - 10, { size: 11, mono: true, color: P.text, align: "center", base: "middle" });
+      if (c.gain > 0) {
+        ctx.save(); ctx.setLineDash([4, 3]); ctx.strokeStyle = P.ok; ctx.lineWidth = 1.5; ctx.strokeRect(xb + 0.5, base - c.m * sc, bw - 1, c.gain * sc); ctx.restore();
+        ctx.fillStyle = P.ok; ctx.globalAlpha = 0.18; ctx.fillRect(xb, base - c.m * sc, bw, c.gain * sc); ctx.globalAlpha = 1;
+        if (c.gain * sc > 14) T(ctx, "차익", xb + bw / 2, base - c.m * sc + c.gain * sc / 2, { size: 11, color: P.ok, align: "center", base: "middle", weight: 700 });
+      }
+      const yh = base - c.p * sc;
+      ctx.save(); ctx.strokeStyle = P.text; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(xb - 4, yh); ctx.lineTo(xb + bw + 8, yh); ctx.stroke(); ctx.restore();
+      knob(ctx, xb + bw + 8, yh, P);
+      T(ctx, EB.wonAxis(c.p), xb + bw + 8, yh + 20, { size: 11, mono: true, color: P.text, align: "center", base: "middle", weight: 700 });
+      // 오른쪽: 경쟁률 곡선
+      const bx = lw + 50, box = { x: bx, y: 30, w: w - bx - 14, h: h - 88 };
+      const gs = []; for (let g = -0.2; g <= 0.6001; g += 0.01) gs.push([g, comp(g)]);
+      const ch = EB.chart(ctx, box, { x: [-0.2, 0.6], y: [1, 500], logY: true, xTicks: narrow ? [-0.2, 0.2, 0.6] : [-0.2, 0, 0.2, 0.4, 0.6], xFmt: (v) => Math.round(v * 100) + "%", yFmt: (v) => v + ":1", series: [{ data: gs, color: P.warn, width: 2.2 }] });
+      const gx = EB.clamp(c.g, -0.2, 0.6);
+      ctx.beginPath(); ctx.arc(ch.X(gx), ch.Y(c.c), 5, 0, TAU); ctx.fillStyle = P.bad; ctx.fill();
+      T(ctx, "경쟁률(로그 눈금)", box.x, 16, { size: 11, color: P.dim, base: "middle" });
+      T(ctx, "가로: 시세 대비 차익률", box.x + box.w, 16, { size: 10, color: P.faint, align: "right", base: "middle" });
+    }, { get height() { return pw("cap-cv") < 480 ? 320 : 310; } });
+    EB.drag(cv.canvas, { move(x, y) { if (!L) return; ratio = EB.clamp(Math.round((L.base - y) / L.sc / L.m * 100) / 100, 0.5, 1.2); draw(); } });
+    function draw() {
+      const c = calc();
+      EB.stat("cap-o-g", (c.gain >= 0 ? '<span class="plus">+' : '<span class="minus">−') + EB.won(Math.abs(c.gain)) + "</span> <small style=\"color:var(--text-faint)\">(" + Math.round(c.g * 100) + "%)</small>");
+      EB.stat("cap-o-c", (c.c < 10 ? c.c.toFixed(1) : Math.round(c.c)) + " : 1" + (c.c <= 1.01 ? " (미달 위험)" : ""));
+      EB.stat("cap-o-e", c.gain > 0 ? EB.won(c.exp) : "없음");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 6. 커트라인과 내 점수 */
+  (function () {
+    const SUP = 200, SD = 12;
+    const cG = EB.range("odds-c", (v) => v + " : 1", draw);
+    const mG = EB.range("odds-m", (v) => v + "점", draw);
+    const pG = EB.seg("odds-p", draw);
+    let my = 36, box = null, mode = null;
+    const calc = () => RE.odds({ supply: SUP, applicants: SUP * cG(), score: my, mean: mG(), sd: SD, pointShare: Number(pG()) });
+    const pdf = (x) => Math.exp(-0.5 * Math.pow((x - mG()) / SD, 2));
+    const cv = EB.canvas("#odds-cv", (ctx, w, h) => {
+      const P = EB.palette(), r = calc(), cut = isFinite(r.cutoff) ? r.cutoff : 0;
+      const xs = []; for (let x = 0; x <= 84; x += 0.5) xs.push(x);
+      const c = EB.chart(ctx, { x: 30, y: 26, w: w - 44, h: h - 74 }, { x: [0, 84], y: [0, 1.12], xTicks: [0, 20, 40, 60, 84], yTicks: [], xFmt: (v) => v + "점" });
+      box = c;
+      ctx.save(); ctx.beginPath(); ctx.moveTo(c.X(0), c.Y(0)); xs.forEach((x) => ctx.lineTo(c.X(x), c.Y(pdf(x)))); ctx.lineTo(c.X(84), c.Y(0)); ctx.closePath(); ctx.fillStyle = P.accent2; ctx.globalAlpha = 0.18; ctx.fill(); ctx.restore();
+      const cc = EB.clamp(cut, 0, 84);
+      ctx.save(); ctx.beginPath(); ctx.moveTo(c.X(cc), c.Y(0)); xs.filter((x) => x >= cc).forEach((x) => ctx.lineTo(c.X(x), c.Y(pdf(x)))); ctx.lineTo(c.X(84), c.Y(0)); ctx.closePath(); ctx.fillStyle = P.accent; ctx.globalAlpha = 0.55; ctx.fill(); ctx.restore();
+      ctx.beginPath(); xs.forEach((x, i) => (i ? ctx.lineTo(c.X(x), c.Y(pdf(x))) : ctx.moveTo(c.X(x), c.Y(pdf(x))))); ctx.strokeStyle = P.accent2; ctx.lineWidth = 2; ctx.stroke();
+      // 커트라인
+      const xc = c.X(cc);
+      ctx.save(); ctx.strokeStyle = P.text; ctx.lineWidth = 2.2; ctx.beginPath(); ctx.moveTo(xc, c.box.y); ctx.lineTo(xc, c.box.y + c.box.h); ctx.stroke(); ctx.restore();
+      rrect(ctx, xc - 7, c.box.y - 4, 14, 14, 3); ctx.fillStyle = P.text; ctx.fill();
+      T(ctx, "커트라인 " + (cut > 84 ? "84+" : cut.toFixed(0)) + "점", xc > w - 120 ? xc - 12 : xc + 12, c.box.y + 18, { size: 11, color: P.text, align: xc > w - 120 ? "right" : "left", weight: 700 });
+      T(ctx, "가점제 당첨", Math.min(c.X(Math.min(83, cc + 5)), w - 70), c.box.y + 36, { size: 11, color: P.accent, weight: 700 });
+      // 내 점수
+      const xm = c.X(my), hy = c.box.y + c.box.h;
+      ctx.save(); ctx.setLineDash([4, 3]); ctx.strokeStyle = P.bad; ctx.lineWidth = 1.8; ctx.beginPath(); ctx.moveTo(xm, c.box.y + 40); ctx.lineTo(xm, hy); ctx.stroke(); ctx.restore();
+      ctx.beginPath(); ctx.arc(xm, hy, 8, 0, TAU); ctx.fillStyle = P.bad; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = P.bg; ctx.stroke();
+      T(ctx, "내 점수 " + my, xm, c.box.y + 52, { size: 11, color: P.bad, align: xm < 70 ? "left" : "center", weight: 700 });
+      T(ctx, "신청자 가점 분포(교육용 가정)", 34, 12, { size: 11, color: P.dim, base: "middle" });
+    }, { get height() { return pw("odds-cv") < 480 ? 280 : 300; } });
+    EB.drag(cv.canvas, {
+      start(x) { if (!box) return; const r = calc(), xc = box.X(EB.clamp(isFinite(r.cutoff) ? r.cutoff : 0, 0, 84)), xm = box.X(my); mode = Math.abs(x - xc) < Math.abs(x - xm) ? "cut" : "my"; },
+      move(x) {
+        if (!box) return;
+        const v = EB.clamp((x - box.box.x) / box.box.w * 84, 0, 84);
+        if (mode === "my") { my = Math.round(v); draw(); return; }
+        // 커트라인을 옮기면 그에 맞는 경쟁률을 찾는다: 가점 물량 / 신청자 = 1 − Φ((cut − mean)/sd)
+        const q = RE.normCdf((v - mG()) / SD), ps = Number(pG());
+        const comp = ps / Math.max(1e-6, 1 - q);
+        cG.set(EB.clamp(Math.round(comp), 1, 200));
+      },
+      end() { mode = null; },
+    });
+    function draw() {
+      const r = calc();
+      EB.stat("odds-o-k", isFinite(r.cutoff) ? Math.max(0, r.cutoff).toFixed(1) + "점" : "없음(전원 당첨)");
+      EB.stat("odds-o-s", my + "점");
+      EB.stat("odds-o-p", pctTxt(r.pPoint));
+      EB.stat("odds-o-t", "<b>" + pctTxt(r.p) + "</b>");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 7. 입주 시점과 전세 만기 */
+  (function () {
+    // 단위: 2027-01(계약)부터의 개월. 전세 만기 2027-04(3), 갱신 시 2029-04(27)
+    const pG = EB.range("fund-p", (v) => EB.won(v * 1e8), draw);
+    const dG = EB.seg("fund-d", draw);
+    const lEl = document.getElementById("fund-l");
+    lEl.addEventListener("change", draw);
+    const MAXM = 42, END1 = 3, END2 = 27, SAVE = C.monthlySaving;
+    let move = 30, box = null;
+    const label = (m) => { const y = 2027 + Math.floor(m / 12), mo = (m % 12) + 1; return y + "년 " + mo + "월"; };
+    function plan() {
+      const P = pG() * 1e8, d = Number(dG()), loanOn = lEl.checked;
+      const pays = [{ m: 0, v: P * d, k: "계약금" }];
+      const mids = 6, span = Math.max(6, move - 6);
+      for (let i = 0; i < mids; i++) pays.push({ m: Math.round(4 + (span - 4) * i / (mids - 1)), v: P * 0.6 / mids, k: "중도금", loan: loanOn });
+      pays.push({ m: move, v: P * (1 - d - 0.6), k: "잔금" });
+      const own = (m) => C.savings + SAVE * m;              // 모을 수 있는 내 돈(보증금 제외)
+      const outOwn = (m) => pays.filter((p) => p.m <= m && p.k !== "잔금" && !p.loan).reduce((s, p) => s + p.v, 0);
+      const midLoan = loanOn ? P * 0.6 : 0;
+      const atMove = P * (1 - d - 0.6) + midLoan;            // 입주 때 갚고 낼 돈
+      const deposit = move >= END2 ? C.ownDeposit : 0;       // 갱신 만기 전에 입주하면 보증금이 아직 묶여 있다
+      const cashAtMove = own(move) - outOwn(move) + deposit;
+      return { P, d, pays, own, outOwn, atMove, deposit, cashAtMove, loanNeed: Math.max(0, atMove - cashAtMove) };
+    }
+    const cv = EB.canvas("#fund-cv", (ctx, w, h) => {
+      const P = EB.palette(), p = plan();
+      const ms = []; for (let m = 0; m <= MAXM; m++) ms.push(m);
+      const hi = Math.ceil(Math.max(p.own(MAXM), p.outOwn(MAXM), p.P * 0.9) / 1e8) * 1e8;
+      const c = EB.chart(ctx, { x: 52, y: 30, w: w - 66, h: h - 88 }, {
+        x: [0, MAXM], y: [0, hi], xTicks: [0, 12, 24, 36], xFmt: (m) => label(m).replace("년 ", ".").replace("월", "").slice(2), yFmt: EB.wonAxis,
+        series: [
+          { data: ms.map((m) => [m, p.own(m)]), color: P.ok, width: 2.2 },
+          { data: ms.map((m) => [m, p.outOwn(m)]), color: P.bad, width: 2.4 },
+        ],
+        bands: [{ x0: END2, x1: Math.max(END2, move), color: EB.color("warn-soft") || P.grid }],
+        vlines: [{ x: END1, color: P.faint, label: "전세 만기" }, { x: END2, color: P.accent2, label: "갱신 만기" }],
+      });
+      box = c;
+      // 부족 영역
+      ctx.save(); ctx.fillStyle = P.bad; ctx.globalAlpha = 0.18;
+      for (let m = 0; m < MAXM; m++) { const a = p.outOwn(m) - p.own(m); if (a > 0) ctx.fillRect(c.X(m), c.Y(p.outOwn(m)), c.X(m + 1) - c.X(m), c.Y(p.own(m)) - c.Y(p.outOwn(m))); }
+      ctx.restore();
+      // 납부 점
+      p.pays.forEach((q) => { ctx.beginPath(); ctx.arc(c.X(q.m), c.Y(0) - 6, q.k === "잔금" ? 5 : 3.5, 0, TAU); ctx.fillStyle = q.loan ? P.warn : q.k === "잔금" ? P.accent : P.bad; ctx.fill(); });
+      // 입주선
+      const xm = c.X(move);
+      ctx.save(); ctx.strokeStyle = P.accent; ctx.lineWidth = 2.4; ctx.beginPath(); ctx.moveTo(xm, c.box.y); ctx.lineTo(xm, c.box.y + c.box.h); ctx.stroke(); ctx.restore();
+      knob(ctx, xm, c.box.y + c.box.h * 0.5, P);
+      T(ctx, "입주 " + label(move), xm > w - 110 ? xm - 12 : xm + 12, c.box.y + c.box.h * 0.5 - 16, { size: 11, color: P.accent, align: xm > w - 110 ? "right" : "left", weight: 700 });
+      const lg = [["모을 수 있는 내 돈", P.ok], ["내 돈으로 낸 분양 대금", P.bad]];
+      let lx = 58; lg.forEach(([s, col]) => { ctx.fillStyle = col; ctx.fillRect(lx, 12, 12, 3); T(ctx, s, lx + 16, 14, { size: 11, color: P.dim, base: "middle" }); ctx.font = EB.font(11); lx += ctx.measureText(s).width + 28; });
+    }, { get height() { return pw("fund-cv") < 480 ? 300 : 310; } });
+    EB.drag(cv.canvas, { move(x) { if (!box) return; move = EB.clamp(Math.round((x - box.box.x) / box.box.w * MAXM), 20, MAXM); draw(); } });
+    function draw() {
+      const p = plan(), gap = move - END2;
+      EB.stat("fund-o-d", EB.won(p.P * p.d));
+      EB.stat("fund-o-b", EB.won(p.atMove) + (lEl.checked ? ' <small style="color:var(--text-faint)">(잔금 + 중도금 대출)</small>' : ""));
+      EB.stat("fund-o-c", '<span class="' + (p.cashAtMove < 0 ? "minus" : "") + '">' + EB.won(p.cashAtMove) + "</span>" + (p.deposit ? ' <small style="color:var(--text-faint)">(보증금 2억 포함)</small>' : ' <small style="color:var(--text-faint)">(보증금 아직 묶임)</small>'));
+      EB.stat("fund-o-g", gap === 0 ? '<span class="plus">딱 맞음</span>' : gap > 0 ? '<span class="minus">' + gap + "개월 빈다</span>" : '<span class="minus">만기 ' + (-gap) + "개월 전 잔금</span>");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 8. 6년 시나리오 */
+  (function () {
+    const rG = EB.seg("plan-r", draw);
+    const nG = EB.range("plan-n", (v) => v + "번", draw);
+    const cG = EB.range("plan-c", (v) => v + " : 1", draw);
+    const spEl = document.getElementById("plan-sp");
+    spEl.addEventListener("change", draw);
+    const SUP = 200, YRS = 6;
+    let sel = YRS, bars = null;
+    function rows() {
+      const ps = rG() === "reg" ? 0.7 : 0.4, out = [];
+      let miss = 1;
+      for (let y = 0; y <= YRS; y++) {
+        const score = RE.subscriptionScore({ homelessYears: 4 + y, dependents: 2, accountYears: 9 + y }).total;
+        const r = RE.odds({ supply: SUP, applicants: SUP * cG(), score, mean: 50, sd: 12, pointShare: ps });
+        const spP = spEl.checked ? Math.min(1, r.pLottery * 2) : 0;
+        if (y > 0) { miss *= Math.pow(1 - r.p, nG()) * (1 - spP); }
+        out.push({ y, score, p: r.p, cutoff: r.cutoff, spP, cum: 1 - miss });
+      }
+      return out;
+    }
+    const cv = EB.canvas("#plan-cv", (ctx, w, h) => {
+      const P = EB.palette(), rs = rows();
+      const ymax = Math.max(0.1, Math.ceil(Math.max(...rs.map((r) => r.cum)) * 10 + 0.5) / 10);
+      bars = EB.bars(ctx, { x: 46, y: 30, w: w - 60, h: h - 92 }, {
+        labels: rs.map((r) => (r.y ? r.y + "년" : "지금")),
+        stacks: [{ label: "누적", color: P.accent, data: rs.map((r) => r.cum) }],
+        y: [0, Math.min(1, ymax)], yFmt: (v) => Math.round(v * 100) + "%", highlight: sel,
+        valueFmt: (v) => (v < 0.001 ? "" : v < 0.1 ? (v * 100).toFixed(1) + "%" : Math.round(v * 100) + "%"),
+      });
+      T(ctx, "한 번이라도 당첨될 누적 확률", 50, 14, { size: 11, color: P.dim, base: "middle" });
+      rs.forEach((r, i) => T(ctx, r.score + "점", bars.X(i), h - 40, { size: 10, mono: true, color: P.faint, align: "center", base: "middle" }));
+    }, { get height() { return pw("plan-cv") < 480 ? 290 : 300; } });
+    EB.drag(cv.canvas, { start(x) { if (!bars) return; let b = 0, bd = Infinity; for (let i = 0; i <= YRS; i++) { const d = Math.abs(bars.X(i) - x); if (d < bd) { bd = d; b = i; } } sel = b; draw(); } });
+    function draw() {
+      const rs = rows(), r = rs[sel];
+      EB.stat("plan-o-1", pctTxt(rs[0].p) + ' <small style="color:var(--text-faint)">(커트라인 ' + (isFinite(rs[0].cutoff) ? Math.round(rs[0].cutoff) : "—") + "점)</small>");
+      document.getElementById("plan-o-yk").textContent = (sel ? sel + "년 뒤" : "지금") + " 점수";
+      EB.stat("plan-o-s", r.score + "점");
+      document.getElementById("plan-o-ck").textContent = (sel ? sel + "년 안에" : "지금") + " 한 번이라도";
+      EB.stat("plan-o-c", "<b>" + pctTxt(r.cum) + "</b>");
+      cv.redraw();
+    }
+    draw();
+  })();
+})();
+</script>
+</body>
+</html>
