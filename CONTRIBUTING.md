@@ -152,12 +152,12 @@
 - `EB.range(id, fmt, onInput)` → `get()`, `get.set(v)`. 출력은 `id + "-out"` 요소.
 - `EB.seg(id, onChange)` → `get()`, `get.set(v)`. `EB.stat(id, html)`.
 - `EB.loop(el, (dt, t) => {})` 화면에 보일 때만 도는 애니메이션. `.stop()`, `.start()`, `.toggle()`.
-- `EB.palette()` → `{bg, text, dim, faint, grid, axis, border, surface, accent, accent2, ok, warn, bad, red, green, blue, series}`, `EB.color(name)`, `EB.isDark()`, `EB.onTheme(cb)`.
+- `EB.palette()` → `{bg, text, dim, faint, grid, axis, border, surface, accent, accent2, ok, warn, bad, red, green, blue, series}`, `EB.color(name)`, `EB.isDark()`, `EB.onTheme(cb)`. 반투명 칠은 `EB.color("accent-soft")`, `"accent-2-soft"`, `"ok-soft"`, `"warn-soft"`, `"bad-soft"`.
 - `EB.won(x, {digits, short})` "1억 2,346만원"(10만원 미만은 "45,000원"처럼 원 단위), `EB.wonAxis(x)` "1.2억", "1.5만", `EB.pct(x, digits)` "3.45%", `EB.fmt(x, digits)`.
 - `EB.canvas`는 만들면서 draw를 바로 부른다. draw 안에서 자기 반환값을 참조하지 않는다(초기화 전 접근 오류).
 - 고정폭 글꼴(`EB.font(px, true)`, SVG의 `.t-mono`)은 숫자·영문에만 쓴다. 한글은 자간이 벌어진다.
 - `EB.font(px, mono, weight)`, `EB.erf`, `EB.rng(seed)`(0~1 난수 함수), `EB.randn()`, `EB.randnSeeded(seed)`, `EB.poisson(λ)`, `EB.debounce`, `EB.clamp/lerp/map`.
-- `EB.CHAPTERS`, `EB.PARTS`(여섯 부, `short`는 좁은 화면의 짧은 이름).
+- `EB.CHAPTERS`, `EB.PARTS`(여섯 부, `short`는 좁은 화면의 짧은 이름). 각 장의 `ready`는 `js/common.js`의 `READY` 목록으로 정한다. 장을 공개할 때 slug를 `READY`에 더하고 `python3 tools/head.py <slug>`, `python3 tools/head.py --site`(사이트맵·JSON-LD)를 실행한다.
 
 ## 부동산 계산 엔진 (`RE`, `js/estate.js`)
 모든 장이 같은 계산을 쓰게 하는 공통 엔진이다. 대출 상환·한도, 주거비, 세금, 보증금 회수율, 레버리지, 청약 가점 계산은 직접 만들지 말고 이것을 쓴다(장 고유의 작은 계산은 직접 해도 된다). 단위는 원, 비율은 소수, 면적은 ㎡, 기간은 년. 엔진에 필요한 함수가 없으면 장 안에서 만들고, 여러 장이 쓸 만하면 엔진에 추가한다(기존 함수의 동작은 바꾸지 않는다). 엔진 값은 본문에서 "이 책의 모델로 계산하면"이라고 밝힌다.
