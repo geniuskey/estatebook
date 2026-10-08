@@ -85,7 +85,9 @@ if ONLY:
     sys.exit(0)
 
 # sitemap
-PUB = [c for c in CH if (ROOT / "chapters" / f"{c['slug']}.html").exists()]  # 공개한(파일이 있는) 장만
+_ready = re.search(r"const READY = new Set\(\[(.*?)\]\)", src)
+READY = set(re.findall(r'"([\w-]+)"', _ready.group(1))) if _ready else {c["slug"] for c in CH}
+PUB = [c for c in CH if c["slug"] in READY and (ROOT / "chapters" / f"{c['slug']}.html").exists()]  # 공개한 장만
 urls = [SITE] + [f"{SITE}chapters/{c['slug']}.html" for c in PUB]
 (ROOT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
     "".join(f"  <url><loc>{u}</loc><lastmod>{TODAY}</lastmod></url>\n" for u in urls) + "</urlset>\n", encoding="utf-8")

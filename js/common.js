@@ -48,7 +48,7 @@
   ];
   const EB = (window.EB = {});
   // 공개한 장. 집필 중인 장은 목록에 '집필 중'으로 보이고 링크·이전/다음·검색에서 빠진다. 장을 공개하면 여기에 slug를 더한다.
-  const READY = new Set(["overview"]);
+  const READY = new Set(["overview", "location", "value"]);
   CHAPTERS.forEach((c) => { c.ready = READY.has(c.slug); });
   EB.CHAPTERS = CHAPTERS;
   EB.PARTS = PARTS;
