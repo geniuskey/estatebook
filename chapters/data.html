@@ -1,0 +1,1156 @@
+<!doctype html>
+<!-- Copyright (c) 2026 geniuskey and EstateBook contributors.
+     Executable code: MIT (see ../LICENSE-MIT).
+     Text, illustrations, questions and explanations: CC-BY-4.0 (see ../LICENSE.md). -->
+<html lang="ko">
+<head>
+<!--head:start {"desc": "실거래가와 호가, 신고 기한 30일과 거래 취소, 표본 조사·반복매매·헤도닉 지수의 차이, 평균과 중위의 함정, 구성 효과와 거래량, 누적 상승률 계산까지. 기사 제목의 숫자를 직접 다시 계산해 본다."}-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>집값 통계 읽기 · EstateBook</title>
+<meta name="description" content="실거래가와 호가, 신고 기한 30일과 거래 취소, 표본 조사·반복매매·헤도닉 지수의 차이, 평균과 중위의 함정, 구성 효과와 거래량, 누적 상승률 계산까지. 기사 제목의 숫자를 직접 다시 계산해 본다.">
+<link rel="canonical" href="https://estatebook.euiyun.com/chapters/data.html">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<meta name="theme-color" content="#0f766e">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EstateBook">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="집값 통계 읽기 · EstateBook">
+<meta property="og:description" content="실거래가와 호가, 신고 기한 30일과 거래 취소, 표본 조사·반복매매·헤도닉 지수의 차이, 평균과 중위의 함정, 구성 효과와 거래량, 누적 상승률 계산까지. 기사 제목의 숫자를 직접 다시 계산해 본다.">
+<meta property="og:url" content="https://estatebook.euiyun.com/chapters/data.html">
+<meta property="og:image" content="https://estatebook.euiyun.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Chapter","LearningResource"],"@id":"https://estatebook.euiyun.com/chapters/data.html#chapter","name":"집값 통계 읽기","headline":"집값 통계 읽기 · EstateBook","description":"실거래가와 호가, 신고 기한 30일과 거래 취소, 표본 조사·반복매매·헤도닉 지수의 차이, 평균과 중위의 함정, 구성 효과와 거래량, 누적 상승률 계산까지. 기사 제목의 숫자를 직접 다시 계산해 본다.","url":"https://estatebook.euiyun.com/chapters/data.html","position":16,"inLanguage":"ko","isAccessibleForFree":true,"learningResourceType":"인터랙티브 교재","educationalLevel":"일반 성인","image":"https://estatebook.euiyun.com/og.png","dateModified":"2026-10-08","isPartOf":{"@type":"Book","@id":"https://estatebook.euiyun.com/#book","name":"EstateBook · 집값과 전세를 숫자로 푸는 부동산 교과서","url":"https://estatebook.euiyun.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"EstateBook","item":"https://estatebook.euiyun.com/"},{"@type":"ListItem","position":2,"name":"16. 집값 통계 읽기","item":"https://estatebook.euiyun.com/chapters/data.html"}]}]}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../css/style.css">
+<script src="../js/common.js"></script>
+<script src="../js/estate.js"></script>
+<!--head:end-->
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3d6151a0abc94ede89285d462527fa80"}'></script>
+<!-- End Cloudflare Web Analytics -->
+</head>
+<body data-chapter="data">
+<main class="chapter">
+  <header class="chapter-hero">
+    <div class="eyebrow">Chapter 16</div>
+    <h1>집값 통계 읽기</h1>
+    <p class="lead">10월 초 어느 아침, 하늘의 휴대폰에 기사 두 개가 연달아 뜬다. 하나는 "B시 아파트값 반등… 평균 실거래가 한 달 새 두 자릿수 상승"이고, 다른 하나는 "경기 아파트값 보합세 이어져"다. 같은 주에 같은 지역을 다룬 기사인데 하나는 오른다고 하고 하나는 그대로라고 한다. 저녁에는 태호가 C아파트의 최근 실거래 목록과 지금 나와 있는 매물의 호가를 보여 준다. 실거래는 6억원 언저리인데 호가는 6억 5,000만원이 넘는다. 어느 숫자가 '진짜 집값'인가. 답은 "모두 진짜지만 서로 다른 것을 잰다"이다. 이 장은 집값 숫자가 만들어지는 과정을 뜯어 보고, 기사 제목의 숫자를 직접 다시 계산해 본다.</p>
+    <ul class="objectives">
+      <li>실거래가와 호가가 무엇을 재는지 구분하고, 둘 사이의 간격이 시장 분위기에 따라 어떻게 변하는지 설명한다.</li>
+      <li>신고 기한 30일과 거래 해제 신고 때문에 가장 최근 통계가 나중에 바뀌는 이유를 안다.</li>
+      <li>한국부동산원의 주간·월간 가격동향조사, 공동주택 실거래가격지수, 민간 시세 지수가 서로 다른 방식으로 만들어진다는 것을 이해한다.</li>
+      <li>같은 거래 자료로 표본 조사형·반복매매·헤도닉 지수를 만들어 차이를 비교한다.</li>
+      <li>평균과 중위, 구성 효과, 적은 거래량, 전월 대비와 전년 대비, 누적 상승률의 함정을 계산으로 확인한다.</li>
+      <li>"집값 반등" 같은 기사 제목을 거래량과 중위값으로 다시 계산한다.</li>
+    </ul>
+  </header>
+
+  <section id="two-numbers">
+    <h2>같은 주, 다른 숫자</h2>
+    <p>주식은 거래소가 매 순간 가격을 하나씩 찍어 준다. 집에는 그런 숫자가 없다. <a href="overview.html">1장</a>에서 본 것처럼 똑같은 집은 없고, 한 단지에서 한 달에 몇 건 거래되지 않으며, 거래 하나하나의 조건(층, 향, 수리 상태, 급매 여부)이 다르다. 그래서 '집값'이라는 숫자는 누군가가 정한 방법으로 만들어 낸 숫자다. 방법이 다르면 숫자가 다르다.</p>
+    <p>집값을 말하는 숫자는 크게 네 종류다. 집주인이 내놓은 값(<span class="term">호가</span><span class="en">(Asking price)</span>), 실제로 계약하고 신고한 값(<span class="term">실거래가</span><span class="en">(Transaction price)</span>), 조사원이나 시세 정보로 매긴 '지금 팔면 받을 만한 값'(<span class="term">시세</span><span class="en">(Appraised market value)</span>), 그리고 이것들을 모아 시점 사이의 변화를 한 줄로 만든 <span class="term">가격지수</span><span class="en">(Price index)</span>다. 가격지수는 기준 시점을 100으로 두고 그 뒤의 값을 상대적으로 나타낸 수다.</p>
+    <p>이 네 숫자는 서로 다른 질문에 답한다. 호가는 "파는 사람이 얼마를 바라는가", 실거래가는 "실제로 얼마에 팔렸는가", 시세는 "지금 팔면 얼마쯤 받겠는가", 지수는 "같은 집의 값이 얼마나 변했는가"에 답한다. 기사 두 개가 다른 말을 하는 것은 대개 둘 중 하나가 틀려서가 아니라, 서로 다른 질문에 답한 숫자를 같은 '집값'이라는 이름으로 부르기 때문이다. 이 장은 하나씩 떼어 본다.</p>
+    <div class="callout tip">
+      <strong>이 장의 시장 데이터는 모두 교육용 가상 데이터다</strong>
+      C아파트의 실거래와 호가, B시의 월별 거래, 지수 그래프는 원리를 보이기 위해 만든 가상의 숫자다. 실제 지역·단지의 시세나 전망이 아니다. 제도(신고 기한, 지수를 내는 기관과 방식)는 2026년 기준으로 확인한 범위에서 썼다.
+    </div>
+  </section>
+
+  <section id="ask">
+    <h2>실거래가와 호가: 바라는 값과 팔린 값</h2>
+    <p>호가는 파는 사람의 희망이다. 중개사무소 유리창이나 매물 앱에 올라온 숫자는 "이 값 이상이면 팔겠다"가 아니라 "이 값이면 좋겠다"에 가깝다. 실제 계약은 대개 호가보다 조금 낮은 곳에서 이루어진다. 집주인마다 마음속에 "여기까지는 깎아 줄 수 있다"는 선이 있고, 사려는 사람에게는 "여기까지는 낼 수 있다"는 선이 있다. 두 선이 겹칠 때만 거래가 일어난다.</p>
+    <p>그래서 실거래가는 모든 매물의 값이 아니라 <b>팔린 매물의 값</b>이다. 호가가 높은 매물은 팔리지 않고 남아 있고, 팔리는 것은 대개 호가가 낮은 쪽이다. 아래는 C아파트 84㎡에 나와 있는 매물 열두 개의 호가(왼쪽)와 그중 실제로 팔린 값(오른쪽)이다. 가로선은 사려는 사람들이 낼 수 있는 최고 가격이다. 이 선을 위아래로 끌어 본다.</p>
+
+    <div class="sim" id="sim-ask">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>호가와 실거래가 사이</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="ask-cv"></canvas><span class="hint">가로선(매수자 지불 의사)을 위아래로 끈다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>집주인들의 기대(호가 수준) <output id="ask-m-out"></output></span><input type="range" id="ask-m" min="-6" max="15" step="1" value="6"></label>
+          <label class="ctrl"><span>깎아 줄 수 있는 폭(평균) <output id="ask-d-out"></output></span><input type="range" id="ask-d" min="1" max="8" step="0.5" value="3"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">호가 중위</span><span class="v" id="ask-o-a">—</span></div>
+        <div class="stat"><span class="k">거래 건수</span><span class="v" id="ask-o-n">—</span></div>
+        <div class="stat"><span class="k">실거래 중위</span><span class="v" id="ask-o-t">—</span></div>
+        <div class="stat"><span class="k">호가와 실거래의 간격</span><span class="v" id="ask-o-g">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 기본값에서 호가 중위는 6억 7,000만원이 넘는데 실거래는 6억 2,000만원 언저리에서 한 건만 찍힌다. 팔린 것은 호가가 가장 낮은 쪽 매물이다. ② 가로선을 아래로 끌어 6억원 밑으로 내린다. 거래가 0건이 된다. 호가는 그대로 남아 있지만 실거래 통계에는 아무 가격도 찍히지 않는다. 하락기에 "거래 절벽"과 "호가는 버틴다"가 함께 나오는 모습이다. ③ 가로선을 위로 올리고 집주인들의 기대를 낮춘다. 거래가 늘고 실거래가 호가에 바짝 붙는다. 상승기에 "호가대로 팔린다"는 말이 나오는 상황이다. (교육용 가상 데이터. 거래 가격은 집주인이 받아들일 최저가와 '호가와 지불 의사 중 낮은 값'의 중간으로 정했다.)</div>
+    </div>
+
+    <p>호가와 실거래가의 간격은 그 자체로 정보다. 간격이 좁고 거래가 많으면 사려는 사람이 파는 사람을 따라가고 있다는 뜻이고, 간격이 넓고 거래가 적으면 양쪽이 서로 다른 값을 보고 버티고 있다는 뜻이다. 하락기 초입에는 흔히 거래가 먼저 줄고 실거래가는 나중에 내려온다. 집주인들은 호가를 바로 내리지 않고, 급하게 팔아야 하는 사람의 거래 몇 건이 먼저 낮은 값에 찍히기 때문이다. 반대로 상승기에는 호가가 먼저 뛰고 실거래가 따라간다.</p>
+    <p>이때 조심할 것이 하나 있다. 거래가 적은 시기의 실거래가는 '팔린 몇 건'의 값일 뿐이다. 그 몇 건이 급매였는지, 로열층이었는지에 따라 단지의 실거래가가 크게 오르내린다. 이 문제는 아래 <a href="#median">평균과 중위</a>, <a href="#mix">구성 효과</a>에서 다시 본다.</p>
+
+    <div class="callout pro">
+      <strong>"신고가 한 건"을 보고 오는 손님에게</strong>
+      "옆 동이 6억 8,000에 팔렸다는데요"라며 들어오는 손님이 있다. 태호는 먼저 세 가지를 같이 확인한다. 그 거래가 몇 층이고 어떤 타입(같은 84㎡라도 판상형·타워형, 확장 여부)이었는지, 그 뒤에 해제 신고가 올라오지 않았는지, 같은 달 다른 거래들은 얼마였는지. 신고가 한 건은 단지의 '가격'이 아니라 '가장 좋은 조건의 한 집'일 수 있다. 반대로 집을 내놓는 손님은 그 한 건을 기준으로 호가를 올리고 싶어 한다. 중개사에게는 매물을 받는 것이 중요하니 높은 호가를 그대로 받아 주고 싶은 유혹이 있다. 태호는 그럴 때 같은 단지의 최근 거래 열 건을 표로 뽑아 보여 주고 "이 값이면 몇 달 걸릴 수 있다"를 미리 말한다. 매물이 오래 걸려 있으면 결국 그 매물의 값을 낮추자는 이야기를 해야 하는 것도 중개사다.
+    </div>
+  </section>
+
+  <section id="report">
+    <h2>신고 기한 30일: 최근 통계는 아직 덜 왔다</h2>
+    <p>한국에서 집을 사고팔면 계약일로부터 30일 안에 실거래 신고를 해야 한다(「부동산 거래신고 등에 관한 법률」, 2020년 2월 21일 계약분부터 60일에서 30일로 단축). 중개사를 거쳤으면 중개사가, 직거래면 거래 당사자가 신고한다. 신고된 거래는 국토교통부 실거래가 공개시스템에 올라간다. 신고한 계약이 나중에 해제되거나 무효·취소되면, 그 사실도 확정된 날부터 30일 안에 신고해야 한다. 2026년 기준으로도 이 틀이 이어지고 있다.</p>
+    <p>이 30일이 통계에 미치는 영향은 생각보다 크다. 9월 30일에 계약한 거래는 10월 30일까지 신고하면 된다. 그러니 10월 초에 '9월 거래량'을 세면, 9월 말에 계약한 거래의 상당수가 아직 집계에 없다. 가장 최근 달의 거래량이 늘 적어 보이고, 한 달쯤 지나면 슬그머니 늘어난다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 460 300" role="img" aria-label="계약에서 신고, 공개, 해제 신고, 등기까지 거래 한 건이 통계가 되는 흐름">
+        <defs><marker id="dt-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="context-stroke"/></marker></defs>
+        <line x1="24" y1="120" x2="440" y2="120" class="s-axis" marker-end="url(#dt-ar)"/>
+        <text x="440" y="152" text-anchor="end" class="lbl-dim">시간</text>
+        <rect x="50" y="108" width="120" height="24" rx="5" class="f-warn-soft"/>
+        <circle cx="50" cy="120" r="7" class="f-acc"/>
+        <text x="50" y="98" text-anchor="middle" class="lbl-b">계약</text>
+        <text x="50" y="80" text-anchor="middle" class="lbl-dim">9월 28일</text>
+        <text x="110" y="152" text-anchor="middle" class="lbl">신고 기한 30일</text>
+        <circle cx="170" cy="120" r="7" class="f-acc2"/>
+        <text x="170" y="98" text-anchor="middle" class="lbl-b">신고·공개</text>
+        <text x="170" y="80" text-anchor="middle" class="lbl-dim">10월 중순</text>
+        <circle cx="290" cy="120" r="7" class="f-bad"/>
+        <text x="290" y="98" text-anchor="middle" class="lbl-bad">해제 신고?</text>
+        <text x="290" y="80" text-anchor="middle" class="lbl-dim">해제 시 30일 안</text>
+        <circle cx="400" cy="120" r="7" class="f-ok"/>
+        <text x="400" y="98" text-anchor="middle" class="lbl-b">잔금·등기</text>
+        <text x="400" y="80" text-anchor="middle" class="lbl-dim">보통 2~3달 뒤</text>
+        <rect x="16" y="170" width="428" height="112" rx="8" class="f-surface"/>
+        <text x="30" y="192" class="lbl-b">10월 초에 9월 통계를 보면</text>
+        <text x="30" y="214" class="lbl">· 9월 하순 계약의 상당수가 아직 신고 전 → 거래량이 적어 보인다</text>
+        <text x="30" y="236" class="lbl">· 먼저 신고된 몇 건이 그 달의 '가격'을 대표하게 된다</text>
+        <text x="30" y="258" class="lbl">· 나중에 해제될 거래도 일단 들어가 있다(등기 여부로 확인)</text>
+        <text x="230" y="40" text-anchor="middle" class="lbl-dim">거래 한 건이 통계가 되기까지</text>
+      </svg>
+      <figcaption><b>그림 1. 거래 한 건이 통계가 되는 길.</b> 계약일부터 신고까지 최대 30일이 걸리고, 해제가 되면 다시 30일 안에 해제 신고가 올라온다. 국토교통부는 2023년 하반기부터 실거래가 공개시스템에 아파트 거래의 등기일을 함께 보여 주기 시작해, 계약이 실제 소유권 이전까지 갔는지 확인할 수 있게 했다. 가장 최근 한두 달의 숫자는 '잠정치'로 읽어야 한다.</figcaption>
+    </figure>
+
+    <p>아래는 B시의 가상 월별 아파트 거래량이다. 빈 막대는 신고가 다 끝난 뒤의 최종 거래량, 채운 막대는 '오늘' 시점까지 신고된 건수, 빨간 부분은 나중에 해제될 거래다. 시간 축의 '오늘' 손잡이를 끌고, 사람들이 계약 뒤 평균 며칠 만에 신고하는지를 바꿔 본다.</p>
+
+    <div class="sim" id="sim-lag">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>오늘 보이는 거래량, 나중에 확정될 거래량</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="lag-cv"></canvas><span class="hint">아래 '오늘' 손잡이를 좌우로 끈다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>계약 뒤 평균 신고 일수 <output id="lag-d-out"></output></span><input type="range" id="lag-d" min="3" max="28" step="1" value="15"></label>
+          <label class="ctrl"><span>나중에 해제되는 비율 <output id="lag-c-out"></output></span><input type="range" id="lag-c" min="0" max="12" step="1" value="4"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">오늘</span><span class="v" id="lag-o-t">—</span></div>
+        <div class="stat"><span class="k">지난달 신고율</span><span class="v" id="lag-o-r">—</span></div>
+        <div class="stat"><span class="k">겉보기 거래량 변화</span><span class="v" id="lag-o-a">—</span></div>
+        <div class="stat"><span class="k">확정 후 실제 변화</span><span class="v" id="lag-o-f">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 오늘을 10월 초에 둔다. 9월 막대가 8월보다 훨씬 짧아 "거래 급감"처럼 보이지만, 빈 막대(최종)는 8월보다 오히려 많다. ② 평균 신고 일수를 25일 넘게 올린다. 지난달 거래가 절반도 안 잡혀 '거래 절벽' 기사가 나올 만한 그림이 된다. 반대로 3일로 내리면 착시가 거의 사라진다. ③ 해제 비율을 10% 넘게 올린다. 신고는 되었지만 결국 성사되지 않은 거래가 통계에 섞여 있다가 나중에 빠진다. (교육용 가상 데이터. 계약일은 한 달 안에 고르게 흩어져 있고, 신고까지 걸리는 날수는 0~30일 사이에서 평균이 슬라이더 값이 되도록 정한 분포를 따른다고 가정했다.)</div>
+    </div>
+
+    <p>신고 기한 착시는 거래량에서 가장 크게 나타나지만 가격에도 영향을 준다. 먼저 신고되는 거래가 그 달 전체를 대표하지 않을 수 있기 때문이다. 중개사가 바로 신고하는 일반 거래와 계약 뒤 조건을 조율하느라 늦게 신고되는 거래가 섞여 있고, 몇 건 안 되는 초기 자료로 계산한 '이번 달 평균가'는 한 달 뒤에 꽤 달라진다. 그래서 공공 통계 가운데 실거래 자료로 만드는 지수는 신고가 충분히 쌓일 때까지 기다렸다가 몇 주에서 한두 달 늦게 나오고, 처음 나온 값을 뒤에 고치기도 한다.</p>
+    <p>거래 해제는 또 다른 문제다. 높은 값에 계약을 신고해 '신고가'를 만든 뒤 나중에 해제하는 방식으로 시세를 띄우는 의심 사례가 문제가 되면서, 정부는 해제 신고 의무와 등기 정보 공개로 이를 걸러 내려 하고 있다. 해제 자체는 대출이 안 나오거나 사정이 바뀌는 등 정상적인 이유로도 생기므로, 해제가 곧 조작이라는 뜻은 아니다. 다만 숫자를 읽는 사람은 "이 거래가 끝까지 갔는가"를 확인할 수 있어야 한다.</p>
+
+    <div class="callout buyer">
+      <strong>실거래가를 조회할 때 확인할 것</strong>
+      <ul>
+        <li><b>전용면적과 타입</b>: '84㎡'라도 공급면적이 다르거나 구조가 다른 타입이 있다. 전용면적 소수점까지 같은 거래끼리 비교한다.</li>
+        <li><b>층</b>: 1~2층과 로열층은 같은 단지에서도 값 차이가 크다. 실거래가 공개시스템에서 층을 함께 본다.</li>
+        <li><b>해제 여부와 등기일</b>: 해제된 거래는 표시가 붙는다. 아파트 거래는 등기일이 함께 공개되므로, 계약 뒤 몇 달이 지났는데 등기 표시가 없는 고가 거래는 한 번 더 확인한다.</li>
+        <li><b>거래 유형</b>: 중개거래인지 직거래인지. 가족 간 직거래는 시세와 다른 값일 수 있다.</li>
+        <li><b>계약일</b>: 신고일이 아니라 계약일 기준으로 월을 나눈다. 최근 한 달은 아직 신고가 다 들어오지 않았다.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="indexes">
+    <h2>가격지수의 종류: 누가, 무엇을, 어떻게 재나</h2>
+    <p>실거래 목록은 한 단지를 볼 때는 쓸모가 있지만, "B시 집값이 올랐나"처럼 지역 전체를 물으면 감당이 안 된다. 그래서 여러 기관이 가격지수를 낸다. 한국에서 자주 인용되는 지수는 크게 세 갈래다.</p>
+    <ul>
+      <li><b>한국부동산원 전국주택가격동향조사(주간·월간)</b>: 국가승인통계다. 미리 골라 둔 <span class="term">표본 주택</span>의 가격을 조사원이 실거래 사례와 시세 정보를 바탕으로 매기고, 그 변동률을 모아 지수를 만든다. 주간 아파트 통계는 매주, 월간 통계는 다음 달 중순 무렵 나온다. 표본은 2020년 말 개선 방안에서 크게 늘리기로 해 주간 아파트 표본을 약 9,400가구에서 약 3만 2,000가구로 늘리는 계획이 발표되었다(이후 표본 수는 확인 필요).</li>
+      <li><b>한국부동산원 공동주택 실거래가격지수</b>: 신고된 실거래 자료로 만든다. 같은 집이 두 번 거래된 짝을 모아 가격 변화를 재는 <span class="term">반복매매 지수</span><span class="en">(Repeat-sales index)</span> 방식이다. 조사원의 판단이 들어가지 않는 대신 신고가 쌓일 때까지 기다려야 해서 늦게 나온다.</li>
+      <li><b>민간 시세 지수</b>: 은행·정보업체 등 민간이 회원 중개사무소에서 받은 시세 정보나 자체 조사로 만드는 지수다. 기관마다 표본과 조사 방법이 다르고, 공공 통계와 같은 시기에 다른 숫자가 나오는 일이 잦다.</li>
+    </ul>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 460 340" role="img" aria-label="세 종류 가격지수의 재료, 방법, 속도, 강점과 약점 비교표">
+        <rect x="6" y="8" width="448" height="40" rx="6" class="f-surface"/>
+        <text x="58" y="33" text-anchor="middle" class="lbl-dim">비교</text>
+        <text x="168" y="27" text-anchor="middle" class="lbl-acc">가격동향조사</text>
+        <text x="168" y="42" text-anchor="middle" class="lbl-dim">주간·월간</text>
+        <text x="290" y="27" text-anchor="middle" class="lbl-acc2">실거래가격지수</text>
+        <text x="290" y="42" text-anchor="middle" class="lbl-dim">반복매매</text>
+        <text x="400" y="27" text-anchor="middle" class="lbl-b">민간 시세 지수</text>
+        <text x="400" y="42" text-anchor="middle" class="lbl-dim">기관마다 다름</text>
+        <line x1="110" y1="54" x2="110" y2="322" class="s-dash"/>
+        <line x1="228" y1="54" x2="228" y2="322" class="s-dash"/>
+        <line x1="350" y1="54" x2="350" y2="322" class="s-dash"/>
+        <text x="58" y="84" text-anchor="middle" class="lbl-b">재료</text>
+        <text x="168" y="78" text-anchor="middle" class="lbl">표본 주택의</text>
+        <text x="168" y="95" text-anchor="middle" class="lbl">조사 가격</text>
+        <text x="290" y="78" text-anchor="middle" class="lbl">신고된</text>
+        <text x="290" y="95" text-anchor="middle" class="lbl">실거래</text>
+        <text x="400" y="78" text-anchor="middle" class="lbl">중개사무소</text>
+        <text x="400" y="95" text-anchor="middle" class="lbl">시세 정보 등</text>
+        <text x="58" y="140" text-anchor="middle" class="lbl-b">계산</text>
+        <text x="168" y="134" text-anchor="middle" class="lbl">같은 표본의</text>
+        <text x="168" y="151" text-anchor="middle" class="lbl">변동률 평균</text>
+        <text x="290" y="134" text-anchor="middle" class="lbl">같은 집 두 번</text>
+        <text x="290" y="151" text-anchor="middle" class="lbl">거래한 짝</text>
+        <text x="400" y="134" text-anchor="middle" class="lbl">표본 시세의</text>
+        <text x="400" y="151" text-anchor="middle" class="lbl">변동률</text>
+        <text x="58" y="196" text-anchor="middle" class="lbl-b">속도</text>
+        <text x="168" y="196" text-anchor="middle" class="lbl">빠름(매주)</text>
+        <text x="290" y="196" text-anchor="middle" class="lbl">느림(한두 달 뒤)</text>
+        <text x="400" y="196" text-anchor="middle" class="lbl">빠름(매주)</text>
+        <text x="58" y="246" text-anchor="middle" class="lbl-b">강점</text>
+        <text x="168" y="240" text-anchor="middle" class="lbl">거래 없어도</text>
+        <text x="168" y="257" text-anchor="middle" class="lbl">값이 나온다</text>
+        <text x="290" y="240" text-anchor="middle" class="lbl">조사자 판단이</text>
+        <text x="290" y="257" text-anchor="middle" class="lbl">들어가지 않는다</text>
+        <text x="400" y="240" text-anchor="middle" class="lbl">현장 분위기가</text>
+        <text x="400" y="257" text-anchor="middle" class="lbl">빨리 반영된다</text>
+        <text x="58" y="300" text-anchor="middle" class="lbl-bad">약점</text>
+        <text x="168" y="294" text-anchor="middle" class="lbl">부드럽고 늦게</text>
+        <text x="168" y="311" text-anchor="middle" class="lbl">꺾인다</text>
+        <text x="290" y="294" text-anchor="middle" class="lbl">늦고, 나중에</text>
+        <text x="290" y="311" text-anchor="middle" class="lbl">과거 값이 바뀐다</text>
+        <text x="400" y="294" text-anchor="middle" class="lbl">호가가 섞이기</text>
+        <text x="400" y="311" text-anchor="middle" class="lbl">쉽다</text>
+      </svg>
+      <figcaption><b>그림 2. 세 갈래의 가격지수.</b> 무엇을 재료로 쓰는가(조사 가격, 실거래, 시세 정보)와 어떻게 묶는가(표본 평균, 반복매매)에 따라 같은 시장에서 다른 선이 나온다. 강점과 약점은 서로 거울처럼 맞물린다. 빠른 지수는 판단이 섞이고, 판단이 빠진 지수는 늦다. 민간 시세 지수의 방법은 기관마다 다르므로 쓰기 전에 그 기관의 작성 방법을 확인한다.</figcaption>
+    </figure>
+
+    <p>어느 지수가 '맞는가'를 묻기보다, 각 지수가 무엇을 재는지를 알고 같이 보는 것이 낫다. 조사 지수가 아직 보합인데 실거래가격지수가 오르기 시작했다면, 거래된 집들이 먼저 움직였고 조사 가격이 따라오고 있는 중일 수 있다. 반대로 민간 시세 지수만 크게 오른다면, 호가가 먼저 뛰고 거래가 따라오지 않는 중일 수 있다. 지수가 무엇을 재는지 알면 '엇갈린 숫자'가 오히려 시장의 상태를 알려 준다.</p>
+  </section>
+
+  <section id="method">
+    <h2>지수는 어떻게 만드나: 같은 거래, 세 가지 지수</h2>
+    <p>가격지수를 만드는 사람이 풀어야 할 문제는 하나다. 이번 달에 팔린 집과 지난달에 팔린 집이 다르다. 이번 달에 신축 대형 평형이 많이 팔렸다면 평균 거래가는 오르지만, 그건 집값이 오른 게 아니라 '팔린 집'이 바뀐 것이다. 같은 집의 값이 얼마나 변했는지를 재려면 이 차이를 걷어 내야 한다. 방법은 세 가지다.</p>
+    <ul>
+      <li><b>표본 조사</b>: 처음부터 같은 집들(표본)을 정해 두고, 그 집들의 값을 매번 다시 매긴다. 집이 바뀌지 않으니 구성 문제가 없다. 대신 거래가 없는 집의 값을 사람이 매겨야 하므로, 조사자가 지난 값에서 크게 벗어나지 않으려는 경향이 지수를 부드럽게 만든다.</li>
+      <li><b>반복매매</b>: 같은 집이 두 번 팔린 경우만 쓴다. 같은 집이니 면적·층·입지가 같고, 두 가격의 비율이 그 사이 시장의 변화다. 여러 짝을 모아 시점별 변화를 한꺼번에 푼다.</li>
+      <li><b>헤도닉</b>: 모든 거래를 쓰되, 가격을 면적·건물 나이·입지 같은 속성으로 설명하고 남은 부분을 시점의 효과로 본다. <a href="location.html">2장</a>의 헤도닉 가격 모형에 '몇 월에 팔렸나'를 속성으로 하나 더 넣은 것이다.</li>
+    </ul>
+
+    <div class="formula">
+      $$\ln\frac{P_{i,t_2}}{P_{i,t_1}} = \beta_{t_2} - \beta_{t_1} + \varepsilon_i$$
+      <div class="where">반복매매 지수의 기본 식. \(P_{i,t}\)는 집 \(i\)가 시점 \(t\)에 팔린 값, \(\beta_t\)는 시점 \(t\)의 (로그) 지수 수준, \(\varepsilon_i\)는 그 집만의 사정(수리, 급매 등). 짝이 많을수록 \(\varepsilon\)이 평균되어 지워지고 \(\beta\)가 드러난다. 지수는 \(100\,e^{\beta_t}\)로 쓴다.</div>
+    </div>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 460 260" role="img" aria-label="표본 조사, 반복매매, 헤도닉 지수의 원리 그림">
+        <defs><marker id="dt-ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="context-stroke"/></marker></defs>
+        <rect x="6" y="10" width="144" height="200" rx="8" class="f-acc-soft"/>
+        <text x="78" y="34" text-anchor="middle" class="lbl-acc">표본 조사</text>
+        <rect x="26" y="52" width="26" height="22" rx="3" class="f-surface"/><rect x="62" y="52" width="26" height="22" rx="3" class="f-surface"/><rect x="98" y="52" width="26" height="22" rx="3" class="f-surface"/>
+        <text x="78" y="96" text-anchor="middle" class="lbl-dim">같은 집을 매번</text>
+        <text x="78" y="114" text-anchor="middle" class="lbl-dim">다시 매긴다</text>
+        <path d="M30 170 Q 70 168 90 150 T 128 132" class="s-acc" fill="none"/>
+        <text x="78" y="196" text-anchor="middle" class="lbl">부드럽다</text>
+        <rect x="158" y="10" width="144" height="200" rx="8" class="f-acc2-soft"/>
+        <text x="230" y="34" text-anchor="middle" class="lbl-acc2">반복매매</text>
+        <rect x="178" y="56" width="22" height="20" rx="3" class="f-surface"/>
+        <rect x="258" y="56" width="22" height="20" rx="3" class="f-surface"/>
+        <path d="M202 66 L254 66" class="s-acc2" marker-end="url(#dt-ar2)"/>
+        <text x="189" y="94" text-anchor="middle" class="t-mono lbl-dim">2023</text>
+        <text x="269" y="94" text-anchor="middle" class="t-mono lbl-dim">2026</text>
+        <text x="230" y="124" text-anchor="middle" class="lbl-dim">같은 집, 두 가격</text>
+        <text x="230" y="142" text-anchor="middle" class="lbl-dim">비율 = 시장 변화</text>
+        <text x="230" y="196" text-anchor="middle" class="lbl">짝이 적으면 흔들린다</text>
+        <rect x="310" y="10" width="144" height="200" rx="8" class="f-ok-soft"/>
+        <text x="382" y="34" text-anchor="middle" class="lbl-b">헤도닉</text>
+        <text x="382" y="62" text-anchor="middle" class="lbl">가격 =</text>
+        <text x="382" y="82" text-anchor="middle" class="lbl-dim">면적 × 나이 × 입지</text>
+        <text x="382" y="102" text-anchor="middle" class="lbl-dim">× 시점 효과</text>
+        <text x="382" y="142" text-anchor="middle" class="lbl-dim">속성을 걷어 내고</text>
+        <text x="382" y="160" text-anchor="middle" class="lbl-dim">남은 시점 효과</text>
+        <text x="382" y="196" text-anchor="middle" class="lbl">빠진 속성이 오차</text>
+        <text x="230" y="244" text-anchor="middle" class="lbl-dim">세 방법 모두 '팔린 집이 바뀌는 문제'를 다른 길로 피한다</text>
+      </svg>
+      <figcaption><b>그림 3. 세 지수의 원리.</b> 표본 조사는 집을 고정하고, 반복매매는 같은 집의 짝만 쓰고, 헤도닉은 속성의 차이를 계산으로 지운다. 단순 평균가에는 이 장치가 없어서 비싼 집이 많이 팔린 달에 그냥 오른다.</figcaption>
+    </figure>
+
+    <p>아래 시뮬레이터는 가상의 도시에 집 300채를 두고, 굵은 점선으로 그린 '진짜 시장'의 변화에 따라 매달 몇 채씩 거래를 만든다. 그 같은 거래 자료로 단순 평균가, 표본 조사형, 반복매매, 헤도닉 지수 네 개를 계산한다. 진짜 시장 곡선의 손잡이를 끌어 모양을 바꾸고, 한 달 거래 건수를 줄여 본다.</p>
+
+    <div class="sim" id="sim-idx">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>같은 거래로 만든 네 개의 지수</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="idx-cv"></canvas><span class="hint">점선 위의 손잡이를 위아래로 끈다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>한 달 거래 건수 <output id="idx-k-out"></output></span><input type="range" id="idx-k" min="4" max="60" step="1" value="25"></label>
+          <label class="check"><input type="checkbox" id="idx-mix" checked> 오를 때 비싼 집이 더 많이 팔린다</label>
+          <div class="seg" id="idx-hl"><button data-value="all" class="on">모두</button><button data-value="mean">평균</button><button data-value="survey">표본 조사</button><button data-value="rs">반복매매</button><button data-value="hed">헤도닉</button></div>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">진짜 시장(36개월)</span><span class="v" id="idx-o-true">—</span></div>
+        <div class="stat"><span class="k">단순 평균가</span><span class="v" id="idx-o-mean">—</span></div>
+        <div class="stat"><span class="k">표본 조사형</span><span class="v" id="idx-o-survey">—</span></div>
+        <div class="stat"><span class="k">반복매매</span><span class="v" id="idx-o-rs">—</span></div>
+        <div class="stat"><span class="k">헤도닉</span><span class="v" id="idx-o-hed">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 기본값에서 단순 평균가(빨강)가 오르는 구간에 진짜 시장보다 더 오른다. 오를 때 비싼 집이 더 많이 팔리게 해 두었기 때문이다. 체크를 끄면 한쪽으로 쏠리는 오차는 줄지만, 평균가는 여전히 들쭉날쭉하다. 매달 어떤 집이 팔렸는지가 우연히 바뀌는 것만으로도 평균이 출렁인다. ② 가운데 손잡이를 아래로 끌어 급락을 만든다. 표본 조사형(청록)은 바닥을 늦게, 얕게 찍는다. 조사자가 지난 값에서 조금씩만 움직인다고 가정한 결과다. ③ 한 달 거래 건수를 4~6건으로 줄인다. 반복매매(호박색)가 크게 흔들린다. 두 번 팔린 짝이 모자라기 때문이다. 헤도닉(초록)은 속성을 다 알고 있어서 덜 흔들린다. (교육용 가상 데이터와 단순화한 모형이다. 실제 기관의 계산 방식과 다르며, 현실의 헤도닉 지수는 속성을 다 알지 못해 이보다 오차가 크다.)</div>
+    </div>
+
+    <p>네 선이 같은 거래에서 나왔는데 모양이 다르다. 단순 평균가는 팔린 집의 구성에 휘둘리고, 표본 조사형은 부드럽지만 늦게 꺾이며, 반복매매는 거래가 적으면 흔들리고, 헤도닉은 모형에 넣은 속성이 정확할 때만 정확하다. 현실에서 '지수 A는 0.1% 내렸는데 지수 B는 0.5% 올랐다'는 일이 생기는 이유의 상당 부분이 여기 있다. 어느 쪽도 거짓말을 하지 않았다. 재는 방법이 다를 뿐이다.</p>
+
+    <div class="callout deep">
+      <strong>반복매매 지수는 과거가 바뀐다</strong>
+      반복매매 지수에서 2026년 3월의 값은 2026년 3월에 팔린 집이 '나중에 다시 팔릴 때'에도 정보를 얻는다. 새 짝이 들어올 때마다 식 전체를 다시 풀기 때문에 이미 발표된 과거 값이 조금씩 고쳐진다. 미국의 S&amp;P 코어로직 케이스-실러 주택가격지수도 반복매매 방식이라 같은 성질이 있고, 한국의 실거래가격지수도 잠정치를 낸 뒤 수정하는 방식을 쓴다. 그래서 반복매매 지수로 "지난달 대비 몇 %"를 말할 때는 그 값이 잠정치인지 확인한다. 표본 조사 지수는 과거가 바뀌지 않는 대신 앞에서 본 부드러움(평활)을 갖는다. 이 부드러움 때문에 조사 지수의 하락 폭은 실제 거래 가격의 하락 폭보다 작게 나오기 쉽다는 지적이 있다.
+    </div>
+  </section>
+
+  <section id="median">
+    <h2>평균과 중위의 함정</h2>
+    <p>지수가 아니라 '평균 거래가'나 '중위 거래가'를 쓰는 기사도 많다. <span class="term">평균</span><span class="en">(Mean)</span>은 모두 더해서 건수로 나눈 값이고, <span class="term">중위값</span><span class="en">(Median)</span>은 줄을 세웠을 때 한가운데 있는 값이다. 둘은 거래가 고르게 퍼져 있으면 비슷하지만, 아주 비싼 거래 몇 건이 섞이면 크게 벌어진다. 평균은 끝에 있는 값에 끌려가고, 중위값은 끝에 무엇이 있든 가운데만 본다.</p>
+    <p>아래는 어느 달 B시의 아파트 거래를 가격 순으로 늘어놓은 것이다. 위쪽 선반에 있는 고가 거래 세 건을 끌어 거래 줄에 넣어 본다. 한 건을 30억원 쪽으로 끌고 가면 어떤 일이 생기는지도 본다.</p>
+
+    <div class="sim" id="sim-med">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>고가 거래 한 건이 평균을 끈다</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="med-cv"></canvas><span class="hint">위쪽 선반의 점을 아래 거래 줄로 끌어 넣는다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>보통 거래 건수 <output id="med-n-out"></output></span><input type="range" id="med-n" min="5" max="40" step="1" value="15"></label>
+          <div class="btn-row"><button class="btn" id="med-re">고가 거래 선반으로 되돌리기</button></div>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">거래 건수</span><span class="v" id="med-o-n">—</span></div>
+        <div class="stat"><span class="k">평균</span><span class="v" id="med-o-m">—</span></div>
+        <div class="stat"><span class="k">중위값</span><span class="v" id="med-o-d">—</span></div>
+        <div class="stat"><span class="k">평균 − 중위</span><span class="v" id="med-o-g">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 고가 거래 하나를 거래 줄로 끌어 넣는다. 평균이 수천만원 뛰는데 중위값은 거의 그대로다. ② 그 점을 오른쪽 끝 30억원 쪽으로 끈다. 평균은 계속 따라 오르고 중위값은 꿈쩍하지 않는다. ③ 보통 거래 건수를 5건으로 줄이고 다시 넣어 본다. 건수가 적으면 한 건의 영향이 평균에도, 중위값에도 커진다. 거래가 적은 달의 통계가 흔들리는 이유다. (교육용 가상 데이터.)</div>
+    </div>
+
+    <p>평균은 모든 거래의 돈을 다 반영한다는 장점이 있어서, 지역에서 오간 돈의 총량을 볼 때는 맞는 숫자다. 하지만 "보통 집이 얼마인가"를 물을 때는 중위값이 낫다. 중위값도 만능은 아니다. 거래가 적으면 중위값도 '가운데 한두 건'에 좌우되고, 비싼 동네 거래가 많아지면 가운데 자리 자체가 옮겨 간다. 그 이야기가 다음 절이다.</p>
+  </section>
+
+  <section id="mix">
+    <h2>구성 효과와 거래량: 집값은 그대로인데 평균이 오른다</h2>
+    <p>어떤 달에 비싼 동네의 거래가 많고 싼 동네의 거래가 적으면, 어느 집의 값도 변하지 않았는데 지역 평균은 오른다. 이것을 <span class="term">구성 효과</span><span class="en">(Composition effect)</span>라 한다. 거꾸로 각 동네의 집값이 모두 내렸는데 평균은 오르는 일도 생긴다. 통계학에서는 부분과 전체의 방향이 뒤집히는 이런 현상을 <span class="term">심슨의 역설</span><span class="en">(Simpson's paradox)</span>이라 부른다.</p>
+    <p>아래에서 B시를 두 동네로 나눈다. 역 근처 신축 단지가 모인 비싼 동네(84㎡ 약 8억 5,000만원)와 2000년대 구축이 모인 싼 동네(약 4억 5,000만원)다. 지난달에는 거래의 30%가 비싼 동네였다. 이번 달 비싼 동네 비중과 두 동네의 실제 가격 변화를 움직여 본다.</p>
+
+    <div class="sim" id="sim-mix">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>어느 동네가 많이 팔렸나</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="mix-cv"></canvas></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>이번 달 비싼 동네 거래 비중 <output id="mix-s-out"></output></span><input type="range" id="mix-s" min="5" max="85" step="1" value="50"></label>
+          <label class="ctrl"><span>동네별 실제 가격 변화 <output id="mix-g-out"></output></span><input type="range" id="mix-g" min="-6" max="6" step="0.5" value="-1"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">동네별 가격 변화</span><span class="v" id="mix-o-g">—</span></div>
+        <div class="stat"><span class="k">지역 평균 거래가 변화</span><span class="v" id="mix-o-m">—</span></div>
+        <div class="stat"><span class="k">그중 구성 효과</span><span class="v" id="mix-o-c">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 기본값에서 두 동네 모두 1% 내렸는데 지역 평균 거래가는 10% 넘게 오른다. 비싼 동네 거래 비중이 30%에서 50%로 늘었기 때문이다. ② 비중을 30%에 맞춘다. 구성 효과가 사라지고 평균 변화가 동네별 변화와 같아진다. ③ 가격 변화를 −6%로, 비중을 85%로 끝까지 민다. 모든 집이 6% 내렸는데 평균은 30% 넘게 오른다. 숫자 하나로 정반대 이야기를 할 수 있다. (교육용 가상 데이터. 동네 안의 거래는 모두 같은 값으로 단순화했다.)</div>
+    </div>
+
+    <p>구성 효과는 거래량이 적을 때 특히 커진다. 한 달에 거래가 400건인 도시에서 신축 단지 거래 10건은 평균을 조금 움직이지만, 거래가 40건으로 줄어든 달에는 같은 10건이 평균을 크게 움직인다. 거래 절벽이 온 시기에 "평균 거래가 급등" 기사가 나오는 일이 있는 것은 이 때문이다. 그래서 집값을 이야기하는 숫자를 볼 때는 늘 <b>거래량</b>을 같이 본다. 거래가 적은 달의 가격 숫자는 그 달에 우연히 팔린 몇 채의 이야기일 수 있다.</p>
+    <p>이 장에서 다루는 숫자의 변화는 이 책이 장마다 묻는 질문, 곧 "이 가격 변화는 어느 힘에서 왔는가"(입지, 금리, 공급, 대출 규제, 기대)를 묻기 전에 한 단계를 더 요구한다. 그 숫자가 정말 가격의 변화인지부터 확인하는 것이다. 평균 거래가 10% 상승의 상당 부분이 구성 효과라면, 그것은 다섯 힘 어느 것에서도 오지 않았다. 팔린 집이 바뀌었을 뿐이다. 반대로 같은 단지·같은 평형의 거래가 연속으로 오르고 거래량도 늘었다면, 그다음에 금리가 내렸는지, 대출 규제가 바뀌었는지, 입주 물량이 줄었는지를 물을 차례다(<a href="value.html">3장</a>, <a href="supply.html">4장</a>, <a href="policy.html">15장</a>).</p>
+  </section>
+
+  <section id="rates">
+    <h2>전월 대비, 전년 대비, 누적 상승률</h2>
+    <p>지수가 정해졌어도 '얼마나 올랐나'를 말하는 방법이 여럿이다. <span class="term">전월 대비</span>는 지난달보다 몇 % 변했는가, <span class="term">전년 동월 대비</span><span class="en">(Year-over-year)</span>는 1년 전 같은 달보다 몇 % 변했는가다. 주간 통계는 '전주 대비'를 쓴다. 전월 대비는 빠르게 방향을 알려 주지만 잡음이 크고, 전년 대비는 안정적이지만 꺾임을 몇 달 늦게 보여 준다.</p>
+    <p>여러 기간의 변화를 이어 붙일 때는 더하지 않고 곱한다. 10% 오르고 10% 내리면 제자리가 아니라 1% 손해다(1.1 × 0.9 = 0.99). 매주 0.1%씩 오른 1년은 5.2%가 아니라 약 5.3%다. 작은 차이 같지만 하락 뒤 회복을 말할 때는 커진다. 30% 내린 집값이 원래 값으로 돌아가려면 30%가 아니라 약 43%가 올라야 한다.</p>
+
+    <div class="formula">
+      $$\text{누적 변화} = (1+r_1)(1+r_2)\cdots(1+r_n) - 1, \qquad \text{연율} = (1+\text{누적})^{12/n} - 1$$
+      <div class="where">\(r_k\)는 \(k\)번째 달의 전월 대비 변화율, \(n\)은 개월 수. "\(n\)개월 동안 연율로 몇 %"는 같은 속도가 1년 이어졌다면의 값이다. 한 달 1% 상승을 연율로 바꾸면 약 12.7%가 된다.</div>
+    </div>
+
+    <p>아래 그래프는 가상의 지역 아파트 가격지수 3년치다. 아래쪽 두 손잡이를 끌어 시작 달과 끝 달을 고른다. 그 구간의 누적 변화, 월 변화율을 그냥 더한 값, 연율, 끝 달의 전월 대비와 전년 대비를 비교한다.</p>
+
+    <div class="sim" id="sim-cum">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>구간을 고르면 숫자가 바뀐다</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="cum-cv"></canvas><span class="hint">아래 두 손잡이를 끌어 구간을 고른다</span></div>
+        <div class="sim-controls">
+          <div class="seg" id="cum-v"><button data-value="lvl" class="on">지수</button><button data-value="mom">전월 대비</button><button data-value="yoy">전년 대비</button></div>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">구간</span><span class="v" id="cum-o-p">—</span></div>
+        <div class="stat"><span class="k">누적 변화(곱)</span><span class="v" id="cum-o-c">—</span></div>
+        <div class="stat"><span class="k">월 변화율 단순 합</span><span class="v" id="cum-o-s">—</span></div>
+        <div class="stat"><span class="k">연율</span><span class="v" id="cum-o-a">—</span></div>
+        <div class="stat"><span class="k">끝 달 전월·전년 대비</span><span class="v" id="cum-o-e">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 시작을 고점(1년 차 끝)에, 끝을 바닥(2년 차 중반)에 두고 하락 폭(약 15%)을 본다. 그다음 시작을 바닥에, 끝을 마지막 달에 두면 '바닥 대비 반등'이 약 12%다. 하락 폭과 비슷해 '거의 회복'처럼 들리지만 지수는 아직 고점보다 약 6% 낮다. 15% 내린 값이 제자리로 오려면 18% 넘게 올라야 한다. ② '전년 대비'를 고른다. 바닥 1년 뒤에는 전년 대비가 크게 플러스인데, 같은 달 전월 대비는 작다. 1년 전이 바닥이었기 때문에 생기는 기저 효과다. ③ 구간을 짧게(2~3개월) 잡고 연율을 본다. 몇 달의 흐름을 1년으로 늘리면 숫자가 과장된다. "연율 환산 20% 상승" 같은 표현을 볼 때 몇 개월로 계산한 것인지 확인한다. (교육용 가상 데이터.)</div>
+    </div>
+
+    <p>같은 3년의 자료에서 "고점 대비 15% 하락", "바닥 대비 12% 반등", "전년 대비 9% 상승", "3년간 8% 상승", "아직 고점보다 6% 낮다"를 모두 말할 수 있다. 모두 맞는 숫자다. 기사 제목이 그중 어느 것을 골랐는지, 시작점을 어디에 찍었는지를 보는 습관이 숫자에 휘둘리지 않는 첫걸음이다.</p>
+  </section>
+
+  <section id="headline">
+    <h2>기사 제목의 숫자를 다시 계산하기</h2>
+    <p>이제 지금까지 본 것을 모두 써서 하늘이 아침에 본 기사를 다시 계산한다. 아래 기사는 이 책이 만든 <b>교육용 가상 기사</b>다. 10월 2일에 나왔고, 9월에 신고된 B시 아파트 거래를 8월과 비교했다.</p>
+    <div class="slip">
+      <div class="row"><span><b>[가상 기사] B시 아파트값 반등… 평균 실거래가 한 달 새 두 자릿수 상승</b></span><span></span></div>
+      <div class="row"><span>"9월 B시 아파트 평균 실거래가가 8월보다 크게 올랐다. 신축 G아파트에서는 9억원대 신고가도 나왔다. 하락세를 끝내고 반등이 시작됐다는 분석이 나온다."</span><span></span></div>
+    </div>
+    <p>아래 시뮬레이터에는 8월과 9월의 거래가 점으로 찍혀 있다. 색은 거래된 집의 종류(구축 59㎡, 구축 84㎡, 신축 84㎡)다. 계산 방식을 바꾸고, 해제된 거래를 빼고, 신고 기한이 끝난 11월 시점의 자료로 바꿔 가며 기사 제목이 어떻게 바뀌는지 본다.</p>
+
+    <div class="sim" id="sim-news">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>"B시 집값 반등" 다시 계산하기</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="news-cv"></canvas><span class="hint">점을 누르면 그 거래의 정보가 보인다</span></div>
+        <div class="sim-controls">
+          <div class="seg" id="news-m"><button data-value="mean" class="on">평균</button><button data-value="med">중위</button><button data-value="same">같은 종류끼리</button></div>
+          <label class="check"><input type="checkbox" id="news-cx"> 해제된 거래 빼기</label>
+          <label class="check"><input type="checkbox" id="news-late"> 신고 기한이 끝난 뒤(11월) 자료</label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">8월 거래</span><span class="v" id="news-o-a">—</span></div>
+        <div class="stat"><span class="k">9월 거래</span><span class="v" id="news-o-b">—</span></div>
+        <div class="stat"><span class="k">9월 신축 비중</span><span class="v" id="news-o-s">—</span></div>
+        <div class="stat"><span class="k">계산한 변화</span><span class="v" id="news-o-c">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 기본값(평균, 10월 2일 자료)이 기사 숫자다. 9월에 신고된 거래는 15건뿐이고 그중 5건(해제될 1건 포함)이 신축이다. 8월에는 40건 중 4건이었다. ② '중위'로 바꾼다. 상승률이 2~3%대로 크게 줄어든다. 그래도 0은 아니다. 신축 비중이 늘면서 가운데 자리도 조금 옮겨 갔기 때문이다. ③ '해제된 거래 빼기'와 '11월 자료'를 켠다. 늦게 신고된 구축 거래가 들어오면서 평균 상승 폭이 줄어든다. ④ 마지막으로 '같은 종류끼리'를 고른다. 같은 종류의 집끼리 중위 거래가를 비교하고 8월 거래 비중으로 묶으면, 상승률은 1%가 안 된다. 이것이 '같은 집의 값'에 가장 가까운 숫자다. (교육용 가상 기사와 가상 거래 자료.)</div>
+    </div>
+
+    <p>네 단계를 거치며 '두 자릿수 반등'은 '1%가 안 되는 상승'으로 바뀌었다. 기사가 틀린 숫자를 쓴 것은 아니다. 9월에 신고된 거래의 평균은 정말로 그만큼 올랐다. 다만 그 숫자가 답한 질문은 "9월에 신고된 거래의 평균값이 얼마인가"였고, 하늘이 알고 싶은 질문은 "B시의 같은 집 값이 올랐는가"였다. 숫자를 다시 계산할 때의 순서를 정리하면 이렇다.</p>
+    <ol>
+      <li><b>몇 건인가</b>: 거래 건수와 전월 거래 건수. 신고 기한이 끝났는가.</li>
+      <li><b>무엇이 팔렸나</b>: 신축·구축, 평형, 동네의 비중이 전월과 같은가.</li>
+      <li><b>무엇으로 계산했나</b>: 평균인가 중위인가 지수인가. 같은 집끼리 비교했는가.</li>
+      <li><b>끝까지 갔나</b>: 해제된 거래, 등기되지 않은 고가 거래가 섞였는가.</li>
+      <li><b>어디서부터 셌나</b>: 전월 대비인가, 바닥 대비인가, 전년 대비인가.</li>
+    </ol>
+
+    <div class="callout pro">
+      <strong>손님이 기사를 들고 오면</strong>
+      "기사에 반등이라던데 지금 사야 하나요?" 태호가 이 질문에 대답하는 순서는 정해져 있다. 먼저 이 단지와 같은 평형의 최근 석 달 거래를 층과 함께 보여 준다. 다음에 사무소에 걸려 있는 매물 수가 석 달 전보다 늘었는지 줄었는지를 말한다. 마지막으로 "기사 숫자는 B시 전체 평균이라 이 단지와 다를 수 있다"고 덧붙인다. 중개사에게 상승 기사는 손님을 움직이게 하는 좋은 재료이고, 하락 기사는 거래를 멈추게 하는 나쁜 재료다. 그래서 기사 제목을 그대로 전하고 싶은 유혹이 있다. 그럴수록 같은 단지의 숫자로 다시 말하는 것이 손님에게도, 몇 년 뒤 그 손님의 다음 거래를 맡을 중개사에게도 낫다.
+    </div>
+
+    <div class="callout warn">
+      <strong>제도와 수치는 해마다 바뀐다</strong>
+      실거래 신고 기한(계약일부터 30일)과 해제 신고 의무, 실거래가 공개시스템의 등기일 공개, 가격지수의 표본과 작성 방법은 2026년 기준으로 확인한 내용이다. 통계 기관은 표본을 바꾸거나 계산 방법을 개편하기도 하고, 그때 과거 시계열이 다시 쓰이기도 한다. 지수를 인용할 때는 기관의 작성 방법과 기준 시점을 함께 확인한다. 이 장의 지역·단지·거래 숫자는 모두 교육용 가상 데이터이며, 어떤 지역의 시세나 전망도 아니다.
+    </div>
+  </section>
+
+  <section id="case">
+    <h2>하늘네 집 노트</h2>
+    <p>하늘이 이 장에서 다시 볼 숫자는 세 가지다. 태호가 보여 준 C아파트 84㎡의 실거래 목록과 호가, 아침에 본 "B시 집값 반등" 기사, 그리고 하늘이 몇 달째 휴대폰으로 보던 민간 시세 지수다. 마지막 시뮬레이터에서 C아파트의 실거래, 호가, 지수를 한 그래프에 올리고, 시세 지수가 실거래를 따라가는 속도를 바꿔 본다.</p>
+
+    <div class="sim" id="sim-case">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>C아파트: 실거래, 호가, 하늘이 보던 지수</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="cs-cv"></canvas><span class="hint">실거래 점을 누르면 층과 가격이 보인다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>시세 지수의 반응 속도 <output id="cs-k-out"></output></span><input type="range" id="cs-k" min="5" max="100" step="5" value="30"></label>
+          <label class="check"><input type="checkbox" id="cs-ask" checked> 지금 나와 있는 호가 보기</label>
+          <label class="check"><input type="checkbox" id="cs-low"> 저층(1~3층) 거래 빼기</label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">최근 6개월 실거래 중위</span><span class="v" id="cs-o-t">—</span></div>
+        <div class="stat"><span class="k">호가 중위</span><span class="v" id="cs-o-a">—</span></div>
+        <div class="stat"><span class="k">지수로 본 1년 변화</span><span class="v" id="cs-o-i">—</span></div>
+        <div class="stat"><span class="k">실거래로 본 1년 변화</span><span class="v" id="cs-o-r">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 기본값에서 실거래 점들은 봄에 바닥을 찍고 여름부터 다시 6억원대로 올라와 1년 전보다 약간 높은데, 지수(선)는 늦게 따라와 아직 1년 전보다 조금 낮다. 지수가 실거래를 천천히 따라가도록 만들어졌기 때문이다. ② 반응 속도를 100으로 올린다. 지수가 실거래 중위를 거의 그대로 따라가면서 들쭉날쭉해진다. 빠른 지수는 시끄럽고, 조용한 지수는 늦다. ③ 저층 거래를 뺀다. 하락기에 급하게 팔린 저층 몇 건이 빠지면서 바닥이 얕아진다. 실거래 '가격'은 어떤 집이 팔렸는가에 따라 달라진다. (교육용 가상 데이터. 지수는 매달 실거래 중위값 쪽으로 반응 속도만큼 다가가는 단순한 규칙으로 만들었다. 실제 기관의 계산 방식이 아니다.)</div>
+    </div>
+
+    <div class="casefile">
+      <div class="tag"><b>CASE 하늘네</b><span>집 노트 · 16장</span></div>
+      <h4>기사는 '두 자릿수 반등', 같은 집끼리는 '1%가 안 되는 상승'</h4>
+      <p>태호가 뽑아 준 C아파트 84㎡의 최근 1년 실거래는 열두 건이다(교육용 가상 데이터). 작년 가을 6억 1,000만원 안팎이던 거래가 올봄에는 5억 8,000만원대까지 내려왔고, 여름 이후 다시 6억원대 초반에서 몇 건이 찍혔다. 지금 나와 있는 매물 다섯 개의 호가는 6억 3,000만원에서 6억 7,000만원 사이다. 태호의 설명은 짧다. "호가는 집주인들 희망이고, 팔리는 건 그 아래쪽입니다. 올봄 5억 8,000만원대 두 건은 2층과 1층이었어요. 같은 9층대만 보면 바닥이 그렇게 깊지 않았습니다."</p>
+      <p>하늘은 아침에 본 기사를 이 장의 순서대로 다시 계산했다. 10월 2일까지 신고된 9월 거래는 15건으로 8월(40건)의 절반도 안 되고, 그중 5건이 신축 G아파트였다(8월에는 40건 중 4건). 평균으로는 18% 상승이 나오지만 중위로는 3% 남짓이었고, 11월에 신고가 다 들어온 자료로 같은 종류의 집끼리 비교하자 상승률은 1%가 안 됐다. 9억원대 '신고가' 한 건은 나중에 해제되었다. 하늘이 몇 달째 보던 민간 시세 지수가 아직 보합 근처인데 C아파트 실거래가 먼저 올라온 이유도 이제 설명이 된다. 지수는 표본의 시세를 조금씩 고쳐 가며 따라가는 숫자라 꺾임을 늦게 보여 주고, 실거래는 그달에 팔린 몇 집의 숫자라 빠르지만 시끄럽다. 재원이 정리한다. "그러니까 '반등'인지 아닌지는 아직 모르는 거고, 우리가 볼 건 C아파트 같은 평형, 같은 층대의 거래하고 거래량이네."</p>
+      <div class="clue"><div><b>이 장에서 정한 것</b>집값 숫자를 읽는 순서: 건수와 신고 기한 → 무엇이 팔렸나 → 평균·중위·같은 집 비교 → 해제·등기 여부 → 어디서부터 셌나. C아파트는 같은 평형·같은 층대의 실거래와 매물 수로 본다.</div><div><b>아직 남은 문제</b>숫자를 바로 읽어도, 지금 가격이 '높은가'의 질문은 남는다. "지금 안 사면 영영 못 산다"와 "곧 떨어진다" 사이에서 무엇을 점검해야 하는가?</div><div><b>다음 단계</b>17장: 거품과 하락의 구조를 보고, 하늘의 두 불안을 체크리스트로 점검한다.</div></div>
+    </div>
+  </section>
+
+  <section class="keypoints" id="summary">
+    <h2>핵심 정리</h2>
+    <ol>
+      <li>호가는 파는 사람의 희망, 실거래가는 팔린 집의 값, 시세는 매긴 값, 지수는 같은 집 값의 변화를 재려는 숫자다. 서로 다른 질문에 답한다.</li>
+      <li>실거래는 계약일부터 30일 안에 신고하고, 해제되면 다시 30일 안에 신고한다(2026년 기준). 그래서 가장 최근 한두 달의 거래량과 가격은 잠정치다.</li>
+      <li>표본 조사 지수는 빠르고 부드럽지만 늦게 꺾이고, 반복매매 지수는 판단이 빠진 대신 늦고 과거가 수정되며, 헤도닉 지수는 속성을 정확히 알 때만 정확하다.</li>
+      <li>평균은 고가 거래 몇 건에 끌려가고, 중위값은 가운데만 본다. 거래가 적으면 둘 다 흔들린다.</li>
+      <li>비싼 동네·신축의 거래 비중이 늘면 어느 집 값도 오르지 않아도 평균이 오른다(구성 효과). 가격 숫자는 늘 거래량과 함께 본다.</li>
+      <li>여러 기간의 변화는 곱해서 잇는다. 30% 하락을 되돌리려면 약 43%가 올라야 하고, 전년 대비 숫자는 1년 전 기저에 좌우된다.</li>
+      <li>기사 숫자는 건수·구성·계산 방식·해제 여부·기준 시점의 다섯 가지로 다시 계산해 본다. 그다음에야 "어느 힘에서 왔는가"를 물을 수 있다.</li>
+    </ol>
+  </section>
+
+  <section class="quiz-sec" id="quiz">
+    <h2>확인 퀴즈</h2>
+    <div class="quiz">
+      <div class="quiz-q">
+        <p>10월 3일에 9월 아파트 거래량을 세었더니 8월의 절반이었다. 가장 먼저 의심할 것은?</p>
+        <div class="opts">
+          <button class="opt">집값이 급락하기 시작했다</button>
+          <button class="opt" data-correct>계약일부터 30일인 신고 기한이 아직 끝나지 않아 9월 하순 계약의 상당수가 집계되지 않았다</button>
+          <button class="opt">가격지수의 표본이 바뀌었다</button>
+          <button class="opt">해제된 거래가 모두 빠졌다</button>
+        </div>
+        <div class="quiz-exp">실거래 신고는 계약일부터 30일 안에 하면 된다. 9월 말에 계약한 거래는 10월 말까지 신고될 수 있으므로, 10월 초에 센 9월 거래량은 최종치보다 적게 나온다. 최근 한 달의 거래량은 신고 기한이 지난 뒤 다시 본다.</div>
+      </div>
+      <div class="quiz-q">
+        <p>어느 달 B시의 모든 단지에서 같은 평형의 가격이 1%씩 내렸는데, B시 평균 실거래가는 8% 올랐다. 가장 그럴듯한 설명은?</p>
+        <div class="opts">
+          <button class="opt">평균 계산이 틀렸다</button>
+          <button class="opt">중위값을 썼기 때문이다</button>
+          <button class="opt">금리가 내렸기 때문이다</button>
+          <button class="opt" data-correct>그달에 비싼 동네나 신축 단지의 거래 비중이 늘어난 구성 효과다</button>
+        </div>
+        <div class="quiz-exp">개별 집값이 모두 내려도 비싼 집의 거래 비중이 커지면 평균 거래가는 오를 수 있다. 이런 변화는 다섯 힘 어디에서도 오지 않았다. 같은 단지·같은 평형끼리 비교하거나 반복매매·헤도닉 지수를 보면 구성 효과를 걷어 낼 수 있다.</div>
+      </div>
+      <div class="quiz-q">
+        <p>집값 지수가 1년 동안 매달 정확히 1%씩 올랐다. 1년 누적 상승률에 가장 가까운 값은?</p>
+        <div class="opts">
+          <button class="opt">12.0%</button>
+          <button class="opt" data-correct>12.7%</button>
+          <button class="opt">11.4%</button>
+          <button class="opt">1.0%</button>
+        </div>
+        <div class="quiz-exp">변화율은 곱해서 잇는다. \(1.01^{12} - 1 \approx 12.68\%\)다. 단순히 더한 12%보다 조금 크다. 반대로 하락에서는 30% 내린 뒤 원래 값으로 돌아가려면 \(1/0.7 - 1 \approx 42.9\%\)가 올라야 한다.</div>
+      </div>
+      <div class="quiz-q">
+        <p>반복매매 방식의 실거래가격지수에 대한 설명으로 옳은 것은?</p>
+        <div class="opts">
+          <button class="opt">조사원이 표본 주택의 값을 매주 매겨서 만든다</button>
+          <button class="opt">한 번 발표한 과거 값은 절대 바뀌지 않는다</button>
+          <button class="opt" data-correct>같은 집이 두 번 거래된 짝의 가격 비율을 모아 만들며, 새 짝이 들어오면 과거 값이 수정될 수 있다</button>
+          <button class="opt">거래가 적을수록 더 정확해진다</button>
+        </div>
+        <div class="quiz-exp">반복매매 지수는 같은 집의 두 거래 가격 비율로 시장 변화를 잰다. 같은 집이므로 구성 효과가 없지만, 짝이 적으면 흔들리고 새 거래가 들어올 때마다 식을 다시 풀어 과거 값이 바뀔 수 있다. 신고 자료가 쌓여야 해서 발표도 늦다.</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  const TAU = Math.PI * 2;
+  function T(ctx, s, x, y, o) {
+    o = o || {};
+    ctx.font = EB.font(o.size || 12, o.mono, o.weight);
+    ctx.fillStyle = o.color; ctx.textAlign = o.align || "left"; ctx.textBaseline = o.base || "alphabetic";
+    ctx.fillText(s, x, y);
+  }
+  function rrect(ctx, x, y, w, h, r) {
+    r = Math.max(0, Math.min(r, Math.abs(w) / 2, Math.abs(h) / 2));
+    ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
+  }
+  const pw = (id) => document.getElementById(id).parentElement.clientWidth;
+  const signPct = (x, d) => { const v = +(x * 100).toFixed(d == null ? 1 : d); return (v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(v) + "%"; };
+  const cls = (x) => (x > 0.0005 ? "plus" : x < -0.0005 ? "minus" : "");
+  const spanPct = (x, d) => '<span class="' + cls(x) + '">' + signPct(x, d) + "</span>";
+  const eok = (v) => EB.won(Math.round(v * 1e4) * 1e4);            // 억 단위 → "6억 2,000만원"
+  const eokS = (v) => (Math.round(v * 100) / 100).toFixed(2) + "억";
+  // 시드 난수(mulberry32)와 정규분포
+  function rng(seed) { let a = seed >>> 0; return function () { a = (a + 0x6D2B79F5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+  function gauss(r) { return function () { let u = 0; while (u === 0) u = r(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(TAU * r()); }; }
+  const median = (a) => { const s = [...a].sort((x, y) => x - y), n = s.length; if (!n) return NaN; return n % 2 ? s[(n - 1) / 2] : (s[n / 2 - 1] + s[n / 2]) / 2; };
+  const mean = (a) => a.reduce((s, x) => s + x, 0) / a.length;
+  function handle(ctx, x, y, P, col) { ctx.beginPath(); ctx.arc(x, y, 8, 0, TAU); ctx.fillStyle = col || P.text; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = P.bg; ctx.stroke(); }
+  function legend(ctx, items, x, y, P, maxX) {
+    const x0 = x;
+    items.forEach(([s, col, kind]) => {
+      ctx.font = EB.font(11);
+      const iw = ctx.measureText(s).width + 28;
+      if (maxX && x > x0 && x + iw - 12 > maxX) { x = x0; y += 15; }
+      ctx.fillStyle = col; ctx.strokeStyle = col; ctx.lineWidth = 2;
+      if (kind === "ring") { ctx.beginPath(); ctx.arc(x + 5, y - 4, 4, 0, TAU); ctx.stroke(); }
+      else if (kind === "line") { ctx.beginPath(); ctx.moveTo(x, y - 4); ctx.lineTo(x + 12, y - 4); ctx.stroke(); }
+      else if (kind === "dash") { ctx.save(); ctx.setLineDash([3, 2]); ctx.beginPath(); ctx.moveTo(x, y - 4); ctx.lineTo(x + 12, y - 4); ctx.stroke(); ctx.restore(); }
+      else { ctx.beginPath(); ctx.arc(x + 5, y - 4, 4, 0, TAU); ctx.fill(); }
+      T(ctx, s, x + 16, y, { size: 11, color: P.dim });
+      x += iw;
+    });
+    return y;
+  }
+  // 작은 선형계 풀이(가우스 소거)
+  function solve(A, b) {
+    const n = b.length, M = A.map((r, i) => r.concat([b[i]]));
+    for (let c = 0; c < n; c++) {
+      let p = c; for (let r = c + 1; r < n; r++) if (Math.abs(M[r][c]) > Math.abs(M[p][c])) p = r;
+      if (Math.abs(M[p][c]) < 1e-12) continue;
+      [M[c], M[p]] = [M[p], M[c]];
+      for (let r = 0; r < n; r++) { if (r === c) continue; const f = M[r][c] / M[c][c]; if (!f) continue; for (let k = c; k <= n; k++) M[r][k] -= f * M[c][k]; }
+    }
+    return M.map((r, i) => (Math.abs(r[i]) < 1e-12 ? 0 : r[n] / r[i]));
+  }
+
+  /* ---------------------------------------------------------- 1. 호가와 실거래가 */
+  (function () {
+    const BASE = 6.2;                                  // C아파트 84㎡ 기준 시세(억, 교육용)
+    const mG = EB.range("ask-m", (v) => (v > 0 ? "+" : "") + v + "%", draw);
+    const dG = EB.range("ask-d", (v) => v + "%", draw);
+    const r = rng(16), N = 12, L = [];
+    for (let i = 0; i < N; i++) L.push({ s: -0.04 + 0.12 * r(), d: 0.4 + 1.2 * r() });
+    L.sort((a, b) => a.s - b.s);
+    let W = 6.25, box = null;
+    const Y0 = 5.4, Y1 = 7.6;
+    function calc() {
+      const m = mG() / 100, dd = dG() / 100;
+      const items = L.map((l) => {
+        const ask = BASE * (1 + m) * (1 + l.s), res = ask * (1 - dd * l.d), ok = W >= res;
+        return { ask, res, ok, price: ok ? res + 0.5 * (Math.min(ask, W) - res) : null };
+      });
+      const tr = items.filter((x) => x.ok).map((x) => x.price);
+      return { items, aMed: median(items.map((x) => x.ask)), tMed: tr.length ? median(tr) : NaN, n: tr.length };
+    }
+    const cv = EB.canvas("#ask-cv", (ctx, w, h) => {
+      const P = EB.palette(), c = calc();
+      const ch = EB.chart(ctx, { x: 50, y: 30, w: w - 62, h: h - 86 }, {
+        x: [0.4, N + 0.6], y: [Y0, Y1], xTicks: [1, 3, 5, 7, 9, 11], xFmt: (v) => (w < 480 ? "" : "매물 ") + v, yFmt: (v) => v.toFixed(1) + "억",
+        yTicks: [5.4, 5.8, 6.2, 6.6, 7.0, 7.4],
+        hlines: [{ y: c.aMed, color: P.faint, label: "호가 중위" }],
+      });
+      box = ch;
+      c.items.forEach((it, i) => {
+        const x = ch.X(i + 1);
+        ctx.strokeStyle = P.faint; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(x, ch.Y(it.ask)); ctx.lineTo(x, ch.Y(it.res)); ctx.stroke();
+        ctx.strokeStyle = P.dim; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(x - 6, ch.Y(it.res)); ctx.lineTo(x + 6, ch.Y(it.res)); ctx.stroke();
+        ctx.beginPath(); ctx.arc(x, ch.Y(it.ask), 5, 0, TAU); ctx.strokeStyle = P.accent; ctx.lineWidth = 2; ctx.stroke();
+        if (it.ok) { ctx.beginPath(); ctx.arc(x, ch.Y(it.price), 5.5, 0, TAU); ctx.fillStyle = P.ok; ctx.fill(); }
+      });
+      // 매수자 지불 의사 선
+      const wy = ch.Y(W);
+      ctx.save(); ctx.strokeStyle = P.bad; ctx.lineWidth = 2; ctx.setLineDash([6, 4]);
+      ctx.beginPath(); ctx.moveTo(ch.box.x, wy); ctx.lineTo(ch.box.x + ch.box.w, wy); ctx.stroke(); ctx.restore();
+      T(ctx, "매수자 지불 의사 " + eokS(W), ch.box.x + ch.box.w - 22, wy + 16, { size: 11, color: P.bad, weight: 700, align: "right" });
+      handle(ctx, ch.box.x + ch.box.w - 10, wy, P, P.bad);
+      legend(ctx, [["호가", P.accent, "ring"], ["집주인 최저선", P.dim, "line"], ["실거래", P.ok]], 56, 18, P, w - 8);
+      if (!c.n) T(ctx, "거래 0건: 실거래 통계에 가격이 찍히지 않는다", ch.box.x + ch.box.w / 2, ch.box.y + ch.box.h - 12, { size: 12, color: P.bad, align: "center", weight: 700 });
+    }, { get height() { return pw("ask-cv") < 480 ? 310 : 330; } });
+    const setW = (y) => { if (!box) return; W = EB.clamp(Y0 + (box.box.y + box.box.h - y) / box.box.h * (Y1 - Y0), Y0 + 0.05, Y1 - 0.05); W = Math.round(W * 100) / 100; draw(); };
+    EB.drag(cv.canvas, { start(x, y) { setW(y); }, move(x, y) { setW(y); } });
+    function draw() {
+      const c = calc();
+      EB.stat("ask-o-a", eok(c.aMed));
+      EB.stat("ask-o-n", c.n + " / 12건");
+      EB.stat("ask-o-t", c.n ? eok(c.tMed) : "거래 없음");
+      EB.stat("ask-o-g", c.n ? '<span class="minus">' + signPct(c.tMed / c.aMed - 1) + "</span>" : "—");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 2. 신고 기한과 거래량 */
+  (function () {
+    const MONTHS = ["4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월"];
+    const V = [38, 42, 40, 36, 41, 44, 43, 45];          // 확정 거래량(교육용 가상)
+    const dG = EB.range("lag-d", (v) => v + "일", draw);
+    const cG = EB.range("lag-c", (v) => v + "%", draw);
+    let today = 6 * 30 + 2, box = null;                  // 10월 3일
+    const MAXD = 8 * 30;
+    function F(x) { const D = dG(), k = D / (30 - D); return x <= 0 ? 0 : x >= 30 ? 1 : Math.pow(x / 30, k); }
+    function state(m) {
+      const c = cG() / 100, total = V[m] / (1 - c);
+      let rep = 0, days = 0;
+      for (let d = 0; d < 30; d++) { const t = 30 * m + d + 0.5; if (t > today) continue; days++; rep += F(today - t); }
+      rep *= total / 30;
+      const removed = EB.clamp((today - (30 * m + 15) - 45) / 30, 0, 1);
+      const cancelLeft = rep * c * (1 - removed);
+      const shown = rep - rep * c * removed;
+      return { total, shown, cancelLeft, final: V[m], started: days > 0, complete: today >= 30 * (m + 1) + 30 };
+    }
+    const label = (t) => { const m = Math.floor(t / 30), d = Math.floor(t % 30) + 1; return m >= 8 ? "12월 1일" : MONTHS[m] + " " + d + "일"; };
+    const cv = EB.canvas("#lag-cv", (ctx, w, h) => {
+      const P = EB.palette();
+      const bx = { x: 44, y: 34, w: w - 58, h: h - 110 };
+      const yMax = 60, X = (t) => bx.x + t / MAXD * bx.w, Y = (v) => bx.y + bx.h - v / yMax * bx.h;
+      box = { bx, X };
+      ctx.strokeStyle = P.grid; ctx.lineWidth = 1;
+      [0, 20, 40, 60].forEach((v) => { ctx.beginPath(); ctx.moveTo(bx.x, Y(v)); ctx.lineTo(bx.x + bx.w, Y(v)); ctx.stroke(); T(ctx, String(v), bx.x - 6, Y(v), { size: 11, mono: true, color: P.dim, align: "right", base: "middle" }); });
+      T(ctx, "건", bx.x - 6, bx.y - 10, { size: 11, color: P.dim, align: "right" });
+      const bw = bx.w / 8 * 0.6;
+      for (let m = 0; m < 8; m++) {
+        const s = state(m), cx = X(30 * m + 15);
+        T(ctx, MONTHS[m], cx, bx.y + bx.h + 16, { size: 11, color: P.dim, align: "center" });
+        if (!s.started) continue;
+        ctx.strokeStyle = P.text; ctx.globalAlpha = 0.55; ctx.lineWidth = 1.5; ctx.setLineDash([3, 3]);
+        ctx.strokeRect(cx - bw / 2, Y(s.final), bw, Y(0) - Y(s.final)); ctx.setLineDash([]); ctx.globalAlpha = 1;
+        const net = s.shown - s.cancelLeft;
+        ctx.fillStyle = P.accent; ctx.globalAlpha = 0.85; ctx.fillRect(cx - bw / 2, Y(net), bw, Y(0) - Y(net));
+        ctx.fillStyle = P.bad; ctx.fillRect(cx - bw / 2, Y(s.shown), bw, Y(net) - Y(s.shown)); ctx.globalAlpha = 1;
+        T(ctx, String(Math.round(s.shown)), cx, Math.min(Y(s.shown), Y(s.final)) - 5, { size: 11, mono: true, color: s.complete ? P.dim : P.text, align: "center", weight: s.complete ? 400 : 700 });
+      }
+      // 오늘 선과 손잡이
+      const tx = X(today), ay = bx.y + bx.h + 32;
+      ctx.save(); ctx.strokeStyle = P.warn; ctx.lineWidth = 2; ctx.setLineDash([5, 4]);
+      ctx.beginPath(); ctx.moveTo(tx, bx.y - 6); ctx.lineTo(tx, ay); ctx.stroke(); ctx.restore();
+      ctx.strokeStyle = P.axis; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(bx.x, ay); ctx.lineTo(bx.x + bx.w, ay); ctx.stroke();
+      handle(ctx, tx, ay, P, P.warn);
+      const lb = "오늘 " + label(today);
+      ctx.font = EB.font(11, false, 700);
+      const lw = ctx.measureText(lb).width;
+      T(ctx, lb, tx + 8 + lw > bx.x + bx.w ? tx - 8 : tx + 8, bx.y + 12, { size: 11, color: P.warn, weight: 700, align: tx + 8 + lw > bx.x + bx.w ? "right" : "left" });
+      legend(ctx, [["최종 거래량", P.text, "dash"], ["오늘까지 신고", P.accent], ["나중에 해제", P.bad]], 48, 16, P, w - 8);
+    }, { get height() { return pw("lag-cv") < 480 ? 320 : 330; } });
+    const setT = (x) => { if (!box) return; today = Math.round(EB.clamp((x - box.bx.x) / box.bx.w * MAXD, 40, MAXD)); draw(); };
+    EB.drag(cv.canvas, { start(x, y) { if (y > box.bx.y + box.bx.h + 14 || Math.abs(x - box.X(today)) < 16) setT(x); }, move(x) { setT(x); } });
+    function draw() {
+      const cur = Math.min(7, Math.floor(today / 30)), last = Math.max(1, cur - 1), prev = last - 1;
+      const a = state(last), b = state(prev);
+      EB.stat("lag-o-t", label(today));
+      EB.stat("lag-o-r", MONTHS[last] + " " + Math.round(Math.min(1, a.shown / a.total) * 100) + "%");
+      EB.stat("lag-o-a", spanPct(a.shown / b.shown - 1, 0) + ' <small style="color:var(--text-faint)">(' + MONTHS[last] + "/" + MONTHS[prev] + ")</small>");
+      EB.stat("lag-o-f", spanPct(V[last] / V[prev] - 1, 0));
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 3. 같은 거래로 만든 네 지수 */
+  (function () {
+    const kG = EB.range("idx-k", (v) => v + "건", draw);
+    const mixEl = document.getElementById("idx-mix");
+    mixEl.addEventListener("change", draw);
+    const hlG = EB.seg("idx-hl", draw);
+    const NT = 36, NH = 300, KMAX = 60;
+    const r = rng(1607), g = gauss(rng(77));
+    const H = [];
+    for (let i = 0; i < NH; i++) {
+      const u = r(), area = u < 0.35 ? 59 : u < 0.8 ? 84 : 114, age = Math.floor(r() * 31), loc = g(), eps = 0.05 * g();
+      H.push({ area, la: Math.log(area / 84), age, loc, lv: Math.log(4.5e8) + 0.85 * Math.log(area / 84) - 0.008 * age + 0.15 * loc + eps });
+    }
+    const lvMean = mean(H.map((x) => x.lv)), lvSd = Math.sqrt(mean(H.map((x) => (x.lv - lvMean) ** 2)));
+    H.forEach((x) => { x.z = (x.lv - lvMean) / lvSd; });
+    const U = [], E = [], SN = [];
+    for (let t = 0; t <= NT; t++) { U.push([]); E.push([]); for (let j = 0; j < KMAX; j++) { U[t].push(r()); E[t].push(0.05 * g()); } SN.push(0.004 * g()); }
+    const KT = [0, 9, 18, 27, 36];
+    const ctl = [100, 112, 97, 104, 110];
+    const sm = (x) => x * x * (3 - 2 * x);
+    function market(t) {
+      for (let i = 0; i < KT.length - 1; i++) if (t <= KT[i + 1]) { const f = sm((t - KT[i]) / (KT[i + 1] - KT[i])); return ctl[i] + (ctl[i + 1] - ctl[i]) * f; }
+      return ctl[ctl.length - 1];
+    }
+    function compute() {
+      const k = kG(), mix = mixEl.checked;
+      const m = []; for (let t = 0; t <= NT; t++) m.push(market(t));
+      const sales = [];
+      for (let t = 0; t <= NT; t++) {
+        const mom = t >= 3 ? EB.clamp((m[t] / m[t - 3] - 1) * 15, -1, 1) : 0;
+        const wts = H.map((x) => (mix ? Math.exp(0.7 * mom * x.z) : 1));
+        const cum = []; let s = 0; wts.forEach((v) => { s += v; cum.push(s); });
+        for (let j = 0; j < k; j++) {
+          const target = U[t][j] * s; let lo = 0, hi = NH - 1;
+          while (lo < hi) { const mid = (lo + hi) >> 1; if (cum[mid] < target) lo = mid + 1; else hi = mid; }
+          sales.push({ h: lo, t, lp: H[lo].lv + Math.log(m[t] / 100) + E[t][j] });
+        }
+      }
+      // 단순 평균가
+      const meanIdx = [];
+      for (let t = 0; t <= NT; t++) { const ps = sales.filter((x) => x.t === t).map((x) => Math.exp(x.lp)); meanIdx.push(ps.length ? mean(ps) : NaN); }
+      const m0 = meanIdx[0];
+      const meanS = meanIdx.map((v) => (v / m0) * 100);
+      // 표본 조사형: 조사자가 지난 값에서 출발해 새 정보의 35%만 반영
+      const surv = [100]; let a = 0;
+      for (let t = 1; t <= NT; t++) { a = a + 0.35 * (Math.log(m[t] / 100) - a) + SN[t]; surv.push(100 * Math.exp(a)); }
+      // 반복매매: ln(P2/P1) = b_t2 − b_t1
+      const byH = {}; sales.forEach((s) => { (byH[s.h] = byH[s.h] || []).push(s); });
+      const A = [], b = [];
+      for (let i = 0; i < NT; i++) { A.push(new Array(NT).fill(0)); b.push(0); }
+      let pairs = 0;
+      Object.values(byH).forEach((list) => {
+        list.sort((p, q) => p.t - q.t);
+        for (let i = 1; i < list.length; i++) {
+          const t1 = list[i - 1].t, t2 = list[i].t; if (t1 === t2) continue;
+          const y = list[i].lp - list[i - 1].lp; pairs++;
+          const idx = [[t2, 1], [t1, -1]].filter(([t]) => t > 0);
+          idx.forEach(([ti, si]) => { b[ti - 1] += si * y; idx.forEach(([tj, sj]) => { A[ti - 1][tj - 1] += si * sj; }); });
+        }
+      });
+      for (let i = 0; i < NT; i++) { A[i][i] += 0.02; if (i > 0) { A[i][i] += 0.02; A[i - 1][i - 1] += 0.02; A[i][i - 1] -= 0.02; A[i - 1][i] -= 0.02; } }
+      const beta = solve(A, b);
+      const rs = [100].concat(beta.map((v) => 100 * Math.exp(v)));
+      // 헤도닉: lnP = c + b1·ln(면적) + b2·나이 + b3·입지 + Σ 시점 효과
+      const NP = 4 + NT, HA = [], hb = new Array(NP).fill(0);
+      for (let i = 0; i < NP; i++) HA.push(new Array(NP).fill(0));
+      sales.forEach((s) => {
+        const x = H[s.h], f = [[0, 1], [1, x.la], [2, x.age / 10], [3, x.loc]];
+        if (s.t > 0) f.push([3 + s.t, 1]);
+        f.forEach(([i, vi]) => { hb[i] += vi * s.lp; f.forEach(([j, vj]) => { HA[i][j] += vi * vj; }); });
+      });
+      for (let i = 4; i < NP; i++) HA[i][i] += 0.01;
+      const hc = solve(HA, hb);
+      const hed = [100]; for (let t = 1; t <= NT; t++) hed.push(100 * Math.exp(hc[3 + t]));
+      return { m, meanS, surv, rs, hed, pairs, n: sales.length };
+    }
+    let lay = null, drag = -1;
+    const cv = EB.canvas("#idx-cv", (ctx, w, h) => {
+      const P = EB.palette(), c = compute(), hl = hlG();
+      const all = [].concat(c.m, c.meanS, c.surv, c.rs, c.hed).filter(isFinite);
+      const lo = Math.max(50, Math.floor((Math.min(...all) - 4) / 10) * 10), hi = Math.min(170, Math.ceil((Math.max(...all) + 4) / 10) * 10);
+      const S = [
+        { key: "mean", data: c.meanS, color: P.bad, name: "평균" },
+        { key: "survey", data: c.surv, color: P.accent, name: "표본 조사" },
+        { key: "rs", data: c.rs, color: P.accent2, name: "반복매매" },
+        { key: "hed", data: c.hed, color: P.ok, name: "헤도닉" },
+      ];
+      const ser = S.map((s) => ({ data: s.data.map((v, t) => [t, v]), color: hl === "all" || hl === s.key ? s.color : P.grid, width: hl === s.key ? 2.6 : 1.8 }));
+      ser.push({ data: c.m.map((v, t) => [t, v]), color: P.text, width: 2.4, dash: [6, 4] });
+      const ly = legend(ctx, [["진짜 시장", P.text, "dash"]].concat(S.map((s) => [s.name, s.color, "line"])), 48, 16, P, w - 8);
+      const ch = EB.chart(ctx, { x: 44, y: ly + 14, w: w - 58, h: h - ly - 14 - 58 }, {
+        x: [0, NT], y: [lo, hi], xTicks: [0, 6, 12, 18, 24, 30, 36], xFmt: (v) => v + (w < 480 ? "" : "개월"), series: ser,
+        hlines: [{ y: 100, color: P.faint }],
+      });
+      lay = { ch, lo, hi };
+      KT.forEach((t, i) => { if (i === 0) return; handle(ctx, ch.X(t), ch.Y(c.m[t]), P, P.text); });
+      T(ctx, "반복매매 짝 " + c.pairs + "개", ch.box.x + ch.box.w - 4, ch.box.y + 14, { size: 11, color: P.dim, align: "right" });
+    }, { get height() { return pw("idx-cv") < 480 ? 350 : 360; } });
+    function pick(x, y) {
+      if (!lay) return -1;
+      let best = -1, bd = 30;
+      KT.forEach((t, i) => { if (i === 0) return; const d = Math.hypot(lay.ch.X(t) - x, lay.ch.Y(market(t)) - y); if (d < bd) { bd = d; best = i; } });
+      if (best < 0) KT.forEach((t, i) => { if (i === 0) return; const d = Math.abs(lay.ch.X(t) - x); if (d < 22 && d < bd) { bd = d; best = i; } });
+      return best;
+    }
+    const setV = (y) => {
+      if (drag < 0 || !lay) return;
+      const b = lay.ch.box, v = lay.lo + (b.y + b.h - y) / b.h * (lay.hi - lay.lo);
+      ctl[drag] = Math.round(EB.clamp(v, 70, 140)); draw();
+    };
+    EB.drag(cv.canvas, { start(x, y) { drag = pick(x, y); setV(y); }, move(x, y) { setV(y); }, end() { drag = -1; } });
+    function draw() {
+      const c = compute();
+      EB.stat("idx-o-true", spanPct(c.m[NT] / 100 - 1));
+      EB.stat("idx-o-mean", spanPct(c.meanS[NT] / 100 - 1));
+      EB.stat("idx-o-survey", spanPct(c.surv[NT] / 100 - 1));
+      EB.stat("idx-o-rs", spanPct(c.rs[NT] / 100 - 1));
+      EB.stat("idx-o-hed", spanPct(c.hed[NT] / 100 - 1));
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 4. 평균과 중위 */
+  (function () {
+    const nG = EB.range("med-n", (v) => v + "건", draw);
+    const r = rng(2026), g = gauss(rng(9));
+    const BASEP = []; for (let i = 0; i < 40; i++) BASEP.push(EB.clamp(5.2 * Math.exp(0.22 * g()), 3.2, 9));
+    const JIT = []; for (let i = 0; i < 44; i++) JIT.push(r() * 2 - 1);
+    const SP0 = [11, 14.5, 18];
+    let SP = SP0.map((p) => ({ p, inn: false })), lay = null, drag = -1;
+    const X0 = 2, X1 = 30;
+    function list() { return BASEP.slice(0, nG()).concat(SP.filter((s) => s.inn).map((s) => s.p)); }
+    const cv = EB.canvas("#med-cv", (ctx, w, h) => {
+      const P = EB.palette();
+      const bx = { x: 22, w: w - 44 }, X = (v) => bx.x + (v - X0) / (X1 - X0) * bx.w;
+      const shelf = { y: 10, h: 62 }, stripY = h * 0.5, axisY = h - 56;
+      lay = { X, bx, shelf, stripY, axisY };
+      rrect(ctx, bx.x, shelf.y, bx.w, shelf.h, 8); ctx.fillStyle = P.surface; ctx.fill(); ctx.strokeStyle = P.border; ctx.lineWidth = 1; ctx.stroke();
+      T(ctx, "선반: 아직 통계 밖의 고가 거래", bx.x + 8, shelf.y + 15, { size: 11, color: P.dim });
+      // 축
+      ctx.strokeStyle = P.axis; ctx.beginPath(); ctx.moveTo(bx.x, axisY); ctx.lineTo(bx.x + bx.w, axisY); ctx.stroke();
+      [2, 5, 10, 15, 20, 25, 30].forEach((v) => { ctx.beginPath(); ctx.moveTo(X(v), axisY); ctx.lineTo(X(v), axisY + 4); ctx.stroke(); T(ctx, v + "억", X(v), axisY + 16, { size: 11, mono: true, color: P.dim, align: "center" }); });
+      T(ctx, "거래 줄", bx.x, stripY - 36, { size: 11, color: P.dim });
+      const L = list();
+      BASEP.slice(0, nG()).forEach((p, i) => { ctx.beginPath(); ctx.arc(X(p), stripY + JIT[i] * 14, 5, 0, TAU); ctx.fillStyle = P.accent; ctx.globalAlpha = 0.8; ctx.fill(); ctx.globalAlpha = 1; });
+      const mu = mean(L), md = median(L);
+      const mark = (v, col, lab, up) => {
+        ctx.save(); ctx.strokeStyle = col; ctx.lineWidth = 2; ctx.setLineDash([5, 3]);
+        ctx.beginPath(); ctx.moveTo(X(v), stripY - 26); ctx.lineTo(X(v), axisY); ctx.stroke(); ctx.restore();
+        T(ctx, lab + " " + eokS(v), EB.clamp(X(v) + (up ? 6 : -6), bx.x + 60, bx.x + bx.w - 60), axisY - (up ? 8 : 22), { size: 11, color: col, weight: 700, align: up ? "left" : "right" });
+      };
+      mark(md, P.ok, "중위", false);
+      mark(mu, P.bad, "평균", true);
+      SP.forEach((s, i) => {
+        const x = X(s.p), y = s.inn ? stripY + (i - 1) * 9 : shelf.y + 44;
+        ctx.beginPath(); ctx.arc(x, y, 9, 0, TAU); ctx.fillStyle = P.warn; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = P.bg; ctx.stroke();
+        T(ctx, s.p.toFixed(1) + "억", x, y - 13, { size: 10, mono: true, color: P.text, align: "center" });
+      });
+    }, { get height() { return pw("med-cv") < 480 ? 290 : 300; } });
+    function setP(x, y) {
+      if (drag < 0 || !lay) return;
+      const s = SP[drag];
+      s.p = Math.round(EB.clamp(X0 + (x - lay.bx.x) / lay.bx.w * (X1 - X0), 2.5, 30) * 10) / 10;
+      s.inn = y > lay.shelf.y + lay.shelf.h + 10;
+      draw();
+    }
+    EB.drag(cv.canvas, {
+      start(x, y) {
+        if (!lay) return; drag = -1; let bd = 24;
+        SP.forEach((s, i) => { const sy = s.inn ? lay.stripY + (i - 1) * 9 : lay.shelf.y + 44, d = Math.hypot(lay.X(s.p) - x, sy - y); if (d < bd) { bd = d; drag = i; } });
+      },
+      move(x, y) { setP(x, y); }, end() { drag = -1; },
+    });
+    document.getElementById("med-re").addEventListener("click", () => { SP = SP0.map((p) => ({ p, inn: false })); draw(); });
+    function draw() {
+      const L = list(), mu = mean(L), md = median(L);
+      EB.stat("med-o-n", L.length + "건" + (L.length > nG() ? ' <small style="color:var(--text-faint)">(고가 ' + (L.length - nG()) + ")</small>" : ""));
+      EB.stat("med-o-m", eok(mu));
+      EB.stat("med-o-d", eok(md));
+      EB.stat("med-o-g", (mu - md >= 0 ? "+" : "−") + EB.won(Math.abs(Math.round((mu - md) * 1e4)) * 1e4));
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 5. 구성 효과 */
+  (function () {
+    const HI = 8.5, LO = 4.5, S0 = 0.3;
+    const sG = EB.range("mix-s", (v) => v + "%", draw);
+    const gG = EB.range("mix-g", (v) => (v > 0 ? "+" : "") + v + "%", draw);
+    function calc() {
+      const s = sG() / 100, g = gG() / 100;
+      const last = S0 * HI + (1 - S0) * LO, now = (1 + g) * (s * HI + (1 - s) * LO);
+      return { s, g, last, now, ch: now / last - 1, comp: now / last - 1 - g };
+    }
+    const cv = EB.canvas("#mix-cv", (ctx, w, h) => {
+      const P = EB.palette(), c = calc();
+      const narrow = w < 480;
+      // 위: 거래 20건의 구성
+      const n = 20, gap = 3, cell = Math.min(18, (w - 120 - gap * n) / n);
+      const rows = [["지난달", S0], ["이번 달", c.s]];
+      rows.forEach(([lab, s], ri) => {
+        const y = 14 + ri * (cell + 10);
+        T(ctx, lab, 10, y + cell / 2, { size: 12, color: P.dim, base: "middle" });
+        const k = Math.round(s * n);
+        for (let i = 0; i < n; i++) { ctx.fillStyle = i < k ? P.accent2 : P.accent; ctx.globalAlpha = 0.85; ctx.fillRect(70 + i * (cell + gap), y, cell, cell); }
+        ctx.globalAlpha = 1;
+      });
+      const top = 14 + 2 * (cell + 10) + 18;
+      // 아래: 가격 막대
+      const groups = [["싼 동네", LO, LO * (1 + c.g), P.accent], ["비싼 동네", HI, HI * (1 + c.g), P.accent2], ["지역 평균", c.last, c.now, P.text]];
+      const bx = { x: 50, y: top + 6, w: w - 64, h: h - top - 36 };
+      const yMax = 12, Y = (v) => bx.y + bx.h - v / yMax * bx.h;
+      ctx.strokeStyle = P.grid; ctx.lineWidth = 1;
+      [0, 4, 8, 12].forEach((v) => { ctx.beginPath(); ctx.moveTo(bx.x, Y(v)); ctx.lineTo(bx.x + bx.w, Y(v)); ctx.stroke(); T(ctx, v + "억", bx.x - 6, Y(v), { size: 11, mono: true, color: P.dim, align: "right", base: "middle" }); });
+      const gw = bx.w / 3, bw = Math.min(46, gw * 0.3);
+      groups.forEach(([lab, a, b, col], i) => {
+        const cx = bx.x + gw * i + gw / 2;
+        [[a, 0.45, -1], [b, 0.9, 1]].forEach(([v, al, side]) => {
+          const x = cx + (side < 0 ? -bw - 3 : 3);
+          ctx.fillStyle = col; ctx.globalAlpha = al; ctx.fillRect(x, Y(v), bw, Y(0) - Y(v)); ctx.globalAlpha = 1;
+          T(ctx, v.toFixed(2), x + bw / 2, Y(v) - 5, { size: narrow ? 10 : 11, mono: true, color: P.text, align: "center" });
+        });
+        const ch = b / a - 1;
+        T(ctx, lab + " " + signPct(ch), cx, bx.y + bx.h + 16, { size: narrow ? 11 : 12, color: i === 2 ? (ch >= 0 ? P.ok : P.bad) : P.dim, align: "center", weight: i === 2 ? 700 : 400 });
+      });
+      T(ctx, "연한 막대 지난달, 진한 막대 이번 달", bx.x + bx.w, top - 2, { size: 11, color: P.faint, align: "right" });
+    }, { get height() { return pw("mix-cv") < 480 ? 290 : 300; } });
+    function draw() {
+      const c = calc();
+      EB.stat("mix-o-g", spanPct(c.g));
+      EB.stat("mix-o-m", spanPct(c.ch));
+      EB.stat("mix-o-c", (c.comp >= 0 ? "+" : "−") + Math.abs(c.comp * 100).toFixed(1) + "%p");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 6. 누적 상승률 */
+  (function () {
+    const vG = EB.seg("cum-v", draw);
+    const KP = [[0, 100], [6, 105], [12, 114], [15, 108], [19, 97], [24, 99], [30, 104], [36, 108]];
+    const g = gauss(rng(3636));
+    const I = [];
+    for (let t = 0; t <= 36; t++) {
+      let v = 100;
+      for (let i = 0; i < KP.length - 1; i++) if (t >= KP[i][0] && t <= KP[i + 1][0]) { const f = (t - KP[i][0]) / (KP[i + 1][0] - KP[i][0]); v = KP[i][1] + (KP[i + 1][1] - KP[i][1]) * (f * f * (3 - 2 * f)); break; }
+      I.push(t === 0 ? 100 : v * (1 + 0.003 * g()));
+    }
+    const mom = I.map((v, t) => (t ? v / I[t - 1] - 1 : NaN));
+    const yoy = I.map((v, t) => (t >= 12 ? v / I[t - 12] - 1 : NaN));
+    let a = 0, b = 36, box = null, drag = -1;
+    const lbl = (t) => (2023 + Math.floor((t + 9) / 12)) + "." + String(((t + 9) % 12) + 1).padStart(2, "0");
+    const cv = EB.canvas("#cum-cv", (ctx, w, h) => {
+      const P = EB.palette(), v = vG();
+      const bxx = { x: 50, y: 18, w: w - (w < 480 ? 76 : 64), h: h - 100 };
+      let ch;
+      if (v === "lvl") {
+        ch = EB.chart(ctx, bxx, { x: [0, 36], y: [90, 120], xTicks: [0, 12, 24, 36], xFmt: (t) => (w < 480 ? lbl(t).slice(2) : lbl(t)),
+          series: [{ data: I.map((y, t) => [t, y]), color: P.accent, width: 2.4 }],
+          bands: [{ x0: a, x1: b, color: EB.color("accent-soft") }], hlines: [{ y: 100, color: P.faint }],
+          points: [{ x: a, y: I[a], color: P.accent2, r: 5 }, { x: b, y: I[b], color: P.accent2, r: 5 }] });
+      } else if (v === "mom") {
+        ch = EB.chart(ctx, bxx, { x: [0, 36], y: [-0.04, 0.04], xTicks: [0, 12, 24, 36], xFmt: (t) => (w < 480 ? lbl(t).slice(2) : lbl(t)), yFmt: (y) => signPct(y, 0),
+          bands: [{ x0: a, x1: b, color: EB.color("accent-soft") }], hlines: [{ y: 0, color: P.axis, dash: [] }] });
+        const bw = ch.box.w / 36 * 0.7;
+        mom.forEach((m, t) => { if (!isFinite(m)) return; ctx.fillStyle = m >= 0 ? P.ok : P.bad; ctx.globalAlpha = t > a && t <= b ? 0.9 : 0.3; ctx.fillRect(ch.X(t) - bw / 2, Math.min(ch.Y(m), ch.Y(0)), bw, Math.abs(ch.Y(m) - ch.Y(0))); });
+        ctx.globalAlpha = 1;
+      } else {
+        ch = EB.chart(ctx, bxx, { x: [0, 36], y: [-0.2, 0.2], xTicks: [0, 12, 24, 36], xFmt: (t) => (w < 480 ? lbl(t).slice(2) : lbl(t)), yFmt: (y) => signPct(y, 0),
+          series: [{ data: yoy.map((y, t) => [t, y]), color: P.accent2, width: 2.4 }],
+          bands: [{ x0: 0, x1: 12, color: P.grid }, { x0: a, x1: b, color: EB.color("accent-soft") }], hlines: [{ y: 0, color: P.axis, dash: [] }] });
+        T(ctx, "첫 12개월은 1년 전 값이 없다", ch.X(6), ch.box.y + 14, { size: 11, color: P.faint, align: "center" });
+      }
+      box = ch;
+      const hy = h - 44;
+      ctx.strokeStyle = P.axis; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(ch.box.x, hy); ctx.lineTo(ch.box.x + ch.box.w, hy); ctx.stroke();
+      ctx.strokeStyle = P.accent2; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(ch.X(a), hy); ctx.lineTo(ch.X(b), hy); ctx.stroke();
+      handle(ctx, ch.X(a), hy, P, P.text); handle(ctx, ch.X(b), hy, P, P.text);
+      T(ctx, "시작", ch.X(a), hy - 12, { size: 10, color: P.dim, align: "center" });
+      T(ctx, "끝", ch.X(b), hy - 12, { size: 10, color: P.dim, align: "center" });
+    }, { get height() { return pw("cum-cv") < 480 ? 310 : 320; } });
+    const tAt = (x) => Math.round(EB.clamp((x - box.box.x) / box.box.w * 36, 0, 36));
+    const mv = (x) => { if (!box || drag < 0) return; const t = tAt(x); if (drag === 0) a = Math.min(t, b - 1); else b = Math.max(t, a + 1); draw(); };
+    EB.drag(cv.canvas, {
+      start(x) { if (!box) return; const t = tAt(x); drag = Math.abs(t - a) <= Math.abs(t - b) ? 0 : 1; mv(x); },
+      move(x) { mv(x); },
+      end() { drag = -1; },
+    });
+    function draw() {
+      const n = b - a, cum = I[b] / I[a] - 1;
+      let sum = 0; for (let t = a + 1; t <= b; t++) sum += mom[t];
+      EB.stat("cum-o-p", lbl(a) + " → " + lbl(b) + " (" + n + "개월)");
+      EB.stat("cum-o-c", spanPct(cum));
+      EB.stat("cum-o-s", signPct(sum));
+      EB.stat("cum-o-a", spanPct(Math.pow(1 + cum, 12 / n) - 1));
+      EB.stat("cum-o-e", signPct(mom[b], 1) + " · " + (isFinite(yoy[b]) ? signPct(yoy[b], 1) : "—"));
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 7. 기사 다시 계산하기 */
+  (function () {
+    const AUG = { A: [3.78, 3.82, 3.85, 3.86, 3.88, 3.89, 3.90, 3.90, 3.92, 3.93, 3.95, 3.96, 3.98, 4.00, 4.03, 4.08], B: [5.85, 5.92, 5.95, 5.98, 6.00, 6.02, 6.05, 6.07, 6.08, 6.10, 6.10, 6.12, 6.14, 6.15, 6.18, 6.20, 6.22, 6.25, 6.28, 6.35], C: [8.35, 8.45, 8.55, 8.70] };
+    const EARLY = { A: [3.86, 3.92, 3.95, 3.97], B: [6.03, 6.10, 6.12, 6.16, 6.24, 6.30], C: [8.52, 8.66, 8.75, 8.80] };
+    const LATE = { A: [3.80, 3.84, 3.87, 3.89, 3.90, 3.91, 3.93, 3.94, 3.97, 4.00, 4.02], B: [5.90, 5.96, 6.00, 6.04, 6.08, 6.13, 6.18, 6.20, 6.27, 6.33], C: [8.40, 8.58] };
+    const CX = 9.40;
+    const GN = { A: "구축 59㎡", B: "구축 84㎡", C: "신축 84㎡(G아파트)" };
+    const mG = EB.seg("news-m", draw);
+    const cxEl = document.getElementById("news-cx"), lateEl = document.getElementById("news-late");
+    cxEl.addEventListener("change", draw); lateEl.addEventListener("change", draw);
+    let pts = [], sel = null;
+    function data() {
+      const aug = [], sep = [];
+      "ABC".split("").forEach((gk) => {
+        AUG[gk].forEach((p) => aug.push({ g: gk, p, m: 8 }));
+        EARLY[gk].forEach((p) => sep.push({ g: gk, p, m: 9 }));
+        if (lateEl.checked) LATE[gk].forEach((p) => sep.push({ g: gk, p, m: 9, late: true }));
+      });
+      sep.push({ g: "C", p: CX, m: 9, cx: true, out: cxEl.checked });
+      return { aug, sep, sepIn: sep.filter((x) => !x.out) };
+    }
+    function measure(d) {
+      const k = mG();
+      const pa = d.aug.map((x) => x.p), pb = d.sepIn.map((x) => x.p);
+      if (k === "mean") return { a: mean(pa), b: mean(pb), ch: mean(pb) / mean(pa) - 1 };
+      if (k === "med") return { a: median(pa), b: median(pb), ch: median(pb) / median(pa) - 1 };
+      let ch = 0; const per = {};
+      "ABC".split("").forEach((gk) => {
+        const ma = median(d.aug.filter((x) => x.g === gk).map((x) => x.p)), mb = median(d.sepIn.filter((x) => x.g === gk).map((x) => x.p));
+        per[gk] = { a: ma, b: mb }; ch += (AUG[gk].length / d.aug.length) * (mb / ma);
+      });
+      return { per, ch: ch - 1 };
+    }
+    const cv = EB.canvas("#news-cv", (ctx, w, h) => {
+      const P = EB.palette(), d = data(), ms = measure(d);
+      const GC = { A: P.accent, B: P.accent2, C: P.blue || P.warn };
+      // 머리기사
+      const head = "B시 아파트값 한 달 새 " + signPct(ms.ch, 1);
+      rrect(ctx, 10, 8, w - 20, 34, 6); ctx.fillStyle = P.surface; ctx.fill(); ctx.strokeStyle = P.border; ctx.lineWidth = 1; ctx.stroke();
+      T(ctx, "[다시 쓴 제목] " + head, w / 2, 26, { size: w < 480 ? 13 : 15, weight: 700, color: ms.ch > 0.05 ? P.bad : P.text, align: "center", base: "middle" });
+      const lgY = legend(ctx, [["구축 59", GC.A], ["구축 84", GC.B], ["신축 84", GC.C], ["해제", P.bad, "ring"]], 52, 60, P, w - 8);
+      const bx = { x: 52, y: lgY + 16, w: w - 66, h: h - lgY - 16 - 56 };
+      const Y0 = 3.5, Y1 = 9.7, Y = (v) => bx.y + bx.h - (v - Y0) / (Y1 - Y0) * bx.h;
+      ctx.strokeStyle = P.grid;
+      [4, 5, 6, 7, 8, 9].forEach((v) => { ctx.beginPath(); ctx.moveTo(bx.x, Y(v)); ctx.lineTo(bx.x + bx.w, Y(v)); ctx.stroke(); T(ctx, v + "억", bx.x - 6, Y(v), { size: 11, mono: true, color: P.dim, align: "right", base: "middle" }); });
+      const cols = [{ lab: "8월 (" + d.aug.length + "건)", list: d.aug, cx: bx.x + bx.w * 0.27 }, { lab: "9월 (" + d.sepIn.length + "건)", list: d.sep, cx: bx.x + bx.w * 0.73 }];
+      pts = [];
+      const half = Math.min(90, bx.w * 0.2);
+      cols.forEach((col, ci) => {
+        T(ctx, col.lab, col.cx, bx.y + bx.h + 18, { size: 12, color: P.text, align: "center", weight: 700 });
+        // 가격대별로 옆으로 늘어놓기
+        const bins = {};
+        col.list.slice().sort((p, q) => p.p - q.p).forEach((x) => {
+          const key = Math.round((x.p - Y0) / 0.12); bins[key] = (bins[key] || 0) + 1; const k = bins[key] - 1;
+          const off = (k % 2 ? 1 : -1) * Math.ceil(k / 2) * 11, px = col.cx + EB.clamp(off, -half, half), py = Y(x.p);
+          ctx.beginPath(); ctx.arc(px, py, 4.6, 0, TAU);
+          if (x.cx) { ctx.strokeStyle = P.bad; ctx.lineWidth = 2; ctx.stroke(); if (x.out) { ctx.beginPath(); ctx.moveTo(px - 5, py - 5); ctx.lineTo(px + 5, py + 5); ctx.moveTo(px + 5, py - 5); ctx.lineTo(px - 5, py + 5); ctx.stroke(); } }
+          else { ctx.fillStyle = GC[x.g]; ctx.globalAlpha = x.late ? 0.5 : 0.9; ctx.fill(); ctx.globalAlpha = 1; }
+          if (sel && sel.ci === ci && Math.abs(sel.p - x.p) < 1e-9 && sel.g === x.g && !!sel.cx === !!x.cx && !!sel.late === !!x.late) { ctx.beginPath(); ctx.arc(px, py, 8, 0, TAU); ctx.strokeStyle = P.text; ctx.lineWidth = 1.5; ctx.stroke(); }
+          pts.push(Object.assign({ px, py, ci }, x));
+        });
+        // 측정값 표시
+        if (ms.per) {
+          "ABC".split("").forEach((gk) => { const v = ci ? ms.per[gk].b : ms.per[gk].a; ctx.strokeStyle = GC[gk]; ctx.lineWidth = 2.5; ctx.beginPath(); ctx.moveTo(col.cx - half - 8, Y(v)); ctx.lineTo(col.cx + half + 8, Y(v)); ctx.stroke(); });
+        } else {
+          const v = ci ? ms.b : ms.a;
+          ctx.save(); ctx.strokeStyle = P.text; ctx.lineWidth = 2; ctx.setLineDash([6, 3]); ctx.beginPath(); ctx.moveTo(col.cx - half - 10, Y(v)); ctx.lineTo(col.cx + half + 10, Y(v)); ctx.stroke(); ctx.restore();
+          T(ctx, (mG() === "mean" ? "평균 " : "중위 ") + eokS(v), col.cx + half + 10, Y(v) - 6, { size: 11, color: P.text, align: "right", weight: 700 });
+        }
+      });
+      if (sel) {
+        const s = (sel.cx ? "해제된 거래 · " : sel.late ? "10월 3일 이후 신고 · " : "") + GN[sel.g] + " " + eok(sel.p);
+        T(ctx, s, bx.x + bx.w, bx.y + bx.h + 36, { size: 11, color: P.text, align: "right" });
+      }
+    }, { get height() { return pw("news-cv") < 480 ? 360 : 380; } });
+    EB.drag(cv.canvas, { start(x, y) { let best = null, bd = 12; pts.forEach((p) => { const dd = Math.hypot(p.px - x, p.py - y); if (dd < bd) { bd = dd; best = p; } }); sel = best; cv.redraw(); } });
+    function draw() {
+      const d = data(), ms = measure(d);
+      const nC = d.sepIn.filter((x) => x.g === "C").length;
+      EB.stat("news-o-a", d.aug.length + "건");
+      EB.stat("news-o-b", d.sepIn.length + "건" + (lateEl.checked ? "" : ' <small style="color:var(--text-faint)">(10월 2일까지 신고)</small>'));
+      EB.stat("news-o-s", Math.round(nC / d.sepIn.length * 100) + "% (" + nC + "건)");
+      EB.stat("news-o-c", spanPct(ms.ch, 1));
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 8. 하늘네: C아파트 */
+  (function () {
+    // 2025년 10월(0) ~ 2026년 9월(11). 교육용 가상 데이터
+    const TR = [[0, 9, 6.10], [1, 12, 6.15], [2, 5, 6.05], [3, 3, 5.92], [4, 10, 5.98], [5, 2, 5.82], [6, 1, 5.81], [7, 8, 5.95], [8, 14, 6.08], [9, 7, 6.05], [10, 11, 6.18], [11, 9, 6.15]];
+    const ASK = [6.30, 6.45, 6.50, 6.60, 6.70];
+    const kG = EB.range("cs-k", (v) => v + "%", draw);
+    const askEl = document.getElementById("cs-ask"), lowEl = document.getElementById("cs-low");
+    askEl.addEventListener("change", draw); lowEl.addEventListener("change", draw);
+    let pts = [], sel = null;
+    const ml = (m) => (m < 3 ? "2025." + (10 + m) : "2026." + String(m - 2).padStart(2, "0"));
+    function calc() {
+      const k = kG() / 100, tr = TR.filter((t) => !(lowEl.checked && t[1] <= 3));
+      const idx = []; let I = 100, tgt = 100;
+      for (let m = 0; m < 12; m++) {
+        const here = tr.filter((t) => t[0] === m).map((t) => t[2]);
+        if (here.length) tgt = median(here) / 6.10 * 100;
+        I = m === 0 ? 100 : I + k * (tgt - I);
+        idx.push(I);
+      }
+      const recent = tr.filter((t) => t[0] >= 6).map((t) => t[2]);
+      const first = tr.filter((t) => t[0] <= 2).map((t) => t[2]), last = tr.filter((t) => t[0] >= 9).map((t) => t[2]);
+      return { tr, idx, recent: median(recent), yrIdx: idx[11] / idx[0] - 1, yrTr: median(last) / median(first) - 1 };
+    }
+    const cv = EB.canvas("#cs-cv", (ctx, w, h) => {
+      const P = EB.palette(), c = calc(), showAsk = askEl.checked;
+      const ly = legend(ctx, [["실거래", P.ok], ["저층 실거래", P.warn], ["시세 지수(가격 환산)", P.accent, "line"]], 56, 16, P, w - 8);
+      const ch = EB.chart(ctx, { x: 52, y: ly + 18, w: w - (showAsk ? 110 : 66), h: h - ly - 18 - 56 }, {
+        x: [-0.5, 11.5], y: [5.6, 6.9], xTicks: w < 480 ? [0, 4, 8, 11] : [0, 3, 6, 9, 11], xFmt: (m) => (w < 480 ? ml(m).slice(2) : ml(m)), yFmt: (v) => v.toFixed(1) + "억", yTicks: [5.6, 5.8, 6.0, 6.2, 6.4, 6.6, 6.8],
+        series: [{ data: c.idx.map((v, m) => [m, v / 100 * 6.10]), color: P.accent, width: 2.4 }],
+      });
+      pts = [];
+      TR.forEach((t) => {
+        const out = lowEl.checked && t[1] <= 3, x = ch.X(t[0]), y = ch.Y(t[2]);
+        ctx.beginPath(); ctx.arc(x, y, 5.5, 0, TAU);
+        if (out) { ctx.strokeStyle = P.faint; ctx.lineWidth = 1.5; ctx.stroke(); }
+        else { ctx.fillStyle = t[1] <= 3 ? P.warn : P.ok; ctx.fill(); }
+        if (sel === t) { ctx.beginPath(); ctx.arc(x, y, 9, 0, TAU); ctx.strokeStyle = P.text; ctx.lineWidth = 1.5; ctx.stroke(); T(ctx, t[1] + "층 " + eokS(t[2]), EB.clamp(x, ch.box.x + 40, ch.box.x + ch.box.w - 40), y - 14, { size: 11, color: P.text, align: "center", weight: 700 }); }
+        pts.push({ x, y, t });
+      });
+      if (showAsk) {
+        const ax = ch.box.x + ch.box.w + 26;
+        T(ctx, "지금 호가", ax, ch.box.y - 8, { size: 11, color: P.bad, align: "center", weight: 700 });
+        ASK.forEach((a) => { ctx.beginPath(); ctx.arc(ax, ch.Y(a), 5, 0, TAU); ctx.strokeStyle = P.bad; ctx.lineWidth = 2; ctx.stroke(); });
+        ctx.save(); ctx.setLineDash([3, 3]); ctx.strokeStyle = P.bad; ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.moveTo(ch.box.x, ch.Y(median(ASK))); ctx.lineTo(ax - 8, ch.Y(median(ASK))); ctx.stroke(); ctx.restore();
+      }
+    }, { get height() { return pw("cs-cv") < 480 ? 320 : 330; } });
+    EB.drag(cv.canvas, { start(x, y) { let best = null, bd = 14; pts.forEach((p) => { const d = Math.hypot(p.x - x, p.y - y); if (d < bd) { bd = d; best = p.t; } }); sel = best; cv.redraw(); } });
+    function draw() {
+      const c = calc();
+      EB.stat("cs-o-t", eok(c.recent));
+      EB.stat("cs-o-a", askEl.checked ? eok(median(ASK)) : "—");
+      EB.stat("cs-o-i", spanPct(c.yrIdx));
+      EB.stat("cs-o-r", spanPct(c.yrTr) + ' <small style="color:var(--text-faint)">(첫 석 달 → 끝 석 달 중위)</small>');
+      cv.redraw();
+    }
+    draw();
+  })();
+})();
+</script>
+</body>
+</html>
