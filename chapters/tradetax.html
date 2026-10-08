@@ -1,0 +1,922 @@
+<!doctype html>
+<!-- Copyright (c) 2026 geniuskey and EstateBook contributors.
+     Executable code: MIT (see ../LICENSE-MIT).
+     Text, illustrations, questions and explanations: CC-BY-4.0 (see ../LICENSE.md). -->
+<html lang="ko">
+<head>
+<!--head:start {"desc": "집을 팔 때 내는 양도소득세는 양도차익에서 비과세·공제를 차례로 빼고 누진세율을 곱하는 계단이다. 1세대 1주택 비과세와 12억 안분, 장기보유특별공제, 단기 세율, 2026년 5월 재개된 다주택 중과, 상속·증여의 기초를 시뮬레이터로 따라간다."}-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>사고팔 때의 세금 · EstateBook</title>
+<meta name="description" content="집을 팔 때 내는 양도소득세는 양도차익에서 비과세·공제를 차례로 빼고 누진세율을 곱하는 계단이다. 1세대 1주택 비과세와 12억 안분, 장기보유특별공제, 단기 세율, 2026년 5월 재개된 다주택 중과, 상속·증여의 기초를 시뮬레이터로 따라간다.">
+<link rel="canonical" href="https://estatebook.euiyun.com/chapters/tradetax.html">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<meta name="theme-color" content="#0f766e">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EstateBook">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="사고팔 때의 세금 · EstateBook">
+<meta property="og:description" content="집을 팔 때 내는 양도소득세는 양도차익에서 비과세·공제를 차례로 빼고 누진세율을 곱하는 계단이다. 1세대 1주택 비과세와 12억 안분, 장기보유특별공제, 단기 세율, 2026년 5월 재개된 다주택 중과, 상속·증여의 기초를 시뮬레이터로 따라간다.">
+<meta property="og:url" content="https://estatebook.euiyun.com/chapters/tradetax.html">
+<meta property="og:image" content="https://estatebook.euiyun.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Chapter","LearningResource"],"@id":"https://estatebook.euiyun.com/chapters/tradetax.html#chapter","name":"사고팔 때의 세금","headline":"사고팔 때의 세금 · EstateBook","description":"집을 팔 때 내는 양도소득세는 양도차익에서 비과세·공제를 차례로 빼고 누진세율을 곱하는 계단이다. 1세대 1주택 비과세와 12억 안분, 장기보유특별공제, 단기 세율, 2026년 5월 재개된 다주택 중과, 상속·증여의 기초를 시뮬레이터로 따라간다.","url":"https://estatebook.euiyun.com/chapters/tradetax.html","position":14,"inLanguage":"ko","isAccessibleForFree":true,"learningResourceType":"인터랙티브 교재","educationalLevel":"일반 성인","image":"https://estatebook.euiyun.com/og.png","dateModified":"2026-10-08","isPartOf":{"@type":"Book","@id":"https://estatebook.euiyun.com/#book","name":"EstateBook · 집값과 전세를 숫자로 푸는 부동산 교과서","url":"https://estatebook.euiyun.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"EstateBook","item":"https://estatebook.euiyun.com/"},{"@type":"ListItem","position":2,"name":"14. 사고팔 때의 세금","item":"https://estatebook.euiyun.com/chapters/tradetax.html"}]}]}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../css/style.css">
+<script src="../js/common.js"></script>
+<script src="../js/estate.js"></script>
+<!--head:end-->
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3d6151a0abc94ede89285d462527fa80"}'></script>
+<!-- End Cloudflare Web Analytics -->
+</head>
+<body data-chapter="tradetax">
+<main class="chapter">
+  <header class="chapter-hero">
+    <div class="eyebrow">Chapter 14</div>
+    <h1>사고팔 때의 세금</h1>
+    <p class="lead">하늘네가 B시의 84㎡를 6억 2,000만원에 산다면, 살 때 내는 취득세는 <a href="buy.html">8장</a>에서 이미 계산했다. 가지고 있는 동안의 보유세는 <a href="holdingtax.html">13장</a>에서 봤다. 남은 것은 언젠가 이 집을 팔 때다. 10년 뒤 집값이 올라 있다면 그 차익에 세금이 붙을까. 재원은 "집 한 채는 세금이 없다던데"라고 하고, 하늘은 "12억이 넘으면 낸다던데"라고 한다. 둘 다 반만 맞다. 여기에 하늘의 아버지가 지방 D시의 아파트를 언젠가 물려주겠다고 하면서 질문이 하나 더 생겼다. 그 집을 받으면 우리는 2주택자가 되는가. 그리고 하늘네 집주인 남궁현은 C아파트를 팔면 세금 폭탄을 맞는다는 뉴스를 보고 태호에게 전화를 걸어 왔다. 이 장은 집을 팔 때와 물려받을 때의 세금이 어떤 순서로 계산되는지, 어느 숫자가 세금을 크게 바꾸는지를 따라간다.</p>
+    <ul class="objectives">
+      <li>양도소득세를 양도차익 → 비과세·고가주택 안분 → 장기보유특별공제 → 기본공제 → 세율 → 지방소득세의 계단으로 계산한다.</li>
+      <li>1세대 1주택 비과세의 요건(2년 보유, 취득 시 조정대상지역이면 2년 거주)과 양도가 12억원 초과분만 과세하는 안분을 설명한다.</li>
+      <li>장기보유특별공제가 1주택 거주자(최대 80%)와 그 밖의 경우(최대 30%)에 얼마나 다른지 비교한다.</li>
+      <li>단기 양도 세율과 2026년 5월 10일 재개된 다주택 중과가 세금을 몇 배로 키우는지, 중과가 어떤 집을 팔 때 붙는지 정확히 구분한다.</li>
+      <li>상속세·증여세의 공제와 세율, 상속주택이 주택 수에 미치는 영향의 기초를 하늘네에 적용한다.</li>
+    </ul>
+  </header>
+
+  <section id="map">
+    <h2>집 한 채의 세금 지도</h2>
+    <p>집에 붙는 세금은 시점으로 나누면 네 갈래다. 살 때 한 번 내는 <span class="term">취득세</span><span class="en">(Acquisition tax)</span>, 가지고 있는 동안 해마다 내는 재산세와 종합부동산세, 팔 때 한 번 내는 <span class="term">양도소득세</span><span class="en">(Capital gains tax)</span>, 그리고 대가 없이 넘겨줄 때 받는 사람이 내는 <span class="term">상속세</span><span class="en">(Inheritance tax)</span>와 <span class="term">증여세</span><span class="en">(Gift tax)</span>다. 취득세와 재산세는 지방자치단체에, 종부세·양도세·상속세·증여세는 국가에 낸다. 그래서 취득세는 위택스, 양도세는 국세청 홈택스에서 모의계산한다.</p>
+    <p>네 세금은 따로 노는 것 같지만 하나의 숫자로 이어져 있다. 바로 <b>주택 수</b>다. 취득세 중과, 종부세 공제, 양도세 비과세와 중과가 모두 "이 세대가 집을 몇 채 가졌는가"로 갈린다. 부모의 집을 물려받는 순간 주택 수가 바뀌고, 그 변화가 내 집을 팔 때의 세금까지 흔든다. 이 장 후반부의 상속·증여 이야기가 양도세 이야기와 한 장에 묶인 이유다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 460 300" role="img" aria-label="집 한 채의 일생에 붙는 세금: 살 때 취득세, 가질 때 보유세, 팔 때 양도세, 넘겨줄 때 상속세·증여세">
+        <defs><marker id="tt-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="context-stroke"/></marker></defs>
+        <line x1="30" y1="120" x2="440" y2="120" class="s-line" marker-end="url(#tt-ar)"/>
+        <text x="440" y="142" text-anchor="end" class="lbl-dim">시간</text>
+        <circle cx="60" cy="120" r="9" class="f-bad"/>
+        <circle cx="200" cy="120" r="9" class="f-warn"/>
+        <circle cx="340" cy="120" r="9" class="f-bad"/>
+        <rect x="16" y="20" width="92" height="76" rx="8" class="f-bad-soft"/>
+        <text x="62" y="44" text-anchor="middle" class="lbl-b">살 때</text>
+        <text x="62" y="66" text-anchor="middle" class="lbl">취득세</text>
+        <text x="62" y="86" text-anchor="middle" class="lbl-dim">8장 · 지방세</text>
+        <rect x="140" y="20" width="120" height="76" rx="8" class="f-warn-soft"/>
+        <text x="200" y="44" text-anchor="middle" class="lbl-b">가질 때(매년)</text>
+        <text x="200" y="66" text-anchor="middle" class="lbl">재산세·종부세</text>
+        <text x="200" y="86" text-anchor="middle" class="lbl-dim">13장</text>
+        <rect x="290" y="20" width="100" height="76" rx="8" class="f-bad-soft"/>
+        <text x="340" y="44" text-anchor="middle" class="lbl-b">팔 때</text>
+        <text x="340" y="66" text-anchor="middle" class="lbl">양도소득세</text>
+        <text x="340" y="86" text-anchor="middle" class="lbl-dim">이 장 · 국세</text>
+        <path d="M340 132 C340 190 300 200 250 214" class="s-dash" marker-end="url(#tt-ar)"/>
+        <rect x="120" y="190" width="150" height="62" rx="8" class="f-acc-soft"/>
+        <text x="195" y="214" text-anchor="middle" class="lbl-b">넘겨줄 때</text>
+        <text x="195" y="236" text-anchor="middle" class="lbl">상속세·증여세</text>
+        <rect x="290" y="176" width="156" height="92" rx="8" class="f-surface"/>
+        <text x="368" y="200" text-anchor="middle" class="lbl-acc">모두를 잇는 숫자</text>
+        <text x="368" y="224" text-anchor="middle" class="lbl-b">세대의 주택 수</text>
+        <text x="368" y="246" text-anchor="middle" class="lbl-dim">중과·공제·비과세가</text>
+        <text x="368" y="262" text-anchor="middle" class="lbl-dim">여기서 갈린다</text>
+        <text x="195" y="282" text-anchor="middle" class="lbl-dim">받는 사람의 주택 수가 바뀐다</text>
+      </svg>
+      <figcaption><b>그림 1. 집 한 채의 세금 지도.</b> 살 때·가질 때·팔 때의 세금은 그 집의 가격과 보유 기간으로 정해지지만, 세율과 공제를 고르는 스위치는 대부분 세대 전체의 주택 수다. 상속·증여는 받는 사람의 주택 수를 바꿔서 그 사람이 원래 가진 집의 양도세까지 바꿀 수 있다.</figcaption>
+    </figure>
+
+    <p>먼저 살 때를 짧게 복습한다. 2026년 기준 주택 취득세는 6억원 이하 1%, 6억~9억원 구간은 가격에 따라 1%에서 3%로 올라가고, 9억원 초과는 3%다. 여기에 지방교육세가 붙고, 전용 85㎡를 넘으면 농어촌특별세가 더해진다. 조정대상지역에서 두 번째 집을 사면 8%, 세 번째부터 12%로 중과된다. 처음 집을 사는 사람은 12억원 이하 주택이면 최대 200만원을 감면받는다. 이 책의 모델로 계산하면 하늘네가 B시 84㎡를 6억 2,000만원에 처음 살 때 내는 돈은 아래와 같다. 자세한 계산은 <a href="buy.html">8장</a>에 있다.</p>
+
+    <div class="slip">
+      <div class="row"><span>취득세(6억 2,000만원 × 1.1333%)</span><span>7,026,460</span></div>
+      <div class="row"><span>지방교육세(취득세의 10%)</span><span>702,646</span></div>
+      <div class="row"><span>농어촌특별세(85㎡ 이하 비과세)</span><span>0</span></div>
+      <div class="row"><span>생애최초 감면</span><span>−2,000,000</span></div>
+      <div class="row total"><span>취득 관련 세금 합계</span><span>5,729,106</span></div>
+    </div>
+
+    <p>이 영수증은 팔 때 다시 쓰인다. 양도세를 계산할 때 취득세, 중개보수, 법무비 같은 <span class="term">필요경비</span><span class="en">(Deductible expenses)</span>는 차익에서 빼 주기 때문이다. 취득세 영수증과 계약서를 10년, 20년 동안 보관해야 하는 이유다.</p>
+  </section>
+
+  <section id="flow">
+    <h2>양도소득세의 계단</h2>
+    <p>양도소득세는 "판 값 − 산 값"에 세율을 곱하는 단순한 세금처럼 보이지만, 실제로는 여섯 계단을 차례로 내려간다. 각 계단에서 세금의 크기를 바꾸는 스위치가 하나씩 있다.</p>
+    <ol>
+      <li><b>양도차익</b> = 양도가액 − 취득가액 − 필요경비. 차익이 없으면(손해를 봤으면) 여기서 끝이다.</li>
+      <li><b>비과세와 고가주택 안분</b>: 1세대 1주택 요건을 채우면 양도가 12억원까지는 비과세, 12억원을 넘으면 넘는 비율만큼만 과세한다.</li>
+      <li><b>장기보유특별공제</b>: 3년 이상 가진 집은 보유(와 거주) 기간에 따라 차익의 일부를 빼 준다.</li>
+      <li><b>기본공제</b>: 한 해에 한 번, 250만원을 뺀다. 남은 것이 <span class="term">과세표준</span><span class="en">(Tax base)</span>이다.</li>
+      <li><b>세율</b>: 2년 이상 보유했으면 6~45%의 누진 기본세율, 짧게 보유했으면 60~70%의 단기 세율, 조정대상지역 다주택이면 기본세율에 20%p나 30%p를 더한다.</li>
+      <li><b>지방소득세</b>: 양도세의 10%를 지방소득세로 함께 낸다.</li>
+    </ol>
+
+    <div class="formula">
+      $$\text{세금} = \Big[\big(\underbrace{\text{양도차익}\times\text{과세 비율}}_{\text{과세 대상 차익}}\big)(1-\text{장기보유공제율}) - 250\text{만}\Big]\times\text{세율} - \text{누진공제},\quad \text{합계} = \text{세금}\times 1.1$$
+      <div class="where">과세 비율은 1세대 1주택이 12억원을 넘겨 팔 때 \((\text{양도가}-12\text{억})/\text{양도가}\), 비과세이면 0, 1주택이 아니면 1이다. 누진공제는 구간별 세율을 한 번에 계산하게 해 주는 빼기 값이다(예: 과세표준 8,800만~1억 5,000만원 구간은 35% − 1,544만원).</div>
+    </div>
+
+    <p>아래 시뮬레이터는 이 계단을 그대로 그린 것이다. 막대 하나가 한 계단이다. 기본값은 남궁현처럼 집을 두 채 가진 사람이 비규제지역의 집을 8년 만에 판 경우다. 상황을 '1주택'으로 바꾸고, 양도가를 12억원 위아래로 움직여 본다.</p>
+
+    <div class="sim" id="sim-fl">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>양도세 계단 내려가기</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="fl-cv"></canvas></div>
+        <div class="sim-controls">
+          <div class="seg" id="fl-h"><button data-value="one">1주택(거주)</button><button data-value="two" class="on">2주택·비조정</button><button data-value="tworeg">2주택·조정</button><button data-value="three">3주택+·조정</button></div>
+          <label class="ctrl"><span>취득가 <output id="fl-b-out"></output></span><input type="range" id="fl-b" min="2" max="20" step="0.1" value="6.2"></label>
+          <label class="ctrl"><span>양도가 <output id="fl-s-out"></output></span><input type="range" id="fl-s" min="2" max="30" step="0.1" value="8"></label>
+          <label class="ctrl"><span>보유 기간 <output id="fl-y-out"></output></span><input type="range" id="fl-y" min="0.5" max="20" step="0.5" value="8"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">양도차익</span><span class="v" id="fl-o-g">—</span></div>
+        <div class="stat"><span class="k">적용 세율</span><span class="v" id="fl-o-r">—</span></div>
+        <div class="stat"><span class="k">세금 합계(지방세 포함)</span><span class="v" id="fl-o-t">—</span></div>
+        <div class="stat"><span class="k">차익 중 세금</span><span class="v" id="fl-o-e">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 기본값(2주택, 비규제지역 집, 6억 2,000만원에 사서 8억원에 8년 만에 매도)에서 장기보유특별공제 16%와 기본공제를 거쳐 차익의 약 5분의 1(약 3,590만원)이 세금이 되는 것을 본다. ② '1주택(거주)'로 바꾼다. 양도가 12억원 이하라 차익 전체가 비과세로 빠지고 세금이 0이 된다. 양도가를 20억원까지 올리면 12억원 넘는 몫만 과세 대상으로 남는다. ③ '3주택+·조정'으로 바꾸고 보유 기간을 1.5년으로 줄인다. 2년 미만은 단기 세율 60%가, 2년 이상이면 기본세율 + 30%p 중과가 붙고 장기보유특별공제가 사라진다. (필요경비는 취득세와 사고팔 때의 중개보수만 넣었다. 이 책의 모델은 교육용 단순화이며, 2년 미만 다주택 중과의 비교 과세 등 세부 규정은 생략했다.)</div>
+    </div>
+
+    <p>같은 약 1억 6,700만원의 차익인데 상황에 따라 세금이 0원에서 수천만원까지 벌어진다. 계단마다 스위치가 달라서다. 비과세 스위치는 주택 수와 보유·거주 기간이, 공제 스위치는 보유·거주 기간이, 세율 스위치는 보유 기간과 다주택·조정대상지역 여부가 쥐고 있다. 세율은 누진이라 과세표준이 커질수록 마지막 1원에 붙는 세율(한계세율)이 올라간다. 누진세율의 계단이 처음이라면 MoneyBook의 <a href="https://moneybook.euiyun.com/chapters/tax.html">세금 장</a>에서 한계세율과 실효세율을 먼저 보면 좋다.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>과세표준</th><th class="num">기본세율</th><th class="num">누진공제</th></tr></thead>
+        <tbody>
+          <tr><td>1,400만원 이하</td><td class="num">6%</td><td class="num">—</td></tr>
+          <tr><td>1,400만~5,000만원</td><td class="num">15%</td><td class="num">126만원</td></tr>
+          <tr><td>5,000만~8,800만원</td><td class="num">24%</td><td class="num">576만원</td></tr>
+          <tr><td>8,800만~1억 5,000만원</td><td class="num">35%</td><td class="num">1,544만원</td></tr>
+          <tr><td>1억 5,000만~3억원</td><td class="num">38%</td><td class="num">1,994만원</td></tr>
+          <tr><td>3억~5억원</td><td class="num">40%</td><td class="num">2,594만원</td></tr>
+          <tr><td>5억~10억원</td><td class="num">42%</td><td class="num">3,594만원</td></tr>
+          <tr><td>10억원 초과</td><td class="num">45%</td><td class="num">6,594만원</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:14px;color:var(--text-dim)">2026년 기준 양도소득세 기본세율(소득세법 제55조). 여기에 지방소득세 10%가 더해진다.</p>
+  </section>
+
+  <section id="exempt">
+    <h2>1세대 1주택 비과세와 12억원</h2>
+    <p>세법은 한 가족이 사는 집 한 채를 팔 때 생긴 차익에는 대개 세금을 매기지 않는다. 살던 집을 팔고 비슷한 집으로 옮기는 것은 재산을 불린 것이 아니라 이사를 한 것에 가깝다고 보기 때문이다. 이것이 <span class="term">1세대 1주택 비과세</span><span class="en">(One-home exemption)</span>다. 2026년 기준 요건은 세 가지다.</p>
+    <ul>
+      <li><b>1세대가 양도일 현재 국내에 주택 한 채</b>만 가지고 있다. 세대는 주민등록상 같이 사는 가족 단위다. 부모와 따로 사는 성인 자녀는 대개 별도 세대다.</li>
+      <li><b>2년 이상 보유</b>한다.</li>
+      <li><b>취득할 때 그 집이 조정대상지역이었다면 2년 이상 거주</b>도 한다. 기준은 팔 때가 아니라 <b>살 때(계약 당시)</b>의 지정 여부다. 비규제지역에서 산 집은 거주하지 않아도 2년 보유만으로 된다.</li>
+    </ul>
+    <p>요건을 채워도 비싼 집은 전부 면제되지 않는다. 양도가가 12억원을 넘는 <span class="term">고가주택</span><span class="en">(High-value home)</span>은 12억원을 넘는 비율만큼의 차익에 세금을 매긴다. 이것을 <span class="term">안분</span>(나누어 계산하기)이라 한다. 15억원에 판 집의 차익이 3억원이라면 과세 대상은 3억원 × (15억 − 12억) ÷ 15억 = 6,000만원이다. 아래에서 양도가 손잡이를 끌어 12억원 선을 넘겨 본다.</p>
+
+    <div class="sim" id="sim-cap">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>12억원 선을 넘으면</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="cap-cv"></canvas><span class="hint">위쪽 손잡이를 끌어 양도가를 바꾼다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>취득가 <output id="cap-b-out"></output></span><input type="range" id="cap-b" min="3" max="15" step="0.1" value="9"></label>
+          <label class="ctrl"><span>보유·거주 기간 <output id="cap-y-out"></output></span><input type="range" id="cap-y" min="2" max="15" step="1" value="10"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">양도가</span><span class="v" id="cap-o-s">—</span></div>
+        <div class="stat"><span class="k">양도차익 중 과세 대상</span><span class="v" id="cap-o-t">—</span></div>
+        <div class="stat"><span class="k">세금 합계</span><span class="v" id="cap-o-x">—</span></div>
+        <div class="stat"><span class="k">차익 중 세금</span><span class="v" id="cap-o-e">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 양도가를 12억원 아래에 둔다. 차익이 얼마든 세금은 0이다. ② 손잡이를 15억원에 둔다. 차익 중 5분의 1만 과세 대상으로 남고, 10년 보유·거주한 1주택이라 장기보유특별공제 80%까지 받아 세금이 약 190만원, 차익의 0.3% 남짓에 그친다. ③ 보유·거주 기간을 2년으로 줄이고 양도가를 30억원까지 끈다. 과세 비율이 60%로 커지고 공제가 거의 없어져 아래 곡선이 가파르게 올라간다. 12억원 기준은 "비싼 집일수록 비과세 혜택을 덜 준다"는 장치다. (취득 시 비규제지역, 1세대 1주택 요건을 채운 것으로 본다. 필요경비는 취득세와 중개보수만.)</div>
+    </div>
+
+    <p>곡선은 12억원에서 갑자기 뛰지 않는다. 12억원을 조금 넘으면 과세 비율이 아주 작기 때문이다. 이 설계 덕분에 12억원 바로 위에서 파는 사람이 바로 아래에서 파는 사람보다 세금 때문에 손해를 보는 '절벽'은 생기지 않는다. 반대로 보유·거주가 짧은 고가주택은 공제를 거의 못 받아 세금이 빠르게 커진다. 같은 1주택이라도 오래 살수록 유리하게 만든 것이 다음 절의 장기보유특별공제다.</p>
+
+    <div class="callout buyer">
+      <strong>살 때 미리 확인할 비과세 조건</strong>
+      <ul>
+        <li><b>계약일의 규제지역 여부</b>: 계약 당시 조정대상지역이면 나중에 팔 때 2년 거주가 필요하다. 지정·해제 날짜는 국토교통부 고시로 확인하고, 계약서의 계약일과 잔금일을 함께 보관한다.</li>
+        <li><b>세대 구성</b>: 같은 주소에 사는 부모가 집을 가지고 있으면 우리 세대가 2주택이 될 수 있다. 등본상 세대를 확인한다.</li>
+        <li><b>필요경비 증빙</b>: 취득세 영수증, 중개보수 영수증, 법무사 비용, 발코니 확장·섀시 같은 자본적 지출의 세금계산서. 도배·장판 같은 수리비는 필요경비로 인정되지 않는 경우가 많다.</li>
+        <li><b>입주권·분양권</b>: 조합원입주권이나 분양권도 주택 수에 들어가는 경우가 있다. 재건축 단지를 함께 가지고 있다면 따로 확인한다(<a href="redevelop.html">12장</a>).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="ltd">
+    <h2>장기보유특별공제: 80%와 30%</h2>
+    <p>오래 가진 집을 팔면 차익 가운데 일부는 집이 좋아져서가 아니라 물가가 올라서 생긴 것이다. 또 여러 해에 걸쳐 쌓인 차익을 한 해에 몰아서 누진세율을 매기면 세금이 지나치게 커진다. 그래서 3년 이상 가진 부동산을 팔면 차익의 일정 비율을 빼 준다. 이것이 <span class="term">장기보유특별공제</span><span class="en">(Long-term holding deduction)</span>다. 2026년 기준 공제율은 두 표로 나뉜다.</p>
+    <ul>
+      <li><b>1세대 1주택(2년 이상 거주)</b>: 보유 1년마다 4%(최대 40%) + 거주 1년마다 4%(최대 40%), 합쳐서 최대 80%. 10년 보유·10년 거주면 80%다.</li>
+      <li><b>그 밖의 경우</b>(다주택자의 일반 주택, 거주하지 않은 1주택 등): 3년 보유 6%에서 시작해 1년마다 2%p씩, 15년 이상 최대 30%.</li>
+      <li><b>조정대상지역 다주택 중과 대상</b>이면 장기보유특별공제를 아예 받지 못한다.</li>
+    </ul>
+    <p>아래 그래프에서 가로축의 손잡이를 끌어 보유 기간을 바꾸고, 그 가운데 몇 년을 실제로 살았는지 거주 기간을 조절한다.</p>
+
+    <div class="sim" id="sim-ltd">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>오래 살수록 줄어드는 세금</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="ltd-cv"></canvas><span class="hint">가로축 손잡이를 끌어 보유 기간을 고른다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>그중 거주 기간 <output id="ltd-l-out"></output></span><input type="range" id="ltd-l" min="0" max="20" step="1" value="10"></label>
+          <label class="ctrl"><span>과세 대상 차익 <output id="ltd-g-out"></output></span><input type="range" id="ltd-g" min="0.5" max="10" step="0.1" value="3"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">고른 보유 기간</span><span class="v" id="ltd-o-y">—</span></div>
+        <div class="stat"><span class="k">1주택 공제율 / 세금</span><span class="v" id="ltd-o-a">—</span></div>
+        <div class="stat"><span class="k">일반 공제율 / 세금</span><span class="v" id="ltd-o-b">—</span></div>
+        <div class="stat"><span class="k">거주의 값</span><span class="v" id="ltd-o-d">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 보유 10년, 거주 10년에 둔다. 1주택 공제율 80%와 일반 20%의 차이가 3억원 차익에서 세금 수천만원으로 벌어진다. ② 거주 기간을 0~1년으로 줄인다. 2년 미만 거주한 1주택은 1주택 표를 못 쓰고 일반 표(최대 30%)로 떨어진다. 같은 집을 가졌어도 살았느냐가 세금을 가른다. ③ 보유 기간 손잡이를 2년 아래로 끈다. 3년 미만은 공제가 아예 없다. (세금은 과세 대상 차익에 공제율을 적용하고 기본공제 250만원을 뺀 뒤 기본세율과 지방소득세를 계산했다. 거주 기간은 보유 기간을 넘을 수 없다.)</div>
+    </div>
+
+    <p>두 선의 간격이 '거주의 값'이다. 1주택 표는 보유만으로는 최대 40%이고, 나머지 40%는 거주로만 채워진다. 집을 사 두고 전세를 놓은 채 다른 곳에 살면 이 절반을 잃는다. 세법이 "살 집"과 "가진 집"을 구별하려는 장치다.</p>
+
+    <div class="callout deep">
+      <strong>장기보유특별공제를 거주 중심으로 바꾸는 개편안(추진 중)</strong>
+      2026년 8월 정부가 발표한 세제개편안에는 1세대 1주택 장기보유특별공제를 보유보다 거주 중심으로 바꾸는 내용이 들어 있다. 보도된 정부안은 2028년부터 보유 몫을 줄이고 거주 몫을 늘려, 이후에는 거주 기간에만 공제를 주는 방향이며, 공제액 상한을 새로 두는 내용도 포함됐다. 2026년 10월 현재 국회 심사 중인 <b>확정 전</b> 안이다. 통과되더라도 시행 시기와 경과 규정에 따라 이미 가진 집에 어떻게 적용될지가 달라지므로, 이 책의 계산은 현행 제도(보유 4% + 거주 4%)를 쓴다.
+    </div>
+  </section>
+
+  <section id="short">
+    <h2>짧게 팔면: 1년 70%, 2년 60%</h2>
+    <p>세법은 짧게 사고파는 거래를 투기에 가깝다고 보고 무겁게 매긴다. 2026년 기준 주택(과 조합원입주권·분양권)을 1년 안에 팔면 70%, 1년 이상 2년 안에 팔면 60%의 단일 세율이다. 지방소득세까지 더하면 77%, 66%다. 2년을 채우면 누진 기본세율로 내려오고, 1세대 1주택이면 비과세까지 된다. 그래서 보유 기간 2년 근처에서 세금은 계단처럼 떨어진다.</p>
+    <p>아래 그래프의 가로축은 산 날부터 판 날까지의 개월 수다. 손잡이를 끌어 매도 시점을 옮겨 본다.</p>
+
+    <div class="sim" id="sim-sh">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>보유 기간의 절벽</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="sh-cv"></canvas><span class="hint">아래 손잡이를 끌어 매도 시점을 고른다</span></div>
+        <div class="sim-controls">
+          <div class="seg" id="sh-h"><button data-value="1" class="on">1주택(비규제에서 취득)</button><button data-value="2">2주택(비규제 집 매도)</button></div>
+          <label class="ctrl"><span>양도차익 <output id="sh-g-out"></output></span><input type="range" id="sh-g" min="1000" max="30000" step="500" value="6000"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">매도 시점</span><span class="v" id="sh-o-m">—</span></div>
+        <div class="stat"><span class="k">적용 세율</span><span class="v" id="sh-o-r">—</span></div>
+        <div class="stat"><span class="k">세금 합계</span><span class="v" id="sh-o-t">—</span></div>
+        <div class="stat"><span class="k">다음 계단까지 기다리면</span><span class="v" id="sh-o-w">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 11개월에 둔다. 6,000만원 차익의 약 4분의 3이 세금이다. ② 한 달 뒤인 12개월로 옮긴다. 세율이 70%에서 60%로 내려간다. ③ 24개월로 옮긴다. 1주택이면 세금이 0이 되고, 2주택이면 기본세율로 내려오지만 장기보유특별공제가 아직 없어(3년 미만) 차익의 약 15%가 세금이다. 차익을 3억원까지 올려 계단의 높이를 본다. (기본공제 250만원과 지방소득세를 넣었다. 매도 시점은 잔금일 기준으로 센다. 실제로는 취득일과 양도일을 잔금일 또는 등기접수일 중 빠른 날로 본다.)</div>
+    </div>
+
+    <p>2년이 되기 하루 전에 파느냐 하루 뒤에 파느냐로 수천만원이 갈린다. 그래서 잔금일을 정할 때 매도인이 '보유 2년'을 채우려고 날짜를 미루자고 하는 일이 흔하다. 하늘네처럼 갈아탈 계획이 없는 실수요자에게 단기 세율은 먼 얘기지만, 이사·전근으로 2년 안에 팔아야 하는 사정이 생길 수 있다. 세법에는 근무상 형편이나 취학 같은 부득이한 사유로 이사하면 보유 기간 요건을 완화하는 예외가 있으니, 그런 경우에는 미리 세무사에게 확인한다.</p>
+  </section>
+
+  <section id="heavy">
+    <h2>다주택 중과와 일시적 2주택</h2>
+    <p>조정대상지역에 있는 집을 다주택자가 팔면 기본세율에 2주택은 20%p, 3주택 이상은 30%p를 더한다. 이것이 <span class="term">양도세 중과</span><span class="en">(Surcharge on multi-home sales)</span>다. 중과 대상이면 장기보유특별공제도 받지 못한다. 최고세율은 45% + 30%p = 75%이고, 지방소득세 10%를 더하면 82.5%다. 차익 10억원 가운데 8억원 넘게 세금이 될 수 있다는 뜻이다.</p>
+    <p>이 중과는 여러 해 동안 한시적으로 멈춰 있었다(중과 배제 유예). 유예가 2026년 5월 9일로 끝나 <b>5월 10일 양도분부터</b> 중과가 다시 적용되고 있다. 보도에 따르면 유예 종료 직전에 급매물이 몰렸고, 종료 전에 계약을 마친 거래에 대한 경과 규정이 있었다(세부 요건은 확인 필요). 정부가 2026년 8월에 낸 세제개편안에는 2027~2028년에 중과 가산세율을 한시적으로 낮추는 내용도 들어 있다고 보도됐으나, 국회 심사 중인 <b>확정 전</b> 안이다.</p>
+    <p>중과를 정확히 읽으려면 한 가지를 분명히 해야 한다. <b>중과는 "다주택자"에게 붙는 것이 아니라 "다주택자가 양도 시점에 조정대상지역에 있는 집을 팔 때" 그 집의 양도에 붙는다.</b> 2주택자라도 비규제지역의 집을 팔면 중과 없이 기본세율과 일반 장기보유특별공제(최대 30%)가 적용된다. 그리고 주택 수를 셀 때는 수도권·광역시·세종 밖의 공시가격 3억원 이하 주택처럼 중과 판정에서 빠지는 집이 있다(지방 저가주택 예외). 그래서 같은 두 채를 가진 사람도 <b>어느 집을 먼저 파느냐</b>에 따라 세금이 크게 다르다.</p>
+
+    <div class="sim" id="sim-ord">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>어느 집을 먼저 팔까</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="ord-cv"></canvas><span class="hint">아래 막대를 누르면 그 순서를 고른다</span></div>
+        <div class="sim-controls">
+          <div class="seg" id="ord-o"><button data-value="AB" class="on">서울 집 먼저</button><button data-value="BA">B시 집 먼저</button></div>
+          <label class="ctrl"><span>서울 A구 집 양도가 <output id="ord-a-out"></output></span><input type="range" id="ord-a" min="8" max="25" step="0.5" value="14"></label>
+          <label class="ctrl"><span>B시 집 양도가 <output id="ord-b-out"></output></span><input type="range" id="ord-b" min="5" max="10" step="0.1" value="8"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">첫 번째 매도 세금</span><span class="v" id="ord-o-1">—</span></div>
+        <div class="stat"><span class="k">두 번째 매도 세금</span><span class="v" id="ord-o-2">—</span></div>
+        <div class="stat"><span class="k">이 순서의 합계</span><span class="v" id="ord-o-t">—</span></div>
+        <div class="stat"><span class="k">반대 순서와의 차이</span><span class="v" id="ord-o-d">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① '서울 집 먼저'에서 첫 매도에 붙는 중과를 본다. 서울 A구는 조정대상지역이라 2주택 상태로 팔면 기본세율 + 20%p, 장기보유특별공제 0%여서 차익 약 7억 8,000만원에 세금이 약 4억 9,000만원이다. ② 'B시 집 먼저'로 바꾼다. B시 집은 비규제지역이라 2주택이어도 중과가 없고, 그다음 서울 집은 1주택으로 팔아 12억원 넘는 몫만 과세된다. ③ 서울 집 양도가를 25억원까지 올리면 순서의 차이가 11억원을 넘는다. 반대로 B시 집 양도가를 6억 8,000만원 아래로 내리면 B시 집은 차익이 없어 먼저 팔아도 세금이 0원이다. (교육용 가정: 서울 집은 6억원에 사서 15년 보유·거주, B시 집은 2021년 6억 8,000만원에 사서 6년 보유, 취득 당시 비규제. 두 매도는 같은 해가 아닌 서로 다른 해에 한 것으로 보아 기본공제를 각각 받는다.)</div>
+    </div>
+
+    <p>순서 하나로 세금이 이렇게 갈리는 것은 제도의 설계가 그렇기 때문이다. 중과는 규제지역의 집을 다주택 상태로 파는 것을 막는 데 초점이 있어서, 비규제지역의 집을 먼저 정리하고 규제지역의 집 한 채만 남기는 쪽으로 사람들을 이끈다. 2022년 이후에는 다주택자가 다른 집을 모두 판 뒤 남은 한 채의 보유 기간을 처음부터 다시 세던 규정도 없어져서, 남은 집은 원래 산 날부터 보유 기간을 센다.</p>
+
+    <p>이 가격 변화는 어느 힘에서 왔는가. 양도세는 집의 가치를 바꾸지 않지만, 시장에 나오는 매물의 양을 바꾼다. 중과가 다시 시작되기 직전에는 팔려는 집이 몰리고, 시작된 뒤에는 "팔면 세금이 너무 크니 그냥 갖고 있자"는 집주인이 늘어 매물이 줄어든다. 이것을 <span class="term">매물 잠김</span><span class="en">(Lock-in effect)</span>이라 한다. 거래되는 물량이 줄면 적은 거래가 가격을 정하게 되어 값이 오히려 버티거나 오를 수도 있다. 다섯 힘 가운데 <b>규제</b>가 <b>공급(거래되는 물량)</b>을 거쳐 가격에 닿는 경로다. 규제가 어느 쪽으로 가격을 움직이는지는 <a href="policy.html">15장</a>에서 더 넓게 본다.</p>
+
+    <h3>일시적 2주택: 갈아타는 사람을 위한 시간</h3>
+    <p>살던 집을 팔기 전에 새 집을 먼저 사면 잠시 2주택이 된다. 이사하는 사람 대부분이 겪는 일이라 세법은 이 경우를 <span class="term">일시적 2주택</span><span class="en">(Temporary two homes)</span>으로 보고, 정해진 기간 안에 종전 집을 팔면 1세대 1주택처럼 비과세해 준다. 조건은 종전 집을 산 날부터 1년 이상 지난 뒤 새 집을 사고, 새 집을 산 날부터 처분 기한 안에 종전 집을 파는 것이다. 종전 집은 물론 2년 보유(필요하면 2년 거주) 요건을 채워야 한다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 460 280" role="img" aria-label="일시적 2주택 처분 기한: 종전 집 취득 후 1년 이상 지나 새 집 취득, 새 집 취득일부터 3년(둘 다 조정대상지역이면 2년) 안에 종전 집 매도">
+        <defs><marker id="tt-ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="context-stroke"/></marker></defs>
+        <text x="16" y="26" class="lbl-b">종전 집</text>
+        <rect x="70" y="40" width="300" height="26" rx="5" class="f-acc-soft"/>
+        <text x="80" y="58" class="lbl">보유(2년 이상, 필요하면 거주 2년)</text>
+        <circle cx="70" cy="53" r="6" class="f-acc"/>
+        <line x1="70" y1="100" x2="190" y2="100" class="s-line" marker-end="url(#tt-ar2)" marker-start="url(#tt-ar2)"/>
+        <text x="130" y="118" text-anchor="middle" class="lbl-dim">1년 이상 지나서</text>
+        <text x="16" y="152" class="lbl-b">새 집</text>
+        <rect x="190" y="166" width="256" height="26" rx="5" class="f-acc2-soft"/>
+        <circle cx="190" cy="179" r="6" class="f-acc2"/>
+        <text x="200" y="184" class="lbl">새 집 취득</text>
+        <line x1="190" y1="206" x2="370" y2="206" class="s-ok" marker-end="url(#tt-ar2)"/>
+        <text x="280" y="226" text-anchor="middle" class="lbl-acc">처분 기한 안에 종전 집 매도</text>
+        <line x1="370" y1="36" x2="370" y2="214" class="s-bad"/>
+        <text x="370" y="30" text-anchor="middle" class="lbl-bad">매도</text>
+        <text x="230" y="252" text-anchor="middle" class="lbl">기한: 기본 3년</text>
+        <text x="230" y="272" text-anchor="middle" class="lbl-dim">둘 다 조정대상지역이면 2년(2026-10-01 시행, 그 전 취득·계약분 3년)</text>
+      </svg>
+      <figcaption><b>그림 2. 일시적 2주택의 시간표.</b> 종전 집을 산 뒤 1년이 지나 새 집을 사고, 새 집을 산 날부터 처분 기한 안에 종전 집을 팔면 종전 집의 양도는 1세대 1주택 비과세(12억원 초과분은 안분 과세)를 받는다. 2026년 10월 1일부터 종전 집과 새 집이 모두 조정대상지역이면 기한이 3년에서 2년으로 줄었다. 2026년 8월 3일 이전에 취득했거나 계약한 새 집은 종전처럼 3년이다. 취득세의 일시적 2주택 기한과 대출 약정의 처분 조건 기한은 따로 정해지므로 각각 확인한다.</figcaption>
+    </figure>
+
+    <div class="callout pro">
+      <strong>"팔면 세금이 얼마예요?"에 중개사가 답하지 않는 이유</strong>
+      매도 상담에서 가장 많이 받는 질문이 양도세다. 민태호는 대략의 계산 흐름은 보여 주지만 "얼마입니다"라고 확정해 말하지 않는다. 세금 상담과 신고 대리는 세무사의 일이고, 중개사가 틀린 세액을 말해 손님이 그걸 믿고 계약하면 분쟁이 된다. 실제로 "중개사가 비과세라고 해서 팔았는데 세금이 나왔다"는 유형의 분쟁이 있다. 태호의 순서는 이렇다. ① 손님의 세대 전체 주택 수(입주권·분양권, 부모와 같은 세대인지 포함), ② 각 집의 취득일과 취득 당시 규제지역 여부, ③ 실제 거주 기간(전입 기록), ④ 취득가와 필요경비 증빙을 메모로 정리해 주고, 그 메모를 들고 세무사에게 가거나 홈택스 모의계산을 해 보라고 권한다. 그리고 잔금일을 정하기 전에 세금을 먼저 확인하자고 한다. 잔금일 하루가 보유 2년이나 일시적 2주택 기한을 넘기느냐를 가르기 때문이다. 거래를 서두르면 보수는 빨리 받지만, 손님이 세금을 확인할 시간을 주는 쪽이 길게 보면 사무소에도 이롭다는 것이 태호의 생각이다.
+    </div>
+  </section>
+
+  <section id="inherit">
+    <h2>상속과 증여의 기초</h2>
+    <p>집이 대가 없이 넘어가는 길은 둘이다. 사람이 세상을 떠나 넘어가면 <b>상속</b>, 살아 있을 때 넘겨주면 <b>증여</b>다. 세율표는 같지만 공제가 크게 다르다. 2026년 기준으로 정리하면 이렇다.</p>
+    <ul>
+      <li><b>상속세</b>: 돌아가신 분의 재산 전체에 매긴다. 기초공제 2억원과 자녀 등 인적공제를 합한 금액과 <span class="term">일괄공제</span>(5억원) 가운데 큰 쪽을 뺄 수 있다. 배우자가 있으면 <span class="term">배우자 상속공제</span>로 실제 상속받은 금액만큼(최소 5억원, 최대 30억원) 더 뺀다. 그래서 배우자와 자녀가 있는 집은 재산이 약 10억원 이하면 상속세가 없는 경우가 많다. 부모와 10년 이상 함께 산 자녀가 그 집을 물려받으면 <span class="term">동거주택 상속공제</span>(최대 6억원)도 있다.</li>
+      <li><b>증여세</b>: 받는 사람이 받은 재산에 낸다. <span class="term">증여재산공제</span>는 10년 동안 합쳐서 배우자 6억원, 성인 자녀 5,000만원, 미성년 자녀 2,000만원이다. 혼인신고 전후 2년 안이나 자녀 출생 후 2년 안에 부모·조부모에게 받으면 <span class="term">혼인·출산 증여재산공제</span> 1억원이 더해진다(혼인과 출산을 합쳐 1억원 한도).</li>
+      <li><b>세율</b>(둘 다): 과세표준 1억원 이하 10%, 5억원 이하 20%, 10억원 이하 30%, 30억원 이하 40%, 30억원 초과 50%. 기한 안에 신고하면 세액의 3%를 빼 준다(신고세액공제).</li>
+    </ul>
+    <p>공제 차이 때문에 같은 금액이라도 상속과 증여의 세금이 크게 다르다. 아래 그래프에서 넘겨주는 재산의 크기를 손잡이로 끌어 본다.</p>
+
+    <div class="sim" id="sim-gi">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>같은 재산, 상속과 증여</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="gi-cv"></canvas><span class="hint">가로축 손잡이를 끌어 재산 크기를 고른다</span></div>
+        <div class="sim-controls">
+          <div class="seg" id="gi-to"><button data-value="adult" class="on">성인 자녀</button><button data-value="minor">미성년 자녀</button><button data-value="spouse">배우자</button></div>
+          <label class="check"><input type="checkbox" id="gi-mar"> 혼인·출산 증여공제 1억(자녀)</label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">넘겨주는 재산</span><span class="v" id="gi-o-v">—</span></div>
+        <div class="stat"><span class="k">증여세(한 번에 증여)</span><span class="v" id="gi-o-g">—</span></div>
+        <div class="stat"><span class="k">상속세(자녀만 상속)</span><span class="v" id="gi-o-i">—</span></div>
+        <div class="stat"><span class="k">상속세(배우자와 자녀)</span><span class="v" id="gi-o-s">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 1억 6,000만원(하늘 아버지의 D시 아파트 시세)에 둔다. 성인 자녀가 증여로 받으면 1,000만원 넘게 세금이 나오지만, 상속이면 일괄공제 5억원 안이라 0원이다. ② 10억원으로 옮긴다. 배우자가 있으면 상속세가 여전히 0원 근처인데, 자녀 한 명에게 한 번에 증여하면 2억원이 넘는다. ③ '배우자'를 고른다. 배우자 증여공제 6억원 때문에 증여 곡선이 오른쪽으로 밀린다. (재산은 모두 시가로 평가한다고 보고, 상속은 일괄공제와 배우자 최소 공제 5억원만, 증여는 10년 안의 다른 증여가 없다고 보았다. 금융재산 공제, 장례비, 채무, 사전 증여 합산, 세대생략 할증 등은 뺐다. 세금에는 신고세액공제 3%를 반영했다.)</div>
+    </div>
+
+    <p>공제만 보면 상속이 늘 유리해 보이지만 그렇게 단순하지 않다. 재산이 크면 상속세 누진세율의 높은 구간에 걸리기 때문에, 10년 단위로 나누어 미리 증여하면 각 증여가 낮은 구간에서 과세되어 전체 세금이 줄 수 있다. 대신 증여는 받는 사람의 주택 수를 지금 당장 바꾸고, 증여받은 집에는 취득세도 붙는다. 2026년 기준 증여로 집을 받으면 취득세 3.5%(지방교육세 등 포함 약 3.8~4.0%)를 내고, 조정대상지역의 공시가격 3억원 이상 주택을 다주택자가 증여하면 12%로 중과된다. 상속으로 받으면 취득세 2.8%(같은 방식으로 약 3%)이고, 무주택 세대가 상속으로 1주택이 되는 경우에는 낮은 특례세율(약 0.8%)이 있다.</p>
+
+    <div class="callout deep">
+      <strong>물려받은 집의 '산 값'은 언제로 정해지나</strong>
+      양도세의 취득가액은 상속받은 집이면 <b>상속 당시의 평가액</b>(대개 시가), 증여받은 집이면 <b>증여 당시의 평가액</b>이다. 하늘 아버지가 2001년 7,000만원에 산 집을 1억 6,000만원일 때 물려받으면, 하늘에게는 1억 6,000만원에 산 집이 된다. 그동안 쌓인 9,000만원의 차익은 상속이면 상속세 계산으로 넘어가고, 하늘이 나중에 팔 때의 양도세에서는 사라진다. 다만 증여에는 <span class="term">이월과세</span>가 있다. 배우자나 부모에게 증여받은 집을 10년 안에 팔면 취득가액을 증여한 사람이 원래 산 값(7,000만원)으로 돌려 계산한다. 증여를 받자마자 팔아 차익을 지우는 것을 막는 장치다.
+    </div>
+
+    <h3>상속주택과 주택 수</h3>
+    <p>집을 한 채 가진 사람이 부모의 집을 상속받으면 2주택이 된다. 본인이 원해서 늘어난 집이 아니므로 세법은 <span class="term">상속주택 특례</span>를 둔다. 상속받기 전부터 가지고 있던 일반주택을 먼저 팔면 상속주택은 없는 것으로 보고 1세대 1주택 비과세를 준다. 조건이 몇 가지 있다. 돌아가신 분과 따로 사는 별도 세대였을 것, 상속 개시 당시 이미 일반주택을 가지고 있었을 것, 그리고 일반주택을 먼저 팔 것. 여러 형제가 한 집을 나누어 상속받으면 지분이 가장 큰 사람(같으면 그 집에 사는 사람 등의 순서)의 집으로 보고, 소수 지분을 가진 사람은 일정 조건에서 주택 수에서 빠진다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 460 300" role="img" aria-label="상속주택 특례: 일반주택을 먼저 가지고 있다가 상속받은 뒤 일반주택을 먼저 팔면 비과세, 상속받은 뒤 새 집을 사면 특례가 없다">
+        <defs><marker id="tt-ar3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="context-stroke"/></marker></defs>
+        <text x="16" y="24" class="lbl-acc">경로 1. 특례가 된다</text>
+        <rect x="16" y="36" width="122" height="54" rx="7" class="f-surface"/>
+        <text x="77" y="58" text-anchor="middle" class="lbl-b">우리 집 보유</text>
+        <text x="77" y="78" text-anchor="middle" class="lbl-dim">(일반주택)</text>
+        <line x1="140" y1="63" x2="166" y2="63" class="s-line" marker-end="url(#tt-ar3)"/>
+        <rect x="168" y="36" width="122" height="54" rx="7" class="f-acc2-soft"/>
+        <text x="229" y="58" text-anchor="middle" class="lbl-b">부모 집 상속</text>
+        <text x="229" y="78" text-anchor="middle" class="lbl-dim">2주택이 된다</text>
+        <line x1="292" y1="63" x2="318" y2="63" class="s-line" marker-end="url(#tt-ar3)"/>
+        <rect x="320" y="36" width="126" height="54" rx="7" class="f-ok-soft"/>
+        <text x="383" y="58" text-anchor="middle" class="lbl-b">우리 집 먼저 매도</text>
+        <text x="383" y="78" text-anchor="middle" class="lbl-dim">1주택처럼 비과세</text>
+        <text x="16" y="140" class="lbl-bad">경로 2. 특례가 없다</text>
+        <rect x="16" y="152" width="122" height="54" rx="7" class="f-acc2-soft"/>
+        <text x="77" y="174" text-anchor="middle" class="lbl-b">부모 집 상속</text>
+        <text x="77" y="194" text-anchor="middle" class="lbl-dim">(먼저 받음)</text>
+        <line x1="140" y1="179" x2="166" y2="179" class="s-line" marker-end="url(#tt-ar3)"/>
+        <rect x="168" y="152" width="122" height="54" rx="7" class="f-surface"/>
+        <text x="229" y="174" text-anchor="middle" class="lbl-b">우리 집 매수</text>
+        <text x="229" y="194" text-anchor="middle" class="lbl-dim">2주택이 된다</text>
+        <line x1="292" y1="179" x2="318" y2="179" class="s-line" marker-end="url(#tt-ar3)"/>
+        <rect x="320" y="152" width="126" height="54" rx="7" class="f-bad-soft"/>
+        <text x="383" y="174" text-anchor="middle" class="lbl-b">우리 집 매도</text>
+        <text x="383" y="194" text-anchor="middle" class="lbl-dim">상속주택 특례 없음</text>
+        <text x="230" y="240" text-anchor="middle" class="lbl">같은 두 채라도 '언제부터 가졌나'로 갈린다</text>
+        <text x="230" y="262" text-anchor="middle" class="lbl-dim">경로 2는 상속주택을 먼저 팔거나</text>
+        <text x="230" y="280" text-anchor="middle" class="lbl-dim">일시적 2주택 등 다른 규정을 따로 따진다</text>
+      </svg>
+      <figcaption><b>그림 3. 상속주택 특례의 순서.</b> 특례는 상속 개시 당시 이미 가지고 있던 일반주택을 보호한다. 상속을 받은 뒤에 새로 산 집에는 이 특례가 적용되지 않는다. 증여받은 집에는 이런 특례가 없어서, 증여받는 순간부터 받은 사람의 주택 수에 그대로 더해진다. 취득세 주택 수(상속 후 5년간 제외)와 종부세 주택 수(지분·가격 요건에 따라 제외)는 규정이 따로 있다.</figcaption>
+    </figure>
+
+    <div class="callout warn">
+      <strong>제도와 수치는 해마다 바뀐다</strong>
+      이 장의 세율·공제·기한은 2026년 10월 기준이다. 양도세 다주택 중과는 2026년 5월 10일 재개됐고, 일시적 2주택 처분 기한은 2026년 10월 1일부터 바뀌었다. 2026년 8월 정부 세제개편안의 장기보유특별공제 거주 중심 전환과 중과 한시 완화, 국회에 계류된 상속세 과세 방식 개편(유산취득세 전환 등)은 모두 <b>추진 중·확정 전</b>이다. 상속·증여와 양도세는 예외 규정이 많아 한 줄 차이로 결과가 뒤집힌다. 이 장의 계산은 교육용 모델의 결과이며, 실제 세액은 국세청 홈택스·위택스 모의계산이나 세무사에게 확인한다.
+    </div>
+  </section>
+
+  <section id="case">
+    <h2>하늘네 집 노트</h2>
+    <p>이제 하늘네의 숫자로 돌아간다. 하늘네가 후보지 가운데 한 곳에서 84㎡를 사서 오래 살다가 판다고 하고, 그 사이 아버지의 D시 아파트(시세 약 1억 6,000만원)가 어떤 길로 넘어오는지에 따라 세금이 어떻게 달라지는지 본다. 기둥 넷은 아버지 집의 네 가지 경로다. 아래 시간 축의 손잡이를 끌어 매도 시점을 옮기고, 기둥을 눌러 내역을 본다. 집값 변화율은 전망이 아니라 가정이다.</p>
+
+    <div class="sim" id="sim-life">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>하늘네 집 한 채의 세금 일생</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="life-cv"></canvas><span class="hint">손잡이를 끌고 기둥을 누른다</span></div>
+        <div class="sim-controls">
+          <div class="seg" id="life-a"><button data-value="A">서울 A구</button><button data-value="B" class="on">경기 B시</button><button data-value="E">경기 E시</button></div>
+          <label class="ctrl"><span>연 집값 변화(가정) <output id="life-g-out"></output></span><input type="range" id="life-g" min="-3" max="8" step="0.5" value="2"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">매도 시점 / 매도가</span><span class="v" id="life-o-s">—</span></div>
+        <div class="stat"><span class="k" id="life-o-k">고른 경로</span><span class="v" id="life-o-p">—</span></div>
+        <div class="stat"><span class="k">이 경로의 세금 합계</span><span class="v" id="life-o-t">—</span></div>
+        <div class="stat"><span class="k">그중 양도세</span><span class="v" id="life-o-c">—</span></div>
+      </div>
+      <div class="sim-note" id="life-note">해볼 것: ① 기본값(B시, 2027년 매수, 연 2% 가정, 10년 뒤 매도)에서 '아버지 집 없음'과 '산 뒤 상속' 기둥을 비교한다. 상속 쪽에는 상속 취득세 약 470만원만 더해지고, 상속주택 특례 덕분에 우리 집은 그대로 비과세다. ② '사기 전 증여' 기둥을 누른다. 증여세와 증여 취득세를 내고, 생애최초 감면을 잃고, 팔 때 2주택이라 비과세까지 사라진다. ③ 서울 A구를 고른다. 사는 값부터 12억원을 넘어 팔 때 12억원 초과분이 과세되고, '사기 전 증여'에서는 조정대상지역 2주택 취득세 8%가 붙어 기둥이 크게 솟는다. 연 집값 변화를 −3%로 내리면 차익이 사라져 양도세는 어느 경로에서도 0원이다. (교육용 가정: 2027년 매수 후 매도 때까지 거주, 84㎡, 아버지 재산은 이 집 한 채라 상속세 0원, 상속은 하늘 혼자 받음, D시는 비규제·지방 저가주택이라 양도세 중과 판정에서 빠짐, 증여 취득세 3.8%·상속 취득세 2.96%, 현금 증여는 아버지가 집을 1세대 1주택 비과세로 판 뒤 1억 6,000만원을 주는 경우. 아버지 집 자체를 나중에 팔 때의 세금은 넣지 않았다.)</div>
+    </div>
+
+    <div class="casefile">
+      <div class="tag"><b>CASE 하늘네</b><span>집 노트 · 14장</span></div>
+      <h4>팔 때 비과세는 지킬 수 있다. 다만 아버지 집이 '언제, 어떤 길로' 오느냐가 관건</h4>
+      <p><b>하늘네가 사고 팔 때.</b> 이 책의 모델로 계산하면 B시 84㎡를 6억 2,000만원에 처음 사면 취득 관련 세금은 약 573만원이다(생애최초 감면 200만원 반영). B시는 비규제지역이라 팔 때 1세대 1주택 비과세 요건은 <b>2년 보유</b>뿐이고, 거주 요건은 없다. 10년 뒤 매도가가 연 2% 가정으로 약 7억 5,600만원이 되더라도 12억원 이하라 양도세는 0원이다. 2년 안에 팔면 이야기가 다르다. 예를 들어 6억 8,000만원에 1년 안에 팔면 단기 세율 70%가 붙어 약 3,590만원을 낸다. 서울 A구(약 12억 5,000만원)에서 산다면 취득할 때부터 조정대상지역이라 비과세를 받으려면 <b>2년 거주</b>가 필요하고, 사는 값부터 12억원을 넘어서 팔 때 12억원 초과분이 과세된다. 15억원에 10년 살고 팔면 장기보유특별공제 80%를 받아 세금은 약 34만원이지만, 1년만 살고 전세를 놓은 뒤 팔면 비과세가 통째로 사라져 약 4,130만원이 된다.</p>
+      <p><b>아버지의 D시 아파트.</b> 하늘이 결혼해 따로 사는 별도 세대라는 것이 출발점이다. 아버지가 이 집 한 채만 가진 채 돌아가셔서 하늘이 혼자 상속받는다면 재산 1억 6,000만원은 일괄공제 5억원 안이라 상속세가 없다. 취득세는 하늘네가 이미 집이 있다면 약 470만원(2.96%), 무주택이면 특례로 약 150만원이다. 하늘네가 B시 집을 <b>먼저 가지고 있다가</b> 상속받았다면, B시 집을 먼저 팔 때 상속주택 특례로 비과세가 유지된다. 순서가 반대면(상속을 먼저 받고 B시 집을 사면) 이 특례가 없다. 살아 계실 때 집을 증여받으면 계산이 달라진다. 1억 6,000만원에서 성인 자녀 공제 5,000만원을 뺀 1억 1,000만원에 증여세 약 1,164만원(신고세액공제 반영), 증여 취득세 약 608만원을 내고, 하늘네는 그날부터 1주택자다. 세 살 딸의 출생일에서 2년이 지나 혼인·출산 증여공제는 쓸 수 없다. 이 상태로 B시 집을 사면 생애최초 감면을 잃고, 나중에 B시 집을 팔 때 2주택이라 비과세가 사라진다(D시 집은 지방 저가주택이라 중과는 아니다). 모델로 계산하면 10년 뒤 B시 집 양도세가 약 1,980만원이다. 증여받은 집을 10년 안에 팔면 취득가가 아버지의 2001년 값 7,000만원으로 돌아가는 이월과세도 따라온다.</p>
+      <p><b>남궁현의 C아파트.</b> 남궁현은 서울 A구 집과 B시 C아파트를 가진 2주택자다. "5월부터 중과라던데 C아파트를 팔면 82.5%냐"는 그의 걱정에 태호는 두 가지를 짚었다. 첫째, 중과는 <b>양도하는 집이 양도 시점에 조정대상지역</b>일 때 붙는다. C아파트가 있는 B시는 비규제지역이라 2주택 상태로 팔아도 중과가 아니라 기본세율과 일반 장기보유특별공제를 적용받는다. 둘째, 지금 시세 6억 2,000만원은 2021년 산 값 6억 8,000만원보다 낮아 차익 자체가 없으니 양도세가 0원이다. 시세가 회복돼 예컨대 2028년에 8억원에 판다면 모델로 약 1,630만원이고(장기보유특별공제 14%), 같은 조건의 집이 조정대상지역에 있었다면 중과로 공제 없이 약 4,360만원이 됐을 것이다. 중과를 신경 써야 하는 쪽은 오히려 서울 A구 집이다. C아파트를 남긴 채 A구 집을 먼저 팔면 그 양도에 중과가 붙는다.</p>
+      <div class="clue"><div><b>이 장에서 정한 것</b>B시 집을 사면 2년 보유만으로 비과세 요건을 채운다. 아버지 집은 증여보다 상속이, 그리고 "우리 집을 먼저 사고 나서"가 하늘네의 주택 수와 세금에 유리하다(기초 수준의 결론).</div><div><b>아직 남은 문제</b>아버지는 그 집에 살고 계시고, 언제 어떻게 넘길지는 세금보다 아버지의 삶이 먼저다. 지방 집의 앞날(팔지·물려받을지·세를 놓을지)은 이 장에서 정하지 않았다.</div><div><b>다음 단계</b>15장: 서울 A구의 규제지역·토지거래허가구역 지정이 하늘네의 대출과 선택지를 어떻게 바꾸는지 본다.</div></div>
+    </div>
+  </section>
+
+  <section class="keypoints" id="summary">
+    <h2>핵심 정리</h2>
+    <ol>
+      <li>양도소득세는 양도차익 → 비과세·고가주택 안분 → 장기보유특별공제 → 기본공제 250만원 → 세율 → 지방소득세(10%)의 계단으로 계산한다. 계단마다 주택 수, 보유·거주 기간, 규제지역 여부가 스위치 역할을 한다.</li>
+      <li>1세대 1주택은 2년 보유(취득 당시 조정대상지역이면 2년 거주)하면 양도가 12억원까지 비과세이고, 12억원을 넘으면 (양도가 − 12억) ÷ 양도가만큼의 차익만 과세한다.</li>
+      <li>장기보유특별공제는 1주택 거주자가 보유 4% + 거주 4%로 최대 80%, 그 밖의 경우 최대 30%다. 2년 넘게 살지 않은 1주택은 80% 표를 쓰지 못한다. 거주 중심 개편안은 추진 중이다.</li>
+      <li>2026년 기준 주택을 1년 안에 팔면 70%, 2년 안에 팔면 60%의 단기 세율이다. 보유 기간 하루 차이로 세금이 수천만원 달라질 수 있다.</li>
+      <li>다주택 중과(2주택 +20%p, 3주택 이상 +30%p, 최고 82.5%)는 2026년 5월 10일 양도분부터 재개됐다. 중과는 양도 시점에 조정대상지역에 있는 집을 다주택 상태로 팔 때 그 양도에 붙으므로, 비규제지역의 집을 파는 다주택자에게는 붙지 않는다. 파는 순서가 세금을 바꾼다.</li>
+      <li>일시적 2주택은 새 집을 산 날부터 3년(둘 다 조정대상지역이면 2026-10-01부터 2년, 그 전 취득·계약분은 3년) 안에 종전 집을 팔면 비과세를 받는다.</li>
+      <li>상속은 일괄공제 5억원(배우자 있으면 최소 5억원 더), 증여는 성인 자녀 10년 5,000만원(혼인·출산 1억원 별도)을 뺀 뒤 10~50%로 과세한다. 상속주택은 기존 일반주택을 먼저 팔 때 주택 수에서 빼 주지만, 증여받은 집은 바로 주택 수에 더해진다.</li>
+    </ol>
+  </section>
+
+  <section class="quiz-sec" id="quiz">
+    <h2>확인 퀴즈</h2>
+    <div class="quiz">
+      <div class="quiz-q">
+        <p>서울 A구 집과 경기 B시(비규제지역) 집을 가진 2주택자가 2026년 7월에 B시 집을 팔았다. 다주택 중과는 어떻게 되는가?</p>
+        <div class="opts">
+          <button class="opt">2주택자이므로 기본세율에 20%p가 더해진다</button>
+          <button class="opt" data-correct>파는 집이 비규제지역에 있으므로 중과 없이 기본세율과 일반 장기보유특별공제를 적용한다</button>
+          <button class="opt">서울에 집이 있으므로 30%p가 더해진다</button>
+          <button class="opt">2026년에는 중과가 유예 중이라 상관없다</button>
+        </div>
+        <div class="quiz-exp">중과는 다주택자가 양도 시점에 조정대상지역에 있는 집을 팔 때 그 양도에 붙는다. B시 집은 비규제지역이라 2주택이어도 중과 대상이 아니다. 반대로 B시 집을 남긴 채 서울 A구 집을 팔면 그 양도에는 +20%p 중과가 붙고 장기보유특별공제도 없다. 중과 배제 유예는 2026년 5월 9일로 끝났다.</div>
+      </div>
+      <div class="quiz-q">
+        <p>1세대 1주택 요건을 채운 집을 15억원에 팔았고 양도차익이 3억원이다. 장기보유특별공제를 적용하기 전의 '과세 대상 양도차익'은?</p>
+        <div class="opts">
+          <button class="opt">0원(1주택은 전부 비과세)</button>
+          <button class="opt">3억원</button>
+          <button class="opt">3억원 × 12/15 = 2억 4,000만원</button>
+          <button class="opt" data-correct>3억원 × (15억 − 12억)/15억 = 6,000만원</button>
+        </div>
+        <div class="quiz-exp">양도가 12억원을 넘는 고가주택은 12억원 초과 비율만큼의 차익만 과세한다. (15 − 12) ÷ 15 = 20%이므로 3억원의 20%인 6,000만원이 과세 대상이다. 여기서 장기보유특별공제(1주택 거주자는 최대 80%)와 기본공제를 뺀 뒤 세율을 곱한다.</div>
+      </div>
+      <div class="quiz-q">
+        <p>하늘네가 B시 집을 가지고 있는 상태에서 아버지의 D시 아파트를 상속받았다. 이후 B시 집을 먼저 팔 때 비과세에 대한 설명으로 가장 알맞은 것은?</p>
+        <div class="opts">
+          <button class="opt" data-correct>상속 개시 전부터 가진 일반주택을 먼저 파는 것이므로, 상속주택 특례로 1세대 1주택 비과세를 받을 수 있다</button>
+          <button class="opt">2주택이 되었으므로 비과세는 불가능하다</button>
+          <button class="opt">상속주택은 언제나 주택 수에서 빠지므로 순서는 상관없다</button>
+          <button class="opt">증여로 받았어도 같은 특례가 적용된다</button>
+        </div>
+        <div class="quiz-exp">상속주택 특례는 별도 세대인 부모에게서 상속받기 전부터 가지고 있던 일반주택을 먼저 팔 때 상속주택을 없는 것으로 봐 준다. 상속을 먼저 받고 나중에 산 집에는 적용되지 않고, 증여받은 집에는 이런 특례가 없다. 일반주택의 보유(와 필요하면 거주) 요건은 따로 채워야 한다.</div>
+      </div>
+      <div class="quiz-q">
+        <p>2026년 기준으로 주택을 산 지 10개월 만에 팔아 과세표준 5,000만원이 나왔다. 지방소득세까지 합친 세금은 대략 얼마인가?</p>
+        <div class="opts">
+          <button class="opt">약 660만원(기본세율 15% 구간)</button>
+          <button class="opt">약 3,000만원(60%)</button>
+          <button class="opt" data-correct>약 3,850만원(70%에 지방소득세 10% 더해 77%)</button>
+          <button class="opt">0원(1주택은 비과세)</button>
+        </div>
+        <div class="quiz-exp">1년 미만 보유한 주택은 단기 세율 70%다. 5,000만원 × 70% = 3,500만원, 지방소득세 350만원을 더해 3,850만원이다. 1세대 1주택 비과세는 2년 이상 보유가 요건이라 10개월 보유에는 적용되지 않는다. 1년 이상 2년 미만이면 60%다.</div>
+      </div>
+    </div>
+  </section>
+</main>
+<script>
+(function () {
+  "use strict";
+  const TAU = Math.PI * 2;
+  function T(ctx, s, x, y, o) {
+    o = o || {};
+    ctx.font = EB.font(o.size || 12, o.mono, o.weight);
+    ctx.fillStyle = o.color; ctx.textAlign = o.align || "left"; ctx.textBaseline = o.base || "alphabetic";
+    ctx.fillText(s, x, y);
+  }
+  function rrect(ctx, x, y, w, h, r) {
+    r = Math.max(0, Math.min(r, Math.abs(w) / 2, Math.abs(h) / 2));
+    ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
+  }
+  function knob(ctx, x, y, P) { ctx.beginPath(); ctx.arc(x, y, 8, 0, TAU); ctx.fillStyle = P.text; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = P.bg; ctx.stroke(); }
+  const pw = (id) => document.getElementById(id).parentElement.clientWidth;
+  const minus = (v) => '<span class="minus">' + EB.won(v) + "</span>";
+  const G = RE.KR.cgt, C = RE.CASE;
+  const taxSpan = (v) => (v > 0 ? minus(v) : '<span class="plus">0원</span>');
+  // 필요경비: 취득세 + 살 때·팔 때 중개보수
+  const costsOf = (buy, sell, homes, reg) => RE.acqTax({ price: buy, homes: homes || 1, regulated: !!reg, area: 84 }).total + RE.brokerage(buy).fee + RE.brokerage(sell).fee;
+  // 상속·증여세율(상속세 및 증여세법 제26조·제56조)
+  const GIFT_RATES = [{ upTo: 1e8, rate: 0.1 }, { upTo: 5e8, rate: 0.2 }, { upTo: 1e9, rate: 0.3 }, { upTo: 3e9, rate: 0.4 }, { upTo: Infinity, rate: 0.5 }];
+  const GIFT_DED = { adult: 5e7, minor: 2e7, spouse: 6e8 };
+  const giftTax = (v, ded) => RE.progressive(GIFT_RATES, Math.max(0, v - ded)) * 0.97;
+  const inhTax = (v, spouse) => RE.progressive(GIFT_RATES, Math.max(0, v - 5e8 - (spouse ? 5e8 : 0))) * 0.97;
+  // 1주택·일반 장기보유특별공제율(엔진 제도 값으로)
+  const ltdOne = (y, l) => (y >= G.ltdOne.minHold && l >= G.ltdOne.minLive ? Math.min(G.ltdOne.capEach, G.ltdOne.hold * Math.floor(y)) + Math.min(G.ltdOne.capEach, G.ltdOne.live * Math.floor(l)) : null);
+  const ltdGen = (y) => (y >= G.ltdGeneral.minHold ? Math.min(G.ltdGeneral.cap, G.ltdGeneral.start + G.ltdGeneral.step * (Math.floor(y) - 3)) : 0);
+  const taxOnGain = (gain, ltd) => { const base = Math.max(0, gain * (1 - ltd) - G.basic); return RE.progressive(G.rates, base) * (1 + G.local); };
+
+  /* ---------------------------------------------------------- 1. 양도세 계단 */
+  (function () {
+    const hG = EB.seg("fl-h", draw);
+    const bG = EB.range("fl-b", (v) => EB.won(v * 1e8), draw);
+    const sG = EB.range("fl-s", (v) => EB.won(v * 1e8), draw);
+    const yG = EB.range("fl-y", (v) => (v < 1 ? Math.round(v * 12) + "개월" : v + "년"), draw);
+    function calc() {
+      const h = hG(), buy = bG() * 1e8, sell = sG() * 1e8, y = yG();
+      const homes = h === "one" ? 1 : h === "three" ? 3 : 2, reg = h === "tworeg" || h === "three";
+      const costs = costsOf(buy, sell);
+      const r = RE.capGainsTax({ buy, sell, costs, years: y, live: h === "one" ? y : 0, homes, regulated: reg });
+      return { r, buy, sell, costs, h };
+    }
+    const cv = EB.canvas("#fl-cv", (ctx, w, h) => {
+      const P = EB.palette(), c = calc(), r = c.r;
+      const narrow = w < 480;
+      const box = { x: narrow ? 98 : 128, y: 14, w: w - (narrow ? 98 : 128) - 16, h: h - 40 };
+      if (r.gain <= 0) {
+        T(ctx, "양도차익이 없다(손해를 봤거나 본전)", w / 2, h / 2 - 10, { size: 14, color: P.text, align: "center", weight: 700 });
+        T(ctx, "차익이 없으면 양도세도 없다", w / 2, h / 2 + 14, { size: 12, color: P.dim, align: "center" });
+        return;
+      }
+      const ex = r.gain - r.taxableGain, ded = r.taxableGain - r.ltd - r.base;
+      const rows = [
+        { k: "양도차익", a: 0, b: r.gain, c: P.accent, tot: true },
+        { k: "비과세로 빠짐", a: r.gain - ex, b: r.gain, c: P.ok },
+        { k: "장기보유공제 " + Math.round(r.ltdRate * 100) + "%", a: r.taxableGain - r.ltd, b: r.taxableGain, c: P.ok },
+        { k: "기본공제", a: r.base, b: r.base + ded, c: P.ok },
+        { k: "과세표준", a: 0, b: r.base, c: P.accent, tot: true },
+        { k: "양도소득세", a: 0, b: r.tax, c: P.bad },
+        { k: "지방소득세", a: r.tax, b: r.total, c: P.bad },
+        { k: "세후 남는 차익", a: 0, b: r.gain - r.total, c: P.ok, tot: true },
+      ];
+      const rowH = box.h / rows.length, X = (v) => box.x + v / r.gain * box.w;
+      ctx.strokeStyle = P.axis; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(box.x, box.y); ctx.lineTo(box.x, box.y + box.h); ctx.stroke();
+      rows.forEach((it, i) => {
+        const y = box.y + i * rowH + rowH * 0.18, bh = rowH * 0.64;
+        const x0 = X(Math.min(it.a, it.b)), x1 = X(Math.max(it.a, it.b)), len = Math.abs(it.b - it.a);
+        ctx.fillStyle = it.c; ctx.globalAlpha = it.tot ? 0.95 : 0.7;
+        if (len > 0) ctx.fillRect(x0, y, Math.max(1.5, x1 - x0), bh);
+        ctx.globalAlpha = 1;
+        T(ctx, it.k, box.x - 8, y + bh / 2, { size: narrow ? 11 : 12, color: it.tot ? P.text : P.dim, align: "right", base: "middle", weight: it.tot ? 700 : 400 });
+        const s = len > 0 ? (it.tot ? "" : it.c === P.bad ? "+" : "−") + EB.wonAxis(len) : "0";
+        ctx.font = EB.font(11, true); const tw = ctx.measureText(s).width;
+        const right = x1 + 6 + tw < box.x + box.w;
+        T(ctx, s, right ? x1 + 5 : x1 - 5, y + bh / 2, { size: 11, mono: true, color: right ? P.text : "#fff", align: right ? "left" : "right", base: "middle", weight: 700 });
+        if (i === 3 || i === 6) { ctx.strokeStyle = P.grid; ctx.beginPath(); ctx.moveTo(box.x - (narrow ? 90 : 120), y + rowH * 0.82 + 1); ctx.lineTo(box.x + box.w, y + rowH * 0.82 + 1); ctx.stroke(); }
+      });
+      T(ctx, r.rateLabel, box.x + box.w, h - 8, { size: 11, color: P.bad, align: "right", weight: 700 });
+      T(ctx, "막대 길이 = 양도차익 대비", box.x, h - 8, { size: 10, color: P.faint });
+    }, { get height() { return pw("fl-cv") < 480 ? 320 : 330; } });
+    function draw() {
+      const c = calc(), r = c.r;
+      EB.stat("fl-o-g", r.gain > 0 ? EB.won(r.gain) : "없음");
+      EB.stat("fl-o-r", r.gain <= 0 ? "—" : r.exempt ? "비과세" : r.rateLabel);
+      EB.stat("fl-o-t", taxSpan(r.total));
+      EB.stat("fl-o-e", r.gain > 0 ? EB.pct(r.total / r.gain, 1) : "—");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 2. 12억 안분 */
+  (function () {
+    const bG = EB.range("cap-b", (v) => EB.won(v * 1e8), draw);
+    const yG = EB.range("cap-y", (v) => v + "년", draw);
+    const XMAX = 30e8;
+    let sell = 15e8, L = null;
+    function tax(s) {
+      const buy = bG() * 1e8, y = yG();
+      if (s <= buy) return { total: 0, gain: 0, taxableGain: 0, ltdRate: 0 };
+      return RE.capGainsTax({ buy, sell: s, costs: costsOf(buy, s), years: y, live: y, homes: 1 });
+    }
+    const cv = EB.canvas("#cap-cv", (ctx, w, h) => {
+      const P = EB.palette(), buy = bG() * 1e8;
+      if (sell < buy + 1e7) sell = buy + 1e7;
+      const bx = 52, bw = w - 70, X = (v) => bx + v / XMAX * bw;
+      L = { X, bx, bw };
+      // 1) 양도가 수직선
+      const y1 = 44;
+      T(ctx, "양도가", bx, 18, { size: 11, color: P.dim, weight: 700 });
+      ctx.fillStyle = P.grid; ctx.fillRect(bx, y1 - 7, bw, 14);
+      const cap = G.exemptCap;
+      ctx.fillStyle = P.ok; ctx.globalAlpha = 0.55; ctx.fillRect(bx, y1 - 7, X(Math.min(sell, cap)) - bx, 14); ctx.globalAlpha = 1;
+      if (sell > cap) { ctx.fillStyle = P.bad; ctx.globalAlpha = 0.75; ctx.fillRect(X(cap), y1 - 7, X(sell) - X(cap), 14); ctx.globalAlpha = 1; }
+      ctx.strokeStyle = P.text; ctx.setLineDash([3, 3]); ctx.beginPath(); ctx.moveTo(X(cap), 24); ctx.lineTo(X(cap), h - 26); ctx.stroke(); ctx.setLineDash([]);
+      T(ctx, "12억", X(cap) + 4, 30, { size: 11, color: P.text, weight: 700 });
+      knob(ctx, X(sell), y1, P);
+      // 2) 차익 막대(비과세 몫 / 과세 몫)
+      const r = tax(sell), y2 = 92;
+      T(ctx, "양도차익 " + EB.wonAxis(r.gain) + " 중", bx, y2 - 14, { size: 11, color: P.dim, weight: 700 });
+      const share = sell > cap ? (sell - cap) / sell : 0;
+      const gw = bw * 0.999;
+      ctx.fillStyle = P.ok; ctx.globalAlpha = 0.55; ctx.fillRect(bx, y2 - 8, gw * (1 - share), 16); ctx.globalAlpha = 1;
+      if (share > 0) { ctx.fillStyle = P.bad; ctx.globalAlpha = 0.8; ctx.fillRect(bx + gw * (1 - share), y2 - 8, gw * share, 16); ctx.globalAlpha = 1; }
+      T(ctx, "비과세 " + Math.round((1 - share) * 100) + "%", bx + 6, y2 + 1, { size: 11, color: "#fff", base: "middle", weight: 700 });
+      if (share > 0) { const s = "과세 " + Math.round(share * 100) + "%"; ctx.font = EB.font(11, false, 700); const tw = ctx.measureText(s).width; T(ctx, s, share * gw > tw + 10 ? bx + gw - 6 : bx + gw * (1 - share) - 6, y2 + 1, { size: 11, color: share * gw > tw + 10 ? "#fff" : P.bad, base: "middle", align: "right", weight: 700 }); }
+      // 3) 양도가별 세금 곡선
+      const pts = []; let ymax = 1e6;
+      for (let s = buy + 1e7; s <= XMAX; s += XMAX / 160) { const t = tax(s).total; pts.push([s, t]); ymax = Math.max(ymax, t); }
+      ymax = Math.max(1e7, ymax * 1.1);
+      const ch = EB.chart(ctx, { x: bx, y: 132, w: bw, h: h - 132 - 46 }, {
+        x: [0, XMAX], y: [0, ymax], xTicks: [0, 6e8, 12e8, 18e8, 24e8, 30e8], xFmt: EB.wonAxis, yFmt: EB.wonAxis, yTicks: [0, ymax / 2, ymax].map((v) => Math.round(v / 1e6) * 1e6),
+        series: [{ data: pts, color: P.bad, width: 2.2 }],
+        vlines: [{ x: buy, color: P.faint, label: "취득가" }],
+      });
+      const t = r.total;
+      ctx.beginPath(); ctx.arc(ch.X(sell), ch.Y(t), 5, 0, TAU); ctx.fillStyle = P.bad; ctx.fill();
+      T(ctx, "양도가별 세금(지방세 포함)", bx, 122, { size: 11, color: P.dim, weight: 700 });
+    }, { get height() { return pw("cap-cv") < 480 ? 320 : 340; } });
+    EB.drag(cv.canvas, { move(x) { if (!L) return; sell = EB.clamp(Math.round((x - L.bx) / L.bw * XMAX / 5e7) * 5e7, bG() * 1e8 + 5e7, XMAX); draw(); } });
+    function draw() {
+      const buy = bG() * 1e8; if (sell <= buy) sell = buy + 5e7;
+      const r = tax(sell);
+      EB.stat("cap-o-s", EB.won(sell));
+      EB.stat("cap-o-t", EB.won(r.taxableGain));
+      EB.stat("cap-o-x", taxSpan(r.total));
+      EB.stat("cap-o-e", r.gain > 0 ? EB.pct(r.total / r.gain, 1) : "—");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 3. 장기보유특별공제 */
+  (function () {
+    const lG = EB.range("ltd-l", (v) => v + "년", draw);
+    const gG = EB.range("ltd-g", (v) => EB.won(v * 1e8), draw);
+    let yr = 10, box = null;
+    const cv = EB.canvas("#ltd-cv", (ctx, w, h) => {
+      const P = EB.palette(), l = lG();
+      const xs = []; for (let y = 0; y <= 20.0001; y += 0.05) xs.push(y);
+      const full = xs.map((y) => [y, (ltdOne(y, y) ?? ltdGen(y)) * 100]);
+      const part = xs.map((y) => [y, (ltdOne(y, Math.min(l, y)) ?? ltdGen(y)) * 100]);
+      const gen = xs.map((y) => [y, ltdGen(y) * 100]);
+      const c = EB.chart(ctx, { x: 44, y: 14, w: w - 58, h: h - 74 }, {
+        x: [0, 20], y: [0, 100], xTicks: [0, 3, 5, 10, 15, 20], yTicks: [0, 20, 40, 60, 80], xFmt: (v) => v + "년", yFmt: (v) => v + "%",
+        series: [
+          { data: full, color: P.faint, width: 1.4, dash: [5, 4] },
+          { data: part, color: P.ok, width: 2.6 },
+          { data: gen, color: P.warn, width: 2.2 },
+        ],
+      });
+      box = c;
+      const a = (ltdOne(yr, Math.min(l, yr)) ?? ltdGen(yr)) * 100, b = ltdGen(yr) * 100;
+      const px = c.X(yr), hy = c.box.y + c.box.h;
+      ctx.save(); ctx.setLineDash([3, 3]); ctx.strokeStyle = P.text; ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.moveTo(px, hy); ctx.lineTo(px, c.Y(Math.max(a, b))); ctx.stroke(); ctx.restore();
+      if (a > b) { ctx.fillStyle = P.ok; ctx.globalAlpha = 0.15; ctx.fillRect(px - 5, c.Y(a), 10, c.Y(b) - c.Y(a)); ctx.globalAlpha = 1; }
+      ctx.beginPath(); ctx.arc(px, c.Y(a), 5, 0, TAU); ctx.fillStyle = P.ok; ctx.fill();
+      ctx.beginPath(); ctx.arc(px, c.Y(b), 5, 0, TAU); ctx.fillStyle = P.warn; ctx.fill();
+      knob(ctx, px, hy, P);
+      const lg = [["1주택 거주 " + Math.min(l, yr) + "년", P.ok], ["일반(최대 30%)", P.warn], ["보유 내내 거주", P.faint]];
+      let lx = c.box.x + 8, ly = c.box.y + 12;
+      lg.forEach(([s, col]) => { ctx.font = EB.font(11); const tw = ctx.measureText(s).width; if (lx + tw + 20 > c.box.x + c.box.w) { lx = c.box.x + 8; ly += 16; } ctx.fillStyle = col; ctx.fillRect(lx, ly - 4, 12, 3); T(ctx, s, lx + 16, ly, { size: 11, color: P.dim, base: "middle" }); lx += tw + 30; });
+    }, { get height() { return pw("ltd-cv") < 480 ? 280 : 300; } });
+    EB.drag(cv.canvas, { move(x) { if (!box) return; yr = EB.clamp(Math.round((x - box.box.x) / box.box.w * 20), 0, 20); draw(); } });
+    function draw() {
+      const l = Math.min(lG(), yr), g = gG() * 1e8;
+      const a = ltdOne(yr, l), aR = a ?? ltdGen(yr), b = ltdGen(yr);
+      const ta = taxOnGain(g, aR), tb = taxOnGain(g, b);
+      EB.stat("ltd-o-y", yr + "년 · 거주 " + l + "년");
+      EB.stat("ltd-o-a", Math.round(aR * 100) + "%" + (a == null ? " (일반 표)" : "") + " · " + minus(ta));
+      EB.stat("ltd-o-b", Math.round(b * 100) + "% · " + minus(tb));
+      EB.stat("ltd-o-d", tb - ta > 0 ? '<span class="plus">' + EB.won(tb - ta) + "</span>" : "0원");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 4. 보유 기간의 절벽 */
+  (function () {
+    const hG = EB.seg("sh-h", draw);
+    const gG = EB.range("sh-g", (v) => EB.won(v * 1e4), draw);
+    let m = 11, box = null;
+    const MAXM = 48;
+    function tax(mm) {
+      const g = gG() * 1e4, y = mm / 12;
+      return RE.capGainsTax({ buy: 6e8, sell: 6e8 + g, costs: 0, years: y, live: y, homes: +hG(), regulated: false });
+    }
+    const cv = EB.canvas("#sh-cv", (ctx, w, h) => {
+      const P = EB.palette(), g = gG() * 1e4;
+      const pts = []; for (let mm = 0; mm <= MAXM; mm += 0.25) pts.push([mm, tax(mm).total]);
+      const ymax = g * 0.85;
+      const c = EB.chart(ctx, { x: 52, y: 14, w: w - 66, h: h - 74 }, {
+        x: [0, MAXM], y: [0, ymax], xTicks: [0, 12, 24, 36, 48], xFmt: (v) => v + "개월", yFmt: EB.wonAxis, yTicks: [0, ymax / 4, ymax / 2, ymax * 3 / 4].map((v) => Math.round(v / 1e5) * 1e5),
+        series: [{ data: pts, color: P.bad, width: 2.6 }],
+        bands: [{ x0: 0, x1: 12, color: P.grid }, { x0: 12, x1: 24, color: P.grid }],
+        hlines: [{ y: g * 0.77, color: P.faint, label: "차익의 77%" }],
+      });
+      box = c;
+      T(ctx, "70%", c.X(6), c.box.y + 16, { size: 12, color: P.bad, align: "center", weight: 700 });
+      T(ctx, "60%", c.X(18), c.box.y + 16, { size: 12, color: P.bad, align: "center", weight: 700 });
+      T(ctx, hG() === "1" ? "비과세" : "기본세율", c.X(36), c.box.y + 16, { size: 12, color: hG() === "1" ? P.ok : P.warn, align: "center", weight: 700 });
+      const t = tax(m).total, px = c.X(m), hy = c.box.y + c.box.h;
+      ctx.save(); ctx.setLineDash([3, 3]); ctx.strokeStyle = P.text; ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.moveTo(px, hy); ctx.lineTo(px, c.Y(t)); ctx.stroke(); ctx.restore();
+      ctx.beginPath(); ctx.arc(px, c.Y(t), 5, 0, TAU); ctx.fillStyle = P.bad; ctx.fill();
+      knob(ctx, px, hy, P);
+    }, { get height() { return pw("sh-cv") < 480 ? 270 : 290; } });
+    EB.drag(cv.canvas, { move(x) { if (!box) return; m = EB.clamp(Math.round((x - box.box.x) / box.box.w * MAXM), 1, MAXM); draw(); } });
+    function draw() {
+      const r = tax(m);
+      EB.stat("sh-o-m", m + "개월" + (m >= 12 ? " (" + Math.floor(m / 12) + "년 " + (m % 12) + "개월)" : ""));
+      EB.stat("sh-o-r", r.exempt ? "비과세" : r.rateLabel);
+      EB.stat("sh-o-t", taxSpan(r.total));
+      const next = m < 12 ? 12 : m < 24 ? 24 : m < 36 ? 36 : null;
+      if (next) { const d = r.total - tax(next).total; EB.stat("sh-o-w", next - m + "개월 → " + (d > 0 ? '<span class="plus">−' + EB.won(d) + "</span>" : "0원")); }
+      else EB.stat("sh-o-w", "—");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 5. 파는 순서 */
+  (function () {
+    const oG = EB.seg("ord-o", draw);
+    const aG = EB.range("ord-a", (v) => EB.won(v * 1e8), draw);
+    const bG = EB.range("ord-b", (v) => EB.won(v * 1e8), draw);
+    let bars = [];
+    const HA = { buy: 6e8, years: 15, live: 15 }, HB = { buy: 6.8e8, years: 6, live: 0 };
+    function sale(hh, sell, homes, reg) { return RE.capGainsTax({ buy: hh.buy, sell, costs: costsOf(hh.buy, sell), years: hh.years, live: hh.live, homes, regulated: reg, regulatedAtBuy: false }); }
+    function plan(order) {
+      const sa = aG() * 1e8, sb = bG() * 1e8;
+      if (order === "AB") { const r1 = sale(HA, sa, 2, true), r2 = sale(HB, sb, 1, false); return { first: ["서울 A구 집", r1], second: ["B시 집", r2], total: r1.total + r2.total }; }
+      const r1 = sale(HB, sb, 2, false), r2 = sale(HA, sa, 1, true); return { first: ["B시 집", r1], second: ["서울 A구 집", r2], total: r1.total + r2.total };
+    }
+    const cv = EB.canvas("#ord-cv", (ctx, w, h) => {
+      const P = EB.palette(), o = oG(), p = plan(o), q = plan(o === "AB" ? "BA" : "AB");
+      const narrow = w < 480;
+      // 두 집 카드
+      const cw = (w - 36) / 2, ch = narrow ? 112 : 104, top = 10;
+      [p.first, p.second].forEach(([name, r], i) => {
+        const x = 12 + i * (cw + 12);
+        rrect(ctx, x, top, cw, ch, 9); ctx.fillStyle = P.surface; ctx.fill(); ctx.strokeStyle = P.border; ctx.lineWidth = 1; ctx.stroke();
+        const reg = name.indexOf("서울") === 0;
+        T(ctx, (i + 1) + ". " + name, x + 10, top + 20, { size: 13, color: P.text, weight: 700 });
+        T(ctx, reg ? "조정대상지역" : "비규제지역", x + 10, top + 38, { size: 11, color: reg ? P.bad : P.ok, weight: 700 });
+        T(ctx, i === 0 ? "2주택 상태로 매도" : "1주택으로 매도", x + 10, top + 55, { size: 11, color: P.dim });
+        const lab = r.gain <= 0 ? "차익 없음" : r.exempt ? "비과세" : r.rateLabel.replace("기본세율 ", "");
+        T(ctx, lab, x + 10, top + 73, { size: 11, color: r.rateLabel.indexOf("중과") >= 0 ? P.bad : P.dim });
+        T(ctx, r.total > 0 ? "−" + EB.wonAxis(r.total) : "0원", x + cw - 10, top + ch - 12, { size: narrow ? 15 : 17, mono: true, color: r.total > 0 ? P.bad : P.ok, align: "right", weight: 700 });
+      });
+      T(ctx, "→", 12 + cw + 6, top + ch / 2, { size: 13, color: P.dim, align: "center", base: "middle", weight: 700 });
+      // 두 순서 비교 막대
+      const by = top + ch + 30, bh = 26, mx = Math.max(p.total, q.total, 1e6);
+      const lx = narrow ? 92 : 110, bw = w - lx - 70;
+      T(ctx, "두 집을 모두 판 뒤의 세금 합계", 12, by - 10, { size: 11, color: P.dim, weight: 700 });
+      bars = [];
+      [["AB", "서울 집 먼저"], ["BA", "B시 집 먼저"]].forEach(([k, s], i) => {
+        const pp = k === o ? p : q, y = by + i * (bh + 12);
+        T(ctx, s, lx - 8, y + bh / 2, { size: 12, color: k === o ? P.text : P.dim, align: "right", base: "middle", weight: k === o ? 700 : 400 });
+        ctx.fillStyle = P.grid; ctx.fillRect(lx, y, bw, bh);
+        ctx.fillStyle = P.bad; ctx.globalAlpha = k === o ? 0.9 : 0.4; ctx.fillRect(lx, y, Math.max(1.5, bw * pp.total / mx), bh); ctx.globalAlpha = 1;
+        T(ctx, EB.wonAxis(pp.total), lx + Math.max(1.5, bw * pp.total / mx) + 6, y + bh / 2, { size: 12, mono: true, color: P.text, base: "middle", weight: 700 });
+        bars.push({ k, y0: y, y1: y + bh });
+      });
+    }, { get height() { return pw("ord-cv") < 480 ? 250 : 240; } });
+    EB.drag(cv.canvas, { start(x, y) { const b = bars.find((b) => y >= b.y0 - 4 && y <= b.y1 + 4); if (b) { oG.set(b.k); draw(); } } });
+    function draw() {
+      const o = oG(), p = plan(o), q = plan(o === "AB" ? "BA" : "AB");
+      EB.stat("ord-o-1", p.first[0] + " · " + taxSpan(p.first[1].total));
+      EB.stat("ord-o-2", p.second[0] + " · " + taxSpan(p.second[1].total));
+      EB.stat("ord-o-t", taxSpan(p.total));
+      const d = p.total - q.total;
+      EB.stat("ord-o-d", d > 0 ? '<span class="minus">' + EB.won(d) + " 더 냄</span>" : d < 0 ? '<span class="plus">' + EB.won(-d) + " 덜 냄</span>" : "같음");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 6. 상속 vs 증여 */
+  (function () {
+    const toG = EB.seg("gi-to", draw);
+    const mEl = document.getElementById("gi-mar"); mEl.addEventListener("change", draw);
+    const XMAX = 30e8;
+    let v = 1.6e8, box = null;
+    const gded = () => GIFT_DED[toG()] + (mEl.checked && toG() !== "spouse" ? 1e8 : 0);
+    const cv = EB.canvas("#gi-cv", (ctx, w, h) => {
+      const P = EB.palette(), d = gded();
+      const xs = []; for (let x = 0; x <= XMAX; x += XMAX / 200) xs.push(x);
+      const ymax = Math.max(giftTax(XMAX, d), 1e8) * 1.05;
+      const c = EB.chart(ctx, { x: 52, y: 14, w: w - 66, h: h - 74 }, {
+        x: [0, XMAX], y: [0, ymax], xTicks: [0, 5e8, 10e8, 15e8, 20e8, 25e8, 30e8], xFmt: EB.wonAxis, yFmt: EB.wonAxis,
+        series: [
+          { data: xs.map((x) => [x, giftTax(x, d)]), color: P.bad, width: 2.6 },
+          { data: xs.map((x) => [x, inhTax(x, false)]), color: P.accent2, width: 2.2 },
+          { data: xs.map((x) => [x, inhTax(x, true)]), color: P.accent, width: 2.2, dash: [6, 4] },
+        ],
+      });
+      box = c;
+      const px = c.X(v), hy = c.box.y + c.box.h;
+      ctx.save(); ctx.setLineDash([3, 3]); ctx.strokeStyle = P.text; ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.moveTo(px, hy); ctx.lineTo(px, c.box.y); ctx.stroke(); ctx.restore();
+      [[giftTax(v, d), P.bad], [inhTax(v, false), P.accent2], [inhTax(v, true), P.accent]].forEach(([t, col]) => { ctx.beginPath(); ctx.arc(px, c.Y(t), 4.5, 0, TAU); ctx.fillStyle = col; ctx.fill(); });
+      knob(ctx, px, hy, P);
+      const lg = [["증여(한 번에)", P.bad], ["상속(자녀만)", P.accent2], ["상속(배우자+자녀)", P.accent]];
+      let lx = c.box.x + 8, ly = c.box.y + 12;
+      lg.forEach(([s, col]) => { ctx.font = EB.font(11); const tw = ctx.measureText(s).width; if (lx + tw + 20 > c.box.x + c.box.w) { lx = c.box.x + 8; ly += 16; } ctx.fillStyle = col; ctx.fillRect(lx, ly - 4, 12, 3); T(ctx, s, lx + 16, ly, { size: 11, color: P.dim, base: "middle" }); lx += tw + 30; });
+    }, { get height() { return pw("gi-cv") < 480 ? 280 : 300; } });
+    EB.drag(cv.canvas, { move(x) { if (!box) return; const raw = (x - box.box.x) / box.box.w * XMAX; v = EB.clamp(raw < 3e8 ? Math.round(raw / 1e7) * 1e7 : Math.round(raw / 1e8) * 1e8, 1e7, XMAX); draw(); } });
+    function draw() {
+      const d = gded(), gt = giftTax(v, d), it = inhTax(v, false), st = inhTax(v, true);
+      EB.stat("gi-o-v", EB.won(v));
+      EB.stat("gi-o-g", taxSpan(gt) + (gt > 0 ? ' <small style="color:var(--text-faint)">' + EB.pct(gt / v, 1) + "</small>" : ""));
+      EB.stat("gi-o-i", taxSpan(it));
+      EB.stat("gi-o-s", taxSpan(st));
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 7. 하늘네 집 한 채의 세금 일생 */
+  (function () {
+    const aG = EB.seg("life-a", draw);
+    const gG = EB.range("life-g", (v) => (v > 0 ? "+" : "") + v + "%", draw);
+    const F = C.father, BUYY = 2027;
+    let yrs = 10, sel = 2, tl = null, cols = [];
+    const PATHS = [
+      { k: "none", name: "아버지 집 없음", short: "없음" },
+      { k: "inherit", name: "우리 집 산 뒤 상속", short: "산 뒤 상속" },
+      { k: "gift", name: "사기 전 집 증여", short: "사기 전 증여" },
+      { k: "cash", name: "아버지가 팔고 현금 증여", short: "현금 증여" },
+    ];
+    function calc(path) {
+      const ar = C.areas.find((a) => a.key === aG()), reg = ar.key === "A";
+      const buy = ar.price, sell = buy * Math.pow(1 + gG() / 100, yrs);
+      const giftHouse = path === "gift";
+      const acq = RE.acqTax({ price: buy, homes: giftHouse ? 2 : 1, regulated: reg, area: 84, firstHome: !giftHouse });
+      let father = 0, fLabel = "";
+      if (path === "inherit") { father = inhTax(F.price, false) + F.price * 0.0296; fLabel = "상속세 0원 + 상속 취득세"; }
+      if (path === "gift") { father = giftTax(F.price, GIFT_DED.adult) + F.price * 0.038; fLabel = "증여세 + 증여 취득세"; }
+      if (path === "cash") { father = giftTax(F.price, GIFT_DED.adult); fLabel = "현금 증여세(아버지 양도세 0원)"; }
+      const costs = acq.total + RE.brokerage(buy).fee + RE.brokerage(sell).fee;
+      const cg = RE.capGainsTax({ buy, sell, costs, years: yrs, live: yrs, homes: giftHouse ? 2 : 1, regulated: false, regulatedAtBuy: reg });
+      return { ar, buy, sell, acq, father, fLabel, cg, total: acq.total + father + cg.total };
+    }
+    const cv = EB.canvas("#life-cv", (ctx, w, h) => {
+      const P = EB.palette(), narrow = w < 480;
+      const res = PATHS.map((p) => calc(p.k));
+      const mx = Math.max(2e7, ...res.map((r) => r.total)) * 1.12;
+      const box = { x: 50, y: 22, w: w - 62, h: h - 22 - 118 };
+      const n = PATHS.length, gap = narrow ? 10 : 22, bw = (box.w - gap * (n + 1)) / n;
+      const Y = (v) => box.y + box.h - v / mx * box.h;
+      // 축
+      ctx.strokeStyle = P.grid; ctx.lineWidth = 1;
+      [0, 0.5, 1].forEach((f) => { const v = mx / 1.12 * f, y = Y(v); ctx.beginPath(); ctx.moveTo(box.x, y); ctx.lineTo(box.x + box.w, y); ctx.stroke(); T(ctx, EB.wonAxis(v), box.x - 6, y, { size: 10, mono: true, color: P.faint, align: "right", base: "middle" }); });
+      const lg = [["취득세", P.warn], ["아버지 집 관련", P.accent], ["양도세", P.bad]];
+      let lx = box.x; lg.forEach(([s, col]) => { ctx.fillStyle = col; ctx.fillRect(lx, 6, 10, 9); T(ctx, s, lx + 14, 11, { size: 11, color: P.dim, base: "middle" }); ctx.font = EB.font(11); lx += ctx.measureText(s).width + 28; });
+      cols = [];
+      res.forEach((r, i) => {
+        const x = box.x + gap + i * (bw + gap);
+        let y0 = box.y + box.h;
+        [[r.acq.total, P.warn], [r.father, P.accent], [r.cg.total, P.bad]].forEach(([v, col]) => { const hh = v / mx * box.h; if (hh <= 0) return; ctx.fillStyle = col; ctx.globalAlpha = i === sel ? 0.95 : 0.5; ctx.fillRect(x, y0 - hh, bw, hh); ctx.globalAlpha = 1; y0 -= hh; });
+        if (i === sel) { ctx.strokeStyle = P.text; ctx.lineWidth = 2; ctx.strokeRect(x - 2, y0 - 2, bw + 4, box.y + box.h - y0 + 4); }
+        T(ctx, EB.wonAxis(r.total), x + bw / 2, y0 - 6, { size: narrow ? 10 : 11, mono: true, color: P.text, align: "center", weight: 700 });
+        const lab = narrow ? PATHS[i].short : PATHS[i].name;
+        ctx.font = EB.font(narrow ? 10 : 11);
+        const words = lab.split(" "); let line = "", lines = [];
+        words.forEach((wd) => { const t = line ? line + " " + wd : wd; if (ctx.measureText(t).width > bw + gap - 4 && line) { lines.push(line); line = wd; } else line = t; }); lines.push(line);
+        lines.slice(0, 2).forEach((s, j) => T(ctx, s, x + bw / 2, box.y + box.h + 14 + j * 13, { size: narrow ? 10 : 11, color: i === sel ? P.text : P.dim, align: "center", weight: i === sel ? 700 : 400 }));
+        cols.push({ x0: x - gap / 2, x1: x + bw + gap / 2, y0: box.y, y1: box.y + box.h + 40 });
+      });
+      // 시간 축
+      const ty = h - 50, tx0 = box.x, tx1 = box.x + box.w, MAXY = 20;
+      const TX = (y) => tx0 + y / MAXY * (tx1 - tx0);
+      tl = { tx0, tx1, MAXY, ty };
+      ctx.strokeStyle = P.axis; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(tx0, ty); ctx.lineTo(tx1, ty); ctx.stroke();
+      ctx.fillStyle = P.bad; ctx.globalAlpha = 0.15; ctx.fillRect(tx0, ty - 6, TX(2) - tx0, 12); ctx.globalAlpha = 1;
+      [0, 5, 10, 15, 20].forEach((y) => { ctx.strokeStyle = P.axis; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(TX(y), ty - 4); ctx.lineTo(TX(y), ty + 4); ctx.stroke(); T(ctx, String(BUYY + y), TX(y), ty + 17, { size: 10, mono: true, color: P.faint, align: "center" }); });
+      T(ctx, "매수", tx0, ty - 10, { size: 10, color: P.dim, align: "left" });
+      T(ctx, "매도 " + (BUYY + yrs) + "년", EB.clamp(TX(yrs), tx0 + 30, tx1 - 30), ty - 12, { size: 11, color: P.text, align: "center", weight: 700 });
+      knob(ctx, TX(yrs), ty, P);
+    }, { get height() { return pw("life-cv") < 480 ? 360 : 370; } });
+    let mode = null;
+    EB.drag(cv.canvas, {
+      start(x, y) {
+        if (tl && y > tl.ty - 22) { mode = "t"; return; }
+        const i = cols.findIndex((c) => x >= c.x0 && x <= c.x1 && y >= c.y0 && y <= c.y1);
+        mode = null; if (i >= 0) { sel = i; draw(); }
+      },
+      move(x) { if (mode !== "t" || !tl) return; yrs = EB.clamp(Math.round((x - tl.tx0) / (tl.tx1 - tl.tx0) * tl.MAXY), 1, tl.MAXY); draw(); },
+      end() { mode = null; },
+    });
+    function draw() {
+      const r = calc(PATHS[sel].k);
+      EB.stat("life-o-s", (BUYY + yrs) + "년 · " + EB.won(r.sell, { short: true }));
+      document.getElementById("life-o-k").textContent = "고른 경로: " + PATHS[sel].name;
+      EB.stat("life-o-p", "취득세 " + EB.wonAxis(r.acq.total) + (r.acq.heavy ? "(중과)" : "") + (r.father ? " · 아버지 집 " + EB.wonAxis(r.father) : ""));
+      EB.stat("life-o-t", minus(r.total));
+      EB.stat("life-o-c", r.cg.gain <= 0 ? "차익 없음" : r.cg.exempt ? '<span class="plus">비과세</span>' : minus(r.cg.total) + ' <small style="color:var(--text-faint)">' + (r.cg.oneOk ? "12억 초과분" : "2주택") + "</small>");
+      cv.redraw();
+    }
+    draw();
+  })();
+})();
+</script>
+</body>
+</html>

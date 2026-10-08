@@ -1,0 +1,1335 @@
+<!doctype html>
+<!-- Copyright (c) 2026 geniuskey and EstateBook contributors.
+     Executable code: MIT (see ../LICENSE-MIT).
+     Text, illustrations, questions and explanations: CC-BY-4.0 (see ../LICENSE.md). -->
+<html lang="ko">
+<head>
+<!--head:start {"desc": "내 소득·자산·지역·가족 계획을 넣고 전세 계속, 월세, 지금 매수, N년 뒤 매수, 청약 당첨의 다섯 갈래 30년 주거 경로를 돌려 본다. 대출 한도와 DSR, 금리 곡선 끌기, 보증금 위험, 몬테카를로 분포, 경로가 무너지는 조건까지 한 화면에서 계산한다."}-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>부동산 실험실 · EstateBook</title>
+<meta name="description" content="내 소득·자산·지역·가족 계획을 넣고 전세 계속, 월세, 지금 매수, N년 뒤 매수, 청약 당첨의 다섯 갈래 30년 주거 경로를 돌려 본다. 대출 한도와 DSR, 금리 곡선 끌기, 보증금 위험, 몬테카를로 분포, 경로가 무너지는 조건까지 한 화면에서 계산한다.">
+<link rel="canonical" href="https://estatebook.euiyun.com/chapters/lab.html">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<meta name="theme-color" content="#0f766e">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EstateBook">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="부동산 실험실 · EstateBook">
+<meta property="og:description" content="내 소득·자산·지역·가족 계획을 넣고 전세 계속, 월세, 지금 매수, N년 뒤 매수, 청약 당첨의 다섯 갈래 30년 주거 경로를 돌려 본다. 대출 한도와 DSR, 금리 곡선 끌기, 보증금 위험, 몬테카를로 분포, 경로가 무너지는 조건까지 한 화면에서 계산한다.">
+<meta property="og:url" content="https://estatebook.euiyun.com/chapters/lab.html">
+<meta property="og:image" content="https://estatebook.euiyun.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Chapter","LearningResource"],"@id":"https://estatebook.euiyun.com/chapters/lab.html#chapter","name":"부동산 실험실","headline":"부동산 실험실 · EstateBook","description":"내 소득·자산·지역·가족 계획을 넣고 전세 계속, 월세, 지금 매수, N년 뒤 매수, 청약 당첨의 다섯 갈래 30년 주거 경로를 돌려 본다. 대출 한도와 DSR, 금리 곡선 끌기, 보증금 위험, 몬테카를로 분포, 경로가 무너지는 조건까지 한 화면에서 계산한다.","url":"https://estatebook.euiyun.com/chapters/lab.html","position":22,"inLanguage":"ko","isAccessibleForFree":true,"learningResourceType":"인터랙티브 교재","educationalLevel":"일반 성인","image":"https://estatebook.euiyun.com/og.png","dateModified":"2026-10-08","isPartOf":{"@type":"Book","@id":"https://estatebook.euiyun.com/#book","name":"EstateBook · 집값과 전세를 숫자로 푸는 부동산 교과서","url":"https://estatebook.euiyun.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"EstateBook","item":"https://estatebook.euiyun.com/"},{"@type":"ListItem","position":2,"name":"22. 부동산 실험실","item":"https://estatebook.euiyun.com/chapters/lab.html"}]}]}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../css/style.css">
+<script src="../js/common.js"></script>
+<script src="../js/estate.js"></script>
+<!--head:end-->
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3d6151a0abc94ede89285d462527fa80"}'></script>
+<!-- End Cloudflare Web Analytics -->
+<style>
+  .lab-grid { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .lab-grid .sim-controls { border-top: 1px solid var(--border); }
+  .lab-sub { grid-column: 1 / -1; font-size: 12.5px; font-weight: 700; color: var(--text-faint); letter-spacing: .03em; margin: 2px 0 -6px; }
+  .lab-row { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; }
+  .lab-row .cap { font-size: 13px; color: var(--text-dim); }
+  .lab-read { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+  .lab-read .stat .v { font-size: 16px; }
+  .lab-read .stat .v small { display: block; margin: 0; font-size: 11.5px; }
+  .lab-read.six { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  @media (max-width: 560px) { .lab-read.six { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .lab-bar { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; padding: 10px 16px; border-bottom: 1px solid var(--border); background: var(--surface); }
+  .lab-bar .cap { font-size: 12px; font-weight: 700; color: var(--text-faint); letter-spacing: .04em; }
+  .lab-warn { padding: 12px 18px; border-top: 1px solid var(--border); background: var(--bg-elev); font-size: 14px; line-height: 1.6; }
+  .lab-warn ul { margin: 4px 0 0; padding-left: 18px; }
+  .lab-warn li { margin: 2px 0; }
+  .lab-warn .hd { font-size: 12px; font-weight: 700; color: var(--text-faint); letter-spacing: .04em; }
+  .check i.sw { display: inline-block; width: 16px; height: 4px; border-radius: 2px; }
+  .exp-list { display: grid; gap: 10px; margin: 18px 0; padding: 0; list-style: none; counter-reset: exp; }
+  .exp-list li { position: relative; padding: 12px 16px 12px 52px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg-elev); margin: 0 !important; }
+  .exp-list li::before { counter-increment: exp; content: counter(exp, decimal-leading-zero); position: absolute; left: 14px; top: 12px; font-family: var(--mono); font-weight: 700; color: var(--accent); }
+  .exp-list b { display: block; }
+  .exp-list span { color: var(--text-dim); font-size: 15px; }
+</style>
+</head>
+<body data-chapter="lab">
+<main class="chapter">
+  <header class="chapter-hero">
+    <div class="eyebrow">Chapter 22</div>
+    <h1>부동산 실험실</h1>
+    <p class="lead">스물한 개의 장에서 집값과 전세의 부품을 하나씩 떼어 보았다. 입지와 금리, 공급의 시차, 전세의 구조, 계약과 권리, 대출 한도와 DSR, 레버리지, 청약, 세금, 사느냐 빌리느냐. 이 장은 그 부품을 한 가구 위에 다시 조립한다. 소득과 생활비, 예금과 보증금, 사는 지역과 목표 집값, 무주택 기간과 부양가족을 넣으면 다섯 갈래의 주거 경로(전세 계속, 월세, 지금 매수, 몇 년 뒤 매수, 청약 당첨)가 30년 동안 어떤 순자산을 남기는지, 해마다 주거비로 얼마가 나가는지, 금리와 집값이 흔들리면 그 결과가 얼마나 퍼지는지, 어떤 조건에서 경로가 무너지는지가 숫자로 나온다. 기본값은 책 전체를 함께 걸어온 하늘네이고, 숫자 몇 개만 바꾸면 곧바로 우리 집이 된다. 이 실험실은 미래를 맞히는 기계가 아니다. "이 조건이라면 이렇게 된다"를 재는 자다.</p>
+    <ul class="objectives">
+      <li>소득·자산·지역·가족 계획을 넣어 지금 빌릴 수 있는 돈(DSR·LTV·금액 상한)과 청약 가점을 계산한다.</li>
+      <li>금리 곡선의 점을 직접 끌어 30년 금리 시나리오를 만들고, 집값·전세가 상승률과 함께 다섯 경로의 순자산을 비교한다.</li>
+      <li>경로마다 해마다 나가는 주거비(이자, 월세, 보유세, 수선비, 거래 비용)와 지금 보증금의 회수 위험을 확인한다.</li>
+      <li>몬테카를로로 집값과 금리의 불확실성을 300번 돌려 경로마다 결과가 얼마나 퍼지는지 본다.</li>
+      <li>금리 급등·집값 하락·소득 감소가 겹칠 때 각 경로가 어디서 무너지는지 지도로 찾고, 결과를 판단에 쓰는 법과 한계를 정리한다.</li>
+    </ul>
+  </header>
+
+  <section id="howto">
+    <h2>실험실의 순서</h2>
+    <p>주거 경로를 한 번에 계산하는 공식은 없다. 이 장은 여덟 단계로 나눈다. 가구를 넣고, 지금 빌릴 수 있는 돈을 확인하고, 금리와 집값의 길을 그린다. 그 위에서 다섯 경로를 30년 동안 돌리고, 해마다의 주거비와 지금 보증금의 위험을 본다. 마지막으로 미래를 수백 번 흔들어 결과의 폭을 재고, 경로가 무너지는 조건을 찾는다. 모든 시뮬레이터는 같은 가구와 같은 시나리오를 공유한다. 첫 시뮬레이터에서 예금을 바꾸면 아래 일곱 개가 모두 따라 바뀐다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 440 430" role="img" aria-label="실험실의 여덟 단계: 가구 입력, 대출 한도, 시나리오, 다섯 경로, 주거비와 보증금 위험, 몬테카를로, 무너지는 조건">
+        <defs><marker id="lb-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="context-stroke"/></marker></defs>
+        <rect x="80" y="8" width="280" height="54" rx="10" class="f-acc-soft"/>
+        <text x="220" y="31" text-anchor="middle" class="lbl-b">① 우리 집 입력</text>
+        <text x="220" y="50" text-anchor="middle" class="lbl-dim">소득·생활비·예금·보증금·지역·청약 가점</text>
+        <line x1="160" y1="62" x2="118" y2="86" class="s-line" marker-end="url(#lb-ar)"/>
+        <line x1="280" y1="62" x2="322" y2="86" class="s-line" marker-end="url(#lb-ar)"/>
+        <rect x="10" y="88" width="200" height="58" rx="10" class="f-elev"/>
+        <text x="110" y="111" text-anchor="middle" class="lbl-b">② 빌릴 수 있는 돈</text>
+        <text x="110" y="131" text-anchor="middle" class="lbl-dim">DSR · LTV · 금액 상한</text>
+        <rect x="230" y="88" width="200" height="58" rx="10" class="f-elev"/>
+        <text x="330" y="111" text-anchor="middle" class="lbl-b">③ 시나리오</text>
+        <text x="330" y="131" text-anchor="middle" class="lbl-dim">금리 곡선 · 집값 · 전세가</text>
+        <line x1="110" y1="146" x2="196" y2="174" class="s-line" marker-end="url(#lb-ar)"/>
+        <line x1="330" y1="146" x2="244" y2="174" class="s-line" marker-end="url(#lb-ar)"/>
+        <rect x="60" y="176" width="320" height="58" rx="10" class="f-acc2-soft"/>
+        <text x="220" y="199" text-anchor="middle" class="lbl-b">④ 다섯 경로 30년</text>
+        <text x="220" y="219" text-anchor="middle" class="lbl-dim">전세 계속 · 월세 · 지금 매수 · N년 뒤 매수 · 청약</text>
+        <line x1="150" y1="234" x2="110" y2="258" class="s-line" marker-end="url(#lb-ar)"/>
+        <line x1="290" y1="234" x2="330" y2="258" class="s-line" marker-end="url(#lb-ar)"/>
+        <rect x="10" y="260" width="200" height="50" rx="10" class="f-elev"/>
+        <text x="110" y="290" text-anchor="middle" class="lbl-b">⑤ 해마다의 주거비</text>
+        <rect x="230" y="260" width="200" height="50" rx="10" class="f-elev"/>
+        <text x="330" y="290" text-anchor="middle" class="lbl-b">⑥ 지금 보증금의 위험</text>
+        <line x1="220" y1="234" x2="220" y2="324" class="s-dash" marker-end="url(#lb-ar)"/>
+        <rect x="60" y="326" width="320" height="44" rx="10" class="f-warn-soft"/>
+        <text x="220" y="353" text-anchor="middle" class="lbl-b">⑦ 300번의 미래(몬테카를로)</text>
+        <line x1="220" y1="370" x2="220" y2="380" class="s-line" marker-end="url(#lb-ar)"/>
+        <rect x="60" y="382" width="320" height="40" rx="10" class="f-bad-soft"/>
+        <text x="220" y="407" text-anchor="middle" class="lbl-bad">⑧ 무너지는 조건(스트레스 지도)</text>
+      </svg>
+      <figcaption><b>그림 1. 실험실의 여덟 단계.</b> 입력(①)은 대출 한도(②)와 경로 계산(④)으로, 시나리오(③)는 경로 계산으로 들어간다. 경로 계산의 결과를 해마다의 주거비(⑤)와 보증금 위험(⑥)으로 쪼개 보고, 같은 계산을 수백 번 흔들어(⑦) 폭을 재고, 일부러 나쁜 조건을 넣어(⑧) 어디서 무너지는지 찾는다. 대출 한도는 <a href="mortgage.html">9장</a>, 레버리지는 <a href="leverage.html">10장</a>, 청약은 <a href="subscription.html">11장</a>, 사느냐 빌리느냐의 비용은 <a href="decision.html">20장</a>, 자금 계획은 <a href="plan.html">21장</a>의 방법을 그대로 쓴다.</figcaption>
+    </figure>
+
+    <p>숫자는 모두 이 책의 계산 엔진(<code>RE</code>)과 이 장 안의 30년 경로 모형이 만든다. 대출 한도와 DSR(<code>RE.maxLoan</code>, <code>RE.dsr</code>), 취득세와 보유세(<code>RE.acqTax</code>, <code>RE.holdingTax</code>), 중개보수(<code>RE.brokerage</code>), 보증금 회수(<code>RE.jeonseRisk</code>), 청약 가점(<code>RE.subscriptionScore</code>)은 앞 장들과 같은 함수다. 그 함수들을 해마다 이어 붙이는 일, 곧 예금이 얼마나 쌓이고 대출이 얼마나 줄고 전세 재계약 때 보증금을 얼마나 더 내는지는 이 장의 스크립트가 계산한다. 그래서 이 장의 결과는 모두 "이 책의 모델로 계산하면"이라는 단서를 단다.</p>
+
+    <div class="callout warn">
+      <strong>제도와 수치는 해마다 바뀐다</strong>
+      LTV·DSR·스트레스 가산금리·주담대 금액 상한, 취득세·보유세, 청약 가점과 소액임차인 기준은 2026년 기준 대표값이다. 대출 규제는 2025년에만 두 번 크게 바뀌었고, 지방 주담대의 스트레스 가산 유예처럼 기한이 정해진 규칙도 있으며, 보유세와 장기보유특별공제를 고치는 세제 개편안은 국회 심사 중이다(확정 전). 이 실험실이 30년을 계산한다고 해서 30년 동안 제도가 그대로라는 뜻이 아니다. 결과는 원리를 보여 주는 교육용 계산이고, 집값 전망도 특정 지역·상품의 권유도 아니며, 투자·세무·법률 자문이 아니다. 실제 대출과 계약 전에는 그해의 은행 상담, 국토교통부·금융위원회·국세청 공식 자료와 전문가에게 다시 확인한다.
+    </div>
+  </section>
+
+  <section id="input">
+    <h2>우리 집 입력</h2>
+    <p>먼저 가구를 넣는다. 위쪽 프리셋으로 출발점을 고른 뒤 숫자를 바꾼다. '하늘네'는 <code>RE.CASE</code>에서 가져온 값이다. 연소득 9,200만원(하늘 4,800만 + 재원 4,400만), 월 실수령 650만원, 보증금 4억원 중 전세대출 2억원, 경기 B시(수도권 비규제). 예금은 지금의 8,000만원에 전세 만기(2027년 4월)까지 6개월 동안 모을 돈을 더한 약 9,600만원으로 넣었다(<a href="overview.html">1장</a>의 계산). 이 장의 '0년'은 결정하는 시점이고, 하늘네에게는 2027년 4월이다. 나머지 셋은 처지가 전혀 다른 가상의 가구다. 수도권 빌라에 전세로 사는 28세 사회초년생, 은퇴를 5년 앞둔 서울의 50대 부부, 지방 D시의 맞벌이 4인 가족.</p>
+    <p>세 가지를 조심해서 넣는다. 첫째, <b>월 생활비에는 주거비를 넣지 않는다.</b> 전세대출 이자, 월세, 주담대 상환은 경로마다 다르기 때문에 모형이 따로 계산한다. 하늘네의 생활비 400만원에는 전세대출 이자 약 63만원(2억원 × 3.8% ÷ 12)이 들어 있으므로, 여기에는 약 337만원을 넣었다. 둘째, <b>연소득은 세금을 떼기 전 금액</b>이다. 은행은 이 숫자로 DSR을 계산한다. 셋째, <b>은퇴까지 남은 해</b>가 지나면 실수령과 연소득이 지금의 45%(공적연금·퇴직연금을 합친 교육용 어림값)로 줄어든다고 본다. 30년 경로에서 가장 크게 꺾이는 곳이 여기다.</p>
+
+    <div class="sim" id="sim-in">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>우리 집 입력</h3></div>
+      <div class="lab-bar">
+        <span class="cap">프리셋</span>
+        <div class="seg" id="in-pre">
+          <button data-value="haneul" class="on">하늘네(B시 전세)</button>
+          <button data-value="young">사회초년생 28세</button>
+          <button data-value="retire">은퇴 5년 전 부부</button>
+          <button data-value="local">지방 맞벌이 4인</button>
+        </div>
+      </div>
+      <div class="lab-grid">
+        <div class="sim-view"><canvas id="in-cv"></canvas></div>
+        <div class="sim-controls">
+          <div class="lab-sub">소득과 살림(만원)</div>
+          <label class="ctrl"><span>가구 연소득(세전) <output id="in-inc-out"></output></span><input type="range" id="in-inc" min="1000" max="30000" step="100" value="9200"></label>
+          <label class="ctrl"><span>가구 월 실수령 <output id="in-net-out"></output></span><input type="range" id="in-net" min="100" max="2000" step="10" value="650"></label>
+          <label class="ctrl"><span>월 생활비(주거비 제외) <output id="in-cost-out"></output></span><input type="range" id="in-cost" min="50" max="1500" step="1" value="337"></label>
+          <label class="ctrl"><span>은퇴까지 남은 해 <output id="in-ret-out"></output></span><input type="range" id="in-ret" min="1" max="30" step="1" value="26"></label>
+          <div class="lab-sub">자산과 지금의 집(만원)</div>
+          <label class="ctrl"><span>예금·투자(결정 시점) <output id="in-cash-out"></output></span><input type="range" id="in-cash" min="0" max="100000" step="100" value="9600"></label>
+          <label class="ctrl"><span>지금 보증금 <output id="in-dep-out"></output></span><input type="range" id="in-dep" min="0" max="150000" step="500" value="40000"></label>
+          <label class="ctrl"><span>그중 전세대출 <output id="in-jl-out"></output></span><input type="range" id="in-jl" min="0" max="100000" step="500" value="20000"></label>
+          <label class="ctrl"><span>비상금(생활비+상환 몇 달 치) <output id="in-rsv-out"></output></span><input type="range" id="in-rsv" min="0" max="12" step="1" value="6"></label>
+          <div class="lab-sub">살 집과 지역</div>
+          <label class="ctrl"><span>목표 집값 <output id="in-price-out"></output></span><input type="range" id="in-price" min="10000" max="250000" step="500" value="60000"></label>
+          <div class="lab-row"><span class="cap">지역</span><div class="seg" id="in-reg"><button data-value="seoul">서울 규제지역</button><button data-value="metro" class="on">수도권 비규제</button><button data-value="local">지방</button></div></div>
+          <label class="check"><input type="checkbox" id="in-first" checked> 생애최초 구입(규제지역 LTV 70%, 취득세 감면)</label>
+          <div class="lab-sub">청약 가점</div>
+          <label class="ctrl"><span>무주택 기간 <output id="in-hl-out"></output></span><input type="range" id="in-hl" min="0" max="20" step="1" value="4"></label>
+          <label class="ctrl"><span>부양가족 <output id="in-dp-out"></output></span><input type="range" id="in-dp" min="0" max="6" step="1" value="2"></label>
+          <label class="ctrl"><span>청약통장 가입 기간 <output id="in-ac-out"></output></span><input type="range" id="in-ac" min="0" max="20" step="1" value="9"></label>
+        </div>
+      </div>
+      <div class="sim-readout lab-read">
+        <div class="stat"><span class="k">순자산(보증금 자기 돈 + 예금)</span><span class="v" id="in-o-nw">—</span></div>
+        <div class="stat"><span class="k">지금 월 저축(전세 기준)</span><span class="v" id="in-o-sv">—</span></div>
+        <div class="stat"><span class="k">청약 가점(84점 만점)</span><span class="v" id="in-o-sc">—</span></div>
+        <div class="stat"><span class="k">이 지역의 대출 규칙</span><span class="v" id="in-o-rule">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 하늘네에서 '목표 집값까지' 막대를 본다. 순자산 약 2억 9,600만원으로 6억원 집을 사려면 거래 비용과 비상금을 남기고 3억 4,000만원 남짓을 빌려야 한다. ② 지역을 '서울 규제지역'으로 바꾸고 생애최초를 끈다. LTV가 40%로 내려가 대출 가능 표시선이 왼쪽으로 물러난다. ③ 프리셋을 '사회초년생 28세'로 바꾼다. 목표 집값 3억 5,000만원에 비해 대출 가능선이 한참 짧다. 막대의 붉은 부분이 아무리 모아도 메우기 어려운 거리다. (가정: 0년의 월 저축 = 실수령 − 생활비 − 전세대출 이자. 전세대출 금리는 금리 곡선의 첫해 값보다 0.2%p 낮게 잡았다. 청약 가점은 주택공급에 관한 규칙의 점수표를 단순화한 <code>RE.subscriptionScore</code>로 계산한다.)</div>
+    </div>
+
+    <p>그림의 네 줄은 이 실험실이 가구를 보는 방식이다. 맨 위는 지금의 대차대조표다. 보증금은 자산이지만 그중 전세대출은 빚이므로, 순자산은 '보증금 중 자기 돈 + 예금'이다. 둘째 줄은 한 달 돈의 흐름으로, 실수령에서 생활비와 주거비를 빼고 남는 저축이 30년 경로의 연료다. 셋째 줄은 목표 집을 지금 산다고 할 때의 자금 구조다. 집값과 거래 비용을 합친 금액 가운데 자기 돈으로 낼 몫(비상금을 남기고)과 빌려야 할 몫이 갈리고, 세로선은 규제가 허락하는 최대 대출이다. 빌려야 할 몫이 이 선을 넘으면 그 부분이 붉게 칠해진다. 맨 아래는 청약 가점이다. 하늘네의 36점(무주택 10 + 부양가족 15 + 통장 11)은 <a href="subscription.html">11장</a>에서 본 것처럼 인기 단지의 가점제 커트라인과 거리가 멀다. 이 숫자가 아래 '청약 당첨 가정' 경로를 읽을 때의 단서가 된다.</p>
+  </section>
+
+  <section id="loan">
+    <h2>얼마를 빌릴 수 있나: 세 개의 한도</h2>
+    <p>집을 사는 경로는 모두 대출 한도라는 문을 지나야 한다. <a href="mortgage.html">9장</a>에서 본 것처럼 은행이 빌려주는 주택담보대출은 세 한도 중 가장 작은 값이다. 소득으로 정해지는 <span class="term">DSR</span><span class="en">(Debt Service Ratio, 총부채원리금상환비율)</span> 한도는 모든 대출의 한 해 원리금이 연소득의 40%(은행 기준)를 넘지 않게 하는 선이다. 집값으로 정해지는 <span class="term">LTV</span><span class="en">(Loan-to-Value, 담보인정비율)</span> 한도는 집값의 일정 비율, 그리고 수도권·규제지역의 주담대 금액 상한이 있다. 2026년 기준 이 책의 엔진은 지역을 셋으로 나눈다.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>지역 유형</th><th>LTV</th><th>스트레스 가산금리(DSR 계산용)</th><th>금액 상한</th></tr></thead>
+        <tbody>
+          <tr><td>서울 규제지역(투기과열지구·조정대상지역·토지거래허가구역)</td><td class="num">무주택 40%, 생애최초 70%</td><td class="num">+3.0%p</td><td class="num">시가 15억 이하 6억, 25억 이하 4억, 초과 2억</td></tr>
+          <tr><td>수도권 비규제(예: 경기 B시)</td><td class="num">70%</td><td class="num">+3.0%p</td><td class="num">6억</td></tr>
+          <tr><td>지방</td><td class="num">70%</td><td class="num">+0.75%p</td><td class="num">없음</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><span class="term">스트레스 DSR</span><span class="en">(Stressed DSR)</span>은 앞으로 금리가 오를 수 있다고 보고, DSR을 계산할 때만 실제 금리에 가산금리를 더하는 제도다. 실제로 내는 이자는 그대로지만 한도는 그만큼 줄어든다. 금융위원회의 6.27 대책(2025-06-28)과 10.15 대책(2025-10-16 시행)으로 수도권·규제지역의 주담대 상한과 가산금리 하한이 지금의 모습이 되었다(지방 주담대의 가산 유예는 2026년 말까지로 알려졌고, 그 뒤는 확인 필요). 규제지역의 다주택자 구입, 정책대출의 소득 요건, 주기형·혼합형 금리에 대한 가산 축소 같은 세부 규칙은 넣지 않았다.</p>
+    <p>아래 시뮬레이터는 위에서 넣은 가구로 세 한도를 나란히 그린다. 아래쪽 집값 손잡이를 끌어 목표 집값을 바꾸고(위 입력과 연결되어 있다), 금리를 올려 본다. 이 금리는 다음 절 금리 곡선의 첫 점이기도 하다.</p>
+
+    <div class="sim" id="sim-ln">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>대출 한도와 DSR 게이지</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="ln-cv"></canvas><span class="hint">아래 손잡이를 끌어 집값을 바꾼다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>지금의 주담대 금리 <output id="ln-r-out"></output></span><input type="range" id="ln-r" min="2" max="9" step="0.1" value="4"></label>
+          <label class="ctrl"><span>다른 빚의 한 해 원리금 <output id="ln-oth-out"></output></span><input type="range" id="ln-oth" min="0" max="3000" step="50" value="0"></label>
+          <div class="lab-row"><span class="cap">은행</span><div class="seg" id="ln-bank"><button data-value="bank" class="on">은행 40%</button><button data-value="nonbank">2금융권 50%</button></div></div>
+        </div>
+      </div>
+      <div class="sim-readout lab-read">
+        <div class="stat"><span class="k">빌릴 수 있는 최대 대출</span><span class="v" id="ln-o-max">—</span></div>
+        <div class="stat"><span class="k">묶는 규제</span><span class="v" id="ln-o-bind">—</span></div>
+        <div class="stat"><span class="k">지금 사려면 필요한 대출</span><span class="v" id="ln-o-need">—</span></div>
+        <div class="stat"><span class="k">DSR(실제 금리 / 스트레스)</span><span class="v" id="ln-o-dsr">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 하늘네 기본값에서 세 막대를 본다. DSR 한도 약 4억 6,000만원, LTV 한도 4억 2,000만원, 금액 상한 6억원 가운데 LTV가 묶는다. 필요한 대출 약 3억 4,400만원은 그 안에 있다. ② 금리를 7%까지 올린다. 집값은 그대로인데 DSR 막대만 약 3억 4,900만원으로 줄어들고, 묶는 규제가 DSR로 바뀐다. 필요한 대출이 이 선을 넘어 붉은 점선이 된다. 금리가 오르면 같은 소득으로 빌릴 수 있는 돈이 줄어 살 수 있는 집값이 내려간다. 금리가 집값을 누르는 경로 하나다(<a href="value.html">3장</a>). ③ 다른 빚의 원리금을 1,500만원으로 올린다. 신용대출이나 자동차 할부가 DSR의 자리를 먹는다. (가정: 30년 원리금균등, 다른 빚은 이미 생활비 안에서 갚고 있다고 본다. 게이지 바늘은 필요한 대출을 스트레스 금리로 계산한 DSR이고, 옅은 바늘은 실제 금리로 계산한 값이다.)</div>
+    </div>
+
+    <p>한도를 볼 때 두 가지를 기억한다. 하나, <b>한도는 최대치이지 권장치가 아니다.</b> DSR 40%는 세전 소득 기준이라 실수령으로 따지면 상환액이 월급의 절반 가까이가 될 수 있다. 둘, <b>한도는 해마다 바뀐다.</b> 금리, 소득, 규제가 바뀌면 같은 집에 대한 한도가 달라진다. 그래서 아래의 'N년 뒤 매수'와 '청약 당첨' 경로는 그 해의 소득과 금리, 그 해의 집값으로 한도를 다시 계산한다. 몇 년을 기다리는 동안 집값이 오르고 금리가 오르면, 모은 돈보다 한도가 더 빨리 줄어들 수도 있다.</p>
+
+    <div class="callout pro">
+      <strong>한도 계산서를 받으면 월 상환액부터 다시 쓴다</strong>
+      손님이 은행에서 "4억 2,000만원까지 됩니다"라는 말을 듣고 오면 민태호는 계산서를 뒤집어 놓고 묻는다. "그 4억 2,000만원을 30년에 갚으면 매달 얼마입니까. 그 돈을 빼고 나면 한 달에 얼마가 남습니까." 한도는 은행이 감당할 수 있는 위험이고, 월 상환액은 가족이 감당할 생활이다. 중개사에게는 한도가 클수록 손님이 볼 수 있는 매물이 넓어지는 것이 이익이라 이 질문을 건너뛰고 싶은 유혹이 있다. 그래서 태호는 매물을 보여 주기 전에 손님과 함께 '월 상환 상한'을 먼저 적고, 그 숫자에서 거꾸로 집값을 정한다(<a href="plan.html">21장</a>의 역산). 실험실에서는 아래 '해마다의 주거비'에서 그 숫자가 실수령의 몇 %인지 볼 수 있다.
+    </div>
+
+    <div class="callout buyer">
+      <strong>은행 상담 전에 준비할 숫자와 서류</strong>
+      <ul>
+        <li><b>소득 증빙</b>: 근로소득 원천징수영수증(부부 각자), 최근 급여명세서. DSR은 이 서류의 세전 소득으로 계산한다. 맞벌이는 합산 여부를 확인한다.</li>
+        <li><b>기존 대출 목록</b>: 전세대출, 신용대출, 마이너스통장 한도, 자동차 할부. 마이너스통장은 쓰지 않아도 한도 전체가 DSR에 잡힐 수 있으니 상담 전에 정리할지 묻는다.</li>
+        <li><b>금리 유형과 재설정 주기</b>: 변동, 혼합(몇 년 고정 뒤 변동), 주기형(몇 년마다 재설정). 스트레스 가산금리가 유형에 따라 다르게 붙는지 확인한다.</li>
+        <li><b>중도상환수수료와 거치 기간</b>: 몇 년 안에 갚으면 수수료가 붙는지, 이자만 내는 기간이 있는지.</li>
+        <li><b>잔금일 기준의 한도</b>: 한도는 계약일이 아니라 대출 실행일의 규제와 금리로 정해진다. 계약과 잔금 사이에 규제가 바뀐 사례가 있었으므로, 잔금일에 한도가 줄면 어떻게 할지(예금, 일정 조정)를 미리 정한다.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="scenario">
+    <h2>금리와 집값의 길을 그린다</h2>
+    <p>30년 경로를 계산하려면 30년 동안의 금리와 집값이 필요하다. 그것을 아는 사람은 없다. 그래서 실험실은 미래를 맞히는 대신 <span class="term">시나리오</span><span class="en">(Scenario)</span>를 직접 그리게 한다. 시나리오는 "만약 금리가 이렇게 움직이고 집값이 이만큼 오른다면"이라는 가정의 묶음이다. 아래 그래프의 위쪽은 주담대 금리의 길이다. 일곱 개의 점을 위아래로 끌어 모양을 바꾼다. 점 사이는 직선으로 잇는다. 오른쪽 버튼은 대표적인 네 모양을 불러온다. 아래쪽은 그 시나리오에서 목표 집의 시세와 지금 집의 전세 시세가 어떻게 움직이는지 보여 준다.</p>
+
+    <div class="sim" id="sim-rt">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>금리 곡선 끌기와 집값·전세가 시나리오</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="rt-cv"></canvas><span class="hint">금리 곡선의 점을 위아래로 끈다</span></div>
+        <div class="sim-controls">
+          <div class="seg" id="rt-pre"><button data-value="flat" class="on">4% 유지</button><button data-value="down">서서히 하락</button><button data-value="spike">급등 후 복귀</button><button data-value="high">높게 유지</button></div>
+          <label class="ctrl"><span>집값 상승률(연) <output id="rt-g-out"></output></span><input type="range" id="rt-g" min="-4" max="8" step="0.5" value="2"></label>
+          <label class="ctrl"><span>전세가 상승률(연) <output id="rt-jg-out"></output></span><input type="range" id="rt-jg" min="-4" max="8" step="0.5" value="2"></label>
+          <label class="ctrl"><span>예금·투자 수익률(연) <output id="rt-ret-out"></output></span><input type="range" id="rt-ret" min="0" max="7" step="0.5" value="3"></label>
+        </div>
+      </div>
+      <div class="sim-readout lab-read">
+        <div class="stat"><span class="k">첫 5년 평균 금리</span><span class="v" id="rt-o-a5">—</span></div>
+        <div class="stat"><span class="k">30년 중 최고 금리</span><span class="v" id="rt-o-mx">—</span></div>
+        <div class="stat"><span class="k">10년 뒤 목표 집 시세</span><span class="v" id="rt-o-p10">—</span></div>
+        <div class="stat"><span class="k">10년 뒤 전세가율</span><span class="v" id="rt-o-jr">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① '급등 후 복귀'를 누른다. 2년째에 7%까지 올랐다가 8년째에 4%로 돌아오는 길이다. 아래 경로 비교에서 대출을 낀 경로가 이 몇 해 동안 어떻게 꺾이는지 본다. ② 10년째 점을 끌어 9%까지 올려 본다. 곡선은 마음대로 그릴 수 있지만, 그런 길이 얼마나 그럴듯한지는 그리는 사람의 판단이다. ③ 전세가 상승률을 집값 상승률보다 낮게 두면 10년 뒤 전세가율이 내려간다. 전세가율이 낮아질수록 세입자의 보증금은 안전해지고(<a href="jeonse.html">5장</a>), 집주인의 갭은 커진다. (금리는 주담대 기준이고 전세대출은 0.2%p 낮게, 월세 전환율은 금리 + 1%p로 잡았다. 집값·전세가 상승률은 명목이며 해마다 같다고 본다. 교육용 시나리오이며 전망이 아니다.)</div>
+    </div>
+
+    <p>이 시나리오의 숫자 둘은 이 책이 말해 온 집값의 다섯 힘을 압축한 것이다. 집값 상승률 한 칸에는 입지와 소득의 장기 추세(<a href="location.html">2장</a>), 공급의 파도(<a href="supply.html">4장</a>), 기대와 심리(<a href="bubble.html">17장</a>)가 함께 들어 있다. 금리 곡선은 금리라는 힘을 따로 뗀 것이고, 지역 유형은 대출 규제라는 힘을 대신한다. 결정론적인 경로 비교에서는 금리와 집값을 따로 움직이지만, 뒤의 몬테카를로에서는 둘을 묶는다. 금리가 1%p 오른 해에는 그 해 집값 상승률을 2%p 깎는다. 금리가 오르면 같은 임대료의 값이 내려가고(<a href="value.html">3장</a>), 빌릴 수 있는 돈이 줄어드는(위 시뮬레이터) 두 경로를 한 숫자로 흉내 낸 교육용 가정이다. 그래서 몬테카를로에서 집값이 크게 빠진 미래를 골라 보면, 그 하락이 어느 힘에서 왔는지를 금리 쪽과 나머지 쪽으로 나눠 볼 수 있다.</p>
+  </section>
+
+  <section id="paths">
+    <h2>다섯 갈래, 30년</h2>
+    <p>이제 같은 가구, 같은 시나리오 위에서 다섯 경로를 돌린다. 각 경로는 아래 그림처럼 결정 시점(0년)에서 갈라진다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 460 310" role="img" aria-label="다섯 경로의 시간표: 전세 계속, 월세, 지금 매수, N년 뒤 매수, 청약 당첨 가정">
+        <defs><marker id="lb-ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="context-stroke"/></marker></defs>
+        <line x1="100" y1="268" x2="448" y2="268" class="s-axis" marker-end="url(#lb-ar2)"/>
+        <text x="104" y="286" text-anchor="middle" class="lbl-dim t-mono">0</text>
+        <text x="160" y="286" text-anchor="middle" class="lbl-dim t-mono">5</text>
+        <text x="216" y="286" text-anchor="middle" class="lbl-dim t-mono">10</text>
+        <text x="328" y="286" text-anchor="middle" class="lbl-dim t-mono">20</text>
+        <text x="436" y="286" text-anchor="middle" class="lbl-dim t-mono">30</text>
+        <text x="270" y="304" text-anchor="middle" class="lbl-dim">결정 시점부터의 해</text>
+        <text x="92" y="38" text-anchor="end" class="lbl-b">전세 계속</text>
+        <line x1="104" y1="34" x2="440" y2="34" class="s-acc2"/>
+        <circle cx="127" cy="34" r="4" class="f-acc2"/><circle cx="150" cy="34" r="4" class="f-acc2"/><circle cx="173" cy="34" r="4" class="f-acc2"/><circle cx="196" cy="34" r="4" class="f-acc2"/>
+        <text x="300" y="26" text-anchor="middle" class="lbl-dim">2년마다 시세로 재계약</text>
+        <text x="92" y="88" text-anchor="end" class="lbl-b">월세</text>
+        <line x1="104" y1="84" x2="440" y2="84" class="s-dash"/>
+        <rect x="100" y="78" width="10" height="12" class="f-warn"/>
+        <text x="300" y="76" text-anchor="middle" class="lbl-dim">보증금 10%만 남기고 나머지는 예금으로</text>
+        <text x="92" y="138" text-anchor="end" class="lbl-b">지금 매수</text>
+        <path d="M98 142 L104 128 L110 142 Z" class="f-acc"/>
+        <line x1="110" y1="134" x2="440" y2="134" class="s-acc"/>
+        <text x="300" y="126" text-anchor="middle" class="lbl-dim">30년 주담대 상환 · 보유세 · 수선비</text>
+        <text x="92" y="188" text-anchor="end" class="lbl-b">N년 뒤 매수</text>
+        <line x1="104" y1="184" x2="170" y2="184" class="s-acc2"/>
+        <path d="M164 192 L170 178 L176 192 Z" class="f-acc"/>
+        <line x1="176" y1="184" x2="440" y2="184" class="s-acc"/>
+        <text x="138" y="176" text-anchor="middle" class="lbl-dim">전세</text>
+        <text x="300" y="176" text-anchor="middle" class="lbl-dim">그 해 집값·금리·소득으로 다시 계산</text>
+        <text x="92" y="238" text-anchor="end" class="lbl-b">청약 당첨</text>
+        <line x1="104" y1="234" x2="150" y2="234" class="s-acc2"/>
+        <rect x="146" y="226" width="8" height="16" class="f-ok"/>
+        <line x1="154" y1="234" x2="218" y2="234" class="s-dash"/>
+        <path d="M212 242 L218 228 L224 242 Z" class="f-acc"/>
+        <line x1="224" y1="234" x2="440" y2="234" class="s-acc"/>
+        <text x="150" y="256" text-anchor="middle" class="lbl-dim">당첨·계약금</text>
+        <text x="186" y="226" text-anchor="middle" class="lbl-dim">공사 3년</text>
+        <text x="330" y="226" text-anchor="middle" class="lbl-dim">입주 때 잔금 대출</text>
+      </svg>
+      <figcaption><b>그림 2. 다섯 경로의 시간표.</b> 삼각형은 집을 사는 순간이다. 전세 계속은 2년마다 그때 시세로 다시 계약하고, 오른 보증금은 예금에서 내고 모자라면 전세대출로 메운다. 월세는 결정 시점에 보증금의 90%를 돌려받아 예금으로 굴리고 월세를 낸다. 지금 매수는 0년에, N년 뒤 매수는 N년 동안 전세로 산 뒤 그 해의 조건으로 산다. 청약은 '당첨된다고 가정한 해'에 시세의 80%인 분양가의 10%를 계약금으로 내고, 3년 뒤 입주할 때 나머지를 잔금 대출과 예금으로 치른다.</figcaption>
+    </figure>
+
+    <p>모든 경로는 같은 규칙으로 한 해를 계산한다. 실수령에서 생활비와 그 경로의 주거비를 빼면 그 해의 저축이고, 저축은 예금에 더해져 예금·투자 수익률로 불어난다. 예금이 마이너스가 되면 생활비와 상환을 빚으로 메우는 상태로 보고, 그 빚에는 그해 금리 + 2%p의 이자를 물린다. 경로를 비교하는 잣대는 순자산이다.</p>
+
+    <div class="formula">
+      $$W_t = A_t + (D_t - J_t) + \big(P_t - M_t - c(P_t)\big),\qquad A_{t+1} = (1+i)\,A_t + 12\,(N_t - E_t) - H_t$$
+      <div class="where">\(W_t\) \(t\)년의 순자산, \(A_t\) 예금·투자, \(D_t\) 보증금, \(J_t\) 전세대출, \(P_t\) 집 시세(집이 없으면 0), \(M_t\) 주담대 잔액, \(c(P_t)\) 팔 때의 중개보수, \(i\) 예금·투자 수익률, \(N_t\) 월 실수령, \(E_t\) 월 생활비(주거비 제외), \(H_t\) 그 해 주거비(전세대출 이자 또는 월세, 매수했다면 원리금·보유세·수선비, 재계약·이사·매수 비용). 원금 상환은 주거비로 빠져나가지만 \(M_t\)를 줄여 순자산으로 돌아온다.</div>
+    </div>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 440 290" role="img" aria-label="한 해의 계산: 실수령에서 생활비와 주거비를 빼 저축을 만들고 순자산을 더한다">
+        <defs><marker id="lb-ar3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="context-stroke"/></marker></defs>
+        <rect x="10" y="10" width="130" height="50" rx="8" class="f-ok-soft"/>
+        <text x="75" y="32" text-anchor="middle" class="lbl-b">실수령 × 12</text>
+        <text x="75" y="50" text-anchor="middle" class="lbl-dim">은퇴 뒤 45%로</text>
+        <rect x="155" y="10" width="130" height="50" rx="8" class="f-surface"/>
+        <text x="220" y="32" text-anchor="middle" class="lbl-b">− 생활비 × 12</text>
+        <text x="220" y="50" text-anchor="middle" class="lbl-dim">해마다 +2%</text>
+        <rect x="300" y="10" width="130" height="50" rx="8" class="f-bad-soft"/>
+        <text x="365" y="32" text-anchor="middle" class="lbl-bad">− 주거비</text>
+        <text x="365" y="50" text-anchor="middle" class="lbl-dim">경로마다 다르다</text>
+        <line x1="220" y1="60" x2="220" y2="84" class="s-line" marker-end="url(#lb-ar3)"/>
+        <rect x="120" y="86" width="200" height="44" rx="8" class="f-acc-soft"/>
+        <text x="220" y="113" text-anchor="middle" class="lbl-b">= 그 해의 저축</text>
+        <line x1="220" y1="130" x2="220" y2="154" class="s-line" marker-end="url(#lb-ar3)"/>
+        <rect x="70" y="156" width="300" height="50" rx="8" class="f-elev"/>
+        <text x="220" y="178" text-anchor="middle" class="lbl-b">예금·투자 = (1 + 수익률) × 작년 + 저축</text>
+        <text x="220" y="196" text-anchor="middle" class="lbl-dim">마이너스면 금리 + 2%p로 빚이 불어난다</text>
+        <line x1="220" y1="206" x2="220" y2="230" class="s-line" marker-end="url(#lb-ar3)"/>
+        <rect x="20" y="232" width="400" height="50" rx="8" class="f-acc2-soft"/>
+        <text x="220" y="254" text-anchor="middle" class="lbl-b">순자산 = 예금 + (보증금 − 전세대출)</text>
+        <text x="220" y="272" text-anchor="middle" class="lbl-dim">+ (집 시세 − 주담대 잔액 − 팔 때 중개보수)</text>
+      </svg>
+      <figcaption><b>그림 3. 한 해의 계산.</b> 다섯 경로는 위 세 칸 중 '주거비'만 다르다. 그래서 30년 뒤 순자산의 차이는 주거비의 차이, 예금과 집 중 어디에 돈을 두었느냐(수익률과 집값 상승률의 차이), 그리고 거래 비용의 차이에서 나온다. 사느냐 빌리느냐를 같은 저울에 올린 <a href="decision.html">20장</a>의 비교를 30년으로 늘리고 해마다의 현금 흐름까지 따라간 것이다.</figcaption>
+    </figure>
+
+    <p>아래 시뮬레이터의 선 하나하나가 한 경로의 순자산이다. 오른쪽에서 경로를 켜고 끄고, 'N년 뒤'와 '청약 당첨 해'를 바꾼다. 그래프 아래쪽 손잡이를 끌면 그 해의 경로별 숫자가 아래에 나온다. 맨 아래 상자는 각 경로가 이 시나리오에서 어디가 아픈지 적는다.</p>
+
+    <div class="sim" id="sim-pa">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>30년 순자산 경로 비교</h3></div>
+      <div class="lab-bar">
+        <span class="cap">보기</span>
+        <div class="seg" id="pa-view"><button data-value="nw" class="on">순자산</button><button data-value="cash">예금·투자</button></div>
+        <span class="cap">금액</span>
+        <div class="seg" id="pa-real"><button data-value="nom" class="on">그 해의 돈</button><button data-value="real">오늘 돈(물가 2%)</button></div>
+      </div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="pa-cv"></canvas><span class="hint">아래 손잡이를 끌어 해를 고른다</span></div>
+        <div class="sim-controls">
+          <label class="check"><input type="checkbox" id="pa-on-jeonse" checked><i class="sw" id="pa-sw-jeonse"></i> 전세 계속</label>
+          <label class="check"><input type="checkbox" id="pa-on-rent" checked><i class="sw" id="pa-sw-rent"></i> 월세로</label>
+          <label class="check"><input type="checkbox" id="pa-on-buy" checked><i class="sw" id="pa-sw-buy"></i> 지금 매수</label>
+          <label class="check"><input type="checkbox" id="pa-on-later" checked><i class="sw" id="pa-sw-later"></i> <span id="pa-later-name">N년 뒤 매수</span></label>
+          <label class="check"><input type="checkbox" id="pa-on-sub" checked><i class="sw" id="pa-sw-sub"></i> 청약 당첨 가정</label>
+          <label class="ctrl"><span>몇 년 뒤 매수 <output id="pa-n-out"></output></span><input type="range" id="pa-n" min="1" max="10" step="1" value="2"></label>
+          <label class="ctrl"><span>청약 당첨 가정 해 <output id="pa-w-out"></output></span><input type="range" id="pa-w" min="1" max="10" step="1" value="2"></label>
+          <div class="lab-row"><span class="cap">주담대 금리</span><div class="seg" id="pa-fix"><button data-value="fixed" class="on">주기형(5년)</button><button data-value="var">변동(매년)</button></div></div>
+        </div>
+      </div>
+      <div class="sim-readout lab-read six">
+        <div class="stat"><span class="k">고른 해</span><span class="v" id="pa-o-y">—</span></div>
+        <div class="stat"><span class="k">전세 계속</span><span class="v" id="pa-o-jeonse">—</span></div>
+        <div class="stat"><span class="k">월세로</span><span class="v" id="pa-o-rent">—</span></div>
+        <div class="stat"><span class="k">지금 매수</span><span class="v" id="pa-o-buy">—</span></div>
+        <div class="stat"><span class="k" id="pa-o-later-k">N년 뒤 매수</span><span class="v" id="pa-o-later">—</span></div>
+        <div class="stat"><span class="k">청약 당첨 가정</span><span class="v" id="pa-o-sub">—</span></div>
+      </div>
+      <div class="lab-warn" id="pa-warn"></div>
+      <div class="sim-note">해볼 것: ① 하늘네 기본값(4% 유지, 집값·전세가 연 2%)에서 손잡이를 10년에 둔다. 이 책의 모델로 계산하면 전세 계속 약 6억 9,200만원, 지금 매수 약 6억 9,700만원으로 거의 같고, 월세는 약 6억 2,300만원으로 뒤처진다. ② 금리 시나리오를 '급등 후 복귀'로 바꾸고 주담대 금리를 '변동'으로 바꾼다. 지금 매수 선이 처음 몇 해 동안 눌리고, 주기형은 덜 눌린다. ③ 프리셋을 '은퇴 5년 전 부부'로 바꾼다. 9억원 집을 대출로 사는 경로는 은퇴 뒤 상환액을 감당하지 못해 예금이 바닥나고, 선이 아래로 꺾여 내려간다. 무너지는 모습이다. (가정: 그림 3의 계산. 매수 시 비상금은 '생활비 + 월 상환액'의 입력 개월 수만큼 예금에 남긴다. 청약 분양가는 당첨 해 시세의 80%, 잔금은 입주 해 금리와 소득으로 다시 심사한다. 한도가 모자라면 그 경로는 사지 못하고 전세로 남으며, 청약은 계약금을 잃는다고 본다.)</div>
+    </div>
+
+    <p>기본 시나리오에서 하늘네의 다섯 선은 처음 10년 동안 거의 겹친다. 사는 경로는 첫해에 취득세·중개보수·이사비 약 1,020만원을 내고 이자와 보유세, 수선비를 감당하는 대신 집값 상승분을 갖는다. 전세 경로는 2억원 전세대출 이자만 내고 남는 돈을 예금으로 굴린다. 집값 상승률 2%와 예금 수익률 3%, 주담대 금리 4%가 맞물리면 두 쪽이 비슷해진다. 30년 뒤에는 매수 쪽이 약 20억원, 전세 쪽이 약 18억 7,000만원으로 벌어지는데, 대출 원금을 다 갚은 뒤 집값 상승분이 온전히 쌓이기 때문이다. 청약 당첨 가정이 가장 높은 것은 시세의 80%에 산다는 가정이 그대로 순자산이 되기 때문이고, 그 가정 자체가 하늘네의 가점(36점)으로는 쉽지 않다는 것을 잊으면 안 된다. 월세 경로가 가장 낮은 것은 이 시나리오에서 전환율(5%)이 예금 수익률(3%)보다 높아, 보증금을 빼서 굴리는 것보다 월세로 나가는 돈이 크기 때문이다.</p>
+    <p>이 차이는 시나리오를 조금만 바꿔도 뒤집힌다. 집값 상승률을 0%로 내리면 매수 경로가 30년 내내 전세보다 아래에 있다. 예금 수익률을 5%로 올리면 30년 뒤 전세가 매수를 앞서고 월세도 매수에 바짝 따라붙는다. 보증금을 빼서 굴리는 돈의 수익률이 오르기 때문이다. 그래서 이 그래프에서 읽어야 할 것은 "어느 선이 위인가"보다 "어떤 가정에서 순서가 바뀌는가"다. 그리고 순자산이 같아도 그 내용은 다르다. 매수 경로의 순자산은 대부분 집에 묶여 있어 팔기 전에는 쓸 수 없고, 전세 경로의 순자산은 예금과 보증금이라 꺼내기 쉽다. '예금·투자' 보기로 바꾸면 그 차이가 보인다.</p>
+  </section>
+
+  <section id="yearly">
+    <h2>해마다 나가는 주거비</h2>
+    <p>순자산 선은 30년을 한 줄로 압축한다. 하지만 가계가 실제로 겪는 것은 해마다의 현금이다. 아래 막대는 고른 경로가 해마다 주거비로 내보내는 돈을 항목별로 쌓은 것이다. 이자(주담대 또는 전세대출), 월세, 보유세(재산세·종합부동산세, <code>RE.holdingTax</code>), 수선·관리비(집값의 0.5%), 그리고 거래·이사 비용(매수 때의 취득세·중개보수·법무비·이사비, 전세·월세 재계약 4년마다의 중개보수·이사비)이다. 원금 상환은 빚을 줄이는 저축이라 여기 넣지 않았다. 막대를 누르면 그 해의 숫자가 나온다.</p>
+
+    <div class="sim" id="sim-co">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>연도별 주거비</h3></div>
+      <div class="lab-bar">
+        <span class="cap">경로</span>
+        <div class="seg" id="co-path"><button data-value="jeonse">전세 계속</button><button data-value="rent">월세로</button><button data-value="buy" class="on">지금 매수</button><button data-value="later">N년 뒤 매수</button><button data-value="sub">청약 당첨</button></div>
+      </div>
+      <div class="sim-body">
+        <div class="sim-view"><canvas id="co-cv"></canvas><span class="hint">막대를 누르면 그 해를 고른다</span></div>
+      </div>
+      <div class="sim-readout lab-read">
+        <div class="stat"><span class="k">1년째 월 주거비</span><span class="v" id="co-o-m1">—</span></div>
+        <div class="stat"><span class="k" id="co-o-yk">고른 해의 주거비</span><span class="v" id="co-o-y">—</span></div>
+        <div class="stat"><span class="k">고른 해 원리금 ÷ 실수령</span><span class="v" id="co-o-b">—</span></div>
+        <div class="stat"><span class="k">30년 주거비 합계(명목)</span><span class="v" id="co-o-sum">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 하늘네 '지금 매수'의 첫 막대가 유난히 높다. 이자 약 1,370만원에 매수 비용 약 1,020만원이 얹혔다. 둘째 해부터 이자가 조금씩 줄어든다. ② '전세 계속'으로 바꾼다. 해마다 약 760만원(2억원 × 3.8%)의 이자가 나가고 4년마다 중개보수·이사비가 얹힌다. 재계약 때 오른 보증금은 예금에서 내므로 이자는 그대로지만, 그만큼 예금이 남의 집에 묶인다. 30년 합계는 매수보다 작지만 그 대신 집값 상승분이 없다. ③ '월세로'를 고른다. 첫해 약 1,800만원으로 매수의 첫해(매수 비용 포함)보다는 작지만, 전세가를 따라 해마다 오르고 30년 합계는 다섯 경로 중 가장 크다. 금리 시나리오를 '높게 유지'로 바꾸면 전환율이 올라 월세가 더 가파르게 오른다. (명목 금액. 보유세는 공시가격을 시세의 69%로 보고 1주택으로 계산한 교육용 값이다. 원리금 ÷ 실수령은 주담대 원리금만 센다.)</div>
+    </div>
+
+    <p>같은 30년인데 주거비가 나가는 모양이 경로마다 다르다. 매수 경로는 처음이 가장 무겁고 갈수록 가벼워진다. 이자는 잔액에 붙으므로 원금이 줄수록 줄고, 30년이 지나면 보유세와 수선비만 남는다. 전세와 월세는 처음에 가볍고 시간이 갈수록 무거워진다. 전세가와 월세가 오르기 때문이다. <a href="overview.html">1장</a>에서 말한 '집 한 채는 주거비를 고정하는 장치'라는 관점이 이 모양이다. 반대로 집을 산 가구는 처음 몇 해의 무게를 견뎌야 한다. 그 몇 해에 금리가 오르거나 소득이 끊기면 경로가 무너진다. 그 조건은 이 장의 마지막 시뮬레이터에서 찾는다.</p>
+  </section>
+
+  <section id="deposit">
+    <h2>지금 보증금은 안전한가</h2>
+    <p>전세 계속, 월세, N년 뒤 매수, 청약 대기 경로는 모두 한동안 남의 집에 보증금을 맡긴다. 그 보증금은 집주인이 돌려줄 수 있을 때만 자산이다. <a href="jeonse.html">5장</a>과 <a href="contract.html">7장</a>에서 본 것처럼 집주인이 돌려주지 못해 집이 경매로 넘어가면, 보증금은 낙찰가에서 경매 비용과 나보다 앞선 채권(근저당 등)을 뺀 만큼만 돌아온다. 아래 그래프의 가로축은 집값 하락률, 세로축은 보증금 회수율이다(<code>RE.jeonseRisk</code>). 손잡이를 끌어 하락률을 고르고, 지금 집의 시세와 선순위 채권, 낙찰가율을 바꾼다. 시세와 선순위 채권은 위 경로 계산의 '보증금 위험' 경고에도 쓰인다.</p>
+
+    <div class="sim" id="sim-dp">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>보증금 위험: 집값이 빠지면 얼마가 돌아오나</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="dp-cv"></canvas><span class="hint">손잡이를 끌어 집값 하락률을 고른다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>지금 사는 집 시세 <output id="dp-hp-out"></output></span><input type="range" id="dp-hp" min="5000" max="250000" step="500" value="62000"></label>
+          <label class="ctrl"><span>선순위 채권(근저당 등) <output id="dp-sr-out"></output></span><input type="range" id="dp-sr" min="0" max="100000" step="500" value="0"></label>
+          <label class="ctrl"><span>낙찰가율 <output id="dp-ar-out"></output></span><input type="range" id="dp-ar" min="50" max="100" step="1" value="80"></label>
+        </div>
+      </div>
+      <div class="sim-readout lab-read">
+        <div class="stat"><span class="k">전세가율 / 부채비율</span><span class="v" id="dp-o-r">—</span></div>
+        <div class="stat"><span class="k">손실이 시작되는 하락</span><span class="v" id="dp-o-z">—</span></div>
+        <div class="stat"><span class="k">고른 하락에서 돌아오는 돈</span><span class="v" id="dp-o-rec">—</span></div>
+        <div class="stat"><span class="k">HUG 반환보증 가입 요건</span><span class="v" id="dp-o-hug">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 하늘네(시세 6억 2,000만원, 보증금 4억원, 선순위 없음)에서 손잡이를 끈다. 이 책의 모델로 계산하면 약 18% 하락까지는 전액이 돌아오고, 30% 하락에서 약 86%, 40% 하락에서 약 73%가 돌아온다. ② 선순위 채권을 5,000만원으로 올린다. 손실이 시작되는 하락이 약 8%로 당겨진다. 1억원으로 올리면 집값이 그대로여도 경매에서 보증금 일부를 잃는다. 등기부등본의 근저당이 무서운 이유다. ③ 프리셋을 '사회초년생'으로 바꾼다. 시세 2억원 빌라에 보증금 1억 5,000만원과 선순위 3,000만원이 얹혀 부채비율이 90%다. 집값이 그대로여도 경매에 가면 보증금 일부를 잃는 깡통전세의 모양이다. (가정: 경매 비용은 하락 후 시세의 1%, 소액임차인 최우선변제는 지역별 기준으로 넣었다. 수도권 비규제는 과밀억제권역 기준, 지방은 광역시 기준으로 근사했다. HUG 요건은 보증금 상한(수도권 7억·그 외 5억)과 '선순위 + 보증금 ≤ 주택가격의 90%'만 본다.)</div>
+    </div>
+
+    <p>보증금의 위험은 경로 비교 그래프에 잘 드러나지 않는다. 경매는 드문 일이고, 대부분의 집주인은 보증금을 돌려준다. 그래서 모형은 이 위험을 순자산에서 빼지 않고 경고로만 띄운다. 하지만 하나의 사건이 순자산의 절반을 지울 수 있는 위험은 평균으로 다룰 수 없다. 이 위험을 줄이는 방법은 숫자로 분명하다. 전세가율이 낮은 집을 고르고, 선순위 채권을 확인하고, 전입신고와 확정일자로 순위를 확보하고, 전세보증금반환보증에 가입한다(<a href="contract.html">7장</a>). 보증에 가입했다면 위 그래프의 손실은 보증기관이 먼저 갚고 집주인에게 받아 낸다. 집주인 쪽에서 보면 같은 그래프가 '역전세의 깊이'다. 남궁현 같은 갭투자자에게 집값 하락은 보증금을 돌려줄 돈이 모자라는 문제로 나타난다(<a href="jeonse.html">5장</a>).</p>
+  </section>
+
+  <section id="montecarlo">
+    <h2>300번의 미래</h2>
+    <p>지금까지의 경로는 시나리오 하나, 곧 미래 하나다. 실제 미래는 해마다 집값과 금리가 예상과 다르게 흔들린다. <span class="term">몬테카를로 시뮬레이션</span><span class="en">(Monte Carlo simulation)</span>은 이 흔들림을 무작위로 뽑아 같은 계산을 수백 번 되풀이하고, 결과가 어떻게 퍼지는지 보는 방법이다. 아래에서는 300개의 미래를 뽑는다. 해마다 집값 상승률은 시나리오 값 주위로 '집값 변동성'만큼 흔들리고, 금리는 시나리오 곡선 위아래로 '금리 변동성'만큼 흔들리되 한번 오른 금리는 몇 해에 걸쳐 천천히 돌아온다. 금리가 1%p 오른 해에는 집값 상승률이 2%p 깎인다. 다섯 경로는 같은 300개의 미래를 겪는다. 그래서 경로 사이의 차이는 순전히 선택의 차이다.</p>
+
+    <div class="sim" id="sim-mc">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>몬테카를로: 300번 돌린 순자산의 분포</h3></div>
+      <div class="lab-bar">
+        <span class="cap">자세히 볼 경로</span>
+        <div class="seg" id="mc-path"><button data-value="jeonse">전세 계속</button><button data-value="rent">월세로</button><button data-value="buy" class="on">지금 매수</button><button data-value="later">N년 뒤 매수</button><button data-value="sub">청약 당첨</button></div>
+      </div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="mc-cv"></canvas></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>집값 변동성(연) <output id="mc-sp-out"></output></span><input type="range" id="mc-sp" min="0" max="15" step="0.5" value="6"></label>
+          <label class="ctrl"><span>금리 변동성(연) <output id="mc-sr-out"></output></span><input type="range" id="mc-sr" min="0" max="1.5" step="0.1" value="0.6"></label>
+          <div class="btn-row"><button class="btn primary" id="mc-go">다른 300개 뽑기</button><button class="btn" id="mc-re">처음 300개</button></div>
+        </div>
+      </div>
+      <div class="sim-readout lab-read six">
+        <div class="stat"><span class="k">10년 뒤 중앙값</span><span class="v" id="mc-o-m10">—</span></div>
+        <div class="stat"><span class="k">10년 뒤 하위 10% ~ 상위 10%</span><span class="v" id="mc-o-r10">—</span></div>
+        <div class="stat"><span class="k">30년 뒤 중앙값</span><span class="v" id="mc-o-m30">—</span></div>
+        <div class="stat"><span class="k">전세 계속보다 많은 미래(10년 / 30년)</span><span class="v" id="mc-o-beat">—</span></div>
+        <div class="stat"><span class="k">예금이 바닥난 미래</span><span class="v" id="mc-o-neg">—</span></div>
+        <div class="stat"><span class="k">깡통 또는 보증금 위험</span><span class="v" id="mc-o-risk">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 하늘네 '지금 매수'의 띠를 본다. 이 책의 모델로 계산하면 10년 뒤 순자산은 하위 10% 약 5억 2,000만원에서 상위 10% 약 8억 6,000만원까지 퍼진다. '전세 계속'으로 바꾸면 띠가 약 6억 8,000만원에서 7억 1,000만원 사이로 좁다. 중앙값은 비슷한데 폭이 다르다. 그것이 집을 산다는 일의 위험이다. ② 집값 변동성을 0으로 내리면 매수의 띠가 거의 사라지고 금리 흔들림만 남는다. 금리 변동성을 1.5%p로 올리면 '변동' 금리에서 띠의 아래쪽이 더 늘어진다. ③ '전세 계속'에서 마지막 줄의 보증금 위험 비율을 본다. 300개 미래 중 약 3분의 1에서, 30년 중 한 번은 지금 사는 집의 시세가 보증금을 다 돌려주지 못할 만큼 내려간다. 보증보험이 필요한 이유다. (교육용 확률 모형이다. 집값 흔들림은 해마다 독립인 정규분포, 금리는 계수 0.75의 자기회귀 과정이며, 실제 시장의 분포를 추정한 것이 아니다. 오른쪽 작은 막대는 30년 뒤 분포다.)</div>
+    </div>
+
+    <p>몬테카를로가 보여 주는 것은 두 가지다. 첫째, <b>평균이나 중앙값만으로는 경로를 고를 수 없다.</b> 하늘네의 지금 매수와 전세 계속은 10년 뒤 중앙값이 비슷하지만, 매수는 위로도 아래로도 크게 퍼진다. 집 한 채에 순자산의 대부분을 걸고 대출로 레버리지를 걸었기 때문이다(<a href="leverage.html">10장</a>). 둘째, <b>기간이 길어지면 확률이 바뀐다.</b> 이 책의 모델로 계산하면 하늘네의 지금 매수가 전세 계속보다 순자산이 많은 미래는 10년 뒤에 약 39%, 30년 뒤에 약 52%다. 대출을 갚아 가는 동안 집값 상승분이 쌓이고, 전세 쪽은 재계약 때마다 오른 보증금을 감당해야 하기 때문이다. 결론이 아니라 성질이다. 집값 상승률을 1%로 낮추거나 예금 수익률을 4%로 올리면 이 비율은 크게 달라진다.</p>
+
+    <div class="callout deep">
+      <strong>이 모형이 모르는 것</strong>
+      이 실험실은 일부러 단순하다. 세금은 1주택 보유세와 거래 때의 취득세만 넣었고, 팔 때의 양도소득세는 1세대 1주택 비과세(양도가 12억 이하)에 들어간다고 보고 뺐다(<a href="tradetax.html">14장</a>). 집값과 전세가는 해마다 같은 비율로 움직이고, 지역·단지·층의 차이(<a href="location.html">2장</a>)는 없다. 소득은 해마다 2%씩 오르다 은퇴 때 한 번 꺾일 뿐, 이직·실직·육아휴직·상속은 없다. 이사 비용 말고는 이사의 불편, 아이 학교를 바꾸지 않아도 되는 안정, 집을 고칠 자유, 직장을 옮기기 어려워지는 비용(<a href="decision.html">20장</a>)도 숫자에 들어가지 않는다. 몬테카를로의 분포는 정규분포와 자기회귀라는 편한 가정 위에 있어서 실제 시장의 큰 하락(<a href="bubble.html">17장</a>)처럼 여러 해 연속으로 같은 방향으로 무너지는 꼬리를 과소평가할 수 있다. 그리고 30년 동안 제도가 그대로라는 가정은 거의 확실히 틀린다. 이 모형은 "얼마가 될까"보다 "무엇이 결과를 가장 크게 바꾸는가"를 묻는 데 쓴다.
+    </div>
+  </section>
+
+  <section id="break">
+    <h2>무너지는 조건</h2>
+    <p>몬테카를로는 '그럴듯한' 미래들을 고르게 뽑는다. 하지만 가계를 무너뜨리는 것은 대개 드물고 나쁜 미래, 그것도 여러 나쁜 일이 한꺼번에 겹치는 미래다. 아래 지도는 그 미래를 일부러 만든다. 가로축은 금리 충격으로, 1년째부터 6년 동안 시나리오 금리 위에 얹혔다가 3년에 걸쳐 돌아온다. 세로축은 처음 3년 동안의 집값 변화이고, 그 뒤로는 시나리오의 상승률로 돌아간다. 슬라이더로 처음 3년 동안의 소득 감소(한 사람의 휴직이나 실직)를 더한다. 칸 하나하나가 그 조건에서 고른 경로를 30년 돌린 결과이고, 색은 그 경로가 겪는 가장 나쁜 일이다. 점을 끌어 칸을 고른다.</p>
+    <ul>
+      <li><b>예금 바닥</b>(진한 빨강): 30년 중 어느 해에 예금이 마이너스가 된다. 생활비와 상환을 빚으로 메우기 시작한다는 뜻이다.</li>
+      <li><b>깡통·보증금 위험</b>(옅은 빨강): 산 집의 시세가 주담대 잔액보다 낮아지거나(<span class="term">깡통주택</span>, 팔아도 빚을 다 못 갚는 집), 세 들어 사는 집의 시세가 보증금을 다 돌려주지 못할 만큼 내려간다.</li>
+      <li><b>상환 부담</b>(노랑): 주담대 원리금이 어느 해에 실수령의 40%를 넘는다. 무너지지는 않았지만 다른 지출을 크게 줄여야 버틴다.</li>
+      <li><b>살 수 없음</b>(빗금): 사는 해의 대출 한도가 모자라 그 경로를 시작하지 못한다.</li>
+    </ul>
+
+    <div class="sim" id="sim-bk">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>스트레스 지도: 금리 급등 × 집값 하락 × 소득 감소</h3></div>
+      <div class="lab-bar">
+        <span class="cap">경로</span>
+        <div class="seg" id="bk-path"><button data-value="jeonse">전세 계속</button><button data-value="rent">월세로</button><button data-value="buy" class="on">지금 매수</button><button data-value="later">N년 뒤 매수</button><button data-value="sub">청약 당첨</button></div>
+      </div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="bk-cv"></canvas><span class="hint">점을 끌어 조건을 고른다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>소득 감소(1~3년째) <output id="bk-inc-out"></output></span><input type="range" id="bk-inc" min="0" max="100" step="10" value="0"></label>
+          <div class="legend" style="padding:0">
+            <span><i style="background:var(--ok);height:10px;opacity:.5"></i>버틴다</span>
+            <span><i style="background:var(--warn);height:10px;opacity:.7"></i>상환 부담</span>
+            <span><i style="background:var(--bad);height:10px;opacity:.35"></i>깡통·보증금 위험</span>
+            <span><i style="background:var(--bad);height:10px"></i>예금 바닥</span>
+            <span><i style="background:var(--text-faint);height:10px;opacity:.5"></i>살 수 없음</span>
+          </div>
+        </div>
+      </div>
+      <div class="sim-readout lab-read six">
+        <div class="stat"><span class="k">고른 조건</span><span class="v" id="bk-o-pt">—</span></div>
+        <div class="stat"><span class="k">결과</span><span class="v" id="bk-o-res">—</span></div>
+        <div class="stat"><span class="k">30년 중 가장 적은 예금</span><span class="v" id="bk-o-min">—</span></div>
+        <div class="stat"><span class="k">가장 무거운 해의 원리금 ÷ 실수령</span><span class="v" id="bk-o-bur">—</span></div>
+        <div class="stat"><span class="k">금리만 오를 때 경고가 켜지는 폭</span><span class="v" id="bk-o-ts">—</span></div>
+        <div class="stat"><span class="k">집값만 내릴 때 경고가 켜지는 하락</span><span class="v" id="bk-o-td">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 하늘네 '지금 매수'(주기형)의 지도를 본다. 집값이 3년 동안 50% 빠지는 맨 아래 줄을 빼면 거의 다 녹색이다. 비상금 6개월과 LTV 약 57%의 대출이 만든 여유다. ② 소득 감소를 50%로 올린다. 한 사람의 월급이 3년 동안 끊기는 조건이다. 지도 전체가 빨갛게 바뀐다. 금리나 집값과 상관없이 예금이 바닥난다. 같은 조건에서 '전세 계속'으로 바꾸면 대부분 버틴다. 매수 경로의 진짜 약점은 금리보다 현금 흐름이다. ③ 위 경로 비교에서 주담대 금리를 '변동'으로 바꾸고 돌아온다. 금리 충격 +5%p 이상의 오른쪽 칸들이 노랗게 바뀐다. 주기형은 5년마다만 금리가 다시 정해지지만 변동은 충격이 그해 상환액에 그대로 들어오기 때문이다. (금리 충격은 0~+6%p, 집값 변화는 −50%~+20%. 소득 감소는 실수령에만 적용하고 대출 심사 소득에는 적용하지 않았다. 경고는 30년 중 한 번이라도 일어난 가장 나쁜 일을 칠한다.)</div>
+    </div>
+
+    <p>지도는 경로마다 무너지는 방향이 다르다는 것을 보여 준다. 대출로 산 경로는 <b>현금 흐름</b>에서 무너진다. 상환액은 소득이 줄어도 줄지 않고, 집은 팔기 전에는 생활비가 되지 않는다. 집값 하락 자체는 팔지 않는 한 장부상의 손실이지만, 소득 충격과 겹쳐 팔아야 하는 순간이 오면 손실이 확정된다. 전세 경로는 <b>보증금</b>에서 무너진다. 집값이 크게 빠지면 내 돈이 남의 집 시세에 묶여 있다는 사실이 드러난다. 월세 경로는 상대적으로 단단하지만 순자산이 가장 느리게 쌓이고, 전세가와 금리가 오르는 만큼 월세가 오른다. 청약 경로는 <b>당첨 뒤 잔금</b>에서 무너질 수 있다. 3년 동안 금리가 오르거나 소득이 줄면 잔금 대출 한도가 모자라고, 이 모형에서는 계약금을 잃는다.</p>
+
+    <div class="callout pro">
+      <strong>태호가 이 실험실을 손님과 쓰는 순서</strong>
+      민태호는 상담 자리에서 경로 비교 그래프부터 보여 주지 않는다. 선이 위에 있는 경로를 고르는 것으로 대화가 끝나기 때문이다. 대신 순서를 거꾸로 한다. 먼저 스트레스 지도에서 "어떤 일이 생기면 이 가족이 버티지 못하는가"를 함께 찾는다. 맞벌이 한 사람의 휴직, 금리 2~3%p 상승, 집값 20~30% 하락. 그다음 그 일을 견딜 수 있도록 집값, 대출 금리 유형, 비상금을 조정한다. 마지막으로 그렇게 고른 경로가 기본 시나리오에서 어떤 순자산을 남기는지 본다. 이 순서로 하면 손님이 계약 직전에 마음을 바꾸는 일이 생기고, 그만큼 중개보수가 미뤄지거나 사라진다. 태호는 그것을 이 일의 비용으로 받아들인다. 그리고 그래프의 숫자를 손님 휴대전화로 찍어 가게 하지 않는다. 그 숫자가 '이 사무소가 계산해 준 미래 가격'처럼 다른 곳에서 돌아다니는 일을 막기 위해서다.
+    </div>
+  </section>
+
+  <section id="missions">
+    <h2>실험 과제</h2>
+    <p>실험실을 쓰는 가장 좋은 방법은 질문을 하나 정하고 숫자를 하나씩만 바꾸는 것이다. 아래 과제는 하늘네 기본값에서 출발한다. 각 과제 끝의 질문에 숫자로 답해 본다.</p>
+    <ol class="exp-list">
+      <li><b>손익분기 집값 상승률 찾기</b><span>시나리오의 집값 상승률을 0.5%씩 바꾸며 30년 뒤 '지금 매수'와 '전세 계속'의 순자산이 같아지는 상승률을 찾는다(하늘네 기본값에서는 1.5% 언저리다). 그 값이 예금 수익률(3%)보다 낮은 이유는 무엇인가. 집값 상승은 집 전체에 붙고 예금 수익은 내 돈에만 붙는다는 레버리지(<a href="leverage.html">10장</a>)로 설명해 본다. 예금 수익률을 4%로 올리면 손익분기는 어디로 가는가.</span></li>
+      <li><b>기다림의 값</b><span>'몇 년 뒤 매수'를 1년에서 10년까지 늘리며 경로 비교 아래 숫자에 나오는 그 해의 대출을 본다. 기다리는 동안 모은 돈과 오른 집값 중 무엇이 빠른가. 하늘네는 집값 상승률 4%에서는 기다릴수록 필요한 대출이 줄고, 6%에서는 늘어난다. 그 경계가 어디인지, 그리고 금리 곡선을 '높게 유지'로 바꾸면 한도가 모자라기 시작하는 해가 생기는지 찾는다.</span></li>
+      <li><b>주기형과 변동의 차이</b><span>금리 시나리오를 '급등 후 복귀'로 두고 '지금 매수'의 주담대 금리를 주기형과 변동으로 바꿔 본다. 10년 뒤 순자산의 차이보다 '해마다의 주거비'에서 가장 무거운 해의 원리금 차이가 더 중요하다. 그 해의 원리금이 실수령의 몇 %인가.</span></li>
+      <li><b>비상금의 값</b><span>비상금을 0개월로 줄이면 대출이 줄고 기본 시나리오의 순자산은 거의 그대로다. 그 대신 스트레스 지도에서 소득 감소 30%일 때 녹색 칸이 대부분 사라진다(하늘네는 195칸 중 182칸에서 26칸으로). 거꾸로 비상금을 12개월로 늘려 보면 녹색 칸이 오히려 줄어든다. 대출을 늘려 만든 비상금은 상환액도 함께 키우기 때문이다. 비상금은 수익률이 아니라 버틸 시간을 사는 돈이고, 빌려서 만든 시간은 짧다.</span></li>
+      <li><b>우리 집 숫자로</b><span>프리셋을 하늘네로 둔 채 소득, 생활비, 예금, 보증금, 지역, 목표 집값을 우리 집 숫자로 하나씩 바꾼다. 그다음 스트레스 지도에서 우리 경로가 버티지 못하는 조건을 하나 적고, 그 조건이 현실이 될 때 할 일(지출 줄이기, 집 줄이기, 가족의 도움)을 미리 적는다.</span></li>
+    </ol>
+  </section>
+
+  <section id="case">
+    <h2>하늘네 집 노트</h2>
+    <p>하늘네는 <a href="plan.html">21장</a>에서 결정을 내렸다. 2027년 4월 전세 만기에 맞춰 B시의 같은 생활권에서 84㎡ 아파트를 6억원 안팎에 사고, 금리는 고정·주기형으로, 비상금은 6개월 치를 남긴다. 이 장의 하늘네 프리셋과 기본 설정(목표 집값 6억원, 수도권 비규제, 생애최초, 주기형 5년, 비상금 6개월)이 그 선택을 그대로 재현한 것이다. 아래 노트는 그 결정을 실험실에 넣어 다시 읽은 결과와, 독자가 같은 방법으로 자기 숫자를 넣는 순서다.</p>
+
+    <div class="casefile">
+      <div class="tag"><b>CASE 하늘네</b><span>집 노트 · 22장</span></div>
+      <h4>6억원, 주기형, 비상금 6개월. 그 선택을 300번의 미래에 넣어 보면</h4>
+      <p>이 책의 모델로 계산하면 하늘네가 2027년 4월에 6억원 집을 사려면 집값과 거래 비용(취득세 생애최초 감면 후 약 460만원, 중개보수 240만원, 법무비 120만원, 이사비 200만원) 약 6억 1,020만원이 필요하다. 쓸 수 있는 돈은 돌려받을 보증금 중 자기 돈 2억원과 예금 약 9,600만원을 합친 약 2억 9,600만원이다. 여기서 비상금 약 3,000만원(생활비 337만원과 월 상환액 약 164만원의 6개월 치)을 남기면 대출은 약 3억 4,400만원, 금리 4%·30년 원리금균등으로 월 약 164만원이다. 최대 대출 4억 2,000만원(LTV 70%가 묶는다) 안이고, DSR은 실제 금리로 약 21%, 스트레스 가산 3%p를 넣어도 약 30%다. 첫해 주거비는 이자 약 1,370만원과 보유세·수선비, 매수 비용을 합쳐 약 2,730만원으로 전세를 유지할 때(약 760만원)의 세 배를 넘는다.</p>
+      <p>기본 시나리오(금리 4% 유지, 집값·전세가 연 2%, 예금 수익률 3%)에서 10년 뒤 순자산은 지금 매수 약 6억 9,700만원, 전세 계속 약 6억 9,200만원으로 거의 같다. 300번의 미래에서 매수의 10년 뒤 순자산은 약 5억 2,000만원에서 8억 6,000만원까지 퍼지고, 전세 계속보다 많은 미래는 10년 뒤 약 39%, 30년 뒤 약 52%다. 숫자로만 보면 하늘네의 선택은 '돈을 더 버는 길'이라기보다 '결과의 폭을 받아들이고 주거를 고정하는 길'이다. 스트레스 지도는 그 선택이 어디서 버티고 어디서 무너지는지 보여 준다. 금리가 6%p 오르고 집값이 30% 빠져도 예금은 바닥나지 않는다. 주기형 대출과 비상금이 만든 여유다. 그러나 재원이나 하늘 중 한 사람의 소득이 3년 동안 끊겨 가구 실수령이 절반으로 줄면, 금리와 집값이 그대로여도 3년째에 예금이 바닥나고 가장 깊을 때 약 2,700만원이 모자란다. 태호는 이 칸을 짚고 말한다. "이 집의 위험은 집값이 아니라 두 분의 월급입니다." 하늘네는 비상금을 대출로 더 키우는 방법도 넣어 보았지만, 상환액이 함께 커져 이 칸은 녹색이 되지 않았다. 그래서 재원이 육아휴직을 쓸 계획이 생기면 그 전 2년 동안 휴직 기간에 모자랄 돈을 따로 모으기로 한다.</p>
+      <p>전세를 유지하는 길도 같은 지도에 올렸다. 소득 충격에는 훨씬 단단하지만, 300번의 미래 중 약 3분의 1에서 30년 중 한 번은 지금 집의 시세가 보증금을 다 돌려주지 못할 만큼 내려간다. 남궁현의 C아파트에는 근저당이 없어서 위험이 낮은 편이지만, 2년마다 다른 집으로 옮기면 그 숫자는 집마다 다시 계산해야 한다. 어느 쪽도 위험이 없는 길은 아니고, 하늘네는 그중 자기 가족이 견딜 수 있는 위험을 골랐다. 수입이 한 사람에게 몰린 가족이나 2~3년 안에 직장을 옮길 가족이라면 같은 지도에서 다른 답이 나올 수 있다.</p>
+      <div class="clue"><div><b>이 장에서 정한 것</b>하늘네의 선택(6억원, 주기형, 비상금 6개월)을 30년 경로로 재현했다. 기본 시나리오에서 전세와 매수의 10년 뒤 순자산은 거의 같고, 매수는 결과의 폭이 넓다. 가장 큰 위협은 금리나 집값보다 소득 중단이다.</div><div><b>아직 남은 문제</b>시나리오는 가정일 뿐이다. 금리, 집값, 제도, 가족의 사정은 해마다 바뀐다. 2년에 한 번, 또는 소득·가족에 큰 변화가 있을 때 숫자를 다시 넣는다.</div><div><b>독자가 할 일</b>① 하늘네 프리셋에서 출발해 소득·생활비(주거비 제외)·예금·보증금·지역·목표 집값을 우리 숫자로 바꾼다. ② 대출 한도에서 '필요한 대출'이 최대 대출 안인지 본다. ③ 경로 비교에서 우리에게 현실적인 두세 경로만 남긴다. ④ 몬테카를로로 폭을, 스트레스 지도로 무너지는 칸을 찾고, 그 칸을 막을 계획을 적는다.</div></div>
+    </div>
+  </section>
+
+  <section class="keypoints" id="summary">
+    <h2>핵심 정리</h2>
+    <ol>
+      <li>주거 경로를 고르는 일은 30년의 현금 흐름을 고르는 일이다. 다섯 경로는 '주거비'만 다르고, 그 차이가 예금과 집값 중 어디에 돈이 쌓이는지를 바꾼다.</li>
+      <li>대출은 DSR·LTV·금액 상한 중 가장 작은 값까지만 나온다. 금리가 오르면 DSR 한도가 줄어 같은 소득으로 살 수 있는 집값이 내려가고, 한도는 해마다 그 해의 조건으로 다시 정해진다.</li>
+      <li>결정론적 비교에서 어느 선이 위에 있는지는 집값 상승률, 예금 수익률, 금리라는 가정에 따라 뒤집힌다. 읽어야 할 것은 순서가 바뀌는 조건이다.</li>
+      <li>매수 경로는 주거비가 처음에 무겁고 갈수록 가벼워지며, 전세·월세는 처음에 가볍고 갈수록 무거워진다. 집 한 채는 주거비를 고정하는 장치이면서 레버리지를 건 투자다.</li>
+      <li>몬테카를로로 보면 중앙값이 비슷한 경로도 결과의 폭이 크게 다르다. 대출로 산 집은 위아래로 넓게 퍼지고, 기간이 길어질수록 확률이 바뀐다.</li>
+      <li>경로마다 무너지는 방향이 다르다. 매수는 현금 흐름(소득 중단, 상환 부담)에서, 전세는 보증금에서, 청약은 당첨 뒤 잔금에서 무너진다. 비상금과 고정·주기형 금리는 수익률이 아니라 버틸 시간을 산다.</li>
+      <li>이 실험실의 숫자는 모두 "이 책의 모델로 계산하면"이다. 전망이나 권유가 아니며, 2026년 기준 제도와 단순화한 가정 위에 있다. 정답을 주는 기계가 아니라 무엇이 결과를 크게 바꾸는지 재는 자로 쓴다.</li>
+    </ol>
+  </section>
+
+  <section class="quiz-sec" id="quiz">
+    <h2>확인 퀴즈</h2>
+    <div class="quiz">
+      <div class="quiz-q">
+        <p>목표 집값 6억원, 거래 비용 1,020만원, 쓸 수 있는 돈(돌려받을 보증금 중 자기 돈 + 예금) 2억 9,600만원이고 비상금 3,000만원을 남기려 한다. 필요한 주택담보대출은 약 얼마인가?</p>
+        <div class="opts">
+          <button class="opt">약 3억 400만원</button>
+          <button class="opt" data-correct>약 3억 4,400만원</button>
+          <button class="opt">약 4억 2,000만원</button>
+          <button class="opt">약 6억원</button>
+        </div>
+        <div class="quiz-exp">필요한 돈은 집값과 거래 비용을 합친 6억 1,020만원이다. 자기 돈으로 낼 수 있는 몫은 2억 9,600만원에서 비상금 3,000만원을 남긴 2억 6,600만원이다. 차이인 약 3억 4,420만원을 빌려야 한다. 4억 2,000만원은 LTV 70%로 본 최대 대출이지 필요한 대출이 아니다. 비상금을 남기지 않으면 약 3억 400만원이 되지만, 그만큼 소득 충격에 약해진다.</div>
+      </div>
+      <div class="quiz-q">
+        <p>몬테카를로 결과에서 '지금 매수'와 '전세 계속'의 10년 뒤 순자산 중앙값이 거의 같았다. 이 결과를 가장 알맞게 해석한 것은?</p>
+        <div class="opts">
+          <button class="opt">두 경로는 같은 결과를 내므로 아무것이나 골라도 된다</button>
+          <button class="opt">중앙값이 같으므로 매수 쪽이 집값 상승분만큼 언제나 유리하다</button>
+          <button class="opt">몬테카를로는 무작위라 결과를 믿을 수 없다</button>
+          <button class="opt" data-correct>가운데 값은 비슷해도 결과의 폭이 다르다. 대출로 산 집은 위아래로 넓게 퍼지므로, 나쁜 쪽 꼬리를 견딜 수 있는지가 판단의 기준이 된다</button>
+        </div>
+        <div class="quiz-exp">하늘네의 예에서 매수의 10년 뒤 순자산은 약 5억 2,000만원에서 8억 6,000만원까지, 전세는 약 6억 8,000만원에서 7억 1,000만원까지 퍼진다. 중앙값이 같아도 위험은 다르다. 몬테카를로는 같은 무작위 미래를 두 경로에 똑같이 넣기 때문에 경로 사이의 차이는 선택의 차이로 읽을 수 있다. 다만 분포의 모양은 모형의 가정에 따른다.</div>
+      </div>
+      <div class="quiz-q">
+        <p>2026년 기준 수도권 비규제지역에서 주담대 금리가 연 4%일 때, 이 책의 엔진은 DSR 한도를 계산할 때 몇 %의 금리를 쓰는가?</p>
+        <div class="opts">
+          <button class="opt" data-correct>약 7%(실제 금리 4% + 스트레스 가산 3%p)</button>
+          <button class="opt">4%(실제 금리 그대로)</button>
+          <button class="opt">4.75%(지방 가산 0.75%p)</button>
+          <button class="opt">40%(DSR 한도와 같은 값)</button>
+        </div>
+        <div class="quiz-exp">스트레스 DSR은 한도를 계산할 때만 실제 금리에 가산금리를 더한다. 10.15 대책 이후 수도권·규제지역 주담대의 가산금리 하한은 3%p이므로 4% 대출의 한도는 7%로 계산한 원리금으로 정해진다. 실제로 내는 이자는 4% 그대로다. 지방 주담대는 0.75%p를 더한다(2026년 말까지의 유예, 그 뒤는 확인 필요).</div>
+      </div>
+      <div class="quiz-q">
+        <p>이 책의 모델로 하늘네의 '지금 매수'(6억원, 주기형, 비상금 6개월)를 스트레스 지도에 넣었을 때, 금리와 집값이 그대로여도 예금이 바닥나는 조건은?</p>
+        <div class="opts">
+          <button class="opt">금리가 1%p 오를 때</button>
+          <button class="opt">집값이 10% 내릴 때</button>
+          <button class="opt" data-correct>한 사람의 소득이 3년 동안 끊겨 가구 실수령이 절반으로 줄 때</button>
+          <button class="opt">전세가가 연 2% 오를 때</button>
+        </div>
+        <div class="quiz-exp">하늘네의 매수 경로는 금리가 6%p 오르고 집값이 30% 빠져도 예금이 바닥나지 않는다. 주기형 금리와 비상금이 상환액의 충격을 늦춘다. 그러나 가구 실수령이 절반으로 줄면 생활비와 원리금을 합친 지출이 소득을 크게 넘어 3년째에 예금이 바닥나고, 가장 깊을 때 약 2,700만원이 모자란다. 같은 조건에서 전세를 유지하는 경로는 예금이 1억원 넘게 남는다. 대출로 산 경로의 약점은 현금 흐름이다. 집값 하락은 팔지 않는 한 장부상의 손실이다.</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  const $ = (id) => document.getElementById(id);
+  const MAN = 1e4, TAU = Math.PI * 2;
+  function T(ctx, s, x, y, o) {
+    o = o || {};
+    ctx.font = EB.font(o.size || 12, o.mono, o.weight);
+    ctx.fillStyle = o.color; ctx.textAlign = o.align || "left"; ctx.textBaseline = o.base || "alphabetic";
+    ctx.fillText(s, x, y);
+  }
+  function rrect(ctx, x, y, w, h, r) {
+    r = Math.max(0, Math.min(r, Math.abs(w) / 2, Math.abs(h) / 2));
+    ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
+  }
+  function handle(ctx, x, y, P) { ctx.beginPath(); ctx.arc(x, y, 8, 0, TAU); ctx.fillStyle = P.text; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = P.bg; ctx.stroke(); }
+  const pw = (id) => $(id).parentElement.clientWidth;
+  const W = (x) => EB.won(x);
+  const Wm = (v) => EB.won(v * MAN);
+  const pct = (x, d) => (isFinite(x) ? +(x * 100).toFixed(d == null ? 1 : d) + "%" : "—");
+  const signPct = (x, d) => (x > 0 ? "+" : x < 0 ? "−" : "") + Math.abs(+(x * 100).toFixed(d == null ? 0 : d)) + "%";
+  const C = RE.CASE;
+
+/*LAB-START*/
+  /* ================================================================ 30년 경로 모형(이 장의 계산)
+     단위는 원. 해 y = 0은 결정 시점(하늘네는 2027년 4월 만기). 엔진 RE의 대출·세금·보증금 함수를 쓴다. */
+  const LAB = (function () {
+    const YEARS = 30, INF = 0.02, PENSION = 0.45, SUB_DISC = 0.8, RENT_DEP = 0.1, K_RATE = 2;
+    const L = RE.KR.loan;
+    function rule(H, price) {
+      if (H.region === "seoul") {
+        const cap = (L.capByPrice.find((b) => price <= b.upTo) || L.capByPrice[L.capByPrice.length - 1]).cap;
+        return { ltv: H.first ? L.ltv.firstHome : L.ltv.regulated, stress: L.stress.metroFloor, cap, name: "서울 규제지역" };
+      }
+      if (H.region === "metro") return { ltv: L.ltv.unregulated, stress: L.stress.metroFloor, cap: L.capMetro, name: "수도권 비규제" };
+      return { ltv: L.ltv.unregulated, stress: L.stress.local, cap: Infinity, name: "지방" };
+    }
+    const grow = (y) => Math.pow(1 + INF, y);
+    const incomeAt = (H, y) => H.income * grow(y) * (y >= H.retire ? PENSION : 1);
+    const netAt = (H, y) => H.net * grow(y) * (y >= H.retire ? PENSION : 1);
+    const costAt = (H, y) => H.cost * grow(y);
+    const level = (bal, r, n) => (n <= 0 ? bal : Math.abs(r) < 1e-9 ? bal / n : bal * r / (1 - Math.pow(1 + r, -n)));
+    function buyCosts(H, price) {
+      return RE.acqTax({ price, homes: 1, area: 84, firstHome: H.first }).total + RE.brokerage(price).fee + price * RE.KR.legal + RE.KR.moving;
+    }
+    /** 살 때의 자금 계획. avail: 쓸 수 있는 돈(예금 + 돌려받는 보증금 − 전세대출), pay: 지금 치를 금액(청약은 잔금) */
+    function finance(H, avail, price, r, y, pay, dsrCap) {
+      const need = (pay != null ? pay : price) + buyCosts(H, price);
+      const R = rule(H, price), inc = incomeAt(H, y), other = H.other || 0;
+      const ml = RE.maxLoan({ income: inc, rate: r, years: 30, price, ltv: R.ltv, stress: R.stress, cap: R.cap, otherAnnual: other, dsrCap });
+      let loan = 0, reserve = 0;
+      for (let i = 0; i < 8; i++) {
+        reserve = H.reserveM * (costAt(H, y) + (loan > 0 ? level(loan, r / 12, 360) : 0));
+        loan = Math.max(0, need - (avail - reserve));
+      }
+      const monthly = loan > 0 ? level(loan, r / 12, 360) : 0;
+      const d = (s) => RE.dsr({ income: inc, loans: [{ principal: loan, rate: r, years: 30 }], stress: s }).ratio + other / inc;
+      return { need, loan, reserve, max: ml.max, binding: ml.binding, ml, rule: R, ok: loan <= ml.max + 1, short: Math.max(0, loan - ml.max), monthly, dsr: d(0), dsrStress: d(R.stress), price, avail };
+    }
+    /**
+     * 한 경로를 30년 돌린다. path: jeonse | rent | buy | later | sub
+     * S: {g, jg, ret, rates[0..30]}, O: {later, win, fixed}
+     * shock(선택): {g:[30] 해마다 집값 상승률, dr:[30] 금리 가산, inc:[30] 실수령 배수}
+     */
+    function run(path, H, S, O, shock) {
+      const rows = [];
+      let cash = H.cash, dep = H.deposit, jl = Math.min(H.jloan, H.deposit), house = 0, mort = 0, lockR = 0, lockY = 0, buyY = -1, rentM = 0, subPrice = 0;
+      let mkt = H.price, home = H.homePrice, jmk = H.deposit;
+      const st = { bought: -1, fail: null, cashNeg: -1, under: -1, depLoss: -1, burden: 0, burdenY: -1, loan: 0, plan: null, minCash: Infinity };
+      const target = path === "buy" ? 0 : path === "later" ? O.later : path === "sub" ? O.win + 3 : -1;
+      const subY = path === "sub" ? O.win : -1;
+      const rentConv = (r) => Math.min(RE.KR.conversion.cap, r + 0.01);
+      if (path === "rent") { const rd = jmk * RENT_DEP; cash += dep - jl - rd; dep = rd; jl = 0; rentM = (jmk - rd) * rentConv(S.rates[0]) / 12; }
+      const nwOf = () => cash + dep - jl + (house > 0 ? house - mort - RE.brokerage(house).fee : 0);
+      rows.push({ y: 0, nw: nwOf(), cash, house, mort, own: dep - jl, rate: S.rates[0], total: 0, cost: null, pay: 0, inc: netAt(H, 0) * 12 });
+      for (let y = 0; y < YEARS; y++) {
+        const r = Math.max(0.01, S.rates[y] + (shock && shock.dr ? shock.dr[y] : 0));
+        const cost = { interest: 0, rent: 0, tax: 0, upkeep: 0, tx: 0 };
+        let pay = 0;
+        if (y === subY) {
+          subPrice = mkt * SUB_DISC;
+          const down = subPrice * 0.1;
+          if (cash < down) st.fail = { y, why: "계약금 부족" };
+          else { cash -= down; st.down = down; }
+        }
+        if (y === target && !st.fail) {
+          const f = finance(H, cash + dep - jl, mkt, r, y, path === "sub" ? subPrice * 0.9 : null, O.dsrCap);
+          st.plan = f; f.y = y;
+          if (!f.ok) st.fail = { y, why: path === "sub" ? "잔금 대출 부족" : "대출 한도 부족", short: f.short };
+          else {
+            cash = cash + dep - jl - (f.need - f.loan);
+            cost.tx = f.need - (path === "sub" ? subPrice * 0.9 : mkt);
+            dep = 0; jl = 0; house = mkt; mort = f.loan; lockR = r; lockY = y; buyY = y; st.bought = y; st.loan = f.loan;
+          }
+        }
+        if (house === 0 && path !== "rent" && y > 0 && y % 2 === 0) {
+          // 전세 재계약: 그때 시세로. 오른 만큼은 예금에서, 모자라면 전세대출(보증금의 80%까지)
+          const diff = jmk - dep;
+          if (diff > 0) { const fc = Math.min(diff, Math.max(0, cash)); cash -= fc; jl += diff - fc; const cap = jmk * 0.8; if (jl > cap) { cash -= jl - cap; jl = cap; } }
+          else { const back = -diff, p = Math.min(jl, back); jl -= p; cash += back - p; }
+          dep = jmk;
+          if (y % 4 === 0) { const t = RE.brokerage(dep, "lease").fee + RE.KR.moving * grow(y); cost.tx += t; cash -= t; }
+        }
+        if (path === "rent" && y > 0 && y % 2 === 0) {
+          const rd = jmk * RENT_DEP; cash -= rd - dep; dep = rd; rentM = (jmk - rd) * rentConv(r) / 12;
+          if (y % 4 === 0) { const t = RE.brokerage(dep, "lease", rentM).fee + RE.KR.moving * grow(y); cost.tx += t; cash -= t; }
+        }
+        let out = 0;
+        if (house > 0) {
+          if (O.fixed && (y - lockY) % 5 === 0) lockR = r;
+          const rr = (O.fixed ? lockR : r) / 12, n = 360 - (y - buyY) * 12, pm = level(mort, rr, n);
+          for (let m = 0; m < 12 && mort > 0; m++) { const it = mort * rr; cost.interest += it; mort = Math.max(0, mort - (pm - it)); pay += pm; }
+          cost.tax = RE.holdingTax({ value: house * RE.KR.publicRatio, one: true }).total;
+          cost.upkeep = house * RE.KR.upkeep;
+          out = pay + cost.tax + cost.upkeep;
+        } else {
+          cost.interest = jl * Math.max(0.01, r - 0.002);
+          cost.rent = rentM * 12;
+          out = cost.interest + cost.rent;
+        }
+        const inc = netAt(H, y) * 12 * (shock && shock.inc ? shock.inc[y] : 1);
+        if (pay > 0 && pay / inc > st.burden) { st.burden = pay / inc; st.burdenY = y + 1; }
+        cash = cash > 0 ? cash * (1 + S.ret) : cash * (1 + r + 0.02);
+        cash += inc - costAt(H, y) * 12 - out;
+        const g = shock && shock.g ? shock.g[y] : S.g, jg = shock && shock.g ? S.jg + 0.6 * (shock.g[y] - S.g) : S.jg;
+        mkt *= 1 + g; home *= 1 + g; jmk *= 1 + jg; if (house > 0) house *= 1 + g;
+        if (cash < 0 && st.cashNeg < 0) st.cashNeg = y + 1;
+        st.minCash = Math.min(st.minCash, cash);
+        if (house > 0 && house < mort && st.under < 0) st.under = y + 1;
+        if (house === 0 && dep > 0 && st.depLoss < 0 && RE.jeonseRisk({ price: home, deposit: dep, seniorDebt: H.senior }).loss > 1) st.depLoss = y + 1;
+        rows.push({ y: y + 1, nw: nwOf(), cash, house, mort, own: dep - jl, rate: r, cost, pay, inc, total: cost.interest + cost.rent + cost.tax + cost.upkeep + cost.tx });
+      }
+      return { rows, st };
+    }
+    /** 금리 조절점 [[해, 금리], …] → 31개 연도 금리(직선 보간) */
+    function ratesFrom(pts) {
+      const out = [];
+      for (let y = 0; y <= YEARS; y++) {
+        let i = 0; while (i < pts.length - 2 && y > pts[i + 1][0]) i++;
+        const [x0, r0] = pts[i], [x1, r1] = pts[i + 1], t = Math.max(0, Math.min(1, (y - x0) / (x1 - x0)));
+        out.push(r0 + (r1 - r0) * t);
+      }
+      return out;
+    }
+    /** 몬테카를로 충격 n개: 금리 가산은 AR(1)(계수 0.75, 연 sr), 집값은 연 sp 흔들림 + 금리가 1%p 오른 해에 K_RATE%p 내림 */
+    function shocks(n, seed, S, sp, sr) {
+      const gs = RE.gauss(seed), out = [];
+      for (let i = 0; i < n; i++) {
+        const g = [], dr = []; let x = 0, prev = 0;
+        for (let y = 0; y < YEARS; y++) {
+          x = 0.75 * x + sr * gs();
+          const d = Math.max(0.01 - S.rates[y], x);
+          dr.push(d); g.push(Math.max(-0.35, S.g + sp * gs() - K_RATE * (d - prev))); prev = d;
+        }
+        out.push({ g, dr });
+      }
+      return out;
+    }
+    /** 스트레스 조건: 금리 +s가 1~6년째 이어지다 3년에 걸쳐 돌아오고, 집값은 처음 3년에 d만큼, 실수령은 1~3년째 (1 − cut) */
+    function stress(S, s, d, cut) {
+      const g = [], dr = [], inc = [];
+      for (let y = 0; y < YEARS; y++) {
+        dr.push(y >= 1 && y < 7 ? s : y >= 7 && y < 10 ? s * (10 - y) / 3 : 0);
+        g.push(y < 3 ? Math.pow(1 + d, 1 / 3) - 1 : S.g);
+        inc.push(y >= 1 && y <= 3 ? 1 - (cut || 0) : 1);
+      }
+      return { g, dr, inc };
+    }
+    return { YEARS, INF, PENSION, SUB_DISC, RENT_DEP, K_RATE, rule, finance, run, ratesFrom, shocks, stress, buyCosts, incomeAt, netAt, costAt, level, grow };
+  })();
+/*LAB-END*/
+
+  /* ================================================================ 공유 상태 */
+  const PATHS = ["jeonse", "rent", "buy", "later", "sub"];
+  const PRESETS = {
+    haneul: { H: { income: C.income, net: C.monthlyNet, cost: Math.round((C.livingCost - C.home.jeonseLoan * C.home.loanRate / 12) / MAN) * MAN, cash: 9.6e7, deposit: C.home.jeonse, jloan: C.home.jeonseLoan,
+      region: "metro", first: true, price: 6.0e8, homePrice: C.home.price, senior: C.landlord.seniorDebt, homeless: 4, deps: 2, acct: 9, retire: 26, reserveM: 6, other: 0 }, later: 2, win: 2 },
+    young: { H: { income: 3.6e7, net: 2.5e6, cost: 1.5e6, cash: 3.0e7, deposit: 1.5e8, jloan: 1.2e8, region: "metro", first: true, price: 3.5e8, homePrice: 2.0e8, senior: 3.0e7, homeless: 0, deps: 0, acct: 5, retire: 30, reserveM: 6, other: 0 }, later: 5, win: 5 },
+    retire: { H: { income: 1.0e8, net: 6.0e6, cost: 2.8e6, cash: 2.0e8, deposit: 5.0e8, jloan: 0, region: "seoul", first: false, price: 9.0e8, homePrice: 8.0e8, senior: 0, homeless: 8, deps: 1, acct: 15, retire: 5, reserveM: 6, other: 0 }, later: 3, win: 2 },
+    local: { H: { income: 7.0e7, net: 4.8e6, cost: 3.0e6, cash: 6.0e7, deposit: 2.0e8, jloan: 0, region: "local", first: true, price: 3.5e8, homePrice: 3.0e8, senior: 0, homeless: 7, deps: 3, acct: 10, retire: 24, reserveM: 6, other: 0 }, later: 3, win: 2 },
+  };
+  const H = Object.assign({}, PRESETS.haneul.H);
+  const SC = { g: 0.02, jg: 0.02, ret: 0.03, pts: [[0, 0.04], [2, 0.04], [5, 0.04], [10, 0.04], [15, 0.04], [20, 0.04], [30, 0.04]] };
+  const RPRE = {
+    flat: [0.04, 0.04, 0.04, 0.04, 0.04, 0.04, 0.04],
+    down: [0.04, 0.037, 0.034, 0.031, 0.03, 0.03, 0.03],
+    spike: [0.04, 0.07, 0.055, 0.04, 0.04, 0.04, 0.04],
+    high: [0.04, 0.05, 0.06, 0.06, 0.06, 0.06, 0.06],
+  };
+  const OPT = { later: 2, win: 2, fixed: true, real: false, view: "nw", dsrCap: RE.KR.loan.dsr.bank, on: { jeonse: true, rent: true, buy: true, later: true, sub: true } };
+  const NAME = { jeonse: "전세 계속", rent: "월세로", buy: "지금 매수", later: "N년 뒤 매수", sub: "청약 당첨 가정" };
+  const pname = (p) => (p === "later" ? OPT.later + "년 뒤 매수" : NAME[p]);
+  const PCOL = (P) => ({ jeonse: P.accent2, rent: P.dim, buy: P.accent, later: P.blue, sub: P.green });
+  const scen = () => ({ g: SC.g, jg: SC.jg, ret: SC.ret, rates: LAB.ratesFrom(SC.pts) });
+  const defl = (v, y) => (OPT.real ? v / LAB.grow(y) : v);
+  let BASE = {};
+  const views = [];
+  let loading = false;
+  function recompute() { const S = scen(); BASE = {}; PATHS.forEach((p) => { BASE[p] = LAB.run(p, H, S, OPT); }); }
+  function updateAll() { if (loading) return; recompute(); views.forEach((f) => f()); mcSchedule(); bkSchedule(); }
+  recompute();
+  const bankG = EB.seg("ln-bank", (v) => { OPT.dsrCap = v === "nonbank" ? RE.KR.loan.dsr.nonbank : RE.KR.loan.dsr.bank; updateAll(); });
+  const dsrCap = () => OPT.dsrCap;
+
+  /* ================================================================ 1) 우리 집 입력 */
+  const set = (k, mul) => (v) => { H[k] = v * (mul || 1); updateAll(); };
+  const preG = EB.seg("in-pre", (v) => loadPreset(v));
+  const incG = EB.range("in-inc", Wm, set("income", MAN));
+  const netG = EB.range("in-net", Wm, set("net", MAN));
+  const costG = EB.range("in-cost", Wm, set("cost", MAN));
+  const retG = EB.range("in-ret", (v) => (v >= 30 ? "30년 이상" : v + "년 뒤"), set("retire"));
+  const cashG = EB.range("in-cash", Wm, set("cash", MAN));
+  const depG = EB.range("in-dep", Wm, (v) => { H.deposit = v * MAN; if (H.jloan > H.deposit) jlG.set(H.deposit / MAN); else updateAll(); });
+  const jlG = EB.range("in-jl", Wm, (v) => { H.jloan = Math.min(v * MAN, H.deposit); updateAll(); });
+  const rsvG = EB.range("in-rsv", (v) => v + "개월", set("reserveM"));
+  const priceG = EB.range("in-price", Wm, set("price", MAN));
+  const regG = EB.seg("in-reg", (v) => { H.region = v; updateAll(); });
+  const firstEl = $("in-first");
+  firstEl.addEventListener("change", () => { H.first = firstEl.checked; updateAll(); });
+  const hlG = EB.range("in-hl", (v) => v + "년", set("homeless"));
+  const dpG = EB.range("in-dp", (v) => v + "명", set("deps"));
+  const acG = EB.range("in-ac", (v) => v + "년", set("acct"));
+  function score() { return RE.subscriptionScore({ homelessYears: H.homeless, dependents: H.deps, accountYears: H.acct }); }
+  const cvIn = EB.canvas("#in-cv", (ctx, w, h) => {
+    const P = EB.palette(), S = scen();
+    const f = LAB.finance(H, H.cash + H.deposit - H.jloan, H.price, S.rates[0], 0, null, dsrCap());
+    const pad = 14, bw = w - pad * 2, rowH = (h - 8) / 4, barH = Math.min(26, rowH * 0.36);
+    const own = H.deposit - H.jloan, nw = own + H.cash;
+    const seg = (x, y, ww, hh, col, a, label, val) => {
+      if (ww <= 0.5) return;
+      ctx.globalAlpha = a; ctx.fillStyle = col; ctx.fillRect(x, y, ww, hh); ctx.globalAlpha = 1;
+      const s = label + " " + EB.wonAxis(val);
+      ctx.font = EB.font(11, false, 700);
+      if (ctx.measureText(s).width + 8 < ww) T(ctx, s, x + 5, y + hh / 2, { size: 11, weight: 700, color: "#fff", base: "middle" });
+      else if (ctx.measureText(EB.wonAxis(val)).width + 6 < ww) T(ctx, EB.wonAxis(val), x + 4, y + hh / 2, { size: 11, weight: 700, color: "#fff", base: "middle" });
+    };
+    // 1행: 대차대조표
+    let y = 6;
+    const M1 = Math.max(H.cash + H.deposit, f.need, Math.max(0, f.need - f.loan) + Math.min(f.max, f.need * 1.6), 1) * 1.02;
+    const sc1 = bw / M1;
+    T(ctx, "지금의 집 대차대조표", pad, y + 13, { size: 12, color: P.text, weight: 700 });
+    T(ctx, "순자산 " + EB.won(nw, { short: true }), w - pad, y + 13, { size: 12, color: nw >= 0 ? P.ok : P.bad, align: "right", weight: 700 });
+    let x = pad; const by = y + 22;
+    seg(x, by, H.cash * sc1, barH, P.dim, 0.75, "예금", H.cash); x += H.cash * sc1;
+    seg(x, by, own * sc1, barH, P.accent2, 0.9, "보증금(자기 돈)", own); x += own * sc1;
+    seg(x, by, H.jloan * sc1, barH, P.bad, 0.75, "전세대출", H.jloan);
+    // 2행: 한 달 흐름
+    y += rowH;
+    const it0 = H.jloan * Math.max(0.01, S.rates[0] - 0.002) / 12, save = H.net - H.cost - it0;
+    T(ctx, "한 달 돈의 흐름(실수령 " + EB.won(H.net, { short: true }) + ")", pad, y + 13, { size: 12, color: P.text, weight: 700 });
+    const M2 = Math.max(H.net, H.cost + it0, 1), sc2 = bw / M2;
+    x = pad; const by2 = y + 22;
+    seg(x, by2, H.cost * sc2, barH, P.dim, 0.6, "생활비", H.cost); x += H.cost * sc2;
+    seg(x, by2, it0 * sc2, barH, P.bad, 0.8, "주거비", it0); x += it0 * sc2;
+    if (save > 0) seg(x, by2, save * sc2, barH, P.ok, 0.85, "저축", save);
+    else T(ctx, "적자 " + EB.won(-save, { short: true }), w - pad, by2 + barH / 2, { size: 11, color: P.bad, align: "right", base: "middle", weight: 700 });
+    // 3행: 목표 집값까지
+    y += rowH;
+    T(ctx, "목표 집 " + EB.won(H.price, { short: true }) + "을 지금 산다면", pad, y + 13, { size: 12, color: P.text, weight: 700 });
+    T(ctx, "비상금 " + EB.wonAxis(f.reserve) + " 남김", w - pad, y + 13, { size: 11, color: P.dim, align: "right" });
+    x = pad; const by3 = y + 22, selfPay = Math.max(0, f.need - f.loan);
+    seg(x, by3, selfPay * sc1, barH, P.ok, 0.8, "자기 돈", selfPay); x += selfPay * sc1;
+    const okLoan = Math.min(f.loan, f.max);
+    seg(x, by3, okLoan * sc1, barH, P.accent, 0.85, "대출", okLoan); x += okLoan * sc1;
+    if (f.loan > f.max) seg(x, by3, (f.loan - f.max) * sc1, barH, P.bad, 0.9, "모자람", f.loan - f.max);
+    const lx = pad + selfPay * sc1 + f.max * sc1;
+    if (lx <= w - 2) {
+      ctx.save(); ctx.strokeStyle = P.text; ctx.lineWidth = 2; ctx.setLineDash([4, 3]);
+      ctx.beginPath(); ctx.moveTo(lx, by3 - 4); ctx.lineTo(lx, by3 + barH + 4); ctx.stroke(); ctx.restore();
+    }
+    T(ctx, "점선 = 최대 대출 " + EB.wonAxis(f.max) + "(" + ({ dsr: "DSR", ltv: "LTV", cap: "금액 상한" })[f.binding] + "가 묶음)", pad, by3 + barH + 15, { size: 11, color: f.ok ? P.dim : P.bad });
+    // 4행: 청약 가점
+    y += rowH;
+    const sc = score();
+    T(ctx, "청약 가점 " + sc.total + "점", pad, y + 13, { size: 12, color: P.text, weight: 700 });
+    T(ctx, "84점 만점", w - pad, y + 13, { size: 11, color: P.faint, align: "right" });
+    const sc4 = bw / 84; x = pad; const by4 = y + 22;
+    ctx.fillStyle = P.grid; ctx.fillRect(pad, by4, bw, barH);
+    seg(x, by4, sc.homeless * sc4, barH, P.accent, 0.85, "무주택", sc.homeless); x += sc.homeless * sc4;
+    seg(x, by4, sc.dependents * sc4, barH, P.accent2, 0.85, "부양", sc.dependents); x += sc.dependents * sc4;
+    seg(x, by4, sc.account * sc4, barH, P.blue, 0.85, "통장", sc.account);
+  }, { get height() { return pw("in-cv") < 480 ? 330 : 340; } });
+  function inStats() {
+    const S = scen(), sc = score(), R = LAB.rule(H, H.price);
+    const it0 = H.jloan * Math.max(0.01, S.rates[0] - 0.002) / 12, save = H.net - H.cost - it0;
+    EB.stat("in-o-nw", W(H.deposit - H.jloan + H.cash));
+    EB.stat("in-o-sv", '<span class="' + (save < 0 ? "minus" : "plus") + '">' + W(save) + "</span>");
+    EB.stat("in-o-sc", sc.total + "점<small>무주택 " + sc.homeless + " · 부양 " + sc.dependents + " · 통장 " + sc.account + "</small>");
+    EB.stat("in-o-rule", "LTV " + Math.round(R.ltv * 100) + "%<small>스트레스 +" + +(R.stress * 100).toFixed(2) + "%p · 상한 " + (isFinite(R.cap) ? EB.wonAxis(R.cap) : "없음") + "</small>");
+    cvIn.redraw();
+  }
+  views.push(inStats);
+  function loadPreset(k) {
+    const p = PRESETS[k];
+    loading = true;
+    Object.assign(H, p.H);
+    incG.set(H.income / MAN); netG.set(H.net / MAN); costG.set(H.cost / MAN); retG.set(H.retire);
+    cashG.set(H.cash / MAN); depG.set(H.deposit / MAN); jlG.set(H.jloan / MAN); rsvG.set(H.reserveM);
+    priceG.set(H.price / MAN); regG.set(H.region, false); firstEl.checked = H.first;
+    hlG.set(H.homeless); dpG.set(H.deps); acG.set(H.acct);
+    hpG.set(H.homePrice / MAN); srG.set(H.senior / MAN); othG.set(0);
+    nG.set(p.later); wG.set(p.win);
+    loading = false;
+    Object.assign(H, p.H);
+    OPT.later = p.later; OPT.win = p.win;
+    updateAll();
+  }
+
+  /* ================================================================ 2) 대출 한도와 DSR */
+  let rateSync = false;
+  const lnR = EB.range("ln-r", (v) => v.toFixed(1) + "%", (v) => { SC.pts[0][1] = v / 100; if (!rateSync) updateAll(); });
+  const othG = EB.range("ln-oth", Wm, (v) => { H.other = v * MAN; updateAll(); });
+  let lnBox = null;
+  const PMIN = 1e8, PMAX = 2.5e9;
+  const cvLn = EB.canvas("#ln-cv", (ctx, w, h) => {
+    const P = EB.palette(), S = scen(), r = S.rates[0];
+    const f = LAB.finance(H, H.cash + H.deposit - H.jloan, H.price, r, 0, null, dsrCap());
+    const narrow = w < 480;
+    const lab = narrow ? 64 : 84, bx = 12 + lab, bw = w - bx - 18;
+    const ml = f.ml, items = [
+      { k: "DSR 한도", v: ml.byDsr, key: "dsr", sub: Math.round(dsrCap() * 100) + "% · 스트레스 " + +((r + f.rule.stress) * 100).toFixed(2) + "%" },
+      { k: "LTV 한도", v: ml.byLtv, key: "ltv", sub: "집값의 " + Math.round(f.rule.ltv * 100) + "%" },
+      { k: "금액 상한", v: ml.byCap, key: "cap", sub: isFinite(ml.byCap) ? f.rule.name : "없음(지방)" },
+    ];
+    const vmax = Math.max(f.loan, ...items.map((i) => (isFinite(i.v) ? i.v : 0)), 1) * 1.12;
+    const X = (v) => bx + Math.min(1, v / vmax) * bw;
+    const top = 12, rowH = narrow ? 34 : 36;
+    items.forEach((it, i) => {
+      const y = top + i * rowH;
+      T(ctx, it.k, bx - 8, y + 11, { size: 12, color: P.text, align: "right", base: "middle", weight: 700 });
+      const on = it.key === f.binding;
+      ctx.globalAlpha = on ? 0.9 : 0.35; ctx.fillStyle = on ? P.accent : P.dim;
+      const ww = isFinite(it.v) ? X(it.v) - bx : bw;
+      ctx.fillRect(bx, y + 2, ww, 18); ctx.globalAlpha = 1;
+      if (!isFinite(it.v)) T(ctx, "제한 없음", bx + 6, y + 11, { size: 11, color: "#fff", base: "middle", weight: 700 });
+      else T(ctx, EB.wonAxis(it.v), Math.min(bx + ww + 4, w - 40), y + 11, { size: 11, mono: true, color: P.text, base: "middle" });
+      T(ctx, it.sub, bx, y + 30, { size: 10, color: P.faint, base: "middle" });
+    });
+    // 필요한 대출 선
+    const ny0 = top - 4, ny1 = top + rowH * 3 - 6, nx = X(f.loan);
+    ctx.save(); ctx.strokeStyle = f.ok ? P.ok : P.bad; ctx.lineWidth = 2; ctx.setLineDash([5, 4]);
+    ctx.beginPath(); ctx.moveTo(nx, ny0); ctx.lineTo(nx, ny1); ctx.stroke(); ctx.restore();
+    // DSR 게이지
+    const ty = h - 38, gy = top + rowH * 3 + 14, cy = ty - 78;
+    const R = Math.max(40, Math.min(125, cy - gy - 16, (w - 90) / 2)), cx = w / 2;
+    const ang = (v) => Math.PI + Math.min(1, v / 0.7) * Math.PI;
+    const zones = [[0, 0.4, P.ok], [0.4, 0.5, P.warn], [0.5, 0.7, P.bad]];
+    zones.forEach(([a, b, c]) => { ctx.beginPath(); ctx.arc(cx, cy, R, ang(a), ang(b)); ctx.lineWidth = 12; ctx.strokeStyle = c; ctx.globalAlpha = 0.45; ctx.stroke(); ctx.globalAlpha = 1; });
+    [0, 0.2, 0.4, 0.5, 0.7].forEach((v) => { const a = ang(v); T(ctx, Math.round(v * 100) + "", cx + Math.cos(a) * (R + 14), cy + Math.sin(a) * (R + 14), { size: 10, mono: true, color: P.faint, align: "center", base: "middle" }); });
+    const needle = (v, col, wd) => { const a = ang(v); ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + Math.cos(a) * (R - 4), cy + Math.sin(a) * (R - 4)); ctx.strokeStyle = col; ctx.lineWidth = wd; ctx.stroke(); };
+    needle(f.dsr, P.faint, 2); needle(f.dsrStress, P.text, 3);
+    ctx.beginPath(); ctx.arc(cx, cy, 5, 0, TAU); ctx.fillStyle = P.text; ctx.fill();
+    const l1 = "스트레스 DSR " + pct(f.dsrStress), l2 = "필요한 대출 " + EB.wonAxis(f.loan) + " · 실제 금리 " + pct(f.dsr);
+    ctx.font = EB.font(11); const lw = Math.max(ctx.measureText(l2).width, 120) + 16;
+    rrect(ctx, cx - lw / 2, cy + 10, lw, 36, 6); ctx.fillStyle = P.surface; ctx.fill();
+    T(ctx, l1, cx, cy + 21, { size: 13, weight: 700, color: f.dsrStress > dsrCap() ? P.bad : P.text, align: "center", base: "middle" });
+    T(ctx, l2, cx, cy + 37, { size: 11, color: P.dim, align: "center", base: "middle" });
+    // 집값 손잡이 트랙
+    const tx0 = 30, tx1 = w - 30;
+    ctx.strokeStyle = P.axis; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(tx0, ty); ctx.lineTo(tx1, ty); ctx.stroke();
+    const px = tx0 + (Math.log(H.price / PMIN) / Math.log(PMAX / PMIN)) * (tx1 - tx0);
+    T(ctx, "목표 집값 " + EB.won(H.price, { short: true }), EB.clamp(px, 70, w - 70), ty - 14, { size: 12, weight: 700, color: P.text, align: "center" });
+    T(ctx, "1억", tx0, ty + 2, { size: 10, color: P.faint, align: "right", base: "middle" });
+    handle(ctx, px, ty, P);
+    lnBox = { tx0, tx1, ty };
+  }, { get height() { return pw("ln-cv") < 480 ? 410 : 420; } });
+  EB.drag(cvLn.canvas, {
+    move(x, y) {
+      if (!lnBox) return;
+      const t = EB.clamp((x - lnBox.tx0) / (lnBox.tx1 - lnBox.tx0), 0, 1);
+      const v = Math.round(PMIN * Math.pow(PMAX / PMIN, t) / 5e6) * 5e6;
+      priceG.set(v / MAN);
+    },
+  });
+  function lnStats() {
+    const S = scen(), f = LAB.finance(H, H.cash + H.deposit - H.jloan, H.price, S.rates[0], 0, null, dsrCap());
+    EB.stat("ln-o-max", W(f.max));
+    EB.stat("ln-o-bind", ({ dsr: "DSR", ltv: "LTV", cap: "금액 상한" })[f.binding] + "<small>" + f.rule.name + "</small>");
+    EB.stat("ln-o-need", '<span class="' + (f.ok ? "" : "minus") + '">' + W(f.loan) + "</span><small>" + (f.ok ? "월 " + EB.won(f.monthly) : EB.won(f.short) + " 모자람") + "</small>");
+    EB.stat("ln-o-dsr", pct(f.dsr) + " / " + pct(f.dsrStress));
+    cvLn.redraw();
+  }
+  views.push(lnStats);
+
+  /* ================================================================ 3) 금리 곡선과 시나리오 */
+  const rtPre = EB.seg("rt-pre", (v) => { RPRE[v].forEach((r, i) => { SC.pts[i][1] = r; }); syncRate(); updateAll(); });
+  const gG = EB.range("rt-g", (v) => (v > 0 ? "+" : "") + v + "%", (v) => { SC.g = v / 100; updateAll(); });
+  const jgG = EB.range("rt-jg", (v) => (v > 0 ? "+" : "") + v + "%", (v) => { SC.jg = v / 100; updateAll(); });
+  const retR = EB.range("rt-ret", (v) => v + "%", (v) => { SC.ret = v / 100; updateAll(); });
+  function syncRate() { rateSync = true; lnR.set(Math.round(SC.pts[0][1] * 1000) / 10); rateSync = false; }
+  let rtBox = null, rtDrag = -1;
+  const cvRt = EB.canvas("#rt-cv", (ctx, w, h) => {
+    const P = EB.palette(), S = scen();
+    const hTop = Math.round(h * 0.58);
+    const c = EB.chart(ctx, { x: 44, y: 22, w: w - 60, h: hTop - 50 }, {
+      x: [0, 30], y: [0, 0.1], xTicks: [0, 5, 10, 15, 20, 25, 30], xFmt: (v) => v + "년", yTicks: [0, 0.02, 0.04, 0.06, 0.08, 0.1], yFmt: (v) => Math.round(v * 100) + "%",
+      series: [{ data: S.rates.map((r, y) => [y, r]), color: P.bad, width: 2.6 }],
+      hlines: [{ y: RE.KR.baseRate, color: P.faint, label: "기준금리 " + pct(RE.KR.baseRate) }],
+    });
+    rtBox = c;
+    T(ctx, "주담대 금리(시나리오)", 50, 14, { size: 11, color: P.dim, weight: 700 });
+    SC.pts.forEach(([x, r], i) => {
+      const px = c.X(x), py = c.Y(r);
+      ctx.beginPath(); ctx.arc(px, py, i === rtDrag ? 9 : 7, 0, TAU); ctx.fillStyle = P.bg; ctx.fill(); ctx.lineWidth = 2.5; ctx.strokeStyle = P.bad; ctx.stroke();
+      ctx.beginPath(); ctx.arc(px, py, 2.5, 0, TAU); ctx.fillStyle = P.bad; ctx.fill();
+      if (i === rtDrag || w >= 480) T(ctx, (r * 100).toFixed(1), px, py - 13, { size: 10, mono: true, color: P.text, align: "center" });
+    });
+    // 아래: 시세 지수
+    const pr = [], jr = [];
+    for (let y = 0; y <= 30; y++) { pr.push([y, H.price * Math.pow(1 + SC.g, y)]); jr.push([y, H.deposit * Math.pow(1 + SC.jg, y)]); }
+    const ymax = Math.max(H.price * Math.pow(1 + Math.max(SC.g, 0), 30), H.deposit * Math.pow(1 + Math.max(SC.jg, 0), 30), 1) * 1.05;
+    EB.chart(ctx, { x: 44, y: hTop + 14, w: w - 60, h: h - hTop - 54 }, {
+      x: [0, 30], y: [0, ymax], xTicks: [0, 5, 10, 15, 20, 25, 30], xFmt: (v) => v + "년", yFmt: EB.wonAxis, yTicks: [0, ymax / 2, ymax].map((v) => Math.round(v / 1e7) * 1e7),
+      series: [{ data: pr, color: P.accent, width: 2.2 }, { data: jr, color: P.accent2, width: 2.2, dash: [6, 4] }],
+    });
+    T(ctx, "목표 집 시세", 50, hTop + 8, { size: 11, color: P.accent, weight: 700 });
+    T(ctx, "지금 집 전세 시세(점선)", 140, hTop + 8, { size: 11, color: P.accent2, weight: 700 });
+  }, { get height() { return pw("rt-cv") < 480 ? 380 : 400; } });
+  EB.drag(cvRt.canvas, {
+    start(x, y) {
+      if (!rtBox) return;
+      let best = -1, bd = 30;
+      SC.pts.forEach(([px, r], i) => { const d = Math.hypot(rtBox.X(px) - x, rtBox.Y(r) - y); if (d < bd) { bd = d; best = i; } });
+      if (best < 0) { let bx = Infinity; SC.pts.forEach(([px], i) => { const d = Math.abs(rtBox.X(px) - x); if (d < bx && y < rtBox.box.y + rtBox.box.h + 10) { bx = d; best = i; } }); if (bx > 26) best = -1; }
+      rtDrag = best;
+    },
+    move(x, y) {
+      if (!rtBox || rtDrag < 0) return;
+      const v = (rtBox.box.y + rtBox.box.h - y) / rtBox.box.h * 0.1;
+      SC.pts[rtDrag][1] = EB.clamp(Math.round(v * 1000) / 1000, 0.01, 0.1);
+      if (rtDrag === 0) syncRate();
+      updateAll();
+    },
+    end() { rtDrag = -1; cvRt.redraw(); },
+  });
+  function rtStats() {
+    const S = scen();
+    EB.stat("rt-o-a5", pct(S.rates.slice(0, 5).reduce((a, b) => a + b, 0) / 5, 2));
+    const mx = Math.max(...S.rates);
+    EB.stat("rt-o-mx", pct(mx, 1) + "<small>" + S.rates.indexOf(mx) + "년째</small>");
+    EB.stat("rt-o-p10", W(H.price * Math.pow(1 + SC.g, 10)));
+    const hp10 = H.homePrice * Math.pow(1 + SC.g, 10), j10 = H.deposit * Math.pow(1 + SC.jg, 10);
+    EB.stat("rt-o-jr", (H.homePrice > 0 ? pct(j10 / hp10, 0) : "—") + "<small>지금 " + (H.homePrice > 0 ? pct(H.deposit / H.homePrice, 0) : "—") + "</small>");
+    cvRt.redraw();
+  }
+  views.push(rtStats);
+
+  /* ================================================================ 4) 30년 순자산 경로 */
+  const viewG = EB.seg("pa-view", (v) => { OPT.view = v; paStats(); });
+  const realG = EB.seg("pa-real", (v) => { OPT.real = v === "real"; paStats(); mcDraw(); });
+  PATHS.forEach((p) => { const el = $("pa-on-" + p); el.addEventListener("change", () => { OPT.on[p] = el.checked; paStats(); }); });
+  const nG = EB.range("pa-n", (v) => v + "년 뒤", (v) => { OPT.later = v; updateAll(); });
+  const wG = EB.range("pa-w", (v) => v + "년째(입주 " + (v + 3) + "년째)", (v) => { OPT.win = v; updateAll(); });
+  const fixG = EB.seg("pa-fix", (v) => { OPT.fixed = v === "fixed"; updateAll(); });
+  let paBox = null, paY = 10;
+  const val = (p, y) => defl(OPT.view === "nw" ? BASE[p].rows[y].nw : BASE[p].rows[y].cash, y);
+  const cvPa = EB.canvas("#pa-cv", (ctx, w, h) => {
+    const P = EB.palette(), col = PCOL(P);
+    const vis = PATHS.filter((p) => OPT.on[p]);
+    let lo = 0, hi = 1e8;
+    vis.forEach((p) => BASE[p].rows.forEach((r, y) => { const v = val(p, y); lo = Math.min(lo, v); hi = Math.max(hi, v); }));
+    lo = Math.max(lo, -hi * 1.2); hi *= 1.08; if (lo < 0) lo *= 1.08;
+    const c = EB.chart(ctx, { x: 52, y: 14, w: w - 66, h: h - 64 }, {
+      x: [0, 30], y: [lo, hi], xTicks: [0, 5, 10, 15, 20, 25, 30], xFmt: (v) => v + "년", yFmt: EB.wonAxis,
+      series: vis.map((p) => ({ data: BASE[p].rows.map((r, y) => [y, val(p, y)]), color: col[p], width: p === "buy" || p === "jeonse" ? 2.8 : 2.2, dash: p === "rent" ? [6, 4] : null })),
+      hlines: lo < 0 ? [{ y: 0, color: P.axis, dash: [] }] : [],
+      vlines: [{ x: paY, color: P.text, dash: [3, 3] }],
+    });
+    paBox = c;
+    ctx.save(); ctx.beginPath(); ctx.rect(c.box.x - 8, c.box.y - 8, c.box.w + 16, c.box.h + 16); ctx.clip();
+    vis.forEach((p) => {
+      const st = BASE[p].st;
+      if (st.bought >= 0) { const x = c.X(st.bought), y = c.Y(val(p, st.bought)); ctx.beginPath(); ctx.moveTo(x - 6, y + 5); ctx.lineTo(x, y - 7); ctx.lineTo(x + 6, y + 5); ctx.closePath(); ctx.fillStyle = col[p]; ctx.fill(); ctx.strokeStyle = P.bg; ctx.lineWidth = 1.5; ctx.stroke(); }
+      if (st.fail) { const x = c.X(st.fail.y), y = c.Y(val(p, st.fail.y)); ctx.strokeStyle = P.bad; ctx.lineWidth = 2.5; ctx.beginPath(); ctx.moveTo(x - 6, y - 6); ctx.lineTo(x + 6, y + 6); ctx.moveTo(x + 6, y - 6); ctx.lineTo(x - 6, y + 6); ctx.stroke(); }
+      if (st.cashNeg >= 0) { const x = c.X(st.cashNeg), y = c.Y(val(p, st.cashNeg)); ctx.beginPath(); ctx.arc(x, y, 7, 0, TAU); ctx.strokeStyle = P.bad; ctx.lineWidth = 2.5; ctx.stroke(); }
+    });
+    vis.forEach((p) => { const y = c.Y(val(p, paY)); ctx.beginPath(); ctx.arc(c.X(paY), y, 4, 0, TAU); ctx.fillStyle = col[p]; ctx.fill(); });
+    ctx.restore();
+    handle(ctx, c.X(paY), c.box.y + c.box.h, P);
+    T(ctx, (OPT.view === "nw" ? "순자산" : "예금·투자") + (OPT.real ? "(오늘 돈)" : "(그 해의 돈)") + " · ▲ 매수 · ✕ 살 수 없음 · ○ 예금 바닥", c.box.x + 6, c.box.y + 12, { size: 11, color: P.dim });
+  }, { get height() { return pw("pa-cv") < 480 ? 320 : 360; } });
+  EB.drag(cvPa.canvas, { move(x) { if (!paBox) return; paY = EB.clamp(Math.round((x - paBox.box.x) / paBox.box.w * 30), 0, 30); paStats(); } });
+  function paWarn() {
+    const out = [];
+    PATHS.filter((p) => OPT.on[p]).forEach((p) => {
+      const st = BASE[p].st, n = "<b>" + pname(p) + "</b>: ";
+      if (st.fail) out.push(n + st.fail.y + "년째 " + st.fail.why + (st.fail.short ? "(" + EB.won(st.fail.short) + " 모자람, " + ({ dsr: "DSR", ltv: "LTV", cap: "금액 상한" })[st.plan.binding] + "가 묶는다)" : "") + ". 이 경로는 전세로 남는다" + (p === "sub" ? "고 계약금을 잃는다고 본다." : "."));
+      if (st.cashNeg >= 0) out.push(n + st.cashNeg + "년째 예금이 바닥난다. 그 뒤로는 생활비와 상환을 빚으로 메운다.");
+      if (st.under >= 0) out.push(n + st.under + "년째 집 시세가 대출 잔액보다 낮아진다(깡통).");
+      if (st.depLoss >= 0) out.push(n + st.depLoss + "년째 세 든 집의 시세가 보증금을 다 돌려주지 못할 만큼 낮아진다(경매 시, 보증 미가입 가정).");
+      if (st.burden > 0.4) out.push(n + st.burdenY + "년째 원리금이 실수령의 " + pct(st.burden, 0) + "까지 오른다.");
+    });
+    $("pa-warn").innerHTML = '<div class="hd">이 시나리오에서 각 경로가 아픈 곳</div>' + (out.length ? "<ul><li>" + out.join("</li><li>") + "</li></ul>" : "<div>켜 둔 경로 중 이 시나리오에서 무너지는 경로는 없다. 아래 몬테카를로와 스트레스 지도에서 흔들어 본다.</div>");
+  }
+  function paStats() {
+    const P = EB.palette(), col = PCOL(P);
+    PATHS.forEach((p) => { $("pa-sw-" + p).style.background = col[p]; });
+    $("pa-later-name").textContent = pname("later");
+    $("pa-o-later-k").textContent = pname("later");
+    EB.stat("pa-o-y", paY + "년째<small>" + (OPT.view === "nw" ? "순자산" : "예금·투자") + (OPT.real ? ", 오늘 돈" : "") + "</small>");
+    const best = PATHS.filter((p) => OPT.on[p]).reduce((b, p) => (b == null || val(p, paY) > val(b, paY) ? p : b), null);
+    PATHS.forEach((p) => {
+      const v = val(p, paY);
+      const st = BASE[p].st;
+      const sub = st.bought >= 0 ? st.bought + "년째 매수 · 대출 " + EB.wonAxis(st.loan) : st.fail ? st.fail.y + "년째 " + st.fail.why : "";
+      EB.stat("pa-o-" + p, OPT.on[p] ? '<span class="' + (v < 0 ? "minus" : "") + '">' + EB.won(v) + "</span><small>" + [p === best ? "가장 많다" : "", sub].filter(Boolean).join(" · ") + "</small>" : "<small>꺼짐</small>");
+    });
+    paWarn();
+    cvPa.redraw();
+  }
+  views.push(paStats);
+
+  /* ================================================================ 5) 연도별 주거비 */
+  const coG = EB.seg("co-path", () => coStats());
+  let coSel = 1, coBars = null;
+  const cvCo = EB.canvas("#co-cv", (ctx, w, h) => {
+    const P = EB.palette(), rows = BASE[coG()].rows.slice(1);
+    const items = [["interest", "이자", P.bad], ["rent", "월세", P.warn], ["tax", "보유세", P.accent2], ["upkeep", "수선·관리", P.dim], ["tx", "거래·이사", P.blue]];
+    const tot = rows.map((r) => r.total), hi = Math.max(1e6, ...tot) * 1.1;
+    coBars = EB.bars(ctx, { x: 52, y: 30, w: w - 64, h: h - 78 }, {
+      labels: rows.map((r) => r.y + ""), y: [0, hi], yFmt: EB.wonAxis, highlight: coSel - 1, gap: 0.2,
+      stacks: items.map(([k, lb, c]) => ({ label: lb, color: c, data: rows.map((r) => r.cost[k]) })),
+    });
+    let lx = 56;
+    items.forEach(([, s, c]) => { ctx.fillStyle = c; ctx.fillRect(lx, 10, 10, 8); T(ctx, s, lx + 13, 17, { size: 11, color: P.dim }); ctx.font = EB.font(11); lx += ctx.measureText(s).width + 26; });
+    T(ctx, "가로축: 결정 시점부터의 해", 56, h - 22, { size: 10, color: P.faint });
+  }, { get height() { return pw("co-cv") < 480 ? 270 : 300; } });
+  EB.drag(cvCo.canvas, { move(x) { if (!coBars) return; let bi = 0, bd = Infinity; for (let i = 0; i < 30; i++) { const d = Math.abs(coBars.X(i) - x); if (d < bd) { bd = d; bi = i; } } coSel = bi + 1; coStats(); } });
+  function coStats() {
+    const r = BASE[coG()], rows = r.rows;
+    EB.stat("co-o-m1", '<span class="minus">' + W(rows[1].total / 12) + "</span><small>매수·이사 비용 포함</small>");
+    $("co-o-yk").textContent = coSel + "년째 주거비";
+    const s = rows[coSel];
+    EB.stat("co-o-y", '<span class="minus">' + W(s.total) + "</span><small>월 " + EB.won(s.total / 12) + "</small>");
+    EB.stat("co-o-b", s.pay > 0 ? '<span class="' + (s.pay / s.inc > 0.4 ? "minus" : "") + '">' + pct(s.pay / s.inc, 0) + "</span><small>원리금 월 " + EB.won(s.pay / 12) + "</small>" : "—<small>주담대 없음</small>");
+    EB.stat("co-o-sum", W(rows.slice(1).reduce((a, x) => a + x.total, 0)));
+    cvCo.redraw();
+  }
+  views.push(coStats);
+
+  /* ================================================================ 6) 보증금 위험 */
+  const hpG = EB.range("dp-hp", Wm, (v) => { H.homePrice = v * MAN; updateAll(); });
+  const srG = EB.range("dp-sr", Wm, (v) => { H.senior = v * MAN; updateAll(); });
+  const arG = EB.range("dp-ar", (v) => v + "%", () => dpStats());
+  let dpDrop = 0.3, dpBox = null;
+  const regionKey = () => ({ seoul: "seoul", metro: "metro", local: "city" })[H.region];
+  const jr = (d) => RE.jeonseRisk({ price: H.homePrice, deposit: H.deposit, seniorDebt: H.senior, drop: d, auctionRate: arG() / 100, region: regionKey(), small: true });
+  function lossStart() { if (jr(0).loss > 1) return 0; let lo = 0, hi = 0.95; if (jr(hi).loss <= 1) return null; for (let i = 0; i < 40; i++) { const m = (lo + hi) / 2; if (jr(m).loss > 1) hi = m; else lo = m; } return hi; }
+  const cvDp = EB.canvas("#dp-cv", (ctx, w, h) => {
+    const P = EB.palette();
+    const xs = []; for (let d = 0; d <= 0.6001; d += 0.01) xs.push(d);
+    const c = EB.chart(ctx, { x: 48, y: 14, w: w - 62, h: h - 144 }, {
+      x: [0, 0.6], y: [0, 1.05], xTicks: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6], yTicks: [0, 0.25, 0.5, 0.75, 1], xFmt: (v) => "−" + Math.round(v * 100) + "%", yFmt: (v) => Math.round(v * 100) + "%",
+      series: [
+        { data: xs.map((d) => [d, H.deposit > 0 ? RE.jeonseRisk({ price: H.homePrice, deposit: H.deposit, seniorDebt: 0, drop: d, auctionRate: arG() / 100, region: regionKey(), small: true }).rate : 1]), color: P.faint, width: 1.5, dash: [5, 4] },
+        { data: xs.map((d) => [d, H.deposit > 0 ? jr(d).rate : 1]), color: P.accent2, width: 2.8 },
+      ],
+      hlines: [{ y: 1, color: P.ok, label: "전액 회수" }],
+    });
+    dpBox = c;
+    const z = lossStart();
+    if (z != null && z <= 0.6) { ctx.save(); ctx.fillStyle = P.bad; ctx.globalAlpha = 0.08; ctx.fillRect(c.X(z), c.box.y, c.box.x + c.box.w - c.X(z), c.box.h); ctx.restore(); }
+    T(ctx, "실선: 선순위 채권 반영 · 점선: 선순위가 없을 때", c.box.x + 6, c.box.y + c.box.h - 8, { size: 10, color: P.faint });
+    const r = jr(dpDrop), px = c.X(dpDrop), py = c.Y(H.deposit > 0 ? r.rate : 1);
+    ctx.save(); ctx.setLineDash([3, 3]); ctx.strokeStyle = P.text; ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.moveTo(px, c.box.y + c.box.h); ctx.lineTo(px, py); ctx.stroke(); ctx.restore();
+    ctx.beginPath(); ctx.arc(px, py, 5, 0, TAU); ctx.fillStyle = r.loss > 1 ? P.bad : P.ok; ctx.fill();
+    handle(ctx, px, c.box.y + c.box.h, P);
+    // 배당 막대
+    const by = h - 88, bx = 48, bw = w - 62, M = Math.max(r.value, H.deposit + H.senior, 1), s = bw / M;
+    T(ctx, "하락 후 시세 " + EB.wonAxis(r.value) + " → 경매 배당", bx, by - 6, { size: 11, color: P.dim });
+    let x = bx;
+    const part = (v, col, a, lb) => { if (v <= 0) return; ctx.globalAlpha = a; ctx.fillStyle = col; ctx.fillRect(x, by, v * s, 18); ctx.globalAlpha = 1; ctx.font = EB.font(10, false, 700); if (ctx.measureText(lb).width + 6 < v * s) T(ctx, lb, x + 3, by + 9, { size: 10, weight: 700, color: "#fff", base: "middle" }); x += v * s; };
+    part(r.priority, P.ok, 0.6, "최우선"); part(r.toSenior, P.dim, 0.7, "선순위"); part(r.recovered - r.priority, P.ok, 0.85, "보증금 회수");
+    const rest = r.sale - r.priority - r.toSenior - (r.recovered - r.priority);
+    part(Math.max(0, rest), P.faint, 0.35, "남음"); part(r.value - r.sale, P.bad, 0.35, "낙찰 할인·비용");
+    const y2 = by + 26;
+    ctx.globalAlpha = 0.85; ctx.fillStyle = P.accent2; ctx.fillRect(bx, y2, (H.deposit - r.loss) * s, 14); ctx.globalAlpha = 1;
+    if (r.loss > 1) { ctx.fillStyle = P.bad; ctx.fillRect(bx + (H.deposit - r.loss) * s, y2, r.loss * s, 14); }
+    T(ctx, "보증금 " + EB.wonAxis(H.deposit) + (r.loss > 1 ? " 중 손실 " + EB.wonAxis(r.loss) : " 전액"), bx, y2 + 28, { size: 11, color: r.loss > 1 ? P.bad : P.dim, weight: 700 });
+  }, { get height() { return pw("dp-cv") < 480 ? 370 : 390; } });
+  EB.drag(cvDp.canvas, { move(x) { if (!dpBox) return; dpDrop = EB.clamp(Math.round((x - dpBox.box.x) / dpBox.box.w * 60) / 100, 0, 0.6); dpStats(); } });
+  function dpStats() {
+    const r = jr(dpDrop), z = lossStart();
+    EB.stat("dp-o-r", (H.homePrice > 0 ? pct(H.deposit / H.homePrice, 0) : "—") + " / " + pct(r.debtRatio, 0) + "<small>보증금 ÷ 시세 / (선순위 + 보증금) ÷ 시세</small>");
+    EB.stat("dp-o-z", H.deposit <= 0 ? "—" : z == null ? "60% 넘게 빠져도 전액" : z === 0 ? '<span class="minus">지금 이미 손실</span>' : "약 " + pct(z, 0) + " 하락부터");
+    EB.stat("dp-o-rec", '<span class="' + (r.loss > 1 ? "minus" : "plus") + '">' + pct(r.rate, 0) + "</span><small>" + (r.loss > 1 ? "손실 " + EB.won(r.loss) : "전액") + " · 하락 " + Math.round(dpDrop * 100) + "%</small>");
+    const cap = H.region === "local" ? RE.KR.hug.capOther : RE.KR.hug.capMetro;
+    const ok = H.deposit <= cap && H.senior + H.deposit <= H.homePrice * RE.KR.hug.ratio;
+    EB.stat("dp-o-hug", ok ? '<span class="plus">요건 안</span><small>보증 가입 가능 범위</small>' : '<span class="minus">요건 밖</span><small>' + (H.deposit > cap ? "보증금 상한 초과" : "선순위+보증금 > 시세의 90%") + "</small>");
+    cvDp.redraw();
+  }
+  views.push(dpStats);
+
+  /* ================================================================ 7) 몬테카를로 */
+  const MCN = 300, SEED0 = 7;
+  let mcSeed = SEED0, MC = null, mcAnim = 1;
+  const mcPath = EB.seg("mc-path", () => { mcStats(); });
+  const spG = EB.range("mc-sp", (v) => v + "%", () => mcSchedule());
+  const sr2G = EB.range("mc-sr", (v) => v.toFixed(1) + "%p", () => mcSchedule());
+  $("mc-go").addEventListener("click", () => { mcSeed++; mcCompute(); });
+  $("mc-re").addEventListener("click", () => { mcSeed = SEED0; mcCompute(); });
+  const qs = (arr, p) => arr[Math.min(arr.length - 1, Math.max(0, Math.floor(p * (arr.length - 1))))];
+  function mcCompute() {
+    const S = scen(), sh = LAB.shocks(MCN, mcSeed, S, spG() / 100, sr2G() / 100);
+    const res = {};
+    PATHS.forEach((p) => { res[p] = sh.map((s) => LAB.run(p, H, S, OPT, s)); });
+    const q = {};
+    PATHS.forEach((p) => {
+      q[p] = [];
+      for (let y = 0; y <= 30; y++) { const a = res[p].map((r) => r.rows[y].nw).sort((x, z) => x - z); q[p].push({ p10: qs(a, 0.1), p25: qs(a, 0.25), p50: qs(a, 0.5), p75: qs(a, 0.75), p90: qs(a, 0.9), all: y === 30 ? a : null }); }
+    });
+    MC = { res, q };
+    mcAnim = 0;
+    mcStats();
+  }
+  const mcSchedule = EB.debounce(() => mcCompute(), 160);
+  let mcBox = null;
+  const cvMc = EB.canvas("#mc-cv", (ctx, w, h) => {
+    if (!MC) return;
+    const P = EB.palette(), col = PCOL(P), f = mcPath(), Q = MC.q;
+    let lo = 0, hi = 1e8;
+    PATHS.forEach((p) => Q[p].forEach((v, y) => { hi = Math.max(hi, defl(v.p90, y)); lo = Math.min(lo, defl(v.p10, y)); }));
+    hi *= 1.06; if (lo < 0) lo *= 1.06;
+    const hw = w < 480 ? 34 : 54;
+    const c = EB.chart(ctx, { x: 52, y: 14, w: w - 66 - hw, h: h - 50 }, {
+      x: [0, 30], y: [lo, hi], xTicks: [0, 5, 10, 15, 20, 25, 30], xFmt: (v) => v + "년", yFmt: EB.wonAxis,
+      hlines: lo < 0 ? [{ y: 0, color: P.axis, dash: [] }] : [],
+    });
+    mcBox = c;
+    const band = (a, b, alpha) => {
+      ctx.beginPath();
+      Q[f].forEach((v, y) => { const px = c.X(y), py = c.Y(defl(v[a], y)); y ? ctx.lineTo(px, py) : ctx.moveTo(px, py); });
+      for (let y = 30; y >= 0; y--) ctx.lineTo(c.X(y), c.Y(defl(Q[f][y][b], y)));
+      ctx.closePath(); ctx.fillStyle = col[f]; ctx.globalAlpha = alpha; ctx.fill(); ctx.globalAlpha = 1;
+    };
+    ctx.save(); ctx.beginPath(); ctx.rect(c.box.x, c.box.y, c.box.w, c.box.h); ctx.clip();
+    band("p10", "p90", 0.16); band("p25", "p75", 0.26);
+    // 몇 개의 미래(애니메이션으로 그려진다)
+    const reveal = Math.min(1, mcAnim), nShow = 24, upto = Math.round(30 * reveal);
+    ctx.lineWidth = 1; ctx.strokeStyle = col[f]; ctx.globalAlpha = 0.35;
+    for (let i = 0; i < nShow; i++) {
+      const rows = MC.res[f][i * Math.floor(MCN / nShow)].rows;
+      ctx.beginPath(); for (let y = 0; y <= upto; y++) { const px = c.X(y), py = c.Y(defl(rows[y].nw, y)); y ? ctx.lineTo(px, py) : ctx.moveTo(px, py); } ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+    PATHS.forEach((p) => { if (p === f) return; ctx.beginPath(); Q[p].forEach((v, y) => { const px = c.X(y), py = c.Y(defl(v.p50, y)); y ? ctx.lineTo(px, py) : ctx.moveTo(px, py); }); ctx.strokeStyle = col[p]; ctx.lineWidth = 1.4; ctx.setLineDash([4, 3]); ctx.stroke(); ctx.setLineDash([]); });
+    ctx.beginPath(); Q[f].forEach((v, y) => { const px = c.X(y), py = c.Y(defl(v.p50, y)); y ? ctx.lineTo(px, py) : ctx.moveTo(px, py); }); ctx.strokeStyle = col[f]; ctx.lineWidth = 3; ctx.stroke();
+    ctx.restore();
+    T(ctx, pname(f) + ": 진한 띠 25~75%, 옅은 띠 10~90%, 굵은 선 중앙값", c.box.x + 6, c.box.y + 12, { size: 11, color: P.dim });
+    T(ctx, "점선: 다른 경로의 중앙값", c.box.x + 6, c.box.y + 27, { size: 10, color: P.faint });
+    // 30년 뒤 분포(오른쪽 막대)
+    const all = Q[f][30].all.map((v) => defl(v, 30)), nb = 24, hx = c.box.x + c.box.w + 6;
+    const cnt = new Array(nb).fill(0);
+    all.forEach((v) => { const k = Math.floor((v - lo) / (hi - lo) * nb); if (k >= 0 && k < nb) cnt[k]++; });
+    const cm = Math.max(1, ...cnt);
+    cnt.forEach((n, k) => { const y0 = c.Y(lo + (k + 1) * (hi - lo) / nb), y1 = c.Y(lo + k * (hi - lo) / nb); ctx.fillStyle = col[f]; ctx.globalAlpha = 0.7; ctx.fillRect(hx, y0 + 0.5, (hw - 10) * n / cm, Math.max(1, y1 - y0 - 1)); ctx.globalAlpha = 1; });
+    T(ctx, "30년 뒤 분포", w - 6, c.box.y + c.box.h + 32, { size: 10, color: P.faint, align: "right" });
+  }, { get height() { return pw("mc-cv") < 480 ? 320 : 350; } });
+  EB.loop(cvMc.canvas, (dt) => { if (mcAnim < 1) { mcAnim = Math.min(1, mcAnim + dt / 1.2); cvMc.redraw(); } });
+  function mcDraw() { if (MC) mcStats(); }
+  function mcStats() {
+    if (!MC) return;
+    const f = mcPath(), Q = MC.q[f], res = MC.res[f], J = MC.res.jeonse;
+    EB.stat("mc-o-m10", W(defl(Q[10].p50, 10)));
+    EB.stat("mc-o-r10", EB.wonAxis(defl(Q[10].p10, 10)) + " ~ " + EB.wonAxis(defl(Q[10].p90, 10)));
+    EB.stat("mc-o-m30", W(defl(Q[30].p50, 30)) + "<small>" + EB.wonAxis(defl(Q[30].p10, 30)) + " ~ " + EB.wonAxis(defl(Q[30].p90, 30)) + "</small>");
+    if (f === "jeonse") EB.stat("mc-o-beat", "—<small>기준 경로</small>");
+    else {
+      const b10 = res.filter((r, i) => r.rows[10].nw > J[i].rows[10].nw).length / MCN, b30 = res.filter((r, i) => r.rows[30].nw > J[i].rows[30].nw).length / MCN;
+      EB.stat("mc-o-beat", pct(b10, 0) + " / " + pct(b30, 0));
+    }
+    const neg = res.filter((r) => r.st.cashNeg >= 0).length / MCN;
+    EB.stat("mc-o-neg", '<span class="' + (neg > 0.05 ? "minus" : "") + '">' + pct(neg, 0) + "</span>");
+    const und = res.filter((r) => r.st.under >= 0).length / MCN, dl = res.filter((r) => r.st.depLoss >= 0).length / MCN, fl = res.filter((r) => r.st.fail).length / MCN;
+    EB.stat("mc-o-risk", '<span class="' + (und + dl > 0.05 ? "minus" : "") + '">' + pct(und, 0) + " / " + pct(dl, 0) + "</span><small>깡통 / 보증금 위험" + (fl > 0 ? " · 살 수 없음 " + pct(fl, 0) : "") + "</small>");
+    cvMc.redraw();
+  }
+
+  /* ================================================================ 8) 스트레스 지도 */
+  const bkPath = EB.seg("bk-path", () => bkSchedule());
+  const incG2 = EB.range("bk-inc", (v) => (v ? "−" + v + "%" : "없음"), () => bkSchedule());
+  const SX = [], DY = [];
+  for (let s = 0; s <= 0.0601; s += 0.005) SX.push(Math.round(s * 1000) / 1000);
+  for (let d = 0.2; d >= -0.5001; d -= 0.05) DY.push(Math.round(d * 100) / 100);
+  let BK = null, bkPt = { i: 4, j: 8 }, bkBox = null;
+  const catOf = (st) => (st.fail ? "F" : st.cashNeg >= 0 ? "C" : st.under >= 0 || st.depLoss >= 0 ? "U" : st.burden > 0.4 ? "B" : "O");
+  const CATN = { O: "버틴다", B: "상환 부담", U: "깡통·보증금 위험", C: "예금 바닥", F: "살 수 없음" };
+  function bkCompute() {
+    const S = scen(), p = bkPath(), cut = incG2() / 100;
+    const grid = DY.map((d) => SX.map((s) => LAB.run(p, H, S, OPT, LAB.stress(S, s, d, cut))));
+    BK = { grid, p };
+    bkStats();
+  }
+  const bkSchedule = EB.debounce(() => bkCompute(), 140);
+  const cvBk = EB.canvas("#bk-cv", (ctx, w, h) => {
+    if (!BK) return;
+    const P = EB.palette();
+    const bx = 62, by = 12, bw = w - bx - 14, bh = h - by - 64;
+    const cw = bw / SX.length, ch = bh / DY.length;
+    const colOf = { O: [P.ok, 0.4], B: [P.warn, 0.65], U: [P.bad, 0.32], C: [P.bad, 0.85], F: [P.faint, 0.3] };
+    BK.grid.forEach((row, j) => row.forEach((r, i) => {
+      const k = catOf(r.st), [c, a] = colOf[k], x = bx + i * cw, y = by + j * ch;
+      ctx.globalAlpha = a; ctx.fillStyle = c; ctx.fillRect(x + 0.5, y + 0.5, cw - 1, ch - 1); ctx.globalAlpha = 1;
+      if (k === "F") { ctx.save(); ctx.beginPath(); ctx.rect(x, y, cw, ch); ctx.clip(); ctx.strokeStyle = P.dim; ctx.lineWidth = 1; for (let t = -ch; t < cw; t += 6) { ctx.beginPath(); ctx.moveTo(x + t, y + ch); ctx.lineTo(x + t + ch, y); ctx.stroke(); } ctx.restore(); }
+    }));
+    // 축
+    SX.forEach((s, i) => { if (i % 2 === 0) T(ctx, "+" + +(s * 100).toFixed(1), bx + (i + 0.5) * cw, by + bh + 14, { size: 10, mono: true, color: P.dim, align: "center" }); });
+    T(ctx, "금리 충격(%p, 1~6년째)", bx + bw / 2, by + bh + 32, { size: 11, color: P.dim, align: "center" });
+    DY.forEach((d, j) => { if (j % 2 === 0) T(ctx, (d > 0 ? "+" : d < 0 ? "−" : "") + Math.abs(Math.round(d * 100)) + "%", bx - 6, by + (j + 0.5) * ch, { size: 10, mono: true, color: P.dim, align: "right", base: "middle" }); });
+    ctx.save(); ctx.translate(10, by + bh / 2); ctx.rotate(-Math.PI / 2); T(ctx, "처음 3년 집값 변화", 0, 0, { size: 11, color: P.dim, align: "center", base: "middle" }); ctx.restore();
+    // 기준 칸(충격 없음)
+    const j0 = DY.indexOf(0);
+    ctx.strokeStyle = P.text; ctx.lineWidth = 1; ctx.setLineDash([3, 3]); ctx.strokeRect(bx + 0.5, by + j0 * ch + 0.5, cw - 1, ch - 1); ctx.setLineDash([]);
+    const px = bx + (bkPt.i + 0.5) * cw, py = by + (bkPt.j + 0.5) * ch;
+    ctx.strokeStyle = P.text; ctx.lineWidth = 2; ctx.strokeRect(bx + bkPt.i * cw, by + bkPt.j * ch, cw, ch);
+    handle(ctx, px, py, P);
+    bkBox = { bx, by, cw, ch };
+  }, { get height() { return pw("bk-cv") < 480 ? 360 : 380; } });
+  EB.drag(cvBk.canvas, { move(x, y) { if (!bkBox) return; bkPt = { i: EB.clamp(Math.floor((x - bkBox.bx) / bkBox.cw), 0, SX.length - 1), j: EB.clamp(Math.floor((y - bkBox.by) / bkBox.ch), 0, DY.length - 1) }; bkStats(); } });
+  function bkStats() {
+    if (!BK) return;
+    const r = BK.grid[bkPt.j][bkPt.i], k = catOf(r.st), s = SX[bkPt.i], d = DY[bkPt.j];
+    EB.stat("bk-o-pt", "금리 +" + +(s * 100).toFixed(1) + "%p<small>집값 " + signPct(d) + " · 소득 " + (incG2() ? "−" + incG2() + "%" : "그대로") + "</small>");
+    EB.stat("bk-o-res", '<span class="' + (k === "O" ? "plus" : "minus") + '">' + CATN[k] + "</span>" + (r.st.cashNeg >= 0 ? "<small>" + r.st.cashNeg + "년째</small>" : r.st.fail ? "<small>" + r.st.fail.why + "</small>" : ""));
+    EB.stat("bk-o-min", '<span class="' + (r.st.minCash < 0 ? "minus" : "") + '">' + W(r.st.minCash) + "</span>");
+    EB.stat("bk-o-bur", r.st.burden > 0 ? '<span class="' + (r.st.burden > 0.4 ? "minus" : "") + '">' + pct(r.st.burden, 0) + "</span><small>" + r.st.burdenY + "년째</small>" : "—<small>주담대 없음</small>");
+    const j0 = DY.indexOf(0), row = BK.grid[j0], i0 = row.findIndex((x) => catOf(x.st) !== "O");
+    EB.stat("bk-o-ts", i0 < 0 ? "+6%p까지 없음" : i0 === 0 ? "충격 없이도 경고" : "+" + +(SX[i0] * 100).toFixed(1) + "%p부터<small>" + CATN[catOf(row[i0].st)] + "</small>");
+    let jj = -1; for (let j = j0; j < DY.length; j++) if (catOf(BK.grid[j][0].st) !== "O") { jj = j; break; }
+    EB.stat("bk-o-td", jj < 0 ? "−50%까지 없음" : jj === j0 ? "충격 없이도 경고" : signPct(DY[jj]) + "부터<small>" + CATN[catOf(BK.grid[jj][0].st)] + "</small>");
+    cvBk.redraw();
+  }
+
+  updateAll();
+  mcCompute();
+  bkCompute();
+})();
+</script>
+</body>
+</html>

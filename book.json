@@ -1,0 +1,10 @@
+{
+  "id": "estatebook",
+  "title": "EstateBook",
+  "description": "집값은 무엇이 정하고, 전세는 왜 위험해지며, 내 집 마련은 숫자로 어떻게 판단하는가. 입지와 금리, 공급의 시차, 전세와 월세, 계약과 권리, 대출과 레버리지, 청약과 재건축, 보유세와 양도세, 정책과 통계까지. 하늘네 집 노트를 따라 숫자를 직접 바꾸며 배웁니다.",
+  "url": "https://estatebook.euiyun.com/",
+  "repo": "https://github.com/geniuskey/estatebook",
+  "field": "housing",
+  "status": "planned",
+  "domain": "estatebook.euiyun.com"
+}

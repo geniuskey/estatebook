@@ -1,0 +1,869 @@
+<!doctype html>
+<!-- Copyright (c) 2026 geniuskey and EstateBook contributors.
+     Executable code: MIT (see ../LICENSE-MIT).
+     Text, illustrations, questions and explanations: CC-BY-4.0 (see ../LICENSE.md). -->
+<html lang="ko">
+<head>
+<!--head:start {"desc": "규제지역, 토지거래허가구역, 대출 규제, 공급 대책은 각각 다른 경로로 수요와 공급을 움직인다. 정책을 평가하지 않고, 발표에서 효과까지의 시차, 기대, 옆 지역으로 수요가 옮겨 가는 풍선 효과, 임대차 규제의 양면을 시뮬레이터로 작동 원리부터 본다."}-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>정책과 규제 · EstateBook</title>
+<meta name="description" content="규제지역, 토지거래허가구역, 대출 규제, 공급 대책은 각각 다른 경로로 수요와 공급을 움직인다. 정책을 평가하지 않고, 발표에서 효과까지의 시차, 기대, 옆 지역으로 수요가 옮겨 가는 풍선 효과, 임대차 규제의 양면을 시뮬레이터로 작동 원리부터 본다.">
+<link rel="canonical" href="https://estatebook.euiyun.com/chapters/policy.html">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<meta name="theme-color" content="#0f766e">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EstateBook">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="정책과 규제 · EstateBook">
+<meta property="og:description" content="규제지역, 토지거래허가구역, 대출 규제, 공급 대책은 각각 다른 경로로 수요와 공급을 움직인다. 정책을 평가하지 않고, 발표에서 효과까지의 시차, 기대, 옆 지역으로 수요가 옮겨 가는 풍선 효과, 임대차 규제의 양면을 시뮬레이터로 작동 원리부터 본다.">
+<meta property="og:url" content="https://estatebook.euiyun.com/chapters/policy.html">
+<meta property="og:image" content="https://estatebook.euiyun.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Chapter","LearningResource"],"@id":"https://estatebook.euiyun.com/chapters/policy.html#chapter","name":"정책과 규제","headline":"정책과 규제 · EstateBook","description":"규제지역, 토지거래허가구역, 대출 규제, 공급 대책은 각각 다른 경로로 수요와 공급을 움직인다. 정책을 평가하지 않고, 발표에서 효과까지의 시차, 기대, 옆 지역으로 수요가 옮겨 가는 풍선 효과, 임대차 규제의 양면을 시뮬레이터로 작동 원리부터 본다.","url":"https://estatebook.euiyun.com/chapters/policy.html","position":15,"inLanguage":"ko","isAccessibleForFree":true,"learningResourceType":"인터랙티브 교재","educationalLevel":"일반 성인","image":"https://estatebook.euiyun.com/og.png","dateModified":"2026-10-08","isPartOf":{"@type":"Book","@id":"https://estatebook.euiyun.com/#book","name":"EstateBook · 집값과 전세를 숫자로 푸는 부동산 교과서","url":"https://estatebook.euiyun.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"EstateBook","item":"https://estatebook.euiyun.com/"},{"@type":"ListItem","position":2,"name":"15. 정책과 규제","item":"https://estatebook.euiyun.com/chapters/policy.html"}]}]}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../css/style.css">
+<script src="../js/common.js"></script>
+<script src="../js/estate.js"></script>
+<!--head:end-->
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3d6151a0abc94ede89285d462527fa80"}'></script>
+<!-- End Cloudflare Web Analytics -->
+</head>
+<body data-chapter="policy">
+<main class="chapter">
+  <header class="chapter-hero">
+    <div class="eyebrow">Chapter 15</div>
+    <h1>정책과 규제</h1>
+    <p class="lead">하늘은 2025년 가을 어느 날 뉴스 속보를 보고 놀랐다. 서울 전역이 규제지역과 토지거래허가구역으로 묶인다는 소식이었다. 그때까지 하늘네 후보지 가운데 서울 A구는 "비싸지만 대출을 많이 받으면 혹시"였는데, 하루아침에 대출 한도와 거래 조건이 바뀌었다. 같은 뉴스를 본 집주인 남궁현은 "이러면 B시 같은 데가 오른다"고 했고, 재원은 "그럼 B시는 언제 규제되느냐"고 물었다. 부동산 정책은 집값을 직접 정하지 않는다. 누가 살 수 있는지, 얼마를 빌릴 수 있는지, 사고팔 때 세금이 얼마인지, 집이 언제 지어지는지를 바꿔서 수요와 공급을 움직이고, 그 결과로 가격이 움직인다. 이 장은 특정 정책이 옳았는지를 따지지 않는다. 대신 각 정책이 어떤 경로로, 얼마나 늦게, 어디까지 작동하는지를 본다. 그래야 다음 뉴스 속보가 하늘네의 선택지를 어떻게 바꾸는지 스스로 읽을 수 있다.</p>
+    <ul class="objectives">
+      <li>규제지역(투기과열지구·조정대상지역)으로 지정되면 대출·청약·세금에서 무엇이 바뀌는지 표로 정리하고, 2026년 기준 지정 현황을 안다.</li>
+      <li>토지거래허가구역의 허가·실거주 의무가 갭투자를 막는 원리를 필요 현금의 차이로 계산한다.</li>
+      <li>LTV·DSR·주담대 한도 같은 대출 규제가 살 수 있는 사람의 수를 줄여 수요를 낮추는 경로를 시뮬레이션한다.</li>
+      <li>공급 대책이 발표에서 입주까지 몇 년이 걸리는지, 그 사이 기대(발표 효과)가 가격을 어떻게 움직이는지 구분한다.</li>
+      <li>규제 지역 옆으로 수요가 옮겨 가는 풍선 효과와 임대차 규제의 양면을 원리로 설명하고, 정책 뉴스를 읽는 체크리스트를 만든다.</li>
+    </ul>
+  </header>
+
+  <section id="levers">
+    <h2>정책은 무엇을 움직이는가</h2>
+    <p>집값은 사려는 사람(수요)과 팔려는 집(공급)이 만나는 곳에서 정해진다. 정부가 집값에 영향을 주려면 이 둘 가운데 하나를 건드려야 한다. 수요 쪽 레버는 빠르다. 대출 한도를 줄이면 다음 날부터 은행 창구에서 바로 적용된다. 세금을 바꾸거나 거래에 허가를 받게 하는 것도 몇 주, 몇 달이면 시장에 닿는다. 공급 쪽 레버는 느리다. 택지를 지정하고, 인허가를 내주고, 착공해서 입주하기까지 대개 3~5년, 길면 10년 가까이 걸린다(<a href="supply.html">4장</a>).</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 460 334" role="img" aria-label="정책 레버 지도: 수요 쪽 레버(대출, 세금, 거래 허가, 청약)는 빠르게, 공급 쪽 레버(택지, 인허가, 정비사업, 공공주택)는 느리게 시장에 닿는다">
+        <defs><marker id="po-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="context-stroke"/></marker></defs>
+        <text x="90" y="22" text-anchor="middle" class="lbl-acc">수요 쪽 레버</text>
+        <rect x="14" y="34" width="152" height="30" rx="6" class="f-acc-soft"/><text x="90" y="54" text-anchor="middle" class="lbl">대출 규제(LTV·DSR)</text>
+        <rect x="14" y="72" width="152" height="30" rx="6" class="f-acc-soft"/><text x="90" y="92" text-anchor="middle" class="lbl">세금(취득·보유·양도)</text>
+        <rect x="14" y="110" width="152" height="30" rx="6" class="f-acc-soft"/><text x="90" y="130" text-anchor="middle" class="lbl">거래 허가·실거주 의무</text>
+        <rect x="14" y="148" width="152" height="30" rx="6" class="f-acc-soft"/><text x="90" y="168" text-anchor="middle" class="lbl">청약·전매 규칙</text>
+        <text x="90" y="210" text-anchor="middle" class="lbl-acc2">공급 쪽 레버</text>
+        <rect x="14" y="222" width="152" height="30" rx="6" class="f-acc2-soft"/><text x="90" y="242" text-anchor="middle" class="lbl">택지·인허가·공공주택</text>
+        <rect x="14" y="260" width="152" height="30" rx="6" class="f-acc2-soft"/><text x="90" y="280" text-anchor="middle" class="lbl">정비사업 규제 완화</text>
+        <rect x="300" y="120" width="146" height="96" rx="10" class="f-surface"/>
+        <text x="373" y="146" text-anchor="middle" class="lbl-b">시장</text>
+        <text x="373" y="170" text-anchor="middle" class="lbl">거래량 · 가격</text>
+        <text x="373" y="192" text-anchor="middle" class="lbl">전월세</text>
+        <path d="M168 100 C230 100 250 150 296 158" class="s-acc" marker-end="url(#po-ar)"/>
+        <text x="232" y="96" text-anchor="middle" class="lbl-acc">며칠~몇 달</text>
+        <path d="M168 256 C230 256 250 200 296 186" class="s-acc2" stroke-dasharray="6 4" marker-end="url(#po-ar)"/>
+        <text x="232" y="276" text-anchor="middle" class="lbl-acc2">3~5년 이상</text>
+        <path d="M320 218 C306 286 250 300 172 300" class="s-dash" marker-end="url(#po-ar)"/>
+        <text x="392" y="244" text-anchor="middle" class="lbl-dim">시장 반응이</text>
+        <text x="392" y="262" text-anchor="middle" class="lbl-dim">다음 정책을 부른다</text>
+        <text x="300" y="324" text-anchor="middle" class="lbl-dim">기대: 발표만으로도 움직인다</text>
+      </svg>
+      <figcaption><b>그림 1. 정책 레버 지도.</b> 수요 쪽 레버는 빨리 닿지만 수요를 없애지 않고 미루거나 옮긴다. 공급 쪽 레버는 실제 집을 늘리지만 늦게 닿는다. 그 사이를 사람들의 기대가 메운다. 발표만으로도 사람들이 미래 가격을 다시 계산하기 때문이다. 시장의 반응은 다시 다음 정책을 부른다.</figcaption>
+    </figure>
+
+    <p>이 책은 집값을 움직이는 힘을 다섯 가지로 나눠 왔다. 입지, 금리, 공급, 대출 규제, 기대. 정책은 이 가운데 세 개를 직접 건드린다. 대출 규제는 그 자체가 정책이고, 공급 대책은 공급의 시차를 줄이거나 늘리려는 정책이며, 모든 발표는 기대를 바꾼다. 그래서 "정책 때문에 집값이 올랐다(내렸다)"는 문장을 만나면 먼저 물어야 한다. <b>이 가격 변화는 어느 힘에서 왔는가.</b> 대출 한도가 줄어 살 수 있는 사람이 줄었는가(대출), 실제 입주 물량이 늘었는가(공급), 사람들의 예상이 바뀌었는가(기대), 아니면 같은 시기에 금리가 움직였는가(금리). 한 시기에 여러 힘이 함께 움직이기 때문에 정책 하나의 효과를 깨끗하게 떼어 내기는 어렵다. 이 장의 시뮬레이터는 그 힘들을 하나씩 떼어서 본다.</p>
+  </section>
+
+  <section id="zones">
+    <h2>규제지역: 투기과열지구와 조정대상지역</h2>
+    <p><span class="term">규제지역</span><span class="en">(Regulated area)</span>은 집값이 빠르게 오르거나 오를 우려가 있는 곳을 정부가 지정해서 대출·청약·세금 규칙을 한꺼번에 무겁게 만드는 제도다. 근거 법이 둘이다. <span class="term">투기과열지구</span><span class="en">(Speculative overheating district)</span>는 주택법에 따라 주로 대출과 청약·전매 규칙을, <span class="term">조정대상지역</span><span class="en">(Adjustment target area)</span>은 같은 법에 따라 지정되지만 주로 세금(취득세·양도세 중과, 비과세 거주 요건)과 연결된다. 국토교통부 주거정책심의위원회가 지정·해제한다.</p>
+    <p>2026년 기준 서울은 25개 구 전역, 경기는 15곳이 투기과열지구와 조정대상지역에 함께 지정되어 있다. 2025년 10월 15일 발표된 대책(10.15 대책)으로 서울 21개 구와 경기 12곳(과천시, 광명시, 성남시 분당구·수정구·중원구, 수원시 영통구·장안구·팔달구, 안양시 동안구, 용인시 수지구, 의왕시, 하남시)이 새로 지정됐고, 2026년 6월 30일 발표로 화성시 동탄구, 용인시 기흥구, 구리시가 추가됐다(7월 1일 효력). 대부분 토지거래허가구역으로도 함께 묶였다. 둘을 동시에 지정하는 경우가 많아 실제로는 "규제지역"이라고 묶어 부르는 일이 많다.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>항목(2026년 기준)</th><th>비규제지역</th><th>규제지역(투기과열·조정)</th></tr></thead>
+        <tbody>
+          <tr><td>LTV(무주택·처분 조건 1주택)</td><td class="num">70%</td><td class="num">40%</td></tr>
+          <tr><td>LTV(생애최초)</td><td class="num">70%</td><td class="num">70%</td></tr>
+          <tr><td>LTV(다주택자 추가 구입)</td><td>지역·조건에 따라</td><td class="num">0%(대출 불가)</td></tr>
+          <tr><td>주담대 한도</td><td>수도권 최대 6억</td><td>최대 6억, 시가 15억 초과 4억, 25억 초과 2억</td></tr>
+          <tr><td>취득세(2주택째)</td><td>1~3%</td><td class="num">8%</td></tr>
+          <tr><td>양도세 다주택 중과</td><td>없음</td><td>2주택 +20%p, 3주택 +30%p</td></tr>
+          <tr><td>1주택 비과세 거주 요건</td><td>없음</td><td>취득 당시 지정이면 2년 거주</td></tr>
+          <tr><td>일시적 2주택 처분 기한</td><td class="num">3년</td><td>둘 다 규제지역이면 2년</td></tr>
+          <tr><td>청약</td><td>요건 느슨</td><td>1순위 요건·재당첨 제한 강화, 가점제 비율 높음</td></tr>
+          <tr><td>자금조달계획서</td><td>일정 금액 이상</td><td>거래 금액과 관계없이 제출</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:14px;color:var(--text-dim)">세부 요건(청약 1순위 조건, 전매 제한 기간, 자금조달계획서 증빙 범위 등)은 지정 고시와 개별 법령에 따라 다르고 자주 바뀐다. LTV·한도는 금융위원회 6.27 대책(2025-06-28)과 10.15 대책(2025-10-16 시행) 기준.</p>
+
+    <p>표의 줄들은 모두 같은 방향을 가리킨다. 빚을 크게 내서 사는 것, 집을 여러 채 사는 것, 사서 살지 않고 세를 놓는 것, 짧게 사고파는 것을 비싸게 만든다. 아래에서 같은 값의 집을 비규제지역과 규제지역에서 살 때 필요한 돈이 어떻게 달라지는지 본다.</p>
+
+    <div class="sim" id="sim-zone">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>같은 집, 규제지역 스위치</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="zone-cv"></canvas></div>
+        <div class="sim-controls">
+          <div class="seg" id="zone-who"><button data-value="none" class="on">무주택</button><button data-value="first">생애최초</button><button data-value="multi">1주택자 추가 구입</button></div>
+          <label class="ctrl"><span>집값 <output id="zone-p-out"></output></span><input type="range" id="zone-p" min="3" max="30" step="0.5" value="10"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">비규제: 필요한 자기 돈</span><span class="v" id="zone-o-u">—</span></div>
+        <div class="stat"><span class="k">규제지역: 필요한 자기 돈</span><span class="v" id="zone-o-r">—</span></div>
+        <div class="stat"><span class="k">규제로 늘어난 현금</span><span class="v" id="zone-o-d">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 무주택, 10억원에서 두 막대를 비교한다. LTV가 70%에서 40%로 줄어(수도권 6억 한도도 함께) 필요한 현금이 2억원 늘어난다. ② '1주택자 추가 구입'을 고른다. 규제지역에서는 대출이 0원이 되고 취득세가 8%로 뛰어, 집값 전부와 세금을 현금으로 내야 한다. ③ 집값을 15억원 넘게, 다시 25억원 넘게 올린다. 규제지역의 주담대 한도가 6억 → 4억 → 2억으로 계단처럼 줄어 필요 현금이 갑자기 뛴다. (취득세는 85㎡ 이하, 비규제 다주택은 LTV 60%로 가정했다. 비규제지역도 수도권이면 주담대 6억 한도를 적용했다. DSR(소득 기준 한도)은 이 그림에서 빼고 <a href="mortgage.html">9장</a>에서 따로 본다. 중개보수·법무비 제외.)</div>
+    </div>
+
+    <p>규제지역 지정이 가격에 닿는 경로는 대부분 이 "필요한 현금"을 통한다. 같은 10억원짜리 집을 살 수 있는 사람의 수가 줄면, 그 집을 사려는 경쟁이 줄고 가격 상승 압력이 약해진다. 반대로 이미 그 지역에 집을 가진 사람은 팔기도 어려워진다(사는 사람이 줄고, 다주택이면 양도세가 무겁다). 그래서 지정 직후에는 대개 가격보다 <b>거래량</b>이 먼저 크게 줄어든다. 가격 통계에 효과가 나타나는 것은 그다음이고, 그 사이 거래가 적어 통계 자체가 출렁이기도 한다(<a href="data.html">16장</a>).</p>
+  </section>
+
+  <section id="permit">
+    <h2>토지거래허가구역: 사기 전에 허가를 받는다</h2>
+    <p><span class="term">토지거래허가구역</span><span class="en">(Land transaction permit zone)</span>은 일정 면적 이상의 토지(아파트라면 대지 지분)를 사고팔 때 시장·군수·구청장의 허가를 받게 하는 제도다. 원래는 개발 예정지의 땅 투기를 막으려고 만든 「부동산 거래신고 등에 관한 법률」의 장치인데, 최근에는 아파트 단지와 도시 전역에 쓰이고 있다. 10.15 대책으로 서울 전역과 경기 12곳이 2025년 10월 20일부터 2026년 12월 31일까지 지정됐다(연장 여부는 확인 필요).</p>
+    <p>핵심은 허가 조건이다. 주택을 사려면 그 집에 <b>직접 살 목적</b>이어야 하고, 허가를 받은 뒤 정해진 기간(4개월) 안에 입주해 <b>2년 동안 실제로 거주</b>해야 한다. 이 의무를 어기면 이행강제금이 부과되고 허가가 취소될 수 있다. 실거주 의무가 막는 것은 <span class="term">갭투자</span><span class="en">(Gap investment)</span>다. 갭투자는 세입자의 전세 보증금을 끼고 집값과 보증금의 차이(갭)만 내 돈으로 사는 방식이다(<a href="jeonse.html">5장</a>). 직접 살아야 하면 전세를 놓을 수 없으니 보증금이라는 '무이자 빚'을 쓸 수 없다. 아래에서 전세가율 손잡이를 끌어 두 방식의 필요 현금을 비교한다.</p>
+
+    <div class="formula">
+      $$\text{갭투자 필요 현금} = P\,(1-j) \qquad \text{실거주 필요 현금} = P - \min(P\cdot\text{LTV},\ \text{한도})$$
+      <div class="where">\(P\) 집값, \(j\) 전세가율(전세 보증금 ÷ 집값). 갭투자는 세입자의 보증금이, 실거주는 은행 대출이 빚의 역할을 한다. 전세가율이 LTV보다 높으면 갭투자가 더 적은 돈으로 같은 집을 산다. 취득세는 양쪽에 똑같이 붙으므로 뺐다.</div>
+    </div>
+
+    <div class="sim" id="sim-gap">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>허가제가 막는 것: 갭과 실거주</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="gap-cv"></canvas><span class="hint">전세가율 손잡이를 위아래로 끈다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>집값 <output id="gap-p-out"></output></span><input type="range" id="gap-p" min="4" max="25" step="0.5" value="12.5"></label>
+          <label class="ctrl"><span>실거주 LTV <output id="gap-l-out"></output></span><input type="range" id="gap-l" min="0" max="70" step="5" value="40"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">전세가율</span><span class="v" id="gap-o-j">—</span></div>
+        <div class="stat"><span class="k">갭투자 필요 현금</span><span class="v" id="gap-o-g">—</span></div>
+        <div class="stat"><span class="k">실거주 필요 현금</span><span class="v" id="gap-o-r">—</span></div>
+        <div class="stat"><span class="k">허가제 아래 진입 문턱</span><span class="v" id="gap-o-x">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 기본값(12억 5,000만원, 전세가율 52%, LTV 40%)에서 갭투자는 약 6억원, 실거주는 7억 5,000만원이 든다. ② 전세가율 손잡이를 70% 넘게 올린다. 갭투자에 필요한 돈이 실거주의 절반 아래로 떨어진다. 전세가율이 높은 곳일수록 갭투자가 쉬웠고, 허가제가 막는 문이 크다. ③ 전세가율을 30%대로 내린다. 갭이 커져 갭투자의 매력이 줄고, 허가제의 차이도 작아진다. (전세가율이 높을수록 세입자의 보증금 위험도 커진다는 점은 5장을 본다. 실거주 LTV는 규제지역 무주택 40%, 생애최초 70%. 주담대 한도 6억(15억 초과 4억, 25억 초과 2억)을 적용했다.)</div>
+    </div>
+
+    <p>허가제는 집값을 직접 누르지 않는다. 대신 그 지역의 매수자를 "직접 살 사람"으로 좁힌다. 투자 수요가 빠지면 거래가 줄고, 매수자 가운데 대출을 크게 쓸 수 없는 사람도 빠진다. 대가도 있다. 세입자가 사는 집은 사려는 사람이 바로 들어가 살 수 없어서 팔기 어려워진다. 이 문제 때문에 2026년 5월에는 세입자가 있는 집을 무주택자가 사면 기존 임대차가 끝날 때까지 입주를 미뤄 주는 유예 특례가 나왔고, 9월에는 신청 기한을 2027년 말까지 늘리고 세입자의 계약갱신까지 기다릴 수 있게 넓히는 개정이 발표됐다(세부 조건은 확인 필요). 규제는 이렇게 부작용이 드러나면 예외가 붙으며 점점 복잡해진다.</p>
+
+    <div class="callout buyer">
+      <strong>허가구역·규제지역에서 계약하기 전에</strong>
+      <ul>
+        <li><b>지번별 지정 여부</b>: 토지거래허가구역은 동이나 단지 단위로 지정·해제되기도 한다. 토지이음 같은 공공 서비스나 관할 구청에서 지번으로 확인한다.</li>
+        <li><b>허가 전 계약의 효력</b>: 허가구역에서는 허가를 받아야 매매계약이 효력을 갖는다. 계약서에 "허가가 나지 않으면 계약을 무효로 하고 계약금을 돌려준다"는 특약을 넣는다.</li>
+        <li><b>입주 일정</b>: 허가 후 정해진 기간 안에 입주해야 한다. 지금 사는 집의 전세 만기·매도 일정과 맞는지 날짜로 확인한다. 세입자가 있는 집이라면 유예 특례의 요건(무주택 유지 시점, 신청 기한)을 따진다.</li>
+        <li><b>대출 조건</b>: 규제지역 처분 조건부 대출은 기존 집을 정해진 기간 안에 팔아야 한다. 은행 약정서의 처분 기한과 전입 의무 기한을 확인한다.</li>
+        <li><b>자금조달계획서</b>: 규제지역에서는 거래 금액과 관계없이 자금 출처를 적어 내야 하고, 투기과열지구에서는 증빙 서류까지 낸다. 부모 지원금이 있다면 증여 신고와 맞물리는지 확인한다(<a href="tradetax.html">14장</a>).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="loanreg">
+    <h2>대출 규제가 수요를 줄이는 경로</h2>
+    <p>규제지역 지정의 가장 빠른 효과는 대출 규제에서 나온다. 집값이 소득의 10배가 넘는 곳에서 집을 사는 사람의 대부분은 대출을 쓴다. 그래서 대출 규칙은 "이 집을 살 수 있는 사람이 몇 명인가"를 직접 바꾼다. 한 가구가 살 수 있는 최고 가격은 세 가지 제약 가운데 가장 빡빡한 것이 정한다.</p>
+    <ul>
+      <li><b>LTV</b>(담보인정비율): 대출은 집값의 일정 비율까지. 내 돈이 \(E\)이면 살 수 있는 집값은 \(E / (1 - \text{LTV})\)까지다. LTV 70%면 내 돈의 3.3배, 40%면 1.7배다.</li>
+      <li><b>DSR</b>(총부채원리금상환비율): 모든 대출의 한 해 원리금이 소득의 40%(은행)를 넘지 못한다. 스트레스 금리를 더해 계산하므로 금리가 오르거나 가산금리가 커지면 한도가 준다.</li>
+      <li><b>주담대 한도</b>: 수도권·규제지역은 집값과 관계없이 최대 6억원, 규제지역의 15억원 초과 주택은 4억원, 25억원 초과는 2억원.</li>
+    </ul>
+    <p>아래는 가상의 2,000가구다. 가구마다 가진 돈과 소득이 다르다. 막대는 각 가구가 세 제약 아래에서 살 수 있는 최고 가격의 분포다. 가로축의 손잡이를 끌어 특정 가격의 집을 고르면, 그 집을 살 수 있는 가구가 몇 %인지 나온다. 이 비율이 그 가격대의 '잠재 수요'다.</p>
+
+    <div class="sim" id="sim-dem">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>살 수 있는 사람은 몇 명인가</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="dem-cv"></canvas><span class="hint">가로축 손잡이를 끌어 집값을 고른다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>LTV <output id="dem-l-out"></output></span><input type="range" id="dem-l" min="0" max="80" step="5" value="40"></label>
+          <label class="ctrl"><span>DSR 산정 금리(스트레스 포함) <output id="dem-r-out"></output></span><input type="range" id="dem-r" min="3" max="10" step="0.25" value="7"></label>
+          <label class="check"><input type="checkbox" id="dem-cap" checked> 주담대 한도 6억</label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">고른 집값</span><span class="v" id="dem-o-p">—</span></div>
+        <div class="stat"><span class="k">살 수 있는 가구</span><span class="v" id="dem-o-s">—</span></div>
+        <div class="stat"><span class="k">LTV 70%·한도 없을 때</span><span class="v" id="dem-o-b">—</span></div>
+        <div class="stat"><span class="k">가장 많이 묶는 제약</span><span class="v" id="dem-o-k">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 손잡이를 12억원에 둔다. LTV 40%·한도 6억 아래에서 이 집을 살 수 있는 가구는 약 6.3%로, 'LTV 70%·한도 없을 때'의 약 9.4%보다 3분의 1가량 적다. 이 가구들은 대부분 LTV, 곧 가진 돈에 묶여 있다. ② LTV를 0%로 내린다. 막대가 왼쪽으로 몰리고 12억원 집을 살 수 있는 가구가 2%로 줄어든다. 대출 없이 집을 사라는 규칙은 현금이 많은 가구만 남긴다. ③ LTV를 70% 넘게 올린 뒤 DSR 산정 금리를 10%까지 올린다. 이번에는 가진 돈이 아니라 소득이 묶어 '가장 많이 묶는 제약'이 DSR로 바뀐다. LTV를 풀어도 DSR이 남아 있으면 수요가 생각만큼 늘지 않는다. (교육용 가상 가구: 가진 돈 중위 약 2억원, 연소득 중위 약 7,000만원의 로그정규 분포, 30년 원리금균등, DSR 40%, 다른 대출 없음. 취득세·거래비용 제외. 실제 가구 분포가 아니다.)</div>
+    </div>
+
+    <p>대출 규제는 사람들의 '사고 싶은 마음'은 그대로 두고 '살 수 있는 능력'만 줄인다. 그래서 효과는 두 갈래로 나타난다. 살 수 있는 사람이 줄어든 가격대에서는 거래와 가격 상승 압력이 줄어든다. 하지만 사고 싶은 마음은 사라지지 않았으니, 그 수요는 대출이 덜 필요한 더 싼 집, 규제가 없는 옆 지역, 또는 나중으로 옮겨 간다. 대출 규제가 풀리는 순간 미뤄 둔 수요가 한꺼번에 돌아오기도 한다. 대출 한도가 어떻게 계산되는지는 <a href="mortgage.html">9장</a>에서, MoneyBook의 <a href="https://moneybook.euiyun.com/chapters/loan.html">대출 상환의 구조</a>에서 원리금 계산의 기초를 볼 수 있다.</p>
+
+    <div class="callout pro">
+      <strong>대책 발표 다음 날의 중개사무소</strong>
+      큰 대책이 발표되면 다음 날 아침 사무소 전화가 몰린다. 계약서를 쓰기로 한 손님은 "내 대출은 어떻게 되느냐", 매도인은 "지금 팔아야 하느냐"를 묻는다. 민태호가 먼저 확인하는 것은 <b>시행일과 경과 규정</b>이다. 대출 규제는 보통 시행일 이전에 매매계약을 맺고 계약금을 냈거나 대출 신청을 접수한 경우 종전 규정을 적용하는 경과 조치가 붙는데, 그 기준(계약일인지, 대출 접수일인지)이 대책마다 다르다. 그래서 태호는 손님에게 계약서 사본과 계약금 이체 내역을 챙겨 은행에 바로 문의하라고 한다. 발표 직후에는 은행 창구도 세부 지침을 기다리는 경우가 많아 첫날 답이 바뀌기도 한다. 태호가 자주 하는 말은 "대책 기사 제목 말고, 금융위원회·국토교통부 보도자료 원문의 시행일과 적용 대상을 먼저 봅시다"다. 그리고 거래를 서둘러야 보수를 받는 입장이지만, 대책 직후 며칠은 계약을 미루자고 권하는 경우가 많다고 털어놓는다. 바뀐 규칙을 모르고 쓴 계약서가 가장 큰 분쟁이 되기 때문이다.
+    </div>
+  </section>
+
+  <section id="supply">
+    <h2>공급 대책과 시차, 그리고 기대</h2>
+    <p>공급 대책은 집을 실제로 늘리는 유일한 정책이다. 그런데 발표와 입주 사이에 긴 시간이 있다. 택지 후보지 발표 → 지구 지정 → 보상 → 사업 승인(인허가) → 착공 → 준공·입주. 신도시나 대규모 택지는 발표부터 첫 입주까지 대개 5년이 넘고, 재건축·재개발 규제 완화는 조합 단계를 거쳐 10년 가까이 걸리기도 한다(<a href="supply.html">4장</a>, <a href="redevelop.html">12장</a>).</p>
+    <p>그 시간 동안 가격을 움직이는 것은 아직 지어지지 않은 집이 아니라 사람들의 <span class="term">기대</span><span class="en">(Expectations)</span>다. "몇 년 뒤 집이 많이 나온다"고 믿는 사람은 지금 서둘러 사지 않고 기다린다. 이것을 <span class="term">발표 효과</span><span class="en">(Announcement effect)</span>라 한다. 믿음이 강할수록 발표 효과가 크다. 하지만 계획이 늦어지거나 규모가 줄면 기다리던 수요가 돌아오고, 가격이 오히려 되돌아오기도 한다. 아래 그래프에서 입주 시점 세로선을 끌어 시차를 바꾸고, 시장이 발표를 얼마나 믿는지(신뢰도)를 바꿔 본다.</p>
+
+    <div class="sim" id="sim-lag">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>발표에서 입주까지</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="lag-cv"></canvas><span class="hint">입주 세로선을 좌우로 끈다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>시장의 신뢰도 <output id="lag-c-out"></output></span><input type="range" id="lag-c" min="0" max="100" step="5" value="60"></label>
+          <label class="ctrl"><span>대책 규모(수요 대비 공급) <output id="lag-s-out"></output></span><input type="range" id="lag-s" min="0" max="10" step="0.5" value="5"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">발표에서 입주까지</span><span class="v" id="lag-o-l">—</span></div>
+        <div class="stat"><span class="k">발표 1년 뒤 효과</span><span class="v" id="lag-o-a">—</span></div>
+        <div class="stat"><span class="k">입주 직전 되돌림</span><span class="v" id="lag-o-r">—</span></div>
+        <div class="stat"><span class="k">10년 뒤 효과</span><span class="v" id="lag-o-e">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 기본값(신뢰도 60%, 입주 5년 뒤)에서 발표 직후 가격 경로가 대책이 없을 때(회색 점선)보다 아래로 꺾였다가, 입주가 늦어지는 사이 다시 위로 붙는 모습을 본다. ② 입주 세로선을 9년 뒤까지 끈다. 기대가 바래면서 효과가 거의 사라졌다가 입주 때 다시 나타난다. 늦게 도착한 공급은 그때의 시장(금리, 수요)과 만나 엉뚱한 시기에 가격을 누를 수 있다. ③ 신뢰도를 0%로 내린다. 발표 효과가 사라지고 실제 입주가 시작될 때만 효과가 나타난다. 신뢰도를 100%로 올리면 발표 직후 효과가 커지지만 입주가 늦을수록 되돌림도 커진다. (교육용 모형: 대책이 없을 때 연 4% 상승 추세, 기대 효과는 연 25%씩 바래고, 입주 물량은 1년에 걸쳐 들어온다. 수요의 가격탄력성 1로 보았다. 실제 시장 데이터가 아니다.)</div>
+    </div>
+
+    <p>공급 대책을 볼 때 확인할 것은 세 가지다. 언제 입주하는가(발표 연도가 아니라), 어디에 짓는가(수요가 있는 곳과 얼마나 가까운가), 얼마나 확실한가(부지 확보, 사업비, 인허가 단계). 숫자가 큰 발표일수록 이 셋을 따로 따져야 한다. "몇십만 호 공급"이라는 제목의 숫자는 대개 인허가나 착공이 아니라 '계획' 물량이고, 그 가운데 몇 년 안에 실제로 입주하는 물량은 훨씬 적다.</p>
+  </section>
+
+  <section id="balloon">
+    <h2>풍선 효과: 누르면 옆이 부푼다</h2>
+    <p>풍선의 한쪽을 누르면 다른 쪽이 부푼다. 부동산 규제에서 <span class="term">풍선 효과</span><span class="en">(Balloon effect)</span>는 한 지역을 규제하면 그 지역에 몰리던 수요가 규제가 없는 옆 지역으로 옮겨 가 그곳의 거래와 가격이 오르는 현상을 말한다. 대출 규제는 수요를 없애지 않고 옮긴다는 앞 절의 이야기를 지도 위에 그린 것이다.</p>
+    <p>얼마나 옮겨 가는지는 두 숫자로 정해진다. 하나는 <b>규제의 강도</b>(규제지역에서 사려던 사람 가운데 몇 %가 막히는가), 다른 하나는 <b>대체 가능성</b>(막힌 사람에게 옆 지역이 얼마나 비슷한 선택지인가)이다. 통근 시간이 비슷하고 생활권이 겹치면 대체 가능성이 크다. 옆 지역이 작으면 같은 수요가 들어와도 가격이 더 크게 움직인다.</p>
+
+    <div class="formula">
+      $$\frac{\Delta P_B}{P_B} \approx \frac{1}{\varepsilon}\cdot s\cdot\sigma\cdot\frac{D_A}{D_B}$$
+      <div class="where">\(s\) 규제 강도(막히는 수요의 비율), \(\sigma\) 대체 가능성(막힌 수요 중 옆 지역으로 가는 비율), \(D_A/D_B\) 두 지역 수요 규모의 비, \(\varepsilon\) 가격이 수요 변화에 반응하는 정도(탄력성). 규제 지역의 가격은 대략 \(-s/\varepsilon\)만큼 눌린다. 교육용 근사식이다.</div>
+    </div>
+
+    <div class="sim" id="sim-bal">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>두 지역 풍선 시뮬레이터</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="bal-cv"></canvas><span class="hint">왼쪽 규제 손잡이를 위아래로 끈다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>대체 가능성 <output id="bal-s-out"></output></span><input type="range" id="bal-s" min="0" max="100" step="5" value="50"></label>
+          <label class="ctrl"><span>옆 지역의 크기(규제 지역 대비) <output id="bal-z-out"></output></span><input type="range" id="bal-z" min="20" max="200" step="10" value="60"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">규제 강도</span><span class="v" id="bal-o-k">—</span></div>
+        <div class="stat"><span class="k">규제 지역 가격</span><span class="v" id="bal-o-a">—</span></div>
+        <div class="stat"><span class="k">옆 지역 가격</span><span class="v" id="bal-o-b">—</span></div>
+        <div class="stat"><span class="k">두 지역 전체 수요</span><span class="v" id="bal-o-t">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 규제 손잡이를 위로 끌어 강도를 30%로 올린다. 왼쪽에서 막힌 점들이 오른쪽으로 건너가고, 옆 지역 가격이 오른다. ② 대체 가능성을 100%로 올리고 옆 지역 크기를 20%로 줄인다. 작은 옆 지역에 수요가 몰려 옆 지역 가격이 규제 지역이 눌린 것보다 더 크게 오른다. 그러면 옆 지역도 규제하자는 요구가 나온다. ③ 대체 가능성을 0%로 내린다. 막힌 수요는 옆으로 가지 않고 시장 밖에서 기다린다. 두 지역 전체 수요가 줄어든다. 이 수요가 사라진 것인지 미뤄진 것인지는 이 그림이 알려 주지 않는다. (교육용 모형: 탄력성 1, 두 지역은 서로 독립된 시장이며 공급은 짧은 기간에 고정이라고 보았다. 점의 움직임은 비율을 보여 주는 그림이다.)</div>
+    </div>
+
+    <p>풍선 효과는 규제를 넓히는 이유가 되기도 한다. 한 지역을 묶으면 옆 지역이 오르고, 그 지역을 묶으면 또 그 옆이 오른다. 규제지역이 몇 년 사이 점점 넓어지거나, 한꺼번에 도시 전체를 묶는 방식이 나오는 배경이다. 2026년 6월 경기 세 곳이 추가 지정될 때에도, 그 전후로 인근 비규제지역의 거래가 늘었다는 보도가 있었다. 다만 실제로 옆 지역 가격이 오른 것이 풍선 효과 때문인지, 같은 시기의 금리·공급·개발 호재 때문인지는 따로 따져야 한다. 풍선 효과는 원리이지 모든 옆 지역의 상승을 설명하는 공식이 아니다.</p>
+  </section>
+
+  <section id="rental">
+    <h2>임대차 규제의 양면</h2>
+    <p>규제는 사는 사람과 파는 사람만이 아니라 빌리는 사람과 빌려주는 사람에게도 걸린다. 2020년부터 시행된 <span class="term">계약갱신청구권</span>(세입자가 한 번 2년 연장을 요구할 권리)과 <span class="term">전월세 상한</span>(갱신할 때 보증금·월세 인상 5% 이내), 전월세 신고제가 대표적이다(<a href="rent.html">6장</a>). 이 제도를 두고는 지금도 논쟁이 이어진다. 양쪽 주장을 나란히 놓는다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 460 320" role="img" aria-label="임대차 규제의 양면: 세입자 보호 효과와 공급 위축·가격 선반영 우려">
+        <rect x="10" y="12" width="210" height="34" rx="7" class="f-ok-soft"/>
+        <text x="115" y="34" text-anchor="middle" class="lbl-b">보호하는 쪽에서 본 효과</text>
+        <rect x="240" y="12" width="210" height="34" rx="7" class="f-warn-soft"/>
+        <text x="345" y="34" text-anchor="middle" class="lbl-b">우려하는 쪽에서 본 효과</text>
+        <text x="20" y="78" class="lbl">· 4년 거주가 보장돼</text>
+        <text x="30" y="98" class="lbl">  이사·전학 걱정이 준다</text>
+        <text x="20" y="128" class="lbl">· 갱신 때 큰 폭 인상을</text>
+        <text x="30" y="148" class="lbl">  막아 주거비가 안정된다</text>
+        <text x="20" y="178" class="lbl">· 집주인과의 협상력</text>
+        <text x="30" y="198" class="lbl">  격차가 줄어든다</text>
+        <text x="20" y="228" class="lbl">· 신고제로 시세 정보가</text>
+        <text x="30" y="248" class="lbl">  투명해진다</text>
+        <text x="250" y="78" class="lbl">· 첫 계약 가격에 미래</text>
+        <text x="260" y="98" class="lbl">  인상분을 미리 얹는다</text>
+        <text x="250" y="128" class="lbl">· 임대 수익이 줄어 새로</text>
+        <text x="260" y="148" class="lbl">  세를 놓는 집이 준다</text>
+        <text x="250" y="178" class="lbl">· 전세가 월세·반전세로</text>
+        <text x="260" y="198" class="lbl">  바뀌는 속도가 빨라진다</text>
+        <text x="250" y="228" class="lbl">· 새로 집을 구하는 사람과</text>
+        <text x="260" y="248" class="lbl">  기존 세입자 사이 격차</text>
+        <line x1="230" y1="60" x2="230" y2="262" class="s-dash"/>
+        <rect x="60" y="276" width="340" height="34" rx="7" class="f-surface"/>
+        <text x="230" y="298" text-anchor="middle" class="lbl-dim">어느 쪽이 더 큰지는 시기·지역·연구마다 결과가 엇갈린다</text>
+      </svg>
+      <figcaption><b>그림 2. 임대차 규제의 양면.</b> 같은 제도가 이미 계약 중인 세입자에게는 보호막이 되고, 새로 계약하는 세입자에게는 더 높은 첫 가격으로 돌아올 수 있다. 집주인의 대응(첫 가격 선반영, 월세 전환, 매도)이 얼마나 일어나는지가 효과의 크기를 정한다. 이 그림은 평가가 아니라 논쟁의 구조를 정리한 것이다.</figcaption>
+    </figure>
+
+    <p>아래 시뮬레이터는 이 논쟁의 핵심 하나를 숫자로 본다. 갱신 상한이 있으면 기존 세입자는 4년 동안 덜 낸다. 그런데 집주인이 다음 갱신에서 못 올릴 몫을 예상해 첫 계약 가격을 미리 올린다면, 새로 들어오는 세입자는 더 낸다. 그 '선반영'이 얼마나 일어나는지는 시장 상황(빈집이 많은가, 세입자가 많은가)에 따라 다르다.</p>
+
+    <div class="sim" id="sim-rent">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>갱신 상한의 두 얼굴</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="rent-cv"></canvas></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>시장 임대료 상승(2년마다) <output id="rent-m-out"></output></span><input type="range" id="rent-m" min="0" max="20" step="1" value="10"></label>
+          <label class="ctrl"><span>갱신 상한 <output id="rent-c-out"></output></span><input type="range" id="rent-c" min="0" max="20" step="1" value="5"></label>
+          <label class="ctrl"><span>집주인의 첫 가격 선반영 <output id="rent-f-out"></output></span><input type="range" id="rent-f" min="0" max="100" step="10" value="50"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">기존 세입자 4년 부담</span><span class="v" id="rent-o-a">—</span></div>
+        <div class="stat"><span class="k">새 세입자 첫 2년 부담</span><span class="v" id="rent-o-b">—</span></div>
+        <div class="stat"><span class="k">집주인 4년 수입 변화(새 계약)</span><span class="v" id="rent-o-c">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 기본값(시장 2년 10% 상승, 상한 5%, 선반영 50%)에서 상한이 있는 세입자(초록)와 없는 경우(회색)의 4년 부담을 비교한다. 이미 계약 중이던 세입자는 갱신 때 덜 낸다. ② 선반영을 100%로 올린다. 새로 계약하는 세입자의 첫 가격이 올라 4년 합계의 이득이 대부분 사라진다. ③ 시장 상승률을 0%로 내린다. 상한이 묶을 것이 없어 제도의 효과도, 선반영의 이유도 사라진다. 임대료가 빠르게 오를 때 제도의 무게가 커지고 논쟁도 커진다. (교육용 모형: 월세로 환산한 기준 임대료 월 150만원, 2년 계약 후 1회 갱신. 선반영은 집주인이 갱신 때 못 받는 몫을 첫 계약에 얹는 비율. 실제 시장 데이터가 아니다.)</div>
+    </div>
+
+    <p>세입자 입장에서 이 제도는 분명한 보호막이다. 아이 학교 때문에 4년을 한 집에 살 수 있다는 것은 금액으로 다 셀 수 없는 가치다. 집주인 입장에서는 계약 기간 동안 시장 가격을 따라갈 수 없고, 그만큼을 처음에 받으려 하거나 임대 대신 매도를 고민하게 된다. 정책을 설계하는 쪽은 이 두 효과의 크기를 견주어야 하고, 시장 상황에 따라 어느 쪽이 커지는지가 달라진다. 계약 기간을 3+3+3년으로 늘리는 법안이 발의된 적이 있으나 2026년 10월 기준 통과된 근거는 없다.</p>
+  </section>
+
+  <section id="why-change">
+    <h2>정책이 자주 바뀌는 이유</h2>
+    <p>부동산 제도는 다른 어떤 분야보다 자주 바뀐다. 2025년 한 해에만 대출 한도가 두 번 크게 바뀌고 규제지역이 크게 넓어졌으며, 2026년에는 양도세 중과 유예가 끝나고 규제지역이 추가되고 토지거래허가 실거주 의무에 예외가 붙었다. 어느 정부의 문제라기보다 구조의 문제다.</p>
+    <ul>
+      <li><b>시차</b>: 정책의 효과는 늦게 오는데 여론은 지금의 가격에 반응한다. 효과가 나타나기 전에 추가 대책이 나오고, 효과가 겹쳐 나타나면 다시 완화가 필요해진다.</li>
+      <li><b>풍선과 예외</b>: 한 곳을 막으면 다른 곳이 열리고(풍선 효과), 선의의 피해자를 위한 예외를 붙이다 보면 제도가 복잡해진다.</li>
+      <li><b>여러 목표</b>: 집값 안정, 무주택자 내 집 마련, 세입자 보호, 가계부채 관리, 건설 경기, 세수는 서로 부딪힌다. 대출을 묶으면 가계부채는 안정되지만 무주택 실수요자의 내 집 마련도 어려워진다.</li>
+      <li><b>기대와의 게임</b>: 사람들은 정책이 바뀔 것을 예상하고 미리 움직인다. "곧 풀린다"는 기대는 규제의 효과를 약하게 만든다.</li>
+    </ul>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 460 300" role="img" aria-label="정책 사이클: 과열, 규제 강화, 거래 위축, 완화, 다시 과열로 이어지는 순환과 그 사이의 시차">
+        <defs><marker id="po-ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="context-stroke"/></marker></defs>
+        <rect x="160" y="14" width="140" height="44" rx="8" class="f-bad-soft"/>
+        <text x="230" y="34" text-anchor="middle" class="lbl-b">가격 급등·과열</text>
+        <text x="230" y="51" text-anchor="middle" class="lbl-dim">거래 급증</text>
+        <rect x="316" y="118" width="136" height="44" rx="8" class="f-acc-soft"/>
+        <text x="384" y="138" text-anchor="middle" class="lbl-b">규제 강화</text>
+        <text x="384" y="155" text-anchor="middle" class="lbl-dim">대출·세금·지역</text>
+        <rect x="160" y="222" width="140" height="44" rx="8" class="f-surface"/>
+        <text x="230" y="242" text-anchor="middle" class="lbl-b">거래 위축·진정</text>
+        <text x="230" y="259" text-anchor="middle" class="lbl-dim">풍선·미뤄진 수요</text>
+        <rect x="8" y="118" width="136" height="44" rx="8" class="f-acc2-soft"/>
+        <text x="76" y="138" text-anchor="middle" class="lbl-b">규제 완화</text>
+        <text x="76" y="155" text-anchor="middle" class="lbl-dim">경기·거래 부진</text>
+        <path d="M302 40 C350 48 380 80 384 114" class="s-line" marker-end="url(#po-ar2)"/>
+        <path d="M384 166 C380 206 350 236 304 244" class="s-line" marker-end="url(#po-ar2)"/>
+        <path d="M158 244 C110 236 80 206 76 166" class="s-line" marker-end="url(#po-ar2)"/>
+        <path d="M76 114 C80 80 110 48 158 40" class="s-line" marker-end="url(#po-ar2)"/>
+        <text x="372" y="72" class="lbl-acc">몇 주</text>
+        <text x="366" y="214" class="lbl-acc">몇 달~1년</text>
+        <text x="40" y="214" class="lbl-acc">1~수년</text>
+        <text x="50" y="72" class="lbl-acc">시차 + 기대</text>
+        <text x="230" y="130" text-anchor="middle" class="lbl-dim">정책은 대개</text>
+        <text x="230" y="150" text-anchor="middle" class="lbl-dim">지난 시장에 대한 답이다</text>
+      </svg>
+      <figcaption><b>그림 3. 정책의 순환.</b> 과열에 대한 규제는 빠르게 나오지만 효과는 늦게 나타나고, 진정된 뒤에는 거래 부진을 이유로 완화가 나온다. 완화의 효과도 늦게 오며, 그 사이 금리·공급 같은 다른 힘이 겹친다. 순환의 속도와 진폭은 시기마다 다르다. 특정 시기의 정책을 평가하는 그림이 아니라 정책이 자주 바뀌는 구조를 보여 주는 그림이다.</figcaption>
+    </figure>
+
+    <div class="callout warn">
+      <strong>제도와 수치는 해마다 바뀐다</strong>
+      이 장의 규제지역 목록, LTV·주담대 한도, 토지거래허가구역의 기간과 예외는 2026년 10월 기준이다. 규제지역은 국토교통부 고시로 수시로 지정·해제되고, 대출 규제는 금융위원회 발표 하루 만에 바뀐다. 토지거래허가구역의 2026년 말 만료 이후 연장 여부, 실거주 유예 특례의 세부 요건, 2026 세제개편안(추진 중)은 확인이 필요하다. 계약 전에는 국토교통부·금융위원회 보도자료 원문과 관할 구청, 거래 은행에서 내 거래에 적용되는 규칙을 직접 확인한다. 이 장은 정책의 작동 원리를 설명할 뿐 특정 정책이나 정부를 평가하지 않는다.
+    </div>
+
+    <div class="callout pro">
+      <strong>정책 뉴스를 읽는 다섯 질문</strong>
+      태호가 손님들에게 나눠 주는 메모다. ① <b>누구에게</b> 적용되는가(무주택·1주택·다주택, 생애최초, 지역, 가격대). ② <b>언제부터</b>인가(발표일·시행일·경과 규정의 기준이 계약일인지 잔금일인지 대출 접수일인지). ③ <b>무엇을 통해</b> 작동하는가(대출·세금·거래 허가·공급 중 어느 레버인가, 그래서 효과가 빠른가 느린가). ④ <b>어디로</b> 옮겨 가는가(막힌 수요가 옆 지역, 다른 주택 유형, 전월세 시장으로 갈 가능성). ⑤ <b>확정</b>인가(보도자료, 법령 공포, 고시까지 끝났는가, 아니면 발표·입법예고·국회 심사 단계인가). 태호는 덧붙인다. "이 다섯 개를 다 적을 수 없으면, 아직 그 뉴스로 결정하지 마세요."
+    </div>
+  </section>
+
+  <section id="case">
+    <h2>하늘네 집 노트</h2>
+    <p>하늘네의 후보지 세 곳에 지금의 규제를 겹쳐 본다. 서울 A구는 규제지역이자 토지거래허가구역이고, 경기 B시와 E시는 비규제지역이다. 기둥은 84㎡를 살 때 규제가 정하는 최대 대출(LTV와 주담대 한도)과 나머지 필요한 자기 돈이다. 가로선은 하늘네가 쓸 수 있는 자기 돈이다. 손잡이를 끌어 이 선을 옮겨 보고, 'B시가 규제지역으로 지정된다면'을 켜서 가정의 결과도 본다.</p>
+
+    <div class="sim" id="sim-case">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>후보지 세 곳의 규제 지도</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="case-cv"></canvas><span class="hint">자기 돈 선을 끌고, 기둥을 눌러 고른다</span></div>
+        <div class="sim-controls">
+          <label class="check"><input type="checkbox" id="case-first" checked> 생애최초(LTV 70%)</label>
+          <label class="check"><input type="checkbox" id="case-bz"> B시가 규제지역으로 지정된다면(가정)</label>
+          <label class="ctrl"><span>A구 집값 <output id="case-pa-out"></output></span><input type="range" id="case-pa" min="8" max="20" step="0.5" value="12.5"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k" id="case-o-k">고른 곳</span><span class="v" id="case-o-n">—</span></div>
+        <div class="stat"><span class="k">최대 대출(규제 기준)</span><span class="v" id="case-o-l">—</span></div>
+        <div class="stat"><span class="k">필요한 자기 돈(취득세 포함)</span><span class="v" id="case-o-c">—</span></div>
+        <div class="stat"><span class="k">바뀌는 규칙</span><span class="v" id="case-o-r" style="font-size:14px;font-family:var(--font);font-weight:500">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 기본값에서 A구 기둥을 누른다. 생애최초 LTV 70%를 받아도 주담대 한도 6억에 걸려, 자기 돈이 약 6억 9,000만원 필요하다. 하늘네 자기 돈 선(2억 4,000만원)보다 훨씬 위다. 생애최초를 끄면 LTV 40%라 약 7억 9,000만원이 된다. ② 'B시가 규제지역으로 지정된다면'을 켜고 생애최초를 끈다. B시의 필요 자기 돈이 약 1억 9,000만원에서 약 3억 8,000만원으로 두 배가 된다. 생애최초를 켜면 LTV 70%가 유지되어 그대로다. ③ A구 집값을 15억원 넘게 올린다. 한도가 4억원으로 줄어 필요한 돈이 다시 뛴다. (규제가 정하는 대출만 보았다. 소득으로 정하는 DSR 한도, 금리, 월 상환액은 <a href="mortgage.html">9장</a>에서 따로 계산한다. 취득세는 1주택·85㎡ 이하·생애최초 감면 반영, 중개보수·법무비 제외. 자기 돈 기본값 2억 4,000만원은 순자산에서 비상금을 남긴 교육용 가정.)</div>
+    </div>
+
+    <div class="casefile">
+      <div class="tag"><b>CASE 하늘네</b><span>집 노트 · 15장</span></div>
+      <h4>A구는 대출과 실거주 두 겹으로 막혔고, B시는 아직 열려 있다. 그리고 "옆 동네가 오른다"의 정체</h4>
+      <p><b>서울 A구.</b> 2026년 기준 서울 전역이 규제지역이자 토지거래허가구역이라 A구의 84㎡(약 12억 5,000만원)를 사려면 세 가지가 동시에 걸린다. 첫째 LTV가 무주택자 40%로, 대출은 5억원까지다. 하늘네는 생애최초라 LTV 70%를 받을 수 있지만 수도권·규제지역 주담대 한도 6억원에 걸린다. 이 책의 모델로 계산하면 취득세 약 4,125만원(12억원을 넘어 생애최초 감면도 없다)까지 더해 자기 돈이 약 6억 9,000만원(생애최초가 아니면 약 7억 9,000만원) 필요하다. 하늘네의 순자산 2억 8,000만원의 두 배를 훌쩍 넘는다. 둘째, 토지거래허가를 받아야 하고 허가 후 4개월 안에 들어가 2년을 살아야 한다. 먼저 사 두고 전세를 놓은 뒤 나중에 들어가는 길(갭투자)은 막혀 있다. 셋째, 취득 당시 조정대상지역이라 나중에 팔 때 1주택 비과세를 받으려면 2년 거주가 필요하다(<a href="tradetax.html">14장</a>). 소득으로 정해지는 DSR 한도는 아직 계산하지 않았지만, 규제만으로도 A구는 지금의 하늘네에게 닿지 않는 곳이 됐다.</p>
+      <p><b>경기 B시.</b> B시는 비규제지역이다. 생애최초가 아니어도 LTV 70%가 적용되어 6억 2,000만원 집에 대출 4억 3,400만원까지, 필요한 자기 돈은 취득세를 더해 약 1억 9,200만원이다. 허가도 실거주 의무도 없고, 팔 때 비과세는 2년 보유로 충분하다. 다만 B시가 언제까지 비규제일지는 아무도 확정할 수 없다. 만약 지정되면 무주택자 LTV가 40%로 줄어 필요한 자기 돈이 약 3억 7,800만원으로 늘고(생애최초 70%는 유지), 이후 사는 집에는 2년 거주 요건이 붙는다. 태호는 "규제 지정은 그날 이후 계약분부터라, 이미 산 집의 대출이 줄지는 않는다. 대신 다음에 사는 사람의 조건이 바뀌니 그 집을 팔 때 사려는 사람이 줄 수 있다"고 설명했다.</p>
+      <p><b>"B시 같은 데가 오른다"의 정체.</b> 남궁현의 말은 풍선 효과의 원리다. 서울 전역과 인근 경기 지역이 묶이면 그곳에서 막힌 수요의 일부는 통근이 가능한 비규제지역으로 옮겨 간다. B시처럼 서울 도심으로 55분이면 닿는 곳은 대체 가능성이 작지 않다. 하지만 원리가 결과를 보장하지는 않는다. 옮겨 오는 수요의 크기는 B시의 크기, 서울과의 대체 가능성, 같은 시기의 입주 물량(<a href="supply.html">4장</a>)과 금리에 따라 달라지고, 옆 지역 가격이 크게 오르면 그 지역도 규제지역으로 지정될 수 있다. 태호는 남궁현에게도, 하늘네에게도 같은 말을 했다. "풍선 효과는 방향을 알려 줄 뿐 크기와 시기는 알려 주지 않습니다. 그걸로 사고팔 시점을 정하는 건 전망에 돈을 거는 겁니다."</p>
+      <div class="clue"><div><b>이 장에서 정한 것</b>A구는 규제(대출 한도 6억, 허가·2년 실거주, 비과세 거주 요건) 때문에 지금 하늘네의 자금으로는 후보에서 사실상 빠진다. B시와 E시는 비규제라 규제가 정하는 필요 자기 돈은 각각 약 1억 9,200만원, 약 1억 5,000만원이다.</div><div><b>아직 남은 문제</b>B시 집값이 오르는 이야기들(풍선 효과, 반등 기사)은 실제 숫자로 무엇을 말하는가? 지수와 실거래가는 왜 다르게 움직이는가?</div><div><b>다음 단계</b>16장: 태호가 보여 준 C아파트 실거래가와 호가, "B시 집값 반등" 기사의 숫자를 거래량과 중위값으로 다시 계산한다.</div></div>
+    </div>
+  </section>
+
+  <section class="keypoints" id="summary">
+    <h2>핵심 정리</h2>
+    <ol>
+      <li>정책은 집값을 직접 정하지 않고 수요(대출·세금·거래 허가·청약)와 공급(택지·인허가·정비사업)을 움직인다. 수요 쪽 레버는 빠르지만 수요를 미루거나 옮기고, 공급 쪽 레버는 집을 늘리지만 3~5년 이상 늦게 닿는다.</li>
+      <li>2026년 기준 서울 25개 구 전역과 경기 15곳이 투기과열지구·조정대상지역이다. 지정되면 LTV(무주택 40%, 다주택 0%), 주담대 한도, 취득세·양도세 중과, 비과세 거주 요건, 청약 규칙이 함께 무거워진다.</li>
+      <li>토지거래허가구역은 매수자에게 허가와 2년 실거주 의무를 지워, 세입자의 보증금을 빚처럼 쓰는 갭투자를 막는다. 전세가율이 높은 곳일수록 막는 문이 크고, 세입자 있는 집의 거래가 어려워지는 부작용에는 예외가 붙는다.</li>
+      <li>대출 규제는 '사고 싶은 마음'이 아니라 '살 수 있는 능력'을 줄여 특정 가격대의 잠재 수요를 줄인다. LTV, DSR, 주담대 한도 가운데 가장 빡빡한 제약이 한 가구의 상한을 정한다.</li>
+      <li>공급 대책의 효과는 발표 효과(기대)와 입주 효과(실제 공급)로 나뉜다. 입주가 늦어지면 기대가 바래 가격이 되돌아오고, 늦게 온 공급은 엉뚱한 시기의 시장과 만난다.</li>
+      <li>풍선 효과는 규제 강도 × 대체 가능성 × 지역 규모의 비로 커진다. 원리는 방향을 알려 줄 뿐 크기와 시기를 보장하지 않는다. 임대차 규제는 기존 세입자 보호와 첫 가격 선반영·공급 위축 우려가 함께 있고, 시장 상황에 따라 어느 쪽이 큰지가 달라진다.</li>
+      <li>정책 뉴스는 누구에게, 언제부터, 무엇을 통해, 어디로 옮겨 가는지, 확정인지의 다섯 질문으로 읽는다.</li>
+    </ol>
+  </section>
+
+  <section class="quiz-sec" id="quiz">
+    <h2>확인 퀴즈</h2>
+    <div class="quiz">
+      <div class="quiz-q">
+        <p>토지거래허가구역에서 아파트를 사려면 허가 후 입주해 2년간 실거주해야 한다. 이 의무가 갭투자를 막는 원리로 가장 알맞은 것은?</p>
+        <div class="opts">
+          <button class="opt">허가를 받으려면 취득세를 두 배로 내야 하기 때문이다</button>
+          <button class="opt">허가구역에서는 대출이 전면 금지되기 때문이다</button>
+          <button class="opt" data-correct>직접 살아야 하므로 전세를 놓을 수 없고, 세입자의 보증금을 빚처럼 써서 적은 돈으로 사는 방식이 불가능해지기 때문이다</button>
+          <button class="opt">허가구역에서는 집값이 법으로 고정되기 때문이다</button>
+        </div>
+        <div class="quiz-exp">갭투자는 집값 − 전세 보증금만 내 돈으로 내는 방식이다. 실거주 의무가 있으면 보증금을 받을 세입자를 들일 수 없어, 집값 − 은행 대출(규제지역 LTV 40%, 한도 6억 등)만큼 현금이 필요하다. 전세가율이 LTV보다 높은 곳일수록 이 차이가 크다. 허가구역이라고 대출이 금지되거나 취득세가 두 배가 되지는 않는다.</div>
+      </div>
+      <div class="quiz-q">
+        <p>LTV가 70%에서 40%로 낮아지면, 가진 돈이 2억원인 가구가 LTV만으로 살 수 있는 집값의 상한은 어떻게 바뀌는가? (DSR·한도·세금은 무시)</p>
+        <div class="opts">
+          <button class="opt" data-correct>약 6억 6,700만원에서 약 3억 3,300만원으로 절반이 된다</button>
+          <button class="opt">2억 8,000만원에서 2억 6,000만원으로 조금 줄어든다</button>
+          <button class="opt">14억원에서 8억원으로 줄어든다</button>
+          <button class="opt">LTV는 대출 금리만 바꾸므로 상한은 그대로다</button>
+        </div>
+        <div class="quiz-exp">LTV가 제약이면 살 수 있는 집값은 가진 돈 ÷ (1 − LTV)다. 2억 ÷ 0.3 ≈ 6억 6,700만원, 2억 ÷ 0.6 ≈ 3억 3,300만원. LTV 30%p 차이가 살 수 있는 가격을 절반으로 줄인다. 그래서 대출 규제는 고가 주택의 잠재 수요를 빠르게 줄인다.</div>
+      </div>
+      <div class="quiz-q">
+        <p>어느 지역이 규제지역으로 지정된 뒤 바로 옆 비규제지역의 거래와 가격이 올랐다. 이를 풍선 효과로 해석할 때 함께 확인해야 할 것으로 가장 알맞은 것은?</p>
+        <div class="opts">
+          <button class="opt">확인할 것이 없다. 옆 지역 상승은 언제나 풍선 효과다</button>
+          <button class="opt">규제지역의 가격이 올랐는지만 보면 된다</button>
+          <button class="opt">옆 지역의 집이 몇 층인지 본다</button>
+          <button class="opt" data-correct>두 지역의 대체 가능성(통근·생활권), 옆 지역의 크기, 같은 시기의 금리·입주 물량·개발 계획 같은 다른 힘을 함께 본다</button>
+        </div>
+        <div class="quiz-exp">풍선 효과의 크기는 규제 강도, 대체 가능성, 두 지역 수요 규모의 비로 정해진다. 같은 시기에 금리가 내리거나 옆 지역에 개발 호재가 생기거나 입주 물량이 줄었다면 상승의 원인이 섞여 있다. 풍선 효과는 방향을 알려 주는 원리이지 모든 상승을 설명하는 공식이 아니다.</div>
+      </div>
+      <div class="quiz-q">
+        <p>대규모 공급 대책이 발표된 직후 집값 상승세가 꺾였다가, 2~3년 뒤 다시 오르기 시작했다. 실제 입주는 아직 시작되지 않았다. 이 장의 모형으로 가장 알맞은 해석은?</p>
+        <div class="opts">
+          <button class="opt">공급 대책은 집값에 아무 영향이 없다는 증거다</button>
+          <button class="opt" data-correct>발표 효과(기대)로 수요가 기다렸다가, 입주가 늦어지며 기대가 바래 미뤄진 수요가 돌아온 것일 수 있다</button>
+          <button class="opt">입주가 이미 끝나서 공급 효과가 사라진 것이다</button>
+          <button class="opt">발표 직후의 하락은 대출 규제 때문이 분명하다</button>
+        </div>
+        <div class="quiz-exp">공급 대책은 실제 입주 전에도 "몇 년 뒤 집이 많아진다"는 기대를 통해 수요를 미루게 할 수 있다. 입주가 늦어지거나 계획이 불확실해지면 기대가 바래고 미뤄진 수요가 돌아온다. 실제 입주 효과는 그 뒤에 나타난다. 다만 같은 시기의 금리·대출 변화도 함께 확인해야 한다.</div>
+      </div>
+    </div>
+  </section>
+</main>
+<script>
+(function () {
+  "use strict";
+  const TAU = Math.PI * 2;
+  function T(ctx, s, x, y, o) {
+    o = o || {};
+    ctx.font = EB.font(o.size || 12, o.mono, o.weight);
+    ctx.fillStyle = o.color; ctx.textAlign = o.align || "left"; ctx.textBaseline = o.base || "alphabetic";
+    ctx.fillText(s, x, y);
+  }
+  function rrect(ctx, x, y, w, h, r) {
+    r = Math.max(0, Math.min(r, Math.abs(w) / 2, Math.abs(h) / 2));
+    ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
+  }
+  function knob(ctx, x, y, P) { ctx.beginPath(); ctx.arc(x, y, 8, 0, TAU); ctx.fillStyle = P.text; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = P.bg; ctx.stroke(); }
+  const pw = (id) => document.getElementById(id).parentElement.clientWidth;
+  const signPct = (x, d) => (x > 0 ? "+" : x < 0 ? "−" : "") + Math.abs(+(x * 100).toFixed(d == null ? 1 : d)) + "%";
+  const L = RE.KR.loan, C = RE.CASE;
+  // 주담대 한도: 수도권·규제지역(시가 기준), 비규제 수도권은 6억
+  const capFor = (price, regulated) => (regulated ? L.capByPrice.find((b) => price <= b.upTo).cap : L.capMetro);
+  const loanFor = (price, ltv, regulated) => Math.min(price * ltv, capFor(price, regulated));
+
+  /* ---------------------------------------------------------- 1. 규제지역 스위치 */
+  (function () {
+    const whoG = EB.seg("zone-who", draw);
+    const pG = EB.range("zone-p", (v) => EB.won(v * 1e8), draw);
+    function calc(reg) {
+      const P = pG() * 1e8, who = whoG();
+      const ltv = who === "multi" ? (reg ? L.ltv.multiRegulated : 0.6) : who === "first" ? L.ltv.firstHome : (reg ? L.ltv.regulated : L.ltv.unregulated);
+      const loan = loanFor(P, ltv, reg);
+      const acq = RE.acqTax({ price: P, homes: who === "multi" ? 2 : 1, regulated: reg, area: 84, firstHome: who === "first" }).total;
+      return { P, ltv, loan, acq, cash: P - loan + acq, capped: loan < P * ltv };
+    }
+    const cv = EB.canvas("#zone-cv", (ctx, w, h) => {
+      const P = EB.palette(), u = calc(false), r = calc(true);
+      const mx = Math.max(u.P + u.acq, r.P + r.acq) * 1.08;
+      const narrow = w < 480, top = 30, base = h - 40;
+      const bw = Math.min(120, w * 0.26), xs = [w * 0.3 - bw / 2, w * 0.7 - bw / 2];
+      const Y = (v) => base - v / mx * (base - top);
+      const lg = [["대출", P.accent], ["자기 돈", P.ok], ["취득세", P.bad]];
+      let lx = 10; lg.forEach(([s, col]) => { ctx.fillStyle = col; ctx.fillRect(lx, 8, 10, 9); T(ctx, s, lx + 14, 13, { size: 11, color: P.dim, base: "middle" }); ctx.font = EB.font(11); lx += ctx.measureText(s).width + 28; });
+      [[u, "비규제지역"], [r, "규제지역"]].forEach(([c, name], i) => {
+        const x = xs[i];
+        const parts = [[c.loan, P.accent, "대출 " + EB.wonAxis(c.loan)], [c.P - c.loan, P.ok, "자기 돈 " + EB.wonAxis(c.P - c.loan)], [c.acq, P.bad, "세 " + EB.wonAxis(c.acq)]];
+        let y0 = base;
+        parts.forEach(([v, col, lab]) => {
+          const hh = v / mx * (base - top); if (hh <= 0) return;
+          ctx.fillStyle = col; ctx.globalAlpha = 0.85; ctx.fillRect(x, y0 - hh, bw, hh - 1); ctx.globalAlpha = 1;
+          if (hh > 18) T(ctx, lab, x + bw / 2, y0 - hh / 2, { size: narrow ? 10 : 11, color: "#fff", align: "center", base: "middle", weight: 700 });
+          y0 -= hh;
+        });
+        T(ctx, name, x + bw / 2, base + 16, { size: 12, color: P.text, align: "center", weight: 700 });
+        T(ctx, "LTV " + Math.round(c.ltv * 100) + "%" + (c.capped ? " · 한도 " + EB.wonAxis(c.loan) : ""), x + bw / 2, base + 31, { size: 10, color: c.capped ? P.warn : P.dim, align: "center" });
+      });
+      ctx.strokeStyle = P.axis; ctx.beginPath(); ctx.moveTo(8, base); ctx.lineTo(w - 8, base); ctx.stroke();
+      // 필요 현금 화살표
+      const yu = Y(u.P - u.loan + u.acq), yr = Y(r.P - r.loan + r.acq);
+      void yu; void yr;
+    }, { get height() { return pw("zone-cv") < 480 ? 290 : 300; } });
+    function draw() {
+      const u = calc(false), r = calc(true);
+      EB.stat("zone-o-u", EB.won(u.cash));
+      EB.stat("zone-o-r", EB.won(r.cash));
+      const d = r.cash - u.cash;
+      EB.stat("zone-o-d", d > 0 ? '<span class="minus">+' + EB.won(d) + "</span>" : "0원");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 2. 갭과 실거주 */
+  (function () {
+    const pG = EB.range("gap-p", (v) => EB.won(v * 1e8), draw);
+    const lG = EB.range("gap-l", (v) => v + "%", draw);
+    let j = 0.52, G = null;
+    function calc() {
+      const P = pG() * 1e8, ltv = lG() / 100;
+      const gap = P * (1 - j), loan = loanFor(P, ltv, true), live = P - loan;
+      return { P, gap, live, loan, jeonse: P * j };
+    }
+    const cv = EB.canvas("#gap-cv", (ctx, w, h) => {
+      const P = EB.palette(), c = calc();
+      const top = 26, base = h - 58, H = base - top;
+      const narrow = w < 480, bw = Math.min(110, w * 0.24);
+      const x1 = w * 0.32 - bw / 2, x2 = w * 0.72 - bw / 2;
+      const Y = (v) => base - v / c.P * H;
+      // 집값 전체 윤곽
+      [x1, x2].forEach((x) => { ctx.strokeStyle = P.border; ctx.lineWidth = 1; ctx.strokeRect(x, top, bw, H); });
+      // 갭투자: 아래 보증금(세입자 돈), 위 내 돈
+      ctx.fillStyle = P.accent2; ctx.globalAlpha = 0.75; ctx.fillRect(x1, Y(c.jeonse), bw, base - Y(c.jeonse)); ctx.globalAlpha = 1;
+      ctx.fillStyle = P.ok; ctx.globalAlpha = 0.85; ctx.fillRect(x1, top, bw, Y(c.jeonse) - top); ctx.globalAlpha = 1;
+      // 실거주: 아래 대출, 위 내 돈
+      ctx.fillStyle = P.accent; ctx.globalAlpha = 0.75; ctx.fillRect(x2, Y(c.loan), bw, base - Y(c.loan)); ctx.globalAlpha = 1;
+      ctx.fillStyle = P.ok; ctx.globalAlpha = 0.85; ctx.fillRect(x2, top, bw, Y(c.loan) - top); ctx.globalAlpha = 1;
+      const lab = (x, y0, y1, s, v) => { if (y1 - y0 > 34) { T(ctx, s, x + bw / 2, (y0 + y1) / 2 - 8, { size: narrow ? 10 : 11, color: "#fff", align: "center", base: "middle", weight: 700 }); T(ctx, EB.wonAxis(v), x + bw / 2, (y0 + y1) / 2 + 8, { size: 11, mono: true, color: "#fff", align: "center", base: "middle" }); } };
+      lab(x1, top, Y(c.jeonse), "내 돈", c.gap); lab(x1, Y(c.jeonse), base, "세입자 보증금", c.jeonse);
+      lab(x2, top, Y(c.loan), "내 돈", c.live); lab(x2, Y(c.loan), base, "은행 대출", c.loan);
+      T(ctx, "갭투자(허가 전)", x1 + bw / 2, base + 16, { size: 12, color: P.text, align: "center", weight: 700 });
+      T(ctx, "실거주(허가 후)", x2 + bw / 2, base + 16, { size: 12, color: P.text, align: "center", weight: 700 });
+      T(ctx, "집값 " + EB.won(c.P, { short: true }), w / 2, 14, { size: 11, color: P.dim, align: "center" });
+      // 전세가율 손잡이
+      const hy = Y(c.jeonse), hx = x1 - 14;
+      ctx.strokeStyle = P.text; ctx.setLineDash([3, 3]); ctx.globalAlpha = 0.6; ctx.beginPath(); ctx.moveTo(hx, hy); ctx.lineTo(x1 + bw, hy); ctx.stroke(); ctx.setLineDash([]); ctx.globalAlpha = 1;
+      knob(ctx, hx, hy, P);
+      T(ctx, Math.round(j * 100) + "%", hx - 12, hy, { size: 11, mono: true, color: P.text, align: "right", base: "middle", weight: 700 });
+      G = { top, base, H };
+    }, { get height() { return pw("gap-cv") < 480 ? 290 : 300; } });
+    EB.drag(cv.canvas, { move(x, y) { if (!G) return; j = EB.clamp(Math.round((G.base - y) / G.H * 100) / 100, 0.2, 0.9); draw(); } });
+    function draw() {
+      const c = calc();
+      EB.stat("gap-o-j", Math.round(j * 100) + "%");
+      EB.stat("gap-o-g", EB.won(c.gap));
+      EB.stat("gap-o-r", EB.won(c.live));
+      EB.stat("gap-o-x", (c.live / c.gap).toFixed(2) + "배 현금 필요");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 3. 살 수 있는 사람은 몇 명인가 */
+  (function () {
+    const lG = EB.range("dem-l", (v) => v + "%", draw);
+    const rG = EB.range("dem-r", (v) => v + "%", draw);
+    const capEl = document.getElementById("dem-cap"); capEl.addEventListener("change", draw);
+    const N = 2000, rnd = EB.rng(15);
+    const gauss = () => { let u = 0, v = 0; while (u === 0) u = rnd(); v = rnd(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(TAU * v); };
+    const HH = []; for (let i = 0; i < N; i++) { const z1 = gauss(), z2 = 0.5 * z1 + Math.sqrt(0.75) * gauss(); HH.push({ cash: 2e8 * Math.exp(0.85 * z1), income: 7e7 * Math.exp(0.45 * z2) }); }
+    const XMAX = 25e8;
+    let price = 12e8, box = null;
+    function afford(hh, ltv, rate, cap) {
+      const dsrLoan = RE.pv(rate / 12, 360, hh.income * L.dsr.bank / 12);
+      const byLtv = ltv >= 1 ? Infinity : hh.cash / (1 - ltv);
+      const other = hh.cash + Math.min(cap ? L.capMetro : Infinity, dsrLoan);
+      const p = Math.min(byLtv, other);
+      const k = p === byLtv ? "ltv" : (cap && L.capMetro < dsrLoan ? "cap" : "dsr");
+      return { p, k };
+    }
+    function run(ltv, rate, cap) { return HH.map((hh) => afford(hh, ltv, rate, cap)); }
+    const cv = EB.canvas("#dem-cv", (ctx, w, h) => {
+      const P = EB.palette(), res = run(lG() / 100, rG() / 100, capEl.checked), ref = run(0.7, rG() / 100, false);
+      const NB = 25, bins = new Array(NB).fill(0), rbins = new Array(NB).fill(0);
+      res.forEach((r) => { bins[Math.min(NB - 1, Math.floor(r.p / XMAX * NB))]++; });
+      ref.forEach((r) => { rbins[Math.min(NB - 1, Math.floor(r.p / XMAX * NB))]++; });
+      const ymax = Math.max(...bins, ...rbins) * 1.1;
+      const c = EB.chart(ctx, { x: 46, y: 20, w: w - 60, h: h - 76 }, { x: [0, XMAX], y: [0, ymax], xTicks: [0, 5e8, 10e8, 15e8, 20e8, 25e8], xFmt: EB.wonAxis, yFmt: (v) => Math.round(v / N * 100) + "%", yTicks: [0, ymax / 2, ymax] });
+      box = c;
+      const bw = c.box.w / NB;
+      for (let i = 0; i < NB; i++) {
+        const x = c.box.x + i * bw, mid = (i + 0.5) * XMAX / NB;
+        ctx.fillStyle = P.faint; ctx.globalAlpha = 0.3; ctx.fillRect(x + 1, c.Y(rbins[i]), bw - 2, c.Y(0) - c.Y(rbins[i])); ctx.globalAlpha = 1;
+        ctx.fillStyle = mid >= price ? P.ok : P.accent; ctx.globalAlpha = 0.8; ctx.fillRect(x + 3, c.Y(bins[i]), bw - 6, c.Y(0) - c.Y(bins[i])); ctx.globalAlpha = 1;
+      }
+      const px = c.X(price), hy = c.box.y + c.box.h;
+      ctx.strokeStyle = P.text; ctx.setLineDash([4, 3]); ctx.beginPath(); ctx.moveTo(px, c.box.y); ctx.lineTo(px, hy); ctx.stroke(); ctx.setLineDash([]);
+      knob(ctx, px, hy, P);
+      T(ctx, "살 수 있는 최고 가격의 분포", c.box.x + 4, 12, { size: 11, color: P.dim, weight: 700 });
+      T(ctx, "회색: LTV 70%·한도 없음", c.box.x + c.box.w, 12, { size: 10, color: P.faint, align: "right" });
+    }, { get height() { return pw("dem-cv") < 480 ? 280 : 300; } });
+    EB.drag(cv.canvas, { move(x) { if (!box) return; price = EB.clamp(Math.round((x - box.box.x) / box.box.w * XMAX / 5e7) * 5e7, 1e8, XMAX); draw(); } });
+    function draw() {
+      const res = run(lG() / 100, rG() / 100, capEl.checked), ref = run(0.7, rG() / 100, false);
+      const share = res.filter((r) => r.p >= price).length / N, rshare = ref.filter((r) => r.p >= price).length / N;
+      const cnt = { ltv: 0, dsr: 0, cap: 0 }; res.forEach((r) => cnt[r.k]++);
+      const top = Object.keys(cnt).sort((a, b) => cnt[b] - cnt[a])[0];
+      EB.stat("dem-o-p", EB.won(price));
+      EB.stat("dem-o-s", (share * 100).toFixed(1) + "%");
+      EB.stat("dem-o-b", (rshare * 100).toFixed(1) + "%");
+      EB.stat("dem-o-k", { ltv: "LTV(가진 돈)", dsr: "DSR(소득)", cap: "주담대 한도" }[top] + " " + Math.round(cnt[top] / N * 100) + "%");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 4. 발표에서 입주까지 */
+  (function () {
+    const cG = EB.range("lag-c", (v) => v + "%", draw);
+    const sG = EB.range("lag-s", (v) => v + "%", draw);
+    const YEARS = 10, ANN = 1, TREND = 0.04, DECAY = 0.25;
+    let lag = 5, box = null;
+    function path() {
+      const cred = cG() / 100, S = sG() / 100, arrive = ANN + lag;
+      const base = [], pol = [];
+      for (let q = 0; q <= YEARS * 12; q++) {
+        const t = q / 12, b = Math.log(1 + TREND) * t;
+        let e = 0;
+        if (t >= ANN && t < arrive) e = -S * cred * Math.exp(-DECAY * (t - ANN));
+        const real = t < arrive ? 0 : -S * Math.min(1, (t - arrive) / 1);
+        if (t >= arrive) e = -S * cred * Math.exp(-DECAY * lag) * Math.max(0, 1 - (t - arrive));
+        base.push([t, 100 * Math.exp(b)]); pol.push([t, 100 * Math.exp(b + Math.min(e, 0) + real)]);
+      }
+      return { base, pol };
+    }
+    const at = (arr, t) => arr[Math.round(t * 12)][1];
+    const cv = EB.canvas("#lag-cv", (ctx, w, h) => {
+      const P = EB.palette(), p = path();
+      const ymax = Math.ceil(Math.max(...p.base.map((d) => d[1])) / 10) * 10 + 5;
+      const c = EB.chart(ctx, { x: 44, y: 16, w: w - 58, h: h - 74 }, {
+        x: [0, YEARS], y: [90, ymax], xTicks: [0, 2, 4, 6, 8, 10], xFmt: (v) => v + "년", yTicks: [90, 100, 110, 120, 130, 140].filter((v) => v <= ymax),
+        series: [{ data: p.base, color: P.faint, width: 1.6, dash: [5, 4] }, { data: p.pol, color: P.accent, width: 2.6 }],
+        bands: [{ x0: ANN, x1: ANN + lag, color: P.grid }],
+        vlines: [{ x: ANN, color: P.accent2, label: "발표" }],
+      });
+      box = c;
+      const ax = c.X(ANN + lag);
+      ctx.strokeStyle = P.ok; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(ax, c.box.y); ctx.lineTo(ax, c.box.y + c.box.h); ctx.stroke();
+      T(ctx, "입주", ax + 4, c.box.y + 26, { size: 11, color: P.ok, weight: 700 });
+      knob(ctx, ax, c.box.y + c.box.h, P);
+      T(ctx, "가격 지수(교육용, 시작 = 100)", c.box.x + c.box.w - 4, c.box.y + c.box.h - 8, { size: 10, color: P.faint, align: "right" });
+    }, { get height() { return pw("lag-cv") < 480 ? 270 : 290; } });
+    EB.drag(cv.canvas, { move(x) { if (!box) return; lag = EB.clamp(Math.round(((x - box.box.x) / box.box.w * YEARS - ANN) * 2) / 2, 2, 9); draw(); } });
+    function draw() {
+      const p = path();
+      const d = (t) => at(p.pol, t) / at(p.base, t) - 1;
+      EB.stat("lag-o-l", lag + "년");
+      EB.stat("lag-o-a", signPct(d(ANN + 1)));
+      const pre = ANN + lag - 0.08;
+      EB.stat("lag-o-r", lag > 1 ? signPct(d(pre) - d(ANN + 1)) + "p" : "—");
+      EB.stat("lag-o-e", signPct(d(YEARS)));
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 5. 풍선 효과 */
+  (function () {
+    const sG = EB.range("bal-s", (v) => v + "%", draw);
+    const zG = EB.range("bal-z", (v) => v + "%", draw);
+    const EPS = 1;
+    let s = 0.15, G = null, dots = null, t0 = 0;
+    function calc() { const sig = sG() / 100, z = zG() / 100; return { a: -s / EPS, b: s * sig / z / EPS, tot: -s * (1 - sig) / (1 + z), sig, z }; }
+    function initDots() { const r = EB.rng(7); dots = []; for (let i = 0; i < 90; i++) dots.push({ u: r(), v: r(), k: r(), ph: r() * TAU }); }
+    initDots();
+    const cv = EB.canvas("#bal-cv", (ctx, w, h) => {
+      const P = EB.palette(), c = calc(), narrow = w < 480;
+      const top = 30, bottom = h - 94;
+      const gx = 30, gw = 14;
+      const ax = gx + 34, aw = (w - ax - 16) * 0.48, bx = ax + aw + 14, bwid = (w - ax - 16) - aw - 14;
+      const bh = (bottom - top) * Math.min(1, 0.45 + 0.55 * c.z), by = bottom - bh;
+      // 규제 게이지
+      ctx.fillStyle = P.grid; ctx.fillRect(gx, top, gw, bottom - top);
+      const gy = bottom - s / 0.5 * (bottom - top);
+      ctx.fillStyle = P.bad; ctx.globalAlpha = 0.7; ctx.fillRect(gx, gy, gw, bottom - gy); ctx.globalAlpha = 1;
+      knob(ctx, gx + gw / 2, gy, P);
+      T(ctx, "규제", gx + gw / 2, top - 8, { size: 11, color: P.bad, align: "center", weight: 700 });
+      // 두 지역
+      rrect(ctx, ax, top, aw, bottom - top, 10); ctx.fillStyle = EB.color("accent-soft"); ctx.fill(); ctx.strokeStyle = P.accent; ctx.lineWidth = 1.5; ctx.stroke();
+      rrect(ctx, bx, by, bwid, bh, 10); ctx.fillStyle = P.surface; ctx.fill(); ctx.strokeStyle = P.border; ctx.stroke();
+      T(ctx, "규제 지역", ax + 8, top + 16, { size: 12, color: P.accent, weight: 700 });
+      T(ctx, "옆 비규제 지역", bx + 8, by + 16, { size: narrow ? 11 : 12, color: P.text, weight: 700 });
+      // 점: 수요
+      const tt = (performance.now() - t0) / 1000;
+      dots.forEach((d) => {
+        const blocked = d.k < s, moved = blocked && d.k < s * c.sig;
+        let x, y, col = P.accent;
+        const ux = 0.12 + d.u * 0.76, vy = 0.2 + d.v * 0.72;
+        if (!blocked) { x = ax + ux * aw; y = top + vy * (bottom - top); }
+        else if (moved) { const ph = Math.min(1, ((tt * 0.35 + d.ph) % 1.6)); const fx = bx + ux * bwid, fy = by + (0.25 + d.v * 0.65) * bh; const sx = ax + ux * aw, sy = top + vy * (bottom - top); const e = ph * ph * (3 - 2 * ph); x = sx + (fx - sx) * e; y = sy + (fy - sy) * e - Math.sin(Math.PI * e) * 20; col = P.warn; }
+        else { x = ax + ux * aw; y = bottom + 14 + (d.v * 10); col = P.faint; }
+        ctx.beginPath(); ctx.arc(x, y, 3, 0, TAU); ctx.fillStyle = col; ctx.fill();
+      });
+      T(ctx, "시장 밖에서 대기", ax + 4, bottom + 36, { size: 10, color: P.faint });
+      // 가격 변화 표시
+      const fmt = (v) => signPct(v, 1);
+      T(ctx, "가격 " + fmt(c.a), ax + aw / 2, bottom + 58, { size: 13, color: c.a < 0 ? P.ok : P.text, align: "center", weight: 700 });
+      T(ctx, "가격 " + fmt(c.b), bx + bwid / 2, bottom + 58, { size: 13, color: c.b > 0 ? P.bad : P.text, align: "center", weight: 700 });
+      G = { gx, gw, top, bottom };
+    }, { get height() { return pw("bal-cv") < 480 ? 320 : 330; } });
+    t0 = performance.now();
+    EB.loop(cv.canvas, () => cv.redraw());
+    EB.drag(cv.canvas, { move(x, y) { if (!G || x > G.gx + G.gw + 40) return; s = EB.clamp(Math.round((G.bottom - y) / (G.bottom - G.top) * 0.5 * 100) / 100, 0, 0.5); draw(); } });
+    function draw() {
+      const c = calc();
+      EB.stat("bal-o-k", Math.round(s * 100) + "%");
+      EB.stat("bal-o-a", '<span class="' + (c.a < 0 ? "plus" : "") + '">' + signPct(c.a) + "</span>");
+      EB.stat("bal-o-b", '<span class="' + (c.b > 0 ? "minus" : "") + '">' + signPct(c.b) + "</span>");
+      EB.stat("bal-o-t", signPct(c.tot));
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 6. 갱신 상한의 두 얼굴 */
+  (function () {
+    const mG = EB.range("rent-m", (v) => v + "%", draw);
+    const cG = EB.range("rent-c", (v) => v + "%", draw);
+    const fG = EB.range("rent-f", (v) => v + "%", draw);
+    const R0 = 1.5e6;
+    function calc() {
+      const m = mG() / 100, cap = Math.min(cG() / 100, m), f = fG() / 100;
+      const free = [R0, R0, R0 * (1 + m), R0 * (1 + m)];              // 상한 없음: 2년 뒤 시장 가격
+      const old = [R0, R0, R0 * (1 + cap), R0 * (1 + cap)];           // 이미 계약 중인 세입자: 첫 가격 그대로, 갱신 때 상한
+      const fl = R0 * (1 + f * (m - cap) / 2);                        // 새 계약: 갱신 때 못 받는 몫의 일부를 첫 가격에 선반영(4년 평균)
+      const fresh = [fl, fl, fl * (1 + cap), fl * (1 + cap)];
+      const sum = (a) => a.reduce((s, x) => s + x * 12, 0);
+      return { free, old, fresh, sFree: sum(free), sOld: sum(old), sFresh: sum(fresh), first2: fl * 24, first2Free: R0 * 24 };
+    }
+    const cv = EB.canvas("#rent-cv", (ctx, w, h) => {
+      const P = EB.palette(), c = calc();
+      const mx = Math.max(...c.free, ...c.fresh) * 1.15;
+      const narrow = w < 480;
+      const box = { x: 50, y: 30, w: w - 64, h: h - 74 };
+      const groups = [["상한 없음", c.free, P.faint], ["기존 세입자", c.old, P.ok], ["새 세입자", c.fresh, P.warn]];
+      const gw = box.w / 4, bw = gw / 4.2;
+      const Y = (v) => box.y + box.h - v / mx * box.h;
+      [0, mx / 2, mx].forEach((v) => { const y = Y(v); ctx.strokeStyle = P.grid; ctx.beginPath(); ctx.moveTo(box.x, y); ctx.lineTo(box.x + box.w, y); ctx.stroke(); T(ctx, EB.wonAxis(v), box.x - 6, y, { size: 10, mono: true, color: P.faint, align: "right", base: "middle" }); });
+      for (let yr = 0; yr < 4; yr++) {
+        groups.forEach(([, arr, col], gi) => {
+          const x = box.x + yr * gw + gw * 0.12 + gi * bw * 1.05;
+          ctx.fillStyle = col; ctx.globalAlpha = gi === 0 ? 0.6 : 0.88; ctx.fillRect(x, Y(arr[yr]), bw, Y(0) - Y(arr[yr])); ctx.globalAlpha = 1;
+        });
+        T(ctx, (yr + 1) + "년차", box.x + yr * gw + gw / 2, box.y + box.h + 16, { size: 11, color: P.dim, align: "center" });
+      }
+      ctx.strokeStyle = P.text; ctx.setLineDash([3, 3]); ctx.beginPath(); ctx.moveTo(box.x + gw * 2, box.y); ctx.lineTo(box.x + gw * 2, box.y + box.h); ctx.stroke(); ctx.setLineDash([]);
+      T(ctx, "갱신", box.x + gw * 2 + 4, box.y + 10, { size: 11, color: P.text, weight: 700 });
+      let lx = box.x; groups.forEach(([s, , col]) => { ctx.fillStyle = col; ctx.fillRect(lx, 10, 10, 9); T(ctx, s, lx + 14, 15, { size: 11, color: P.dim, base: "middle" }); ctx.font = EB.font(11); lx += ctx.measureText(s).width + (narrow ? 22 : 30); });
+      T(ctx, "월 임대료(월세 환산)", box.x + box.w, box.y + box.h + 34, { size: 10, color: P.faint, align: "right" });
+    }, { get height() { return pw("rent-cv") < 480 ? 270 : 280; } });
+    function draw() {
+      const c = calc();
+      EB.stat("rent-o-a", EB.won(c.sOld) + ' <small style="color:var(--text-faint)">(' + (c.sOld < c.sFree ? "−" : "") + EB.wonAxis(Math.abs(c.sFree - c.sOld)) + ")</small>");
+      EB.stat("rent-o-b", EB.won(c.first2) + ' <small style="color:var(--text-faint)">(+' + EB.wonAxis(c.first2 - c.first2Free) + ")</small>");
+      const d = c.sFresh - c.sFree;
+      EB.stat("rent-o-c", '<span class="' + (d < 0 ? "minus" : "plus") + '">' + (d < 0 ? "−" : "+") + EB.won(Math.abs(d)) + "</span>");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 7. 후보지 세 곳의 규제 지도 */
+  (function () {
+    const fEl = document.getElementById("case-first"), bzEl = document.getElementById("case-bz");
+    fEl.addEventListener("change", draw); bzEl.addEventListener("change", draw);
+    const paG = EB.range("case-pa", (v) => EB.won(v * 1e8), draw);
+    let own = 2.4e8, sel = 0, G = null, cols = [], mode = null;
+    function calc(key) {
+      const ar = C.areas.find((a) => a.key === key);
+      const price = key === "A" ? paG() * 1e8 : ar.price;
+      const reg = key === "A" || (key === "B" && bzEl.checked);
+      const ltv = fEl.checked ? L.ltv.firstHome : reg ? L.ltv.regulated : L.ltv.unregulated;
+      const loan = loanFor(price, ltv, reg);
+      const acq = RE.acqTax({ price, homes: 1, regulated: reg, area: 84, firstHome: fEl.checked }).total;
+      const rules = reg ? (key === "A" ? "토지거래허가·2년 실거주, 비과세 2년 거주, 한도 " + EB.wonAxis(capFor(price, true)) : "(가정) LTV·한도 강화, 비과세 2년 거주") : "허가·거주 의무 없음, 비과세는 2년 보유";
+      return { key, name: key === "A" ? "서울 A구" : key === "B" ? "경기 B시" : "경기 E시", price, reg, ltv, loan, acq, cash: price - loan + acq, rules, capped: loan < price * ltv };
+    }
+    const KEYS = ["A", "B", "E"];
+    const cv = EB.canvas("#case-cv", (ctx, w, h) => {
+      const P = EB.palette(), res = KEYS.map(calc), narrow = w < 480;
+      const mx = Math.max(...res.map((r) => r.price + r.acq), 1.25e9) * 1.08;
+      const box = { x: 50, y: 24, w: w - 62, h: h - 24 - 76 };
+      const Y = (v) => box.y + box.h - v / mx * box.h;
+      [0, 5e8, 10e8, 15e8, 20e8].filter((v) => v < mx).forEach((v) => { const y = Y(v); ctx.strokeStyle = P.grid; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(box.x, y); ctx.lineTo(box.x + box.w, y); ctx.stroke(); T(ctx, EB.wonAxis(v), box.x - 6, y, { size: 10, mono: true, color: P.faint, align: "right", base: "middle" }); });
+      const lg = [["최대 대출", P.accent], ["필요한 자기 돈", P.ok]];
+      let lx = box.x; lg.forEach(([s, col]) => { ctx.fillStyle = col; ctx.fillRect(lx, 6, 10, 9); T(ctx, s, lx + 14, 11, { size: 11, color: P.dim, base: "middle" }); ctx.font = EB.font(11); lx += ctx.measureText(s).width + 28; });
+      const gap = narrow ? 18 : 40, bw = (box.w - gap * 4) / 3;
+      cols = [];
+      res.forEach((r, i) => {
+        const x = box.x + gap + i * (bw + gap);
+        const yL = Y(r.loan), yT = Y(r.price + r.acq);
+        ctx.fillStyle = P.accent; ctx.globalAlpha = i === sel ? 0.85 : 0.5; ctx.fillRect(x, yL, bw, Y(0) - yL); ctx.globalAlpha = 1;
+        const short = r.cash > own;
+        ctx.fillStyle = short ? P.bad : P.ok; ctx.globalAlpha = i === sel ? 0.85 : 0.5; ctx.fillRect(x, yT, bw, yL - yT); ctx.globalAlpha = 1;
+        if (i === sel) { ctx.strokeStyle = P.text; ctx.lineWidth = 2; ctx.strokeRect(x - 2, yT - 2, bw + 4, Y(0) - yT + 4); }
+        if (yL - yT > 30) { T(ctx, "자기 돈", x + bw / 2, (yT + yL) / 2 - 7, { size: 10, color: "#fff", align: "center", base: "middle", weight: 700 }); T(ctx, EB.wonAxis(r.cash), x + bw / 2, (yT + yL) / 2 + 8, { size: 11, mono: true, color: "#fff", align: "center", base: "middle" }); }
+        if (Y(0) - yL > 30) { T(ctx, "대출", x + bw / 2, (yL + Y(0)) / 2 - 7, { size: 10, color: "#fff", align: "center", base: "middle", weight: 700 }); T(ctx, EB.wonAxis(r.loan), x + bw / 2, (yL + Y(0)) / 2 + 8, { size: 11, mono: true, color: "#fff", align: "center", base: "middle" }); }
+        T(ctx, r.name, x + bw / 2, box.y + box.h + 16, { size: narrow ? 11 : 12, color: i === sel ? P.text : P.dim, align: "center", weight: i === sel ? 700 : 400 });
+        T(ctx, r.reg ? "규제지역" : "비규제", x + bw / 2, box.y + box.h + 31, { size: 10, color: r.reg ? P.bad : P.ok, align: "center", weight: 700 });
+        cols.push({ x0: x - gap / 2, x1: x + bw + gap / 2 });
+      });
+      // 자기 돈 선: 각 기둥의 대출 위에서 own만큼 올라간 높이를 표시
+      ctx.save(); ctx.setLineDash([5, 4]); ctx.strokeStyle = P.text; ctx.lineWidth = 1.5;
+      res.forEach((r, i) => { const x = box.x + gap + i * (bw + gap), y = Y(r.loan + own); ctx.beginPath(); ctx.moveTo(x - 6, y); ctx.lineTo(x + bw + 6, y); ctx.stroke(); });
+      ctx.restore();
+      const r0 = res[sel], hx = box.x + gap + sel * (bw + gap) + bw + 6, hy = Y(r0.loan + own);
+      knob(ctx, Math.min(hx, w - 10), hy, P);
+      T(ctx, "자기 돈 " + EB.wonAxis(own), box.x + 4, box.y + 6, { size: 11, color: P.text, weight: 700, base: "middle" });
+      G = { box, mx, Y };
+    }, { get height() { return pw("case-cv") < 480 ? 320 : 330; } });
+    EB.drag(cv.canvas, {
+      start(x, y) {
+        if (!G) return;
+        const r0 = calc(KEYS[sel]), hy = G.Y(r0.loan + own);
+        const i = cols.findIndex((c) => x >= c.x0 && x <= c.x1);
+        if (Math.abs(y - hy) < 16) { mode = "own"; return; }
+        mode = null; if (i >= 0) { sel = i; draw(); }
+      },
+      move(x, y) { if (mode !== "own" || !G) return; const r0 = calc(KEYS[sel]); const v = (G.box.y + G.box.h - y) / G.box.h * G.mx - r0.loan; own = EB.clamp(Math.round(v / 1e7) * 1e7, 5e7, 8e8); draw(); },
+      end() { mode = null; },
+    });
+    function draw() {
+      const r = calc(KEYS[sel]);
+      document.getElementById("case-o-k").textContent = "고른 곳 · 집값";
+      EB.stat("case-o-n", r.name + " · " + EB.won(r.price, { short: true }));
+      EB.stat("case-o-l", EB.won(r.loan) + ' <small style="color:var(--text-faint)">LTV ' + Math.round(r.ltv * 100) + "%" + (r.capped ? "·한도" : "") + "</small>");
+      EB.stat("case-o-c", '<span class="' + (r.cash > own ? "minus" : "plus") + '">' + EB.won(r.cash) + "</span>" + (r.cash > own ? ' <small style="color:var(--text-faint)">' + EB.wonAxis(r.cash - own) + " 부족</small>" : ""));
+      EB.stat("case-o-r", r.rules);
+      cv.redraw();
+    }
+    draw();
+  })();
+})();
+</script>
+</body>
+</html>

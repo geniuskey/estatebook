@@ -1,0 +1,800 @@
+<!doctype html>
+<!-- Copyright (c) 2026 geniuskey and EstateBook contributors.
+     Executable code: MIT (see ../LICENSE-MIT).
+     Text, illustrations, questions and explanations: CC-BY-4.0 (see ../LICENSE.md). -->
+<html lang="ko">
+<head>
+<!--head:start {"desc": "집을 갖고만 있어도 해마다 내는 재산세와 종합부동산세. 시세에서 공시가격, 과세표준, 세율, 공제를 거쳐 세금이 되는 계단을 직접 끌어 보고, 1주택과 다주택, 단독명의와 부부 공동명의의 차이를 2026년 제도로 계산한다."}-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>보유세 · EstateBook</title>
+<meta name="description" content="집을 갖고만 있어도 해마다 내는 재산세와 종합부동산세. 시세에서 공시가격, 과세표준, 세율, 공제를 거쳐 세금이 되는 계단을 직접 끌어 보고, 1주택과 다주택, 단독명의와 부부 공동명의의 차이를 2026년 제도로 계산한다.">
+<link rel="canonical" href="https://estatebook.euiyun.com/chapters/holdingtax.html">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<meta name="theme-color" content="#0f766e">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EstateBook">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="보유세 · EstateBook">
+<meta property="og:description" content="집을 갖고만 있어도 해마다 내는 재산세와 종합부동산세. 시세에서 공시가격, 과세표준, 세율, 공제를 거쳐 세금이 되는 계단을 직접 끌어 보고, 1주택과 다주택, 단독명의와 부부 공동명의의 차이를 2026년 제도로 계산한다.">
+<meta property="og:url" content="https://estatebook.euiyun.com/chapters/holdingtax.html">
+<meta property="og:image" content="https://estatebook.euiyun.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Chapter","LearningResource"],"@id":"https://estatebook.euiyun.com/chapters/holdingtax.html#chapter","name":"보유세","headline":"보유세 · EstateBook","description":"집을 갖고만 있어도 해마다 내는 재산세와 종합부동산세. 시세에서 공시가격, 과세표준, 세율, 공제를 거쳐 세금이 되는 계단을 직접 끌어 보고, 1주택과 다주택, 단독명의와 부부 공동명의의 차이를 2026년 제도로 계산한다.","url":"https://estatebook.euiyun.com/chapters/holdingtax.html","position":13,"inLanguage":"ko","isAccessibleForFree":true,"learningResourceType":"인터랙티브 교재","educationalLevel":"일반 성인","image":"https://estatebook.euiyun.com/og.png","dateModified":"2026-10-08","isPartOf":{"@type":"Book","@id":"https://estatebook.euiyun.com/#book","name":"EstateBook · 집값과 전세를 숫자로 푸는 부동산 교과서","url":"https://estatebook.euiyun.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"EstateBook","item":"https://estatebook.euiyun.com/"},{"@type":"ListItem","position":2,"name":"13. 보유세","item":"https://estatebook.euiyun.com/chapters/holdingtax.html"}]}]}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../css/style.css">
+<script src="../js/common.js"></script>
+<script src="../js/estate.js"></script>
+<!--head:end-->
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3d6151a0abc94ede89285d462527fa80"}'></script>
+<!-- End Cloudflare Web Analytics -->
+</head>
+<body data-chapter="holdingtax">
+<main class="chapter">
+  <header class="chapter-hero">
+    <div class="eyebrow">Chapter 13</div>
+    <h1>보유세</h1>
+    <p class="lead">전세로 사는 하늘네는 지금 집에 대한 세금을 내지 않는다. 집주인 남궁현은 다르다. 해마다 7월과 9월에 재산세 고지서가, 12월에는 종합부동산세 고지서가 날아온다. 하늘이 C아파트를 산다면 하늘네에게도 그 고지서가 온다. 얼마일까. 같은 6억 2,000만원짜리 집인데 하늘네가 1주택으로 가질 때와 남궁현이 2주택 가운데 하나로 가질 때 세금은 같을까. 공시가격이 10% 오르면 세금도 10% 오를까. 이 장은 집을 갖고만 있어도 내는 세금, <b>보유세</b>가 시세에서 출발해 어떤 계단을 거쳐 고지서의 숫자가 되는지를 한 단계씩 끌어 보며 따라간다.</p>
+    <ul class="objectives">
+      <li>시세, 공시가격(현실화율), 과세표준(공정시장가액비율)의 관계를 설명한다.</li>
+      <li>재산세의 계산 흐름(과세표준, 누진세율, 1주택 특례세율, 도시지역분, 지방교육세)을 따라 세액을 구한다.</li>
+      <li>종합부동산세의 계산 흐름(공제, 공정시장가액비율, 세율, 재산세 중복분 공제, 고령자·장기보유 공제, 농어촌특별세)을 따라 세액을 구한다.</li>
+      <li>공시가격이 오를 때 누진 구조 때문에 세금이 더 빠르게 오르는 이유와, 1주택·다주택·부부 공동명의의 차이를 계산한다.</li>
+      <li>재산세(7월·9월)와 종부세(12월)의 납부 시기와, 2026 세제개편안(추진 중, 확정 전)이 바꾸려는 것을 구분한다.</li>
+    </ul>
+  </header>
+
+  <section id="question">
+    <h2>갖고만 있어도 내는 세금</h2>
+    <p>부동산에 붙는 세금은 세 번 온다. 살 때 내는 <a href="buy.html">취득세</a>(8장), 갖고 있는 동안 해마다 내는 보유세, 팔 때 내는 <a href="tradetax.html">양도소득세</a>(14장)다. 앞의 것과 뒤의 것은 거래가 있어야 생기지만 보유세는 집을 갖고 있다는 사실만으로 매년 생긴다. 그래서 <a href="overview.html">1장</a>에서 본 '집 한 채의 한 해 손익'에서 보유세는 이자, 기회비용, 수선비와 함께 해마다 나가는 비용의 한 줄이었다.</p>
+    <p><span class="term">보유세</span><span class="en">(Property holding tax)</span>는 두 가지 세금을 묶어 부르는 말이다. 모든 주택에 붙는 지방세인 <span class="term">재산세</span><span class="en">(Property tax)</span>와, 공시가격 합이 일정 금액을 넘는 사람에게만 붙는 국세인 <span class="term">종합부동산세</span><span class="en">(Comprehensive real estate holding tax)</span>(종부세)다. 둘 다 매년 <b>6월 1일</b>(과세기준일)에 집을 가진 사람이 그해 세금을 낸다. 5월 31일에 잔금을 치르고 산 사람은 그해 보유세를 전부 내고, 6월 2일에 산 사람은 한 푼도 내지 않는다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 460 380" role="img" aria-label="보유세의 구조: 시세에서 공시가격, 재산세와 종부세의 두 갈래">
+        <defs><marker id="ht-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="context-stroke"/></marker></defs>
+        <rect x="130" y="8" width="200" height="44" rx="8" class="f-surface"/>
+        <text x="230" y="28" text-anchor="middle" class="lbl-b">시세</text>
+        <text x="230" y="45" text-anchor="middle" class="lbl-dim">실제로 거래되는 값</text>
+        <path d="M230 54 L230 78" class="s-line" marker-end="url(#ht-ar)"/>
+        <text x="240" y="70" class="lbl-dim">× 현실화율(약 69%)</text>
+        <rect x="130" y="82" width="200" height="44" rx="8" class="f-acc-soft"/>
+        <text x="230" y="102" text-anchor="middle" class="lbl-acc">공시가격</text>
+        <text x="230" y="119" text-anchor="middle" class="lbl-dim">정부가 매년 정한다</text>
+        <path d="M180 128 L110 160" class="s-line" marker-end="url(#ht-ar)"/>
+        <path d="M280 128 L350 160" class="s-line" marker-end="url(#ht-ar)"/>
+        <rect x="10" y="164" width="200" height="54" rx="8" class="f-acc2-soft"/>
+        <text x="110" y="186" text-anchor="middle" class="lbl-acc2">재산세(지방세)</text>
+        <text x="110" y="206" text-anchor="middle" class="lbl-dim">집마다, 모든 주택</text>
+        <rect x="250" y="164" width="200" height="54" rx="8" class="f-bad-soft"/>
+        <text x="350" y="186" text-anchor="middle" class="lbl-bad">종부세(국세)</text>
+        <text x="350" y="206" text-anchor="middle" class="lbl-dim">사람마다, 공시가 합산</text>
+        <text x="110" y="244" text-anchor="middle" class="lbl">× 43~45%(1주택)</text>
+        <text x="110" y="262" text-anchor="middle" class="lbl">× 60%(그 밖)</text>
+        <text x="110" y="286" text-anchor="middle" class="lbl-dim">→ 누진세율 0.05~0.4%</text>
+        <text x="110" y="306" text-anchor="middle" class="lbl-dim">+ 도시지역분 + 지방교육세</text>
+        <text x="350" y="244" text-anchor="middle" class="lbl">(합계 − 9억, 1주택 12억)</text>
+        <text x="350" y="262" text-anchor="middle" class="lbl">× 60%</text>
+        <text x="350" y="286" text-anchor="middle" class="lbl-dim">→ 세율 0.5~2.7%(중과 5.0%)</text>
+        <text x="350" y="306" text-anchor="middle" class="lbl-dim">− 재산세 중복분 − 공제 + 농특세</text>
+        <rect x="80" y="326" width="300" height="44" rx="8" class="f-surface"/>
+        <text x="230" y="346" text-anchor="middle" class="lbl-b">보유세 = 재산세 + 종부세</text>
+        <text x="230" y="362" text-anchor="middle" class="lbl-dim">과세기준일 6월 1일</text>
+      </svg>
+      <figcaption><b>그림 1. 보유세의 두 갈래(2026년 기준).</b> 출발점은 시세가 아니라 정부가 매년 정하는 공시가격이다. 재산세는 집 한 채마다 지자체가 매기고, 종부세는 한 사람이 가진 주택의 공시가격을 모두 더해 국가가 매긴다. 두 갈래 모두 공시가격에 공정시장가액비율을 곱해 과세표준을 만든 뒤 누진세율을 곱한다. 같은 집에 두 세금이 겹치는 부분(재산세 중복분)은 종부세에서 뺀다.</figcaption>
+    </figure>
+
+    <p>MoneyBook의 <a href="https://moneybook.euiyun.com/chapters/housing.html">집: 월세·전세·매매</a>는 보유세를 "1주택자의 중저가 주택이라면 대략 시가의 0.1~0.2% 수준"이라고 한 줄로 정리했다. 이 장은 그 한 줄이 어떻게 계산되고, 언제 그 한 줄을 크게 벗어나는지를 판다.</p>
+  </section>
+
+  <section id="public">
+    <h2>공시가격과 시세: 두 번 깎인 출발점</h2>
+    <p>세금은 시세에 바로 매기지 않는다. 정부(국토교통부)는 매년 1월 1일 기준으로 모든 주택의 값을 따로 정해 4월 말쯤 발표하는데, 이것이 <span class="term">공시가격</span><span class="en">(Official assessed value)</span>이다. 아파트 같은 공동주택의 공시가격은 부동산 공시가격알리미에서 누구나 볼 수 있다. 공시가격이 시세의 몇 %인지를 <span class="term">현실화율</span><span class="en">(Assessment ratio)</span>이라 한다. 2026년 공동주택 공시가격은 정부가 현실화율을 2025년과 같은 수준(공동주택 평균 약 69%)으로 두고 시세 변동분만 반영해 산정했다고 발표했다(보도로 확인, 1차 원문 확인 필요).</p>
+    <p>공시가격에서 한 번 더 깎는다. 공시가격에 <span class="term">공정시장가액비율</span><span class="en">(Fair market value ratio)</span>을 곱한 값이 세금을 매기는 기준 금액, 곧 <span class="term">과세표준</span><span class="en">(Tax base)</span>이다. 2026년 기준 재산세의 공정시장가액비율은 1세대 1주택이 공시가격 3억원 이하 43%, 6억원 이하 44%, 6억원 초과 45%이고, 그 밖의 주택은 60%다. 종부세는 60%다. 아래에서 시세를 끌고 현실화율을 바꿔 시세가 과세표준까지 얼마나 줄어드는지 본다.</p>
+
+    <div class="sim" id="sim-pub">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>시세에서 과세표준까지</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="pub-cv"></canvas><span class="hint">맨 위 막대 끝 손잡이를 끈다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>현실화율 <output id="pub-r-out"></output></span><input type="range" id="pub-r" min="50" max="90" step="1" value="69"></label>
+          <div class="seg" id="pub-h"><button data-value="1" class="on">1세대 1주택</button><button data-value="n">다주택</button></div>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">시세</span><span class="v" id="pub-o-m">—</span></div>
+        <div class="stat"><span class="k">공시가격</span><span class="v" id="pub-o-p">—</span></div>
+        <div class="stat"><span class="k">재산세 과세표준</span><span class="v" id="pub-o-b">—</span></div>
+        <div class="stat"><span class="k">과세표준 ÷ 시세</span><span class="v" id="pub-o-x">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 기본값(시세 6억 2,000만원, 1주택)에서 공시가격은 약 4억 2,800만원, 재산세 과세표준은 약 1억 8,800만원이다. 세금은 시세의 약 30%에 매겨진다. ② 다주택으로 바꾼다. 같은 집인데 공정시장가액비율이 60%로 올라 과세표준이 약 2억 5,700만원으로 커진다. ③ 현실화율을 90%까지 올린다. 시세가 그대로여도 과세표준이 30% 넘게 커진다. 정부가 현실화율을 올리겠다고 하면 시세와 상관없이 보유세가 오르는 이유다. (2026년 공정시장가액비율. 현실화율은 단지·가격대마다 다르며 69%는 공동주택 평균에 가까운 교육용 대표값이다.)</div>
+    </div>
+
+    <p>시세에서 과세표준까지 두 번 깎이므로, 세율표에 적힌 0.1%나 0.4%를 시세에 그대로 곱하면 세금을 크게 부풀려 계산하게 된다. 반대로 정책이 현실화율이나 공정시장가액비율을 바꾸면 시세가 한 푼도 움직이지 않아도 세금이 바뀐다. 보유세 뉴스를 읽을 때 '세율'과 함께 이 두 비율을 꼭 함께 봐야 하는 이유다.</p>
+
+    <div class="callout deep">
+      <strong>이 가격 변화는 어느 힘에서 왔는가</strong>
+      공시가격은 시세를 따라간다. 2026년 공동주택 공시가격(안)은 전국 평균 9.16%, 서울은 18.67% 올랐고 서울을 뺀 지역 평균은 3.37%였다고 발표되었다(열람안 기준, 최종 공시 수치는 확인 필요). 같은 해 같은 제도에서 보유세 증가 폭이 지역마다 크게 다른 것은 시세 변화가 지역마다 달랐기 때문이고, 그 시세 변화는 다시 <a href="location.html">입지</a>와 금리, 공급, 기대가 만든 것이다. 반대 방향의 힘도 있다. 보유세는 <b>대출 규제·세금</b>이라는 힘의 일부로, 집을 오래 가질수록 비용이 쌓이게 해서 수요를 누른다. <a href="value.html">3장</a>의 식으로 말하면 보유세는 집의 순임대수익을 깎아 이론 가격을 낮춘다. 다만 보유세가 집값에 얼마나 영향을 주는지는 금리나 대출 규제보다 약하다는 견해가 많고, 그 크기는 이 책이 확정할 수 없다.
+    </div>
+  </section>
+
+  <section id="property">
+    <h2>재산세: 과세표준에 매기는 계단</h2>
+    <p>재산세는 집 한 채마다 따로 계산한다. 과세표준에 누진세율을 곱하는데, 누진세율이란 과세표준 전체에 한 세율을 곱하는 것이 아니라 구간마다 그 구간에 해당하는 부분에만 그 구간의 세율을 곱해 더하는 방식이다. 2026년 기준 주택 재산세의 표준세율은 과세표준 6,000만원 이하 0.1%, 1억 5,000만원 이하 0.15%, 3억원 이하 0.25%, 그 초과 0.4%다. 공시가격 9억원 이하인 1세대 1주택에는 각 구간에서 0.05%p씩 낮은 <span class="term">1주택 특례세율</span>이 적용된다.</p>
+
+    <div class="formula">
+      $$\text{재산세} = \underbrace{\text{공시가격}\times\text{공정시장가액비율}}_{\text{과세표준}} \times \text{누진세율},\qquad \text{고지액} \approx \text{재산세}\times 1.2 + \text{과세표준}\times 0.14\%$$
+      <div class="where">재산세에 20%의 지방교육세가 붙고, 도시지역 안의 주택에는 과세표준의 0.14%인 <span class="term">도시지역분</span>이 더해진다. 실제 고지액에는 전년 세액의 일정 비율을 넘지 않게 하는 <span class="term">세부담 상한</span>(주택 공시가격 3억 이하 105%, 6억 이하 110%, 초과 130%로 알려짐)이 적용될 수 있는데, 이 책의 엔진은 이를 생략했다.</div>
+    </div>
+
+    <p>아래 그림의 가로축은 과세표준, 세로축은 그 구간의 세율이다. 칠해진 넓이가 곧 재산세(본세)다. 가로축의 손잡이를 끌어 과세표준을 바꾸고, 1주택 특례를 켜고 끈다. 공시가격 9억원 근처를 특히 천천히 지나 본다.</p>
+
+    <div class="sim" id="sim-prop">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>재산세 누진 계단</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="prop-cv"></canvas><span class="hint">가로축 손잡이를 끈다</span></div>
+        <div class="sim-controls">
+          <label class="check"><input type="checkbox" id="prop-one" checked> 1세대 1주택(공정시장가액비율 43~45%, 특례세율)</label>
+          <label class="check"><input type="checkbox" id="prop-city" checked> 도시지역분 포함</label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">공시가격 (과세표준)</span><span class="v" id="prop-o-v">—</span></div>
+        <div class="stat"><span class="k">재산세(본세)</span><span class="v" id="prop-o-t">—</span></div>
+        <div class="stat"><span class="k">고지 합계</span><span class="v" id="prop-o-s">—</span></div>
+        <div class="stat"><span class="k">시세 대비</span><span class="v" id="prop-o-e">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① C아파트(공시가격 약 4억 2,800만원, 1주택)는 과세표준 약 1억 8,800만원으로 세 번째 계단에 걸친다. 재산세 본세는 약 19만 6,000원인데 도시지역분이 약 26만 4,000원으로 본세보다 크고, 고지 합계는 약 50만원이다. ② 손잡이를 공시가격 9억원(과세표준 4억 500만원) 바로 위로 넘긴다. 특례세율이 사라지며 계단 전체가 0.05%p씩 올라가 고지액이 약 151만원에서 176만원으로 한 번에 뛴다. ③ 1주택을 끈다. 공정시장가액비율이 60%로 바뀌어 같은 공시가격의 과세표준이 커지고 표준세율이 붙는다. (2026년 기준 세율·비율, 교육용 계산. 세부담 상한은 넣지 않았다. 1주택 특례세율은 2026년분까지로 알려져 있고, 2029년까지 연장하는 지방세제 개편안이 추진 중이다(확정 전).)</div>
+    </div>
+
+    <p>재산세의 계단은 낮다. 가장 높은 구간도 0.4%이고, 1주택은 과세표준이 공시가격의 절반에도 못 미친다. 그래서 중저가 1주택의 재산세는 시세의 0.1% 안팎이다. 눈여겨볼 곳은 두 군데다. 하나는 도시지역분과 지방교육세로, 이름 없는 부가세처럼 보이지만 중저가 주택에서는 본세보다 클 수 있다. 다른 하나는 공시가격 9억원의 문턱이다. 1주택 특례는 '9억원 이하'에만 적용되므로 문턱을 넘으면 세금이 연속적으로 오르지 않고 한 번에 뛴다. 제도가 금액 기준으로 선을 그을 때마다 이런 문턱이 생긴다.</p>
+  </section>
+
+  <section id="comp">
+    <h2>종합부동산세: 비싼 집과 많은 집에</h2>
+    <p>종부세는 집이 아니라 사람에게 매긴다. 한 사람이 가진 모든 주택의 공시가격을 더한 뒤 공제액을 빼고, 공정시장가액비율 60%를 곱해 과세표준을 만든다. 2026년 기준 공제액은 9억원, 1세대 1주택자는 12억원이다. 그러니 1주택자는 공시가격 12억원(시세로 대략 17억원 안팎)을 넘어야 종부세를 낸다.</p>
+
+    <div class="formula">
+      $$\text{종부세} = \big[(\text{공시가격 합} - \text{공제}) \times 60\%\big] \times \text{세율} - \text{재산세 중복분} - \text{고령자·장기보유 공제}$$
+      <div class="where">세율은 과세표준 3억 이하 0.5%에서 94억 초과 2.7%까지 일곱 구간이고, 3주택 이상은 과세표준 12억 초과 구간부터 2.0~5.0%로 무겁다. 같은 공시가격 부분에 이미 낸 재산세는 빼 준다(재산세 중복분 공제). 1세대 1주택자는 나이(60세 20%, 65세 30%, 70세 40%)와 보유 기간(5년 20%, 10년 40%, 15년 50%)에 따라 세액을 깎아 주며 둘을 합쳐 최대 80%다. 마지막으로 종부세의 20%가 농어촌특별세로 붙는다.</div>
+    </div>
+
+    <p>계산 단계가 많아서 한눈에 보기 어렵다. 아래는 1세대 1주택자의 보유세를 이 책의 엔진(<code>RE.holdingTax</code>)이 돌려주는 단계대로 쌓은 계단이다. 맨 위 막대의 끝을 끌어 공시가격을 바꾸고, 나이와 보유 기간을 움직인다.</p>
+
+    <div class="sim" id="sim-steps">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>보유세가 만들어지는 계단(1세대 1주택)</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="steps-cv"></canvas><span class="hint">맨 위 막대 끝을 끌어 공시가격을 바꾼다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>나이 <output id="steps-a-out"></output></span><input type="range" id="steps-a" min="30" max="80" step="1" value="45"></label>
+          <label class="ctrl"><span>보유 기간 <output id="steps-y-out"></output></span><input type="range" id="steps-y" min="0" max="20" step="1" value="3"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">공시가격</span><span class="v" id="steps-o-v">—</span></div>
+        <div class="stat"><span class="k">재산세(부가세 포함)</span><span class="v" id="steps-o-p">—</span></div>
+        <div class="stat"><span class="k">종부세(농특세 포함)</span><span class="v" id="steps-o-c">—</span></div>
+        <div class="stat"><span class="k">보유세 합계</span><span class="v" id="steps-o-t">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 공시가격 20억원(시세로 약 29억원)으로 끈다. 종부세 과세표준은 (20억 − 12억) × 60% = 4억 8,000만원이고, 세율을 적용한 약 276만원에서 재산세 중복분 약 86만원을 빼고 농특세를 더해 종부세는 약 228만원이다. 보유세 합계는 약 710만원이다. ② 나이를 65세, 보유 기간을 10년으로 올린다. 공제율 70%가 적용되어 종부세가 약 68만원으로 줄어든다. 오래 산 고령 1주택자의 세금을 줄여 주려는 장치다. ③ 공시가격을 12억원 아래로 내린다. 종부세 줄이 모두 사라진다. (이 책의 엔진은 재산세 중복분 공제를 '종부세 과세표준 × 재산세 공정시장가액비율 × 0.4%'로 근사한다. 실제 산식은 더 복잡하므로 실제 세액은 홈택스 모의계산으로 확인한다.)</div>
+    </div>
+
+    <p>계단에서 보듯 1주택자의 종부세는 공시가격이 공제선(12억원)을 넘은 부분에만 붙고, 그 위에서도 재산세 중복분과 고령자·장기보유 공제가 크게 깎아 준다. 같은 공시가격 20억원 집이라도 갓 산 40대와 10년 넘게 산 65세의 종부세는 세 배 넘게 차이가 난다. 제도가 '오래 살아 온 1주택'과 '새로 산 비싼 집'을 다르게 본다는 뜻이다. 반대로 다주택자에게는 이 공제가 하나도 없다. 다음 절에서 그 차이를 본다.</p>
+  </section>
+
+  <section id="multi">
+    <h2>1주택과 다주택: 누진이 무너뜨리는 것</h2>
+    <p>같은 공시가격 합이라도 집이 몇 채냐에 따라 보유세가 크게 다르다. 1주택이 받는 혜택(낮은 공정시장가액비율, 특례세율, 12억원 공제, 고령자·장기보유 공제)이 다주택에는 없고, 3주택 이상은 종부세 세율 자체가 무겁기 때문이다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 460 330" role="img" aria-label="1세대 1주택, 2주택, 3주택 이상의 보유세 차이 비교표">
+        <rect x="8" y="8" width="444" height="38" rx="6" class="f-surface"/>
+        <text x="62" y="32" text-anchor="middle" class="lbl-dim">항목</text>
+        <text x="182" y="32" text-anchor="middle" class="lbl-acc">1세대 1주택</text>
+        <text x="296" y="32" text-anchor="middle" class="lbl-acc2">2주택</text>
+        <text x="398" y="32" text-anchor="middle" class="lbl-bad">3주택 이상</text>
+        <line x1="118" y1="52" x2="118" y2="300" class="s-dash"/>
+        <line x1="246" y1="52" x2="246" y2="300" class="s-dash"/>
+        <line x1="346" y1="52" x2="346" y2="300" class="s-dash"/>
+        <text x="62" y="78" text-anchor="middle" class="lbl-b">재산세 비율</text>
+        <text x="182" y="78" text-anchor="middle" class="lbl">43~45%</text>
+        <text x="296" y="78" text-anchor="middle" class="lbl">60%</text>
+        <text x="398" y="78" text-anchor="middle" class="lbl">60%</text>
+        <text x="62" y="122" text-anchor="middle" class="lbl-b">재산세 세율</text>
+        <text x="182" y="116" text-anchor="middle" class="lbl">특례 −0.05%p</text>
+        <text x="182" y="134" text-anchor="middle" class="lbl-dim">(공시 9억 이하)</text>
+        <text x="296" y="122" text-anchor="middle" class="lbl">표준세율</text>
+        <text x="398" y="122" text-anchor="middle" class="lbl">표준세율</text>
+        <text x="62" y="172" text-anchor="middle" class="lbl-b">종부세 공제</text>
+        <text x="182" y="172" text-anchor="middle" class="lbl">12억</text>
+        <text x="296" y="172" text-anchor="middle" class="lbl">9억</text>
+        <text x="398" y="172" text-anchor="middle" class="lbl">9억</text>
+        <text x="62" y="222" text-anchor="middle" class="lbl-b">종부세 세율</text>
+        <text x="182" y="222" text-anchor="middle" class="lbl">0.5~2.7%</text>
+        <text x="296" y="222" text-anchor="middle" class="lbl">0.5~2.7%</text>
+        <text x="398" y="216" text-anchor="middle" class="lbl-bad">0.5~5.0%</text>
+        <text x="398" y="234" text-anchor="middle" class="lbl-dim">(과표 12억 초과 중과)</text>
+        <text x="62" y="272" text-anchor="middle" class="lbl-b">세액공제</text>
+        <text x="182" y="266" text-anchor="middle" class="lbl">고령+장기보유</text>
+        <text x="182" y="284" text-anchor="middle" class="lbl-dim">최대 80%</text>
+        <text x="296" y="272" text-anchor="middle" class="lbl">없음</text>
+        <text x="398" y="272" text-anchor="middle" class="lbl">없음</text>
+        <text x="230" y="320" text-anchor="middle" class="lbl-dim">2026년 기준 현행. 세제개편안(추진 중)이 바꾸려는 줄이 있다</text>
+      </svg>
+      <figcaption><b>그림 2. 주택 수에 따른 보유세 규칙(2026년 기준).</b> 1세대 1주택은 다섯 줄 모두에서 혜택을 받는다. 2주택은 혜택이 사라지고, 3주택 이상은 종부세 세율까지 무거워진다. 일시적 2주택, 상속주택, 지방 저가주택 등은 주택 수 계산에서 빼 주는 특례가 있는데, 이 책의 엔진은 이를 생략했다. 주택 수 특례는 <a href="tradetax.html">14장</a>에서 양도세와 함께 다룬다.</figcaption>
+    </figure>
+
+    <p>아래 그래프의 가로축은 가진 주택의 공시가격 합, 세로축은 한 해 보유세다. 같은 합계를 한 채로 가질 때, 같은 값의 두 채로 나눠 가질 때, 세 채로 나눠 가질 때를 비교한다. 점을 끌어 공시가격 합을 고르고, 공시가격이 10% 오를 때 세금이 몇 % 오르는지 본다.</p>
+
+    <div class="sim" id="sim-curve">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>공시가격이 오르면 세금은 얼마나 빨리 오르나</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="curve-cv"></canvas><span class="hint">점을 좌우로 끈다</span></div>
+        <div class="sim-controls">
+          <div class="seg" id="curve-h"><button data-value="1">1주택</button><button data-value="2" class="on">2주택</button><button data-value="3">3주택</button></div>
+          <label class="ctrl"><span>공시가격 상승률 <output id="curve-g-out"></output></span><input type="range" id="curve-g" min="5" max="30" step="5" value="10"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">공시가격 합</span><span class="v" id="curve-o-v">—</span></div>
+        <div class="stat"><span class="k">1 / 2 / 3주택 보유세</span><span class="v" id="curve-o-t" style="font-size:15px">—</span></div>
+        <div class="stat"><span class="k" id="curve-o-ek">공시가 +10%일 때 세금</span><span class="v" id="curve-o-e">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 공시가격 합 13억원에 점을 둔다. 1주택 약 310만원, 2주택 약 407만원, 3주택 약 353만원이다. 집을 나눠 가지면 재산세는 집마다 따로 누진되어 오히려 줄지만, 종부세 공제가 9억원으로 줄어 2주택의 종부세가 생긴다. 3주택이 2주택보다 적은 것은 집 한 채의 값이 작아 재산세가 더 줄었기 때문이다. ② 2주택에서 공시가격 합을 20억원에 두고 상승률 10%를 본다. 세금은 10%보다 훨씬 많이 오른다. 공제선 위의 부분만 과세되고 그 부분에 누진세율이 붙기 때문이다. ③ 3주택을 고르고 점을 오른쪽 끝(40억원)까지 끈다. 공시가격 합이 29억원(과세표준 12억원)을 넘는 순간부터 중과세율이 붙어 선이 가팔라지고, 2주택 선을 넘어선다. 공시가격 합이 같아도 집이 많을수록 '오를 때 더 빨리 오르는' 구조다. (나이·보유 기간 공제는 넣지 않았다. 2·3주택은 같은 값의 집을 나눠 가졌다고 가정하고, 일시적 2주택 등 특례는 생략했다.)</div>
+    </div>
+
+    <p>보유세가 공시가격보다 빠르게 오르는 이유는 두 가지다. 첫째, 공제가 있다. 공제선 바로 위에 있는 사람은 공시가격이 조금만 올라도 과세되는 부분이 비율로는 크게 는다. 둘째, 누진세율이다. 과세표준이 커질수록 높은 구간의 세율이 붙는다. 그래서 집값이 크게 오르는 시기에는 보유세가 그보다 몇 배 빠르게 늘어난 고지서가 날아오고, 이것이 다주택자에게는 집을 팔거나 증여할 이유가 된다. 반대로 집값이 내리면 세금도 그보다 빠르게 준다. 누진 구조는 양쪽으로 작동한다.</p>
+
+    <div class="callout pro">
+      <strong>다주택 손님과 보유세 이야기를 할 때</strong>
+      민태호는 집을 한 채 더 사려는 손님에게 매수가와 대출보다 먼저 '1년 뒤 12월 고지서'를 계산해 보인다. 2주택이 되는 순간 지금 사는 집의 재산세 공정시장가액비율이 60%로 올라가고, 종부세 공제가 12억원에서 9억원으로 줄며, 고령자·장기보유 공제가 사라진다는 것을 손님들이 잘 모르기 때문이다. 새로 사는 집의 세금만이 아니라 이미 가진 집의 세금도 바뀐다. 반대로 집을 팔려는 다주택 손님에게는 6월 1일 전에 잔금을 끝내야 그해 보유세 계산에서 빠진다는 것을 알려 준다. 그는 이것이 중개사로서 거래를 서두르게 만들 수 있는 정보라는 것도 숨기지 않는다. 세금 때문에 서두른 거래가 집값이나 조건에서 더 큰 손해를 볼 수 있기 때문이다. 정확한 세액은 세무사에게 확인하라고 덧붙인다.
+    </div>
+  </section>
+
+  <section id="joint">
+    <h2>부부 공동명의: 공제를 두 번 받는 법</h2>
+    <p>재산세는 집에 매기므로 누구 명의든 세액이 같다(지분대로 나눠 고지될 뿐이다). 종부세는 사람에게 매기므로 명의가 결과를 바꾼다. 부부가 한 집을 절반씩 공동명의로 가지면 두 사람이 각자 자기 지분의 공시가격에 대해 종부세 납세자가 되고, 각자 9억원씩 공제를 받는다. 둘을 합치면 18억원으로, 단독명의 1주택 공제 12억원보다 크다. 대신 각자는 '1세대 1주택자'가 아니어서 고령자·장기보유 세액공제를 받지 못한다.</p>
+    <p>그래서 부부 공동명의 1주택에는 선택지가 있다. 그대로 각자 9억원씩 공제를 받거나, 신청해서 한 사람을 납세자로 하는 1세대 1주택자 방식(12억원 공제 + 고령자·장기보유 공제)으로 계산받는 것이다(공동명의 1주택자 특례, 매년 9월 신청). 어느 쪽이 유리한지는 공시가격, 나이, 보유 기간에 달려 있다. 아래에서 비교한다.</p>
+
+    <div class="sim" id="sim-joint">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>단독명의 vs 부부 공동명의(1주택 종부세)</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="joint-cv"></canvas><span class="hint">세로선 위 손잡이를 끈다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>나이(납세자) <output id="joint-a-out"></output></span><input type="range" id="joint-a" min="30" max="80" step="1" value="45"></label>
+          <label class="ctrl"><span>보유 기간 <output id="joint-y-out"></output></span><input type="range" id="joint-y" min="0" max="20" step="1" value="3"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">공시가격</span><span class="v" id="joint-o-v">—</span></div>
+        <div class="stat"><span class="k">단독명의(1주택 방식)</span><span class="v" id="joint-o-s">—</span></div>
+        <div class="stat"><span class="k">공동명의(각자 9억 공제)</span><span class="v" id="joint-o-j">—</span></div>
+        <div class="stat"><span class="k">더 적은 쪽</span><span class="v" id="joint-o-w">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 45세, 보유 3년, 공시가격 15억원에서 단독명의는 종부세가 약 69만원인데 공동명의는 각자 7억 5,000만원이라 공제선(9억원) 아래여서 0원이다. 공시가격 18억원까지는 공동명의의 종부세가 0이다. ② 나이를 70세, 보유 기간을 15년으로 올린다. 단독명의(또는 공동명의 특례 신청)의 공제율이 80%로 커져서 공시가격이 높은 구간에서는 단독 방식이 더 적어진다. ③ 공시가격을 40억원까지 끈다. 두 선의 간격이 어떻게 바뀌는지 본다. (종부세에 농특세 포함. 재산세는 명의와 상관없이 같아 넣지 않았다. 공동명의 지분은 절반씩으로 가정. 명의를 바꾸는 증여에는 증여세·취득세가 따로 든다.)</div>
+    </div>
+
+    <p>공동명의는 공제를 두 번 받는 방법이라 중간 가격대에서 종부세를 크게 줄인다. 하지만 오래 보유한 고령자에게는 단독 방식의 세액공제가 더 클 수 있고, 그래서 제도가 공동명의자에게도 1주택 방식을 고를 수 있게 한다. 명의는 보유세만이 아니라 양도세, 상속, 대출 심사에도 영향을 주고, 이미 단독명의인 집을 공동명의로 바꾸면 증여가 되어 세금과 비용이 따로 든다. 처음 살 때 명의를 정하는 일이 중요한 이유다. 명의와 양도세의 관계는 <a href="tradetax.html">14장</a>에서 이어진다.</p>
+  </section>
+
+  <section id="calendar">
+    <h2>언제 내는가: 6월 1일, 7월, 9월, 12월</h2>
+    <p>보유세는 한 해에 세 번 나눠 온다. 6월 1일 기준으로 주인이 정해지면, 주택분 재산세는 7월과 9월에 절반씩 고지되고(본세가 20만원 이하이면 7월에 한 번에), 종부세는 12월에 고지된다. 종부세는 금액이 크면 일부를 나눠 낼 수 있다(분납, 기준 금액은 고지서와 홈택스에서 확인).</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 460 210" role="img" aria-label="보유세 달력: 6월 1일 과세기준일, 7월과 9월 재산세, 12월 종부세">
+        <line x1="20" y1="100" x2="440" y2="100" class="s-axis"/>
+        <g>
+          <text x="30" y="128" text-anchor="middle" class="lbl-dim">1월</text>
+          <text x="100" y="128" text-anchor="middle" class="lbl-dim">3월</text>
+          <text x="170" y="128" text-anchor="middle" class="lbl-dim">5월</text>
+          <text x="240" y="128" text-anchor="middle" class="lbl-dim">7월</text>
+          <text x="310" y="128" text-anchor="middle" class="lbl-dim">9월</text>
+          <text x="380" y="128" text-anchor="middle" class="lbl-dim">11월</text>
+        </g>
+        <circle cx="152" cy="100" r="6" class="f-acc"/>
+        <text x="152" y="80" text-anchor="middle" class="lbl-acc">4월 말</text>
+        <text x="152" y="62" text-anchor="middle" class="lbl-dim">공시가격 발표</text>
+        <rect x="196" y="88" width="14" height="24" rx="3" class="f-bad"/>
+        <text x="203" y="160" text-anchor="middle" class="lbl-bad">6월 1일</text>
+        <text x="203" y="178" text-anchor="middle" class="lbl-dim">이날의 주인이 낸다</text>
+        <rect x="232" y="80" width="18" height="20" rx="3" class="f-acc2"/>
+        <text x="241" y="66" text-anchor="middle" class="lbl-acc2">재산세 1/2</text>
+        <rect x="302" y="80" width="18" height="20" rx="3" class="f-acc2"/>
+        <line x1="311" y1="46" x2="311" y2="78" class="s-dash"/>
+        <text x="311" y="40" text-anchor="middle" class="lbl-acc2">재산세 1/2</text>
+        <rect x="414" y="70" width="18" height="30" rx="3" class="f-bad"/>
+        <text x="440" y="160" text-anchor="end" class="lbl-bad">12월 종부세</text>
+        <text x="440" y="178" text-anchor="end" class="lbl-dim">(농특세 함께)</text>
+        <text x="230" y="202" text-anchor="middle" class="lbl-dim">재산세 본세 20만원 이하면 7월에 한 번에 고지</text>
+      </svg>
+      <figcaption><b>그림 3. 보유세 달력.</b> 재산세는 지자체(위택스·이택스)가, 종부세는 국세청(홈택스)이 고지한다. 고지서의 정확한 납부 기간은 해마다 확인한다. 6월 1일 전후로 사고파는 사람에게는 잔금일 하루가 한 해 보유세 전체를 가른다.</figcaption>
+    </figure>
+
+    <div class="callout buyer">
+      <strong>잔금일을 정하기 전에 확인할 것</strong>
+      <ul>
+        <li><b>잔금일과 6월 1일</b>: 사는 사람은 6월 1일 이후 잔금이면 그해 보유세를 내지 않고, 파는 사람은 6월 1일 전에 잔금을 받아야 그해 보유세를 내지 않는다. 계약서에 잔금일이 6월 1일 언저리라면 누가 그해 보유세를 부담할지 특약으로 정해 둔다.</li>
+        <li><b>공시가격 확인</b>: 부동산 공시가격알리미에서 그 집의 올해 공시가격을 직접 조회한다. 내가 사려는 집이 공시가격 9억원(재산세 특례)이나 12억원(1주택 종부세) 근처인지 본다.</li>
+        <li><b>주택 수</b>: 이 집을 사면 세대 전체의 주택 수가 몇 채가 되는가. 부모와 같은 세대인지, 분양권·입주권이나 오피스텔이 주택 수에 들어가는지는 세목마다 기준이 달라 따로 확인한다.</li>
+        <li><b>명의</b>: 단독명의로 할지 부부 공동명의로 할지, 등기 전에 정한다. 나중에 바꾸면 증여가 된다.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="reform">
+    <h2>제도와 수치: 2026년 기준, 그리고 개편안</h2>
+    <p>이 장의 계산에 쓴 2026년 기준 제도 값을 모았다. 이 책의 엔진(<code>RE.KR.property</code>, <code>RE.KR.comp</code>)에 들어 있는 값이다.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>항목</th><th>2026년 기준</th><th>확인 상태</th></tr></thead>
+        <tbody>
+          <tr><td>공동주택 현실화율</td><td>약 69%(2026년 공시가격에 전년 수준 적용)</td><td>대체로 확인(보도). 1차 원문 확인 필요</td></tr>
+          <tr><td>재산세 공정시장가액비율</td><td>1세대 1주택 3억 이하 43%, 6억 이하 44%, 6억 초과 45% / 그 밖 60%</td><td>확인</td></tr>
+          <tr><td>재산세 세율</td><td>과표 6천만 이하 0.1%, 1.5억 이하 0.15%, 3억 이하 0.25%, 초과 0.4%. 1주택(공시 9억 이하) 각 0.05%p 인하</td><td>세율 확인. 특례 기한(2026년분)과 2029년 연장안(추진 중)은 확인 필요</td></tr>
+          <tr><td>도시지역분·지방교육세</td><td>과표 × 0.14% / 재산세 × 20%</td><td>대체로 확인</td></tr>
+          <tr><td>재산세 세부담 상한</td><td>공시 3억 이하 105%, 6억 이하 110%, 초과 130%(엔진 생략)</td><td>확인 필요</td></tr>
+          <tr><td>종부세 공제·비율</td><td>9억(1세대 1주택 12억), 공정시장가액비율 60%</td><td>확인</td></tr>
+          <tr><td>종부세 세율</td><td>0.5~2.7%, 3주택 이상 과표 12억 초과 2.0~5.0%</td><td>확인</td></tr>
+          <tr><td>1주택 세액공제</td><td>고령 60·65·70세 20·30·40%, 보유 5·10·15년 20·40·50%, 합산 최대 80%</td><td>확인</td></tr>
+          <tr><td>납부 시기</td><td>과세기준일 6월 1일, 재산세 7월·9월(본세 20만원 이하 7월 일괄), 종부세 12월</td><td>대체로 확인</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>2026년 9월 1일 정부가 낸 <b>2026 세제개편안</b>에는 종부세를 바꾸는 내용이 들어 있다. 종부세 공정시장가액비율을 60%에서 70~80%로 올리고, 실거주 1주택자의 공제를 14억원으로 높이며, 세율 체계를 고치는 방향이다. 이 안은 2026년 10월 현재 국회에서 심사 중으로 <b>추진 중이며 확정되지 않았다</b>. 국회 논의에서 숫자와 적용 시기가 바뀔 수 있으므로 이 책의 계산은 현행 제도로만 했다. 방향만 말하면, 공정시장가액비율이 오르면 종부세를 내는 사람의 과세표준이 커지고, 실거주 1주택 공제가 오르면 그 공제선 아래에 있는 1주택자는 종부세에서 빠진다. 누가 얼마나 영향을 받는지는 확정안이 나온 뒤 계산해야 한다.</p>
+
+    <div class="callout warn">
+      <strong>제도와 수치는 해마다 바뀐다</strong>
+      보유세는 공시가격(현실화율), 공정시장가액비율, 세율, 공제, 특례 기한이 거의 해마다 조정되는 세금이다. 2026년에도 종부세 개편을 담은 세제개편안과 재산세 1주택 특례를 연장하는 지방세제 개편안이 국회에 올라가 있다(둘 다 확정 전). 이 장의 계산은 교육용 단순화다. 재산세 세부담 상한, 종부세의 재산세 중복분 공제 산식(근사), 일시적 2주택·상속주택·지방 저가주택 특례, 임대주택 합산 배제 등을 생략하거나 근사했다. 실제 세액은 위택스·홈택스의 고지서와 모의계산, 또는 세무 전문가에게 확인한다.
+    </div>
+  </section>
+
+  <section id="case">
+    <h2>하늘네 집 노트</h2>
+    <p>하늘네가 C아파트(시세 6억 2,000만원)를 1주택으로 산다면, 그리고 집주인 남궁현이 지금처럼 서울 A구 자기 집과 C아파트를 함께 가진다면 해마다 보유세는 얼마이고 10년 동안 어떻게 바뀌는지 본다. 남궁현의 A구 집 공시가격은 공개된 정보가 아니므로, A구 84㎡ 시세 약 12억 5,000만원에 현실화율 69%를 곱한 약 8억 6,250만원으로 <b>가정</b>했다.</p>
+
+    <div class="sim" id="sim-case">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>하늘네와 남궁현의 10년 보유세</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="case-cv"></canvas><span class="hint">세로선 위 손잡이로 해를 고른다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>공시가격 연 변화 <output id="case-g-out"></output></span><input type="range" id="case-g" min="-5" max="10" step="1" value="0"></label>
+          <label class="ctrl"><span>남궁현 A구 집 시세(가정) <output id="case-a-out"></output></span><input type="range" id="case-a" min="8" max="25" step="0.5" value="12.5"></label>
+          <label class="ctrl"><span>현실화율 <output id="case-r-out"></output></span><input type="range" id="case-r" min="60" max="85" step="1" value="69"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k" id="case-o-yk">2026년</span><span class="v" id="case-o-y" style="font-size:15px">—</span></div>
+        <div class="stat"><span class="k">하늘네(1주택)</span><span class="v" id="case-o-h">—</span></div>
+        <div class="stat"><span class="k">남궁현(2주택)</span><span class="v" id="case-o-n">—</span></div>
+        <div class="stat"><span class="k">C아파트 때문에 늘어난 몫</span><span class="v" id="case-o-d">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 기본값(2026년)에서 하늘네의 보유세는 약 50만원이다. 남궁현은 약 410만원으로, A구 집만 가졌을 때(약 142만원)보다 약 268만원 많다. C아파트 한 채의 세금(2주택이라 약 91만원)보다 늘어난 몫이 훨씬 크다. ② 공시가격 연 변화를 +7%로 두고 2036년을 고른다. 공시가격은 10년에 약 2배가 되는데 하늘네 세금은 약 2.7배(136만원), 남궁현은 약 3.4배(1,401만원)로 는다. 공제선 위에서 누진세율이 붙기 때문이다. ③ A구 집 시세를 25억원으로 올린다. 남궁현이 C아파트를 팔아 1주택이 되면 12억원 공제와 장기보유 공제가 붙어 세금이 크게 준다. 보유세가 다주택자에게 '팔 이유'가 되는 순간이다. (이 책의 모델로 계산. 세부담 상한 생략, 남궁현은 58세이고 A구 집을 2005년부터 가졌다고 가정, 세율·공제는 10년 동안 2026년 현행 그대로라고 가정했다.)</div>
+    </div>
+
+    <div class="casefile">
+      <div class="tag"><b>CASE 하늘네</b><span>집 노트 · 13장</span></div>
+      <h4>6억 2,000만원 1주택의 보유세는 한 해 약 50만원, 같은 집이 남궁현에게는 약 268만원</h4>
+      <p>C아파트의 공시가격은 시세 6억 2,000만원에 현실화율 약 69%를 적용한 약 4억 2,800만원이다. 하늘네가 이 집 하나만 가진 1세대 1주택자라면, 이 책의 모델로 계산한 2026년 기준 보유세(<code>RE.holdingTax</code>)는 이렇다. 재산세 과세표준은 공시가격 × 44% = 약 1억 8,800만원, 1주택 특례세율을 적용한 재산세 본세 약 19만 6,000원, 도시지역분 약 26만 4,000원, 지방교육세 약 3만 9,000원으로 합계 약 49만 9,000원이다. 공시가격이 12억원 공제선에 한참 못 미쳐 종부세는 0원이다. 시세 대비 약 0.08%로, 1장에서 '집 한 채의 한 해 손익'에 넣었던 보유세가 바로 이 숫자다. 본세가 20만원 이하라서 7월에 한 번에 고지된다. 공시가격이 10% 오르면 세금은 약 14% 오른다. 부부 공동명의로 해도 종부세가 없는 가격대라 보유세는 달라지지 않는다.</p>
+      <p>민태호는 같은 집을 집주인 남궁현의 자리에서도 계산해 보였다. 남궁현은 A구 자기 집(공시가격 약 8억 6,250만원으로 가정)과 C아파트를 가진 2주택자다. 1주택 혜택이 모두 사라져 두 집 모두 공정시장가액비율 60%와 표준세율이 붙고, 공시가격 합 약 12억 9,000만원에서 9억원을 뺀 부분에 종부세가 붙는다. 재산세는 A구 집 약 245만원, C아파트 약 91만원, 종부세(농특세 포함)는 약 73만원으로 한 해 약 410만원이다. A구 집 하나만 가진다면 약 142만원이니, C아파트를 가진 대가로 해마다 약 268만원을 더 낸다. 태호는 "집주인 입장에서는 이 268만원이 C아파트에서 나오는 수익에서 먼저 빠지는 비용"이라고 설명했다. 전세 4억원을 받아도 그 돈에는 이자가 붙지 않으니, 남궁현이 C아파트를 계속 갖는 이유는 앞으로의 집값에 대한 그의 판단에 달려 있다(<a href="jeonse.html">5장</a>).</p>
+      <div class="clue"><div><b>이 장에서 정한 것</b>하늘네가 C아파트를 1주택으로 사면 보유세는 한 해 약 50만원, 종부세 0원. 같은 집이 2주택자 남궁현에게는 해마다 약 268만원의 추가 보유세를 만든다.</div><div><b>아직 남은 문제</b>살 때의 취득세와 나중에 팔 때의 양도세는? 아버지의 D시 아파트를 물려받으면 하늘네의 주택 수와 세금은 어떻게 바뀌나?</div><div><b>다음 단계</b>14장: 사고팔 때의 세금 전체와 1세대 1주택 비과세 요건, 상속·증여가 주택 수에 미치는 영향을 계산한다.</div></div>
+    </div>
+  </section>
+
+  <section class="keypoints" id="summary">
+    <h2>핵심 정리</h2>
+    <ol>
+      <li>보유세는 모든 주택에 매기는 재산세(지방세)와 공시가격 합이 공제액을 넘는 사람에게 매기는 종합부동산세(국세)다. 매년 6월 1일의 주인이 낸다.</li>
+      <li>세금의 출발점은 시세가 아니라 공시가격(공동주택 현실화율 약 69%)이고, 여기에 공정시장가액비율(재산세 1주택 43~45%·그 밖 60%, 종부세 60%)을 곱한 과세표준에 세율을 매긴다.</li>
+      <li>재산세는 과세표준에 0.1~0.4%의 누진세율(1주택 공시 9억 이하는 0.05%p 낮은 특례세율)을 매기고 도시지역분과 지방교육세가 붙는다. 중저가 1주택은 시세의 0.1% 안팎이다.</li>
+      <li>종부세는 (공시가격 합 − 9억, 1세대 1주택 12억) × 60%에 0.5~2.7%(3주택 이상 중과 최고 5.0%)를 매기고, 재산세 중복분과 1주택 고령자·장기보유 공제(최대 80%)를 빼고 농특세 20%를 더한다.</li>
+      <li>공제와 누진세율 때문에 공시가격이 오르면 보유세는 그보다 빠르게 오른다. 다주택일수록, 공제선 바로 위일수록 그 속도가 빠르다.</li>
+      <li>부부 공동명의 1주택은 종부세 공제를 각자 9억원씩 받고, 필요하면 1주택 방식(12억 + 세액공제)을 신청해 고를 수 있다. 재산세는 명의와 무관하다.</li>
+      <li>2026 세제개편안(종부세 공정시장가액비율 70~80%, 실거주 1주택 공제 14억 등)은 추진 중이며 확정 전이다.</li>
+    </ol>
+  </section>
+
+  <section class="quiz-sec" id="quiz">
+    <h2>확인 퀴즈</h2>
+    <div class="quiz">
+      <div class="quiz-q">
+        <p>시세 10억원, 현실화율 69%인 아파트를 1세대 1주택으로 가질 때 재산세 과세표준은 약 얼마인가? (2026년 공정시장가액비율 적용)</p>
+        <div class="opts">
+          <button class="opt">10억원 × 45% = 4억 5,000만원</button>
+          <button class="opt" data-correct>6억 9,000만원 × 45% = 약 3억 1,050만원</button>
+          <button class="opt">6억 9,000만원 × 60% = 약 4억 1,400만원</button>
+          <button class="opt">6억 9,000만원</button>
+        </div>
+        <div class="quiz-exp">세금은 시세가 아니라 공시가격(10억 × 69% = 6억 9,000만원)에서 출발한다. 1세대 1주택이고 공시가격이 6억원을 넘으므로 공정시장가액비율 45%를 곱해 과세표준은 약 3억 1,050만원이다. 60%는 다주택 등 그 밖의 주택에 쓰는 비율이다.</div>
+      </div>
+      <div class="quiz-q">
+        <p>공시가격 합이 같은 13억원일 때, 1세대 1주택자와 2주택자의 종부세에 대한 설명으로 옳은 것은? (나이·보유 기간 공제는 없다고 본다)</p>
+        <div class="opts">
+          <button class="opt">둘 다 공제 9억원을 받아 종부세가 같다</button>
+          <button class="opt">주택 수와 상관없이 13억원이면 종부세가 없다</button>
+          <button class="opt" data-correct>1주택자는 공제 12억원이라 과세표준이 6,000만원, 2주택자는 공제 9억원이라 과세표준이 2억 4,000만원이다</button>
+          <button class="opt">2주택자는 중과세율 5.0%가 바로 적용된다</button>
+        </div>
+        <div class="quiz-exp">과세표준 = (공시가격 합 − 공제) × 60%다. 1주택자는 (13 − 12) × 60% = 6,000만원, 2주택자는 (13 − 9) × 60% = 2억 4,000만원이다. 중과세율은 3주택 이상에서 과세표준 12억원을 넘는 구간부터 적용된다.</div>
+      </div>
+      <div class="quiz-q">
+        <p>공시가격이 10% 오를 때 보유세가 10%보다 더 많이 오르는 가장 큰 이유는?</p>
+        <div class="opts">
+          <button class="opt" data-correct>공제선 위의 부분에만 과세하고, 그 부분에 누진세율이 붙기 때문이다</button>
+          <button class="opt">공시가격이 오르면 세율표가 자동으로 바뀌기 때문이다</button>
+          <button class="opt">지방교육세가 공시가격에 비례해 붙기 때문이다</button>
+          <button class="opt">그런 일은 없고 보유세는 공시가격과 정확히 같은 비율로 오른다</button>
+        </div>
+        <div class="quiz-exp">공제(종부세 9억·12억)가 있으면 공시가격이 조금 올라도 과세되는 부분은 비율로 크게 늘고, 누진세율은 늘어난 부분에 더 높은 세율을 매긴다. 그래서 보유세는 공시가격보다 빠르게 오르고, 내릴 때도 더 빠르게 내린다.</div>
+      </div>
+      <div class="quiz-q">
+        <p>2026년 10월 기준 '종부세 공정시장가액비율 70~80%, 실거주 1주택 공제 14억원'에 대한 설명으로 가장 알맞은 것은?</p>
+        <div class="opts">
+          <button class="opt">2026년분 종부세부터 이미 적용되고 있다</button>
+          <button class="opt">재산세에 적용되는 내용이다</button>
+          <button class="opt">2025년에 폐지된 옛 제도다</button>
+          <button class="opt" data-correct>2026 세제개편안에 담긴 내용으로 국회 심사 중이며 확정되지 않았다</button>
+        </div>
+        <div class="quiz-exp">2026-09-01 정부가 발표한 세제개편안의 종부세 개편 방향이다. 국회 심사를 거치며 숫자와 시기가 바뀔 수 있어 이 책은 '추진 중, 확정 전'으로만 다루고, 계산은 현행 제도(공정시장가액비율 60%, 1주택 공제 12억원)로 한다.</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  const TAU = Math.PI * 2;
+  function T(ctx, s, x, y, o) {
+    o = o || {};
+    ctx.font = EB.font(o.size || 12, o.mono, o.weight);
+    ctx.fillStyle = o.color; ctx.textAlign = o.align || "left"; ctx.textBaseline = o.base || "alphabetic";
+    ctx.fillText(s, x, y);
+  }
+  function knob(ctx, x, y, P) { ctx.beginPath(); ctx.arc(x, y, 8, 0, TAU); ctx.fillStyle = P.text; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = P.bg; ctx.stroke(); }
+  const pw = (id) => document.getElementById(id).parentElement.clientWidth;
+  const PR = RE.KR.property, CP = RE.KR.comp, C = RE.CASE;
+  const fmvOne = (v) => PR.fmvOne.find((b) => v <= b.upTo).ratio;
+  const minus = (x) => '<span class="minus">' + EB.won(x) + "</span>";
+  // 집 한 채의 재산세(종부세 제외)
+  const propOnly = (v, one) => RE.holdingTax({ value: v, total: 0, one }).property;
+  // 같은 값으로 나눠 가진 n채의 보유세(1채면 1세대 1주택)
+  function byHomes(total, n, age, years) {
+    if (n === 1) return RE.holdingTax({ value: total, one: true, age: age || 0, years: years || 0 });
+    const v = total / n, p = propOnly(v, false).total;
+    const comp = RE.holdingTax({ value: v, total, homes: n }).comp;
+    return { property: { total: p * n }, comp, total: p * n + comp.total };
+  }
+  // 부부 공동명의(절반씩) 1주택의 종부세(농특세 포함): 각자 9억 공제, 일반세율, 세액공제 없음. 중복분은 엔진과 같은 근사
+  function jointComp(v) {
+    const share = v / 2, base = Math.max(0, share - CP.deduct) * CP.fmv;
+    const gross = RE.progressive(CP.rates, base);
+    const overlap = Math.min(gross, base * fmvOne(v) * PR.rates[PR.rates.length - 1].rate);
+    return 2 * (gross - overlap) * (1 + CP.rural);
+  }
+
+  /* ---------------------------------------------------------- 1. 시세에서 과세표준까지 */
+  (function () {
+    const rG = EB.range("pub-r", (v) => v + "%", draw);
+    const hG = EB.seg("pub-h", draw);
+    let market = C.home.price, L = null;
+    const MAX = 30e8;
+    function calc() {
+      const pub = market * rG() / 100, one = hG() === "1";
+      const fmv = one ? fmvOne(pub) : PR.fmv;
+      const base = pub * fmv;
+      const ded = one ? CP.deductOne : CP.deduct;
+      const cBase = Math.max(0, pub - ded) * CP.fmv;
+      return { pub, fmv, base, cBase, ded, one };
+    }
+    const cv = EB.canvas("#pub-cv", (ctx, w, h) => {
+      const P = EB.palette(), c = calc();
+      const narrow = w < 480, x0 = narrow ? 92 : 118, bw = w - x0 - 20;
+      const sc = bw / MAX;
+      const rows = [
+        { k: "시세", v: market, col: P.dim, a: 0.45, note: "" },
+        { k: "공시가격", v: c.pub, col: P.accent, a: 0.8, note: "× " + rG() + "%" },
+        { k: "재산세 과세표준", v: c.base, col: P.accent2, a: 0.85, note: "× " + Math.round(c.fmv * 100) + "%" },
+        { k: "종부세 과세표준", v: c.cBase, col: P.bad, a: 0.85, note: "(−" + c.ded / 1e8 + "억)×60%" },
+      ];
+      const rowH = (h - 30) / rows.length;
+      rows.forEach((r, i) => {
+        const y = 12 + i * rowH, bh = Math.min(30, rowH * 0.55);
+        T(ctx, narrow && r.k.length > 5 ? r.k.replace(" 과세표준", "") + " 과표" : r.k, x0 - 8, y + bh / 2, { size: narrow ? 11 : 12, color: P.text, align: "right", base: "middle", weight: i === 0 ? 700 : 400 });
+        ctx.fillStyle = P.grid; ctx.fillRect(x0, y, bw, bh);
+        ctx.fillStyle = r.col; ctx.globalAlpha = r.a; ctx.fillRect(x0, y, Math.max(r.v > 0 ? 1.5 : 0, r.v * sc), bh); ctx.globalAlpha = 1;
+        const lbl = r.v > 0 ? EB.wonAxis(r.v) : (i === 3 ? "0 (공제선 아래)" : "0");
+        const tx = x0 + r.v * sc + (i === 0 ? 14 : 6), inside = tx + 70 > x0 + bw;
+        T(ctx, lbl, inside ? x0 + r.v * sc - 6 : tx, y + bh / 2, { size: 12, mono: !(i === 3 && r.v <= 0), color: inside ? "#fff" : P.text, align: inside ? "right" : "left", base: "middle", weight: 700 });
+        if (r.note) T(ctx, r.note, x0, y + bh + 13, { size: 10, color: P.faint });
+      });
+      // 시세 손잡이
+      const hx = x0 + market * sc, hy = 12 + Math.min(30, rowH * 0.55) / 2;
+      knob(ctx, hx, hy, P);
+      L = { x0, sc };
+    }, { get height() { return pw("pub-cv") < 480 ? 250 : 260; } });
+    EB.drag(cv.canvas, { move(x) { if (!L) return; market = EB.clamp(Math.round((x - L.x0) / L.sc / 1e7) * 1e7, 1e8, 30e8); draw(); } });
+    function draw() {
+      const c = calc();
+      EB.stat("pub-o-m", EB.won(market));
+      EB.stat("pub-o-p", EB.won(c.pub));
+      EB.stat("pub-o-b", EB.won(c.base));
+      EB.stat("pub-o-x", EB.pct(c.base / market, 1));
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 2. 재산세 누진 계단 */
+  (function () {
+    const oneEl = document.getElementById("prop-one"), cityEl = document.getElementById("prop-city");
+    oneEl.addEventListener("change", draw); cityEl.addEventListener("change", draw);
+    let pub = 4.278e8, L = null;
+    const BMAX = 6e8;
+    const baseOf = (v) => v * (oneEl.checked ? fmvOne(v) : PR.fmv);
+    function pubOf(base) {
+      if (!oneEl.checked) return base / PR.fmv;
+      for (const b of PR.fmvOne) { const v = base / b.ratio; if (v <= b.upTo) return v; }
+      return base / PR.fmvOne[PR.fmvOne.length - 1].ratio;
+    }
+    const cv = EB.canvas("#prop-cv", (ctx, w, h) => {
+      const P = EB.palette(), base = baseOf(pub), p = propOnly(pub, oneEl.checked);
+      const special = p.special;
+      const box = { x: 52, y: 26, w: w - 68, h: h - 100 };
+      const RMAX = 0.0045;
+      const X = (b) => box.x + b / BMAX * box.w, Y = (r) => box.y + box.h - r / RMAX * box.h;
+      // 축
+      ctx.strokeStyle = P.axis; ctx.beginPath(); ctx.moveTo(box.x, box.y); ctx.lineTo(box.x, box.y + box.h); ctx.lineTo(box.x + box.w, box.y + box.h); ctx.stroke();
+      [0.001, 0.002, 0.003, 0.004].forEach((r) => { ctx.strokeStyle = P.grid; ctx.beginPath(); ctx.moveTo(box.x, Y(r)); ctx.lineTo(box.x + box.w, Y(r)); ctx.stroke(); T(ctx, (r * 100).toFixed(1) + "%", box.x - 6, Y(r), { size: 10, mono: true, color: P.dim, align: "right", base: "middle" }); });
+      [0, 1.5e8, 3e8, 4.5e8, 6e8].forEach((b) => T(ctx, EB.wonAxis(b), X(b), box.y + box.h + 14, { size: 10, mono: true, color: P.dim, align: "center" }));
+      T(ctx, "과세표준 →", box.x + box.w, box.y + box.h + 28, { size: 10, color: P.faint, align: "right" });
+      T(ctx, "구간 세율", box.x, 14, { size: 11, color: P.dim });
+      // 표준세율 계단(점선)과 적용 계단(면)
+      const tbl = special ? PR.special : PR.rates;
+      let lo = 0;
+      PR.rates.forEach((b) => {
+        const hi = Math.min(b.upTo, BMAX);
+        ctx.save(); ctx.setLineDash([4, 3]); ctx.strokeStyle = P.faint; ctx.beginPath(); ctx.moveTo(X(lo), Y(b.rate)); ctx.lineTo(X(hi), Y(b.rate)); ctx.stroke(); ctx.restore();
+        lo = hi;
+      });
+      lo = 0;
+      tbl.forEach((b, i) => {
+        const hi = Math.min(b.upTo, BMAX);
+        const fillTo = Math.min(hi, base);
+        if (fillTo > lo) { ctx.fillStyle = P.accent2; ctx.globalAlpha = 0.35 + i * 0.15; ctx.fillRect(X(lo), Y(b.rate), X(fillTo) - X(lo), Y(0) - Y(b.rate)); ctx.globalAlpha = 1; }
+        ctx.strokeStyle = P.accent2; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(X(lo), Y(b.rate)); ctx.lineTo(X(hi), Y(b.rate)); ctx.stroke(); ctx.lineWidth = 1;
+        lo = hi;
+      });
+      // 9억 문턱(1주택일 때 과세표준 4.05억)
+      if (oneEl.checked) {
+        const bx = X(PR.specialCap * fmvOne(PR.specialCap));
+        ctx.save(); ctx.setLineDash([3, 3]); ctx.strokeStyle = P.bad; ctx.beginPath(); ctx.moveTo(bx, box.y); ctx.lineTo(bx, box.y + box.h); ctx.stroke(); ctx.restore();
+        T(ctx, "공시 9억", bx + 4, box.y + 10, { size: 10, color: P.bad });
+      }
+      T(ctx, special ? "1주택 특례세율" : "표준세율", box.x + box.w, 14, { size: 11, color: special ? P.accent2 : P.bad, align: "right", weight: 700 });
+      // 손잡이
+      const hx = X(Math.min(base, BMAX));
+      ctx.save(); ctx.setLineDash([3, 3]); ctx.strokeStyle = P.text; ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.moveTo(hx, box.y); ctx.lineTo(hx, box.y + box.h); ctx.stroke(); ctx.restore();
+      knob(ctx, hx, box.y + box.h, P);
+      T(ctx, "넓이 = 재산세 " + EB.won(p.tax), box.x + 8, box.y + 14, { size: 12, color: P.text, weight: 700 });
+      L = { box, X };
+    }, { get height() { return pw("prop-cv") < 480 ? 290 : 306; } });
+    EB.drag(cv.canvas, { move(x) { if (!L) return; const b = EB.clamp((x - L.box.x) / L.box.w * BMAX, 0, BMAX); pub = Math.max(1e7, Math.round(pubOf(b) / 1e6) * 1e6); draw(); } });
+    function draw() {
+      const p = propOnly(pub, oneEl.checked);
+      const sum = p.tax + p.edu + (cityEl.checked ? p.city : 0);
+      EB.stat("prop-o-v", EB.won(pub) + ' <small style="color:var(--text-faint)">(' + EB.won(p.base) + ")</small>");
+      EB.stat("prop-o-t", minus(p.tax));
+      EB.stat("prop-o-s", minus(sum) + ' <small style="color:var(--text-faint)">교육세 ' + EB.won(p.edu) + (cityEl.checked ? " · 도시 " + EB.won(p.city) : "") + "</small>");
+      EB.stat("prop-o-e", EB.pct(sum / (pub / RE.KR.publicRatio), 3) + ' <small style="color:var(--text-faint)">(현실화율 69% 가정)</small>');
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 3. 보유세 계단(1주택) */
+  (function () {
+    const aG = EB.range("steps-a", (v) => v + "세", draw);
+    const yG = EB.range("steps-y", (v) => v + "년", draw);
+    let pub = 20e8, L = null;
+    const VMAX = 40e8;
+    const calc = () => RE.holdingTax({ value: pub, one: true, age: aG(), years: yG() });
+    const cv = EB.canvas("#steps-cv", (ctx, w, h) => {
+      const P = EB.palette(), r = calc(), pr = r.property, cp = r.comp;
+      const narrow = w < 480;
+      // 위: 공시가격 막대
+      const x0 = 14, bw = w - 28, sc = bw / VMAX, ty = 22, th = 18;
+      ctx.fillStyle = P.grid; ctx.fillRect(x0, ty, bw, th);
+      ctx.fillStyle = P.accent; ctx.globalAlpha = 0.75; ctx.fillRect(x0, ty, Math.min(pub, CP.deductOne) * sc, th);
+      if (pub > CP.deductOne) { ctx.fillStyle = P.bad; ctx.fillRect(x0 + CP.deductOne * sc, ty, (pub - CP.deductOne) * sc, th); }
+      ctx.globalAlpha = 1;
+      [[PR.specialCap, "9억"], [CP.deductOne, "12억 공제"]].forEach(([v, s]) => { const xx = x0 + v * sc; ctx.strokeStyle = P.text; ctx.globalAlpha = 0.6; ctx.beginPath(); ctx.moveTo(xx, ty - 4); ctx.lineTo(xx, ty + th + 4); ctx.stroke(); ctx.globalAlpha = 1; T(ctx, s, xx + 3, ty - 6, { size: 10, color: P.dim }); });
+      T(ctx, "공시가격 " + EB.wonAxis(pub), x0, 12, { size: 11, color: P.text, weight: 700, base: "middle" });
+      knob(ctx, x0 + pub * sc, ty + th / 2, P);
+      // 아래: 세금 폭포(가로)
+      const items = [
+        { k: "재산세" + (pr.special ? "(특례)" : ""), v: pr.tax },
+        { k: "도시지역분", v: pr.city },
+        { k: "지방교육세", v: pr.edu },
+        { k: "종부세(세율 적용)", v: cp.gross },
+        { k: "− 재산세 중복분", v: -cp.overlap },
+        { k: "− 고령·장기 " + Math.round(cp.creditRate * 100) + "%", v: -cp.credit },
+        { k: "농어촌특별세", v: cp.rural },
+        { k: "보유세 합계", v: r.total, total: true },
+      ];
+      let run = 0, hi = 0;
+      items.forEach((it) => { if (it.total) return; run += it.v; hi = Math.max(hi, run); });
+      hi = Math.max(hi, r.total, 1e5) * 1.12;
+      const box = { x: narrow ? 108 : 132, y: ty + th + 18, w: w - (narrow ? 108 : 132) - 14, h: h - ty - th - 52 };
+      const rowH = box.h / items.length;
+      const X = (v) => box.x + v / hi * box.w;
+      ctx.strokeStyle = P.axis; ctx.beginPath(); ctx.moveTo(X(0), box.y); ctx.lineTo(X(0), box.y + box.h); ctx.stroke();
+      run = 0;
+      items.forEach((it, i) => {
+        const y = box.y + i * rowH + rowH * 0.18, bh = rowH * 0.64;
+        let a, b;
+        if (it.total) { a = 0; b = it.v; } else { a = run; b = run + it.v; run = b; }
+        const x0b = X(Math.min(a, b)), x1b = X(Math.max(a, b));
+        ctx.fillStyle = it.total ? P.bad : it.v >= 0 ? (i < 3 ? P.accent2 : P.bad) : P.ok;
+        ctx.globalAlpha = it.total ? 1 : 0.75; if (Math.abs(it.v) > 0) ctx.fillRect(x0b, y, Math.max(1.5, x1b - x0b), bh); ctx.globalAlpha = 1;
+        T(ctx, it.k, box.x - 8, y + bh / 2, { size: narrow ? 11 : 12, color: it.total ? P.text : P.dim, align: "right", base: "middle", weight: it.total ? 700 : 400 });
+        const s = Math.abs(it.v) < 1 ? "0" : (it.v < 0 ? "−" : "") + EB.wonAxis(Math.abs(it.v));
+        const right = x1b + 52 < box.x + box.w;
+        if (right) T(ctx, s, x1b + 4, y + bh / 2, { size: 11, mono: true, color: P.text, base: "middle" });
+        else if (x1b - x0b > 56) T(ctx, s, x1b - 4, y + bh / 2, { size: 11, mono: true, color: "#fff", align: "right", base: "middle", weight: 700 });
+        else T(ctx, s, x0b - 4, y + bh / 2, { size: 11, mono: true, color: P.text, align: "right", base: "middle" });
+      });
+      L = { x0, sc };
+    }, { get height() { return pw("steps-cv") < 480 ? 346 : 356; } });
+    EB.drag(cv.canvas, { move(x) { if (!L) return; pub = EB.clamp(Math.round((x - L.x0) / L.sc / 1e7) * 1e7, 1e8, VMAX); draw(); } });
+    function draw() {
+      const r = calc();
+      EB.stat("steps-o-v", EB.won(pub) + ' <small style="color:var(--text-faint)">(시세 약 ' + EB.wonAxis(pub / RE.KR.publicRatio) + ")</small>");
+      EB.stat("steps-o-p", minus(r.property.total));
+      EB.stat("steps-o-c", r.comp.total > 0 ? minus(r.comp.total) : "0원");
+      EB.stat("steps-o-t", minus(r.total));
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 4. 공시가격과 세금 곡선 */
+  (function () {
+    const hG = EB.seg("curve-h", draw);
+    const gG = EB.range("curve-g", (v) => "+" + v + "%", draw);
+    let v = 20e8, box = null;
+    const VMAX = 40e8;
+    const cv = EB.canvas("#curve-cv", (ctx, w, h) => {
+      const P = EB.palette();
+      const xs = []; for (let x = 1e8; x <= VMAX + 1; x += 5e7) xs.push(x);
+      const cols = [P.accent, P.accent2, P.bad];
+      const data = [1, 2, 3].map((n) => xs.map((x) => [x, byHomes(x, n).total]));
+      const ymax = Math.ceil(data[2][data[2].length - 1][1] / 1e7) * 1e7;
+      const c = EB.chart(ctx, { x: 58, y: 22, w: w - 74, h: h - 84 }, {
+        x: [0, VMAX], y: [0, ymax], xTicks: [0, 10e8, 20e8, 30e8, 40e8], xFmt: EB.wonAxis, yFmt: EB.wonAxis,
+        series: data.map((d, i) => ({ data: d, color: cols[i], width: String(i + 1) === hG() ? 3 : 1.6 })),
+      });
+      box = c;
+      const n = +hG(), t0 = byHomes(v, n).total, t1 = byHomes(v * (1 + gG() / 100), n).total;
+      const px = c.X(v);
+      ctx.save(); ctx.setLineDash([3, 3]); ctx.strokeStyle = P.text; ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.moveTo(px, c.box.y); ctx.lineTo(px, c.box.y + c.box.h); ctx.stroke(); ctx.restore();
+      const px1 = c.X(Math.min(VMAX, v * (1 + gG() / 100)));
+      ctx.beginPath(); ctx.arc(px1, c.Y(t1), 4, 0, TAU); ctx.fillStyle = cols[n - 1]; ctx.globalAlpha = 0.6; ctx.fill(); ctx.globalAlpha = 1;
+      ctx.beginPath(); ctx.arc(px, c.Y(t0), 8, 0, TAU); ctx.fillStyle = cols[n - 1]; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = P.bg; ctx.stroke();
+      let lx = 64;
+      ["1주택", "2주택", "3주택"].forEach((s, i) => { ctx.fillStyle = cols[i]; ctx.fillRect(lx, 9, 12, 3); T(ctx, s, lx + 16, 14, { size: 11, color: P.dim }); lx += 62; });
+    }, { get height() { return pw("curve-cv") < 480 ? 300 : 316; } });
+    EB.drag(cv.canvas, { move(x) { if (!box) return; v = EB.clamp(Math.round((x - box.box.x) / box.box.w * VMAX / 5e7) * 5e7, 1e8, VMAX); draw(); } });
+    function draw() {
+      const n = +hG(), g = gG() / 100;
+      const t = [1, 2, 3].map((k) => byHomes(v, k).total);
+      const t0 = t[n - 1], t1 = byHomes(v * (1 + g), n).total;
+      EB.stat("curve-o-v", EB.won(v));
+      EB.stat("curve-o-t", t.map((x) => EB.wonAxis(x)).join(" / "));
+      document.getElementById("curve-o-ek").textContent = n + "주택, 공시가 +" + Math.round(g * 100) + "%일 때 세금";
+      EB.stat("curve-o-e", '<span class="minus">+' + (t0 > 0 ? Math.round((t1 / t0 - 1) * 100) : 0) + "%</span>");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 5. 단독 vs 공동명의 */
+  (function () {
+    const aG = EB.range("joint-a", (v) => v + "세", draw);
+    const yG = EB.range("joint-y", (v) => v + "년", draw);
+    let v = 15e8, box = null;
+    const VMIN = 6e8, VMAX = 40e8;
+    const single = (x) => RE.holdingTax({ value: x, one: true, age: aG(), years: yG() }).comp.total;
+    const cv = EB.canvas("#joint-cv", (ctx, w, h) => {
+      const P = EB.palette();
+      const xs = []; for (let x = VMIN; x <= VMAX + 1; x += 5e7) xs.push(x);
+      const s = xs.map((x) => [x, single(x)]), j = xs.map((x) => [x, jointComp(x)]);
+      const ymax = Math.max(1e6, Math.ceil(Math.max(s[s.length - 1][1], j[j.length - 1][1]) / 1e7) * 1e7);
+      const jy = w < 480 ? 40 : 26;
+      const c = EB.chart(ctx, { x: 58, y: jy, w: w - 74, h: h - 84 - (jy - 22) }, {
+        x: [VMIN, VMAX], y: [0, ymax], xTicks: [6e8, 12e8, 18e8, 24e8, 30e8, 36e8], xFmt: EB.wonAxis, yFmt: EB.wonAxis,
+        series: [{ data: s, color: P.accent2, width: 2.6 }, { data: j, color: P.accent, width: 2.6, dash: [6, 4] }],
+        vlines: [{ x: 12e8, color: P.faint }, { x: 18e8, color: P.faint }],
+      });
+      box = c;
+      const px = c.X(v);
+      ctx.save(); ctx.setLineDash([3, 3]); ctx.strokeStyle = P.text; ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.moveTo(px, c.box.y); ctx.lineTo(px, c.box.y + c.box.h); ctx.stroke(); ctx.restore();
+      [[single(v), P.accent2], [jointComp(v), P.accent]].forEach(([y, col]) => { ctx.beginPath(); ctx.arc(px, c.Y(y), 4.5, 0, TAU); ctx.fillStyle = col; ctx.fill(); });
+      knob(ctx, px, c.box.y, P);
+      ctx.fillStyle = P.accent2; ctx.fillRect(64, 9, 12, 3); T(ctx, "단독(1주택 방식)", 80, 14, { size: 11, color: P.dim });
+      ctx.fillStyle = P.accent; ctx.fillRect(w < 480 ? 64 : 190, w < 480 ? 23 : 9, 12, 3); T(ctx, "공동(각자 9억)", w < 480 ? 80 : 206, w < 480 ? 28 : 14, { size: 11, color: P.dim });
+      if (w >= 480) { T(ctx, "1주택 공제 12억", c.X(12e8) + 3, c.box.y + c.box.h - 6, { size: 10, color: P.faint }); T(ctx, "공동 18억", c.X(18e8) + 3, c.box.y + c.box.h - 20, { size: 10, color: P.faint }); }
+    }, { get height() { return pw("joint-cv") < 480 ? 320 : 320; } });
+    EB.drag(cv.canvas, { move(x) { if (!box) return; v = EB.clamp(Math.round((VMIN + (x - box.box.x) / box.box.w * (VMAX - VMIN)) / 5e7) * 5e7, VMIN, VMAX); draw(); } });
+    function draw() {
+      const s = single(v), j = jointComp(v);
+      EB.stat("joint-o-v", EB.won(v));
+      EB.stat("joint-o-s", s > 0 ? minus(s) : "0원");
+      EB.stat("joint-o-j", j > 0 ? minus(j) : "0원");
+      EB.stat("joint-o-w", Math.abs(s - j) < 1e4 ? "같다" : s < j ? "단독(1주택 방식) " + EB.won(j - s) + " 적음" : "공동명의 " + EB.won(s - j) + " 적음");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 6. 하늘네와 남궁현의 10년 */
+  (function () {
+    const gG = EB.range("case-g", (v) => (v > 0 ? "+" : "") + v + "%", draw);
+    const aG = EB.range("case-a", (v) => EB.won(v * 1e8), draw);
+    const rG = EB.range("case-r", (v) => v + "%", draw);
+    let sel = 0, box = null;
+    const YEARS = 10, BOUGHT_A = 2005;
+    function at(t) {
+      const k = Math.pow(1 + gG() / 100, t), r = rG() / 100;
+      const c = C.home.price * r * k, a = aG() * 1e8 * r * k;
+      const age = C.landlord.age + t, yrs = 2026 + t - BOUGHT_A;
+      const haneul = RE.holdingTax({ value: c, one: true, age: C.haneul.age + t, years: t }).total;
+      const nA = RE.holdingTax({ value: a, total: a + c, homes: 2 });
+      const nC = propOnly(c, false).total;
+      const two = nA.total + nC;
+      const oneA = RE.holdingTax({ value: a, one: true, age, years: yrs }).total;
+      return { c, a, haneul, two, oneA, nCprop: nC, comp: nA.comp.total, propA: nA.property.total };
+    }
+    const cv = EB.canvas("#case-cv", (ctx, w, h) => {
+      const P = EB.palette();
+      const rows = []; for (let t = 0; t <= YEARS; t++) rows.push(at(t));
+      const ymax = Math.max(5e6, Math.ceil(Math.max(...rows.map((r) => r.two)) * 1.1 / 1e6) * 1e6);
+      const cy = w < 480 ? 40 : 30;
+      const c = EB.chart(ctx, { x: 58, y: cy, w: w - 74, h: h - 84 - (cy - 22) }, {
+        x: [0, YEARS], y: [0, ymax], xTicks: [0, 2, 4, 6, 8, 10], xFmt: (t) => String(2026 + t), yFmt: EB.wonAxis,
+        series: [
+          { data: rows.map((r, t) => [t, r.two]), color: P.bad, width: 2.6 },
+          { data: rows.map((r, t) => [t, r.oneA]), color: P.accent2, width: 1.8, dash: [6, 4] },
+          { data: rows.map((r, t) => [t, r.haneul]), color: P.accent, width: 2.6 },
+        ],
+      });
+      box = c;
+      const px = c.X(sel), r = rows[sel];
+      ctx.save(); ctx.setLineDash([3, 3]); ctx.strokeStyle = P.text; ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.moveTo(px, c.box.y); ctx.lineTo(px, c.box.y + c.box.h); ctx.stroke(); ctx.restore();
+      [[r.two, P.bad], [r.oneA, P.accent2], [r.haneul, P.accent]].forEach(([y, col]) => { ctx.beginPath(); ctx.arc(px, c.Y(y), 4.5, 0, TAU); ctx.fillStyle = col; ctx.fill(); });
+      knob(ctx, px, c.box.y, P);
+      const lg = [["남궁현 2주택", P.bad], ["남궁현 A구만", P.accent2], ["하늘네 1주택", P.accent]];
+      let lx = 64, ly = 13;
+      lg.forEach(([s, col]) => { ctx.font = EB.font(11); const tw = ctx.measureText(s).width + 30; if (lx + tw > w - 8) { lx = 64; ly += 13; } ctx.fillStyle = col; ctx.fillRect(lx, ly - 4, 12, 3); T(ctx, s, lx + 16, ly, { size: 11, color: P.dim }); lx += tw; });
+    }, { get height() { return pw("case-cv") < 480 ? 320 : 320; } });
+    EB.drag(cv.canvas, { move(x) { if (!box) return; sel = EB.clamp(Math.round((x - box.box.x) / box.box.w * YEARS), 0, YEARS); draw(); } });
+    function draw() {
+      const r = at(sel);
+      document.getElementById("case-o-yk").textContent = (2026 + sel) + "년 공시가격(C / A구)";
+      EB.stat("case-o-y", EB.wonAxis(r.c) + " / " + EB.wonAxis(r.a));
+      EB.stat("case-o-h", minus(r.haneul));
+      EB.stat("case-o-n", minus(r.two) + ' <small style="color:var(--text-faint)">(A구만 ' + EB.won(r.oneA) + ")</small>");
+      EB.stat("case-o-d", minus(r.two - r.oneA));
+      cv.redraw();
+    }
+    draw();
+  })();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,824 @@
+<!doctype html>
+<!-- Copyright (c) 2026 geniuskey and EstateBook contributors.
+     Executable code: MIT (see ../LICENSE-MIT).
+     Text, illustrations, questions and explanations: CC-BY-4.0 (see ../LICENSE.md). -->
+<html lang="ko">
+<head>
+<!--head:start {"desc": "같은 84㎡ 아파트가 어디에 있느냐에 따라 값이 두 배가 된다. 지대 이론, 통근 시간의 돈 가치, 역세권·학군·생활 인프라, 헤도닉 가격 모형으로 집값을 속성별로 쪼개고, 새 노선 같은 입지 변화가 가격에 먼저 반영되는 원리를 시뮬레이터로 본다."}-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>입지: 같은 평수, 두 배의 가격 · EstateBook</title>
+<meta name="description" content="같은 84㎡ 아파트가 어디에 있느냐에 따라 값이 두 배가 된다. 지대 이론, 통근 시간의 돈 가치, 역세권·학군·생활 인프라, 헤도닉 가격 모형으로 집값을 속성별로 쪼개고, 새 노선 같은 입지 변화가 가격에 먼저 반영되는 원리를 시뮬레이터로 본다.">
+<link rel="canonical" href="https://estatebook.euiyun.com/chapters/location.html">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<meta name="theme-color" content="#0f766e">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EstateBook">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="입지: 같은 평수, 두 배의 가격 · EstateBook">
+<meta property="og:description" content="같은 84㎡ 아파트가 어디에 있느냐에 따라 값이 두 배가 된다. 지대 이론, 통근 시간의 돈 가치, 역세권·학군·생활 인프라, 헤도닉 가격 모형으로 집값을 속성별로 쪼개고, 새 노선 같은 입지 변화가 가격에 먼저 반영되는 원리를 시뮬레이터로 본다.">
+<meta property="og:url" content="https://estatebook.euiyun.com/chapters/location.html">
+<meta property="og:image" content="https://estatebook.euiyun.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Chapter","LearningResource"],"@id":"https://estatebook.euiyun.com/chapters/location.html#chapter","name":"입지: 같은 평수, 두 배의 가격","headline":"입지: 같은 평수, 두 배의 가격 · EstateBook","description":"같은 84㎡ 아파트가 어디에 있느냐에 따라 값이 두 배가 된다. 지대 이론, 통근 시간의 돈 가치, 역세권·학군·생활 인프라, 헤도닉 가격 모형으로 집값을 속성별로 쪼개고, 새 노선 같은 입지 변화가 가격에 먼저 반영되는 원리를 시뮬레이터로 본다.","url":"https://estatebook.euiyun.com/chapters/location.html","position":2,"inLanguage":"ko","isAccessibleForFree":true,"learningResourceType":"인터랙티브 교재","educationalLevel":"일반 성인","image":"https://estatebook.euiyun.com/og.png","dateModified":"2026-10-08","isPartOf":{"@type":"Book","@id":"https://estatebook.euiyun.com/#book","name":"EstateBook · 집값과 전세를 숫자로 푸는 부동산 교과서","url":"https://estatebook.euiyun.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"EstateBook","item":"https://estatebook.euiyun.com/"},{"@type":"ListItem","position":2,"name":"2. 입지: 같은 평수, 두 배의 가격","item":"https://estatebook.euiyun.com/chapters/location.html"}]}]}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../css/style.css">
+<script src="../js/common.js"></script>
+<script src="../js/estate.js"></script>
+<!--head:end-->
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3d6151a0abc94ede89285d462527fa80"}'></script>
+<!-- End Cloudflare Web Analytics -->
+</head>
+<body data-chapter="location">
+<main class="chapter">
+  <header class="chapter-hero">
+    <div class="eyebrow">Chapter 02</div>
+    <h1>입지: 같은 평수, 두 배의 가격</h1>
+    <p class="lead">민태호의 사무실 벽에는 수도권 지도가 붙어 있다. 하늘이 휴대전화로 찾아본 숫자를 읽는다. 서울 A구의 84㎡ 아파트는 약 12억 5,000만원, 지금 사는 경기 B시의 C아파트는 6억 2,000만원, 새로 생긴 경기 E시 신도시는 약 4억 9,000만원이다. 방 세 개, 화장실 두 개, 거의 같은 평면이다. 그런데 값은 두 배 넘게 벌어진다. 재원이 묻는다. "A구 집은 금으로 지었나요?" 태호가 웃으며 지도를 가리킨다. "건물은 거의 같습니다. 다른 건 그 건물이 앉아 있는 자리예요." 이 장은 '자리'의 값이 어디서 나오는지를 숫자로 푼다. 도심까지의 거리가 땅값을 정하는 원리, 출퇴근에 쓰는 시간을 돈으로 바꾸는 법, 역과 학교와 공원이 값에 얹히는 방식, 그리고 그 모두를 한 번에 쪼개 보는 헤도닉 가격 모형까지 간다.</p>
+    <ul class="objectives">
+      <li>지대 이론으로 도심에서 멀어질수록 집값이 내려가는 이유와, 통근 비용이 그 기울기를 정한다는 것을 설명한다.</li>
+      <li>통근 시간을 시간가치와 자본환원으로 집값의 차이로 바꿔 계산한다.</li>
+      <li>역세권, 학군, 생활 인프라, 건물 나이가 집값에 얹히는 방식을 구분한다.</li>
+      <li>헤도닉 가격 모형으로 한 채의 값을 속성별 몫으로 쪼개고, 모형이 설명하지 못하는 몫이 왜 남는지 말한다.</li>
+      <li>새 노선·학군 변화 같은 입지 변화가 완공 전에 먼저 가격에 반영되는 원리를 이해한다.</li>
+    </ul>
+  </header>
+
+  <section id="same-size">
+    <h2>같은 84㎡, 두 배의 가격</h2>
+    <p>아파트 한 채의 값은 두 부분으로 나눠 볼 수 있다. 하나는 건물이다. 콘크리트와 철근, 창호와 배관, 엘리베이터에 든 돈이다. 같은 크기의 건물을 지금 다시 짓는 데 드는 돈을 <span class="term">재조달원가</span><span class="en">(Replacement cost)</span>라 하는데, 이 값은 서울에서 짓든 경기도에서 짓든 크게 다르지 않다. 자재와 인건비가 지역마다 아주 다르지는 않기 때문이다. 다른 하나는 땅이다. 아파트는 여러 세대가 땅을 나눠 가지므로, 한 세대 몫의 땅을 <span class="term">대지지분</span><span class="en">(Land share)</span>이라 부른다. 같은 84㎡라도 대지지분의 값은 자리에 따라 몇 배씩 차이가 난다.</p>
+    <p>그래서 "왜 같은 평수가 두 배인가"라는 질문은 "왜 같은 넓이의 땅이 몇 배인가"라는 질문으로 바뀐다. 건물은 해마다 낡아 값이 줄지만, 좋은 자리의 땅은 낡지 않는다. 오래된 아파트가 새 아파트보다 비싼 동네가 있는 것도, 재건축 이야기가 땅값에서 출발하는 것도(<a href="redevelop.html">12장</a>) 여기서 나온다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 460 330" role="img" aria-label="서울 A구와 경기 B시의 84㎡ 아파트 가격을 건물값과 땅값으로 나눈 막대 비교">
+        <line x1="40" y1="282" x2="440" y2="282" class="s-axis"/>
+        <text x="34" y="286" text-anchor="end" class="lbl-dim">0</text>
+        <line x1="40" y1="182" x2="440" y2="182" class="s-dash"/>
+        <text x="34" y="186" text-anchor="end" class="lbl-dim">5억</text>
+        <line x1="40" y1="82" x2="440" y2="82" class="s-dash"/>
+        <text x="34" y="86" text-anchor="end" class="lbl-dim">10억</text>
+        <!-- A구: 건물 2.4억(48px), 땅 10.1억(202px) → 총 250px -->
+        <rect x="90" y="234" width="96" height="48" class="f-acc2-soft"/>
+        <text x="138" y="262" text-anchor="middle" class="lbl">건물 약 2.4억</text>
+        <rect x="90" y="32" width="96" height="202" class="f-acc-soft"/>
+        <text x="138" y="128" text-anchor="middle" class="lbl-acc">땅(자리)</text>
+        <text x="138" y="148" text-anchor="middle" class="lbl">약 10.1억</text>
+        <text x="138" y="24" text-anchor="middle" class="lbl-b">12.5억</text>
+        <text x="138" y="302" text-anchor="middle" class="lbl-b">서울 A구</text>
+        <!-- B시: 건물 2.2억(44px), 땅 4.0억(80px) → 총 124px -->
+        <rect x="254" y="238" width="96" height="44" class="f-acc2-soft"/>
+        <text x="302" y="264" text-anchor="middle" class="lbl">건물 약 2.2억</text>
+        <rect x="254" y="158" width="96" height="80" class="f-acc-soft"/>
+        <text x="302" y="194" text-anchor="middle" class="lbl-acc">땅(자리)</text>
+        <text x="302" y="212" text-anchor="middle" class="lbl">약 4.0억</text>
+        <text x="302" y="150" text-anchor="middle" class="lbl-b">6.2억</text>
+        <text x="302" y="302" text-anchor="middle" class="lbl-b">경기 B시</text>
+        <path d="M196 236 L244 240" class="s-dash"/>
+        <text x="400" y="232" text-anchor="middle" class="lbl-dim">건물값은</text>
+        <text x="400" y="248" text-anchor="middle" class="lbl-dim">거의 같다</text>
+        <text x="400" y="110" text-anchor="middle" class="lbl-acc">차이의 대부분은</text>
+        <text x="400" y="128" text-anchor="middle" class="lbl-acc">땅값</text>
+        <text x="230" y="324" text-anchor="middle" class="lbl-dim">교육용 가상 값. 건물 몫은 재조달원가에서 낡은 만큼 뺀 값으로 잡았다</text>
+      </svg>
+      <figcaption><b>그림 1. 같은 84㎡를 건물과 땅으로 나누면.</b> 두 집의 건물값은 수천만원 차이지만 땅값은 2.5배 차이다. 건물은 감가상각되고 땅은 그렇지 않으므로, 시간이 갈수록 집값에서 땅이 차지하는 몫이 커진다. 실제 시세를 건물과 땅으로 나누는 방법(원가법, 토지잔여법)은 감정평가에서 쓰며, 여기서는 크기만 흉내 낸 가상 값이다.</figcaption>
+    </figure>
+
+    <p>그렇다면 땅값은 무엇이 정하는가. 땅은 그 자체로 아무것도 생산하지 않는다. 땅의 값은 그 자리에서 무엇에 닿을 수 있느냐에서 나온다. 일자리에 몇 분 만에 닿는가, 역까지 몇 분을 걷는가, 아이가 어느 학교에 다니는가, 병원과 마트와 공원이 가까운가. 이 장은 이 '닿는 힘'을 하나씩 돈으로 바꿔 본다. 먼저 가장 큰 힘, 일자리까지의 거리부터 시작한다.</p>
+  </section>
+
+  <section id="bid-rent">
+    <h2>지대 이론: 도심에서 멀어질수록 내려가는 곡선</h2>
+    <p>19세기 독일의 경제학자 튀넨은 도시 둘레의 농지가 왜 시장에서 멀수록 싼지를 설명했다. 시장까지 작물을 실어 나르는 비용이 거리에 따라 늘어나니, 멀리 있는 농부는 그만큼 땅에 덜 낼 수 있다는 것이다. 20세기 도시경제학은 작물 대신 사람을 넣었다. 도심의 일자리로 매일 출퇴근하는 가구는 도심에서 멀어질수록 통근에 시간과 돈을 더 쓰므로, 그만큼 집에는 덜 내려 한다. 각 위치에서 어떤 사용자가 땅에 낼 용의가 있는 최대 금액을 이은 선을 <span class="term">지불 의사 지대 곡선</span><span class="en">(Bid-rent curve)</span>이라 한다.</p>
+
+    <div class="formula">
+      $$P(d) \;=\; P(0) \;-\; \frac{c\cdot d}{i}$$
+      <div class="where">\(P(d)\) 도심에서 \(d\)km 떨어진 집의 값, \(P(0)\) 도심 바로 옆 집의 값, \(c\) 1km 멀어질 때마다 한 해에 더 드는 통근 비용(시간과 교통비), \(i\) 할인율. 해마다 \(c\cdot d\)만큼 더 드는 비용을 영원히 낸다면 그 현재가치는 \(c\cdot d/i\)다. 이 나눗셈(자본환원)의 뜻은 <a href="value.html">3장</a>에서 자세히 본다.</div>
+    </div>
+
+    <p>사무실, 가게 같은 상업 용도는 도심 바로 옆에서 아주 높은 값을 낼 수 있지만 손님과 거래처가 도심에 몰려 있어 조금만 멀어져도 값이 빨리 떨어진다. 주거는 그보다 완만하다. 도시 바깥에서는 아파트를 지어도 건축비만큼도 값이 안 나와서 땅이 논밭이나 빈 땅으로 남는다. 각 위치에서 가장 높은 값을 내는 용도가 그 땅을 차지하므로, 도심에서 바깥으로 상업지 → 주거지 → 개발되지 않은 땅의 띠가 생긴다.</p>
+    <p>아래 그래프의 가로축은 도시를 가로지르는 40km의 직선이다. 도심(호박색 손잡이)과 집(빨간 손잡이)을 끌어 옮기고, 통근 비용을 바꿔 본다. 아래 띠는 각 자리를 어느 용도가 차지하는지 보여 준다.</p>
+
+    <div class="sim" id="sim-br">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>지불 의사 지대 곡선</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="br-cv"></canvas><span class="hint">도심(호박색)과 집(빨간색) 손잡이를 끈다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>1km 더 멀 때 연 통근 비용 <output id="br-c-out"></output></span><input type="range" id="br-c" min="10" max="300" step="10" value="70"></label>
+          <label class="check"><input type="checkbox" id="br-sub"> 30km 지점에 부도심(새 일자리 중심)</label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">가까운 일자리 중심까지</span><span class="v" id="br-o-d">—</span></div>
+        <div class="stat"><span class="k">그 자리 84㎡ 값</span><span class="v" id="br-o-p">—</span></div>
+        <div class="stat"><span class="k">도시의 끝(도심에서)</span><span class="v" id="br-o-e">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 기본값(1km당 연 70만원)에서 집 손잡이를 도심 쪽으로 끌었다가 멀리 끈다. 1km마다 약 1,750만원씩 값이 내려간다. 연 70만원을 연 4%로 자본환원한 값이다. ② 통근 비용을 300만원까지 올린다. 곡선이 가팔라지고 도시의 끝이 도심 쪽으로 당겨진다. 멀리 있던 집은 아파트를 지을 값이 안 나오는 땅으로 떨어진다. 반대로 10만원으로 내리면 곡선이 거의 평평해지고 도시가 끝없이 퍼진다. 교통이 빨라진 도시가 넓어지는 이유다. ③ 부도심을 켠다. 30km 지점에 일자리가 생기면 그 둘레에 새 봉우리가 솟는다. 도심 손잡이를 끌어 두 중심을 가깝게, 멀게 놓아 본다. (교육용 단순화. 도심 옆 84㎡는 12억, 부도심 옆은 8억, 아파트를 지을 만한 최저 값은 2억 5,000만원, 할인율 4%로 두었다. 상업지는 같은 바닥면적으로 환산한 값이다.)</div>
+    </div>
+
+    <p>이 그래프에서 집값을 깎은 것은 건물이 아니라 매일 반복되는 이동 비용이다. 그래서 같은 거리라도 통근 비용이 크면(길이 막히고, 열차가 느리고, 맞벌이 둘이 함께 멀어지면) 곡선이 가팔라지고, 교통이 빨라지면 곡선이 눕는다. 그리고 일자리가 여러 곳에 생기면 도시의 봉우리도 여러 개가 된다. 경기 B시의 집값이 서울 도심과의 거리만으로 정해지지 않는 것도 B시 안팎에 일자리가 있기 때문이다.</p>
+
+    <div class="callout deep">
+      <strong>현실의 곡선은 왜 직선이 아닌가</strong>
+      위 모형은 모든 가구가 같은 집 크기를 원한다고 두어 곡선이 직선이 되었다. 실제로는 도심에서 멀어질수록 땅이 싸므로 사람들은 더 넓은 집을 고르고, 건물은 낮아진다. 그래서 ㎡당 가격의 곡선은 도심 가까이에서 가파르고 바깥으로 갈수록 완만하게 휘어진다(볼록한 곡선). 또 도심 접근성 말고도 학교, 공원, 강과 산 같은 자연환경이 곡선 위에 크고 작은 봉우리를 만든다. 도시경제학에서는 이 모형을 처음 정리한 학자들의 이름을 따 알론소·뮤스·밀스 모형이라 부른다. 이 장의 뒤쪽에서 쓰는 헤도닉 모형은 이 봉우리들을 속성 하나하나로 나눠 재는 방법이다.
+    </div>
+  </section>
+
+  <section id="time-money">
+    <h2>통근 시간을 돈으로 바꾸기</h2>
+    <p>지대 곡선의 기울기 \(c\)는 대부분 시간이다. 지하철 요금이나 기름값도 있지만, 매일 왕복 두 시간을 길에서 보내는 사람이 잃는 것은 주로 시간이다. 그 시간에 일을 더 할 수도, 아이와 놀 수도, 잠을 더 잘 수도 있었다. 이렇게 시간 한 단위를 돈으로 얼마로 쳐 주는가를 <span class="term">시간가치</span><span class="en">(Value of time)</span>라 한다. 교통 정책을 평가할 때도 '이 도로가 아껴 주는 시간'을 시간가치로 곱해 편익을 계산한다.</p>
+    <p>시간가치를 얼마로 잡을지에는 정답이 없다. 흔히 쓰는 기준은 세후 시급이다. 통근 시간을 줄이면 그만큼 일을 더 할 수 있다고 보는 것이다. 하지만 대부분의 직장인은 통근 시간을 줄였다고 근무 시간을 늘리지 않고, 통근 중에도 쉬거나 책을 읽을 수 있으므로 시급보다 낮게 잡는 경우가 많다. 반대로 어린아이를 맡기고 데려와야 하는 가구에게 30분은 시급보다 훨씬 비쌀 수 있다. 이 책은 교육용 기본값으로 1시간에 1만 5,000원을 쓴다. 하늘의 세후 시급(약 2만원)보다 조금 낮은 값이다.</p>
+
+    <div class="formula">
+      $$\text{통근의 집값 환산} \;=\; \frac{\text{편도 시간} \times 2 \times \text{연 통근 일수} \times \text{시간가치}}{i}$$
+      <div class="where">한 해 통근에 쓰는 시간의 값을 할인율 \(i\)로 나누면, '평생 이 통근을 하는 비용'을 오늘의 목돈으로 본 값이 된다. 연 통근 일수는 240일, \(i\)는 4%를 기본으로 쓴다.</div>
+    </div>
+
+    <p>아래 달력의 칸 하나는 8시간 근무일 하루다. 편도 통근 시간과 시간가치를 바꿔 한 해 통근이 근무일 며칠어치인지, 그것을 집값으로 바꾸면 얼마인지 본다.</p>
+
+    <div class="sim" id="sim-tm">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>1년 통근을 근무일과 집값으로</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="tm-cv"></canvas></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>편도 통근 시간 <output id="tm-m-out"></output></span><input type="range" id="tm-m" min="10" max="120" step="5" value="55"></label>
+          <label class="ctrl"><span>시간가치(1시간) <output id="tm-v-out"></output></span><input type="range" id="tm-v" min="5000" max="40000" step="1000" value="15000"></label>
+          <div class="seg" id="tm-who"><button data-value="1" class="on">한 사람</button><button data-value="2">맞벌이 둘 다</button></div>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">1년 통근 시간</span><span class="v" id="tm-o-h">—</span></div>
+        <div class="stat"><span class="k">한 해 시간값</span><span class="v" id="tm-o-y">—</span></div>
+        <div class="stat"><span class="k">집값으로 환산(÷4%)</span><span class="v" id="tm-o-c">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 하늘의 편도 55분에서 1년 통근 시간은 440시간, 근무일로 55일이다. 1년의 열한 주를 길에서 보내는 셈이다. 시간값은 한 해 660만원, 집값으로 바꾸면 1억 6,500만원이다. ② 편도를 25분으로 줄인다. 시간값의 차이 약 9,000만원이 '도심 가까운 집'에 더 낼 수 있는 돈이다. ③ 맞벌이 둘 다, 편도 120분으로 올린다. 둘이 합쳐 근무일 240일, 일하는 날 전부를 한 번 더 길에서 보내는 셈이 된다. 집값으로 환산한 비용이 집 한 채 값을 넘어선다. (교육용 가정: 연 240일 통근, 할인율 4%, 교통비는 넣지 않았다. 시간가치는 사람마다 다르다.)</div>
+    </div>
+
+    <p>여기서 두 가지를 보았다. 하나는 통근 시간이 생각보다 큰 돈이라는 것이다. 편도 30분의 차이가 집값으로 수천만원에서 1억원 가까이 된다. 다른 하나는 이 값이 <b>사람마다 다르다</b>는 것이다. 시간가치가 높은 사람, 둘이 같은 방향으로 출퇴근하는 맞벌이, 아이 등하원을 맡은 사람에게 같은 거리는 더 비싸다. 시장의 집값은 이 사람들 가운데 그 집을 가장 원하는 사람, 곧 그 집을 마지막으로 사 가는 사람의 셈에 맞춰진다. 그래서 내 시간값으로 계산한 '적정 가격'과 시장 가격이 다를 수 있다. 이 차이가 이 장 끝의 하늘네 계산에서 다시 나온다.</p>
+
+    <div class="callout buyer">
+      <strong>통근 시간은 지도 앱이 아니라 출근 시간에 직접 잰다</strong>
+      <ul>
+        <li><b>평일 출근 시간대에 실제로 타 본다</b>: 지도 앱의 예상 시간은 대개 한산한 시간 기준이다. 오전 7시 반~8시 반에 집에서 회사 문 앞까지 한 번은 직접 가 본다. 환승 통로, 배차 간격, 만원 열차를 몇 대 보내야 하는지가 드러난다.</li>
+        <li><b>두 사람 모두의 통근을 더한다</b>: 한 사람의 통근만 보고 고르면 다른 사람의 통근이 길어진다. 아이를 맡기고 데려오는 동선까지 넣는다.</li>
+        <li><b>직장이 바뀔 가능성</b>: 몇 년 안에 근무지가 바뀔 수 있는 직업이라면 지금 직장 하나보다 여러 일자리 중심에 두루 닿는 자리가 안전하다.</li>
+        <li><b>퇴근길과 주말</b>: 막차 시간, 야근 뒤 택시비, 주말에 부모님 댁까지의 거리도 생활비다.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="station">
+    <h2>역세권: 걸어서 몇 분인가</h2>
+    <p>도심까지의 시간은 열차 안에서만 쓰지 않는다. 집에서 역까지 걷는 시간, 역에서 열차를 기다리는 시간, 환승 시간이 모두 들어간다. 그래서 같은 노선의 같은 역을 쓰더라도 역에서 걸어서 3분인 집과 15분인 집의 통근 시간은 다르다. 역에서 걸어서 갈 만한 거리 안을 흔히 <span class="term">역세권</span><span class="en">(Transit catchment)</span>이라 부르고, 그 안에 있다는 이유로 붙는 값을 '역세권 프리미엄'이라 한다. 걷기 싫은 날씨, 밤길의 안전, 아이와 함께 움직이는 불편까지 더해져서 역까지의 거리는 통근 시간 이상으로 값에 들어간다.</p>
+    <p>하지만 역에서 너무 멀어지면 사람들은 걷지 않고 마을버스를 탄다. 그러면 역에서 더 멀어져도 통근 시간이 천천히 늘어 값이 덜 떨어진다. 아래에서 집을 끌어 역에서 멀어지게 하고, 마을버스를 켜고 꺼 본다.</p>
+
+    <div class="sim" id="sim-st">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>역에서 멀어지면</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="st-cv"></canvas><span class="hint">집(빨간 손잡이)을 끌어 역에서 멀어지게 한다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>역에서 도심까지 열차 <output id="st-r-out"></output></span><input type="range" id="st-r" min="10" max="60" step="5" value="30"></label>
+          <label class="check"><input type="checkbox" id="st-bus" checked> 마을버스 운행</label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">역까지 도보</span><span class="v" id="st-o-w">—</span></div>
+        <div class="stat"><span class="k">도심까지 통근</span><span class="v" id="st-o-c">—</span></div>
+        <div class="stat"><span class="k">84㎡ 값</span><span class="v" id="st-o-p">—</span></div>
+        <div class="stat"><span class="k">역 앞(1분)과 차이</span><span class="v" id="st-o-d">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 집을 역 앞(1분)에서 10분까지 끈다. 이 모형에서는 약 1억 4,000만원, 역 앞 값의 17%가 빠진다. 걷는 시간이 통근에도, 불편함에도 함께 들어가기 때문이다. ② 계속 30분까지 끈다. 마을버스가 있으면 10분 남짓부터 곡선이 완만해진다. 마을버스를 끄면 곡선이 끝까지 가파르게 내려가서 30분 지점의 값이 역 앞의 절반 가까이로 떨어진다. ③ 열차 시간을 10분으로 줄인다. 비율로 본 경사는 같지만 집값 자체가 높아져서 1분의 값이 원으로는 더 커진다. 비싼 동네일수록 '역에서 1분'이 비싼 이유다. (교육용 헤도닉 모형. 마을버스는 기다리는 시간 6분에 걷는 시간의 30%가 걸린다고 두었다. 실제 시세가 아니다.)</div>
+    </div>
+
+    <p>역세권 프리미엄은 두 갈래에서 온다. 통근 시간이 줄어드는 몫과, 걷는 것 자체의 불편이 줄어드는 몫이다. 마을버스나 자전거 같은 '첫 구간' 교통이 좋아지면 앞의 몫이 줄어 역에서 먼 집이 상대적으로 덜 손해를 본다. 그리고 같은 비율의 프리미엄도 비싼 동네에서는 원 단위로 더 크다. 역에서 5분이 덜 걸린다는 이유로 A구에서는 수천만원, E시에서는 그 절반쯤이 붙는다.</p>
+  </section>
+
+  <section id="school-infra">
+    <h2>학군과 생활 인프라</h2>
+    <p>일자리와 역이 '밖으로 나가는 힘'이라면, 학교와 생활 인프라는 '동네 안에서 사는 힘'이다. 아이가 있는 가구에게는 걸어서 다닐 수 있는 초등학교, 평판이 좋은 중·고등학교, 학원이 모인 거리가 집을 고르는 첫 기준이 되기도 한다. 이것을 흔히 <span class="term">학군</span>이라 부른다. 원래 학군은 고등학교 배정 단위를 뜻하는 행정 용어지만, 시장에서는 '이 동네 학교와 교육 환경의 평판' 전체를 가리키는 말로 쓴다.</p>
+    <p>학군이 값에 얹히는 방식은 통근과 조금 다르다. 초등학교는 사는 곳에 따라 다닐 학교가 정해지므로(교육지원청이 정하는 통학구역), 같은 단지 안에서도 길 하나를 사이에 두고 배정 학교가 갈리면 값이 달라질 수 있다. 그리고 학군의 값은 아이가 학교에 다니는 기간에 몰려 있다. 아이가 다 큰 가구에게는 거의 의미가 없고, 학령기 아이를 둔 가구에게는 아주 크다. 그래서 학군이 좋은 동네는 집값뿐 아니라 전세가도 높고, 새 학기 직전에 전세 수요가 몰린다.</p>
+    <p>생활 인프라는 대형 마트와 시장, 병원, 공원, 도서관, 문화시설처럼 매일 또는 매주 닿는 것들이다. 반대로 값을 깎는 것도 있다. 큰길의 소음, 고압선, 쓰레기 처리시설 같은 기피 시설, 조망을 가리는 건물이다. 아래 그림은 한 채의 값에 얹히는 속성들을 한데 모은 것이다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 460 360" role="img" aria-label="집값에 얹히는 여섯 가지 속성 묶음">
+        <defs><marker id="lo-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="context-stroke"/></marker></defs>
+        <circle cx="230" cy="180" r="62" class="f-acc-soft"/>
+        <text x="230" y="174" text-anchor="middle" class="lbl-acc">84㎡ 한 채의 값</text>
+        <text x="230" y="194" text-anchor="middle" class="lbl-dim">= 속성의 묶음</text>
+        <rect x="150" y="10" width="160" height="52" rx="8" class="f-surface"/>
+        <text x="230" y="32" text-anchor="middle" class="lbl-b">일자리 접근성</text>
+        <text x="230" y="51" text-anchor="middle" class="lbl-dim">통근 시간·일자리 수</text>
+        <rect x="318" y="84" width="136" height="52" rx="8" class="f-surface"/>
+        <text x="386" y="106" text-anchor="middle" class="lbl-b">교통</text>
+        <text x="386" y="125" text-anchor="middle" class="lbl-dim">역까지 도보, 노선 수</text>
+        <rect x="318" y="226" width="136" height="52" rx="8" class="f-surface"/>
+        <text x="386" y="248" text-anchor="middle" class="lbl-b">학교</text>
+        <text x="386" y="267" text-anchor="middle" class="lbl-dim">배정 학교, 학원가</text>
+        <rect x="150" y="298" width="160" height="52" rx="8" class="f-surface"/>
+        <text x="230" y="320" text-anchor="middle" class="lbl-b">생활 인프라</text>
+        <text x="230" y="339" text-anchor="middle" class="lbl-dim">마트·병원·공원·도서관</text>
+        <rect x="6" y="226" width="136" height="52" rx="8" class="f-surface"/>
+        <text x="74" y="248" text-anchor="middle" class="lbl-b">단지와 건물</text>
+        <text x="74" y="267" text-anchor="middle" class="lbl-dim">나이·규모·층·향</text>
+        <rect x="6" y="84" width="136" height="52" rx="8" class="f-bad-soft"/>
+        <text x="74" y="106" text-anchor="middle" class="lbl-bad">깎는 것</text>
+        <text x="74" y="125" text-anchor="middle" class="lbl-dim">소음·기피 시설·조망</text>
+        <path d="M230 64 L230 114" class="s-line" marker-end="url(#lo-ar)"/>
+        <path d="M318 122 L288 148" class="s-line" marker-end="url(#lo-ar)"/>
+        <path d="M318 240 L288 214" class="s-line" marker-end="url(#lo-ar)"/>
+        <path d="M230 296 L230 246" class="s-line" marker-end="url(#lo-ar)"/>
+        <path d="M142 240 L172 214" class="s-line" marker-end="url(#lo-ar)"/>
+        <path d="M142 122 L172 148" class="s-bad" marker-end="url(#lo-ar)"/>
+      </svg>
+      <figcaption><b>그림 2. 한 채의 값에 얹히는 속성들.</b> 집은 방 세 개짜리 건물 하나가 아니라 통근, 역, 학교, 생활 인프라, 단지의 성질, 주변 환경을 한 묶음으로 산 것이다. 묶음은 따로 팔지 않으므로 각 속성의 값은 시장에서 직접 보이지 않는다. 이 값을 거래 자료에서 거꾸로 추정하는 방법이 다음 절의 헤도닉 가격 모형이다.</figcaption>
+    </figure>
+
+    <div class="callout pro">
+      <strong>"학군이 좋다"는 말을 확인 가능한 사실로 바꾼다</strong>
+      손님이 가장 많이 묻고, 중개사가 가장 쉽게 과장하는 것이 학군이다. 오래 일한 중개사는 "이 동네 학군 좋아요" 대신 확인할 수 있는 사실로 말한다. 이 동과 호수가 배정되는 초등학교가 어디인지(교육지원청의 통학구역 안내로 확인), 아이 걸음으로 몇 분이고 큰길을 건너는지, 근처 중학교 배정 방식이 어떤지다. 학업 성취 같은 평판은 해마다 바뀌고 개인차가 커서, 중개사가 단정해서 말할 일이 아니라고 덧붙인다. 학군 이야기가 길어지면 계약이 빨리 성사되는 경우가 많다는 것도 중개사는 안다. 그래서 더 조심해야 한다.
+    </div>
+  </section>
+
+  <section id="hedonic">
+    <h2>헤도닉 가격 모형: 한 채의 값을 쪼갠다</h2>
+    <p>집은 속성의 묶음이라 각 속성의 값이 직접 보이지 않는다. 그런데 거래가 많이 쌓이면 거꾸로 추정할 수 있다. 다른 조건은 비슷한데 역에서 5분 더 먼 집들이 평균 몇 % 싸게 거래되었는지, 건물 나이만 다른 집들이 몇 % 차이 나는지를 통계로 뽑아내는 것이다. 이렇게 상품의 가격을 그 속성들의 값의 합으로 보고 각 속성의 값을 추정하는 방법을 <span class="term">헤도닉 가격 모형</span><span class="en">(Hedonic pricing model)</span>이라 한다. 공시가격을 매길 때나 감정평가, 집값 지수를 만들 때(<a href="data.html">16장</a>)도 같은 생각을 쓴다.</p>
+
+    <div class="formula">
+      $$\ln P \;=\; \beta_0 \;+\; \beta_1\,\text{통근} \;+\; \beta_2\,\text{역까지} \;+\; \beta_3\,\text{학군} \;+\; \beta_4\,\text{건물 나이} \;+\;\cdots\;+\; \varepsilon$$
+      <div class="where">가격의 로그를 쓰면 각 계수 \(\beta\)는 '그 속성이 한 단위 바뀔 때 가격이 몇 % 바뀌는가'가 된다. 이 책의 모형(<code>RE.hedonic</code>)은 통근 1분에 −1.5%, 역까지 도보 1분에 −0.8%, 학군 지수 0.1에 +2.4%, 건물 나이 1년에 −1.1%(30년까지)로 둔 교육용 모형이다. \(\varepsilon\)은 모형이 설명하지 못하는 나머지다.</div>
+    </div>
+
+    <p>아래 폭포 그래프는 기준 집(84㎡, 도심까지 30분, 역까지 5분, 학군 보통, 10년 차, 500세대)에서 출발해 속성을 하나씩 바꿀 때 값이 어떻게 오르내리는지를 쌓은 것이다. 지역을 고르면 그 지역의 대표 속성이 들어가고, 맨 아래에 실제 시세(교육용)와 모형의 차이가 나온다. 슬라이더로 속성을 바꿔 본다.</p>
+
+    <div class="sim" id="sim-hd">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>집값 폭포: 속성별 몫</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="hd-cv"></canvas></div>
+        <div class="sim-controls">
+          <div class="seg" id="hd-area"><button data-value="A">서울 A구</button><button data-value="B" class="on">경기 B시</button><button data-value="E">경기 E시</button></div>
+          <label class="ctrl"><span>도심까지 통근 <output id="hd-c-out"></output></span><input type="range" id="hd-c" min="10" max="90" step="5" value="55"></label>
+          <label class="ctrl"><span>학군 지수 <output id="hd-s-out"></output></span><input type="range" id="hd-s" min="0" max="1" step="0.05" value="0.5"></label>
+          <label class="ctrl"><span>건물 나이 <output id="hd-a-out"></output></span><input type="range" id="hd-a" min="0" max="40" step="1" value="17"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">모형 가격</span><span class="v" id="hd-o-m">—</span></div>
+        <div class="stat"><span class="k">시세(교육용)</span><span class="v" id="hd-o-s">—</span></div>
+        <div class="stat"><span class="k">모형이 설명 못 한 몫</span><span class="v" id="hd-o-r">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 경기 B시에서 가장 긴 빨간 막대는 통근 시간이다. 도심까지 55분이 기준 집(30분)보다 약 3억 1,000만원을 깎는다. ② 서울 A구를 고른다. 통근(+7,700만원)과 학군(+7,900만원)이 값을 올리고, 22년 된 건물이 1억 4,000만원을 깎는다. 모형 가격은 약 10억 4,000만원이고, 시세 12억 5,000만원과의 차이 약 2억 1,000만원(시세의 17%)이 모형 밖에 남는다. ③ 경기 E시를 고르고 통근을 90분까지 늘린다. 통근 막대가 기준 집 값의 절반 넘게 깎는다. 신도시가 새 건물과 공원으로 얻은 것을 거리가 대부분 가져간다. (교육용 헤도닉 모형. 경기 B시의 모형 가격이 시세 6억 2,000만원과 같도록 기준 단가를 맞췄다. 속성을 하나씩 순서대로 곱해 쌓았으므로 순서를 바꾸면 막대 길이가 조금 달라진다. 지역을 고르면 슬라이더가 그 지역 값으로 돌아간다.)</div>
+    </div>
+
+    <p>폭포를 보면 '같은 평수, 두 배의 가격'의 정체가 드러난다. A구와 B시의 차이 6억 3,000만원 가운데 모형이 설명하는 것은 통근 시간, 학군, 역까지의 거리 같은 속성의 차이다. 그리고 2억원 남짓이 모형 밖에 남는다. 이 나머지는 모형에 넣지 않은 속성(한강 조망, 대형 병원, 문화시설, 동네의 평판), 앞으로 좋아질 것이라는 기대(재건축 가능성, 개발 계획), 그리고 그 동네에 살고 싶은 사람에 비해 집이 모자란다는 <b>희소성</b>이 섞인 것이다. 헤도닉 모형은 값의 큰 줄기를 잘 설명하지만, 남는 몫이 왜 남는지는 말해 주지 않는다.</p>
+
+    <div class="callout deep">
+      <strong>헤도닉 모형을 읽을 때 조심할 것</strong>
+      첫째, <b>빠진 변수</b>. 학군이 좋은 동네는 대개 도심에도 가깝고 공원도 많다. 모형에 학군만 넣으면 학군의 계수가 다른 좋은 것들의 값까지 떠안아 부풀려진다. 둘째, <b>순서와 상호작용</b>. 로그 모형에서 속성의 효과는 곱으로 쌓이므로 원 단위의 몫은 어느 속성을 먼저 놓느냐에 따라 달라진다. 비싼 동네에서는 같은 1%가 더 큰 돈이다. 셋째, <b>시점</b>. 계수는 추정한 시기의 시장을 반영한다. 금리가 낮아 모두가 넓은 집을 원하던 시기와 그렇지 않은 시기의 계수가 다르다. 넷째, <b>이웃의 영향</b>. 이웃 단지의 값이 서로 따라 움직이는 공간적 상관 때문에 통계적으로는 따로 다뤄야 한다. 모형의 숫자는 '이 속성이 대략 이 정도의 무게'라는 감각을 주는 도구이지, 개별 집의 적정 가격을 정해 주는 계산기가 아니다.
+    </div>
+  </section>
+
+  <section id="change">
+    <h2>입지가 바뀔 때: 기대가 먼저 반영된다</h2>
+    <p>입지는 고정되어 있지 않다. 새 철도 노선이 생기면 통근 시간이 줄고, 큰 회사나 공공기관이 옮겨 오면 일자리 중심이 생기고, 학교가 새로 열리거나 배정이 바뀌면 학군이 달라진다. 반대로 공장이 떠나거나 기피 시설이 들어서면 값이 깎인다. 그런데 이런 변화가 집값에 반영되는 시점은 변화가 실제로 일어나는 날이 아니다. 계획이 처음 알려지는 순간부터 반영되기 시작한다.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 460 260" role="img" aria-label="새 철도 노선의 단계와 불확실성, 가격 반영 시점">
+        <defs><marker id="lo-ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="context-stroke"/></marker></defs>
+        <line x1="20" y1="120" x2="440" y2="120" class="s-axis" marker-end="url(#lo-ar2)"/>
+        <circle cx="46" cy="120" r="7" class="f-warn"/>
+        <circle cx="122" cy="120" r="7" class="f-warn"/>
+        <circle cx="198" cy="120" r="7" class="f-acc2"/>
+        <circle cx="274" cy="120" r="7" class="f-acc2"/>
+        <circle cx="350" cy="120" r="7" class="f-acc"/>
+        <circle cx="420" cy="120" r="7" class="f-ok"/>
+        <text x="46" y="100" text-anchor="middle" class="lbl-b">구상·공약</text>
+        <text x="122" y="146" text-anchor="middle" class="lbl-b">국가 계획</text>
+        <text x="122" y="162" text-anchor="middle" class="lbl-dim">반영</text>
+        <text x="198" y="84" text-anchor="middle" class="lbl-b">예비타당성</text>
+        <text x="198" y="100" text-anchor="middle" class="lbl-dim">조사 통과</text>
+        <text x="274" y="146" text-anchor="middle" class="lbl-b">설계</text>
+        <text x="350" y="100" text-anchor="middle" class="lbl-b">착공</text>
+        <text x="420" y="146" text-anchor="middle" class="lbl-b">개통</text>
+        <path d="M30 196 L430 196" class="s-dash"/>
+        <rect x="30" y="180" width="200" height="32" rx="6" class="f-warn-soft"/>
+        <text x="130" y="201" text-anchor="middle" class="lbl">무산·지연 가능성이 크다</text>
+        <rect x="236" y="180" width="194" height="32" rx="6" class="f-ok-soft"/>
+        <text x="333" y="201" text-anchor="middle" class="lbl">불확실성이 줄어든다</text>
+        <text x="230" y="238" text-anchor="middle" class="lbl-acc">가격은 왼쪽에서 먼저, 확률과 시간을 할인해 움직인다</text>
+        <text x="230" y="30" text-anchor="middle" class="lbl-dim">발표에서 개통까지 대개 10년 안팎, 그보다 길어지는 일도 흔하다</text>
+      </svg>
+      <figcaption><b>그림 3. 새 노선의 단계와 가격 반영.</b> 철도 사업은 국가 계획(국토교통부의 국가철도망 구축계획 같은 법정 계획)에 반영되고, 큰 사업은 예비타당성조사를 거쳐야 설계와 착공으로 넘어간다. 각 단계에서 사업이 미뤄지거나 노선이 바뀌거나 무산될 수 있다. 시장은 '개통되면 얻을 값'에 '개통될 확률'과 '기다리는 시간의 할인'을 곱한 만큼을 미리 가격에 넣는다.</figcaption>
+    </figure>
+
+    <p>아래 그래프는 한 동네의 가상 가격 지수다. 1년 차에 새 노선 계획이 발표되고, 4년 차에 착공하고, 세로선(끌 수 있다)의 해에 개통한다. 개통되면 통근이 빨라져 집값이 15% 오른다고 가정한다. 시장이 발표 때 생각하는 '개통될 확률'을 바꾸고, 사업이 지연되거나 무산되는 경우를 골라 본다.</p>
+
+    <div class="sim" id="sim-ex">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>새 노선 발표에서 개통까지</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="ex-cv"></canvas><span class="hint">개통 세로선을 끌어 옮긴다</span></div>
+        <div class="sim-controls">
+          <label class="ctrl"><span>발표 때 개통 확률 <output id="ex-p-out"></output></span><input type="range" id="ex-p" min="0.1" max="0.9" step="0.05" value="0.4"></label>
+          <div class="seg" id="ex-sc"><button data-value="plan" class="on">계획대로</button><button data-value="delay">지연(4년)</button><button data-value="cancel">무산</button></div>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">발표 직후 반영</span><span class="v" id="ex-o-a">—</span></div>
+        <div class="stat"><span class="k">개통 전까지 반영된 몫</span><span class="v" id="ex-o-b">—</span></div>
+        <div class="stat"><span class="k">지연·무산 소식의 충격</span><span class="v" id="ex-o-c">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 계획대로에서 발표 직후 지수가 한 번에 뛰는 것을 본다. 개통이 7년 남았는데도 기대 상승분의 4분의 1 남짓(약 27%)이 바로 들어온다. 개통 날에는 거의 오르지 않는다. "개통 호재"가 개통 때는 이미 값에 들어 있는 이유다. ② '지연(4년)'을 고른다. 중간에 지연 소식이 나오는 순간 지수가 떨어진다. 사업은 계속되는데도 기다림이 길어지고 확률이 낮아진 만큼 값이 빠진다. ③ '무산'을 고르고 확률을 0.9로 올린다. 시장이 확신할수록 무산 소식의 충격이 커진다. 발표 직후 높은 값에 산 사람이 그 하락을 그대로 떠안는다. (교육용 가상 데이터. 개통 효과 15%, 할인율 연 6%, 확률은 착공 때 0.8, 개통 때 1로 오른다고 두었다. 실제 사업이나 지역과 무관하다.)</div>
+    </div>
+
+    <p>여기서 본 것은 입지 변화의 가격 효과가 <b>확률과 시간으로 할인되어 미리</b> 들어온다는 것이다. 계획이 발표된 뒤에 사는 사람은 이미 기대가 반영된 값을 낸다. 그 사람이 얻는 것은 남은 불확실성이 풀릴 때의 차액뿐이고, 사업이 미뤄지거나 무산되면 손실을 본다. 학군도 마찬가지다. 새 학교 계획이나 배정 변경 소식이 돌면 그때 값이 움직이고, 학교가 문을 여는 날에는 조용하다.</p>
+    <p>그렇다면 이런 가격 변화는 어느 힘에서 왔는가. 개통 뒤에 남는 15%는 <b>입지</b>의 힘이다. 통근 시간이 실제로 줄었기 때문이다. 발표와 개통 사이에 오르내린 몫은 <b>기대</b>의 힘이다. 같은 노선을 두고도 시장의 확신이 바뀔 때마다 값이 흔들린다. 그리고 그 기대 몫이 얼마나 크게 반영되는지는 할인율, 곧 <b>금리</b>에 달려 있다. 개통까지 남은 7년을 할인하는 비율이 금리와 함께 움직이기 때문이다(<a href="value.html">3장</a>). 기대가 다른 사람의 기대를 부르며 값을 개통 효과 이상으로 밀어 올리는 일은 <a href="bubble.html">17장</a>에서 다룬다.</p>
+
+    <div class="callout pro">
+      <strong>개발 계획을 설명하는 순서</strong>
+      "여기 역 생깁니다"는 중개 현장에서 가장 강력한 말이고, 그래서 가장 조심해야 하는 말이다. 경험 많은 중개사는 개발 소식을 말할 때 순서를 지킨다. 먼저 지금 어느 단계인지(구상인지, 국가 계획에 반영되었는지, 예비타당성조사를 통과했는지, 착공했는지)를 말하고, 근거 문서를 보여 준다. 다음으로 그 단계에서 사업이 미뤄지거나 바뀐 다른 예가 흔하다는 것을 덧붙인다. 마지막으로 "이 집 값에는 이미 그 기대가 어느 정도 들어 있다"고 말한다. 개발 기대를 부풀려 땅이나 분양 상품을 파는 영업은 분쟁이 잦은 유형이다. 손님이 "역 생긴다던데요"라고 먼저 말하면, 중개사는 그 말의 출처부터 묻는다.
+    </div>
+  </section>
+
+  <section id="institutions">
+    <h2>입지를 확인하는 공식 자료</h2>
+    <p>입지는 눈으로 보고 발로 걸어 확인하는 것이 먼저지만, 공식 자료로 확인해야 하는 것도 있다. 2026년 기준으로 일반인이 직접 열어 볼 수 있는 자료는 다음과 같다.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>알고 싶은 것</th><th>자료</th><th>무엇을 보나</th></tr></thead>
+        <tbody>
+          <tr><td>이 근처 실제 거래 가격</td><td>국토교통부 실거래가 공개시스템</td><td>같은 단지·평형의 최근 거래가와 날짜, 층. 호가가 아닌 신고된 값이다(<a href="data.html">16장</a>).</td></tr>
+          <tr><td>땅의 용도와 규제</td><td>토지이음(토지이용계획 열람)</td><td>용도지역, 도시계획시설(도로·공원·학교 예정지), 지구단위계획. 앞의 땅이 공원 예정지인지 상업지인지가 여기 있다.</td></tr>
+          <tr><td>철도 계획의 단계</td><td>국가철도망 구축계획, 대도시권 광역교통 시행계획(국토교통부)</td><td>노선이 법정 계획에 들어 있는지, 사업 단계가 어디인지. 예비타당성조사 결과는 기획재정부(재정경제부)·한국개발연구원 자료에서 확인한다.</td></tr>
+          <tr><td>배정 학교</td><td>시·도 교육청과 교육지원청의 통학구역 안내</td><td>주소(동·호수)별 초등학교 배정, 중학교 배정 방식.</td></tr>
+          <tr><td>주변 시설과 계획</td><td>시·군·구청 도시계획 고시, 공고</td><td>도로 확장, 공공시설, 기피 시설의 입지 결정.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout warn">
+      <strong>제도와 수치는 해마다 바뀐다</strong>
+      이 장의 숫자(통근 1분의 가격 효과, 시간가치, 할인율, 지역 시세)는 크기를 느끼게 하려고 정한 교육용 값이다. 실제 지역의 시세와 계수가 아니며 어떤 지역의 집값 전망도 아니다. 철도·도로 계획은 국가 계획이 5년 안팎마다 다시 세워지고, 예비타당성조사의 대상 기준과 평가 방식도 바뀐다. 학교 배정 구역도 학교 신설과 학생 수에 따라 조정된다. 2026년 기준 공식 자료로 단계와 날짜를 확인하고, 개발 계획을 근거로 한 판단은 그 계획이 미뤄지거나 바뀔 수 있다는 전제에서 한다.
+    </div>
+
+    <div class="callout buyer">
+      <strong>'입지 호재'를 듣고 계약하기 전에</strong>
+      <ul>
+        <li><b>단계 확인</b>: 그 노선·시설이 법정 계획에 들어 있는가, 예비타당성조사를 통과했는가, 착공했는가. 착공 전이면 날짜는 예상일 뿐이다.</li>
+        <li><b>토지이용계획 열람</b>: 집 앞 빈 땅이 무엇으로 정해져 있는가(공원, 학교, 상업지, 도로). 조망과 소음이 거기서 정해진다.</li>
+        <li><b>배정 학교 확인</b>: 동·호수 기준으로 교육지원청에 확인한다. 같은 단지라도 다를 수 있다.</li>
+        <li><b>실거래가 비교</b>: 호재 소식 전후의 실거래가를 본다. 이미 올랐다면 내가 사는 값에는 기대가 들어 있다.</li>
+        <li><b>광고 문구</b>: "확정", "개통 예정" 같은 말이 공식 문서의 표현과 같은지 대조한다.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="case">
+    <h2>하늘네 집 노트</h2>
+    <p>하늘네의 후보 지역은 세 곳이다. 하늘의 직장은 서울 도심에 있고, 재원의 학교는 경기 B시 안에 있다. 두 사람의 편도 통근 시간은 서울 A구에서 하늘 25분·재원 60분, 지금 사는 경기 B시에서 하늘 55분·재원 15분, 경기 E시 신도시에서 하늘 75분·재원 35분이다. 아래는 지금 사는 B시를 기준으로, 각 지역의 84㎡ 가격 차이(회색)와 통근 시간 차이를 집값으로 환산한 값(녹색은 시간을 아끼는 쪽, 빨간색은 잃는 쪽)을 나란히 놓은 것이다. 누구의 통근을 셈에 넣을지, 시간가치와 할인율을 바꿔 본다.</p>
+
+    <div class="sim" id="sim-case">
+      <div class="sim-head"><span class="sim-tag">SIMULATOR</span><h3>세 지역의 가격 차이와 '시간값'</h3></div>
+      <div class="sim-body side">
+        <div class="sim-view"><canvas id="case-cv"></canvas></div>
+        <div class="sim-controls">
+          <div class="seg" id="case-who"><button data-value="h" class="on">하늘만</button><button data-value="j">재원만</button><button data-value="hj">두 사람</button></div>
+          <label class="ctrl"><span>시간가치(1시간) <output id="case-v-out"></output></span><input type="range" id="case-v" min="5000" max="40000" step="1000" value="15000"></label>
+          <label class="ctrl"><span>할인율 <output id="case-i-out"></output></span><input type="range" id="case-i" min="2" max="8" step="0.5" value="4"></label>
+        </div>
+      </div>
+      <div class="sim-readout">
+        <div class="stat"><span class="k">A구 − B시 가격 차이</span><span class="v" id="case-o-g">—</span></div>
+        <div class="stat"><span class="k">A구의 시간값(B시 대비)</span><span class="v" id="case-o-t">—</span></div>
+        <div class="stat"><span class="k">가격 차이 중 시간값</span><span class="v" id="case-o-s">—</span></div>
+        <div class="stat"><span class="k">E시의 시간값(B시 대비)</span><span class="v" id="case-o-e">—</span></div>
+      </div>
+      <div class="sim-note">해볼 것: ① 하늘만 셈에 넣으면 A구는 하늘에게 왕복 하루 60분, 1년 240시간을 아껴 준다. 시간값은 한 해 360만원, 집값으로 약 9,000만원이다. A구가 B시보다 비싼 6억 3,000만원의 약 14%다. ② '두 사람'을 고른다. 재원의 통근이 하루 90분 늘어나 하늘네 전체로는 A구에서 시간을 오히려 잃는다. 시간값은 약 −4,500만원이다. ③ 시간가치를 4만원, 할인율을 2%로 극단까지 바꿔도 하늘 한 사람의 시간값(약 4억 8,000만원)은 A구 가격 차이에 못 미친다. A구의 값은 하늘네의 시간만으로는 설명되지 않는다. ④ E시는 B시보다 1억 3,000만원 싸지만, 두 사람 기준으로 통근이 하루 80분 늘어 시간값이 약 −1억 2,000만원이다. (교육용 계산: 연 240일 통근, 교통비 차이는 넣지 않았다. 지역 시세는 교육용 가상 값이다.)</div>
+    </div>
+
+    <div class="casefile">
+      <div class="tag"><b>CASE 하늘네</b><span>집 노트 · 2장</span></div>
+      <h4>A구의 6억 3,000만원 가운데 하늘네의 '시간값'은 얼마인가</h4>
+      <p>태호는 지도 위 세 곳에 핀을 꽂고, 가격 대신 시간부터 적었다. 서울 A구에서는 하늘이 편도 25분, 재원이 60분, 경기 B시에서는 55분과 15분, 경기 E시에서는 75분과 35분이다. 하루 왕복으로 더하면 하늘네 두 사람의 통근은 A구 170분, B시 140분, E시 220분이다. 서울 도심에 가까운 A구가 하늘네 전체로는 B시보다 하루 30분을 더 길에서 보낸다. 재원의 직장이 B시에 있기 때문이다.</p>
+      <p>이 장의 방법으로 시간을 돈으로 바꾸면(시간가치 1시간 1만 5,000원, 연 240일, 할인율 4%, 교육용 가정) A구가 하늘에게 아껴 주는 시간은 한 해 240시간, 약 360만원이고 집값으로 약 9,000만원이다. A구와 B시의 가격 차이 6억 3,000만원의 약 14%다. 재원까지 넣으면 A구의 시간값은 약 −4,500만원이 된다. E시는 B시보다 1억 3,000만원 싸지만 두 사람의 통근이 하루 80분 늘어 시간값이 약 −1억 2,000만원이다. 헤도닉 모형으로 보면 A구의 모형 가격은 약 10억 4,000만원(통근 +7,700만원, 학군 +7,900만원, 건물 나이 −1억 4,000만원 등)이고, 약 2억 1,000만원이 모형 밖에 남는다. A구의 값을 정하는 사람은 하늘네가 아니라, 두 사람 모두 도심으로 출근하거나 그 학군과 동네를 강하게 원하는 다른 가구다.</p>
+      <p>하늘은 "그럼 A구는 우리한테 비싼 거네요"라고 말했다가 고쳐 말한다. "아니, 우리 셈으로는 그 값이 안 나온다는 거죠." 태호가 고개를 끄덕인다. "맞습니다. 비싸다, 싸다가 아니라 누구 셈이냐의 문제예요. 그리고 재원 씨 직장이 B시에 있는 한, A구는 하늘 씨 한 사람의 시간을 사고 재원 씨의 시간을 파는 거래입니다." 재원은 교사라 몇 년마다 학교를 옮길 수 있지만, 같은 교육청 안에서 옮기므로 B시 둘레를 크게 벗어나기 어렵다. 이 제약이 후보지를 좁힌다. 다만 어디에 살지는 아직 정하지 않았다. 숫자로 정한 것은 '시간의 값'뿐이고, 가격이 금리와 대출, 세금에 따라 어떻게 달라지는지는 아직 보지 않았다.</p>
+      <div class="clue"><div><b>이 장에서 정한 것</b>세 후보지의 통근 시간과 시간값: 하늘 기준 A구 +9,000만원, 두 사람 기준 A구 −4,500만원·E시 −1억 2,000만원(교육용 가정). 재원의 직장이 B시라는 제약.</div><div><b>아직 남은 문제</b>A구 가격의 나머지(학군·희소성·기대)는 하늘네에게 얼마의 값인가? 지금 6억 2,000만원이라는 B시의 값은 금리와 임대료로 보면 어느 수준인가?</div><div><b>다음 단계</b>3장: C아파트의 임대수익률과 자본환원 가격, 금리 1%p가 이론 가격을 얼마나 움직이는지, 하늘네 소득 대비 가격(PIR)을 계산한다.</div></div>
+    </div>
+  </section>
+
+  <section class="keypoints" id="summary">
+    <h2>핵심 정리</h2>
+    <ol>
+      <li>같은 84㎡의 값 차이는 대부분 건물이 아니라 땅(자리)에서 나온다. 건물은 낡지만 좋은 자리의 땅은 낡지 않는다.</li>
+      <li>지대 이론: 도심에서 멀어질수록 통근 비용만큼 집값이 내려간다. 1km당 연 통근 비용 \(c\)를 할인율 \(i\)로 나눈 \(c/i\)가 곡선의 기울기이고, 교통이 빨라지면 곡선이 눕고 도시가 넓어진다.</li>
+      <li>통근 시간은 시간가치로 돈이 된다. 편도 30분의 차이는 한 사람 기준으로 집값 수천만원에서 1억원 가까이다. 시간가치는 사람마다 달라서, 시장 가격은 그 집을 가장 원하는 가구의 셈에 맞춰진다.</li>
+      <li>역세권 프리미엄은 통근 시간과 걷는 불편 두 갈래에서 온다. 같은 비율의 프리미엄도 비싼 동네에서는 원 단위로 더 크다.</li>
+      <li>헤도닉 가격 모형은 한 채의 값을 통근·역·학군·건물 나이 같은 속성의 몫으로 쪼갠다. 모형 밖에 남는 몫에는 빠진 속성, 기대, 희소성이 섞여 있다.</li>
+      <li>새 노선·학교 같은 입지 변화는 개통·개교 날이 아니라 계획이 알려질 때부터 확률과 시간으로 할인되어 가격에 들어온다. 그래서 지연·무산 소식이 하락을 만든다.</li>
+    </ol>
+  </section>
+
+  <section class="quiz-sec" id="quiz">
+    <h2>확인 퀴즈</h2>
+    <div class="quiz">
+      <div class="quiz-q">
+        <p>도심까지 1km 멀어질 때마다 한 가구의 통근 비용이 한 해 80만원 늘어난다. 할인율이 4%라면, 지대 이론으로 본 1km당 집값 차이는 대략 얼마인가?</p>
+        <div class="opts">
+          <button class="opt">80만원</button>
+          <button class="opt" data-correct>2,000만원</button>
+          <button class="opt">320만원</button>
+          <button class="opt">8,000만원</button>
+        </div>
+        <div class="quiz-exp">해마다 80만원씩 영원히 더 드는 비용의 현재가치는 80만원 ÷ 0.04 = 2,000만원이다. 그래서 1km 더 먼 집에는 그만큼 덜 내려 한다. 할인율이 낮아지면 같은 통근 비용이 더 큰 집값 차이가 된다. 금리가 낮을 때 도심과 외곽의 가격 차이가 벌어지기 쉬운 한 이유다.</div>
+      </div>
+      <div class="quiz-q">
+        <p>헤도닉 가격 모형으로 서울 A구 집값을 설명했더니 시세와 모형 가격 사이에 2억원이 남았다. 이 차이에 대한 설명으로 가장 알맞은 것은?</p>
+        <div class="opts">
+          <button class="opt">모형이 틀렸으므로 시세가 2억원 거품이다</button>
+          <button class="opt">시세가 틀렸으므로 곧 모형 가격으로 내려간다</button>
+          <button class="opt">2억원은 모두 학군의 값이다</button>
+          <button class="opt" data-correct>모형에 넣지 않은 속성, 앞으로의 기대, 희소성 같은 것이 섞인 몫이라 이것만으로 거품인지 알 수 없다</button>
+        </div>
+        <div class="quiz-exp">모형 밖에 남는 몫(잔차)은 모형이 담지 못한 모든 것이다. 조망, 대형 병원, 동네의 평판처럼 빠진 속성, 재건축이나 개발에 대한 기대, 원하는 사람에 비해 집이 적은 희소성이 함께 들어 있다. 잔차가 크다는 사실만으로 거품이라고 말할 수 없다. 거품을 따지는 방법은 <a href="bubble.html">17장</a>에서 다룬다.</div>
+      </div>
+      <div class="quiz-q">
+        <p>어느 동네에 새 지하철역 계획이 발표된 뒤 7년이 지나 실제로 개통했다. 다른 조건이 같다면 집값은 언제 가장 크게 움직였을 가능성이 높은가?</p>
+        <div class="opts">
+          <button class="opt" data-correct>계획이 발표되거나 사업이 확정되는 단계에서 미리 움직이고, 개통 당일에는 크게 움직이지 않는다</button>
+          <button class="opt">개통 당일에 한꺼번에 오른다</button>
+          <button class="opt">개통 뒤 몇 년에 걸쳐 천천히만 오른다</button>
+          <button class="opt">새 역은 집값에 영향을 주지 않는다</button>
+        </div>
+        <div class="quiz-exp">시장은 '개통되면 얻을 값'에 '개통될 확률'과 '기다리는 시간의 할인'을 곱한 만큼을 미리 가격에 넣는다. 그래서 발표, 국가 계획 반영, 예비타당성조사 통과, 착공처럼 불확실성이 줄어드는 순간마다 값이 움직이고, 개통 당일에는 이미 거의 반영되어 있다. 반대로 지연·무산 소식은 그 순간 하락을 만든다.</div>
+      </div>
+      <div class="quiz-q">
+        <p>맞벌이 부부 중 한 사람은 서울 도심, 다른 한 사람은 경기 B시로 출근한다. 서울 A구로 이사하면 도심 출근자의 통근은 하루 60분 줄고 B시 출근자의 통근은 하루 90분 는다. 이 부부의 입장에서 맞는 말은?</p>
+        <div class="opts">
+          <button class="opt">도심에 가까워지므로 무조건 시간값이 늘어난다</button>
+          <button class="opt">시간가치를 아주 높게 잡으면 A구가 반드시 유리해진다</button>
+          <button class="opt" data-correct>두 사람을 합치면 하루 30분을 더 쓰므로, 이 부부에게 A구의 시간값은 마이너스다</button>
+          <button class="opt">통근 시간은 집값과 관계가 없다</button>
+        </div>
+        <div class="quiz-exp">가구의 시간값은 구성원 모두의 통근을 더해서 따진다. 60분을 아끼고 90분을 더 쓰면 하루 30분 손해이고, 두 사람의 시간가치가 같다면 시간가치를 높일수록 손해가 더 커진다. A구의 시세는 이 부부가 아니라, 두 사람 모두 도심으로 출근하는 가구처럼 A구에 더 높은 값을 매기는 사람들의 셈에 맞춰져 있다.</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  const TAU = Math.PI * 2;
+  function T(ctx, s, x, y, o) {
+    o = o || {};
+    ctx.font = EB.font(o.size || 12, o.mono, o.weight);
+    ctx.fillStyle = o.color; ctx.textAlign = o.align || "left"; ctx.textBaseline = o.base || "alphabetic";
+    ctx.fillText(s, x, y);
+  }
+  function rrect(ctx, x, y, w, h, r) {
+    r = Math.max(0, Math.min(r, Math.abs(w) / 2, Math.abs(h) / 2));
+    ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
+  }
+  function handle(ctx, x, y, col, P) { ctx.beginPath(); ctx.arc(x, y, 8, 0, TAU); ctx.fillStyle = col; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = P.bg; ctx.stroke(); }
+  const pw = (id) => document.getElementById(id).parentElement.clientWidth;
+  const signWon = (x) => (x > 0 ? "+" : "") + EB.won(x);
+  const C = RE.CASE;
+  const DAYS = 240;
+
+  /* ---------------------------------------------------------- 1. 지불 의사 지대 곡선 */
+  (function () {
+    const KM = 40, I = 0.04, P0 = 12e8, PSUB = 8e8, FLOOR = 2.5e8, SUBX = 30;
+    const cG = EB.range("br-c", (v) => v + "만원", draw);
+    const subEl = document.getElementById("br-sub");
+    subEl.addEventListener("change", draw);
+    let cbd = 4, house = 18, box = null, grab = null;
+    const centers = () => (subEl.checked ? [{ x: cbd, p0: P0, com: 18e8 }, { x: SUBX, p0: PSUB, com: 11e8 }] : [{ x: cbd, p0: P0, com: 18e8 }]);
+    function res(x) { const c = cG() * 1e4; return Math.max(...centers().map((k) => k.p0 - c * Math.abs(x - k.x) / I)); }
+    function com(x) { return Math.max(...centers().map((k) => k.com - 3e8 * Math.abs(x - k.x))); }
+    function use(x) { const r = res(x), m = com(x); if (m >= r && m >= FLOOR) return "com"; if (r >= FLOOR) return "res"; return "none"; }
+    const cv = EB.canvas("#br-cv", (ctx, w, h) => {
+      const P = EB.palette();
+      const xs = []; for (let x = 0; x <= KM + 1e-9; x += 0.2) xs.push(x);
+      const c = EB.chart(ctx, { x: 46, y: 14, w: w - 60, h: h - 112 }, {
+        x: [0, KM], y: [0, 20e8], xTicks: [0, 10, 20, 30, 40], xFmt: (v) => v + "km", yFmt: EB.wonAxis, yTicks: [0, 5e8, 10e8, 15e8, 20e8],
+        series: [
+          { data: xs.map((x) => [x, com(x)]), color: P.accent2, width: 1.6, dash: [5, 4] },
+          { data: xs.map((x) => [x, res(x)]), color: P.accent, width: 1.6, dash: [5, 4] },
+          { data: xs.map((x) => [x, Math.max(com(x), res(x), FLOOR)]), color: P.text, width: 2.6 },
+        ],
+        hlines: [{ y: FLOOR, color: P.faint, label: "개발 최저선" }],
+      });
+      box = c;
+      // 용도 띠
+      const sy = c.box.y + c.box.h + 24, sh = 14;
+      for (let x = 0; x < KM; x += 0.2) {
+        const u = use(x + 0.1);
+        ctx.fillStyle = u === "com" ? P.accent2 : u === "res" ? P.accent : P.grid;
+        ctx.globalAlpha = u === "none" ? 1 : 0.8;
+        ctx.fillRect(c.X(x), sy, c.X(x + 0.2) - c.X(x) + 0.5, sh);
+      }
+      ctx.globalAlpha = 1;
+      const narrow = w < 480;
+      const lg = [["상업", P.accent2], ["주거", P.accent], ["개발 안 됨", P.faint]];
+      let lx = c.box.x;
+      lg.forEach(([s, col]) => { ctx.fillStyle = col; ctx.fillRect(lx, sy + sh + 9, 10, 8); T(ctx, s, lx + 14, sy + sh + 17, { size: 11, color: P.dim }); ctx.font = EB.font(11); lx += ctx.measureText(s).width + (narrow ? 22 : 30); });
+      // 손잡이: 도심(축 위), 집(곡선 위)
+      const hx = c.X(house), hp = Math.max(res(house), FLOOR), hy = c.Y(Math.min(hp, 20e8));
+      ctx.save(); ctx.setLineDash([3, 3]); ctx.strokeStyle = P.bad; ctx.globalAlpha = 0.6; ctx.beginPath(); ctx.moveTo(hx, c.box.y + c.box.h); ctx.lineTo(hx, hy); ctx.stroke(); ctx.restore();
+      handle(ctx, hx, hy, P.bad, P);
+      const lbl = use(house) === "none" ? "개발 안 됨" : use(house) === "com" ? "상업지" : EB.won(res(house), { short: true });
+      ctx.font = EB.font(12, false, 700);
+      const tw = ctx.measureText(lbl).width + 12, lx2 = EB.clamp(hx - tw / 2, c.box.x, c.box.x + c.box.w - tw), ly = hy - 34 < c.box.y ? hy + 14 : hy - 34;
+      rrect(ctx, lx2, ly, tw, 20, 6); ctx.fillStyle = P.surface; ctx.fill(); ctx.strokeStyle = P.border; ctx.lineWidth = 1; ctx.stroke();
+      T(ctx, lbl, lx2 + tw / 2, ly + 10, { size: 12, weight: 700, color: P.text, align: "center", base: "middle" });
+      const cx = c.X(cbd), cy = c.box.y + c.box.h;
+      handle(ctx, cx, cy, P.accent2, P);
+      T(ctx, "도심", cx, cy - 14, { size: 11, color: P.accent2, align: "center", weight: 700 });
+      if (subEl.checked) { const sx = c.X(SUBX); ctx.beginPath(); ctx.arc(sx, cy, 5, 0, TAU); ctx.fillStyle = P.accent2; ctx.fill(); T(ctx, "부도심", sx, cy - 12, { size: 11, color: P.accent2, align: "center" }); }
+    }, { get height() { return pw("br-cv") < 480 ? 340 : 356; } });
+    EB.drag(cv.canvas, {
+      start(x, y) { if (!box) return; const hy = box.Y(Math.min(Math.max(res(house), FLOOR), 20e8)); const dh = Math.hypot(x - box.X(house), y - hy), dc = Math.hypot(x - box.X(cbd), y - (box.box.y + box.box.h)); grab = dc < dh ? "cbd" : "house"; },
+      move(x) { if (!box || !grab) return; const v = EB.clamp(Math.round((x - box.box.x) / box.box.w * KM * 2) / 2, 0, KM); if (grab === "cbd") cbd = v; else house = v; draw(); },
+      end() { grab = null; },
+    });
+    function draw() {
+      const ds = centers().map((k) => Math.abs(house - k.x)), d = Math.min(...ds);
+      EB.stat("br-o-d", d.toFixed(1) + "km");
+      const u = use(house);
+      EB.stat("br-o-p", u === "none" ? '<span class="minus">개발 안 됨</span>' : u === "com" ? "상업지(사무실이 더 낸다)" : EB.won(res(house)));
+      const edge = (P0 - FLOOR) * I / (cG() * 1e4);
+      EB.stat("br-o-e", edge > KM ? "약 " + Math.round(edge) + "km (그래프 밖)" : "약 " + edge.toFixed(1) + "km");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 2. 통근 시간을 근무일과 집값으로 */
+  (function () {
+    const mG = EB.range("tm-m", (v) => v + "분", draw);
+    const vG = EB.range("tm-v", (v) => v.toLocaleString("ko-KR") + "원", draw);
+    const whoG = EB.seg("tm-who", draw);
+    const calc = () => { const n = +whoG(), hrs = mG() * 2 * DAYS / 60 * n, yr = hrs * vG(); return { n, hrs, days: hrs / 8, yr, cap: RE.capValue(yr, 0.04) }; };
+    const cv = EB.canvas("#tm-cv", (ctx, w, h) => {
+      const P = EB.palette(), c = calc();
+      const narrow = w < 480;
+      const cols = narrow ? 20 : 30, rows = Math.ceil(365 / cols);
+      const top = 30, gap = 2;
+      const cell = Math.min((w - 24 - gap * (cols - 1)) / cols, (h - top - 70 - gap * (rows - 1)) / rows);
+      const gw = cols * cell + (cols - 1) * gap, x0 = (w - gw) / 2;
+      T(ctx, "1년 365일 · 칸 하나 = 8시간 근무일 하루", x0, 18, { size: 11, color: P.dim });
+      const fill = c.days, workdays = DAYS;
+      for (let i = 0; i < 365; i++) {
+        const x = x0 + (i % cols) * (cell + gap), y = top + Math.floor(i / cols) * (cell + gap);
+        let col = P.grid, a = 1;
+        if (i < Math.floor(fill)) { col = P.bad; a = 0.85; }
+        else if (i < fill) { col = P.bad; a = 0.4; }
+        else if (i < workdays) { col = P.accent; a = 0.18; }
+        ctx.globalAlpha = a; ctx.fillStyle = col; ctx.fillRect(x, y, cell, cell);
+      }
+      ctx.globalAlpha = 1;
+      const by = top + rows * (cell + gap) + 12;
+      ctx.fillStyle = P.bad; ctx.fillRect(x0, by, 10, 8); T(ctx, "통근에 쓰는 날", x0 + 14, by + 8, { size: 11, color: P.dim });
+      ctx.fillStyle = P.accent; ctx.globalAlpha = 0.3; ctx.fillRect(x0 + 112, by, 10, 8); ctx.globalAlpha = 1; T(ctx, "나머지 근무일(240일)", x0 + 126, by + 8, { size: 11, color: P.dim });
+      const big = Math.round(c.days) + "일어치";
+      T(ctx, big, x0, by + 40, { size: narrow ? 20 : 24, weight: 700, color: c.days > 120 ? P.bad : P.text });
+      ctx.font = EB.font(narrow ? 20 : 24, false, 700);
+      const bw = ctx.measureText(big).width;
+      T(ctx, "근무일 240일 중 " + Math.round(c.days / DAYS * 100) + "%", x0 + bw + 10, by + 40, { size: 12, color: P.dim });
+    }, { get height() { return pw("tm-cv") < 480 ? 300 : 290; } });
+    function draw() {
+      const c = calc();
+      EB.stat("tm-o-h", Math.round(c.hrs).toLocaleString("ko-KR") + "시간 · " + Math.round(c.days) + "일");
+      EB.stat("tm-o-y", '<span class="minus">' + EB.won(c.yr) + "</span>");
+      EB.stat("tm-o-c", '<span class="minus">' + EB.won(c.cap) + "</span>");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 3. 역에서 멀어지면 */
+  (function () {
+    const rG = EB.range("st-r", (v) => v + "분", draw);
+    const busEl = document.getElementById("st-bus");
+    busEl.addEventListener("change", draw);
+    const BASE = 1e7;
+    let walk = 10, box = null;
+    const access = (wk, bus) => (bus ? Math.min(wk, 6 + wk * 0.3) : wk);
+    const commute = (wk, bus) => access(wk, bus) + rG() + 5;
+    const price = (wk, bus) => RE.hedonic({ commute: commute(wk, bus), walk: wk, base: BASE }).price;
+    const cv = EB.canvas("#st-cv", (ctx, w, h) => {
+      const P = EB.palette(), bus = busEl.checked;
+      const xs = []; for (let x = 1; x <= 30.001; x += 0.5) xs.push(x);
+      const ymax = Math.ceil(price(1, true) / 1e8 + 0.5) * 1e8;
+      const c = EB.chart(ctx, { x: 52, y: 64, w: w - 66, h: h - 114 }, {
+        x: [0, 30], y: [0, ymax], xTicks: [0, 5, 10, 15, 20, 25, 30], xFmt: (v) => v + "분", yFmt: EB.wonAxis,
+        series: [
+          { data: xs.map((x) => [x, price(x, !bus)]), color: P.faint, width: 1.5, dash: [5, 4] },
+          { data: xs.map((x) => [x, price(x, bus)]), color: P.accent, width: 2.6 },
+        ],
+      });
+      box = c;
+      T(ctx, bus ? "점선: 마을버스가 없다면" : "점선: 마을버스가 있다면", c.box.x + c.box.w, c.box.y + 14, { size: 11, color: P.faint, align: "right" });
+      // 거리 위 그림: 역과 길
+      const sy = 30;
+      ctx.strokeStyle = P.axis; ctx.lineWidth = 6; ctx.globalAlpha = 0.35; ctx.beginPath(); ctx.moveTo(c.X(0), sy); ctx.lineTo(c.X(30), sy); ctx.stroke(); ctx.globalAlpha = 1;
+      rrect(ctx, c.X(0) - 14, sy - 12, 28, 24, 5); ctx.fillStyle = P.accent2; ctx.fill();
+      T(ctx, "역", c.X(0), sy + 1, { size: 12, color: "#fff", align: "center", base: "middle", weight: 700 });
+      if (bus) { for (let k = 1; k <= 3; k++) { const bx = c.X(k * 8); rrect(ctx, bx - 7, sy - 5, 14, 10, 3); ctx.fillStyle = P.ok; ctx.globalAlpha = 0.6; ctx.fill(); ctx.globalAlpha = 1; } }
+      const hx = c.X(walk), py = c.Y(price(walk, bus));
+      ctx.save(); ctx.setLineDash([3, 3]); ctx.strokeStyle = P.bad; ctx.globalAlpha = 0.6; ctx.beginPath(); ctx.moveTo(hx, sy + 10); ctx.lineTo(hx, py); ctx.stroke(); ctx.restore();
+      ctx.save(); ctx.translate(hx, sy - 2);
+      ctx.beginPath(); ctx.moveTo(-11, -1); ctx.lineTo(0, -12); ctx.lineTo(11, -1); ctx.lineTo(8, -1); ctx.lineTo(8, 10); ctx.lineTo(-8, 10); ctx.lineTo(-8, -1); ctx.closePath();
+      ctx.fillStyle = P.bad; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = P.bg; ctx.stroke(); ctx.restore();
+      handle(ctx, hx, py, P.bad, P);
+    }, { get height() { return pw("st-cv") < 480 ? 316 : 326; } });
+    EB.drag(cv.canvas, { move(x) { if (!box) return; walk = EB.clamp(Math.round((x - box.box.x) / box.box.w * 30), 1, 30); draw(); } });
+    function draw() {
+      const bus = busEl.checked, p = price(walk, bus), p1 = price(1, bus);
+      EB.stat("st-o-w", walk + "분" + (bus && access(walk, bus) < walk ? " (버스 이용)" : ""));
+      EB.stat("st-o-c", Math.round(commute(walk, bus)) + "분");
+      EB.stat("st-o-p", EB.won(p));
+      EB.stat("st-o-d", walk === 1 ? "—" : '<span class="minus">' + EB.won(p - p1) + "</span> (" + Math.round((p / p1 - 1) * 100) + "%)");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 4. 헤도닉 폭포 */
+  (function () {
+    const PRE = {
+      A: { commute: 25, walk: 6, school: 0.8, age: 22, park: true, households: 1200 },
+      B: { commute: 55, walk: 12, school: 0.5, age: 17, park: true, households: 800 },
+      E: { commute: 75, walk: 18, school: 0.55, age: 5, park: true, households: 1500 },
+    };
+    const BASE = 1e7 * 6.2e8 / RE.hedonic(Object.assign({ base: 1e7 }, PRE.B)).price;
+    const areaG = EB.seg("hd-area", (v) => { const p = PRE[v]; cG.set(p.commute); sG.set(p.school); aG.set(p.age); draw(); });
+    const cG = EB.range("hd-c", (v) => v + "분", draw);
+    const sG = EB.range("hd-s", (v) => v.toFixed(2), draw);
+    const aG = EB.range("hd-a", (v) => v + "년", draw);
+    function calc() {
+      const a = Object.assign({}, PRE[areaG()], { commute: cG(), school: sG(), age: aG(), base: BASE });
+      const h = RE.hedonic(a);
+      let run = h.ref;
+      const steps = h.parts.filter((p) => p.key !== "area").map((p) => { const n = run * p.factor, d = n - run; run = n; return { k: p.label, v: d }; });
+      const mkt = C.areas.find((x) => x.key === areaG()).price;
+      return { ref: h.ref, steps, model: h.price, mkt };
+    }
+    const cv = EB.canvas("#hd-cv", (ctx, w, h) => {
+      const P = EB.palette(), c = calc();
+      const narrow = w < 480;
+      const rows = [{ k: "기준 집", a: 0, b: c.ref, total: true }];
+      let run = c.ref;
+      c.steps.forEach((s) => { rows.push({ k: s.k, a: run, b: run + s.v, v: s.v }); run += s.v; });
+      rows.push({ k: "모형 가격", a: 0, b: c.model, total: true });
+      rows.push({ k: "시세(교육용)", a: 0, b: c.mkt, mkt: true });
+      const hi = Math.max(...rows.map((r) => Math.max(r.a, r.b))) * 1.12;
+      const box = { x: narrow ? 98 : 116, y: 8, w: w - (narrow ? 98 : 116) - 12, h: h - 30 };
+      const rowH = box.h / rows.length;
+      const X = (v) => box.x + v / hi * box.w;
+      ctx.strokeStyle = P.grid; ctx.lineWidth = 1;
+      const step = hi > 10e8 ? 4e8 : 2e8;
+      for (let v = 0; v <= hi; v += step) { ctx.beginPath(); ctx.moveTo(X(v), box.y); ctx.lineTo(X(v), box.y + box.h); ctx.stroke(); T(ctx, EB.wonAxis(v), X(v), h - 8, { size: 10, color: P.faint, align: "center" }); }
+      rows.forEach((r, i) => {
+        const y = box.y + i * rowH + rowH * 0.18, bh = rowH * 0.64;
+        const x0 = X(Math.min(r.a, r.b)), x1 = X(Math.max(r.a, r.b));
+        ctx.fillStyle = r.mkt ? P.accent2 : r.total ? P.accent : r.v >= 0 ? P.ok : P.bad;
+        ctx.globalAlpha = r.total || r.mkt ? 0.9 : 0.8; ctx.fillRect(x0, y, Math.max(1.5, x1 - x0), bh); ctx.globalAlpha = 1;
+        T(ctx, r.k, box.x - 8, y + bh / 2, { size: narrow ? 11 : 12, color: r.total || r.mkt ? P.text : P.dim, align: "right", base: "middle", weight: r.total || r.mkt ? 700 : 400 });
+        const s = r.total || r.mkt ? EB.wonAxis(r.b) : (r.v >= 0 ? "+" : "−") + EB.wonAxis(Math.abs(r.v));
+        ctx.font = EB.font(11, true);
+        const right = x1 + 6 + ctx.measureText(s).width < box.x + box.w;
+        T(ctx, s, right ? x1 + 4 : x0 - 4, y + bh / 2, { size: 11, mono: true, color: P.text, align: right ? "left" : "right", base: "middle" });
+        if (!r.total && !r.mkt && i < rows.length - 3) { ctx.strokeStyle = P.faint; ctx.setLineDash([2, 2]); ctx.beginPath(); ctx.moveTo(X(r.b), y + bh); ctx.lineTo(X(r.b), y + rowH); ctx.stroke(); ctx.setLineDash([]); }
+      });
+      // 잔차 표시
+      const ym = box.y + (rows.length - 1) * rowH + rowH * 0.5;
+      ctx.save(); ctx.setLineDash([3, 3]); ctx.strokeStyle = P.text; ctx.globalAlpha = 0.6; ctx.beginPath(); ctx.moveTo(X(c.model), box.y + (rows.length - 2) * rowH + rowH * 0.2); ctx.lineTo(X(c.model), ym + rowH * 0.32); ctx.stroke(); ctx.restore();
+    }, { get height() { return pw("hd-cv") < 480 ? 320 : 330; } });
+    function draw() {
+      const c = calc(), r = c.mkt - c.model;
+      EB.stat("hd-o-m", EB.won(c.model));
+      EB.stat("hd-o-s", EB.won(c.mkt));
+      EB.stat("hd-o-r", (Math.abs(r) < 5e5 ? "0원" : signWon(r)) + ' <small style="color:var(--text-faint)">(시세의 ' + Math.round(r / c.mkt * 100) + "%)</small>");
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 5. 새 노선 기대 */
+  (function () {
+    const YEARS = 12, ANN = 1, START = 4, PREM = 0.15, DISC = 0.06;
+    const pG = EB.range("ex-p", (v) => Math.round(v * 100) + "%", draw);
+    const scG = EB.seg("ex-sc", draw);
+    let open = 8, box = null;
+    // 시점 t의 (확률, 개통 시점)
+    function state(t) {
+      const sc = scG(), p0 = pG(), ev = (START + open) / 2;
+      let T = open, p;
+      if (t < ANN) return { p: 0, T };
+      if (t < START) p = p0 + (Math.max(0.8, p0) - p0) * (t - ANN) / (START - ANN);
+      else p = Math.max(0.8, p0) + (1 - Math.max(0.8, p0)) * Math.min(1, (t - START) / (open - START));
+      if (t >= ev && sc === "cancel") return { p: 0, T };
+      if (t >= ev && sc === "delay") { T = open + 4; p = 0.6 + 0.4 * Math.min(1, (t - ev) / (T - ev)); }
+      if (t >= T) p = 1;
+      return { p, T };
+    }
+    const prem = (t) => { const s = state(t); return PREM * s.p * Math.pow(1 + DISC, -Math.max(0, s.T - t)); };
+    const idx = (t) => 100 * (1 + prem(t));
+    const cv = EB.canvas("#ex-cv", (ctx, w, h) => {
+      const P = EB.palette(), sc = scG(), ev = (START + open) / 2;
+      const data = []; for (let t = 0; t <= YEARS + 1e-9; t += 0.05) data.push([t, idx(t)]);
+      const naive = []; for (let t = 0; t <= YEARS + 1e-9; t += 0.05) naive.push([t, t >= (sc === "delay" ? open + 4 : open) && sc !== "cancel" ? 100 * (1 + PREM) : 100]);
+      const c = EB.chart(ctx, { x: 40, y: 30, w: w - 54, h: h - 80 }, {
+        x: [0, YEARS], y: [96, 120], xTicks: [0, 2, 4, 6, 8, 10, 12], xFmt: (v) => v + "년", yTicks: [100, 105, 110, 115, 120],
+        series: [
+          { data: naive, color: P.faint, width: 1.4, dash: [5, 4] },
+          { data, color: P.accent, width: 2.6 },
+        ],
+        vlines: [{ x: ANN, color: P.warn, label: "발표" }, { x: START, color: P.dim, label: "착공" }].concat(sc !== "plan" ? [{ x: ev, color: P.bad, label: sc === "cancel" ? "무산" : "지연" }] : []),
+        hlines: [{ y: 100, color: P.axis, dash: [] }, { y: 115, color: P.faint, label: "개통 효과 +15%" }],
+      });
+      box = c;
+      T(ctx, "가격 지수(발표 전 = 100) · 점선: 개통 날 한꺼번에 오른다고 볼 때", c.box.x, 16, { size: 11, color: P.dim });
+      const ox = c.X(open);
+      ctx.save(); ctx.strokeStyle = P.ok; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(ox, c.box.y); ctx.lineTo(ox, c.box.y + c.box.h); ctx.stroke(); ctx.restore();
+      handle(ctx, ox, c.box.y + c.box.h, P.ok, P);
+      T(ctx, sc === "delay" ? "원래 개통" : "개통", ox - 4, c.box.y + c.box.h - 14, { size: 11, color: P.ok, align: "right", weight: 700 });
+    }, { get height() { return pw("ex-cv") < 480 ? 296 : 314; } });
+    EB.drag(cv.canvas, { move(x) { if (!box) return; open = EB.clamp(Math.round((x - box.box.x) / box.box.w * YEARS * 2) / 2, 6, 11); draw(); } });
+    function draw() {
+      const ev = (START + open) / 2, sc = scG();
+      const jump = idx(ANN + 0.01) - 100;
+      EB.stat("ex-o-a", "+" + jump.toFixed(1) + "% (효과의 " + Math.round(jump / (PREM * 100) * 100) + "%)");
+      if (sc === "plan") EB.stat("ex-o-b", Math.round((idx(open - 0.05) - 100) / (PREM * 100) * 100) + "%");
+      else if (sc === "delay") EB.stat("ex-o-b", Math.round((idx(open + 4 - 0.05) - 100) / (PREM * 100) * 100) + "% (늦어진 개통 전)");
+      else EB.stat("ex-o-b", "—");
+      if (sc === "plan") EB.stat("ex-o-c", "—");
+      else { const a = idx(ev - 0.01), b = idx(ev + 0.01); EB.stat("ex-o-c", '<span class="minus">' + ((b / a - 1) * 100).toFixed(1) + "%</span>"); }
+      cv.redraw();
+    }
+    draw();
+  })();
+
+  /* ---------------------------------------------------------- 6. 하늘네: 가격 차이와 시간값 */
+  (function () {
+    const whoG = EB.seg("case-who", draw);
+    const vG = EB.range("case-v", (v) => v.toLocaleString("ko-KR") + "원", draw);
+    const iG = EB.range("case-i", (v) => v + "%", draw);
+    const REF = C.areas.find((a) => a.key === "B");
+    function row(a) {
+      const who = whoG();
+      let mins = 0;
+      if (who.includes("h")) mins += (REF.commuteH - a.commuteH) * 2;
+      if (who.includes("j")) mins += (REF.commuteJ - a.commuteJ) * 2;
+      const hrs = mins * DAYS / 60, yr = hrs * vG(), cap = RE.capValue(yr, iG() / 100);
+      return { a, gap: a.price - REF.price, mins, hrs, yr, cap };
+    }
+    const cv = EB.canvas("#case-cv", (ctx, w, h) => {
+      const P = EB.palette();
+      const narrow = w < 480;
+      const rows = C.areas.map(row);
+      const lo = Math.min(-2e8, ...rows.map((r) => Math.min(r.gap, r.cap))) * 1.1, hi = Math.max(7e8, ...rows.map((r) => Math.max(r.gap, r.cap))) * 1.08;
+      const box = { x: narrow ? 70 : 92, y: 26, w: w - (narrow ? 70 : 92) - 12, h: h - 52 };
+      const X = (v) => box.x + (v - lo) / (hi - lo) * box.w;
+      const step = hi - lo > 1e9 ? 2e8 : 1e8;
+      ctx.strokeStyle = P.grid; ctx.lineWidth = 1;
+      for (let v = Math.ceil(lo / step) * step; v <= hi; v += step) { ctx.beginPath(); ctx.moveTo(X(v), box.y); ctx.lineTo(X(v), box.y + box.h); ctx.stroke(); T(ctx, EB.wonAxis(v), X(v), h - 8, { size: 10, color: P.faint, align: "center" }); }
+      ctx.strokeStyle = P.axis; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(X(0), box.y - 6); ctx.lineTo(X(0), box.y + box.h); ctx.stroke();
+      ctx.fillStyle = P.dim; ctx.globalAlpha = 0.55; ctx.fillRect(box.x, 6, 10, 8); ctx.globalAlpha = 1;
+      T(ctx, "가격 차이", box.x + 14, 14, { size: 11, color: P.dim });
+      ctx.fillStyle = P.ok; ctx.fillRect(box.x + 78, 6, 10, 8); ctx.fillStyle = P.bad; ctx.fillRect(box.x + 88, 6, 10, 8);
+      T(ctx, "시간값(집값 환산)", box.x + 102, 14, { size: 11, color: P.dim });
+      const rh = box.h / rows.length;
+      rows.forEach((r, i) => {
+        const y = box.y + i * rh;
+        T(ctx, r.a.name.replace("(지금)", "").replace(" 신도시", ""), box.x - 8, y + rh / 2, { size: narrow ? 11 : 12, color: P.text, align: "right", base: "middle", weight: 700 });
+        if (r.a.key === "B") T(ctx, "(지금, 기준)", box.x - 8, y + rh / 2 + 15, { size: 10, color: P.faint, align: "right", base: "middle" });
+        const b1 = y + rh * 0.16, b2 = y + rh * 0.52, bh = rh * 0.3;
+        const bar = (v, yy, col, alpha) => { const x0 = X(Math.min(0, v)), x1 = X(Math.max(0, v)); ctx.globalAlpha = alpha; ctx.fillStyle = col; ctx.fillRect(x0, yy, Math.max(1.5, x1 - x0), bh); ctx.globalAlpha = 1; return { x0, x1 }; };
+        const g = bar(r.gap, b1, P.dim, 0.55);
+        const t = bar(r.cap, b2, r.cap >= 0 ? P.ok : P.bad, 0.85);
+        const lab = (s, ext, yy, neg) => { ctx.font = EB.font(11, true); const tw = ctx.measureText(s).width; const inside = neg ? ext.x0 - 4 - tw > box.x : ext.x1 + 4 + tw < box.x + box.w; T(ctx, s, neg ? (inside ? ext.x0 - 4 : ext.x1 + 4) : inside ? ext.x1 + 4 : ext.x0 - 4, yy + bh / 2, { size: 11, mono: true, color: P.text, align: neg ? (inside ? "right" : "left") : inside ? "left" : "right", base: "middle" }); };
+        if (r.a.key !== "B") {
+          lab((r.gap >= 0 ? "+" : "−") + EB.wonAxis(Math.abs(r.gap)), g, b1, r.gap < 0);
+          lab((r.cap >= 0 ? "+" : "−") + EB.wonAxis(Math.abs(r.cap)), t, b2, r.cap < 0);
+        }
+      });
+    }, { get height() { return pw("case-cv") < 480 ? 280 : 290; } });
+    function draw() {
+      const rA = row(C.areas.find((a) => a.key === "A")), rE = row(C.areas.find((a) => a.key === "E"));
+      EB.stat("case-o-g", EB.won(rA.gap));
+      EB.stat("case-o-t", '<span class="' + (rA.cap >= 0 ? "plus" : "minus") + '">' + signWon(rA.cap) + "</span>");
+      EB.stat("case-o-s", Math.round(rA.cap / rA.gap * 100) + "%");
+      EB.stat("case-o-e", '<span class="' + (rE.cap >= 0 ? "plus" : "minus") + '">' + signWon(rE.cap) + "</span>");
+      cv.redraw();
+    }
+    draw();
+  })();
+})();
+</script>
+</body>
+</html>
