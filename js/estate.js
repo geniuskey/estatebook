@@ -101,7 +101,7 @@
       ltdGeneral: { minHold: 3, start: 0.06, step: 0.02, cap: 0.3 },           // 일반: 3년 6%부터 연 2%p, 최대 30%(15년)
       heavy: { 2: 0.2, 3: 0.3 },                // 조정대상지역 다주택 중과 가산(+20%p, +30%p). 중과 배제 유예가 2026-05-09 종료되어 2026-05-10 양도분부터 재개(언론 보도로 확인)
       heavySuspended: false,
-      tempTwoYears: 2,                          // 일시적 2주택 종전주택 처분기한: 둘 다 조정대상지역이면 2년(2026-10-01 시행, 그 전 취득·계약분은 3년), 그 밖 3년
+      tempTwoYears: 2,                          // 일시적 2주택 종전주택 처분기한: 둘 다 조정대상지역이면 2년: 2026-08-04 이후 신규취득·2026-10-01 이후 종전주택 양도. 8월3일까지 취득 또는 계약·계약금 지급은 종전3년. 그 밖3년
       // 2026 세제개편안(추진 중): 장기보유특별공제를 거주 중심으로 전환(2028~) — 확정 전
     },
 
@@ -209,7 +209,7 @@
 
   /**
    * DSR(총부채원리금상환비율) = 모든 대출의 연간 원리금 ÷ 연소득.
-   * loans: [{principal, rate, years, method, kind}] kind: "mortgage"(기본) | "jeonse"(이자만) | "credit"(만기 5년 가정)
+   * loans: [{principal, rate, years, method, kind}] kind: "mortgage"(기본) | "jeonse"(이자만) | "credit"(분할상환 외 신용대출: 원금/5년 + 연 이자)
    * stress: 주담대 금리에 더하는 스트레스 가산금리(DSR 계산용, 실제 금리는 그대로)
    */
   RE.dsr = function (o) {
@@ -217,7 +217,7 @@
     const rows = (o.loans || []).map((l) => {
       let annual;
       if (l.kind === "jeonse") annual = l.principal * l.rate;
-      else if (l.kind === "credit") annual = RE.payment({ principal: l.principal, rate: l.rate, years: RE.KR.loan.creditYears }).annualFirst;
+      else if (l.kind === "credit") annual = l.principal / RE.KR.loan.creditYears + l.principal * l.rate;
       else annual = RE.payment({ principal: l.principal, rate: l.rate + stress, years: l.years || 30, method: l.method || "level" }).annualFirst;
       return Object.assign({}, l, { annual });
     });
@@ -263,7 +263,8 @@
       base = amount + rent * B.rentMultiplier;
       if (base < 5e7) base = amount + rent * B.rentMultiplierSmall;
     }
-    const b = bracket(B[kind], base);
+    // 중개보수 구간은 상한 미만: 9억원은 다음 9~12억원 구간이다.
+    const b = B[kind].find((row) => base < row.upTo) || B[kind][B[kind].length - 1];
     const fee = b.max != null ? Math.min(base * b.rate, b.max) : base * b.rate;
     return { base, rate: b.rate, fee, max: b.max != null ? b.max : null };
   };
